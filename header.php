@@ -11,7 +11,7 @@
     <?php
     //Destination
     if (is_page_template('template-destinations-destination.php') || is_page_template('template-destinations-cruise.php') || is_page_template('template-destinations-region.php')) {
-        echo structuredData('destination'); //Breadcrumbs
+        echo structuredData('destination'); //Breadcrumbs test
         echo structuredDataFaq(); // FAQ
     }
 
