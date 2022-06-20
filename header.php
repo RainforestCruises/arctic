@@ -5,7 +5,7 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0,user-scalable=0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="author" content="Ryan Lewis">
+    <meta name="author" content="Ryan">
 
     <!-- Structured Data / Rich Snippets -->
     <?php
