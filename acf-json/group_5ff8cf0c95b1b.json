@@ -1,0 +1,206 @@
+{
+    "key": "group_5ff8cf0c95b1b",
+    "title": "Travel Guide Landing Page",
+    "fields": [
+        {
+            "key": "field_6001f5a1132c1",
+            "label": "Destination Type",
+            "name": "destination_type",
+            "type": "radio",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "rfc_destinations": "Destination",
+                "rfc_regions": "Region",
+                "rfc_locations": "Location"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "rfc_destinations",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5ff8cf172b796",
+            "label": "Destination",
+            "name": "destination",
+            "type": "post_object",
+            "instructions": "Select the destination post",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6001f5a1132c1",
+                        "operator": "==",
+                        "value": "rfc_destinations"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_destinations"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_6001f5f6132c2",
+            "label": "Region",
+            "name": "region",
+            "type": "post_object",
+            "instructions": "Select the region post",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6001f5a1132c1",
+                        "operator": "==",
+                        "value": "rfc_regions"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_regions"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_60709dceec4a1",
+            "label": "Location",
+            "name": "location",
+            "type": "post_object",
+            "instructions": "Select the location post",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6001f5a1132c1",
+                        "operator": "==",
+                        "value": "rfc_locations"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_locations"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_5ff8d1157ea4e",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "instructions": "1100 x 350 min",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 1100,
+            "min_height": 350,
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_60dc9e5f16988",
+            "label": "Breadcrumb Destination Page",
+            "name": "breadcrumb_destination_page",
+            "type": "post_object",
+            "instructions": "Destination Landing Page",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": [
+                "category:destinations"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_5ff8cf492b797",
+            "label": "Intro Snippet",
+            "name": "intro_snippet",
+            "type": "wysiwyg",
+            "instructions": "Short text under title area",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-travel-guide.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Travel Guide Landing - Page",
+    "modified": 1625071653
+}

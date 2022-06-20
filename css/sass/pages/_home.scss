@@ -1,0 +1,30 @@
+.home-page {
+    position: relative;
+    &__section-hero {
+        background-color: $color-primary-dark;
+    }
+
+    &__section-intro {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        //background-color: $color-grey-light-1;
+    } 
+
+    &__section-destinations {
+    }
+    &__section-featured {
+    }
+    &__section-testimonials {
+    }
+
+    &__section-newsletter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+}

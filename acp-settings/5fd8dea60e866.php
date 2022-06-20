@@ -1,0 +1,106 @@
+<?php
+
+return array (
+  'version' => '5.4',
+  'title' => 'Pages',
+  'type' => 'page',
+  'id' => '5fd8dea60e866',
+  'updated' => 1608234807,
+  'columns' => 
+  array (
+    'title' => 
+    array (
+      'type' => 'title',
+      'label' => 'Title',
+      'width' => '',
+      'width_unit' => '%',
+      'export' => 'on',
+      'sort' => 'on',
+      'edit' => 'off',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+    ),
+    '5fd8decec37e9' => 
+    array (
+      'type' => 'column-page_template',
+      'label' => 'Page Template',
+      'width' => '',
+      'width_unit' => '%',
+      'export' => 'on',
+      'sort' => 'on',
+      'edit' => 'off',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+    ),
+    '5fdbb58d803f2' => 
+    array (
+      'type' => 'column-permalink',
+      'label' => 'Permalink',
+      'width' => '',
+      'width_unit' => '%',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'off',
+    ),
+    'categories' => 
+    array (
+      'type' => 'categories',
+      'label' => 'Categories',
+      'width' => '15',
+      'width_unit' => '%',
+      'export' => 'on',
+      'sort' => 'on',
+      'edit' => 'off',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'on',
+    ),
+    'author' => 
+    array (
+      'type' => 'author',
+      'label' => 'Author',
+      'width' => '10',
+      'width_unit' => '%',
+      'export' => 'on',
+      'sort' => 'on',
+      'edit' => 'off',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+    ),
+    'date' => 
+    array (
+      'type' => 'date',
+      'label' => 'Date',
+      'width' => '',
+      'width_unit' => '%',
+      'export' => 'on',
+      'sort' => 'on',
+      'edit' => 'off',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'filter_format' => '',
+    ),
+  ),
+  'settings' => 
+  array (
+    'hide_inline_edit' => 'off',
+    'hide_bulk_edit' => 'off',
+    'hide_filters' => 'off',
+    'hide_filter_post_date' => 'off',
+    'hide_filter_category' => 'off',
+    'hide_smart_filters' => 'off',
+    'hide_segments' => 'off',
+    'hide_export' => 'off',
+    'hide_new_inline' => 'on',
+    'hide_submenu' => 'off',
+    'hide_search' => 'off',
+    'hide_bulk_actions' => 'off',
+    'horizontal_scrolling' => 'off',
+    'sorting' => '0',
+    'sorting_order' => 'asc',
+  ),
+);

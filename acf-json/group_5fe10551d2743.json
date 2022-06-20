@@ -1,0 +1,43 @@
+{
+    "key": "group_5fe10551d2743",
+    "title": "Activity Post",
+    "fields": [
+        {
+            "key": "field_5fe10551de30a",
+            "label": "Navigation Title",
+            "name": "navigation_title",
+            "type": "text",
+            "instructions": "Name as it will appear in navigation lists and titles- ex: Kayaking",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "rfc_activities"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Activities - CPT",
+    "modified": 1609186392
+}

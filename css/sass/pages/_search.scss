@@ -1,0 +1,52 @@
+.search-page {
+  padding-top: 9rem;
+
+  @media only screen and (max-width: $bp-large) {
+    padding-top: 7rem;
+  }
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+
+  &__intro {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: $page-width;
+    @include flexPadding;
+  }
+
+  
+
+  &__content {
+    display: flex;
+
+    width: 100%;
+    max-width: $page-width;
+    @include flexPadding;
+
+    margin-bottom: 6rem;
+
+    &.sticky {
+      @media only screen and (max-width: $bp-large) {
+        margin-top: 7rem;
+      }
+      
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+
+    max-width: $page-width;
+    @include flexPadding;
+
+    height: 10rem;
+    background-color: $color-grey-light-1a;
+  }
+}
+

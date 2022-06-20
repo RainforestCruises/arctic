@@ -1,0 +1,134 @@
+// COLOR VARIABLES
+
+$color-primary: #142838;
+//$color-primary: #222222;
+//$color-primary: #1d2225;
+
+$color-primary-dark: #1d2225;
+
+$color-footer: #1d2225;
+
+$color-primary-light: #1f3f5a;
+$color-tertiary: #108054;
+
+$color-supporting: #305a7c;
+$color-supporting-light: #40739c;
+$color-supporting-selection: #d4dfe8;
+
+$color-supporting-light-2: #4381b3;
+$color-supporting-light-3: #6da9db;
+
+
+$color-green: #00a84b;
+$color-red: #de5c52;
+$color-gold: #d9a402;
+
+$color-gold-dark-1: #bb8e06;
+$color-gold-dark: #8e7d2e;
+$color-gold-light: #fbcf00;
+//ca8e4e
+$color-khaki: #a06f3c;
+
+$color-nav: #fff;
+
+$color-white: #fff; 
+$color-black: #1e1e1e;
+$color-black-highlight: #353535;
+
+$color-charcoal: #1d2225;
+
+$color-grey-light-1: #f8f8f8;
+$color-grey-light-1a: #e6e6e6;
+$color-grey-light-2: #c2c6c9;
+
+$color-beige-1: #f8f7f5;
+$color-beige-2: #f6f4f0; 
+
+$color-grey-1: #9ea0a4;
+$color-grey-2: #919598;
+$color-grey-3: #747474;
+$color-grey-4: #3b3b3b;
+
+
+$color-blue-grey-1: #838f94; 
+
+//border
+$inner-border-dark: inset 0px 0px 0px 2px $color-primary;
+$inner-border-light: inset 0px 0px 0px 1px $color-grey-light-1a;
+
+@mixin font($font-family, $font-file, $weight) {
+  @font-face {
+    font-family: $font-family;
+    src: url($font-file + ".ttf");
+    font-weight: $weight;
+    font-style: normal;
+    font-display: swap;
+  }
+}
+
+@include font("Metropolis", "../fonts/Metropolis/Metropolis-ExtraLight", 300);
+@include font("Metropolis", "../fonts/Metropolis/Metropolis-Regular", 400);
+@include font("Metropolis", "../fonts/Metropolis/Metropolis-Medium", 500);
+@include font("Metropolis", "../fonts/Metropolis/Metropolis-SemiBold", 600);
+@include font("Metropolis", "../fonts/Metropolis/Metropolis-Bold", 700);
+@include font("Metropolis", "../fonts/Metropolis/Metropolis-Black", 800);
+
+
+@include font("Playfair Display", "../fonts/PlayfairDisplay/static/PlayfairDisplay-Regular", 400);
+@include font("Playfair Display", "../fonts/PlayfairDisplay/static/PlayfairDisplay-Medium", 500);
+@include font("Playfair Display", "../fonts/PlayfairDisplay/static/PlayfairDisplay-SemiBold", 600);
+@include font("Playfair Display", "../fonts/PlayfairDisplay/static/PlayfairDisplay-Bold", 700);
+@include font("Playfair Display", "../fonts/PlayfairDisplay/static/PlayfairDisplay-ExtraBold", 800);
+ 
+
+// FONT VARIABLES
+$font-primary: "Metropolis", sans-serif;
+$font-secondary: "Playfair Display", serif;
+
+
+
+//shadows
+$shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+$shadow-medium: 0 2rem 6rem rgba(0, 0, 0, 0.2);
+$shadow-medium-short: 0 2rem 3rem rgba(0, 0, 0, 0.2);
+$shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.13);
+$shadow-bottom: 0 2rem 5rem -4rem rgba(0, 0, 0, 0.3);
+$shadow-dark-bottom: 0 3rem 3rem -1rem rgba(0, 0, 0, 0.25);
+$shadow-medium-bottom: 0 2rem 2rem -1rem rgba(0, 0, 0, 0.25);
+$shadow-short-bottom: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.25);
+
+$shadow-medium-around: 0 0rem 3rem rgba(0, 0, 0, 0.2);
+$shadow-short-around: 0 0rem 2rem rgba(0, 0, 0, 0.5);
+
+//RESPONSIVE BREAKPOINTS (use em unit)
+$bp-xlargest: 90em; // 1440px
+
+$bp-largest: 75em; // 1200px 
+
+$bp-largest: 75em; // 1200px 
+$bp-large: 62.5em; // 1000px
+$bp-medium: 50em; // 800px
+$bp-small: 37.5em; // 600px
+$bp-xsmall: 25em; // 400px
+$bp-xxsmall: 22em; // 352px -- iphone 5/SE
+
+
+//FLEX
+$page-width: calc(112rem + 12rem);
+
+$page-top-padding: 12rem;
+
+
+$page-width-narrow: calc(80rem + 12rem);
+
+
+
+
+
+
+//GRID TEMPLATES
+$page-container: [full-start] minmax(6rem, 1fr) [center-start]
+  repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+
+$page-container-small: [full-start] minmax(3rem, 1fr) [center-start]
+  repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(3rem, 1fr) [full-end];

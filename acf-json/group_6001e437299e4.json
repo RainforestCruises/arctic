@@ -1,0 +1,64 @@
+{
+    "key": "group_6001e437299e4",
+    "title": "Travel Guide Category Post",
+    "fields": [
+        {
+            "key": "field_6001e4a04a1a0",
+            "label": "Featured",
+            "name": "featured",
+            "type": "true_false",
+            "instructions": "This determines if the category will be featured in the destination template grids",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_6001e4484a19f",
+            "label": "Rank",
+            "name": "rank",
+            "type": "number",
+            "instructions": "This will determine the order that the categories are displayed in the destination template grids. Lower numbers = higher position",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 1,
+            "max": 99,
+            "step": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "rfc_guide_categories"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Travel Guide Category - CPT",
+    "modified": 1610736861
+}

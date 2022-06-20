@@ -1,0 +1,108 @@
+.home-destinations {
+    display: grid;
+    grid-template-columns: $page-container;
+    position: relative;
+    grid-column: 1 / -1;
+    padding-top: 6rem;
+    outline: none;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-image: linear-gradient(to top, rgba($color-white, 0.8), rgba($color-white, 0.8)),
+            url(img/bg/topo-1.png);
+        opacity: 0.35;
+        top: 0;
+        left: 0;
+        z-index: -3;
+    }
+
+    &__header {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: $page-container;
+
+        margin-bottom: 4rem;
+        @media only screen and (max-width: $bp-small) {
+            grid-template-columns: $page-container-small;
+        }
+
+        &__title {
+            //margin: 0;
+            @media only screen and (max-width: $bp-small) {
+                margin-bottom: 2rem;
+            }
+        }
+
+        &__sub-text {
+            grid-column: center-start / center-end;
+            font-size: 1.6rem;
+            text-align: center;
+        }
+    }
+
+    &__destinations-area {
+        grid-column: 1 / -1;
+        display: flex;
+        justify-content: center;
+        margin: 0 10rem;
+        margin-bottom: 4rem;
+        height: min-content;
+
+     
+
+        @media only screen and (max-width: $bp-small) {
+            margin: 0;
+            margin-bottom: 3rem;
+        }
+        &__slider {
+            max-width: 120rem;
+            width: 100%;
+            margin: 0 6rem;
+            max-height: 96rem;
+        
+      
+
+            .slick-track {
+                display: flex !important;
+            }
+
+            .slick-slide {
+                margin: 0 2rem; 
+                height: inherit !important;
+
+                @media only screen and (max-width: $bp-small) {
+                    margin: 0 1rem; 
+                }
+            }
+
+        }
+
+        &__btn {
+            &--left {
+                position: absolute;
+                z-index: 10;
+                bottom: 50%;
+                left: -7rem;
+                transform: translateY(60%);
+            }
+            &--right {
+                position: absolute;
+                z-index: 10;
+                bottom: 50%;
+                right: -7rem;
+                transform: translateY(60%);
+            }
+        }
+    }
+
+    &__btn {
+        grid-column: 1 / -1;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}

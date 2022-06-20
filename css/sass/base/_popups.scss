@@ -1,0 +1,189 @@
+//Itinerary Map
+.image-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba($color-black, 0.7);
+    z-index: 3000 !important;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+
+    &__content {
+        @include absCenter;
+        width: 65%;
+        max-height: 75%;
+        //background-color: transparent;
+        border-radius: 3px;
+        display: flex;
+
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.25);
+        transition: all 0.4s 0.2s; //last one is delay
+        object-fit: contain;
+
+        & img {
+            object-fit: contain;
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    //open states
+    &:target {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:target &__content {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    &__close {
+        position: fixed;
+        top: 5rem;
+        right: 8rem;
+
+        & svg {
+            height: 8rem;
+            width: 8rem;
+            fill: $color-white;
+        }
+    }
+}
+
+//Destination Page Video
+.video-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba($color-black, 0.7);
+    z-index: 3000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+
+    &__content {
+        @include absCenter;
+        width: 65%;
+        background-color: $color-black;
+        box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.25);
+        transition: all 0.4s 0.2s; //last one is delay
+
+        video {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    //open states
+    &:target {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:target &__content {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    &__close {
+        position: fixed;
+        top: 5rem;
+        right: 8rem;
+
+        & svg {
+            height: 8rem;
+            width: 8rem;
+            fill: $color-white;
+        }
+    }
+}
+
+//Contact Forms
+.popup {
+    position: fixed;
+    background-color: rgba($color-black, 0.8);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: none;
+    overflow: auto;
+    z-index: 999999;
+
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3rem 0;
+
+    @media only screen and (max-width: $bp-medium) {
+        //padding: 3rem 0;
+        align-items: flex-start;
+    }
+
+    animation: fadein 0.2s;
+
+    &.active {
+        display: flex;
+    }
+}
+
+.modal-content {
+    max-width: 110rem;
+    height: min-content;
+    width: 100%;
+
+    &--wide {
+        max-width: 142rem;
+    }
+
+    &__wrapper {
+        padding: 4rem;
+        background-color: $color-white;
+        border: 2px solid $color-primary;
+        border-radius: 0.4rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+
+        &.transparent {
+            padding: 0rem;
+            background-color: transparent;
+            border: none;
+         
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        @media only screen and (max-width: $bp-small) {
+            padding: 3rem 2rem;
+        }
+
+        &__close-button {
+            position: absolute;
+            top: 3rem;
+            right: 3rem;
+
+            @media only screen and (max-width: $bp-small) {
+                top: 2rem;
+            }
+        }
+    }
+}

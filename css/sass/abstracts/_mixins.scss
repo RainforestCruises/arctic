@@ -1,0 +1,24 @@
+@mixin absCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+@mixin flexPadding {
+
+    padding: 0 6rem;
+    @media only screen and (max-width: $bp-small) {
+        padding: 0 3rem;
+    }
+    
+}
+
+
+@mixin pageTopPadding {
+    padding-top: $page-top-padding; //top padding
+    @media only screen and (max-width: $bp-small) {
+        padding-top: $page-top-padding - 3rem;
+    }
+}

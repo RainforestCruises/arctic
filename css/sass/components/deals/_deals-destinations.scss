@@ -1,0 +1,81 @@
+.deals-destinations {
+    width: 100%;
+
+    padding: 0 6rem;
+    margin-bottom: 8rem;
+    @media only screen and (max-width: $bp-medium) {
+        margin-bottom: 3rem;
+        padding: 0;
+    }
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+
+    &__title {
+        font-size: 3.5rem;
+        color: $color-primary; 
+        letter-spacing: 0.2rem;
+        font-weight: 600;
+        line-height: 6rem;
+        text-align: center;
+        line-height: 4rem;
+        margin-bottom: 4rem;
+        margin-top: 0rem;
+    }
+
+    &__slider {
+        width: 100%;
+        max-width: 140rem;
+        z-index: 10;
+
+
+        //side padding
+        padding: 0 9rem; //extra +3 for buttons
+        @media only screen and (max-width: $bp-small) {
+            padding: 0rem;
+        }
+
+        //max 6?
+        .slick-dots {
+            max-width: 35rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .slick-slide { 
+            margin: 1rem;
+            //margin-bottom: 4rem;
+            box-shadow: $shadow-short-bottom;
+            min-width: 0;
+
+            @media only screen and (max-width: $bp-small) {
+                margin: .5rem;
+            }
+
+            & .card-square {
+                margin-top: 1.5rem !important;
+            }
+        }
+
+        &__btn {
+            &--left {
+                transform: translateY(-50%);
+
+                position: absolute;
+                z-index: 10;
+                top: 50%;
+                left: 1.5rem;
+            }
+            &--right {
+                transform: translateY(-50%);
+
+                position: absolute;
+                z-index: 10;
+                top: 50%;
+                right: 1.5rem;
+            }
+        }
+    }
+}

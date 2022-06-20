@@ -1,0 +1,198 @@
+{
+    "key": "group_5f6269a0e1ba6",
+    "title": "Destination Post",
+    "fields": [
+        {
+            "key": "field_5fc53363628e2",
+            "label": "Region",
+            "name": "region",
+            "type": "post_object",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "admin_column_enabled": 1,
+            "admin_column_post_types": "",
+            "admin_column_taxonomies": "",
+            "post_type": [
+                "rfc_regions"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_5fdbaeda25a3a",
+            "label": "Navigation Title",
+            "name": "navigation_title",
+            "type": "text",
+            "instructions": "Name as it will appear in navigation lists and titles. Make as short and concise as possible - ex: Peru, Amazon, Galapagos",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5fdbdeec81832",
+            "label": "Is Country",
+            "name": "is_country",
+            "type": "true_false",
+            "instructions": "Check if this destination is also a country",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_60104914eb05b",
+            "label": "Is Bucket List",
+            "name": "is_bucket_list",
+            "type": "true_false",
+            "instructions": "Check if this destination is a bucket list destination (ie: Machu Picchu)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_613b9e4c6516e",
+            "label": "Non Cruise Destination",
+            "name": "non_cruise_destination",
+            "type": "true_false",
+            "instructions": "Check if doesn't offer cruises, for example: Machu Picchu",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5fea3a88df109",
+            "label": "Locations",
+            "name": "locations",
+            "type": "relationship",
+            "instructions": "Select all locations",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_locations"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
+        },
+        {
+            "key": "field_5fe125b203346",
+            "label": "Activities",
+            "name": "activities",
+            "type": "relationship",
+            "instructions": "Select all that apply",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_activities"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
+        },
+        {
+            "key": "field_5fdbaf61814b6",
+            "label": "Default Search Link",
+            "name": "default_search_link",
+            "type": "page_link",
+            "instructions": "Default page to link for search results - ex: Peru (post type) points to Peru Travel (search page)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": [
+                "category:search"
+            ],
+            "allow_null": 0,
+            "allow_archives": 0,
+            "multiple": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "rfc_destinations"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Destinations - CPT",
+    "modified": 1631297166
+}

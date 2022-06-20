@@ -1,0 +1,176 @@
+
+.deals-indicator {
+    position: absolute;
+    top: -10rem;
+    font-size: 1.6rem;
+    letter-spacing: .2rem;
+    color: $color-primary;
+    margin-bottom: 5rem;
+    padding: 1rem 3rem;
+    border-radius: 4rem;
+    background: $color-grey-light-1;
+    font-weight: 700;
+    opacity: .9;
+    display: none;
+
+    &.active {
+        display: inline;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        top: -6rem;
+        font-size: 1.2rem;
+        padding: .5rem 1.5rem;
+    }
+    
+}
+
+.deals-slider {
+    width: 100%;
+
+    &__btn-left {
+        transform: translateY(-50%);
+        position: absolute;
+        top: 50%;
+        left: 0rem;
+        z-index: 20;
+    }
+
+    &__btn-right {
+        transform: translateY(-50%);
+
+        position: absolute;
+        top: 50%;
+        right: 0rem;
+        z-index: 20;     
+    }
+
+    .slick-slide {
+        margin: 0 15rem;
+        @media only screen and (max-width: $bp-medium) {
+            margin: 0 1rem;
+        }
+    }
+
+}
+
+
+
+
+.deal-item {
+
+    border-bottom-left-radius: 0.4rem;
+    border-bottom-right-radius: 0.4rem;
+    background-color: $color-white;
+
+
+
+    display: flex !important;
+    flex-direction: row;
+    width: 100%;
+    
+
+    @media only screen and (max-width: $bp-small) {
+        flex-direction: column;
+    }
+   
+
+    &__image-area {
+        height: 35rem;
+        width: 40%;
+        position: relative;
+
+        & .exclusiveDeal {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            z-index: 10;
+            width: max-content;
+            background: $color-white;
+            color: $color-primary;
+            border-radius: 4rem;  
+            font-size: 1.2rem;
+            font-weight: 700;
+
+            text-transform: uppercase;
+            letter-spacing: .2rem;
+            padding: .5rem 1.5rem;
+            margin-right: 2rem;
+        }
+
+        @media only screen and (max-width: $bp-small) {
+            height: 25rem; 
+            width: 100%;
+        }
+
+        & img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+    }
+    &__bottom {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        background-color: $color-white;
+        padding: 2rem 3rem;
+
+        @media only screen and (max-width: $bp-small) {
+            width: 100%;
+        }
+
+        &__badge-area {
+            display: flex;
+            margin-right: 2rem;
+            justify-content: flex-end;
+            flex-grow: 1;
+            align-items: flex-end;
+            & .selectedDates {
+                width: max-content;
+                // background: $color-grey-light-1a;
+                // color: $color-grey-3;
+                //border-radius: 4rem;  
+                color: $color-primary;
+                font-size: 1.2rem;
+                font-weight: 600;
+
+                text-transform: uppercase;
+                letter-spacing: .2rem;
+                //padding: .5rem 1.5rem;
+               // margin-right: 2rem;
+            }
+        }
+
+        &__title {
+            color: $color-primary;
+            &:link,
+            &:visited {
+                text-decoration: none;
+                color: $color-primary;
+                &:hover {
+                    color: $color-supporting-light;
+                }
+            }
+
+            & h2 {
+                font-size: 3rem;
+                font-weight: 500;
+                letter-spacing: 0.1rem;
+                line-height: 4rem;
+
+                margin: 0.5rem 0;
+
+                transition: all 0.2s;
+            }
+        }
+
+        &__snippet {
+            font-size: 1.6rem;
+            padding: 1rem 0;
+            padding-bottom: 2rem;
+        }
+
+    
+    }
+}

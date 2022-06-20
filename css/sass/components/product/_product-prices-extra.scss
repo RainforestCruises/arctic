@@ -1,0 +1,66 @@
+.product-prices-extra {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &__policies {
+        width: 100%;
+        font-size: 1.4rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 4rem;
+        margin-bottom: 6rem;
+
+        &--single-layout {
+            grid-template-columns: 1fr;
+        }
+
+        @media only screen and (max-width: $bp-medium) {
+            grid-template-columns: 1fr;
+            margin: 0;
+            margin-bottom: 2rem;
+        }
+        @media only screen and (max-width: $bp-small) {
+            margin: 0;
+        }
+
+        &__list-group {
+            & .list-svg li span {
+                font-size: 1.6rem !important;
+            }
+            
+            @media only screen and (max-width: $bp-medium) {
+                margin-bottom: 5rem;
+                & ul {
+                    margin-left: 0rem;
+                }
+            }
+
+            &__title {
+            }
+
+            &--overall {
+            }
+
+            &--first {
+            }
+
+            &--second {
+            }
+        } 
+    }
+ 
+    //Note
+    &__note {
+        
+       & ul, ol {
+            font-size: 1.6rem;
+            margin-left: 2rem;
+
+       }
+
+       
+        
+    }
+
+}

@@ -1,0 +1,78 @@
+.reviews-page {
+    padding-top: 12rem;
+
+    &__section-hero {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 2rem;
+    }
+
+    &__section-content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 2rem;
+        padding-top: 3rem;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient(to top, rgba($color-white, 0.8), rgba($color-white, 0.8)),
+                url(img/bg/topo-1.png);
+            opacity: 0.35;
+            top: 0;
+            left: 0;
+            z-index: -3;
+        }
+    }
+}
+
+
+// Hero
+.reviews-hero {
+    max-width: 132rem;
+    padding: 0 6rem;
+    @media only screen and (max-width: $bp-small) {
+        padding: 0 3rem;
+    }
+
+    &__title {
+        font-size: 5rem;
+        color: $color-primary;
+        letter-spacing: 0.2rem;
+        font-weight: 500;
+        line-height: 6rem;
+        text-align: center; 
+     
+    }
+
+    &__subtext {
+        font-size: 1.6rem;
+        margin: 2rem 0;
+        text-align: center;
+    }
+    
+}
+
+ 
+
+// Hero
+.reviews-content {
+    width: 100%;
+    max-width: 132rem;
+    padding: 0 6rem;
+    font-size: 1.6rem;
+    @media only screen and (max-width: $bp-medium) {
+        padding: 0 3rem;
+        max-width: 100%;
+    }
+
+   
+
+    padding-bottom: 12rem;
+    
+}

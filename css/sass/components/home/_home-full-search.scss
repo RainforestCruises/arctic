@@ -1,0 +1,220 @@
+.home-full-search {
+    height: 100%;
+    width: 100%;
+
+    background-color: $color-white;
+    z-index: 10000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none; 
+
+    &.active {
+        display: block;
+    }
+
+    &__destination {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 5;
+        background-color: $color-white;
+        &__top {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid $color-grey-light-2;
+            position: relative;
+            &__cancel {
+                order: 2;
+                width: min-content;
+                //background-color: $color-grey-light-1;
+                color: $color-primary;
+                cursor: pointer;
+                font-size: 2rem;
+                font-weight: 600;
+                padding: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                @media only screen and (max-width: $bp-small) {
+                    font-size: 1.6rem;
+                }
+            }
+        }
+
+        //add mackground image here
+        &__logo-area {
+            height: 100%;
+            width: 100%;
+            //position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: -1;
+            //transform: translateY(-50%);
+
+            &.hide {
+                display: none;
+            }
+            & img {
+                width: 26rem;
+                height: auto;
+                filter: brightness(0) invert(0.8);
+                transform: translateY(-50%);
+            }
+        }
+    }
+
+    &__dates {
+        height: 100%;
+        width: 100%;
+        background-color: $color-white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 6;
+
+        transform: translateX(-100%);
+
+        &.active {
+            transition: all 0.3s;
+            transform: translateX(0%);
+        }
+
+        &__top {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid $color-grey-light-2;
+
+            &__back {
+                order: 0;
+                width: min-content;
+                color: $color-primary;
+                cursor: pointer;
+                padding: 2rem;
+                padding-right: 0.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                & svg {
+                    height: 4rem;
+                    width: 4rem;
+                    color: $color-primary;
+                }
+            }
+        }
+
+        
+    }
+}
+
+.home-full-search-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 11rem;
+    width: 100%;
+    background-color: $color-white;
+    border-top: 1px solid $color-grey-light-2;
+
+    
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+    display: none;
+
+    &.active {
+        display: flex;
+    }
+
+    &__button {
+        color: $color-supporting-light;
+        border: 2px solid $color-supporting-light;
+        background-color: transparent;
+        padding: 1.2rem 2.5rem;
+      
+       
+        height: 5rem;
+        width: 100%;
+        max-width: 22rem;
+        border-radius: 8rem;
+        letter-spacing: 0.2rem;
+        cursor: pointer;
+        outline: none;
+        font-size: 1.5rem;
+        font-family: $font-primary;
+        text-transform: uppercase;
+        font-weight: 700;
+        position: relative;
+        text-decoration: none;
+        white-space: nowrap;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & .lds-ring {
+            display: none;
+            //color: $color-supporting-light;
+
+            & div {
+                border-color: $color-supporting-light transparent transparent transparent;
+            }
+        }
+
+        &--inverse {
+            color: $color-white;
+            color: $color-supporting-light;
+            border-radius: 2.5rem;
+        }
+        &.loading {
+
+            & span {
+                display: none !important;
+
+            }
+            & .lds-ring {
+                display: block;
+            }
+        }
+
+        
+    }
+}
+
+.home-full-search-loading {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: $color-white;
+    z-index: 10002;
+
+    &__logo { 
+        width: 22rem;
+        height: auto;
+        //filter: brightness(0) invert(0.1);
+        //transform: translateY(-50%);
+        margin-bottom: 6rem;
+    }
+
+    &.active {
+       display: flex;
+    }
+
+    & .lds-ring {
+        //width: 80rem;  
+        //height: 80rem; 
+        transform: translateX(0%) !important;
+        & div {
+            border-color: $color-supporting-light transparent transparent transparent;
+        }
+    }
+}

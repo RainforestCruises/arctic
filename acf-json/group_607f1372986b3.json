@@ -1,0 +1,62 @@
+{
+    "key": "group_607f1372986b3",
+    "title": "Experience Post",
+    "fields": [
+        {
+            "key": "field_607f137a22f59",
+            "label": "Icon",
+            "name": "icon",
+            "type": "text",
+            "instructions": "Paste in SVG code",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_60df47701c70a",
+            "label": "Include Cruises",
+            "name": "include_cruises",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "rfc_experiences"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Experience - CPT",
+    "modified": 1625245589
+}

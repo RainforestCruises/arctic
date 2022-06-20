@@ -1,0 +1,77 @@
+.product-areas {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin: 2rem 0;
+  margin-bottom: 4rem;
+  &__slider {
+   width: 100%;
+   max-width: 140rem;
+    margin-top: .3rem;
+   & .slick-slide {
+      padding: 2rem .3rem;
+      outline: none;
+      height: 35rem; //added for Cloudinary update
+   }
+    &__item {
+
+      
+      // position: relative;
+    
+      img {
+        min-height: 35rem;
+        height: auto; //added for Cloudinary update
+        width: 100%;
+        object-fit: cover;
+        background-position: center;
+        z-index: 0;
+      }
+
+   
+    }
+  }
+
+  &__slider-nav {
+    color: $color-grey-2;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    width: 100%;
+    max-width: 90rem;
+
+    & .slick-slide {
+      outline: none;
+   }
+    & .slick-current {
+      color: $color-primary;
+    }
+    &__item {
+      display: flex !important;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      font-weight: 700;
+      letter-spacing: 0.2rem;
+      transition: all 0.5s;
+      padding: 0 3rem;
+    }
+
+  }
+
+  &__btn {
+    &--left {
+      position: absolute;
+      top: 40%;
+      left: 0;
+      z-index: 40;
+    }
+    &--right {
+      position: absolute;
+      top: 40%;
+      right: 0;
+      z-index: 40;
+    }
+  }
+ 
+}

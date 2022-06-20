@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,400i,500,600,700,800" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT:300,400,400i,500,600,700,800"
+        rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Examples Home</title>
+</head>
+
+<body style="margin: 50px;">
+    <h3 class="heading-3">Arrays & Objects</h3>
+
+    <div style="margin-bottom: 25px">
+        <button onclick="loadStudents('all')">Load Students</button>
+        <button  onclick="loadStudents('females')"
+            style="background-color: palevioletred;">Females</button>
+        <!-- <button class="btn-product-cta" onclick="displayYears()" style="background-color: olive;">Years</button> -->
+
+    </div>
+
+    <div style="font-size: 20px; color: grey; margin-bottom: 20px;">
+        Results: <span id="resultCount" style="font-size: 20px; color: red">0</span>
+    </div>
+    <div class="results-div" style="font-size: 20px; color: royalblue">
+    </div>
+</body>
+
+</html>
+
+<!-- JS Imports -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</script>
+
+<!-- Scripts -->
+<script>
+
+    var years = [2020, 2021, 2022]; //pre-populated array
+
+    var students = []; //empty array
+    
+    //Students Data (From DB)
+    var person1 = {
+        name: 'Lulu',
+        age: 21,
+        gender: 'Female',
+        degree: 'Art History'
+    }
+
+    var person2 = {
+        name: 'Donald',
+        age: 28,
+        gender: 'Male',
+        degree: 'Business'
+    }
+
+    var person3 = {
+        name: 'Dick',
+        age: 45,
+        gender: 'Male',
+        degree: 'Politics'
+    }
+
+
+    //page load
+    $(document).ready(function () {
+
+       loadStudents();
+    });
+
+
+
+    //Print the years as html markup
+    displayYears = () => {
+
+
+
+        $('#resultCount').text(years.length);
+        
+        var displayHtml = "";
+
+        var i = 0; //increment
+        
+        $(years).each(function () {
+
+            console.log(i);
+            displayHtml += "<br>";
+            displayHtml += '<div> Year ('+ i +'): ' + years[i] + "</div>";
+            displayHtml += "<br>";
+
+            i = i + 1;
+        });
+
+        //console.log('displayYears', displayHtml)
+        $('.results-div').html(displayHtml);
+    }
+
+
+    //Load Students from DB
+    loadStudents = (criteria) => {
+
+        students = [];
+        students.push(person1);
+        students.push(person2);
+        students.push(person3);
+
+        if (criteria == "females") {
+            students = students.filter(p => p.gender == 'Female');
+        }
+        $('#resultCount').text(students.length);
+
+        console.log('loadStudents', students);
+        displayStudents(students);
+    }
+
+    //Print the student information as html markup
+    displayStudents = (students) => {
+
+        var displayHtml = "";
+
+        var i = 0;
+        $(students).each(function () {
+
+
+            displayHtml += '<div> Name: ' + students[i].name + "</div>";
+            displayHtml += '<div> Age: ' + students[i].age + "</div>";
+            displayHtml += "<br>";
+
+
+            i = i + 1;
+
+        });
+
+        $('.results-div').html(displayHtml);
+    }
+
+
+    
+
+
+</script>
+

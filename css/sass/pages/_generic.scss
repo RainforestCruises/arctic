@@ -1,0 +1,126 @@
+.generic-page {
+    @include pageTopPadding;
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: $page-width;
+        align-items: center;
+        margin-bottom: 8rem;
+        @include flexPadding;
+
+        &__title {
+            font-size: 5rem;
+            line-height: 5.5rem;
+            font-weight: 700;
+            color: $color-primary;
+            margin-bottom: 2rem;
+        }
+
+        &__toc {
+            width: 100%;
+            margin: 4rem 0;
+            padding: 4rem 0;
+
+            border-top: 2px solid $color-primary;
+            border-bottom: 2px solid $color-primary;
+
+            &__header {
+                font-size: 3rem;
+                line-height: 3.5rem;
+                font-weight: 700;
+                color: $color-primary;
+                margin-bottom: 4rem;
+                text-align: center;
+            }
+
+            &__grid {
+                display: flex;
+                flex-wrap: wrap;
+                align-content: flex-start;
+                //padding-left: 3rem;
+                height: 60rem;
+                flex-direction: column;
+                width: 100%;
+
+                @media only screen and (max-width: $bp-medium) {
+                    width: 100%;
+                    height: max-content;
+                }
+
+                & li {
+                    max-width: calc(50% - 4rem);
+                    min-width: 10rem;
+                    color: $color-supporting;
+                    font-size: 1.8rem;
+                    margin-left: 4rem;
+                    @media only screen and (max-width: $bp-medium) {
+                        max-width: calc(100% - 4rem);
+                    }
+                    & a {
+                        &:link,
+                        &:visited {
+                            text-decoration: none;
+                            color: $color-supporting;
+                            font-size: 1.8rem;
+                            width: 100%;
+                        }
+
+                        &:hover {
+                            color: $color-supporting-light;
+                        }
+                    }
+                }
+            }
+        }
+
+        & h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: $color-primary;
+            margin-bottom: 2rem;
+        }
+
+        & p {
+            width: 100%;
+        }
+
+        & hr {
+            width: 100%;
+            border: 1px solid $color-primary;
+            margin-bottom: 2rem;
+        }
+
+        & ul {
+            width: 100%;
+            font-size: 1.6rem;
+            padding-left: 9rem;
+            margin-bottom: 3rem;
+
+            @media only screen and (max-width: $bp-medium) {
+                padding-left: 3rem;
+            }
+        }
+
+        // links
+        & a {
+            &:link,
+            &:visited {
+                color: $color-supporting;
+                transition: all 0.2s;
+                text-decoration: none;
+                font-weight: 500;
+            }
+
+            &:hover {
+                color: $color-supporting-light;
+            }
+        }
+    }
+}

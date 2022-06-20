@@ -1,0 +1,66 @@
+{
+    "key": "group_5fd7da1f07cce",
+    "title": "Region Post",
+    "fields": [
+        {
+            "key": "field_5fdbae096391e",
+            "label": "Navigation Title",
+            "name": "navigation_title",
+            "type": "text",
+            "instructions": "Name as it will appear in navigation lists and titles. Make as short and concise as possible - ex: Asia, Americas",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_6011eb1e4c9c8",
+            "label": "Default Search Link",
+            "name": "default_search_link",
+            "type": "page_link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": [
+                "category:search"
+            ],
+            "allow_null": 0,
+            "allow_archives": 0,
+            "multiple": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "rfc_regions"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Regions - CPT",
+    "modified": 1611787102
+}

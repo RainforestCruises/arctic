@@ -1,0 +1,20 @@
+{
+  "name": "afloat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch:sass": "node-sass sass/main.scss style.css -w",
+    "devserver": "live-server ",
+    "start": "npm-run-all --parallel devserver watch:sass"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "liveserver": "^0.1.20",
+    "npm-run-all": "^4.1.5"
+  },
+  "dependencies": {
+    "node-sass": "^7.0.1"
+  }
+}

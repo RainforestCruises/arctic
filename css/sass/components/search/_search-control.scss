@@ -1,0 +1,129 @@
+// //Dropdowns - deprecated
+// .search-control {
+//     margin: 1.5rem 0;
+//     width: 100%;
+
+//     &__label-text {
+//         font-size: 1.3rem;
+//         color: $color-primary;
+//         letter-spacing: 0.1rem;
+//         text-transform: uppercase;
+//         font-weight: 700;
+//         line-height: 4rem;
+//     }
+
+//     & .select2-selection {
+//         min-height: 4.8rem;
+//         text-align: left;
+//     }
+
+//     & .select2-selection--single {
+//         border-radius: 0 !important;
+//         border-color: $color-grey-light-1a;
+//     }
+//     & .select2-selection__rendered {
+//         margin: 1rem;
+//         font-size: 1.5rem !important;
+//         line-height: 2.8rem !important;
+//     }
+//     & .select2-selection__arrow {
+//         margin: 1rem;
+//     }
+//     & .select2-selection__placeholder {
+//         color: $color-grey-2;
+//     }
+//     & select {
+//         visibility: hidden !important;
+//     }
+
+//     &__datetimepicker {
+//         width: 100%;
+//         font-family: $font-primary;
+//         color: $color-primary;
+//         border: 1px solid $color-grey-light-1a;
+//         padding: 1.6rem;
+//         font-size: 1.5rem;
+//         font-weight: 500;
+//         box-sizing: border-box;
+//     }
+// }
+
+// //Date Range - deprecated
+// .daterangepicker {
+//     font-family: $font-primary;
+
+//     & td {
+//         padding: 0.5rem 1rem;
+//         min-width: 0 !important;
+
+//         @media only screen and (max-width: $bp-medium) {
+//             padding: 0;
+//         }
+//     }
+//     & thead {
+//         color: $color-primary;
+//     }
+
+//     & td.in-range {
+//         background-color: $color-supporting-selection;
+//     }
+
+//     & td.active {
+//         background-color: $color-primary;
+
+//         &:hover {
+//             background-color: $color-primary-light;
+//         }
+//     }
+
+//     & button {
+//         font-family: $font-primary;
+//         background-color: transparent;
+//         border: 1px solid $color-primary;
+//         border-radius: 4px;
+//         padding: 0.8rem 1.6rem !important;
+//     }
+
+//     & .cancelBtn {
+//         display: none !important;
+//     }
+
+//     @media only screen and (max-width: $bp-medium) {
+//         /* REMOVE SECOND CALENDAR */
+//         & .drp-calendar.right {
+//             position: absolute !important;
+//             right: 0 !important;
+//             top: 0 !important;
+//         }
+
+//         & .drp-calendar.right tbody {
+//             display: none !important;
+//         }
+
+//         & .drp-calendar.right thead > tr:nth-child(2) {
+//             display: none !important;
+//         }
+
+//         & .drp-calendar.right th.month {
+//             display: none !important;
+//         }
+
+//         & .drp-calendar.right .calendar-table {
+//             background: transparent !important;
+//         }
+
+//         & .daterangepicker.ltr .ranges,
+//         .daterangepicker.ltr .drp-calendar {
+//             float: none !important;
+//         }
+
+//         & .drp-calendar.right .daterangepicker_input {
+//             position: absolute !important;
+//         }
+//         /* REMOVE SECOND CALENDAR */
+//     }
+// }
+
+
+
+

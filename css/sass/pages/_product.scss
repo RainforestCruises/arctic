@@ -1,0 +1,71 @@
+.product-page {
+ 
+  &__section-hero {
+    background-color: $color-primary-dark;
+  }
+
+  &__section-overview {
+    margin: 4rem 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__section-itineraries {
+    margin: 4rem 0;
+
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    
+  }
+
+  &__section-accommodation {
+    
+    margin-top: 4rem; 
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+
+
+  }
+
+  &__section-prices {
+    margin: 4rem 0;
+  }
+
+  &__section-dates {
+    margin: 4rem 0;
+  }
+
+  &__section-reviews {
+
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+    align-items: center;
+   
+    width: 100%;
+  }
+
+  &__section-related {
+
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  }
+
+}
+ 
+
