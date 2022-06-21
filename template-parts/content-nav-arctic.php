@@ -174,92 +174,95 @@ console_log($menu_ships);
     <!-- Top Level Nav -->
     <div class="header__main <?php echo ($alwaysActiveHeader == true) ? 'active' : ''; ?>">
 
-        <!-- Logo -->
-        <div class="header__main__logo-area">
-            <a href="<?php echo get_home_url(); ?>" class="header__main__logo-area__logo">
-                <?php
-                $logo = get_theme_mod('custom_logo');
-                $image = wp_get_attachment_image_src($logo, 'full');
-                $image_url = $image[0];
-                ?>
-                <img src="<?php echo $image_url ?>" alt="<?php echo get_bloginfo('name') ?>" />
-            </a>
-        </div>
-        <!-- Main Nav -->
-        <nav class="header__main__nav">
-            <div class="header__main__nav__list">
-                <?php foreach ($menu_toplevel as $toplevelItem) : ?>
-                    <li class="header__main__nav__list__item">
-                        <?php if ($toplevelItem->object != 'page') : ?>
-                            <span class="header__main__nav__list__item__link mega" navelement="<?php echo $toplevelItem->title ?>"><?php echo $toplevelItem->title ?></span>
-                        <?php else : ?>
-                            <a class="header__main__nav__list__item__link" href="<?php echo $toplevelItem->url ?>" navelement="<?php echo $toplevelItem->title ?>"><?php echo $toplevelItem->title ?></a>
-                        <?php endif; ?>
-                    </li>
-                <?php endforeach; ?>
+        <div class="header__main__content">
+            <!-- Logo -->
+            <div class="header__main__content__logo-area">
+                <a href="<?php echo get_home_url(); ?>" class="header__main__content__logo-area__logo">
+                    <?php
+                    $logo = get_theme_mod('custom_logo');
+                    $image = wp_get_attachment_image_src($logo, 'full');
+                    $image_url = $image[0];
+                    ?>
+                    <img src="<?php echo $image_url ?>" alt="<?php echo get_bloginfo('name') ?>" />
+                </a>
             </div>
-        </nav>
-        <!-- Right Side -->
-        <div class="header__main__right">
-
-            <!-- Search Button -->
-            <?php if (!is_page_template('template-search.php')) : ?>
-                <div class="header__main__right__search">
-                    <a class="nav-search-button" href="<?php echo get_field('top_level_search_page', 'option'); ?>">
-                        Search
-                    </a>
+            <!-- Main Nav -->
+            <nav class="header__main__content__nav">
+                <div class="header__main__content__nav__list">
+                    <?php foreach ($menu_toplevel as $toplevelItem) : ?>
+                        <li class="header__main__content__nav__list__item">
+                            <?php if ($toplevelItem->object != 'page') : ?>
+                                <span class="header__main__content__nav__list__item__link mega" navelement="<?php echo $toplevelItem->title ?>"><?php echo $toplevelItem->title ?></span>
+                            <?php else : ?>
+                                <a class="header__main__content__nav__list__item__link" href="<?php echo $toplevelItem->url ?>" navelement="<?php echo $toplevelItem->title ?>"><?php echo $toplevelItem->title ?></a>
+                            <?php endif; ?>
+                        </li>
+                    <?php endforeach; ?>
                 </div>
-            <?php endif; ?>
-            <!-- Contact Mail -->
-            <a href="<?php echo get_home_url(); ?>/contact" class="header__main__right__contact-link">
-                <svg>
-                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-ic_mail_outline_24px"></use>
-                </svg>
+            </nav>
+            <!-- Right Side -->
+            <div class="header__main__content__right">
 
-            </a>
-            <!-- Contact Phone -->
-            <div class="header__main__right__phone-desktop divider-left">
-                <svg>
-                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-phone-call"></use>
-                </svg>
-                <span class="phone-popover">
+                <!-- Search Button -->
+                <?php if (!is_page_template('template-search.php')) : ?>
+                    <div class="header__main__content__right__search">
+                        <a class="nav-search-button" href="<?php echo get_field('top_level_search_page', 'option'); ?>">
+                            Search
+                        </a>
+                    </div>
+                <?php endif; ?>
+                <!-- Contact Mail -->
+                <a href="<?php echo get_home_url(); ?>/contact" class="header__main__content__right__contact-link">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-ic_mail_outline_24px"></use>
+                    </svg>
 
-                    <div class="phone-popover__container">
-                        <div class="phone-popover__container__arrow"></div>
-                        <div class="phone-popover__container__content">
-                            <div class="phone-popover__container__content__header">
-                                Give Us a Call
+                </a>
+                <!-- Contact Phone -->
+                <div class="header__main__content__right__phone-desktop divider-left">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-phone-call"></use>
+                    </svg>
+                    <span class="phone-popover">
+
+                        <div class="phone-popover__container">
+                            <div class="phone-popover__container__arrow"></div>
+                            <div class="phone-popover__container__content">
+                                <div class="phone-popover__container__content__header">
+                                    Give Us a Call
+                                </div>
+                                <a class="phone-popover__container__content__number" href="tel:<?php echo get_field('phone_number_numeric', 'options'); ?>">
+                                    <?php echo get_field('phone_number', 'options'); ?>
+                                </a>
+
                             </div>
-                            <a class="phone-popover__container__content__number" href="tel:<?php echo get_field('phone_number_numeric', 'options'); ?>">
-                                <?php echo get_field('phone_number', 'options'); ?>
-                            </a>
 
                         </div>
 
-                    </div>
-
-                </span>
-
-            </div>
-            <!-- Language Switch -->
-            <?php
-            if (is_plugin_active('translatepress-multilingual/index.php') && $show_translate_nav == true) : ?>
-                <div class="header__main__right__language divider-left">
-                    <svg>
-                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-ic_translate_24px"></use>
-                    </svg>
-                    <span>
-
-                        <?php echo do_shortcode("[language-switcher]"); ?>
                     </span>
-                </div>
-            <?php endif; ?>
-            <!-- Burger Menu -->
-            <div class="burger-button" id="burger-menu">
-                <span class="burger-button__bar "></span>
-            </div>
 
+                </div>
+                <!-- Language Switch -->
+                <?php
+                if (is_plugin_active('translatepress-multilingual/index.php') && $show_translate_nav == true) : ?>
+                    <div class="header__main__content__right__language divider-left">
+                        <svg>
+                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-ic_translate_24px"></use>
+                        </svg>
+                        <span>
+
+                            <?php echo do_shortcode("[language-switcher]"); ?>
+                        </span>
+                    </div>
+                <?php endif; ?>
+                <!-- Burger Menu -->
+                <div class="burger-button" id="burger-menu">
+                    <span class="burger-button__bar "></span>
+                </div>
+
+            </div>
         </div>
+
     </div>
 
 
@@ -272,7 +275,7 @@ console_log($menu_ships);
                     Polar Destinations
                 </div>
                 <ul class="nav-mega__nav-arctic__menu__list">
-                    <?php  
+                    <?php
                     $panelCount = 0;
                     foreach ($menu_destinations as $destination) : ?>
 
@@ -281,8 +284,8 @@ console_log($menu_ships);
                         </li>
 
 
-                    <?php $panelCount++; 
-                endforeach; ?>
+                    <?php $panelCount++;
+                    endforeach; ?>
                 </ul>
             </div>
             <div class="nav-mega__nav-arctic__content-area">
@@ -309,7 +312,8 @@ console_log($menu_ships);
                         </div>
 
                     </div>
-                <?php $panelCount++;  endforeach; ?>
+                <?php $panelCount++;
+                endforeach; ?>
             </div>
         </div>
         <!-- Ships -->
@@ -320,22 +324,23 @@ console_log($menu_ships);
                 </div>
                 <ul class="nav-mega__nav-arctic__menu__list">
                     <?php $panelCount = 0;
-                     foreach ($menu_ships as $ship) : ?>
+                    foreach ($menu_ships as $ship) : ?>
 
                         <li class="nav-mega__nav-arctic__menu__list__item">
                             <a href="<?php echo $ship['url'] ?>" panel="<?php echo $ship['id'] ?>" class="nav-mega__nav-arctic__menu__list__item__link <?php echo $panelCount == 0 ? 'initial' : ''; ?>"><?php echo $ship['title'] ?></a>
                         </li>
 
 
-                    <?php $panelCount++; endforeach; ?>
+                    <?php $panelCount++;
+                    endforeach; ?>
                 </ul>
             </div>
             <div class="nav-mega__nav-arctic__content-area">
-                <?php 
+                <?php
                 $panelCount = 0;
-                foreach ($menu_ships as $ship) : 
-                    
-                    ?>
+                foreach ($menu_ships as $ship) :
+
+                ?>
                     <div class="nav-mega__nav-arctic__content-area__panel <?php echo $panelCount == 0 ? 'initial' : ''; ?>" panel="<?php echo $ship['id'] ?>">
 
                         <div class="nav-mega__nav-arctic__content-area__panel__description">
@@ -352,13 +357,13 @@ console_log($menu_ships);
                             </div>
 
                         </div>
-                        <div class="nav-mega__nav-arctic__content-area__panel__image-area ship" >
+                        <div class="nav-mega__nav-arctic__content-area__panel__image-area ship">
                             <img <?php afloat_image_markup($ship['navigation_image']['ID'], 'featured-medium'); ?>>
                         </div>
 
                     </div>
                 <?php $panelCount++;
-            endforeach; ?>
+                endforeach; ?>
             </div>
         </div>
     </div>

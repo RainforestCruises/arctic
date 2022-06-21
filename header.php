@@ -18,6 +18,7 @@
     //Product
     if (get_post_type() == 'rfc_cruises' || get_post_type() == 'rfc_tours' || get_post_type() == 'rfc_lodges') {
         echo structuredData('product');
+        //body_class("nav-page-width");
     }
 
     //Search
@@ -44,14 +45,4 @@
 <body <?php body_class("global"); ?> id="body">
 
 
-    <?php
-    $is_arctic = get_field('is_arctic', 'options');
-
-    if ($is_arctic != true) :
-        
-        get_template_part('template-parts/content', 'nav-rfc');
- 
-    else :
-        get_template_part('template-parts/content', 'nav-arctic');
-    endif;
-    ?>
+    <?php get_template_part('template-parts/content', 'nav-arctic'); ?>

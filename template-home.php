@@ -30,19 +30,21 @@ $newsletter_snippet = get_field('newsletter_snippet');
 
   </section>
 
-  <!-- Intro -->
+  <!-- Arctic Newest Cruises  -->
   <section class="home-page__section-intro" id="intro">
     <?php
-    get_template_part('template-parts/content', 'home-intro');
+    get_template_part('template-parts/content', 'home-arctic-newest');
     ?>
   </section>
 
-  <!-- Destinations -->
-  <section class="home-page__section-destinations" id="destinations">
+  <!-- Arctic Destinations -->
+  <section class="home-page__section-intro" id="intro">
     <?php
-    get_template_part('template-parts/content', 'home-destinations');
+    get_template_part('template-parts/content', 'home-arctic-destinations');
     ?>
   </section>
+
+
 
   <!-- Featured Cruises -->
   <section class="home-page__section-featured">
@@ -138,4 +140,3 @@ $newsletter_snippet = get_field('newsletter_snippet');
 
 
 <?php get_footer(); ?>
-

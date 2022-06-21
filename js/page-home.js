@@ -30,48 +30,42 @@ jQuery(document).ready(function ($) {
 
 
 
+    //Arctic Sliders
+    $('#newest-cruises-slider').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+  
+        arrows: true,
+        prevArrow: '<button class="btn-circle btn-circle--small btn-circle--left home-arctic-newest__slider__btn-left"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg></button>',
+        nextArrow: '<button class="btn-circle btn-circle--small btn-circle--right home-arctic-newest__slider__btn-right"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+        responsive: [
+            {
+                breakpoint: 800,
+                settings: {
+                    slidesToShow: 2,
+                
+                }
+            }
+        ]
+    });
+//arctic-destinations-slider
+$('#arctic-destinations-slider').slick({
+    slidesToShow: 5,
+    slidesToScroll: 1,
 
-    // // //SLIDERS
-    // // // //SLICK -- hero bg
-    // $('.home-hero__bg').slick({
-    //     slidesToShow: 1,
-    //     slidesToScroll: 1,
-    //     dots: false,
-    //     centerMode: false,
-    //     draggable: false,
-    //     //asNavFor: '#home-hero__bottom__slide-nav',
-    //     fade: true,
-    //     arrows: false,
-    //     speed: 1000,
-    //     lazyLoad: 'ondemand', // doesnt work
-
-    // });
-
-    // //--hero bg nav/label
-    // $('.home-hero__bottom__slide-nav').slick({
-    //     slidesToShow: 1,
-    //     slidesToScroll: 1,
-    //     dots: false,
-    //     asNavFor: '#home-hero__bg',
-    //     centerMode: false,
-    //     arrows: false,
-    //     draggable: false,
-    //     fade: true,
-    //     speed: 1000,
-    //     prevArrow: '<button class="btn-circle btn-circle--noborder  btn-white btn-circle--left home-hero__bottom__slide-nav__arrow-left"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg></button>',
-    //     nextArrow: '<button class="btn-circle btn-circle--noborder  btn-white btn-circle--right home-hero__bottom__slide-nav__arrow-right"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-    //     responsive: [
-    //         {
-    //             breakpoint: 1000,
-    //             // settings: {
-    //             //     prevArrow: '<button class="btn-circle btn-circle--noborder    btn-white btn-circle--left destination-hero__content__location__slider__arrow-left"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg></button>',
-    //             //     nextArrow: '<button class="btn-circle btn-circle--noborder  btn-white btn-circle--right destination-hero__content__location__slider__arrow-right"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-    //             //     speed: 800,
-    //             // }
-    //         },
-    //     ]
-    // })
-
+    arrows: true,
+    prevArrow: '<button class="btn-circle btn-circle--small btn-circle--left home-arctic-newest__slider__btn-left"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg></button>',
+    nextArrow: '<button class="btn-circle btn-circle--small btn-circle--right home-arctic-newest__slider__btn-right"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    responsive: [
+        {
+            breakpoint: 800,
+            settings: {
+                slidesToShow: 3,
+            
+            }
+        }
+    ]
+});
 
     //Slick Sliders
     $('#intro-testimonials').slick({
@@ -399,7 +393,7 @@ jQuery(document).ready(function ($) {
 
     //search-button
     searchButton.addEventListener('click', (e) => {
-        
+
         let isActive = searchButton.classList.contains('active');
         if (!isActive) {
             destinationInput.focus();

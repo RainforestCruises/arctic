@@ -137,7 +137,7 @@ jQuery(document).ready(function ($) {
 
   //NAV LINKS ----------
   //Main Nav Link (with mega class) - Hover 
-  $('.header__main__nav__list__item__link.mega').hover(
+  $('.header__main__content__nav__list__item__link.mega').hover(
     function () {
       var navelement = this.getAttribute("navelement");
 
@@ -196,7 +196,7 @@ jQuery(document).ready(function ($) {
     }
   );
   //Main Nav Link (with no-mega class)- Hover 
-  $('.header__main__nav__list__item__link.no-mega').hover(
+  $('.header__main__content__nav__list__item__link.no-mega').hover(
     function () {
       megaMenu.classList.remove('active');
       megaMenuOverlay.classList.remove('active');

@@ -4,6 +4,13 @@
         background-color: $color-primary-dark;
     }
 
+    &__section-arctic-newest {
+        display: flex;
+        align-items: center;
+        flex-direction: column; 
+        overflow: visible;
+    }
+
     &__section-intro {
         display: flex;
         justify-content: center;
