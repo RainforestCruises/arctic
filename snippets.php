@@ -55,3 +55,24 @@
       get_template_part('template-parts/content', 'product-related', $args);
       ?>
     </section>
+
+    href="<?php echo get_permalink($ship); ?>"
+
+
+                     <!-- Extras -->
+                <div class="itinerary-hero__bottom__content__info-group__extras">
+                    <?php $experiences = get_field('experiences');
+                    foreach ($experiences as $e) : ?>
+                        <div class="extras-icon">
+                            <?php echo get_field('icon', $e); ?>
+                            <span class="tooltiptext"><?php echo get_the_title($e); ?></span>
+                        </div>
+
+                    <?php endforeach; ?>
+
+                </div>
+
+                <div class="itinerary-hero__bottom__content__info-group__info__starting-price__description">
+                            Shared, small group cruise based on DBL occupancy
+
+                        </div>

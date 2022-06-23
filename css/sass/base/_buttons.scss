@@ -51,6 +51,69 @@
   }
 }
 
+//Arctic -- Inquire
+.cta-round-icon {
+  background-color: $color-primary;
+  font-family: $font-primary;
+  color: $color-white;
+  border: none;
+  border-radius: 4rem;
+  font-size: 1.4rem;
+  padding: 1.4rem 2.2rem;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  outline: none;
+  white-space: nowrap;
+  text-decoration: none;
+  &:hover {
+    background-color: $color-supporting;
+  }
+
+  display: flex;
+  align-items: center;
+  & svg {
+    height: 1.8rem;
+    width: 1.8rem;
+    color: currentColor;
+    margin-left: .5rem;
+  }
+
+}
+
+.cta-text-icon {
+  background-color: transparent;
+  font-family: $font-primary;
+  color: $color-primary;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.3rem;
+  padding: 0;
+  letter-spacing: 0.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  outline: none;
+  white-space: nowrap;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-supporting-light;
+  }
+
+
+  display: flex;
+  align-items: center;
+  & svg {
+    height: 1.8rem;
+    width: 1.8rem;
+    color: currentColor;
+    margin-left: .5rem;
+  }
+
+}
+
 //Book Now
 .btn-cta-round {
   background-color: $color-primary;
@@ -58,10 +121,10 @@
   color: $color-white;
   border: none;
   border-radius: 4rem;
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.3rem;
+  //text-transform: uppercase;
+  //letter-spacing: 0.3rem;
   padding: 1.5rem 3rem;
   cursor: pointer;
   transition: all 0.2s;
@@ -86,7 +149,7 @@
 
     color: $color-white;
     &:hover {
-      background-color: rgba($color-green, .8);
+      background-color: rgba($color-green, 0.8);
     }
   }
 
@@ -103,9 +166,9 @@
   }
 
   &--medium {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     padding: 1.4rem 2.4rem;
-    letter-spacing: 0.2rem;
+    letter-spacing: 0.1rem;
   }
 }
 
@@ -729,7 +792,7 @@
 
   &--dark {
     color: $color-primary;
-    transition: color .3s;
+    transition: color 0.3s;
     &:hover {
       color: $color-supporting-light;
     }
@@ -739,9 +802,8 @@
     color: currentColor;
 
     @media only screen and (max-width: $bp-large) {
-
-      opacity: .85;
-      padding: 1.5rem 2.5rem; 
+      opacity: 0.85;
+      padding: 1.5rem 2.5rem;
       border: 2px solid $color-white;
       border-radius: 4rem;
 

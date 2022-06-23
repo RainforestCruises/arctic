@@ -468,6 +468,32 @@
             "mime_types": ""
         },
         {
+            "key": "field_62b4db8af13d9",
+            "label": "Transport Option",
+            "name": "transport_option",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "fly-fly": "fly-fly",
+                "fly-cruise": "fly-cruise",
+                "cruise-cruise": "cruise-cruise"
+            },
+            "default_value": "fly-fly",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_62b21d862ebfa",
             "label": "Overview Content",
             "name": "overview_content",
@@ -1170,5 +1196,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1655841454
+    "modified": 1656020020
 }

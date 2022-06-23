@@ -27,6 +27,7 @@
         <symbol id="icon-location-pin" viewBox="0 0 20 20">
             <path d="M10 2.009c-2.762 0-5 2.229-5 4.99 0 4.774 5 11 5 11s5-6.227 5-11c0-2.76-2.238-4.99-5-4.99zM10 9.76c-1.492 0-2.7-1.209-2.7-2.7s1.208-2.7 2.7-2.7c1.49 0 2.699 1.209 2.699 2.7s-1.209 2.7-2.699 2.7z"></path>
         </symbol>
+        
         <symbol id="icon-magnifying-glass" viewBox="0 0 20 20">
             <path d="M17.545 15.467l-3.779-3.779c0.57-0.935 0.898-2.035 0.898-3.21 0-3.417-2.961-6.377-6.378-6.377s-6.186 2.769-6.186 6.186c0 3.416 2.961 6.377 6.377 6.377 1.137 0 2.2-0.309 3.115-0.844l3.799 3.801c0.372 0.371 0.975 0.371 1.346 0l0.943-0.943c0.371-0.371 0.236-0.84-0.135-1.211zM4.004 8.287c0-2.366 1.917-4.283 4.282-4.283s4.474 2.107 4.474 4.474c0 2.365-1.918 4.283-4.283 4.283s-4.473-2.109-4.473-4.474z"></path>
         </symbol>
@@ -270,6 +271,19 @@
                 <polyline fill="none" points=" 13,8 13,1 19,1 19,8 "></polyline>
                 <polyline fill="none" stroke="currentColor" points="7,18.25 7,8 25,8 25,18.25 " stroke-linecap="butt"></polyline>
                 <polyline fill="none" stroke="currentColor" points="6,26 4,20 16,13 28,20 26,26 "></polyline>
+            </g>
+        </symbol>
+        <symbol id="icon-send" viewBox="0 0 32 32">
+            <title>send</title>
+            <g class="nc-icon-wrapper">
+                <path d="M30.65,1.24a1,1,0,0,0-.976-.185l-29,10A1,1,0,0,0,.4,12.8l6.183,4.638L17.638,11,9,19.25V30a1,1,0,0,0,.587.91A.983.983,0,0,0,10,31a1,1,0,0,0,.659-.247l6.313-5.524L24.4,30.8a1,1,0,0,0,1.584-.624l5-28A1,1,0,0,0,30.65,1.24Z" fill="currentColor" stroke="none"></path>
+            </g>
+        </symbol>
+        <symbol id="icon-pin-3" viewBox="0 0 64 64">
+            <title>pin 3</title>
+            <g class="nc-icon-wrapper" transform="translate(0.5 0.5)">
+                <path fill="none" stroke="currentColor" d="M54,24.095 C54,39,32,61,32,61S10,39,10,24.095C10,10.113,21.369,2,32,2S54,10.113,54,24.095z"></path>
+                <circle fill="none" cx="32" cy="24" r="8"></circle>
             </g>
         </symbol>
 

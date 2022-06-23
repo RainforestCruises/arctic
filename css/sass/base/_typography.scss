@@ -1,3 +1,23 @@
+.arctic-heading-3 {
+    font-family: $font-primary;
+    font-weight: 700;
+    color: $color-primary;
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+}
+
+.arctic-heading-4 {
+    font-family: $font-primary;
+    font-weight: 700;
+    color: $color-primary;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+
+
+
+
 %heading {
     font-family: $font-primary;
     font-weight: 400;
@@ -575,13 +595,13 @@ p {
 }
 
 //fallback styles
-h3 {
-    color: $color-primary;
-    font-size: 2rem;
-    display: block;
-    letter-spacing: 0.1rem;
-    margin-bottom: 0.5rem;
-}
+// h3 {
+//     color: $color-primary;
+//     font-size: 2rem;
+//     display: block;
+//     letter-spacing: 0.1rem;
+//     margin-bottom: 0.5rem;
+// }
 
 h4 {
     color: $color-primary;
@@ -659,5 +679,69 @@ h5 {
         width: 100%;
         border-radius: 50%;
         border: 1px solid currentColor;
+    }
+}
+
+
+.extras-icon {
+    color: $color-grey-light-2;
+    background-color: $color-white;
+    padding: 1.2rem;
+    border: none;
+
+    letter-spacing: 0.1rem;
+    outline: none;
+    font-size: 1.5rem;
+    font-weight: 400;
+    position: relative;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem;
+    cursor: pointer;
+
+    &:hover .tooltiptext {
+        visibility: visible;
+    }
+
+    & .tooltiptext {
+        box-sizing: border-box;
+        visibility: hidden;
+        width: max-content + 2rem;
+        background-color: $color-grey-light-1;
+        border: 1px solid $color-grey-light-2;
+        color: $color-primary;
+        text-align: center;
+        border-radius: 6px;
+        padding: .5rem 1rem;
+        font-size: 1rem;
+        font-weight: 600;
+        /* Position the tooltip */
+        position: absolute;
+        bottom: -3.5rem;
+        z-index: 1;
+    }
+
+    & svg {
+        height: 2rem;
+        width: 2rem;
+        color: $color-primary;
+        fill: $color-primary;
+        stroke: $color-primary;
+        stroke-width: 6;
+    }
+
+    &::after {
+        content: "";
+        transition: all 0.15s;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+        border: 2px solid currentColor;
     }
 }

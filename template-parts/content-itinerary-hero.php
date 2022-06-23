@@ -82,7 +82,7 @@ $hero_image = get_field('hero_image');
                         <li class="itinerary-hero__top__content__nav__list__item ">
                             <a href="#accommodations" class="itinerary-hero__top__content__nav__list__item__link page-nav-template">Departures</a>
                         </li>
-            
+
 
                     </ul>
                 </nav>
@@ -103,13 +103,6 @@ $hero_image = get_field('hero_image');
         </div>
     </div>
 
-    <!-- Gallery  -->
-    <div class="itinerary-hero__gallery">
-
-
-
-    </div>
-
 
     <!-- Bottom Section -->
     <div class="itinerary-hero__bottom">
@@ -118,7 +111,7 @@ $hero_image = get_field('hero_image');
         <div class="itinerary-hero__bottom__content">
             <div class="itinerary-hero__bottom__content__info-group">
 
-                <!-- Starting Price / CTA -->
+                <!-- Starting Price -->
                 <div class="itinerary-hero__bottom__content__info-group__info" id="page-title">
 
                     <div class="itinerary-hero__bottom__content__info-group__info__starting-price">
@@ -127,23 +120,29 @@ $hero_image = get_field('hero_image');
                             <div class="itinerary-hero__bottom__content__info-group__info__starting-price__title-area__text">
                                 Starting at:
                             </div>
+                            <div class="itinerary-hero__bottom__content__info-group__info__starting-price__title-area__subtext">
+                                Per Person
+                            </div>
                         </div>
                         <div class="itinerary-hero__bottom__content__info-group__info__starting-price__amount">
                             <?php echo "$" . number_format($args['lowestPrice'], 0); ?>
-                            <span class="u-small-text"> / Person</span>
+                            <span class="u-small-text">USD</span>
                         </div>
-                        <div class="itinerary-hero__bottom__content__info-group__info__starting-price__description">
-                            Shared, small group cruise based on DBL occupancy
 
-                        </div>
                     </div>
 
                     <div class="itinerary-hero__bottom__content__info-group__info__cta">
-                        <button class="btn-cta-round  btn-cta-round--medium " id="nav-page-cta">Inquire</button>
+                       
+                        <button class="cta-round-icon " id="nav-page-cta">
+                            Inquire
+                            <svg>
+                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>
+                            </svg>
+                        </button>
                     </div>
                 </div>
 
-                <!-- KSPs -->
+                <!-- Attributes -->
                 <div class="itinerary-hero__bottom__content__info-group__attributes">
 
                     <!-- Itineraries -->
@@ -155,10 +154,11 @@ $hero_image = get_field('hero_image');
                                 </svg>
                             </div>
                             <div class="itinerary-hero__bottom__content__info-group__attributes__item__data__text">
-                                <?php echo get_field('charter_min_days') . " Days +"; ?>
                                 <div class="sub-attribute">
-                                    Itineraries
+                                    Duration
                                 </div>
+                                <?php echo get_field('charter_min_days') . " Days +"; ?>
+
 
                             </div>
 
@@ -166,7 +166,7 @@ $hero_image = get_field('hero_image');
                     </div>
 
 
-                    <!-- Capacity -->
+                    <!-- Capacity icon-pin-3 -->
                     <div class="itinerary-hero__bottom__content__info-group__attributes__item nomargin-attributes">
 
                         <div class="itinerary-hero__bottom__content__info-group__attributes__item__data">
@@ -177,41 +177,40 @@ $hero_image = get_field('hero_image');
                                 </svg>
                             </div>
                             <div class="itinerary-hero__bottom__content__info-group__attributes__item__data__text">
-                                <?php echo get_field('vessel_capacity') . ' Guests'; ?>
                                 <div class="sub-attribute">
-                                    <?php echo get_field('number_of_cabins') . ' Cabins'; ?>
+                                    Ship Size
                                 </div>
+                                <?php echo get_field('vessel_capacity') . ' Guests'; ?>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Departing From -->
+                    <div class="itinerary-hero__bottom__content__info-group__attributes__item">
+
+                        <div class="itinerary-hero__bottom__content__info-group__attributes__item__data">
+
+                            <div class="itinerary-hero__bottom__content__info-group__attributes__item__data__icon">
+                                <svg>
+                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-pin-3"></use>
+                                </svg>
+                            </div>
+                            <div class="itinerary-hero__bottom__content__info-group__attributes__item__data__text">
+                                <div class="sub-attribute">
+                                    Departing From
+                                </div>
+                                Ushuaia, Ar
                             </div>
 
                         </div>
                     </div>
 
 
-                    <!-- Experiences -->
-                    <div class="itinerary-hero__bottom__content__info-group__attributes__item experience-attributes">
-                        <div class="itinerary-hero__bottom__content__info-group__attributes__item__data">
-                            <?php
-                            $experiences = get_field('experiences');
-                            if ($experiences) : ?>
-                                <ul>
-                                    <?php foreach ($experiences as $e) : ?>
-                                        <li>
-
-                                            <div class="experience-icon">
-                                                <?php echo get_field('icon', $e); ?>
-                                                <span class="tooltiptext"><?php echo get_the_title($e); ?></span>
-                                            </div>
-
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-
 
 
                 </div>
+
+
             </div>
 
         </div>
