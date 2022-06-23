@@ -68,11 +68,6 @@ foreach ($menuitems as $m) {
     }
 }
 
-console_log($menuitems);
-
-console_log($menu_destinations);
-console_log($menu_ships);
-
 
 
 ?>

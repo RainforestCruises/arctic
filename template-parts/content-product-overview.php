@@ -1,6 +1,6 @@
 <?php
 $cruise_data = get_field('cruise_data');
-$featured_image = get_field('featured_image');
+$featured_image = $args['productType'] == 'Itinerary' ? get_field('map_image') : get_field('featured_image');
 
 ?>
 

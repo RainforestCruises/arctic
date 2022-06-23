@@ -1,0 +1,65 @@
+.itinerary-days {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: $page-width;
+    //padding: 0 6rem;
+    margin-top: 3rem;
+    //border-top: 1px solid $color-grey-light-1a;
+    // @media only screen and (max-width: $bp-small) {
+    //     padding: 0 3rem;
+    // }
+
+    @include flexPadding;
+
+
+    position: relative;
+    &::after {
+        content: "";
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        top: -3rem;
+        left: 0;
+        background-color: $color-grey-light-1a;
+    }
+
+
+    &__title {
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: $color-primary;
+    }
+
+    &__slider {
+        width: 100%;
+        margin: 3rem 0;
+        &__item {
+            display: grid !important;
+            height: 40rem;
+
+            grid-template-columns: 40% 60%;
+            gap: 6rem;
+            @media only screen and (max-width: $bp-medium) {
+                grid-template-columns: 1fr;
+                height: min-content;
+            }
+
+            &__content {
+                overflow-y: scroll;
+                height: 100%;
+            }
+
+            &__image-area {
+                & img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: contain;
+                    border-radius: 1rem;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+}

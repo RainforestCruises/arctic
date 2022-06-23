@@ -112,6 +112,26 @@ function create_post_type_rfc_cruises()
 }
 add_action('init', 'create_post_type_rfc_cruises');
 
+// Custom Post Type - Itineraries 
+function create_post_type_rfc_itineraries()
+{
+    register_post_type(
+        'rfc_itineraries',
+        array(
+            'labels' => array(
+                'name' => __('Itineraries'),
+                'singular_name' => __('Itinerary'),
+            ),
+            'public' => true,
+            'rewrite' => array('slug' => 'itineraries'),
+            'supports' => array(
+                'title',
+            )
+        )
+    );
+}
+add_action('init', 'create_post_type_rfc_itineraries');
+
 // Custom Post Type - Tours 
 function create_post_type_rfc_tours()
 {

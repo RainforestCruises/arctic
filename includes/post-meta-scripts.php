@@ -13,7 +13,7 @@ function refresh_cruise_info_all()
      //get property_id of each rfc_cruises post types
     $args = array(
         'posts_per_page' => -1,
-        'post_type' => array('rfc_cruises', 'rfc_lodges'),
+        'post_type' => array('rfc_cruises', 'rfc_lodges'), //add itineraries
     );
 
     $the_query = new WP_Query($args);
@@ -46,6 +46,11 @@ function my_acf_save_post($post_id)
         refresh_cruise_info($dfPropertyId, $post_id);
     }
     if ('rfc_lodges' == get_post_type()) {
+        $dfPropertyId = get_field('property_id', $post_id); //get property data from DF
+        refresh_cruise_info($dfPropertyId, $post_id);
+    }
+
+    if ('rfc_itineraries' == get_post_type()) {
         $dfPropertyId = get_field('property_id', $post_id); //get property data from DF
         refresh_cruise_info($dfPropertyId, $post_id);
     }

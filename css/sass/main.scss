@@ -17,6 +17,8 @@
 
 @import "pages/home";
 @import "pages/product";
+@import "pages/itinerary";
+
 @import "pages/search";
 @import "pages/destination";
 @import "pages/travel-guide";
@@ -34,6 +36,12 @@
 @import "components/deals/deals-hero";
 @import "components/deals/deals-featured";
 @import "components/deals/deals-destinations";
+
+//itinerary 
+@import "components/itinerary/itinerary-hero";
+@import "components/itinerary/itinerary-overview";
+@import "components/itinerary/itinerary-days";
+@import "components/itinerary/itinerary-departures";
 
 //product 
 @import "components/product/product-hero";

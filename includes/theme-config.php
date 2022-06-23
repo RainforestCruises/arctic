@@ -37,6 +37,7 @@ function afloat_images_sizes()
     add_image_size('wide-slider-small', 500, 380, true);
 
     //portrait
+    add_image_size('vertical-large', 500, 700, true);
     add_image_size('vertical-medium', 400, 600, true);
     add_image_size('vertical-small', 360, 480, true);
 
