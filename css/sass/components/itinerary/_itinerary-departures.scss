@@ -10,7 +10,6 @@
         margin-top: 3rem;
         margin-bottom: 6rem;
 
-
         position: relative;
         &::after {
             content: "";
@@ -34,14 +33,63 @@
             & .slick-slide {
                 margin-right: 2rem;
             }
-            &__item {
-                display: grid !important;
-                height: 20rem;
+        }
+    }
+}
+
+.departure-card {
+    display: grid !important;
+    grid-template-rows: 1fr min-content;
+    min-height: 20rem;
+
+    border: 1px solid $color-grey-light-1a;
+    border-radius: 1rem;
+    padding: 2rem;
+
+    flex-direction: column;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        &__date-group {
+
+            &__year {
+                color: $color-grey-1;
+                font-size: 1.3rem;
+                font-weight: 400;
+            }
+
+            &__date {
                 color: $color-primary;
-                font-size: 1.4rem;
-                border: 1px solid $color-grey-light-1a;
-                border-radius: 1rem;
+                font-size: 1.8rem;
+                line-height: 1.8rem;
+                font-weight: 700;
             }
         }
+
+        &__price-group {
+          
+
+            &__price {
+                color: $color-primary;
+                font-size: 1.6rem;
+                line-height: 1.6rem;
+                font-weight: 700;
+                
+            }
+
+            &__details {
+                color: $color-grey-1;
+                font-size: 1.3rem;
+                font-weight: 400;
+            }
+        }
+    }
+   
+    &__cta {
+        //display: flex;
+        //justify-content: flex-end;
     }
 }

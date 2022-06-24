@@ -1,59 +1,9 @@
-//X Close
-.close-button {
-  position: relative;
-  width: 3rem;
-  height: 3rem;
-  color: $color-primary;
-  border: 2px solid currentColor;
-  background-color: $color-white;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s;
-  &::before {
-    position: absolute;
-    top: 1.2rem;
-    left: 0.6rem;
-    width: 13px;
-    height: 2px;
-    content: "";
-    background-color: currentColor;
 
-    @media only screen and (max-width: $bp-largest) {
-      top: 1.1rem;
-      left: 0.5rem;
-    }
 
-    -ms-transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-  }
-  &::after {
-    position: absolute;
-    top: 1.2rem;
-    left: 0.6rem;
-    width: 13px;
-    height: 2px;
-    content: "";
-    background-color: currentColor;
-
-    @media only screen and (max-width: $bp-largest) {
-      top: 1.1rem;
-      left: 0.5rem;
-    }
-
-    -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-
-  &:hover {
-    color: $color-supporting;
-  }
-}
 
 //Arctic -- Rounded Button
 .cta-round-icon {
-  background-color: $color-primary;
+  background-color: $color-supporting-light;
   font-family: $font-primary;
   color: $color-white;
   border: none;
@@ -82,6 +32,40 @@
 
 }
 
+//Arctic -- Rounded Button
+.cta-square-icon {
+  background-color: $color-supporting-light;
+  font-family: $font-primary;
+  color: $color-white;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.2rem;
+  padding: .8rem 1.2rem;
+  font-weight: 400;
+
+  cursor: pointer;
+  transition: all 0.2s;
+  outline: none;
+  white-space: nowrap;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $color-supporting;
+  }
+
+  display: flex;
+  align-items: center;
+
+  & svg {
+    height: 1.4rem;
+    width: 1.4rem;
+    color: currentColor;
+    fill: currentColor;
+    margin-left: .5rem;
+  }
+
+}
+
 //Arctic -- Text Button
 .cta-text-icon {
   background-color: transparent;
@@ -101,6 +85,7 @@
 
   &:hover {
     color: $color-supporting-light;
+    fill: currentColor;
   }
 
 
@@ -115,7 +100,7 @@
 
 }
 
-//Arctic -- Scroll Button
+//Arctic -- Left/Right Scroll Button
 .btn-scroll {
   width: 3.5rem;
   height: 3.5rem;
@@ -184,6 +169,81 @@
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//OLD
+
+
+
+//X Close
+.close-button {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  color: $color-primary;
+  border: 2px solid currentColor;
+  background-color: $color-white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+  &::before {
+    position: absolute;
+    top: 1.2rem;
+    left: 0.6rem;
+    width: 13px;
+    height: 2px;
+    content: "";
+    background-color: currentColor;
+
+    @media only screen and (max-width: $bp-largest) {
+      top: 1.1rem;
+      left: 0.5rem;
+    }
+
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  &::after {
+    position: absolute;
+    top: 1.2rem;
+    left: 0.6rem;
+    width: 13px;
+    height: 2px;
+    content: "";
+    background-color: currentColor;
+
+    @media only screen and (max-width: $bp-largest) {
+      top: 1.1rem;
+      left: 0.5rem;
+    }
+
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  &:hover {
+    color: $color-supporting;
+  }
+}
 
 
 

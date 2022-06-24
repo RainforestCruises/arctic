@@ -91,7 +91,7 @@
                         color: $color-primary;
                         & span {
                             margin-left: 0.5rem;
-                            color: $color-supporting-light;
+                            color: $color-grey-1;
                         }
                     }
                     &__snippet {
@@ -179,7 +179,7 @@
                     grid-template-columns: min-content 1fr;
                     padding: 2rem 2.5rem;
                     width: 100%;
-                    margin-bottom: 3rem;
+                    margin-bottom: 4rem;
                     border: 1px solid $color-grey-light-1a;
                     border-radius: 1rem;
     

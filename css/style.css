@@ -802,51 +802,8 @@ h5 {
   overflow: hidden;
   height: 100%; }
 
-.close-button {
-  position: relative;
-  width: 3rem;
-  height: 3rem;
-  color: #1d2225;
-  border: 2px solid currentColor;
-  background-color: #fff;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s; }
-  .close-button::before {
-    position: absolute;
-    top: 1.2rem;
-    left: 0.6rem;
-    width: 13px;
-    height: 2px;
-    content: "";
-    background-color: currentColor;
-    -ms-transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg); }
-    @media only screen and (max-width: 75em) {
-      .close-button::before {
-        top: 1.1rem;
-        left: 0.5rem; } }
-  .close-button::after {
-    position: absolute;
-    top: 1.2rem;
-    left: 0.6rem;
-    width: 13px;
-    height: 2px;
-    content: "";
-    background-color: currentColor;
-    -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg); }
-    @media only screen and (max-width: 75em) {
-      .close-button::after {
-        top: 1.1rem;
-        left: 0.5rem; } }
-  .close-button:hover {
-    color: #305a7c; }
-
 .cta-round-icon {
-  background-color: #1d2225;
+  background-color: #4d8eff;
   font-family: "Metropolis", sans-serif;
   color: #fff;
   border: none;
@@ -870,6 +827,31 @@ h5 {
     color: currentColor;
     margin-left: .5rem; }
 
+.cta-square-icon {
+  background-color: #4d8eff;
+  font-family: "Metropolis", sans-serif;
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.2rem;
+  padding: .8rem 1.2rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s;
+  outline: none;
+  white-space: nowrap;
+  text-decoration: none;
+  display: flex;
+  align-items: center; }
+  .cta-square-icon:hover {
+    background-color: #305a7c; }
+  .cta-square-icon svg {
+    height: 1.4rem;
+    width: 1.4rem;
+    color: currentColor;
+    fill: currentColor;
+    margin-left: .5rem; }
+
 .cta-text-icon {
   background-color: transparent;
   font-family: "Metropolis", sans-serif;
@@ -888,7 +870,8 @@ h5 {
   display: flex;
   align-items: center; }
   .cta-text-icon:hover {
-    color: #4d8eff; }
+    color: #4d8eff;
+    fill: currentColor; }
   .cta-text-icon svg {
     height: 1.8rem;
     width: 1.8rem;
@@ -937,6 +920,49 @@ h5 {
     height: 100%;
     width: 100%;
     border: 1px solid #c2c6c9; }
+
+.close-button {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  color: #1d2225;
+  border: 2px solid currentColor;
+  background-color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s; }
+  .close-button::before {
+    position: absolute;
+    top: 1.2rem;
+    left: 0.6rem;
+    width: 13px;
+    height: 2px;
+    content: "";
+    background-color: currentColor;
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg); }
+    @media only screen and (max-width: 75em) {
+      .close-button::before {
+        top: 1.1rem;
+        left: 0.5rem; } }
+  .close-button::after {
+    position: absolute;
+    top: 1.2rem;
+    left: 0.6rem;
+    width: 13px;
+    height: 2px;
+    content: "";
+    background-color: currentColor;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg); }
+    @media only screen and (max-width: 75em) {
+      .close-button::after {
+        top: 1.1rem;
+        left: 0.5rem; } }
+  .close-button:hover {
+    color: #305a7c; }
 
 .btn-cta-round {
   background-color: #1d2225;
@@ -3545,7 +3571,7 @@ h5 {
                   line-height: 1.8rem;
                   font-weight: 700; }
               .itinerary-hero__content__bottom__content__info-group__info__starting-price__amount {
-                color: #4d8eff;
+                color: #1d2225;
                 padding-left: 1.3rem;
                 font-size: 3.6rem;
                 font-weight: 500; }
@@ -3754,7 +3780,7 @@ h5 {
             color: #1d2225; }
             .itinerary-overview__content__grid__overview__transport__title span {
               margin-left: 0.5rem;
-              color: #4d8eff; }
+              color: #9ea0a4; }
           .itinerary-overview__content__grid__overview__transport__snippet {
             font-size: 1.6rem; }
           .itinerary-overview__content__grid__overview__transport__cta {
@@ -3817,7 +3843,7 @@ h5 {
           grid-template-columns: min-content 1fr;
           padding: 2rem 2.5rem;
           width: 100%;
-          margin-bottom: 3rem;
+          margin-bottom: 4rem;
           border: 1px solid #e6e6e6;
           border-radius: 1rem; }
           .itinerary-overview__content__grid__ship-area__ship:link, .itinerary-overview__content__grid__ship-area__ship:visited {
@@ -3910,7 +3936,7 @@ h5 {
         .itinerary-days__content__slider__item__synopsis__day {
           font-size: 1.3rem;
           line-height: 1.3rem;
-          color: #4d8eff;
+          color: #9ea0a4;
           font-weight: 700; }
         .itinerary-days__content__slider__item__synopsis__title {
           font-size: 1.8rem;
@@ -3964,13 +3990,38 @@ h5 {
       margin-top: 2rem; }
       .itinerary-departures__content__slider .slick-slide {
         margin-right: 2rem; }
-      .itinerary-departures__content__slider__item {
-        display: grid !important;
-        height: 20rem;
-        color: #1d2225;
-        font-size: 1.4rem;
-        border: 1px solid #e6e6e6;
-        border-radius: 1rem; }
+
+.departure-card {
+  display: grid !important;
+  grid-template-rows: 1fr min-content;
+  min-height: 20rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 1rem;
+  padding: 2rem;
+  flex-direction: column; }
+  .departure-card__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1rem; }
+    .departure-card__content__date-group__year {
+      color: #9ea0a4;
+      font-size: 1.3rem;
+      font-weight: 400; }
+    .departure-card__content__date-group__date {
+      color: #1d2225;
+      font-size: 1.8rem;
+      line-height: 1.8rem;
+      font-weight: 700; }
+    .departure-card__content__price-group__price {
+      color: #1d2225;
+      font-size: 1.6rem;
+      line-height: 1.6rem;
+      font-weight: 700; }
+    .departure-card__content__price-group__details {
+      color: #9ea0a4;
+      font-size: 1.3rem;
+      font-weight: 400; }
 
 .itinerary-requirements {
   display: flex;

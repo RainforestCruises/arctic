@@ -19,7 +19,7 @@ jQuery(document).ready(function ($) {
     swipeToSlide: true,
     prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-overview__content__grid__ship-area__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
     nextArrow: '<button class="btn-scroll itinerary-overview__content__grid__ship-area__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-     responsive: [
+    responsive: [
       {
         breakpoint: 800,
         settings: {
@@ -37,43 +37,59 @@ jQuery(document).ready(function ($) {
 
 
 
- //Arctic Sliders
- $('#cabins-slider').slick({
-  slidesToShow: 2,
-  slidesToScroll: 1,
+  //Arctic Sliders
+  $('#cabins-slider').slick({
+    slidesToShow: 2,
+    slidesToScroll: 1,
 
-  arrows: true,
-  prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-overview__content__grid__ship-area__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-  nextArrow: '<button class="btn-scroll itinerary-overview__content__grid__ship-area__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-  responsive: [
+    arrows: true,
+    prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-overview__content__grid__ship-area__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    nextArrow: '<button class="btn-scroll itinerary-overview__content__grid__ship-area__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    responsive: [
       {
-          breakpoint: 600,
-          settings: {
-              slidesToShow: 1,
-          
-          }
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+
+        }
       }
-  ]
-});
+    ]
+  });
 
-//
-$('#departures-slider').slick({
-  slidesToShow: 5,
-  slidesToScroll: 1,
+  //
+  $('#departures-slider').slick({
+    slidesToShow: 6,
+    slidesToScroll: 6,
 
-  arrows: true,
-  prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-overview__content__grid__ship-area__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-  nextArrow: '<button class="btn-scroll itinerary-overview__content__grid__ship-area__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-  responsive: [
+    arrows: true,
+    prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-overview__content__grid__ship-area__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    nextArrow: '<button class="btn-scroll itinerary-overview__content__grid__ship-area__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    responsive: [
       {
-          breakpoint: 600,
-          settings: {
-              slidesToShow: 2,
-          
-          }
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+
+        }
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        }
       }
-  ]
-});
+    ]
+  });
 
 
 
