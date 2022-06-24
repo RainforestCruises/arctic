@@ -26,6 +26,17 @@
             grid-template-columns: 100%;
         }
 
+        position: relative;
+        &::after {
+            content: "";
+            width: 100%;
+            height: 1px;
+            position: absolute;
+            bottom: 0rem;
+            left: 0;
+            background-color: $color-grey-light-1a;
+        }
+
         &__content {
             grid-row: 1 / -1;
             padding-top: 3rem;
@@ -59,7 +70,6 @@
             }
 
             &__transport {
-               
                 position: relative;
                 padding-bottom: 2rem;
                 padding-top: 2rem;
@@ -78,14 +88,12 @@
                     font-weight: 700;
                     color: $color-primary;
                     & span {
-                        margin-left: .5rem;
+                        margin-left: 0.5rem;
                         color: $color-supporting-light;
                     }
-                   
                 }
                 &__snippet {
                     font-size: 1.6rem;
-                
                 }
 
                 &__cta {
@@ -166,7 +174,6 @@
                 display: grid;
                 grid-template-columns: min-content 1fr;
                 padding: 2rem 2.5rem;
-                //gap: 3rem;
                 width: 100%;
                 margin-bottom: 3rem;
                 border: 1px solid $color-grey-light-1a;
@@ -230,8 +237,26 @@
 
             &__slider {
                 margin-top: 3rem;
+
                 & .slick-slide {
                     margin-right: 2rem;
+                }
+
+                &__btn-left {
+                    transform: translateY(-50%);
+                    position: absolute;
+                    top: -5rem;
+                    right: calc(4rem);
+                    z-index: 20;
+                }
+
+                &__btn-right {
+                    transform: translateY(-50%);
+
+                    position: absolute;
+                    top: -5rem;
+                    right: calc(0rem);
+                    z-index: 20;
                 }
             }
         }

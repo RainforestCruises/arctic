@@ -5,7 +5,9 @@ $itinerary_data = $args['itinerary_data'];
 <div class="itinerary-days">
     <div class="itinerary-days__title">
         Itinerary
+  
     </div>
+
     <!-- Slider -->
     <div class="itinerary-days__slider" id="itinerary-days-slider">
 
@@ -32,10 +34,16 @@ $itinerary_data = $args['itinerary_data'];
                 <div class="itinerary-days__slider__item">
 
                     <!-- Side / Image -->
-                    <div class="itinerary-days__slider__item__image-area">
-                        <?php if ($img != null) : ?>
-                            <img src="<?php echo afloat_dfcloud_image($img['ImageUrl']); ?>" alt="<?php echo $img['AltText'] ?>">
-                        <?php endif; ?>
+                    <div class="itinerary-days__slider__item__synopsis">
+                        <div class="itinerary-days__slider__item__synopsis__day">
+                            Day <?php echo $dayCount; ?>
+                        </div>
+                        <div class="itinerary-days__slider__item__synopsis__title">
+                           <?php echo $day['Title'] ?>
+                        </div>
+
+                        <img src="<?php echo afloat_dfcloud_image($img['ImageUrl']); ?>" alt="<?php echo $img['AltText'] ?>">
+
                     </div>
 
                     <!-- Content -->
@@ -55,6 +63,7 @@ $itinerary_data = $args['itinerary_data'];
                 $dayCount++;
             endforeach;
         endif; ?>
+
     </div>
-    <span class="product-itinerary-slide__bottom__counter">1 / <?php echo ($dayCount - 1); ?></span>
+    <div class="itinerary-days__slider__counter">1 / <?php echo ($dayCount - 1); ?></div>
 </div>

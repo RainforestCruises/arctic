@@ -877,6 +877,49 @@ h5 {
     color: currentColor;
     margin-left: .5rem; }
 
+.btn-scroll {
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  outline: none;
+  font-family: "Metropolis", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #1d2225;
+  box-shadow: none; }
+  .btn-scroll svg {
+    height: 1.3rem;
+    width: 1.3rem;
+    stroke: currentColor; }
+  .btn-scroll--left svg {
+    transform: rotate(180deg); }
+  .btn-scroll:hover {
+    box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.25); }
+  .btn-scroll::after {
+    content: "";
+    transition: all 0.15s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    transform-origin: center;
+    height: 95%;
+    width: 95%;
+    border-radius: 50%;
+    border: 1px solid #e6e6e6; }
+  .btn-scroll:hover::after {
+    height: 100%;
+    width: 100%;
+    border: 1px solid #c2c6c9; }
+
 .btn-cta-round {
   background-color: #1d2225;
   font-family: "Metropolis", sans-serif;
@@ -3646,13 +3689,22 @@ h5 {
     width: 100%;
     display: grid;
     grid-template-columns: 55% 45%;
-    grid-template-rows: 30rem min-content; }
+    grid-template-rows: 30rem min-content;
+    position: relative; }
     @media only screen and (max-width: 62.5em) {
       .itinerary-overview__grid {
         grid-template-rows: min-content; } }
     @media only screen and (max-width: 50em) {
       .itinerary-overview__grid {
         grid-template-columns: 100%; } }
+    .itinerary-overview__grid::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      bottom: 0rem;
+      left: 0;
+      background-color: #e6e6e6; }
     .itinerary-overview__grid__content {
       grid-row: 1 / -1;
       padding-top: 3rem;
@@ -3690,7 +3742,7 @@ h5 {
           font-weight: 700;
           color: #1d2225; }
           .itinerary-overview__grid__content__transport__title span {
-            margin-left: .5rem;
+            margin-left: 0.5rem;
             color: #4d8eff; }
         .itinerary-overview__grid__content__transport__snippet {
           font-size: 1.6rem; }
@@ -3796,6 +3848,18 @@ h5 {
         margin-top: 3rem; }
         .itinerary-overview__grid__ship-area__slider .slick-slide {
           margin-right: 2rem; }
+        .itinerary-overview__grid__ship-area__slider__btn-left {
+          transform: translateY(-50%);
+          position: absolute;
+          top: -5rem;
+          right: calc(4rem);
+          z-index: 20; }
+        .itinerary-overview__grid__ship-area__slider__btn-right {
+          transform: translateY(-50%);
+          position: absolute;
+          top: -5rem;
+          right: calc(0rem);
+          z-index: 20; }
 
 .itinerary-days {
   position: relative;
@@ -3804,44 +3868,55 @@ h5 {
   width: 100%;
   max-width: calc(112rem + 12rem);
   margin-top: 3rem;
-  padding: 0 6rem;
-  position: relative; }
+  margin-bottom: 2rem;
+  padding: 0 6rem; }
   @media only screen and (max-width: 37.5em) {
     .itinerary-days {
       padding: 0 3rem; } }
-  .itinerary-days::after {
-    content: "";
-    width: 100%;
-    height: 1px;
-    position: absolute;
-    top: -3rem;
-    left: 0;
-    background-color: #e6e6e6; }
   .itinerary-days__title {
     font-size: 2.4rem;
     font-weight: 700;
     color: #1d2225; }
   .itinerary-days__slider {
     width: 100%;
-    margin: 3rem 0; }
+    margin: 3rem 0;
+    position: relative; }
     .itinerary-days__slider__item {
       display: grid !important;
-      height: 40rem;
-      grid-template-columns: 40% 60%;
-      gap: 6rem; }
+      width: 100%;
+      grid-template-columns: 40% 60%; }
       @media only screen and (max-width: 50em) {
         .itinerary-days__slider__item {
-          grid-template-columns: 1fr;
+          grid-template-columns: 100%;
           height: min-content; } }
       .itinerary-days__slider__item__content {
-        overflow-y: scroll;
-        height: 100%; }
-      .itinerary-days__slider__item__image-area img {
+        height: 100%;
+        width: 100%;
+        max-height: 35rem;
+        padding-left: 4rem; }
+      .itinerary-days__slider__item__synopsis__day {
+        font-size: 1.3rem;
+        line-height: 1.3rem;
+        color: #4d8eff;
+        font-weight: 700; }
+      .itinerary-days__slider__item__synopsis__title {
+        font-size: 1.8rem;
+        color: #1d2225;
+        font-weight: 700;
+        margin-bottom: 2rem; }
+      .itinerary-days__slider__item__synopsis img {
         width: 100%;
         height: auto;
         object-fit: contain;
         border-radius: 1rem;
         overflow: hidden; }
+    .itinerary-days__slider__counter {
+      position: absolute;
+      top: .8rem;
+      right: 15rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #1d2225; }
 
 .itinerary-departures {
   position: relative;

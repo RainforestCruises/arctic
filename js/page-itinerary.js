@@ -17,9 +17,9 @@ jQuery(document).ready(function ($) {
     swipe: true,
     draggable: false,
     swipeToSlide: true,
-    prevArrow: '<button class="btn-circle btn-circle--small btn-circle--left home-arctic-newest__slider__btn-left"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg></button>',
-    nextArrow: '<button class="btn-circle btn-circle--small btn-circle--right home-arctic-newest__slider__btn-right"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-  responsive: [
+    prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-overview__grid__ship-area__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    nextArrow: '<button class="btn-scroll itinerary-overview__grid__ship-area__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+     responsive: [
       {
         breakpoint: 800,
         settings: {
@@ -43,8 +43,8 @@ jQuery(document).ready(function ($) {
   slidesToScroll: 1,
 
   arrows: true,
-  prevArrow: '<button class="btn-circle btn-circle--small btn-circle--left home-arctic-newest__slider__btn-left"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg></button>',
-  nextArrow: '<button class="btn-circle btn-circle--small btn-circle--right home-arctic-newest__slider__btn-right"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+  prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-overview__grid__ship-area__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+  nextArrow: '<button class="btn-scroll itinerary-overview__grid__ship-area__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
   responsive: [
       {
           breakpoint: 600,
@@ -62,8 +62,8 @@ $('.itinerary-departures__slider').slick({
   slidesToScroll: 1,
 
   arrows: true,
-  prevArrow: '<button class="btn-circle btn-circle--small btn-circle--left home-arctic-newest__slider__btn-left"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg></button>',
-  nextArrow: '<button class="btn-circle btn-circle--small btn-circle--right home-arctic-newest__slider__btn-right"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+  prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-overview__grid__ship-area__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+  nextArrow: '<button class="btn-scroll itinerary-overview__grid__ship-area__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
   responsive: [
       {
           breakpoint: 600,
