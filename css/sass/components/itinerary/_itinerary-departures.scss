@@ -1,45 +1,47 @@
 .itinerary-departures {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: $page-width;
-    margin-top: 3rem;
-    margin-bottom: 6rem;
+    @include flexBlock;
 
-    @include flexPadding;
-
-    position: relative;
-    &::after {
-        content: "";
+    &__content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
         width: 100%;
-        height: 1px;
-        position: absolute;
-        top: -3rem;
-        left: 0;
-        background-color: $color-grey-light-1a;
-    }
-
-    &__title {
-        font-size: 2.4rem;
-        font-weight: 700;
-        color: $color-primary;
-    }
-
-    &__slider {
-        width: 100%;
+        max-width: $page-width;
         margin-top: 3rem;
-        & .slick-slide {
-            margin-right: 2rem;
+        margin-bottom: 6rem;
+
+
+        position: relative;
+        &::after {
+            content: "";
+            width: 100%;
+            height: 1px;
+            position: absolute;
+            top: -3rem;
+            left: 0;
+            background-color: $color-grey-light-1a;
         }
-        &__item {
-            display: grid !important;
-            height: 20rem;
+
+        &__title {
+            font-size: 2.4rem;
+            font-weight: 700;
             color: $color-primary;
-            font-size: 1.4rem;
-            border: 1px solid $color-grey-light-1a;
-            border-radius: 1rem;
+        }
+
+        &__slider {
+            width: 100%;
+            margin-top: 2rem;
+            & .slick-slide {
+                margin-right: 2rem;
+            }
+            &__item {
+                display: grid !important;
+                height: 20rem;
+                color: $color-primary;
+                font-size: 1.4rem;
+                border: 1px solid $color-grey-light-1a;
+                border-radius: 1rem;
+            }
         }
     }
-  
 }

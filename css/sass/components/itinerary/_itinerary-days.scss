@@ -1,82 +1,80 @@
 .itinerary-days {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: $page-width;
-    margin-top: 3rem;
-    margin-bottom: 2rem;
 
-    @include flexPadding;
+    @include flexBlock;
 
-
+    &__content {
+        position: relative;
+  
+        width: 100%;
+        max-width: $page-width;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+    
     
 
-    &__title {
-        font-size: 2.4rem;
-        font-weight: 700;
-        color: $color-primary;
-       
-     
-    }
-
-    &__slider {
-        width: 100%;
-        margin: 3rem 0;
-        position: relative;
-        &__item {
-            display: grid !important;
-            width: 100%;
-            grid-template-columns: 40% 60%;
-            //gap: 6rem;
-  
-            @media only screen and (max-width: $bp-medium) {
-                grid-template-columns: 100%;
-                height: min-content;
-            }
-
-            &__content {
-                height: 100%;
-                width: 100%;
-                max-height: 35rem;
-                padding-left: 4rem;
-            }
-
-            &__synopsis {
-
-
-                &__day {
-                    //transform: translateY(-2rem);
-                    font-size: 1.3rem;
-                    line-height: 1.3rem;
-                    color: $color-supporting-light;
-                    font-weight: 700;
-                }
-
-                &__title {
-                    font-size: 1.8rem;
-                    color: $color-primary;
-                    font-weight: 700;
-                    margin-bottom: 2rem;
-                }
-
-                & img {
-                    width: 100%;
-                    height: auto;
-                    object-fit: contain;
-                    border-radius: 1rem;
-                    overflow: hidden;
-                }
-            }
-        }
-
-        &__counter {
-            position: absolute;
-            top: .8rem;
-            right: 15rem;
-            font-size: 1.4rem;
+        
+        &__title {
+            font-size: 2.4rem;
             font-weight: 700;
             color: $color-primary;
+        }
+
+        &__slider {
+            width: 100%;
+            margin: 3rem 0;
+            position: relative;
+            &__item {
+                display: grid !important;
+                width: 100%;
+                grid-template-columns: 40% 60%;
+                //gap: 6rem;
+
+                @media only screen and (max-width: $bp-medium) {
+                    grid-template-columns: 100%;
+                    height: min-content;
+                }
+
+                &__content {
+                    height: 100%;
+                    width: 100%;
+                    max-height: 35rem;
+                    padding-left: 4rem;
+                }
+
+                &__synopsis {
+                    &__day {
+                        //transform: translateY(-2rem);
+                        font-size: 1.3rem;
+                        line-height: 1.3rem;
+                        color: $color-supporting-light;
+                        font-weight: 700;
+                    }
+
+                    &__title {
+                        font-size: 1.8rem;
+                        color: $color-primary;
+                        font-weight: 700;
+                        margin-bottom: 2rem;
+                    }
+
+                    & img {
+                        width: 100%;
+                        height: auto;
+                        object-fit: contain;
+                        border-radius: 1rem;
+                        overflow: hidden;
+                    }
+                }
+            }
+
+            &__counter {
+                position: absolute;
+                top: 0.8rem;
+                right: 15rem;
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: $color-primary;
+            }
         }
     }
 }

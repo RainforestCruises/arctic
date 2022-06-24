@@ -106,34 +106,31 @@ while (have_posts()) :
   <main class="itinerary-page">
 
     <!-- Hero -->
-    <section class="page-section" id="top">
-      <?php
-      get_template_part('template-parts/content', 'itinerary-hero', $args);
-      ?>
-    </section>
+    <?php
+    get_template_part('template-parts/content', 'itinerary-hero', $args);
+    ?>
 
-    <!-- Overview Content -->
-    <section class="page-section" id="overview">
-      <?php
-      get_template_part('template-parts/content', 'itinerary-overview', $args);
-      ?>
-    </section>
-
-    <!-- Day Content -->
-    <section class="page-section" id="days">
-      <?php
-      get_template_part('template-parts/content', 'itinerary-days', $args);
-      ?>
-    </section>
+    <!-- Overview -->
+    <?php
+    get_template_part('template-parts/content', 'itinerary-overview', $args);
+    ?>
 
 
-    <!-- departures Content -->
-    <section class="page-section" id="departures">
-      <?php
-      get_template_part('template-parts/content', 'itinerary-departures', $args);
-      ?>
-    </section>
+    <!-- Days -->
+    <?php
+    get_template_part('template-parts/content', 'itinerary-days', $args);
+    ?>
 
+
+    <!-- Departures -->
+    <?php
+    get_template_part('template-parts/content', 'itinerary-departures', $args);
+    ?>
+
+    <!-- Requirements -->
+    <?php
+    get_template_part('template-parts/content', 'itinerary-requirements', $args);
+    ?>
 
 
 

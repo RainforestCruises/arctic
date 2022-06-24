@@ -17,8 +17,8 @@ jQuery(document).ready(function ($) {
     swipe: true,
     draggable: false,
     swipeToSlide: true,
-    prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-overview__grid__ship-area__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-    nextArrow: '<button class="btn-scroll itinerary-overview__grid__ship-area__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-overview__content__grid__ship-area__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    nextArrow: '<button class="btn-scroll itinerary-overview__content__grid__ship-area__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
      responsive: [
       {
         breakpoint: 800,
@@ -38,13 +38,13 @@ jQuery(document).ready(function ($) {
 
 
  //Arctic Sliders
- $('.itinerary-overview__grid__ship-area__slider').slick({
+ $('#cabins-slider').slick({
   slidesToShow: 2,
   slidesToScroll: 1,
 
   arrows: true,
-  prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-overview__grid__ship-area__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-  nextArrow: '<button class="btn-scroll itinerary-overview__grid__ship-area__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+  prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-overview__content__grid__ship-area__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+  nextArrow: '<button class="btn-scroll itinerary-overview__content__grid__ship-area__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
   responsive: [
       {
           breakpoint: 600,
@@ -57,13 +57,13 @@ jQuery(document).ready(function ($) {
 });
 
 //
-$('.itinerary-departures__slider').slick({
+$('#departures-slider').slick({
   slidesToShow: 5,
   slidesToScroll: 1,
 
   arrows: true,
-  prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-overview__grid__ship-area__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-  nextArrow: '<button class="btn-scroll itinerary-overview__grid__ship-area__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+  prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-overview__content__grid__ship-area__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+  nextArrow: '<button class="btn-scroll itinerary-overview__content__grid__ship-area__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
   responsive: [
       {
           breakpoint: 600,
