@@ -1,79 +1,183 @@
 .itinerary-days {
-
     @include flexBlock;
 
     &__content {
         position: relative;
-  
+
         width: 100%;
         max-width: $page-width;
         margin-top: 3rem;
-        margin-bottom: 2rem;
-    
-    
 
-        
         &__title {
             font-size: 2.4rem;
             font-weight: 700;
             color: $color-primary;
         }
 
-        &__slider {
-            width: 100%;
-            margin: 3rem 0;
-            position: relative;
-            &__item {
-                display: grid !important;
-                width: 100%;
-                grid-template-columns: 40% 60%;
-                //gap: 6rem;
+        &__layout {
+            display: grid;
+            grid-template-columns: 30rem calc(100% - 33rem);
+            gap: 3rem;
+            margin-top: 2rem;
+            &__nav-slider {
+                height: 100%;
 
-                @media only screen and (max-width: $bp-medium) {
-                    grid-template-columns: 100%;
-                    height: min-content;
+                & .slick-slide {
+                    border: none !important;
                 }
 
-                &__content {
-                    height: 100%;
-                    width: 100%;
-                    max-height: 35rem;
-                    padding-left: 4rem;
-                }
+                & .slick-slide {
 
-                &__synopsis {
-                    &__day {
-                        //transform: translateY(-2rem);
-                        font-size: 1.3rem;
-                        line-height: 1.3rem;
-                        color: $color-grey-1;
-                        font-weight: 700;
+                    &:first-child {
+                        .day-slide-nav__line {
+                            top: auto;
+                            bottom: 0;
+                            left: 1.9rem;
+                            height: 35%;
+                        }
                     }
 
-                    &__title {
-                        font-size: 1.8rem;
-                        color: $color-primary;
-                        font-weight: 700;
-                        margin-bottom: 2rem;
+                    &:last-child {
+                        .day-slide-nav__line {
+                            top: 0;
+                            bottom: auto;
+                            left: 1.9rem;
+                            height: 35%;
+                        }
                     }
 
-                    & img {
-                        width: 100%;
-                        height: auto;
-                        object-fit: contain;
-                        border-radius: 1rem;
-                        overflow: hidden;
+                    &.slick-current {
+
+                        .day-slide-nav__day  {
+                            transform: scale(1);
+                        }
+                        
                     }
+                 
+
                 }
             }
 
-            &__counter {
-                position: absolute;
-                top: 0.8rem;
-                right: 15rem;
+            &__slider {
+                width: 100%;
+                position: relative;
+
+                &__btn-left {
+                    transform: translateY(-50%);
+                    position: absolute;
+                    top: -3rem;
+                    right: calc(4rem);
+                    z-index: 20;
+                }
+
+                &__btn-right {
+                    transform: translateY(-50%);
+
+                    position: absolute;
+                    top: -3rem;
+                    right: calc(0rem);
+                    z-index: 20;
+                }
+            }
+        }
+    }
+}
+
+.day-slide {
+    width: 100%;
+
+    &__top {
+        &__meta {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            width: 100%;
+            &__day {
+                font-size: 1.6rem;
+                line-height: 1.6rem;
+                color: $color-grey-1;
+                font-weight: 700;
+            }
+
+            &__title {
+                font-size: 2.4rem;
+                color: $color-primary;
+                font-weight: 700;
+                margin-bottom: 2rem;
+            }
+        }
+    }
+
+    &__bottom {
+        & img {
+            float: left;
+            width: 40%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 1rem;
+            overflow: hidden;
+            margin-right: 3rem;
+            margin-bottom: 1rem;
+        }
+        padding-bottom: 4rem;
+    }
+}
+
+.day-slide-nav {
+    //padding: 2rem 2.5rem;
+    //padding-left: 4rem;
+    width: 100%;
+    border: none;
+    border-radius: 1rem;
+    position: relative;
+    min-height: 8rem;
+    display: flex;
+    align-items: center;
+
+    &__day {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-supporting-selection;
+        color: $color-primary;
+
+        border-radius: 50%;
+        height: 4rem;
+        width: 4rem;
+        z-index: 2;
+        transform: scale(.5);
+        transition: transform .2s;
+    }
+
+    &__line {
+        position: absolute;
+        top: 0;
+        left: 1.9rem;
+        background-color: $color-supporting-selection;
+        height: 100%;
+        width: 3px;
+    }
+
+    &__info {
+        margin-left: 4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 2rem;
+        &__name {
+            &__title {
                 font-size: 1.4rem;
+                line-height: 1.8rem;
                 font-weight: 700;
                 color: $color-primary;
+            }
+
+            &__sub {
+                font-size: 1.3rem;
             }
         }
     }

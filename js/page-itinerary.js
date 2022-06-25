@@ -9,6 +9,7 @@ jQuery(document).ready(function ($) {
   $('#itinerary-days-slider').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
+    infinite: false,
     adaptiveHeight: true,
     fade: true,
     focusOnSelect: true,
@@ -17,8 +18,9 @@ jQuery(document).ready(function ($) {
     swipe: true,
     draggable: false,
     swipeToSlide: true,
-    prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-overview__content__grid__ship-area__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-    nextArrow: '<button class="btn-scroll itinerary-overview__content__grid__ship-area__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    asNavFor: '#itinerary-days-nav-slider',
+    prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-days__content__layout__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    nextArrow: '<button class="btn-scroll itinerary-days__content__layout__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
     responsive: [
       {
         breakpoint: 800,
@@ -27,14 +29,18 @@ jQuery(document).ready(function ($) {
         }
       }
     ]
-  }).on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
-    $('#itineraries-slider').slick("setOption", '', '', true);
-    var currentCounter = $(this).next();
+  })
 
-    var i = (currentSlide ? currentSlide : 0) + 1;
-    currentCounter.text(i + ' / ' + slick.slideCount);
-  });
-
+    //Itinerary Days Slider
+    $('#itinerary-days-nav-slider').slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      //centerMode: true,
+      vertical: true,
+      infinite: false,
+      asNavFor: '#itinerary-days-slider',
+      focusOnSelect: true,
+    })
 
 
   //Arctic Sliders

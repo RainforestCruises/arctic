@@ -12,7 +12,6 @@ $itinerary_data = $args['itinerary_data'];
             <div class="title-group__sub">
                 There are 24 departures available in 2022/23
             </div>
-
         </div>
         <div class="itinerary-departures__content__slider" id="departures-slider">
             <?php
