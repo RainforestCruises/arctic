@@ -8,75 +8,115 @@
         max-width: $page-width;
         margin-top: 3rem;
 
-        &__title {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: $color-primary;
-        }
-
         &__layout {
             display: grid;
             grid-template-columns: 30rem calc(100% - 33rem);
             gap: 3rem;
             margin-top: 2rem;
-            &__nav-slider {
-                height: 100%;
 
-                & .slick-slide {
-                    border: none !important;
+            &__side-nav {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                max-height: 35rem;
+
+                &__title {
                 }
 
-                & .slick-slide {
+                &__slider {
+                    height: 100%;
+                    width: 100%;
+                    position: relative;
 
-                    &:first-child {
-                        .day-slide-nav__line {
-                            top: auto;
-                            bottom: 0;
-                            left: 1.9rem;
-                            height: 35%;
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 2.4rem;
+                        z-index: 10;
+                        background-image: linear-gradient($color-white 30%, transparent);
+                    }
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        bottom: -5rem;
+                        left: 0;
+                        width: 100%;
+                        height: 2.6rem;
+                        z-index: 10;
+                        background-image: linear-gradient(transparent, $color-white);
+                    }
+
+                    & .slick-slide {
+                        border: none !important;
+                    }
+
+                    & .slick-slide {
+                        &:first-child {
+                            .day-slide-nav__line {
+                                top: auto;
+                                bottom: 0;
+
+                                height: 45%;
+                            }
+                        }
+                        &:last-child {
+                            .day-slide-nav__line {
+                                top: 0;
+                                bottom: auto;
+
+                                height: 45%;
+                            }
+                        }
+                        &.slick-current {
+                            .day-slide-nav__circle {
+                                transform: scale(1);
+                            }
                         }
                     }
 
-                    &:last-child {
-                        .day-slide-nav__line {
-                            top: 0;
-                            bottom: auto;
-                            left: 1.9rem;
-                            height: 35%;
-                        }
+                    &__btn-down {
+                        position: absolute;
+                        bottom: -6rem;
+                        right: 1rem;
+                        z-index: 20;
                     }
 
-                    &.slick-current {
-
-                        .day-slide-nav__day  {
-                            transform: scale(1);
-                        }
-                        
+                    &__btn-up {
+                        position: absolute;
+                        bottom: -6rem;
+                        right: 5rem;
+                        z-index: 20;
                     }
-                 
-
                 }
             }
 
-            &__slider {
-                width: 100%;
-                position: relative;
+            &__main {
+                &__slider {
+                    width: 100%;
+                    height: 100%;
+                    margin-bottom: 1rem;
 
-                &__btn-left {
-                    transform: translateY(-50%);
-                    position: absolute;
-                    top: -3rem;
-                    right: calc(4rem);
-                    z-index: 20;
-                }
+                    position: relative;
 
-                &__btn-right {
-                    transform: translateY(-50%);
+                    &__btn-left {
+                        transform: translateY(-50%);
+                        position: absolute;
+                        top: 1rem;
+                        right: calc(4rem);
+                        z-index: 20;
+                    }
 
-                    position: absolute;
-                    top: -3rem;
-                    right: calc(0rem);
-                    z-index: 20;
+                    &__btn-right {
+                        transform: translateY(-50%);
+
+                        position: absolute;
+                        top: 1rem;
+                        right: calc(0rem);
+                        z-index: 20;
+                    }
                 }
             }
         }
@@ -86,99 +126,87 @@
 .day-slide {
     width: 100%;
 
-    &__top {
-        &__meta {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            width: 100%;
-            &__day {
-                font-size: 1.6rem;
-                line-height: 1.6rem;
-                color: $color-grey-1;
-                font-weight: 700;
-            }
+    &__title {
+        font-size: 2.4rem;
+        line-height: 2.4rem;
+        font-weight: 700;
+        color: $color-primary;
 
-            &__title {
-                font-size: 2.4rem;
-                color: $color-primary;
-                font-weight: 700;
-                margin-bottom: 2rem;
-            }
-        }
+        padding-right: 10rem;
+        margin-bottom: 2.4rem;
+
+       
     }
 
-    &__bottom {
+    &__content {
         & img {
             float: left;
-            width: 40%;
+            width: 50%;
+            max-width: 30rem;
             height: auto;
             object-fit: cover;
             border-radius: 1rem;
             overflow: hidden;
             margin-right: 3rem;
             margin-bottom: 1rem;
+            margin-top: 0.5rem;
         }
         padding-bottom: 4rem;
     }
 }
 
 .day-slide-nav {
-    //padding: 2rem 2.5rem;
-    //padding-left: 4rem;
     width: 100%;
     border: none;
     border-radius: 1rem;
     position: relative;
     min-height: 8rem;
-    display: flex;
+    display: flex !important;
     align-items: center;
+    cursor: pointer;
 
-    &__day {
+    &__circle {
         position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-      
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
+
         background-color: $color-supporting-selection;
-        color: $color-primary;
 
         border-radius: 50%;
-        height: 4rem;
-        width: 4rem;
-        z-index: 2;
-        transform: scale(.5);
-        transition: transform .2s;
+        height: 1.5rem;
+        width: 1.5rem;
+        z-index: 4;
+        transform-origin: center;
+        transform: scale(0.65);
+        transition: all 0.2s;
     }
 
     &__line {
         position: absolute;
-        top: 0;
-        left: 1.9rem;
+
         background-color: $color-supporting-selection;
+
+        left: 0.7rem;
         height: 100%;
-        width: 3px;
+        width: 2px;
+        z-index: 2;
     }
 
-    &__info {
+    &__title-group {
         margin-left: 4rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 2rem;
-        &__name {
-            &__title {
-                font-size: 1.4rem;
-                line-height: 1.8rem;
-                font-weight: 700;
-                color: $color-primary;
-            }
+        &__title {
+            font-size: 1.4rem;
+            line-height: 1.8rem;
+            font-weight: 700;
+            color: $color-primary;
+        }
 
-            &__sub {
-                font-size: 1.3rem;
-            }
+        &__sub {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: $color-grey-3;
         }
     }
 }

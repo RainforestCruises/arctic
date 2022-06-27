@@ -76,3 +76,35 @@
                             Shared, small group cruise based on DBL occupancy
 
                         </div>
+
+
+                        <div class="day-slide-nav__day__text">
+                                    <?php echo dayCountMarkup($day['day_count'], true); ?>
+                                </div>
+                                <div class="day-slide-nav__day__number">
+                                    <?php echo $day['day_count']; ?>
+                                </div>
+                                
+                            </div>
+
+
+
+
+
+
+
+
+                            
+        &__number {
+            font-size: 1.6rem;
+            //transform: translateY(-4px);
+            font-weight: 700;
+            color: $color-primary;
+        }
+
+        &__text {
+            font-size: .8rem;
+            font-weight: 400;
+            //transform: translateY(1px);
+            color: $color-primary;
+        }

@@ -1,95 +1,100 @@
 <?php
-$itinerary_data = $args['itinerary_data'];
+//$itinerary_data = $args['itinerary_data'];
+//$dayImages = $itinerary_data['DayImageDTOs'];
 
-$days = $itinerary_data['ItineraryDays'];
-usort($days, "sortDays");
+$days = get_field('itinerary');
 
-$dayImages = $itinerary_data['DayImageDTOs'];
+function dayCountMarkup($string, $exclude_number = false)
+{
+
+    if ($exclude_number == true) {
+        if (strlen($string) > 1) {
+            echo 'Days';
+        } else {
+            echo 'Day';
+        }
+    } else {
+        if (strlen($string) > 1) {
+            echo 'Days ' . $string;
+        } else {
+            echo 'Day ' . $string;
+        }
+    }
+}
+
 ?>
 
 <section class="itinerary-days" id="days">
 
     <div class="itinerary-days__content">
-        <div class="title-group">
-            <div class="title-group__title">
-                Itinerary
-            </div>
-            <div class="title-group__sub">
-                15 Days / 14 Night in total
-            </div>
-        </div>
+
+
+
 
         <div class="itinerary-days__content__layout">
-            <div class="itinerary-days__content__layout__nav-slider" id="itinerary-days-nav-slider">
-                <?php
-                $dayCount = 1;
-                foreach ($days as $day) : ?>
 
+            <!-- Nav Slider -->
+            <div class="itinerary-days__content__layout__side-nav">
 
-                    <div class="day-slide-nav">
-                        <div class="day-slide-nav__day">
-                            Day <?php echo $dayCount; ?>
-                        </div>
-                        <div class="day-slide-nav__line">
-                           
-                        </div>
-                        <div class="day-slide-nav__info">
-                            <div class="day-slide-nav__info__name">
-                                <div class="day-slide-nav__info__name__title">
-                                    <?php echo $day['Title'] ?>
-                                </div>
-                                <div class="day-slide-nav__info__name__sub">
-                                    Locations visited on activity
-                                </div>
+                <div class="title-group">
+                    <div class="title-group__title">
+                        Itinerary
+                    </div>
+                    <div class="title-group__sub">
+                        15 Days / 14 Night in total
+                    </div>
+                </div>
+
+                <div class="itinerary-days__content__layout__side-nav__slider" id="itinerary-nav-slider">
+
+                    <?php foreach ($days as $day) : ?>
+
+                        <div class="day-slide-nav">
+                            <div class="day-slide-nav__circle">
+                            </div>
+                            <div class="day-slide-nav__line">
                             </div>
 
+                            <div class="day-slide-nav__title-group">
+                                <div class="day-slide-nav__title-group__sub">
+                                    <?php echo dayCountMarkup($day['day_count']); ?>
+                                </div>
+                                <div class="day-slide-nav__title-group__title">
+                                    <?php echo $day['title']; ?>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                <?php
-                    $dayCount++;
-                endforeach;
-                ?>
+
+                    <?php endforeach; ?>
+
+                </div>
+
             </div>
-            <div class="itinerary-days__content__layout__slider">
-                <!-- Slider -->
-                <div class="itinerary-days__content__layout__slider" id="itinerary-days-slider">
 
+            <!-- Main Slider -->
+            <div class="itinerary-days__content__layout__main">
 
+                <div class="itinerary-days__content__layout__main__slider" id="itinerary-main-slider">
 
-                    <?php
-                    $dayCount = 1;
-                    foreach ($days as $day) : ?>
-                        <?php
-                        $img = null;
-                        foreach ($dayImages as $dayImage) {
-                            if ($dayCount == $dayImage['DayNumber']) {
-                                $img = $dayImage;
-                                break;
-                            }
-                        }
-                        ?>
+                    <?php foreach ($days as $day) :
+                        $image =  $day['image'];
+                    ?>
 
                         <!-- Day Slide -->
                         <div class="day-slide">
 
-                            <div class="day-slide__top">
+                            <div class="day-slide__title">
+                                <?php echo dayCountMarkup($day['day_count']) . ": " . $day['title'] ?>
 
-                                <div class="day-slide__top__meta">
-                                    <div class="day-slide__top__meta__day">
-                                        Day <?php echo $dayCount; ?>
-                                    </div>
-                                    <div class="day-slide__top__meta__title">
-                                        <?php echo $day['Title'] ?>
-                                    </div>
-                                </div>
+
                             </div>
-                            <!-- Content -->
-                            <div class="day-slide__bottom">
 
-                                <div class="day-slide__bottom__text">
-                                    <img src="<?php echo afloat_dfcloud_image($img['ImageUrl']); ?>" alt="<?php echo $img['AltText'] ?>">
-                                    <?php echo $day['Excerpt'] ?>
-                                </div>
+
+                            <!-- Content -->
+                            <div class="day-slide__content">
+
+                                <img <?php afloat_image_markup($image['id'], 'vertical-small', 'featured-small'); ?>>
+                                <?php echo $day['text'] ?>
                             </div>
 
                         </div>
@@ -101,7 +106,14 @@ $dayImages = $itinerary_data['DayImageDTOs'];
                     ?>
 
                 </div>
+
             </div>
+
+
+
+
+
+
 
         </div>
 

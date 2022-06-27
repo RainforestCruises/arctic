@@ -6,7 +6,7 @@ jQuery(document).ready(function ($) {
 
 
   //Itinerary Days Slider
-  $('#itinerary-days-slider').slick({
+  $('#itinerary-main-slider').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     infinite: false,
@@ -18,9 +18,9 @@ jQuery(document).ready(function ($) {
     swipe: true,
     draggable: false,
     swipeToSlide: true,
-    asNavFor: '#itinerary-days-nav-slider',
-    prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-days__content__layout__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-    nextArrow: '<button class="btn-scroll itinerary-days__content__layout__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    asNavFor: '#itinerary-nav-slider',
+    prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-days__content__layout__main__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    nextArrow: '<button class="btn-scroll itinerary-days__content__layout__main__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
     responsive: [
       {
         breakpoint: 800,
@@ -31,15 +31,17 @@ jQuery(document).ready(function ($) {
     ]
   })
 
-    //Itinerary Days Slider
-    $('#itinerary-days-nav-slider').slick({
-      slidesToShow: 4,
+    //Itinerary Side Nav Slider
+    $('#itinerary-nav-slider').slick({
+      slidesToShow: 5,
       slidesToScroll: 1,
-      //centerMode: true,
       vertical: true,
       infinite: false,
-      asNavFor: '#itinerary-days-slider',
+      asNavFor: '#itinerary-main-slider',
       focusOnSelect: true,
+      nextArrow: '<button class="btn-scroll btn-scroll--down itinerary-days__content__layout__side-nav__slider__btn-down"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+      prevArrow: '<button class="btn-scroll btn-scroll--up itinerary-days__content__layout__side-nav__slider__btn-up"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    
     })
 
 

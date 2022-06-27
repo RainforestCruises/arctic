@@ -135,6 +135,18 @@
     }
   }
 
+  &--up {
+    svg {
+      transform: rotate(270deg);
+    }
+  }
+
+  &--down {
+    svg {
+      transform: rotate(90deg);
+    }
+  }
+
 
   &:hover {
     box-shadow: $shadow-short-bottom;
