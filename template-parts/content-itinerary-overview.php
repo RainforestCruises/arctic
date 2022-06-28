@@ -6,7 +6,6 @@ $ship = get_field('ship');
 $ship_featured_image = get_field('featured_image', $ship);
 $ship_snippet = get_field('top_snippet', $ship);
 $cruise_data = $args['cruiseData'];
-
 ?>
 <section class="itinerary-overview" id="overview">
 
@@ -91,7 +90,7 @@ $cruise_data = $args['cruiseData'];
                 <div class="itinerary-overview__content__grid__ship-area__title">
                     Cabin Options
                     <div class="itinerary-overview__content__grid__ship-area__title__sub">
-                        Choose from the available X cabin types
+                        Choose from the available <?php echo count($cruise_data['CabinDTOs']); ?> cabin types
                     </div>
                 </div>
                 <div class="itinerary-overview__content__grid__ship-area__slider" id="cabins-slider">

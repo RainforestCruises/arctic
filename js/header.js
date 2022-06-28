@@ -325,22 +325,22 @@ jQuery(document).ready(function ($) {
     body.classList.remove('no-scroll');
   });
 
-  document.addEventListener('click', evt => {
-    const contactForm = document.querySelector('.contact');
-    const popup = document.querySelector('.popup');
-    const button = document.querySelector('#newsletterButton');
+  // document.addEventListener('click', evt => {
+  //   const contactForm = document.querySelector('.contact');
+  //   const popup = document.querySelector('.popup');
+  //   const button = document.querySelector('#newsletterButton');
 
-    const isContact = contactForm.contains(evt.target);
-    const isButton = button.contains(evt.target);
-    const isActive = popup.classList.contains('active');
-    if (isActive) {
-      if (!isContact && !isButton) {
-        $('.popup').toggleClass('active');
-        body.classList.remove('no-scroll');
-      }
-    }
+  //   const isContact = contactForm.contains(evt.target);
+  //   const isButton = button.contains(evt.target);
+  //   const isActive = popup.classList.contains('active');
+  //   if (isActive) {
+  //     if (!isContact && !isButton) {
+  //       $('.popup').toggleClass('active');
+  //       body.classList.remove('no-scroll');
+  //     }
+  //   }
 
-  });
+  // });
 
   $('#newsletterButton').on('click', () => {
     $('.popup').addClass('active');

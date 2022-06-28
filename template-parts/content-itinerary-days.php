@@ -1,7 +1,5 @@
 <?php
-//$itinerary_data = $args['itinerary_data'];
-//$dayImages = $itinerary_data['DayImageDTOs'];
-
+$itinerary_data = $args['itinerary_data'];
 $days = get_field('itinerary');
 
 function dayCountMarkup($string, $exclude_number = false)
@@ -24,7 +22,7 @@ function dayCountMarkup($string, $exclude_number = false)
 
 ?>
 
-<section class="itinerary-days" id="days">
+<section class="itinerary-days" id="itinerary">
 
     <div class="itinerary-days__content">
 
@@ -41,7 +39,7 @@ function dayCountMarkup($string, $exclude_number = false)
                         Itinerary
                     </div>
                     <div class="title-group__sub">
-                        15 Days / 14 Night in total
+                        <?php echo $itinerary_data['LengthInDays'] . ' Days / ' . $itinerary_data['LengthInNights'] . ' Nights in total'?>
                     </div>
                 </div>
 

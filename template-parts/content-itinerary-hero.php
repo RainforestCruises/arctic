@@ -78,10 +78,10 @@ $hero_image = get_field('hero_image');
                             </li>
 
                             <li class="itinerary-hero__content__top__content__nav__list__item">
-                                <a href="#itineraries" class="itinerary-hero__content__top__content__nav__list__item__link page-nav-template">Itinerary</a>
+                                <a href="#itinerary" class="itinerary-hero__content__top__content__nav__list__item__link page-nav-template">Itinerary</a>
                             </li>
                             <li class="itinerary-hero__content__top__content__nav__list__item ">
-                                <a href="#accommodations" class="itinerary-hero__content__top__content__nav__list__item__link page-nav-template">Departures</a>
+                                <a href="#departures" class="itinerary-hero__content__top__content__nav__list__item__link page-nav-template">Departures</a>
                             </li>
 
 

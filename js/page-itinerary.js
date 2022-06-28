@@ -31,37 +31,37 @@ jQuery(document).ready(function ($) {
     ]
   })
 
-    //Itinerary Side Nav Slider
-    $('#itinerary-nav-slider').slick({
-      slidesToShow: 5,
-      slidesToScroll: 1,
-      vertical: true,
-      infinite: false,
-      draggable: true,
-      swipeToSlide: true,
-      asNavFor: '#itinerary-main-slider',
-      focusOnSelect: true,
-      nextArrow: '<button class="btn-scroll btn-scroll--down itinerary-days__content__layout__side-nav__slider__btn-down"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-      prevArrow: '<button class="btn-scroll btn-scroll--up itinerary-days__content__layout__side-nav__slider__btn-up"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-      responsive: [
-        {
-          breakpoint: 800,
-          settings: {
-            vertical: false,
-            arrows: false,
-            slidesToShow: 5,
-          }
-        },
-        {
-          breakpoint: 600,
-          settings: {
-            vertical: false,
-            arrows: false,
-            slidesToShow: 3,
-          }
+  //Itinerary Side Nav Slider
+  $('#itinerary-nav-slider').slick({
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    vertical: true,
+    infinite: false,
+    draggable: true,
+    swipeToSlide: true,
+    asNavFor: '#itinerary-main-slider',
+    focusOnSelect: true,
+    nextArrow: '<button class="btn-scroll btn-scroll--down itinerary-days__content__layout__side-nav__slider__btn-down"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    prevArrow: '<button class="btn-scroll btn-scroll--up itinerary-days__content__layout__side-nav__slider__btn-up"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    responsive: [
+      {
+        breakpoint: 800,
+        settings: {
+          vertical: false,
+          arrows: false,
+          slidesToShow: 5,
         }
-      ]
-    })
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          vertical: false,
+          arrows: false,
+          slidesToShow: 3,
+        }
+      }
+    ]
+  })
 
 
   //Arctic Sliders
@@ -120,7 +120,29 @@ jQuery(document).ready(function ($) {
 
 
 
+  $(".departure-filter").on('click', function () {
+    var filter = $(this).data('filter');
+    var currentYear = new Date().getFullYear();
 
+    $(".departure-filter").removeClass('active');
+    $(this).addClass('active');
+    $("#departures-slider").slick('slickUnfilter');
+
+    if (filter == currentYear) {
+      $("#departures-slider").slick('slickFilter', 'div:contains("' + (currentYear) + '")');
+    }
+    else if (filter == (currentYear + 1)) {
+      $("#departures-slider").slick('slickFilter', 'div:contains("' + (currentYear + 1) + '")');
+    }
+    else if (filter == (currentYear + 2)) {
+      $("#departures-slider").slick('slickFilter', 'div:contains("' + (currentYear + 2) + '")');
+    }
+    else if (filter == 'all') {
+
+      $("#departures-slider").slick('slickUnfilter');
+    }
+
+  })
 
 
 
