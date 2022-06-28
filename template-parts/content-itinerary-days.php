@@ -8,13 +8,13 @@ function dayCountMarkup($string, $exclude_number = false)
 {
 
     if ($exclude_number == true) {
-        if (strlen($string) > 1) {
+        if (str_contains($string, '-')) {
             echo 'Days';
         } else {
             echo 'Day';
         }
     } else {
-        if (strlen($string) > 1) {
+        if (str_contains($string, '-')) {
             echo 'Days ' . $string;
         } else {
             echo 'Day ' . $string;

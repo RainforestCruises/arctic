@@ -10,15 +10,22 @@
 
         &__layout {
             display: grid;
-            grid-template-columns: 30rem calc(100% - 33rem);
-            gap: 3rem;
+            grid-template-columns: 30rem calc(100% - 31rem);
+            gap: 1rem;
             margin-top: 2rem;
+
+            @media only screen and (max-width: $bp-medium) {
+                grid-template-columns: 100%;
+                gap: 2.5rem;
+            }
 
             &__side-nav {
                 display: flex;
                 flex-direction: column;
                 height: 100%;
                 max-height: 35rem;
+
+                
 
                 &__title {
                 }
@@ -27,6 +34,10 @@
                     height: 100%;
                     width: 100%;
                     position: relative;
+
+                    @media only screen and (max-width: $bp-medium) {
+                        margin-top: 1.5rem;
+                    }
 
                     &::before {
                         content: "";
@@ -37,6 +48,9 @@
                         height: 2.4rem;
                         z-index: 10;
                         background-image: linear-gradient($color-white 30%, transparent);
+                        @media only screen and (max-width: $bp-medium) {
+                            display: none;
+                        }
                     }
                     &::after {
                         content: "";
@@ -47,10 +61,16 @@
                         height: 2.6rem;
                         z-index: 10;
                         background-image: linear-gradient(transparent, $color-white);
+                        @media only screen and (max-width: $bp-medium) {
+                            display: none;
+                        }
                     }
 
                     & .slick-slide {
                         border: none !important;
+                        @media only screen and (max-width: $bp-medium) {
+                            margin-right: .5rem;
+                        }
                     }
 
                     & .slick-slide {
@@ -74,6 +94,10 @@
                             .day-slide-nav__circle {
                                 transform: scale(1);
                             }
+                            .day-slide-nav__title-group__title {
+                                transition: all .2s;
+                                color: $color-supporting-light;
+                            }
                         }
                     }
 
@@ -86,8 +110,8 @@
 
                     &__btn-up {
                         position: absolute;
-                        bottom: -6rem;
-                        right: 5rem;
+                        top: .5rem;
+                        right: 1rem;
                         z-index: 20;
                     }
                 }
@@ -97,7 +121,7 @@
                 &__slider {
                     width: 100%;
                     height: 100%;
-                    margin-bottom: 1rem;
+                    margin-bottom: 5rem;
 
                     position: relative;
 
@@ -123,18 +147,23 @@
     }
 }
 
+
+//Main
 .day-slide {
     width: 100%;
 
     &__title {
         font-size: 2.4rem;
-        line-height: 2.4rem;
+        line-height: 2.8rem;
         font-weight: 700;
         color: $color-primary;
 
-        padding-right: 10rem;
-        margin-bottom: 2.4rem;
-
+        padding-right: 8rem;
+        margin-bottom: 2rem;
+        @media only screen and (max-width: $bp-medium) {
+            font-size: 1.8rem;
+            line-height: 2.2rem;
+        }
        
     }
 
@@ -150,11 +179,17 @@
             margin-right: 3rem;
             margin-bottom: 1rem;
             margin-top: 0.5rem;
+
+            @media only screen and (max-width: $bp-medium) {
+                width: 40%;
+            }
         }
-        padding-bottom: 4rem;
+        
     }
 }
 
+
+//Side-Nav
 .day-slide-nav {
     width: 100%;
     border: none;
@@ -164,6 +199,20 @@
     display: flex !important;
     align-items: center;
     cursor: pointer;
+
+    &:hover {
+        //color: $color-supporting-light;
+
+        .day-slide-nav__title-group__title {
+            transition: all .2s;
+            color: $color-supporting-light;
+        }
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+        border: 1px solid $color-grey-light-1a;
+        min-height: auto;
+    }
 
     &__circle {
         position: absolute;
@@ -181,6 +230,9 @@
         transform-origin: center;
         transform: scale(0.65);
         transition: all 0.2s;
+        @media only screen and (max-width: $bp-medium) {
+            display: none;
+        }
     }
 
     &__line {
@@ -192,21 +244,42 @@
         height: 100%;
         width: 2px;
         z-index: 2;
+        @media only screen and (max-width: $bp-medium) {
+            display: none;
+        }
     }
 
     &__title-group {
         margin-left: 4rem;
+        @media only screen and (max-width: $bp-medium) {
+            margin-left: 0rem;
+            padding: 1rem;
+            width: 100%;
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
         &__title {
             font-size: 1.4rem;
             line-height: 1.8rem;
             font-weight: 700;
             color: $color-primary;
+            @media only screen and (max-width: $bp-medium) {
+                display: none;
+            }
         }
 
         &__sub {
             font-size: 1.2rem;
             font-weight: 400;
             color: $color-grey-3;
+            @media only screen and (max-width: $bp-medium) {
+                color: $color-primary;
+                font-size: 1.6rem;
+                font-weight: 700;
+            }
         }
     }
 }

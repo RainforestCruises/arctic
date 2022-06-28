@@ -37,11 +37,30 @@ jQuery(document).ready(function ($) {
       slidesToScroll: 1,
       vertical: true,
       infinite: false,
+      draggable: true,
+      swipeToSlide: true,
       asNavFor: '#itinerary-main-slider',
       focusOnSelect: true,
       nextArrow: '<button class="btn-scroll btn-scroll--down itinerary-days__content__layout__side-nav__slider__btn-down"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
       prevArrow: '<button class="btn-scroll btn-scroll--up itinerary-days__content__layout__side-nav__slider__btn-up"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-    
+      responsive: [
+        {
+          breakpoint: 800,
+          settings: {
+            vertical: false,
+            arrows: false,
+            slidesToShow: 5,
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            vertical: false,
+            arrows: false,
+            slidesToShow: 3,
+          }
+        }
+      ]
     })
 
 
