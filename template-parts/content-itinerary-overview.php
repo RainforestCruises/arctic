@@ -60,7 +60,7 @@ $cruise_data = $args['cruiseData'];
 
 
                 <!-- Ship Card -->
-                <a class="itinerary-overview__content__grid__ship-area__ship">
+                <a class="itinerary-overview__content__grid__ship-area__ship" href="<?php echo get_permalink($ship); ?>">
                     <div class="itinerary-overview__content__grid__ship-area__ship__avatar">
                         <img <?php afloat_image_markup($ship_featured_image['id'], 'square-small', array('square-small')); ?>>
                     </div>

@@ -110,14 +110,14 @@ while (have_posts()) :
     </section>
 
     <!-- Itineraries Content -->
-    <section class="product-page__section-itineraries" id="itineraries">
+    <section class="product-page__section-itineraries" id="itinerary">
       <?php
       get_template_part('template-parts/content', 'product-itineraries', $args);
       ?>
     </section>
 
     <!-- Accommodations Content -->
-    <section class="product-page__section-accommodation" id="accommodations">
+    <section class="product-page__section-accommodation" id="departures">
       <h2 class="page-divider page-divider--padding u-margin-bottom-medium">
         Accommodations
       </h2>
