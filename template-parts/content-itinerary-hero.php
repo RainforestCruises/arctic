@@ -158,8 +158,8 @@ $hero_image = get_field('hero_image');
                                     <div class="sub-attribute">
                                         Duration
                                     </div>
-                                    <?php echo get_field('charter_min_days') . " Days +"; ?>
-
+                                 
+                                    <?php echo $itinerary_data['LengthInDays'] . ' Days'?>
 
                                 </div>
 

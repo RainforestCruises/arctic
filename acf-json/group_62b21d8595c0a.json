@@ -19,11 +19,11 @@
             "endpoint": 0
         },
         {
-            "key": "field_62b21d85bdd62",
-            "label": "Property Id",
-            "name": "property_id",
-            "type": "text",
-            "instructions": "ID of property in Departure Finder",
+            "key": "field_62b21f849fb41",
+            "label": "Ship",
+            "name": "ship",
+            "type": "post_object",
+            "instructions": "Will retrieve property ID from cruise post",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -31,11 +31,14 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "post_type": [
+                "rfc_cruises"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
         },
         {
             "key": "field_62b21e664bd82",
@@ -127,7 +130,7 @@
         },
         {
             "key": "field_62b21d85c911a",
-            "label": "Relationships",
+            "label": "Classifications",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -140,28 +143,6 @@
             },
             "placement": "top",
             "endpoint": 0
-        },
-        {
-            "key": "field_62b21f849fb41",
-            "label": "Ship",
-            "name": "ship",
-            "type": "post_object",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "rfc_cruises"
-            ],
-            "taxonomy": "",
-            "allow_null": 0,
-            "multiple": 0,
-            "return_format": "object",
-            "ui": 1
         },
         {
             "key": "field_62b21d85d07ee",
@@ -1354,5 +1335,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1656360693
+    "modified": 1656445897
 }

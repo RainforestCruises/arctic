@@ -136,22 +136,22 @@ jQuery(document).ready(function ($) {
     const navSecondaryMobileList = document.querySelector('.nav-secondary-mobile__list')
     const navSecondaryButton = document.querySelector('#nav-secondary-button')
 
-    // document.addEventListener('click', evt => {
+    document.addEventListener('click', evt => {
 
-    //     const isMenuClick = navSecondaryMobileList.contains(evt.target);
-    //     const isButtonClick = navSecondaryButton.contains(evt.target);
-    //     const isOpen = navSecondaryMobile.classList.contains('active');
-
-
+        const isMenuClick = navSecondaryMobileList.contains(evt.target);
+        const isButtonClick = navSecondaryButton.contains(evt.target);
+        const isOpen = navSecondaryMobile.classList.contains('active');
 
 
-    //     if (!isButtonClick && isOpen && !isMenuClick) {
-    //         navSecondaryMobile.classList.remove('active');
-    //         navSecondaryButton.classList.remove('active');
-    //     }
 
 
-    // });
+        if (!isButtonClick && isOpen && !isMenuClick) {
+            navSecondaryMobile.classList.remove('active');
+            navSecondaryButton.classList.remove('active');
+        }
+
+
+    });
 
 
 

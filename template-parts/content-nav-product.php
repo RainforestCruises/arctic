@@ -36,10 +36,10 @@ endif;
                 </li>
             <?php endif; ?>
             <li>
-                <a href="#itineraries"><?php echo (get_post_type() != 'rfc_tours') ? ('Itineraries & Prices') : ('Itinerary & Prices'); ?></a>
+                <a href="#itinerary"><?php echo (get_post_type() != 'rfc_cruises') ? ('Itinerary') : ('Itineraries'); ?></a>
             </li>
             <li>
-                <a href="#accommodations">Accommodations</a>
+                <a href="#departures">Departures</a>
             </li>
         </ul>
         <div class="nav-secondary__main__cta">
@@ -61,10 +61,10 @@ endif;
             </li>
         <?php endif; ?>
         <li class="nav-secondary-mobile__list__item">
-            <a class="nav-secondary-mobile__list__item__link" href="#itineraries"><?php echo (get_post_type() != 'rfc_tours') ? ('Itineraries & Prices') : ('Itinerary & Prices'); ?></a>
+            <a class="nav-secondary-mobile__list__item__link" href="#itinerary"><?php echo (get_post_type() != 'rfc_cruises') ? ('Itinerary') : ('Itineraries'); ?></a>
         </li>
         <li class="nav-secondary-mobile__list__item">
-            <a class="nav-secondary-mobile__list__item__link" href="#accommodations">Accommodations</a>
+            <a class="nav-secondary-mobile__list__item__link" href="#departures">Departures</a>
         </li>
     </ul>
 </nav>

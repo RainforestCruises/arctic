@@ -51,7 +51,8 @@ function my_acf_save_post($post_id)
     }
 
     if ('rfc_itineraries' == get_post_type()) {
-        $dfPropertyId = get_field('property_id', $post_id); //get property data from DF
+        $cruisePost = get_field('ship', $post_id); //get cruise post
+        $dfPropertyId = get_field('property_id', $cruisePost); //get property data from DF
         refresh_cruise_info($dfPropertyId, $post_id);
     }
 
@@ -62,10 +63,7 @@ function my_acf_save_post($post_id)
             $count = count($dailyActivities);
         }
         update_field('length_in_days', $count);
-    }
-
-    //$yearTitle = date("Y") . "-" . date('Y', strtotime('+1 year'));
-    
+    }    
   
 }
 function refresh_cruise_info($propertyId, $post_id)

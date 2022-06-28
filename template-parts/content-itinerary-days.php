@@ -1,6 +1,9 @@
 <?php
 $itinerary_data = $args['itinerary_data'];
 $days = get_field('itinerary');
+$ship = get_field('ship');
+
+console_log($ship);
 
 function dayCountMarkup($string, $exclude_number = false)
 {

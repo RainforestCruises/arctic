@@ -368,7 +368,7 @@ foreach ($menuitems as $m) {
 
 
     <!-- Product Secondary Nav -->
-    <?php if (get_post_type() == 'rfc_cruises' || get_post_type() == 'rfc_tours' || get_post_type() == 'rfc_lodges') :
+    <?php if (get_post_type() == 'rfc_cruises' || get_post_type() == 'rfc_itineraries' || get_post_type() == 'rfc_tours' || get_post_type() == 'rfc_lodges') :
         get_template_part('template-parts/content', 'nav-product');
     endif; ?>
 
