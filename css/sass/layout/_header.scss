@@ -18,10 +18,10 @@
         align-items: center;
 
         height: 9rem;
-
+ 
         font-size: 1.3rem;
-        text-transform: uppercase;
-        letter-spacing: 0.2rem;
+        //text-transform: uppercase;
+        letter-spacing: 0.1rem;
         font-weight: 600;
         color: $color-grey-light-1;
 
@@ -829,8 +829,8 @@
         text-decoration: none;
         font-weight: 600;
         font-size: 1.3rem;
-        text-transform: uppercase;
-        letter-spacing: 0.2rem;
+        //text-transform: uppercase;
+        letter-spacing: 0.1rem; //was 0.2rem
 
         &__link {
             text-decoration: none;
@@ -1056,8 +1056,8 @@
         display: flex;
 
         font-size: 1.3rem;
-        text-transform: uppercase;
-        letter-spacing: 0.2rem;
+        //text-transform: uppercase;
+        letter-spacing: 0.1rem;
         font-weight: 600;
         align-items: center;
         height: 100%;
@@ -1107,7 +1107,7 @@
                 &:link,
                 &:visited {
                     color: $color-primary;
-                    font-weight: 700;
+                    font-weight: 600;
                 }
 
                 &:hover {
@@ -1215,9 +1215,9 @@
                     text-decoration: none;
                     &:visited,
                     &:link {
-                        color: $color-grey-3;
+                        color: $color-primary;
                         transition: color 0.3s;
-                        font-weight: 600;
+                        font-weight: 400;
                     }
                     &:hover {
                         color: $color-supporting-light;

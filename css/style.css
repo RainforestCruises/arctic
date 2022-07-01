@@ -202,7 +202,7 @@ input {
   font-family: "Metropolis", sans-serif;
   font-weight: 700;
   color: #1d2225;
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   margin-bottom: 2rem; }
 
 .arctic-heading-4 {
@@ -213,15 +213,15 @@ input {
   margin-bottom: 2rem; }
 
 .title-single {
-  font-size: 2.4rem;
-  line-height: 2.4rem;
+  font-size: 2.2rem;
+  line-height: 2.2rem;
   font-weight: 700;
   color: #1d2225;
   margin-bottom: 2rem; }
 
 .title-group__title {
-  font-size: 2.4rem;
-  line-height: 2.4rem;
+  font-size: 2.2rem;
+  line-height: 2.2rem;
   font-weight: 700;
   color: #1d2225; }
 
@@ -3399,9 +3399,9 @@ h5 {
               line-height: 1.5rem;
               font-weight: 600; }
           .itinerary-hero__content__top__content__title-group__title {
-            font-size: 6rem;
-            font-weight: 300;
-            letter-spacing: 0.3rem;
+            font-size: 5rem;
+            font-weight: 400;
+            letter-spacing: 0.1rem;
             display: flex;
             align-self: end;
             line-height: 6.5rem;
@@ -3475,16 +3475,15 @@ h5 {
             list-style: none;
             justify-content: start;
             padding: 1.5rem 0;
-            margin-bottom: 1rem; }
+            margin-bottom: .5rem; }
             .itinerary-hero__content__top__content__nav__list__item {
               margin-right: 3rem; }
               .itinerary-hero__content__top__content__nav__list__item__link {
                 display: block;
                 position: relative;
-                font-size: 1.2rem;
-                font-weight: 600;
-                letter-spacing: 0.3rem;
-                text-transform: uppercase;
+                font-size: 1.6rem;
+                font-weight: 700;
+                letter-spacing: 0.1rem;
                 text-decoration: none;
                 color: #fff; }
                 .itinerary-hero__content__top__content__nav__list__item__link::after {
@@ -3598,8 +3597,8 @@ h5 {
                   color: #919598;
                   font-weight: 400; }
                 .itinerary-hero__content__bottom__content__info-group__info__starting-price__title-area__text {
-                  font-size: 1.8rem;
-                  line-height: 1.8rem;
+                  font-size: 1.6rem;
+                  line-height: 1.6rem;
                   font-weight: 700; }
               .itinerary-hero__content__bottom__content__info-group__info__starting-price__amount {
                 color: #1d2225;
@@ -3713,7 +3712,6 @@ h5 {
               color: #347fff;
               height: 100%; }
             .itinerary-hero__content__bottom__content__nav__list__item {
-              text-transform: uppercase;
               font-size: 1.8rem;
               font-weight: 700;
               position: relative;
@@ -12375,8 +12373,7 @@ h5 {
     align-items: center;
     height: 9rem;
     font-size: 1.3rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
+    letter-spacing: 0.1rem;
     font-weight: 600;
     color: #f8f8f8;
     border-bottom: 1px solid rgba(194, 198, 201, 0.1);
@@ -12924,8 +12921,7 @@ h5 {
     text-decoration: none;
     font-weight: 600;
     font-size: 1.3rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2rem; }
+    letter-spacing: 0.1rem; }
     .nav-mega__nav__link {
       text-decoration: none;
       color: currentColor;
@@ -13071,8 +13067,7 @@ h5 {
     flex-grow: 1;
     display: flex;
     font-size: 1.3rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
+    letter-spacing: 0.1rem;
     font-weight: 600;
     align-items: center;
     height: 100%;
@@ -13109,7 +13104,7 @@ h5 {
             white-space: normal; } }
         .nav-secondary__main__title-area__title:link, .nav-secondary__main__title-area__title:visited {
           color: #1d2225;
-          font-weight: 700; }
+          font-weight: 600; }
         .nav-secondary__main__title-area__title:hover {
           color: #4d8eff; }
       .nav-secondary__main__title-area::after {
@@ -13186,9 +13181,9 @@ h5 {
         .nav-secondary__main__links li a {
           text-decoration: none; }
           .nav-secondary__main__links li a:visited, .nav-secondary__main__links li a:link {
-            color: #747474;
+            color: #1d2225;
             transition: color 0.3s;
-            font-weight: 600; }
+            font-weight: 400; }
           .nav-secondary__main__links li a:hover {
             color: #4d8eff; }
           .nav-secondary__main__links li a.current {
