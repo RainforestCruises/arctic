@@ -71,7 +71,7 @@ while (have_posts()) :
 
   $args = array(
     'lowestPrice' => $lowestPrice,
-    'cruiseData' => $cruise_data,
+    'cruise_data' => $cruise_data,
     'productType' => 'Cruise',
     'currentYear' => $currentYear,
     'currentMonth' => $currentMonth,
@@ -94,79 +94,21 @@ while (have_posts()) :
   <!-- Product Page Container -->
   <main class="product-page">
 
-    <!-- Hero -->
-    <section class="product-page__section-hero" id="top">
-      <?php
-      get_template_part('template-parts/content', 'product-hero', $args);
-      ?>
-    </section>
-
-
-    <!-- Overview Content -->
-    <section class="product-page__section-overview" id="overview">
-      <?php
-      get_template_part('template-parts/content', 'product-overview', $args);
-      ?>
-    </section>
-
-    <!-- Itineraries Content -->
-    <section class="product-page__section-itineraries" id="itinerary">
-      <?php
-      get_template_part('template-parts/content', 'product-itineraries', $args);
-      ?>
-    </section>
-
-    <!-- Accommodations Content -->
-    <section class="product-page__section-accommodation" id="departures">
-      <h2 class="page-divider page-divider--padding u-margin-bottom-medium">
-        Accommodations
-      </h2>
-      <?php
-      get_template_part('template-parts/content', 'product-explore', $args); //common areas gallery
-      ?>
-      <?php
-      get_template_part('template-parts/content', 'product-cabins', $args);
-      ?>
-      <?php
-      get_template_part('template-parts/content', 'product-technical', $args);
-      ?>
-    </section>
-
-
-    <!-- Reviews -->
-    <?php if (get_field('show_testimonials') == true) { ?>
-      <section class="product-page__section-reviews">
+        <!-- Hero -->
         <?php
-        get_template_part('template-parts/content', 'product-reviews', $args);
-        ?>
-      </section>
-    <?php } ?>
+    get_template_part('template-parts/content', 'cruise-hero', $args);
+    ?>
 
-    <!-- Related Travel -->
-    <section class="product-page__section-related">
-      <?php
-      get_template_part('template-parts/content', 'product-related', $args);
-      ?>
-    </section>
-
+    <!-- Overview -->
+    <?php
+    get_template_part('template-parts/content', 'cruise-overview', $args);
+    ?>
+   
 
 
 
   </main>
 
-  <!-- Date Search Form -->
-  <form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="search-form">
-
-    <!-- Direct to function within functions.php -->
-    <input type="hidden" name="testfield" id="testfield" value="test">
-    <input type="hidden" name="form-itinerary" id="form-itinerary" value="">
-    <input type="hidden" name="form-year" id="form-year" value="">
-    <input type="hidden" name="form-month" id="form-month" value="">
-
-    <input type="hidden" name="action" value="productsearch">
-    <input type="hidden" name="productId" value="<?php echo get_the_ID() ?>">
-
-  </form>
 
 
   

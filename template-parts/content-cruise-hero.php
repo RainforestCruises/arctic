@@ -1,11 +1,23 @@
 <?php
+$hero_image = get_field('hero_image');
 $productTitle = get_the_title();
 $breadcrumb = get_field('breadcrumb');
-$cruisePost = get_field('ship');
 
-$dayCount = 5;
 
-$hero_image = get_field('hero_image');
+
+$charter_view = false;
+$charter_available = false;
+$charter_only = false;
+if ($args['productType'] == 'Cruise') {
+    $charter_view = $args['charter_view'];
+    $charter_available = $args['charter_available'];
+    $charter_only = $args['charter_only'];
+}
+
+
+$itineraryCount = count($args['cruise_data']['Itineraries']);
+$images = get_field('highlight_gallery');
+
 ?>
 
 <section class="product-hero" id="top">
@@ -42,6 +54,8 @@ $hero_image = get_field('hero_image');
                     endif; ?>
 
                 </ol>
+
+                <!-- Title and Navigation -->
                 <div>
                     <!-- H1 Title / Subtitle -->
                     <div class="product-hero__content__top__content__title-group">
@@ -78,7 +92,7 @@ $hero_image = get_field('hero_image');
                             </li>
 
                             <li class="product-hero__content__top__content__nav__list__item">
-                                <a href="#itinerary" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Itinerary</a>
+                                <a href="#cruise" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Itineraries</a>
                             </li>
                             <li class="product-hero__content__top__content__nav__list__item ">
                                 <a href="#departures" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Departures</a>
@@ -99,11 +113,32 @@ $hero_image = get_field('hero_image');
                             </svg></button>
                     </div>
                 </div>
-
-
+                <!-- Mobile - Expand Gallery Button-->
+                <?php if ($images) : ?>
+                    <div class="product-hero__content__top__content__gallery-expand" id="gallery-expand-button">
+                        Photos
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
 
+        <!-- Gallery  -->
+        <div class="product-hero__content__gallery">
+
+            <div class="product-hero__content__gallery__slick" id="product-gallery">
+                <?php
+
+                if ($images) : ?>
+                    <?php foreach ($images as $image) : ?>
+                        <div class="product-hero__content__gallery__slick__item">
+                            <a href="<?php echo esc_url($image['url']); ?>">
+                                <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        </div>
 
         <!-- Bottom Section -->
         <div class="product-hero__content__bottom">
@@ -156,10 +191,10 @@ $hero_image = get_field('hero_image');
                                 </div>
                                 <div class="product-hero__content__bottom__content__info-group__attributes__item__data__text">
                                     <div class="sub-attribute">
-                                        Duration
+                                        <?php echo $itineraryCount ?> Itineraries
                                     </div>
-                                 
-                                    <?php echo $args['itinerary_data']['LengthInDays'] . ' Days'?>
+
+                                    <?php echo itineraryRange($args['cruise_data'], " - ") . " Days"; ?>
 
                                 </div>
 

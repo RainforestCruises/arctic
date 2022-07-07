@@ -1,9 +1,9 @@
 <?php
 wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', array('jquery'), false, true);
-wp_enqueue_script('page-itinerary', get_template_directory_uri() . '/js/page-itinerary.js', array('jquery'), false, true);
+wp_enqueue_script('page-product', get_template_directory_uri() . '/js/page-product.js', array('jquery'), false, true);
 $templateUrl = get_template_directory_uri();
 wp_localize_script(
-  'page-itinerary',
+  'page-product',
   'page_vars',
   array(
     'templateUrl' =>  $templateUrl
@@ -19,18 +19,6 @@ while (have_posts()) :
 
 
   $cruise_data = get_field('cruise_data');
-  $itinerary_id = get_field('itinerary_id');
-
-  $itineraries = $cruise_data['Itineraries'];
-  $itinerary_data;
-
-  //Get Itinerary from cruise data
-  foreach ($itineraries as $i) {
-    if ($i['Id'] == $itinerary_id) {
-      $itinerary_data = $i;
-    }
-  }
-
 
   //Time Variables
   $currentYear = date("Y");
@@ -68,20 +56,23 @@ while (have_posts()) :
   $lowestPrice = lowest_property_price($cruise_data, 0, $currentYear, true);
 
 
-
+ 
   //Get Deals
   $dealPosts = listDealsForProduct(get_post(), $charter_view);
 
   $hasDeals = (count($dealPosts) > 0) ? true : false;
 
-  console_log($itinerary_data);
+  console_log($dealPosts);
+
+
+
+
 
 
   $args = array(
     'lowestPrice' => $lowestPrice,
     'cruiseData' => $cruise_data,
-    'itinerary_data' => $itinerary_data,
-    'productType' => 'Itinerary',
+    'productType' => 'Cruise',
     'currentYear' => $currentYear,
     'currentMonth' => $currentMonth,
     'years' => $years,
@@ -101,40 +92,84 @@ while (have_posts()) :
 ?>
 
   <!-- Product Page Container -->
-  <main class="itinerary-page">
+  <main class="product-page">
 
     <!-- Hero -->
-    <?php
-    get_template_part('template-parts/content', 'itinerary-hero', $args);
-    ?>
-
-    <!-- Overview -->
-    <?php
-    get_template_part('template-parts/content', 'itinerary-overview', $args);
-    ?>
+    <section class="product-page__section-hero" id="top">
+      <?php
+      get_template_part('template-parts/content', 'product-hero', $args);
+      ?>
+    </section>
 
 
-    <!-- Days -->
-    <?php
-    get_template_part('template-parts/content', 'itinerary-days', $args);
-    ?>
+    <!-- Overview Content -->
+    <section class="product-page__section-overview" id="overview">
+      <?php
+      get_template_part('template-parts/content', 'product-overview', $args);
+      ?>
+    </section>
+
+    <!-- Itineraries Content -->
+    <section class="product-page__section-itineraries" id="itinerary">
+      <?php
+      get_template_part('template-parts/content', 'product-itineraries', $args);
+      ?>
+    </section>
+
+    <!-- Accommodations Content -->
+    <section class="product-page__section-accommodation" id="departures">
+      <h2 class="page-divider page-divider--padding u-margin-bottom-medium">
+        Accommodations
+      </h2>
+      <?php
+      get_template_part('template-parts/content', 'product-explore', $args); //common areas gallery
+      ?>
+      <?php
+      get_template_part('template-parts/content', 'product-cabins', $args);
+      ?>
+      <?php
+      get_template_part('template-parts/content', 'product-technical', $args);
+      ?>
+    </section>
 
 
-    <!-- Departures -->
-    <?php
-    get_template_part('template-parts/content', 'itinerary-departures', $args);
-    ?>
+    <!-- Reviews -->
+    <?php if (get_field('show_testimonials') == true) { ?>
+      <section class="product-page__section-reviews">
+        <?php
+        get_template_part('template-parts/content', 'product-reviews', $args);
+        ?>
+      </section>
+    <?php } ?>
 
-    <!-- Requirements -->
-    <?php
-    get_template_part('template-parts/content', 'itinerary-requirements', $args);
-    ?>
+    <!-- Related Travel -->
+    <section class="product-page__section-related">
+      <?php
+      get_template_part('template-parts/content', 'product-related', $args);
+      ?>
+    </section>
+
 
 
 
   </main>
 
+  <!-- Date Search Form -->
+  <form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="search-form">
 
+    <!-- Direct to function within functions.php -->
+    <input type="hidden" name="testfield" id="testfield" value="test">
+    <input type="hidden" name="form-itinerary" id="form-itinerary" value="">
+    <input type="hidden" name="form-year" id="form-year" value="">
+    <input type="hidden" name="form-month" id="form-month" value="">
+
+    <input type="hidden" name="action" value="productsearch">
+    <input type="hidden" name="productId" value="<?php echo get_the_ID() ?>">
+
+  </form>
+
+
+  
   <!-- Deals Modal -->
   <?php
   if ($hasDeals == true) {

@@ -400,25 +400,6 @@
             "mime_types": ""
         },
         {
-            "key": "field_62b21d85ee762",
-            "label": "Top Snippet",
-            "name": "top_snippet",
-            "type": "textarea",
-            "instructions": "To appear in result item cards, and as the sub-text to the product page title",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": 250,
-            "rows": "",
-            "new_lines": ""
-        },
-        {
             "key": "field_62b21d8610fdd",
             "label": "Highlight Gallery",
             "name": "highlight_gallery",
@@ -449,11 +430,11 @@
             "mime_types": ""
         },
         {
-            "key": "field_62b4db8af13d9",
-            "label": "Transport Option",
-            "name": "transport_option",
-            "type": "select",
-            "instructions": "",
+            "key": "field_62b21d85ee762",
+            "label": "Top Snippet",
+            "name": "top_snippet",
+            "type": "textarea",
+            "instructions": "To appear in result item cards, and as the sub-text to the product page title",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -461,47 +442,18 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "fly-fly": "fly-fly",
-                "fly-cruise": "fly-cruise",
-                "cruise-cruise": "cruise-cruise"
-            },
-            "default_value": "fly-fly",
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "return_format": "value",
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
-            "key": "field_62b21d862ebfa",
-            "label": "Overview Content",
-            "name": "overview_content",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "admin_column_enabled": 0,
-            "admin_column_post_types": "",
-            "admin_column_taxonomies": "",
             "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 0,
-            "delay": 0
+            "placeholder": "",
+            "maxlength": 250,
+            "rows": "",
+            "new_lines": ""
         },
         {
             "key": "field_62b21d8632873",
             "label": "Highlights",
             "name": "highlights",
             "type": "repeater",
-            "instructions": "Enter ship highlights",
+            "instructions": "3-4 highlights that appear at beginning of content",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -550,6 +502,54 @@
                     "maxlength": ""
                 }
             ]
+        },
+        {
+            "key": "field_62b4db8af13d9",
+            "label": "Transport Option",
+            "name": "transport_option",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "fly-fly": "fly-fly",
+                "fly-cruise": "fly-cruise",
+                "cruise-cruise": "cruise-cruise"
+            },
+            "default_value": "fly-fly",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_62b21d862ebfa",
+            "label": "Overview Content",
+            "name": "overview_content",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "admin_column_enabled": 0,
+            "admin_column_post_types": "",
+            "admin_column_taxonomies": "",
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_62b611c8ec798",
@@ -1335,5 +1335,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1656445897
+    "modified": 1657226779
 }

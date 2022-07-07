@@ -425,8 +425,8 @@ jQuery(document).ready(function ($) {
     initialSlide: 0,
     focusOnSelect: true,
     arrows: true,
-    prevArrow: '<button class="btn-circle btn-circle--small btn-circle--noborder btn-circle--left product-hero__gallery__slick__btn--left"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg></button>',
-    nextArrow: '<button class="btn-circle btn-circle--small btn-circle--noborder btn-circle--right product-hero__gallery__slick__btn--right"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    prevArrow: '<button class="btn-circle btn-circle--small btn-circle--noborder btn-circle--left product-hero__content__gallery__slick__btn--left"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg></button>',
+    nextArrow: '<button class="btn-circle btn-circle--small btn-circle--noborder btn-circle--right product-hero__content__gallery__slick__btn--right"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
     responsive: [
       {
         breakpoint: 1375,
@@ -622,7 +622,7 @@ jQuery(document).ready(function ($) {
   //Product Gallery, Itinerary Maps, Deckplans
   //Gallery
   $('#product-gallery').magnificPopup({
-    delegate: '.slick-slide:not(.slick-cloned) .product-hero__gallery__slick__item a',
+    delegate: '.slick-slide:not(.slick-cloned) .cruise-hero__content__gallery__slick__item a',
     type: 'image',
     navigateByImgClick: true,
     gallery: {
@@ -637,7 +637,7 @@ jQuery(document).ready(function ($) {
     var gallery = $('#product-gallery');
 
     $(gallery).magnificPopup({
-      delegate: '.slick-slide:not(.slick-cloned) .product-hero__gallery__slick__item a',
+      delegate: '.slick-slide:not(.slick-cloned) .cruise-hero__content__gallery__slick__item a',
       type: 'image',
       gallery: {
         enabled: true,

@@ -17,7 +17,8 @@
 
 @import "pages/home";
 @import "pages/product";
-@import "pages/itinerary";
+@import "pages/itinerary"; //empty
+@import "pages/cruise"; //empty
 
 @import "pages/search";
 @import "pages/destination";
@@ -37,15 +38,24 @@
 @import "components/deals/deals-featured";
 @import "components/deals/deals-destinations";
 
-//itinerary 
-@import "components/itinerary/itinerary-hero";
-@import "components/itinerary/itinerary-overview";
-@import "components/itinerary/itinerary-days";
-@import "components/itinerary/itinerary-departures";
-@import "components/itinerary/itinerary-requirements";
 
-//product 
-@import "components/product/product-hero";
+//products (generic)
+@import "components/products/product-hero";
+
+//itinerary 
+//@import "components/products/itinerary/itinerary-hero";
+@import "components/products/itinerary/itinerary-overview";
+@import "components/products/itinerary/itinerary-days";
+@import "components/products/itinerary/itinerary-departures";
+@import "components/products/itinerary/itinerary-requirements";
+
+//cruise 
+//@import "components/products/cruise/cruise-hero";
+@import "components/products/cruise/cruise-overview";
+@import "components/products/cruise/cruise-itineraries";
+
+//product (old)
+//@import "components/product/product-hero";
 @import "components/product/product-related";
 @import "components/product/product-overview";
 @import "components/product/product-itinerary"; 
