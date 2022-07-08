@@ -103,7 +103,7 @@ function create_post_type_rfc_cruises()
                 'singular_name' => __('Cruise'),
             ),
             'public' => true,
-            'rewrite' => array('slug' => 'cruises'),
+            'rewrite' => array('slug' => 'ships'),
             'supports' => array(
                 'title',
             )
@@ -234,6 +234,26 @@ function create_post_type_rfc_experiences()
     );
 }
 add_action('init', 'create_post_type_rfc_experiences');
+
+// Custom Post Type - Amenities
+function create_post_type_rfc_amenities()
+{
+    register_post_type(
+        'rfc_amenities',
+        array(
+            'labels' => array(
+                'name' => __('Amenities'),
+                'singular_name' => __('Amenity'),
+            ),
+            'public' => true,
+            'rewrite' => array('slug' => 'amenities'),
+            'supports' => array(
+                'title',
+            )
+        )
+    );
+}
+add_action('init', 'create_post_type_rfc_amenities');
 
 // Custom Post Type - activities
 function create_post_type_rfc_activities()

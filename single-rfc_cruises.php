@@ -56,7 +56,7 @@ while (have_posts()) :
   $lowestPrice = lowest_property_price($cruise_data, 0, $currentYear, true);
 
 
- 
+
   //Get Deals
   $dealPosts = listDealsForProduct(get_post(), $charter_view);
 
@@ -94,8 +94,8 @@ while (have_posts()) :
   <!-- Product Page Container -->
   <main class="product-page">
 
-        <!-- Hero -->
-        <?php
+    <!-- Hero -->
+    <?php
     get_template_part('template-parts/content', 'cruise-hero', $args);
     ?>
 
@@ -103,7 +103,7 @@ while (have_posts()) :
     <?php
     get_template_part('template-parts/content', 'cruise-overview', $args);
     ?>
-   
+
 
 
 
@@ -111,7 +111,7 @@ while (have_posts()) :
 
 
 
-  
+
   <!-- Deals Modal -->
   <?php
   if ($hasDeals == true) {

@@ -90,7 +90,12 @@ $images = get_field('highlight_gallery');
                             <li class="product-hero__content__top__content__nav__list__item current">
                                 <a href="#overview" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Overview</a>
                             </li>
-
+                            <li class="product-hero__content__top__content__nav__list__item">
+                                <a href="#cruise" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Cabins</a>
+                            </li>
+                            <li class="product-hero__content__top__content__nav__list__item">
+                                <a href="#cruise" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Amenities</a>
+                            </li>
                             <li class="product-hero__content__top__content__nav__list__item">
                                 <a href="#cruise" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Itineraries</a>
                             </li>
@@ -233,9 +238,9 @@ $images = get_field('highlight_gallery');
                                 </div>
                                 <div class="product-hero__content__bottom__content__info-group__attributes__item__data__text">
                                     <div class="sub-attribute">
-                                        Departing From
+                                        Service Level
                                     </div>
-                                    Ushuaia, Ar
+                                    Luxury
                                 </div>
 
                             </div>

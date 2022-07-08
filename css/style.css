@@ -4316,11 +4316,7 @@ h5 {
       width: 100%;
       display: grid;
       grid-template-columns: 55% 45%;
-      grid-template-rows: 30rem min-content;
       position: relative; }
-      @media only screen and (max-width: 62.5em) {
-        .cruise-overview__content__grid {
-          grid-template-rows: min-content; } }
       @media only screen and (max-width: 50em) {
         .cruise-overview__content__grid {
           grid-template-columns: 100%; } }
@@ -4333,12 +4329,10 @@ h5 {
         left: 0;
         background-color: #e6e6e6; }
       .cruise-overview__content__grid__overview {
-        grid-row: 1 / -1;
         padding-top: 3rem;
         padding-right: 4rem; }
         @media only screen and (max-width: 50em) {
           .cruise-overview__content__grid__overview {
-            grid-row: auto;
             padding-right: 0rem; } }
         .cruise-overview__content__grid__overview__highlights {
           padding-bottom: 1.5rem; }
@@ -4353,31 +4347,6 @@ h5 {
                 font-weight: 700;
                 color: #1d2225 !important;
                 margin-right: 2rem; }
-        .cruise-overview__content__grid__overview__transport {
-          position: relative;
-          padding-bottom: 2rem;
-          padding-top: 2rem; }
-          .cruise-overview__content__grid__overview__transport::before {
-            content: "";
-            width: 100%;
-            height: 1px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: #e6e6e6; }
-          .cruise-overview__content__grid__overview__transport__title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #1d2225; }
-            .cruise-overview__content__grid__overview__transport__title span {
-              margin-left: 0.5rem;
-              color: #9ea0a4; }
-          .cruise-overview__content__grid__overview__transport__snippet {
-            font-size: 1.6rem; }
-          .cruise-overview__content__grid__overview__transport__cta {
-            width: 100%;
-            display: flex;
-            justify-content: flex-end; }
         .cruise-overview__content__grid__overview__text {
           padding-bottom: 5rem;
           padding-top: 3rem;
@@ -4390,105 +4359,30 @@ h5 {
             top: 0;
             left: 0;
             background-color: #e6e6e6; }
-      .cruise-overview__content__grid__map-area {
-        position: relative; }
-        @media only screen and (max-width: 62.5em) {
-          .cruise-overview__content__grid__map-area {
-            padding-top: 3rem; } }
-        @media only screen and (max-width: 50em) {
-          .cruise-overview__content__grid__map-area {
-            padding-top: 0rem;
-            padding-bottom: 5rem; } }
-        .cruise-overview__content__grid__map-area img {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          border-radius: 1rem;
-          border: 1px solid #e6e6e6;
-          box-shadow: 0 2rem 2rem -1rem rgba(0, 0, 0, 0.25);
-          object-fit: contain;
-          width: 100%;
-          max-width: 50rem;
-          height: auto; }
-          @media only screen and (max-width: 62.5em) {
-            .cruise-overview__content__grid__map-area img {
-              position: relative; } }
-      .cruise-overview__content__grid__ship-area {
-        padding-top: 5rem;
-        padding-bottom: 5rem;
-        min-height: 20rem;
-        position: relative; }
-        @media only screen and (max-width: 62.5em) {
-          .cruise-overview__content__grid__ship-area {
-            grid-column: 1 / -1; }
-            .cruise-overview__content__grid__ship-area::before {
-              content: "";
-              width: 100%;
-              height: 1px;
-              position: absolute;
-              top: 0;
-              left: 0;
-              background-color: #e6e6e6; } }
-        .cruise-overview__content__grid__ship-area__ship {
-          display: grid;
-          grid-template-columns: min-content 1fr;
-          padding: 2rem 2.5rem;
-          width: 100%;
-          margin-bottom: 4rem;
-          border: 1px solid #e6e6e6;
-          border-radius: 1rem; }
-          .cruise-overview__content__grid__ship-area__ship:link, .cruise-overview__content__grid__ship-area__ship:visited {
-            text-decoration: none;
-            color: #747474; }
-          .cruise-overview__content__grid__ship-area__ship__avatar {
-            display: flex;
-            align-items: center; }
-            .cruise-overview__content__grid__ship-area__ship__avatar img {
-              height: 10rem;
-              width: 10rem;
-              border-radius: 50%; }
-          .cruise-overview__content__grid__ship-area__ship__info {
-            margin-left: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; }
-            .cruise-overview__content__grid__ship-area__ship__info__name__title {
-              font-size: 1.8rem;
-              font-weight: 700;
-              color: #1d2225; }
-            .cruise-overview__content__grid__ship-area__ship__info__name__sub {
-              font-size: 1.3rem; }
-            .cruise-overview__content__grid__ship-area__ship__info__cta {
-              display: flex;
-              justify-content: flex-end;
-              font-size: 1.4rem;
-              font-weight: 700;
-              color: #1d2225; }
-        .cruise-overview__content__grid__ship-area__title {
-          font-size: 1.8rem;
-          line-height: 2rem;
-          font-weight: 700;
-          color: #1d2225; }
-          .cruise-overview__content__grid__ship-area__title__sub {
-            font-size: 1.2rem;
-            font-weight: 400;
-            color: #747474; }
-        .cruise-overview__content__grid__ship-area__slider {
-          margin-top: 3rem; }
-          .cruise-overview__content__grid__ship-area__slider .slick-slide {
-            margin-right: 2rem; }
-          .cruise-overview__content__grid__ship-area__slider__btn-left {
-            transform: translateY(-50%);
-            position: absolute;
-            top: -5rem;
-            right: calc(4rem);
-            z-index: 20; }
-          .cruise-overview__content__grid__ship-area__slider__btn-right {
-            transform: translateY(-50%);
-            position: absolute;
-            top: -5rem;
-            right: calc(0rem);
-            z-index: 20; }
+      .cruise-overview__content__grid__secondary {
+        margin-top: 1.5rem; }
+
+.specs {
+  border: 1px solid #e6e6e6;
+  padding: 2rem;
+  border-radius: 1rem; }
+  .specs__title {
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 1.5rem;
+    font-weight: 700;
+    color: #1d2225;
+    font-size: 1.8rem; }
+  .specs__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding-top: 2rem; }
+    .specs__grid__item {
+      font-size: 1.4rem; }
+      .specs__grid__item__title {
+        color: #1d2225;
+        font-weight: 700;
+        padding-bottom: .5rem; }
 
 .product-related {
   width: 100%;
