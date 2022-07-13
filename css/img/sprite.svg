@@ -273,6 +273,12 @@
                 <polyline fill="none" stroke="currentColor" points="6,26 4,20 16,13 28,20 26,26 "></polyline>
             </g>
         </symbol>
+        <symbol id="icon-shield" viewBox="0 0 32 32">
+            <title>shield</title>
+            <g class="nc-icon-wrapper">
+                <path d="M30.275,5.038l-14-4a1.008,1.008,0,0,0-.55,0l-14,4A1,1,0,0,0,1,6C1,25.479,15.517,30.89,15.664,30.941a.986.986,0,0,0,.672,0,21.293,21.293,0,0,0,7.383-5.122C27.041,22.38,31,16.148,31,6A1,1,0,0,0,30.275,5.038ZM20.224,21,16,18.779,11.776,21l.807-4.7L9.166,12.966l4.722-.686L16,8l2.112,4.28,4.722.686L19.417,16.3Z" fill="currentColor" stroke="none"></path>
+            </g>
+        </symbol>
         <symbol id="icon-send" viewBox="0 0 32 32">
             <title>send</title>
             <g class="nc-icon-wrapper">

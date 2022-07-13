@@ -62,7 +62,7 @@ while (have_posts()) :
 
   $hasDeals = (count($dealPosts) > 0) ? true : false;
 
-  console_log($dealPosts);
+  console_log($cruise_data);
 
 
 
@@ -96,15 +96,18 @@ while (have_posts()) :
 
     <!-- Hero -->
     <?php
-    get_template_part('template-parts/content', 'cruise-hero', $args);
+    get_template_part('template-parts/cruise/content', 'cruise-hero', $args);
     ?>
 
     <!-- Overview -->
     <?php
-    get_template_part('template-parts/content', 'cruise-overview', $args);
+    get_template_part('template-parts/cruise/content', 'cruise-overview', $args);
     ?>
 
-
+   <!-- Cabins -->
+   <?php
+    get_template_part('template-parts/cruise/content', 'cruise-cabins', $args);
+    ?>
 
 
   </main>

@@ -803,14 +803,14 @@ h5 {
   height: 100%; }
 
 .cta-round-icon {
-  background-color: #4d8eff;
+  background-color: #1d2225;
   font-family: "Metropolis", sans-serif;
   color: #fff;
   border: none;
-  border-radius: 4rem;
+  border-radius: 1rem;
   font-size: 1.4rem;
-  padding: 1.4rem 2.2rem;
-  letter-spacing: 0.1rem;
+  padding: 1.4rem 2rem;
+  letter-spacing: 0rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
@@ -4316,18 +4316,11 @@ h5 {
       width: 100%;
       display: grid;
       grid-template-columns: 55% 45%;
-      position: relative; }
+      position: relative;
+      margin-bottom: 1.5rem; }
       @media only screen and (max-width: 50em) {
         .cruise-overview__content__grid {
           grid-template-columns: 100%; } }
-      .cruise-overview__content__grid::after {
-        content: "";
-        width: 100%;
-        height: 1px;
-        position: absolute;
-        bottom: 0rem;
-        left: 0;
-        background-color: #e6e6e6; }
       .cruise-overview__content__grid__overview {
         padding-top: 3rem;
         padding-right: 4rem; }
@@ -4361,28 +4354,182 @@ h5 {
             background-color: #e6e6e6; }
       .cruise-overview__content__grid__secondary {
         margin-top: 1.5rem; }
+        .cruise-overview__content__grid__secondary__cta {
+          display: flex;
+          justify-content: space-between;
+          align-items: center; }
+
+.icon-area {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1.5rem; }
 
 .specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem; }
+  .specs__item {
+    font-size: 1.4rem; }
+    .specs__item__title {
+      color: #1d2225;
+      font-weight: 700;
+      padding-bottom: 0.5rem; }
+
+.outline-panel {
   border: 1px solid #e6e6e6;
-  padding: 2rem;
-  border-radius: 1rem; }
-  .specs__title {
+  padding: 1.8rem 2rem;
+  border-radius: 1rem;
+  margin-bottom: 3rem; }
+  .outline-panel__heading {
     border-bottom: 1px solid #e6e6e6;
     padding-bottom: 1.5rem;
     font-weight: 700;
     color: #1d2225;
-    font-size: 1.8rem; }
-  .specs__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    padding-top: 2rem; }
-    .specs__grid__item {
-      font-size: 1.4rem; }
-      .specs__grid__item__title {
-        color: #1d2225;
-        font-weight: 700;
-        padding-bottom: .5rem; }
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all .3s; }
+    .outline-panel__heading__text {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #1d2225;
+      position: relative;
+      letter-spacing: 0;
+      margin-bottom: 0;
+      text-transform: capitalize; }
+    .outline-panel__heading svg {
+      transform: rotate(180deg) translateY(3px);
+      height: 2rem;
+      width: 2rem;
+      color: #1d2225;
+      transition: all 0.2s; }
+    .outline-panel__heading.closed {
+      border-bottom: 1px solid rgba(230, 230, 230, 0);
+      padding-bottom: 0rem; }
+      .outline-panel__heading.closed svg {
+        transform: rotate(0deg);
+        height: 2rem;
+        width: 2rem;
+        color: #1d2225; }
+
+.icon-circle {
+  position: relative;
+  background-color: #f8f8f8;
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  margin: 1rem .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; }
+  .icon-circle:hover .tooltiptext {
+    visibility: visible; }
+  .icon-circle .tooltiptext {
+    box-sizing: border-box;
+    visibility: hidden;
+    width: max-content2rem;
+    background-color: #f8f8f8;
+    border: 1px solid #c2c6c9;
+    color: #1d2225;
+    text-align: center;
+    border-radius: 6px;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    /* Position the tooltip */
+    position: absolute;
+    bottom: -3.5rem;
+    z-index: 1; }
+  .icon-circle svg {
+    height: 2rem;
+    width: 2rem;
+    color: #1d2225; }
+
+.cta-link-icon {
+  display: flex;
+  justify-content: space-between;
+  color: #1d2225;
+  text-decoration: none;
+  font-size: 1.4rem;
+  white-space: no-wrap;
+  transition: all .2s; }
+  .cta-link-icon svg {
+    margin-left: 1rem;
+    height: 2rem;
+    width: 2rem;
+    color: currentColor; }
+  .cta-link-icon:hover {
+    color: #347fff; }
+
+.cruise-cabins {
+  display: flex;
+  justify-content: center;
+  padding: 0 6rem; }
+  @media only screen and (max-width: 37.5em) {
+    .cruise-cabins {
+      padding: 0 3rem; } }
+  .cruise-cabins__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: calc(112rem + 12rem);
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+    position: relative; }
+    .cruise-cabins__content::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      top: -3rem;
+      left: 0;
+      background-color: #e6e6e6; }
+    .cruise-cabins__content__title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #1d2225; }
+    .cruise-cabins__content__slider {
+      width: 100%;
+      margin-top: 2rem; }
+      .cruise-cabins__content__slider .slick-slide {
+        margin-right: 2rem; }
+
+.cabins-card {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  height: 33rem; }
+  .cabins-card:link, .cabins-card:visited {
+    text-decoration: none; }
+  .cabins-card__image {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    .cabins-card__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+  .cabins-card__content {
+    z-index: 2;
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; }
+    .cabins-card__content__title-section {
+      color: #fff; }
+      .cabins-card__content__title-section__sub {
+        font-size: 1.2rem; }
+      .cabins-card__content__title-section__title {
+        font-size: 1.8rem;
+        font-weight: 700; }
 
 .product-related {
   width: 100%;

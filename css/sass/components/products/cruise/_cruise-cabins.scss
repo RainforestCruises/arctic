@@ -1,0 +1,91 @@
+.cruise-cabins {
+    @include flexBlock;
+
+    &__content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: $page-width;
+        margin-top: 3rem;
+        margin-bottom: 6rem;
+
+        position: relative;
+        &::after {
+            content: "";
+            width: 100%;
+            height: 1px;
+            position: absolute;
+            top: -3rem;
+            left: 0;
+            background-color: $color-grey-light-1a;
+        }
+
+        &__title {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: $color-primary;
+        }
+
+        &__slider {
+            width: 100%;
+            margin-top: 2rem;
+            & .slick-slide {
+                margin-right: 2rem;
+            }
+        }
+
+        
+    }
+} 
+
+//COMPONENTS
+
+.cabins-card {
+    
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    height: 33rem;
+    &:link,
+    &:visited  {
+        text-decoration: none;
+    }
+
+    &__image {
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__content {
+        z-index: 2;
+        padding: 2rem 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &__title-section {
+            color: $color-white;
+
+            &__sub {
+                font-size: 1.2rem;
+            }
+
+            &__title {
+                font-size: 1.8rem;
+                font-weight: 700;
+            }
+        }
+
+     
+    }
+}

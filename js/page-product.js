@@ -3,6 +3,35 @@ jQuery(document).ready(function ($) {
   var currentYear = new Date().getFullYear();
   var body = $('body');
 
+  //NEW --------------
+
+  //Search Filters expand/hide
+  $(".outline-panel__heading").on("click", function (e) {
+    e.preventDefault();
+    let $this = $(this);
+    $this.parent().find('.outline-panel__content').slideToggle(350);
+    $this.parent().find('.outline-panel__heading').toggleClass('closed');
+  });
+
+  //Arctic Sliders
+  $('#cabins-slider').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+
+    arrows: true,
+    prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-overview__content__grid__ship-area__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    nextArrow: '<button class="btn-scroll itinerary-overview__content__grid__ship-area__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+
+        }
+      }
+    ]
+  });
+
 
   //MODALS ---------------------
   //Contact Modal (generic)

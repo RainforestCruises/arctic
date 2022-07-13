@@ -94,7 +94,7 @@ $images = get_field('highlight_gallery');
                                 <a href="#cruise" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Cabins</a>
                             </li>
                             <li class="product-hero__content__top__content__nav__list__item">
-                                <a href="#cruise" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Amenities</a>
+                                <a href="#cruise" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Explore</a>
                             </li>
                             <li class="product-hero__content__top__content__nav__list__item">
                                 <a href="#cruise" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Itineraries</a>
@@ -115,7 +115,8 @@ $images = get_field('highlight_gallery');
                             </svg>
                             <svg class="btn-circle--arrow-animate">
                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-arrow-down"></use>
-                            </svg></button>
+                            </svg>
+                        </button>
                     </div>
                 </div>
                 <!-- Mobile - Expand Gallery Button-->
@@ -172,8 +173,8 @@ $images = get_field('highlight_gallery');
 
                         </div>
 
+                        <!-- Inquire CTA Button -->
                         <div class="product-hero__content__bottom__content__info-group__info__cta">
-
                             <button class="cta-round-icon " id="nav-page-cta">
                                 Inquire
                                 <svg>
