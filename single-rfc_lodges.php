@@ -57,7 +57,7 @@ while (have_posts()) :
     <!-- Hero -->
     <section class="product-page__section-hero" id="top">
       <?php
-      get_template_part('template-parts/content', 'product-hero', $args);
+      get_template_part('template-parts/product/content', 'product-hero', $args);
       ?>
     </section>
 
@@ -65,14 +65,14 @@ while (have_posts()) :
     <!-- Overview Content -->
     <section class="product-page__section-overview" id="overview">
       <?php
-      get_template_part('template-parts/content', 'product-overview', $args);
+      get_template_part('template-parts/product/content', 'product-overview', $args);
       ?>
     </section>
 
     <!-- Itineraries Content -->
     <section class="product-page__section-itineraries" id="itineraries">
       <?php
-      get_template_part('template-parts/content', 'product-itineraries', $args);
+      get_template_part('template-parts/product/content', 'product-itineraries', $args);
       ?>
     </section>
 
@@ -82,13 +82,13 @@ while (have_posts()) :
         Accommodations
       </h2>
       <?php
-      get_template_part('template-parts/content', 'product-explore', $args); //common areas gallery
+      get_template_part('template-parts/product/content', 'product-explore', $args); //common areas gallery
       ?>
       <?php
-      get_template_part('template-parts/content', 'product-cabins', $args);
+      get_template_part('template-parts/product/content', 'product-cabins', $args);
       ?>
       <?php
-      get_template_part('template-parts/content', 'product-technical', $args);
+      get_template_part('template-parts/product/content', 'product-technical', $args);
       ?>
     </section>
 
@@ -97,7 +97,7 @@ while (have_posts()) :
     <?php if (get_field('show_testimonials') == true) : ?>
       <section class="product-page__section-reviews">
         <?php
-        get_template_part('template-parts/content', 'product-reviews', $args);
+        get_template_part('template-parts/product/content', 'product-reviews', $args);
         ?>
       </section>
     <?php endif; ?>
@@ -106,7 +106,7 @@ while (have_posts()) :
 
     <section class="product-page__section-related">
       <?php
-      get_template_part('template-parts/content', 'product-related', $args);
+      get_template_part('template-parts/product/content', 'product-related', $args);
       ?>
     </section>
 
@@ -122,24 +122,24 @@ endwhile;
     <!-- Deals Modal -->
     <?php
   if ($hasDeals == true) {
-    get_template_part('template-parts/content', 'product-deals-modal', $args);
+    get_template_part('template-parts/product/content', 'product-deals-modal', $args);
   }
   ?>
   <!-- Contact Modal -->
   <?php
-  get_template_part('template-parts/content', 'shared-contact-modal', $args);
+  get_template_part('template-parts/product/content', 'shared-contact-modal', $args);
   ?>
 
   <!-- Prices Extra -->
   <?php
-  get_template_part('template-parts/content', 'product-prices-extra', $args);
+  get_template_part('template-parts/product/content', 'product-prices-extra', $args);
   ?>
 
   <!-- Notification Message-->
   <?php
   $show_notification = get_field('show_notification');
   if ($show_notification) :
-    get_template_part('template-parts/content', 'product-notification', $args);
+    get_template_part('template-parts/product/content', 'product-notification', $args);
   endif;
   ?>
 

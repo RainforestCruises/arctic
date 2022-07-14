@@ -190,7 +190,7 @@ while (have_posts()) :
   </div>
   <div class="travel-guide-newsletter">
     <?php
-    get_template_part('template-parts/content', 'shared-newsletter');
+    get_template_part('template-parts/shared/content', 'shared-newsletter');
     ?>
 
   </div>

@@ -50,8 +50,7 @@ $cruise_data = $args['cruiseData'];
                         $cabinCountLabel = $cabins[$cabinCount]['CabinCountLabel'] . ' Cabin';
                     } else {
                         $cabinCountLabel = $cabins[$cabinCount]['CabinCountLabel'] . ' Cabins';
-                    }
-                    
+                    }                
                 }
             }
             ?>

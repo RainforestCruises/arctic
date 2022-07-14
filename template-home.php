@@ -25,7 +25,7 @@ $newsletter_snippet = get_field('newsletter_snippet');
   <!-- Hero -->
   <section class="home-page__section-hero" id="top">
     <?php
-    get_template_part('template-parts/content', 'home-hero');
+    get_template_part('template-parts/home/content', 'home-hero');
     ?>
 
   </section>
@@ -33,14 +33,14 @@ $newsletter_snippet = get_field('newsletter_snippet');
   <!-- Arctic Newest Cruises  -->
   <section class="home-page__section-intro" id="intro">
     <?php
-    get_template_part('template-parts/content', 'home-arctic-newest');
+    get_template_part('template-parts/home/content', 'home-arctic-newest');
     ?>
   </section>
 
   <!-- Arctic Destinations -->
   <section class="home-page__section-intro" id="intro">
     <?php
-    get_template_part('template-parts/content', 'home-arctic-destinations');
+    get_template_part('template-parts/home/content', 'home-arctic-destinations');
     ?>
   </section>
 
@@ -49,28 +49,28 @@ $newsletter_snippet = get_field('newsletter_snippet');
   <!-- Featured Cruises -->
   <section class="home-page__section-featured">
     <?php
-    get_template_part('template-parts/content', 'home-featured-cruises');
+    get_template_part('template-parts/home/content', 'home-featured-cruises');
     ?>
   </section>
 
   <!-- Featured Bucket List -->
   <section class="home-page__section-featured">
     <?php
-    get_template_part('template-parts/content', 'home-featured-bucket-list');
+    get_template_part('template-parts/home/content', 'home-featured-bucket-list');
     ?>
   </section>
 
   <!-- Testimonials -->
   <section class="home-page__section-testimonials">
     <?php
-    get_template_part('template-parts/content', 'home-testimonials');
+    get_template_part('template-parts/home/content', 'home-testimonials');
     ?>
   </section>
 
   <!-- Newsletter -->
   <section class="home-page__section-newsletter">
     <?php
-    get_template_part('template-parts/content', 'shared-newsletter');
+    get_template_part('template-parts/home/content', 'shared-newsletter');
     ?>
   </section>
 </main>

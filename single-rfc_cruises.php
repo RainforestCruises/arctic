@@ -1,9 +1,9 @@
 <?php
 wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', array('jquery'), false, true);
-wp_enqueue_script('page-product', get_template_directory_uri() . '/js/page-product.js', array('jquery'), false, true);
+wp_enqueue_script('page-cruise', get_template_directory_uri() . '/js/page-cruise.js', array('jquery'), false, true);
 $templateUrl = get_template_directory_uri();
 wp_localize_script(
-  'page-product',
+  'page-cruise',
   'page_vars',
   array(
     'templateUrl' =>  $templateUrl
@@ -118,25 +118,25 @@ while (have_posts()) :
   <!-- Deals Modal -->
   <?php
   if ($hasDeals == true) {
-    get_template_part('template-parts/content', 'product-deals-modal', $args);
+    get_template_part('template-parts/product/content', 'product-deals-modal', $args);
   }
   ?>
 
   <!-- Contact Modal -->
   <?php
-  get_template_part('template-parts/content', 'shared-contact-modal', $args);
+  get_template_part('template-parts/product/content', 'shared-contact-modal', $args);
   ?>
 
   <!-- Prices Extra -->
   <?php
-  get_template_part('template-parts/content', 'product-prices-extra', $args);
+  get_template_part('template-parts/product/content', 'product-prices-extra', $args);
   ?>
 
   <!-- Notification Message-->
   <?php
   $show_notification = get_field('show_notification');
   if ($show_notification) :
-    get_template_part('template-parts/content', 'product-notification', $args);
+    get_template_part('template-parts/product/content', 'product-notification', $args);
   endif;
   ?>
 

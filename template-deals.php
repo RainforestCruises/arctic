@@ -301,7 +301,7 @@ $posts = get_posts($args); //Stage I posts
     <!-- Newsletter -->
     <section class="home-page__section-newsletter">
         <?php
-        get_template_part('template-parts/content', 'shared-newsletter');
+        get_template_part('template-parts/shared/content', 'shared-newsletter');
         ?>
     </section>
 

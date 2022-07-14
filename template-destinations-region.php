@@ -129,13 +129,13 @@ $args = array(
 <main class="destination-page">
     <section class="destination-page__section-hero" id="top">
         <?php
-        get_template_part('template-parts/content', 'destination-hero', $args);
+        get_template_part('template-parts/destination/content', 'destination-hero', $args);
         ?>
     </section>
 
     <section class="destination-page__section-main">
         <?php
-        get_template_part('template-parts/content', 'destination-main', $args);
+        get_template_part('template-parts/destination/content', 'destination-main', $args);
         ?>
     </section>
 
@@ -143,7 +143,7 @@ $args = array(
     <!-- Cruises-->
     <section class="destination-page__section-secondary" id="cruises">
         <?php
-        get_template_part('template-parts/content', 'destination-secondary', $args);
+        get_template_part('template-parts/destination/content', 'destination-secondary', $args);
         ?>
     </section>
 
@@ -151,14 +151,14 @@ $args = array(
         <!-- Accommodations -->
         <section class="destination-page__section-accommodations" id="accommodation">
             <?php
-            get_template_part('template-parts/content', 'destination-accommodations', $args);
+            get_template_part('template-parts/destination/content', 'destination-accommodations', $args);
             ?>
         </section>
     <?php endif; ?>
     <!-- Travel Guides -->
     <section class="destination-page__section-travel-guides" id="travel-guide">
         <?php
-        get_template_part('template-parts/content', 'destination-guides', $args);
+        get_template_part('template-parts/destination/content', 'destination-guides', $args);
         ?>
     </section>
 
@@ -166,7 +166,7 @@ $args = array(
     <?php if (get_field('show_testimonials') == true) { ?>
         <section class="destination-page__section-testimonials" id="testimonials">
             <?php
-            get_template_part('template-parts/content', 'destination-testimonials', $args);
+            get_template_part('template-parts/destination/content', 'destination-testimonials', $args);
             ?>
         </section>
     <?php } ?>
@@ -174,7 +174,7 @@ $args = array(
     <!-- FAQ -->
     <section class="destination-page__section-faq" id="faq">
         <?php
-        get_template_part('template-parts/content', 'destination-faq', $args);
+        get_template_part('template-parts/destination/content', 'destination-faq', $args);
         ?>
     </section>
 
@@ -182,7 +182,7 @@ $args = array(
 
 <!-- Contact Modal -->
 <?php
-get_template_part('template-parts/content', 'shared-contact-modal', $args);
+get_template_part('template-parts/shared/content', 'shared-contact-modal', $args);
 ?>
 
 

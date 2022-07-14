@@ -828,7 +828,7 @@ h5 {
     margin-left: 0.5rem; }
 
 .cta-square-icon {
-  background-color: #4d8eff;
+  background-color: #1d2225;
   font-family: "Metropolis", sans-serif;
   color: #fff;
   border: none;
@@ -925,6 +925,38 @@ h5 {
     height: 100%;
     width: 100%;
     border: 1px solid #c2c6c9; }
+
+.btn-scroll-overlay {
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  outline: none;
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #1d2225;
+  transition: all 0.2s; }
+  .btn-scroll-overlay svg {
+    height: 1.3rem;
+    width: 1.3rem;
+    stroke: currentColor; }
+  .btn-scroll-overlay--left svg {
+    transform: rotate(180deg); }
+  .btn-scroll-overlay--up svg {
+    transform: rotate(270deg); }
+  .btn-scroll-overlay--down svg {
+    transform: rotate(90deg); }
+  .btn-scroll-overlay:hover {
+    background-color: rgba(255, 255, 255, 0.9); }
 
 .btn-pill {
   padding: 0.8rem 1.6rem;
@@ -4501,35 +4533,97 @@ h5 {
 
 .cabins-card {
   position: relative;
-  border-radius: 1rem;
-  overflow: hidden;
-  height: 33rem; }
+  display: flex !important;
+  flex-direction: column; }
   .cabins-card:link, .cabins-card:visited {
     text-decoration: none; }
-  .cabins-card__image {
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; }
-    .cabins-card__image img {
+  .cabins-card__image-slider {
+    position: relative; }
+    .cabins-card__image-slider.slick-dotted {
+      margin-bottom: 0rem; }
+    .cabins-card__image-slider .slick-slide {
+      margin-right: 0rem; }
+    .cabins-card__image-slider .slick-dots {
+      bottom: 2rem; }
+    .cabins-card__image-slider .slick-dots li {
+      margin: 0rem !important; }
+      .cabins-card__image-slider .slick-dots li button {
+        width: 12px;
+        height: 12px;
+        padding: 3px; }
+        .cabins-card__image-slider .slick-dots li button::before {
+          color: #fff; }
+    .cabins-card__image-slider .slick-arrow {
+      opacity: 0;
+      transition: opacity 0.2s; }
+    .cabins-card__image-slider:hover .slick-arrow {
+      opacity: 1; }
+    .cabins-card__image-slider img {
       width: 100%;
-      height: 100%;
-      object-fit: cover; }
+      height: 33rem;
+      object-fit: cover;
+      border-radius: 1rem;
+      overflow: hidden; }
+    .cabins-card__image-slider__btn-left {
+      transform: translateY(-50%);
+      position: absolute;
+      top: 50%;
+      left: calc(1rem);
+      z-index: 20; }
+    .cabins-card__image-slider__btn-right {
+      transform: translateY(-50%);
+      position: absolute;
+      top: 50%;
+      right: calc(1rem);
+      z-index: 20; }
   .cabins-card__content {
-    z-index: 2;
-    padding: 2rem 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; }
-    .cabins-card__content__title-section {
-      color: #fff; }
-      .cabins-card__content__title-section__sub {
-        font-size: 1.2rem; }
-      .cabins-card__content__title-section__title {
-        font-size: 1.8rem;
+    padding: 1rem 0rem; }
+    .cabins-card__content__title-group {
+      color: #1d2225;
+      display: grid;
+      grid-template-columns: 1fr max-content;
+      align-items: center;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem; }
+      .cabins-card__content__title-group__title {
         font-weight: 700; }
+      .cabins-card__content__title-group__cabins {
+        font-size: 1.4rem; }
+    .cabins-card__content__specs {
+      margin-bottom: .5rem; }
+      .cabins-card__content__specs__item {
+        font-size: 1.4rem;
+        display: grid;
+        grid-template-columns: min-content 1fr;
+        color: #747474;
+        align-items: center; }
+        .cabins-card__content__specs__item__icon {
+          margin-right: 1rem; }
+          .cabins-card__content__specs__item__icon svg {
+            height: 1.4rem;
+            width: 1.4rem;
+            fill: #1d2225;
+            color: #1d2225;
+            transform: translateY(1px); }
+    .cabins-card__content__description {
+      margin-bottom: .5rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid #e6e6e6; }
+    .cabins-card__content__bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .cabins-card__content__bottom__price-group {
+        color: #1d2225;
+        font-size: 1.6rem;
+        display: flex;
+        align-items: flex-end; }
+        .cabins-card__content__bottom__price-group__amount {
+          font-weight: 700;
+          margin-right: .5rem; }
+        .cabins-card__content__bottom__price-group__text {
+          font-size: 1.4rem;
+          padding-bottom: 1px; }
 
 .product-related {
   width: 100%;

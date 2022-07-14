@@ -2,7 +2,48 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
-       
+
+
+        <symbol id="icon-shield" viewBox="0 0 32 32">
+            <title>shield</title>
+            <g class="nc-icon-wrapper">
+                <path d="M30.275,5.038l-14-4a1.008,1.008,0,0,0-.55,0l-14,4A1,1,0,0,0,1,6C1,25.479,15.517,30.89,15.664,30.941a.986.986,0,0,0,.672,0,21.293,21.293,0,0,0,7.383-5.122C27.041,22.38,31,16.148,31,6A1,1,0,0,0,30.275,5.038ZM20.224,21,16,18.779,11.776,21l.807-4.7L9.166,12.966l4.722-.686L16,8l2.112,4.28,4.722.686L19.417,16.3Z" fill="currentColor" stroke="none"></path>
+            </g>
+        </symbol>
+        <symbol id="icon-zoom-square" viewBox="0 0 16 16">
+            <title>zoom square</title>
+            <g class="nc-icon-wrapper">
+                <path d="M2,2H6V0H2A2,2,0,0,0,0,2V6H2Z" fill="currentColor" stroke="none"></path>
+                <path d="M14,0H10V2h4V6h2V2A2,2,0,0,0,14,0Z" fill="currentColor" stroke="none"></path>
+                <path d="M14,14H10v2h4a2,2,0,0,0,2-2V10H14Z" fill="currentColor" stroke="none"></path>
+                <path d="M2,10H0v4a2,2,0,0,0,2,2H6V14H2Z" fill="currentColor" stroke="none"></path>
+                <path d="M4,5v6a1,1,0,0,0,1,1h6a1,1,0,0,0,1-1V5a1,1,0,0,0-1-1H5A1,1,0,0,0,4,5ZM6,6h4v4H6Z" stroke="none"></path>
+            </g>
+        </symbol>
+        <symbol id="icon-profile" viewBox="0 0 16 16">
+            <title>profile</title>
+            <g class="nc-icon-wrapper">
+                <circle cx="8" cy="3.5" r="3.5" stroke="none"></circle>
+                <path d="M8,8.5a7.008,7.008,0,0,0-7,7,.5.5,0,0,0,.5.5h13a.5.5,0,0,0,.5-.5A7.008,7.008,0,0,0,8,8.5Z" fill="currentColor" stroke="none"></path>
+            </g>
+        </symbol>
+        <symbol id="icon-send" viewBox="0 0 32 32">
+            <title>send</title>
+            <g class="nc-icon-wrapper">
+                <path d="M30.65,1.24a1,1,0,0,0-.976-.185l-29,10A1,1,0,0,0,.4,12.8l6.183,4.638L17.638,11,9,19.25V30a1,1,0,0,0,.587.91A.983.983,0,0,0,10,31a1,1,0,0,0,.659-.247l6.313-5.524L24.4,30.8a1,1,0,0,0,1.584-.624l5-28A1,1,0,0,0,30.65,1.24Z" fill="currentColor" stroke="none"></path>
+            </g>
+        </symbol>
+        <symbol id="icon-bedroom" viewBox="0 0 16 16">
+            <title>bedroom</title>
+            <g class="nc-icon-wrapper">
+                <circle cx="5" cy="6" r="2" stroke="none"></circle>
+                <path d="M16,8H8V5h6a2,2,0,0,1,2,2Z" stroke="none"></path>
+                <polygon points="16 9 2 9 2 2 0 2 0 14 2 14 2 12 14 12 14 14 16 14 16 9" fill="currentColor" stroke="none"></polygon>
+            </g>
+        </symbol>
+
+
+
         <symbol id="icon-bookmark" viewBox="0 0 20 20">
             <path d="M14 2v17l-4-4-4 4v-17c0-0.553 0.585-1.020 1-1h6c0.689-0.020 1 0.447 1 1z"></path>
         </symbol>
@@ -27,7 +68,7 @@
         <symbol id="icon-location-pin" viewBox="0 0 20 20">
             <path d="M10 2.009c-2.762 0-5 2.229-5 4.99 0 4.774 5 11 5 11s5-6.227 5-11c0-2.76-2.238-4.99-5-4.99zM10 9.76c-1.492 0-2.7-1.209-2.7-2.7s1.208-2.7 2.7-2.7c1.49 0 2.699 1.209 2.699 2.7s-1.209 2.7-2.699 2.7z"></path>
         </symbol>
-        
+
         <symbol id="icon-magnifying-glass" viewBox="0 0 20 20">
             <path d="M17.545 15.467l-3.779-3.779c0.57-0.935 0.898-2.035 0.898-3.21 0-3.417-2.961-6.377-6.378-6.377s-6.186 2.769-6.186 6.186c0 3.416 2.961 6.377 6.377 6.377 1.137 0 2.2-0.309 3.115-0.844l3.799 3.801c0.372 0.371 0.975 0.371 1.346 0l0.943-0.943c0.371-0.371 0.236-0.84-0.135-1.211zM4.004 8.287c0-2.366 1.917-4.283 4.282-4.283s4.474 2.107 4.474 4.474c0 2.365-1.918 4.283-4.283 4.283s-4.473-2.109-4.473-4.474z"></path>
         </symbol>
@@ -273,18 +314,7 @@
                 <polyline fill="none" stroke="currentColor" points="6,26 4,20 16,13 28,20 26,26 "></polyline>
             </g>
         </symbol>
-        <symbol id="icon-shield" viewBox="0 0 32 32">
-            <title>shield</title>
-            <g class="nc-icon-wrapper">
-                <path d="M30.275,5.038l-14-4a1.008,1.008,0,0,0-.55,0l-14,4A1,1,0,0,0,1,6C1,25.479,15.517,30.89,15.664,30.941a.986.986,0,0,0,.672,0,21.293,21.293,0,0,0,7.383-5.122C27.041,22.38,31,16.148,31,6A1,1,0,0,0,30.275,5.038ZM20.224,21,16,18.779,11.776,21l.807-4.7L9.166,12.966l4.722-.686L16,8l2.112,4.28,4.722.686L19.417,16.3Z" fill="currentColor" stroke="none"></path>
-            </g>
-        </symbol>
-        <symbol id="icon-send" viewBox="0 0 32 32">
-            <title>send</title>
-            <g class="nc-icon-wrapper">
-                <path d="M30.65,1.24a1,1,0,0,0-.976-.185l-29,10A1,1,0,0,0,.4,12.8l6.183,4.638L17.638,11,9,19.25V30a1,1,0,0,0,.587.91A.983.983,0,0,0,10,31a1,1,0,0,0,.659-.247l6.313-5.524L24.4,30.8a1,1,0,0,0,1.584-.624l5-28A1,1,0,0,0,30.65,1.24Z" fill="currentColor" stroke="none"></path>
-            </g>
-        </symbol>
+
         <symbol id="icon-pin-3" viewBox="0 0 64 64">
             <title>pin 3</title>
             <g class="nc-icon-wrapper" transform="translate(0.5 0.5)">

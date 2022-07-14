@@ -44,19 +44,19 @@ $args = array(
     <!-- Content -->
     <section class="deals-page__section-hero">
         <?php
-        get_template_part('template-parts/content', 'deals-hero');
+        get_template_part('template-parts/deal/content', 'deals-hero');
         ?>
     </section>
 
     <section class="deals-page__section-featured">
         <?php
-        get_template_part('template-parts/content', 'deals-featured', $args);
+        get_template_part('template-parts/deal/content', 'deals-featured', $args);
         ?>
     </section>
 
     <section class="deals-page__section-destinations">
         <?php
-        get_template_part('template-parts/content', 'deals-destinations', $args);
+        get_template_part('template-parts/deal/content', 'deals-destinations', $args);
         ?>
     </section>
 
@@ -68,7 +68,7 @@ $args = array(
     <!-- Newsletter -->
     <section class="experience-page__section-newsletter">
         <?php
-        get_template_part('template-parts/content', 'shared-newsletter');
+        get_template_part('template-parts/shared/content', 'shared-newsletter');
         ?>
     </section>
 

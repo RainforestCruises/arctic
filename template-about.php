@@ -26,21 +26,21 @@ get_header();
     <!-- Mission -->
     <section class="about-page__section-mission" id="mission">
         <?php
-        get_template_part('template-parts/content', 'about-mission');
+        get_template_part('template-parts/about/content', 'about-mission');
         ?>
     </section>
 
     <!-- Difference -->
     <section class="about-page__section-difference" id="differece">
         <?php
-        get_template_part('template-parts/content', 'about-difference');
+        get_template_part('template-parts/about/content', 'about-difference');
         ?>
     </section>
 
     <!-- Team -->
     <section class="about-page__section-team" id="team">
         <?php
-        get_template_part('template-parts/content', 'about-team');
+        get_template_part('template-parts/about/content', 'about-team');
         ?>
     </section>
 
@@ -50,9 +50,9 @@ get_header();
         <?php
         $isResponsibleTravel = get_field('is_responsible_travel');
         if (!$isResponsibleTravel) :
-            get_template_part('template-parts/content', 'about-corporate');
+            get_template_part('template-parts/about/content', 'about-corporate');
         else :
-            get_template_part('template-parts/content', 'about-responsible-travel');
+            get_template_part('template-parts/about/content', 'about-responsible-travel');
         endif; ?>
   
     </section>

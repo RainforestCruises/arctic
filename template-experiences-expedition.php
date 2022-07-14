@@ -24,7 +24,7 @@ $show_features = get_field('show_features');
     <!-- Hero -->
     <section class="experience-page__section-hero" id="top">
         <?php
-        get_template_part('template-parts/content', 'experience-hero');
+        get_template_part('template-parts/experience/content', 'experience-hero');
         ?>
     </section>
 
@@ -33,7 +33,7 @@ $show_features = get_field('show_features');
     <section class="experience-page__section-intro" id="intro">
         <?php
         if ($show_features) :
-            get_template_part('template-parts/content', 'experience-intro');
+            get_template_part('template-parts/experience/content', 'experience-intro');
         endif;
         ?>
     </section>
@@ -41,7 +41,7 @@ $show_features = get_field('show_features');
     <!-- Sections -->
     <section class="experience-page__section-region">
         <?php
-        get_template_part('template-parts/content', 'experience-region-expedition');
+        get_template_part('template-parts/experience/content', 'experience-region-expedition');
         ?>
     </section>
 
@@ -53,7 +53,7 @@ $show_features = get_field('show_features');
      <!-- Newsletter -->
      <section class="experience-page__section-newsletter">
         <?php
-        get_template_part('template-parts/content', 'shared-newsletter');
+        get_template_part('template-parts/shared/content', 'shared-newsletter');
         ?>
     </section>
 

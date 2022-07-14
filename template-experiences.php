@@ -26,21 +26,21 @@ $experience = get_field('experience_post');
     <!-- Hero -->
     <section class="experience-page__section-hero" id="top">
         <?php
-        get_template_part('template-parts/content', 'experience-hero');
+        get_template_part('template-parts/experience/content', 'experience-hero');
         ?>
     </section>
 
     <!-- Intro -->
     <section class="experience-page__section-intro" id="intro">
         <?php
-        get_template_part('template-parts/content', 'experience-intro');
+        get_template_part('template-parts/experience/content', 'experience-intro');
         ?>
     </section>
 
     <!-- Regions -->
     <section class="experience-page__section-region" id="south-america">
         <?php
-        get_template_part('template-parts/content', 'experience-region');
+        get_template_part('template-parts/experience/content', 'experience-region');
         ?>
     </section>
 
@@ -53,7 +53,7 @@ $experience = get_field('experience_post');
     <!-- Newsletter -->
     <section class="experience-page__section-newsletter">
         <?php
-        get_template_part('template-parts/content', 'shared-newsletter');
+        get_template_part('template-parts/shared/content', 'shared-newsletter');
         ?>
     </section>
 

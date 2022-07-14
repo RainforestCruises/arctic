@@ -255,7 +255,7 @@ $args = array(
 <main class="search-page">
     <section class="search-page__intro" id="search-page-intro">
         <?php
-        get_template_part('template-parts/content', 'search-intro', $args);
+        get_template_part('template-parts/search/content', 'search-intro', $args);
         ?>
     </section>
 
@@ -269,8 +269,8 @@ $args = array(
     <section class="search-page__content" id="search-page-content">
 
         <?php
-        get_template_part('template-parts/content', 'search-sidebar', $args); //page args --> initial preselection
-        get_template_part('template-parts/content', 'search-results-area', $args); //page args --> initial render
+        get_template_part('template-parts/search/content', 'search-sidebar', $args); //page args --> initial preselection
+        get_template_part('template-parts/search/content', 'search-results-area', $args); //page args --> initial render
         ?>
 
     </section>

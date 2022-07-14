@@ -188,11 +188,6 @@ $cruise_data = $args['cruiseData'];
                 </div>
 
 
-
-
-
-
-
                 <div class="cruise-overview__content__grid__secondary__cta">
 
                     <button class="cta-round-icon" id="deckplan-button">
