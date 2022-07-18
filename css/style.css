@@ -3689,6 +3689,60 @@ h5 {
       .product-related__content__slider .slick-slide {
         margin-right: 2rem; }
 
+.product-reviews {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 6rem; }
+  @media only screen and (max-width: 50em) {
+    .product-reviews {
+      padding: 0 3rem; } }
+  .product-reviews__content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: calc(112rem + 12rem);
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+    position: relative; }
+    .product-reviews__content::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      top: -3rem;
+      left: 0;
+      background-color: #e6e6e6; }
+    .product-reviews__content__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem 8rem;
+      margin-top: 2rem;
+      margin-bottom: 4rem;
+      max-width: 90%; }
+
+.review-item__profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem; }
+  .review-item__profile img {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 6rem;
+    margin-right: 1.5rem; }
+  .review-item__profile__title-group__title {
+    color: #1d2225;
+    font-size: 1.8rem;
+    font-weight: 700; }
+  .review-item__profile__title-group__date {
+    color: #747474;
+    font-size: 1.4rem; }
+
+.review-item__text {
+  grid-column: 1 / -1;
+  font-size: 1.6rem; }
+
 .itinerary-overview {
   display: flex;
   justify-content: center;
@@ -5922,7 +5976,7 @@ h5 {
     font-size: 1.6rem;
     margin-left: 2rem; }
 
-.product-reviews {
+.product-reviews--old {
   width: 100%;
   display: flex;
   position: relative;
@@ -5931,9 +5985,9 @@ h5 {
   flex-direction: column;
   min-height: 50rem; }
   @media only screen and (max-width: 37.5em) {
-    .product-reviews {
+    .product-reviews--old {
       min-height: 30rem; } }
-  .product-reviews__bg {
+  .product-reviews--old__bg {
     position: absolute;
     z-index: 0;
     top: 0;
@@ -5948,7 +6002,7 @@ h5 {
     align-items: center;
     background-attachment: fixed;
     background-position: 50% 0; }
-    .product-reviews__bg::after {
+    .product-reviews--old__bg::after {
       position: absolute;
       content: "";
       top: 0;
@@ -5957,7 +6011,7 @@ h5 {
       width: 100%;
       background-image: linear-gradient(to top, rgba(30, 30, 30, 0.8), rgba(30, 30, 30, 0.8));
       z-index: 2; }
-  .product-reviews__slider {
+  .product-reviews--old__slider {
     width: 100%;
     max-width: 140rem;
     z-index: 10;
@@ -5965,27 +6019,27 @@ h5 {
     margin-top: 2rem;
     padding: 0 9rem; }
     @media only screen and (max-width: 37.5em) {
-      .product-reviews__slider {
+      .product-reviews--old__slider {
         padding: 0 6rem; } }
-    .product-reviews__slider .slick-slide {
+    .product-reviews--old__slider .slick-slide {
       margin: 2rem 4rem; }
-    .product-reviews__slider .slick-track {
+    .product-reviews--old__slider .slick-track {
       width: 100%; }
-    .product-reviews__slider .slick-active {
+    .product-reviews--old__slider .slick-active {
       position: relative; }
-    .product-reviews__slider__item {
+    .product-reviews--old__slider__item {
       display: flex;
       flex-direction: column;
       color: #fff;
       align-items: center; }
-      .product-reviews__slider__item__snippet {
+      .product-reviews--old__slider__item__snippet {
         font-size: 1.4rem;
         position: relative;
         font-weight: 300;
         letter-spacing: .1rem;
         text-align: center;
         margin: 2rem 0; }
-      .product-reviews__slider__item__detail {
+      .product-reviews--old__slider__item__detail {
         font-size: 1.2rem;
         text-transform: uppercase;
         letter-spacing: 0.2rem;
@@ -5994,13 +6048,13 @@ h5 {
         display: flex;
         flex-direction: column;
         align-items: center; }
-    .product-reviews__slider__btn--left {
+    .product-reviews--old__slider__btn--left {
       transform: translateY(-50%);
       position: absolute;
       z-index: 10;
       top: 20%;
       left: 1.5rem; }
-    .product-reviews__slider__btn--right {
+    .product-reviews--old__slider__btn--right {
       transform: translateY(-50%);
       position: absolute;
       z-index: 10;
