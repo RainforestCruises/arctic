@@ -20,6 +20,13 @@
                 <path d="M4,5v6a1,1,0,0,0,1,1h6a1,1,0,0,0,1-1V5a1,1,0,0,0-1-1H5A1,1,0,0,0,4,5ZM6,6h4v4H6Z" stroke="none"></path>
             </g>
         </symbol>
+        <symbol id="icon-time-clock" viewBox="0 0 16 16">
+            <title>time clock</title>
+            <g class="nc-icon-wrapper">
+                <path d="M8,0a8,8,0,1,0,8,8A8.024,8.024,0,0,0,8,0ZM8,14a6,6,0,1,1,6-6A6.018,6.018,0,0,1,8,14Z" fill="currentColor" stroke="none"></path>
+                <path d="M11.5,7H9V4.5a1,1,0,0,0-2,0V8A1,1,0,0,0,8,9h3.5a1,1,0,0,0,0-2Z" stroke="none"></path>
+            </g>
+        </symbol>
         <symbol id="icon-profile" viewBox="0 0 16 16">
             <title>profile</title>
             <g class="nc-icon-wrapper">

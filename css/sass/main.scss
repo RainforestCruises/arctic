@@ -33,30 +33,36 @@
 @import "pages/deals";
 @import "pages/reviews";
 
-//deals
-@import "components/deals/deals-hero";
-@import "components/deals/deals-featured";
-@import "components/deals/deals-destinations";
+
 
 
 //products (generic)
 @import "components/products/product-hero";
+@import "components/products/product-departures";
+@import "components/products/product-related";
+@import "components/products/product-reviews";
 
-//itinerary 
-//@import "components/products/itinerary/itinerary-hero";
+//--itinerary 
 @import "components/products/itinerary/itinerary-overview";
 @import "components/products/itinerary/itinerary-days";
-@import "components/products/itinerary/itinerary-departures";
 @import "components/products/itinerary/itinerary-requirements";
 
-//cruise 
-//@import "components/products/cruise/cruise-hero";
+//--cruise 
 @import "components/products/cruise/cruise-overview";
 @import "components/products/cruise/cruise-itineraries";
 @import "components/products/cruise/cruise-cabins";
+@import "components/products/cruise/cruise-areas";
 
-//product (old)
-//@import "components/product/product-hero";
+
+
+
+
+
+
+
+
+//OLD----------------
+//product 
 @import "components/product/product-related";
 @import "components/product/product-overview";
 @import "components/product/product-itinerary"; 
@@ -85,6 +91,11 @@
 @import "components/destination/destination-guides";
 @import "components/destination/destination-testimonials";
 @import "components/destination/destination-faq";
+
+//deals
+@import "components/deals/deals-hero";
+@import "components/deals/deals-featured";
+@import "components/deals/deals-destinations";
 
 //home
 @import "components/home/home-hero";

@@ -3,8 +3,10 @@
 @mixin flexBlock {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding: 0 6rem;
-    @media only screen and (max-width: $bp-small) {
+    @media only screen and (max-width: $bp-medium) {
         padding: 0 3rem;
     }
 }
@@ -12,7 +14,7 @@
 @mixin flexPadding {
 
     padding: 0 6rem;
-    @media only screen and (max-width: $bp-small) {
+    @media only screen and (max-width: $bp-medium) {
         padding: 0 3rem;
     }
     

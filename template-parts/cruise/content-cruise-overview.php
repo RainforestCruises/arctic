@@ -15,17 +15,16 @@ $cruise_data = $args['cruiseData'];
         <!-- Grid  -->
         <div class="cruise-overview__content__grid">
 
-            <!-- Overview (Highlights, Transport, Text) -->
+            <!-- Main Overview (Highlights, Transport, Text) -->
             <div class="cruise-overview__content__grid__overview">
 
                 <!-- Highlights -->
                 <div class="cruise-overview__content__grid__overview__highlights">
-                    <h3 class="arctic-heading-3">Overview</h3>
+                    <h3 class="title-single">Overview</h3>
                     <ul class="cruise-overview__content__grid__overview__highlights__list">
                         <?php if (have_rows('highlights')) : ?>
                             <?php while (have_rows('highlights')) : the_row(); ?>
                                 <li>
-
                                     <span>&#8212;</span><?php echo get_sub_field('highlight'); ?>
                                 </li>
                             <?php endwhile; ?>
@@ -41,11 +40,12 @@ $cruise_data = $args['cruiseData'];
             </div>
 
 
-            <!-- Secondary -->
+            <!-- Side Section -->
             <div class="cruise-overview__content__grid__secondary">
 
                 <!-- Specs Panel -->
                 <div class="outline-panel">
+
                     <!-- Panel Heading -->
                     <div class="outline-panel__heading">
                         <h5 class="outline-panel__heading__text">
@@ -55,6 +55,7 @@ $cruise_data = $args['cruiseData'];
                             <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-down"></use>
                         </svg>
                     </div>
+
                     <!-- Panel Content -->
                     <div class="outline-panel__content">
 
@@ -157,12 +158,7 @@ $cruise_data = $args['cruiseData'];
                     </div>
                 </div>
 
-
-
-
-
-
-                <!-- Amenities -->
+                <!-- Amenities Panel -->
                 <div class="outline-panel">
                     <!-- Panel Heading -->
                     <div class="outline-panel__heading">
@@ -187,7 +183,7 @@ $cruise_data = $args['cruiseData'];
                     </div>
                 </div>
 
-
+                <!-- CTA / Deckplan -->
                 <div class="cruise-overview__content__grid__secondary__cta">
 
                     <button class="cta-round-icon" id="deckplan-button">

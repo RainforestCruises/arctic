@@ -1,9 +1,5 @@
 jQuery(document).ready(function ($) {
   const templateUrl = page_vars.templateUrl;
-  var currentYear = new Date().getFullYear();
-  var body = $('body');
-
-
 
   //Itinerary Days Slider
   $('#itinerary-main-slider').slick({
@@ -63,15 +59,14 @@ jQuery(document).ready(function ($) {
     ]
   })
 
-
-  //Arctic Sliders
+  //cabins 
   $('#cabins-slider').slick({
     slidesToShow: 2,
     slidesToScroll: 1,
 
     arrows: true,
-    prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-overview__content__grid__ship-area__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-    nextArrow: '<button class="btn-scroll itinerary-overview__content__grid__ship-area__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    prevArrow: '<button class="btn-scroll btn-scroll--left btn-slider-top__left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    nextArrow: '<button class="btn-scroll btn-slider-top__right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
     responsive: [
       {
         breakpoint: 600,
@@ -83,14 +78,14 @@ jQuery(document).ready(function ($) {
     ]
   });
 
-  //
+  //departures
   $('#departures-slider').slick({
     slidesToShow: 6,
     slidesToScroll: 6,
 
     arrows: true,
-    prevArrow: '<button class="btn-scroll btn-scroll--left itinerary-overview__content__grid__ship-area__slider__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-    nextArrow: '<button class="btn-scroll itinerary-overview__content__grid__ship-area__slider__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    prevArrow: '<button class="btn-scroll btn-scroll--left btn-slider-top__left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    nextArrow: '<button class="btn-scroll btn-slider-top__right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
     responsive: [
       {
         breakpoint: 1000,
@@ -119,7 +114,7 @@ jQuery(document).ready(function ($) {
   });
 
 
-
+  //departure filter
   $(".departure-filter").on('click', function () {
     var filter = $(this).data('filter');
     var currentYear = new Date().getFullYear();

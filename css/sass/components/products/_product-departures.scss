@@ -1,4 +1,4 @@
-.itinerary-departures {
+.product-departures {
     @include flexBlock;
 
     &__content {
@@ -47,9 +47,9 @@
                 margin-right: 1rem;
             }
         }
-    }
+    } 
 }
-
+ 
 .departure-card {
     display: grid !important;
     grid-template-rows: 1fr min-content;
@@ -67,7 +67,7 @@
         justify-content: space-between;
         margin-bottom: 1rem;
         &__date-group {
-
+            margin-bottom: 1rem;
             &__year {
                 color: $color-grey-1;
                 font-size: 1.3rem;
@@ -79,6 +79,19 @@
                 font-size: 1.8rem;
                 line-height: 1.8rem;
                 font-weight: 700;
+                margin-bottom: .5rem;
+            }
+
+            &__name {
+                color: $color-grey-1;
+                font-size: 1.3rem;
+                font-weight: 400;
+            }
+
+            &__length {
+                color: $color-grey-1;
+                font-size: 1.3rem;
+                font-weight: 400;
             }
         }
 
@@ -100,7 +113,7 @@
             }
         }
     }
-   
+    
     &__cta {
         //display: flex;
         //justify-content: flex-end;

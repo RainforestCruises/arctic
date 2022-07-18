@@ -19,6 +19,8 @@ while (have_posts()) :
 
 
   $cruise_data = get_field('cruise_data');
+  $itinerary_data = $cruise_data['Itineraries'];
+
 
   //Time Variables
   $currentYear = date("Y");
@@ -56,22 +58,15 @@ while (have_posts()) :
   $lowestPrice = lowest_property_price($cruise_data, 0, $currentYear, true);
 
 
-
   //Get Deals
   $dealPosts = listDealsForProduct(get_post(), $charter_view);
-
   $hasDeals = (count($dealPosts) > 0) ? true : false;
-
-  console_log($cruise_data);
-
-
-
-
 
 
   $args = array(
     'lowestPrice' => $lowestPrice,
     'cruise_data' => $cruise_data,
+    'itinerary_data' => $itinerary_data,
     'productType' => 'Cruise',
     'currentYear' => $currentYear,
     'currentMonth' => $currentMonth,
@@ -104,11 +99,30 @@ while (have_posts()) :
     get_template_part('template-parts/cruise/content', 'cruise-overview', $args);
     ?>
 
-   <!-- Cabins -->
-   <?php
+    <!-- Cabins -->
+    <?php
     get_template_part('template-parts/cruise/content', 'cruise-cabins', $args);
     ?>
 
+    <!-- Explore -->
+    <?php
+    get_template_part('template-parts/cruise/content', 'cruise-areas', $args);
+    ?>
+
+    <!-- Itineraries -->
+    <?php
+    get_template_part('template-parts/cruise/content', 'cruise-itineraries', $args);
+    ?>
+
+    <!-- Departures -->
+    <?php
+    get_template_part('template-parts/cruise/content', 'cruise-departures', $args);
+    ?>
+
+    <!-- Related -->
+    <?php
+    get_template_part('template-parts/cruise/content', 'cruise-related', $args);
+    ?>
 
   </main>
 

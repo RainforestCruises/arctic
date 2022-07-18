@@ -26,10 +26,10 @@ $curentYear = date("Y");
             ?>
 
                 <!-- Cabin Card -->
-                <a class="cabins-card">
+                <a class="resource-card">
 
                     <!-- Images Slider -->
-                    <div class="cabins-card__image-slider">
+                    <div class="resource-card__image-area">
 
                         <!-- Image from DF -->
                         <?php
@@ -43,61 +43,56 @@ $curentYear = date("Y");
                     </div>
 
                     <!-- Content -->
-                    <div class="cabins-card__content">
+                    <div class="resource-card__content">
 
                         <!-- Title -->
-                        <div class="cabins-card__content__title-group">
-                            <div class="cabins-card__content__title-group__title">
+                        <div class="resource-card__content__title-group">
+                            <div class="resource-card__content__title-group__title">
                                 <?php echo $cabin['Name']; ?>
                             </div>
-                            <div class="cabins-card__content__title-group__cabins">
+                            <div class="resource-card__content__title-group__sub">
                                 <?php echo getCabinCountDisplay($cabin) ?>
                             </div>
                         </div>
 
                         <!-- Specs -->
-                        <div class="cabins-card__content__specs">
+                        <div class="resource-card__content__specs">
 
                             <!-- Guests -->
-                            <div class="cabins-card__content__specs__item">
-                                <div class="cabins-card__content__specs__item__icon">
+                            <div class="resource-card__content__specs__item">
+                                <div class="resource-card__content__specs__item__icon">
                                     <svg>
                                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-profile"></use>
                                     </svg>
                                 </div>
-                                <div class="cabins-card__content__specs__item__text">
+                                <div class="resource-card__content__specs__item__text">
                                     <?php echo getOccupancyDisplay($cabin); ?> Guests, <?php echo ($cabin['Beds']); ?> Bed
                                 </div>
                             </div>
 
                             <!-- Size -->
-                            <div class="cabins-card__content__specs__item">
-                                <div class="cabins-card__content__specs__item__icon">
+                            <div class="resource-card__content__specs__item">
+                                <div class="resource-card__content__specs__item__icon">
                                     <svg>
                                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-zoom-square"></use>
                                     </svg>
                                 </div>
-                                <div class="cabins-card__content__specs__item__text">
+                                <div class="resource-card__content__specs__item__text">
                                     <?php echo ($cabin['Size']); ?>
                                 </div>
                             </div>
 
-
-
                         </div>
 
-              
 
-                        <div class="cabins-card__content__bottom">
-                            <div class="cabins-card__content__bottom__price-group">
-                                <div class="cabins-card__content__bottom__price-group__amount">
-                                    $2,955
-                                </div>
-                                <div class="cabins-card__content__bottom__price-group__text">
-                                    Per Person
-                                </div>
+                        <!-- Price Group -->
+                        <div class="resource-card__content__price-group">
+                            <div class="resource-card__content__price-group__amount">
+                                $2,955
                             </div>
-                            
+                            <div class="resource-card__content__price-group__text">
+                                Per Person
+                            </div>
                         </div>
 
 

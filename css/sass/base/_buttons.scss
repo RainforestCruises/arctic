@@ -257,6 +257,24 @@
   }
 }
 
+.btn-slider-top {
+  &__right {
+    transform: translateY(-50%);
+    position: absolute;
+    top: -5rem;
+    right: calc(0rem);
+    z-index: 20;
+  }
+
+  &__left {
+    transform: translateY(-50%);
+    position: absolute;
+    top: -5rem;
+    right: calc(4rem);
+    z-index: 20;
+  }
+}
+
 //OLD --------------------------
 
 //X Close

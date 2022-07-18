@@ -1,7 +1,35 @@
 <?php
-$itinerary_data = $args['itinerary_data'];
-$departures = $itinerary_data['Departures'];
+$cruise_data = $args['cruise_data'];
+$itineraries =  $cruise_data['Itineraries'];
 $curentYear = date("Y");
+
+$departures = [];
+foreach($itineraries as $i){
+    foreach($i['Departures'] as $d){
+
+        $departure = [
+            'DepartureDate' => $d['DepartureDate'],
+            'HasPromo' => $d['HasPromo'],
+            'PromoName' => $d['PromoName'],
+            'IsHighSeason' => $d['IsHighSeason'],
+            'IsLowSeason' => $d['IsLowSeason'],
+            'Id' => $i['Id'],
+            'Name' => $i['Name'],
+            'LengthInNights' => $i['LengthInNights'],
+            'LengthInDays' => $i['LengthInDays'],
+            'LowestPrice' => $i['LowestPrice'],
+
+        ];
+        $departures[] = $departure;
+    }
+}
+
+
+usort($departures, function($a, $b) {
+    return strtotime($a['DepartureDate']) - strtotime($b['DepartureDate']);
+});
+
+console_log($departures);
 
 ?>
 <section class="product-departures" id="departures">
@@ -12,9 +40,10 @@ $curentYear = date("Y");
                 Departures
             </div>
             <div class="title-group__sub">
-                There are <?php echo count($departures); ?> departures available
+                There are  departures available
             </div>
         </div>
+
         <div class="product-departures__content__slider" id="departures-slider">
             <?php foreach ($departures as $d) :
                 $departureStartDate = strtotime($d['DepartureDate']);
@@ -24,11 +53,17 @@ $curentYear = date("Y");
                     <div class="departure-card__content">
                         <div class="departure-card__content__date-group">
 
+                            <div class="departure-card__content__date-group__year">
+                                <?php echo date("Y", $departureStartDate); ?>
+                            </div>
                             <div class="departure-card__content__date-group__date">
                                 <?php echo  date("F j", $departureStartDate); ?>
                             </div>
-                            <div class="departure-card__content__date-group__year">
-                                <?php echo date("Y", $departureStartDate); ?>
+                            <div class="departure-card__content__date-group__length">
+                                <?php echo $d['LengthInDays'] . ' Days / ' . $d['LengthInNights'] . ' Nights'; ?>
+                            </div>
+                            <div class="departure-card__content__date-group__name">
+                                <?php echo $d['Name'] ?>
                             </div>
                         </div>
                         <div class="departure-card__content__price-group">
@@ -54,36 +89,9 @@ $curentYear = date("Y");
 
             <?php endforeach; ?>
         </div>
+       
 
-        <div class="product-departures__content__filters">
-            <button class="btn-pill departure-filter active" data-filter="all">
-                All
-            </button>
-            <?php for ($i = 0; $i < 3; $i++) :
-
-                $yearToCheck = $curentYear + $i;
-                if(checkDeparturesInYear($yearToCheck, $departures)) :
-            ?>
-                <button class="btn-pill btn-pill--grey departure-filter" data-filter="<?php echo $curentYear + $i ?>">
-                    <?php echo $curentYear + $i ?>
-                </button>
-            <?php endif; endfor; ?>
-
-
-        </div>
     </div>
 </section>
 
-<?php
-function checkDeparturesInYear($year, $departureList)
-{
-    $match = false;
-    foreach ($departureList as $d) {
-        if (str_contains($d['DepartureDate'], strval($year))) {
-            $match = true;
-        }
-    }
-    return $match;
-}
 
-?>

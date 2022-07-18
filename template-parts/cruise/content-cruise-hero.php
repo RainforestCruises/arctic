@@ -91,18 +91,18 @@ $images = get_field('highlight_gallery');
                                 <a href="#overview" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Overview</a>
                             </li>
                             <li class="product-hero__content__top__content__nav__list__item">
-                                <a href="#cruise" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Cabins</a>
+                                <a href="#cruise" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Amenities</a>
                             </li>
-                            <li class="product-hero__content__top__content__nav__list__item">
-                                <a href="#cruise" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Explore</a>
-                            </li>
+   
                             <li class="product-hero__content__top__content__nav__list__item">
                                 <a href="#cruise" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Itineraries</a>
                             </li>
-                            <li class="product-hero__content__top__content__nav__list__item ">
-                                <a href="#departures" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Departures</a>
+                            <li class="product-hero__content__top__content__nav__list__item">
+                                <a href="#cruise" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Extras</a>
                             </li>
-
+                            <li class="product-hero__content__top__content__nav__list__item ">
+                                <a href="#departures" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Reviews</a>
+                            </li>
 
                         </ul>
                     </nav>

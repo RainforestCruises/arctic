@@ -212,13 +212,6 @@ input {
   font-size: 1.8rem;
   margin-bottom: 2rem; }
 
-.title-single {
-  font-size: 2.2rem;
-  line-height: 2.2rem;
-  font-weight: 700;
-  color: #1d2225;
-  margin-bottom: 2rem; }
-
 .title-group__title {
   font-size: 2.2rem;
   line-height: 2.2rem;
@@ -229,6 +222,13 @@ input {
   font-size: 1.2rem;
   font-weight: 400;
   color: #747474; }
+
+.title-single {
+  font-family: "Metropolis", sans-serif;
+  font-weight: 700;
+  color: #1d2225;
+  font-size: 2.2rem;
+  margin-bottom: 2rem; }
 
 .heading-1, .heading-2, .heading-3, .heading-4, .heading-5 {
   font-family: "Metropolis", sans-serif;
@@ -983,6 +983,20 @@ h5 {
     .btn-pill--grey.active {
       background-color: #1d2225;
       color: #fff; }
+
+.btn-slider-top__right {
+  transform: translateY(-50%);
+  position: absolute;
+  top: -5rem;
+  right: calc(0rem);
+  z-index: 20; }
+
+.btn-slider-top__left {
+  transform: translateY(-50%);
+  position: absolute;
+  top: -5rem;
+  right: calc(4rem);
+  z-index: 20; }
 
 .close-button {
   position: relative;
@@ -1857,7 +1871,7 @@ h5 {
     width: 100%;
     max-width: calc(112rem + 12rem);
     padding: 0 6rem; }
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 50em) {
       .search-page__intro {
         padding: 0 3rem; } }
   .search-page__content {
@@ -1866,7 +1880,7 @@ h5 {
     max-width: calc(112rem + 12rem);
     padding: 0 6rem;
     margin-bottom: 6rem; }
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 50em) {
       .search-page__content {
         padding: 0 3rem; } }
     @media only screen and (max-width: 62.5em) {
@@ -1879,7 +1893,7 @@ h5 {
     padding: 0 6rem;
     height: 10rem;
     background-color: #e6e6e6; }
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 50em) {
       .search-page__bottom {
         padding: 0 3rem; } }
 
@@ -2658,7 +2672,7 @@ h5 {
     align-items: center;
     margin-bottom: 8rem;
     padding: 0 6rem; }
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 50em) {
       .generic-page__content {
         padding: 0 3rem; } }
     .generic-page__content__title {
@@ -2812,7 +2826,7 @@ h5 {
     width: 100%;
     max-width: 135rem;
     padding: 0 6rem; }
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 50em) {
       .test-hero__content {
         padding: 0 3rem; } }
     @media only screen and (max-width: 62.5em) {
@@ -2866,7 +2880,7 @@ h5 {
     display: flex;
     justify-content: space-between;
     align-items: center; }
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 50em) {
       .test-hero__bottom {
         padding: 0 3rem; } }
     @media only screen and (max-width: 62.5em) {
@@ -2938,7 +2952,7 @@ h5 {
     @media only screen and (max-width: 37.5em) {
       .error404-page__content {
         height: 50rem; } }
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 50em) {
       .error404-page__content {
         padding: 0 3rem; } }
     .error404-page__content__title {
@@ -3047,267 +3061,6 @@ h5 {
     .reviews-content {
       padding: 0 3rem;
       max-width: 100%; } }
-
-.deals-hero {
-  max-width: 132rem;
-  padding: 0 6rem; }
-  @media only screen and (max-width: 37.5em) {
-    .deals-hero {
-      padding: 0 3rem; } }
-  .deals-hero__title {
-    font-size: 5rem;
-    color: #1d2225;
-    letter-spacing: 0.2rem;
-    font-weight: 500;
-    line-height: 6rem;
-    text-align: center; }
-  .deals-hero__subtext {
-    font-size: 1.6rem;
-    margin: 2rem 0;
-    text-align: center; }
-  .deals-hero__row {
-    display: flex; }
-    @media only screen and (max-width: 50em) {
-      .deals-hero__row {
-        flex-direction: column; } }
-
-.deal-card {
-  border-radius: 0rem;
-  display: grid !important;
-  margin: 1rem;
-  flex: 1;
-  flex-grow: 1;
-  text-decoration: none;
-  width: 100%;
-  min-height: 35rem;
-  height: min-content; }
-  @media only screen and (max-width: 50em) {
-    .deal-card {
-      margin: 1rem 0rem; } }
-  .deal-card__image {
-    grid-column: 1 / -1;
-    grid-row: 1 / -1;
-    position: relative; }
-    .deal-card__image img {
-      border-radius: 0rem;
-      object-fit: cover;
-      height: 100%;
-      width: 100%; }
-    .deal-card__image::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: linear-gradient(to right, rgba(30, 30, 30, 0.2), rgba(30, 30, 30, 0.2));
-      border-radius: 0rem;
-      z-index: 1; }
-  .deal-card__content {
-    grid-column: 1 / -1;
-    grid-row: 1 / -1;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    z-index: 20;
-    color: #fff;
-    text-align: center;
-    margin: 4rem;
-    position: relative; }
-    .deal-card__content__title {
-      font-size: 2.8rem;
-      line-height: 3.2rem;
-      font-weight: 600; }
-    .deal-card__content__cta {
-      margin-top: 2rem; }
-
-.deals-featured {
-  width: 100%;
-  padding: 0 6rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center; }
-  @media only screen and (max-width: 50em) {
-    .deals-featured {
-      padding: 0; } }
-  .deals-featured__title {
-    font-size: 3.5rem;
-    color: #1d2225;
-    letter-spacing: 0.2rem;
-    font-weight: 600;
-    line-height: 6rem;
-    text-align: center;
-    line-height: 4rem;
-    margin-bottom: 3rem;
-    margin-top: 2rem;
-    padding: 0 1rem; }
-  .deals-featured__slider {
-    width: 100%;
-    max-width: 140rem;
-    z-index: 10;
-    padding: 0 9rem; }
-    @media only screen and (max-width: 50em) {
-      .deals-featured__slider {
-        padding: 0rem; } }
-    .deals-featured__slider .slick-dots {
-      max-width: 35rem;
-      left: 50%;
-      transform: translateX(-50%); }
-    .deals-featured__slider .slick-slide {
-      margin: 1.5rem;
-      margin-bottom: 4rem;
-      box-shadow: 0 2rem 2rem -1rem rgba(0, 0, 0, 0.25);
-      min-width: 0; }
-      @media only screen and (max-width: 37.5em) {
-        .deals-featured__slider .slick-slide {
-          margin-bottom: 3rem;
-          margin: .5rem; } }
-    .deals-featured__slider .deal-slide {
-      border-bottom-left-radius: 0.4rem;
-      border-bottom-right-radius: 0.4rem;
-      background-color: #fff;
-      display: flex;
-      flex-direction: column; }
-      .deals-featured__slider .deal-slide__image-area {
-        height: 25rem; }
-        @media only screen and (max-width: 50em) {
-          .deals-featured__slider .deal-slide__image-area {
-            height: 35rem; } }
-        @media only screen and (max-width: 37.5em) {
-          .deals-featured__slider .deal-slide__image-area {
-            height: 25rem; } }
-        .deals-featured__slider .deal-slide__image-area img {
-          border-top-left-radius: 0.4rem;
-          border-top-right-radius: 0.4rem;
-          object-fit: cover;
-          height: 100%;
-          width: 100%; }
-      .deals-featured__slider .deal-slide__bottom {
-        display: flex;
-        flex-direction: column;
-        padding: 2rem 3rem; }
-        .deals-featured__slider .deal-slide__bottom__category {
-          text-transform: uppercase;
-          color: #d9a402;
-          font-size: 1.4rem;
-          letter-spacing: 0.2rem;
-          display: flex;
-          flex-wrap: wrap;
-          margin: 1rem 0;
-          list-style: none; }
-          .deals-featured__slider .deal-slide__bottom__category li {
-            white-space: nowrap;
-            margin-right: 1rem;
-            position: relative; }
-            .deals-featured__slider .deal-slide__bottom__category li:not(:last-child)::after {
-              content: ", ";
-              position: absolute;
-              right: -0.4rem; }
-        .deals-featured__slider .deal-slide__bottom__title {
-          color: #1d2225; }
-          .deals-featured__slider .deal-slide__bottom__title:link, .deals-featured__slider .deal-slide__bottom__title:visited {
-            text-decoration: none;
-            color: #1d2225; }
-            .deals-featured__slider .deal-slide__bottom__title:link:hover, .deals-featured__slider .deal-slide__bottom__title:visited:hover {
-              color: #4d8eff; }
-          .deals-featured__slider .deal-slide__bottom__title h3 {
-            font-size: 3rem;
-            font-weight: 500;
-            letter-spacing: 0.1rem;
-            line-height: 4rem;
-            margin: 0.5rem 0;
-            transition: all 0.2s; }
-        .deals-featured__slider .deal-slide__bottom__snippet {
-          font-size: 1.6rem;
-          padding: 1rem 0;
-          padding-bottom: 2rem; }
-        .deals-featured__slider .deal-slide__bottom__cta--multiple {
-          display: flex;
-          flex-wrap: wrap;
-          border-top: 1px solid #c2c6c9;
-          position: relative;
-          margin-top: 2rem;
-          padding-top: 1rem; }
-          .deals-featured__slider .deal-slide__bottom__cta--multiple span {
-            position: absolute;
-            top: -2rem;
-            font-size: 1.2rem;
-            color: #1d2225;
-            letter-spacing: 0.1rem; }
-          .deals-featured__slider .deal-slide__bottom__cta--multiple a {
-            color: #1d2225;
-            background-color: #e6e6e6;
-            padding: .5rem 1rem;
-            border: none;
-            margin: .5rem 1rem;
-            margin-left: 0rem;
-            letter-spacing: 0.1rem;
-            cursor: pointer;
-            border-radius: 4rem;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            font-weight: 700;
-            position: relative;
-            text-decoration: none;
-            white-space: nowrap;
-            transition: all .2s; }
-            .deals-featured__slider .deal-slide__bottom__cta--multiple a:hover {
-              background-color: #c2c6c9; }
-
-.deals-destinations {
-  width: 100%;
-  padding: 0 6rem;
-  margin-bottom: 8rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center; }
-  @media only screen and (max-width: 50em) {
-    .deals-destinations {
-      margin-bottom: 3rem;
-      padding: 0; } }
-  .deals-destinations__title {
-    font-size: 3.5rem;
-    color: #1d2225;
-    letter-spacing: 0.2rem;
-    font-weight: 600;
-    line-height: 6rem;
-    text-align: center;
-    line-height: 4rem;
-    margin-bottom: 4rem;
-    margin-top: 0rem; }
-  .deals-destinations__slider {
-    width: 100%;
-    max-width: 140rem;
-    z-index: 10;
-    padding: 0 9rem; }
-    @media only screen and (max-width: 37.5em) {
-      .deals-destinations__slider {
-        padding: 0rem; } }
-    .deals-destinations__slider .slick-dots {
-      max-width: 35rem;
-      left: 50%;
-      transform: translateX(-50%); }
-    .deals-destinations__slider .slick-slide {
-      margin: 1rem;
-      box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.25);
-      min-width: 0; }
-      @media only screen and (max-width: 37.5em) {
-        .deals-destinations__slider .slick-slide {
-          margin: .5rem; } }
-      .deals-destinations__slider .slick-slide .card-square {
-        margin-top: 1.5rem !important; }
-    .deals-destinations__slider__btn--left {
-      transform: translateY(-50%);
-      position: absolute;
-      z-index: 10;
-      top: 50%;
-      left: 1.5rem; }
-    .deals-destinations__slider__btn--right {
-      transform: translateY(-50%);
-      position: absolute;
-      z-index: 10;
-      top: 50%;
-      right: 1.5rem; }
 
 .product-hero {
   position: relative; }
@@ -3816,11 +3569,133 @@ h5 {
             left: 5rem;
             z-index: 8; }
 
+.product-departures {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 6rem; }
+  @media only screen and (max-width: 50em) {
+    .product-departures {
+      padding: 0 3rem; } }
+  .product-departures__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: calc(112rem + 12rem);
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+    position: relative; }
+    .product-departures__content::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      top: -3rem;
+      left: 0;
+      background-color: #e6e6e6; }
+    .product-departures__content__title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #1d2225; }
+    .product-departures__content__slider {
+      width: 100%;
+      margin-top: 2rem; }
+      .product-departures__content__slider .slick-slide {
+        margin-right: 2rem; }
+    .product-departures__content__filters {
+      width: 100%;
+      display: flex;
+      margin-top: 2rem;
+      align-items: center; }
+      .product-departures__content__filters span {
+        font-size: 1.4rem;
+        color: #9ea0a4;
+        margin-right: 1rem; }
+
+.departure-card {
+  display: grid !important;
+  grid-template-rows: 1fr min-content;
+  min-height: 20rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 1rem;
+  padding: 2rem;
+  flex-direction: column; }
+  .departure-card__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1rem; }
+    .departure-card__content__date-group {
+      margin-bottom: 1rem; }
+      .departure-card__content__date-group__year {
+        color: #9ea0a4;
+        font-size: 1.3rem;
+        font-weight: 400; }
+      .departure-card__content__date-group__date {
+        color: #1d2225;
+        font-size: 1.8rem;
+        line-height: 1.8rem;
+        font-weight: 700;
+        margin-bottom: .5rem; }
+      .departure-card__content__date-group__name {
+        color: #9ea0a4;
+        font-size: 1.3rem;
+        font-weight: 400; }
+      .departure-card__content__date-group__length {
+        color: #9ea0a4;
+        font-size: 1.3rem;
+        font-weight: 400; }
+    .departure-card__content__price-group__price {
+      color: #1d2225;
+      font-size: 1.6rem;
+      line-height: 1.6rem;
+      font-weight: 700; }
+    .departure-card__content__price-group__details {
+      color: #9ea0a4;
+      font-size: 1.3rem;
+      font-weight: 400; }
+
+.product-related {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 6rem; }
+  @media only screen and (max-width: 50em) {
+    .product-related {
+      padding: 0 3rem; } }
+  .product-related__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: calc(112rem + 12rem);
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+    position: relative; }
+    .product-related__content::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      top: -3rem;
+      left: 0;
+      background-color: #e6e6e6; }
+    .product-related__content__slider {
+      width: 100%;
+      margin-top: 2rem; }
+      .product-related__content__slider .slick-slide {
+        margin-right: 2rem; }
+
 .itinerary-overview {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 0 6rem; }
-  @media only screen and (max-width: 37.5em) {
+  @media only screen and (max-width: 50em) {
     .itinerary-overview {
       padding: 0 3rem; } }
   .itinerary-overview__content {
@@ -4011,8 +3886,10 @@ h5 {
 .itinerary-days {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 0 6rem; }
-  @media only screen and (max-width: 37.5em) {
+  @media only screen and (max-width: 50em) {
     .itinerary-days {
       padding: 0 3rem; } }
   .itinerary-days__content {
@@ -4210,87 +4087,14 @@ h5 {
           font-size: 1.6rem;
           font-weight: 700; } }
 
-.itinerary-departures {
-  display: flex;
-  justify-content: center;
-  padding: 0 6rem; }
-  @media only screen and (max-width: 37.5em) {
-    .itinerary-departures {
-      padding: 0 3rem; } }
-  .itinerary-departures__content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: calc(112rem + 12rem);
-    margin-top: 3rem;
-    margin-bottom: 6rem;
-    position: relative; }
-    .itinerary-departures__content::after {
-      content: "";
-      width: 100%;
-      height: 1px;
-      position: absolute;
-      top: -3rem;
-      left: 0;
-      background-color: #e6e6e6; }
-    .itinerary-departures__content__title {
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: #1d2225; }
-    .itinerary-departures__content__slider {
-      width: 100%;
-      margin-top: 2rem; }
-      .itinerary-departures__content__slider .slick-slide {
-        margin-right: 2rem; }
-    .itinerary-departures__content__filters {
-      width: 100%;
-      display: flex;
-      margin-top: 2rem;
-      align-items: center; }
-      .itinerary-departures__content__filters span {
-        font-size: 1.4rem;
-        color: #9ea0a4;
-        margin-right: 1rem; }
-
-.departure-card {
-  display: grid !important;
-  grid-template-rows: 1fr min-content;
-  min-height: 20rem;
-  border: 1px solid #e6e6e6;
-  border-radius: 1rem;
-  padding: 2rem;
-  flex-direction: column; }
-  .departure-card__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 1rem; }
-    .departure-card__content__date-group__year {
-      color: #9ea0a4;
-      font-size: 1.3rem;
-      font-weight: 400; }
-    .departure-card__content__date-group__date {
-      color: #1d2225;
-      font-size: 1.8rem;
-      line-height: 1.8rem;
-      font-weight: 700; }
-    .departure-card__content__price-group__price {
-      color: #1d2225;
-      font-size: 1.6rem;
-      line-height: 1.6rem;
-      font-weight: 700; }
-    .departure-card__content__price-group__details {
-      color: #9ea0a4;
-      font-size: 1.3rem;
-      font-weight: 400; }
-
 .itinerary-requirements {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 0 6rem;
   margin-bottom: 22rem; }
-  @media only screen and (max-width: 37.5em) {
+  @media only screen and (max-width: 50em) {
     .itinerary-requirements {
       padding: 0 3rem; } }
   .itinerary-requirements__content {
@@ -4333,8 +4137,10 @@ h5 {
 .cruise-overview {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 0 6rem; }
-  @media only screen and (max-width: 37.5em) {
+  @media only screen and (max-width: 50em) {
     .cruise-overview {
       padding: 0 3rem; } }
   .cruise-overview__content {
@@ -4497,11 +4303,119 @@ h5 {
   .cta-link-icon:hover {
     color: #347fff; }
 
+.cruise-itineraries {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 6rem; }
+  @media only screen and (max-width: 50em) {
+    .cruise-itineraries {
+      padding: 0 3rem; } }
+  .cruise-itineraries__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: calc(112rem + 12rem);
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+    position: relative; }
+    .cruise-itineraries__content::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      top: -3rem;
+      left: 0;
+      background-color: #e6e6e6; }
+    .cruise-itineraries__content__slider {
+      width: 100%;
+      margin-top: 2rem; }
+      .cruise-itineraries__content__slider .slick-slide {
+        margin-right: 2rem; }
+
+.itinerary-card {
+  display: grid !important;
+  grid-template-columns: 13rem 1fr;
+  gap: 2rem;
+  align-items: center;
+  border: 1px solid #e6e6e6;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.2s; }
+  @media only screen and (max-width: 50em) {
+    .itinerary-card {
+      grid-template-columns: 1fr;
+      grid-template-rows: 20rem min-content; } }
+  .itinerary-card:link, .itinerary-card:visited {
+    text-decoration: none;
+    color: #747474; }
+  .itinerary-card:hover {
+    border: 1px solid #c2c6c9; }
+  .itinerary-card__image-area {
+    width: 100%;
+    height: 100%; }
+    .itinerary-card__image-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1rem;
+      overflow: hidden; }
+  .itinerary-card__content {
+    position: relative; }
+    .itinerary-card__content__title {
+      font-size: 1.6rem;
+      color: #1d2225;
+      font-weight: 700;
+      margin-bottom: 0.5rem; }
+    .itinerary-card__content__description {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem; }
+    .itinerary-card__content__price-group {
+      display: flex;
+      align-items: flex-end;
+      color: #1d2225;
+      margin-bottom: 0.5rem; }
+      .itinerary-card__content__price-group__amount {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-right: 0.5rem; }
+      .itinerary-card__content__price-group__text {
+        font-size: 1.4rem;
+        padding-bottom: 1px; }
+    .itinerary-card__content__bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end; }
+      .itinerary-card__content__bottom__departures__items {
+        display: flex; }
+        .itinerary-card__content__bottom__departures__items__item {
+          font-size: 1.4rem;
+          color: #1d2225;
+          padding: 0.5rem 1.2rem;
+          border: 1px solid #1d2225;
+          border-radius: 1rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-right: 1rem; }
+      .itinerary-card__content__bottom__departures__fineprint {
+        color: #9ea0a4;
+        font-size: 1rem;
+        padding-bottom: 0.2rem; }
+      .itinerary-card__content__bottom__cta {
+        margin-top: 0.2rem;
+        display: flex;
+        justify-content: space-between; }
+
 .cruise-cabins {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 0 6rem; }
-  @media only screen and (max-width: 37.5em) {
+  @media only screen and (max-width: 50em) {
     .cruise-cabins {
       padding: 0 3rem; } }
   .cruise-cabins__content {
@@ -4531,101 +4445,159 @@ h5 {
       .cruise-cabins__content__slider .slick-slide {
         margin-right: 2rem; }
 
-.cabins-card {
+.resource-card {
   position: relative;
   display: flex !important;
   flex-direction: column; }
-  .cabins-card:link, .cabins-card:visited {
+  .resource-card:link, .resource-card:visited {
     text-decoration: none; }
-  .cabins-card__image-slider {
+  .resource-card--small img {
+    height: 22rem !important; }
+  .resource-card__image-area {
     position: relative; }
-    .cabins-card__image-slider.slick-dotted {
+    .resource-card__image-area.slick-dotted {
       margin-bottom: 0rem; }
-    .cabins-card__image-slider .slick-slide {
+    .resource-card__image-area .slick-slide {
       margin-right: 0rem; }
-    .cabins-card__image-slider .slick-dots {
+    .resource-card__image-area .slick-dots {
       bottom: 2rem; }
-    .cabins-card__image-slider .slick-dots li {
+    .resource-card__image-area .slick-dots li {
       margin: 0rem !important; }
-      .cabins-card__image-slider .slick-dots li button {
+      .resource-card__image-area .slick-dots li button {
         width: 12px;
         height: 12px;
         padding: 3px; }
-        .cabins-card__image-slider .slick-dots li button::before {
+        .resource-card__image-area .slick-dots li button::before {
           color: #fff; }
-    .cabins-card__image-slider .slick-arrow {
+    .resource-card__image-area .slick-arrow {
       opacity: 0;
       transition: opacity 0.2s; }
-    .cabins-card__image-slider:hover .slick-arrow {
+    .resource-card__image-area:hover .slick-arrow {
       opacity: 1; }
-    .cabins-card__image-slider img {
+    .resource-card__image-area img {
       width: 100%;
       height: 33rem;
       object-fit: cover;
       border-radius: 1rem;
       overflow: hidden; }
-    .cabins-card__image-slider__btn-left {
+    .resource-card__image-area__btn-left {
       transform: translateY(-50%);
       position: absolute;
       top: 50%;
       left: calc(1rem);
       z-index: 20; }
-    .cabins-card__image-slider__btn-right {
+    .resource-card__image-area__btn-right {
       transform: translateY(-50%);
       position: absolute;
       top: 50%;
       right: calc(1rem);
       z-index: 20; }
-  .cabins-card__content {
+  .resource-card__content {
     padding: 1rem 0rem; }
-    .cabins-card__content__title-group {
+    .resource-card__content__title {
+      font-weight: 700;
+      color: #1d2225;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem; }
+    .resource-card__content__title-group {
       color: #1d2225;
       display: grid;
       grid-template-columns: 1fr max-content;
       align-items: center;
       font-size: 1.8rem;
       margin-bottom: 0.5rem; }
-      .cabins-card__content__title-group__title {
+      .resource-card__content__title-group__title {
         font-weight: 700; }
-      .cabins-card__content__title-group__cabins {
+      .resource-card__content__title-group__sub {
         font-size: 1.4rem; }
-    .cabins-card__content__specs {
-      margin-bottom: .5rem; }
-      .cabins-card__content__specs__item {
+    .resource-card__content__specs {
+      margin-bottom: 0.5rem; }
+      .resource-card__content__specs__item {
         font-size: 1.4rem;
         display: grid;
         grid-template-columns: min-content 1fr;
         color: #747474;
         align-items: center; }
-        .cabins-card__content__specs__item__icon {
+        .resource-card__content__specs__item__icon {
           margin-right: 1rem; }
-          .cabins-card__content__specs__item__icon svg {
+          .resource-card__content__specs__item__icon svg {
             height: 1.4rem;
             width: 1.4rem;
             fill: #1d2225;
             color: #1d2225;
             transform: translateY(1px); }
-    .cabins-card__content__description {
-      margin-bottom: .5rem;
-      padding-bottom: .5rem;
-      border-bottom: 1px solid #e6e6e6; }
-    .cabins-card__content__bottom {
+    .resource-card__content__description {
+      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+      color: #747474; }
+    .resource-card__content__price-group {
+      color: #1d2225;
+      font-size: 1.6rem;
       display: flex;
-      justify-content: space-between;
-      align-items: center; }
-      .cabins-card__content__bottom__price-group {
-        color: #1d2225;
-        font-size: 1.6rem;
-        display: flex;
-        align-items: flex-end; }
-        .cabins-card__content__bottom__price-group__amount {
-          font-weight: 700;
-          margin-right: .5rem; }
-        .cabins-card__content__bottom__price-group__text {
-          font-size: 1.4rem;
-          padding-bottom: 1px; }
+      align-items: flex-end; }
+      .resource-card__content__price-group__amount {
+        font-weight: 700;
+        margin-right: 0.5rem; }
+      .resource-card__content__price-group__text {
+        font-size: 1.4rem;
+        padding-bottom: 1px; }
 
-.product-related {
+.cruise-areas {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 6rem; }
+  @media only screen and (max-width: 50em) {
+    .cruise-areas {
+      padding: 0 3rem; } }
+  .cruise-areas__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: calc(112rem + 12rem);
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+    position: relative; }
+    .cruise-areas__content::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      top: -3rem;
+      left: 0;
+      background-color: #e6e6e6; }
+    .cruise-areas__content__grid {
+      width: 100%;
+      height: 60vh;
+      display: grid;
+      grid-template-columns: 50% 50%;
+      gap: 1rem;
+      border-radius: 1rem;
+      overflow: hidden;
+      position: relative; }
+      @media only screen and (max-width: 50em) {
+        .cruise-areas__content__grid {
+          grid-template-columns: 100%;
+          height: auto;
+          grid-template-rows: 30vh 30vh; } }
+      .cruise-areas__content__grid__small-grid {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 1rem; }
+      .cruise-areas__content__grid a {
+        width: 100%;
+        height: 100%; }
+        .cruise-areas__content__grid a img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover; }
+
+.product-related--old {
   width: 100%;
   display: flex;
   position: relative;
@@ -4633,33 +4605,33 @@ h5 {
   justify-content: center;
   align-items: center;
   flex-direction: column; }
-  .product-related__slider {
+  .product-related--old__slider {
     width: 100%;
     max-width: 140rem;
     z-index: 10;
     padding: 0 9rem; }
     @media only screen and (max-width: 37.5em) {
-      .product-related__slider {
+      .product-related--old__slider {
         padding: 0rem; } }
-    .product-related__slider .slick-dots {
+    .product-related--old__slider .slick-dots {
       max-width: 35rem;
       left: 50%;
       transform: translateX(-50%); }
-    .product-related__slider .slick-slide {
+    .product-related--old__slider .slick-slide {
       margin: 1.5rem;
       margin-bottom: 4rem;
       box-shadow: 0 2rem 2rem -1rem rgba(0, 0, 0, 0.25);
       min-width: 0; }
       @media only screen and (max-width: 37.5em) {
-        .product-related__slider .slick-slide {
+        .product-related--old__slider .slick-slide {
           margin-bottom: 3rem; } }
-    .product-related__slider__btn--left {
+    .product-related--old__slider__btn--left {
       transform: translateY(-50%);
       position: absolute;
       z-index: 10;
       top: 40%;
       left: 1.5rem; }
-    .product-related__slider__btn--right {
+    .product-related--old__slider__btn--right {
       transform: translateY(-50%);
       position: absolute;
       z-index: 10;
@@ -7044,7 +7016,7 @@ h5 {
   padding: 0 6rem; }
   .search-filter-bar.scrollUp {
     transform: translateY(-7rem); }
-  @media only screen and (max-width: 37.5em) {
+  @media only screen and (max-width: 50em) {
     .search-filter-bar {
       padding: 0 3rem; } }
   @media only screen and (max-width: 62.5em) {
@@ -8531,7 +8503,7 @@ h5 {
   .destination-testimonials__header {
     max-width: calc(112rem + 12rem);
     padding: 0 6rem; }
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 50em) {
       .destination-testimonials__header {
         padding: 0 3rem; } }
   .destination-testimonials__slider {
@@ -8702,6 +8674,267 @@ h5 {
   .plus-minus-toggle.plus-collapsed:before {
     transform: rotate(180deg); }
 
+.deals-hero {
+  max-width: 132rem;
+  padding: 0 6rem; }
+  @media only screen and (max-width: 37.5em) {
+    .deals-hero {
+      padding: 0 3rem; } }
+  .deals-hero__title {
+    font-size: 5rem;
+    color: #1d2225;
+    letter-spacing: 0.2rem;
+    font-weight: 500;
+    line-height: 6rem;
+    text-align: center; }
+  .deals-hero__subtext {
+    font-size: 1.6rem;
+    margin: 2rem 0;
+    text-align: center; }
+  .deals-hero__row {
+    display: flex; }
+    @media only screen and (max-width: 50em) {
+      .deals-hero__row {
+        flex-direction: column; } }
+
+.deal-card {
+  border-radius: 0rem;
+  display: grid !important;
+  margin: 1rem;
+  flex: 1;
+  flex-grow: 1;
+  text-decoration: none;
+  width: 100%;
+  min-height: 35rem;
+  height: min-content; }
+  @media only screen and (max-width: 50em) {
+    .deal-card {
+      margin: 1rem 0rem; } }
+  .deal-card__image {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    position: relative; }
+    .deal-card__image img {
+      border-radius: 0rem;
+      object-fit: cover;
+      height: 100%;
+      width: 100%; }
+    .deal-card__image::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(to right, rgba(30, 30, 30, 0.2), rgba(30, 30, 30, 0.2));
+      border-radius: 0rem;
+      z-index: 1; }
+  .deal-card__content {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 20;
+    color: #fff;
+    text-align: center;
+    margin: 4rem;
+    position: relative; }
+    .deal-card__content__title {
+      font-size: 2.8rem;
+      line-height: 3.2rem;
+      font-weight: 600; }
+    .deal-card__content__cta {
+      margin-top: 2rem; }
+
+.deals-featured {
+  width: 100%;
+  padding: 0 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  @media only screen and (max-width: 50em) {
+    .deals-featured {
+      padding: 0; } }
+  .deals-featured__title {
+    font-size: 3.5rem;
+    color: #1d2225;
+    letter-spacing: 0.2rem;
+    font-weight: 600;
+    line-height: 6rem;
+    text-align: center;
+    line-height: 4rem;
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+    padding: 0 1rem; }
+  .deals-featured__slider {
+    width: 100%;
+    max-width: 140rem;
+    z-index: 10;
+    padding: 0 9rem; }
+    @media only screen and (max-width: 50em) {
+      .deals-featured__slider {
+        padding: 0rem; } }
+    .deals-featured__slider .slick-dots {
+      max-width: 35rem;
+      left: 50%;
+      transform: translateX(-50%); }
+    .deals-featured__slider .slick-slide {
+      margin: 1.5rem;
+      margin-bottom: 4rem;
+      box-shadow: 0 2rem 2rem -1rem rgba(0, 0, 0, 0.25);
+      min-width: 0; }
+      @media only screen and (max-width: 37.5em) {
+        .deals-featured__slider .slick-slide {
+          margin-bottom: 3rem;
+          margin: .5rem; } }
+    .deals-featured__slider .deal-slide {
+      border-bottom-left-radius: 0.4rem;
+      border-bottom-right-radius: 0.4rem;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column; }
+      .deals-featured__slider .deal-slide__image-area {
+        height: 25rem; }
+        @media only screen and (max-width: 50em) {
+          .deals-featured__slider .deal-slide__image-area {
+            height: 35rem; } }
+        @media only screen and (max-width: 37.5em) {
+          .deals-featured__slider .deal-slide__image-area {
+            height: 25rem; } }
+        .deals-featured__slider .deal-slide__image-area img {
+          border-top-left-radius: 0.4rem;
+          border-top-right-radius: 0.4rem;
+          object-fit: cover;
+          height: 100%;
+          width: 100%; }
+      .deals-featured__slider .deal-slide__bottom {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 3rem; }
+        .deals-featured__slider .deal-slide__bottom__category {
+          text-transform: uppercase;
+          color: #d9a402;
+          font-size: 1.4rem;
+          letter-spacing: 0.2rem;
+          display: flex;
+          flex-wrap: wrap;
+          margin: 1rem 0;
+          list-style: none; }
+          .deals-featured__slider .deal-slide__bottom__category li {
+            white-space: nowrap;
+            margin-right: 1rem;
+            position: relative; }
+            .deals-featured__slider .deal-slide__bottom__category li:not(:last-child)::after {
+              content: ", ";
+              position: absolute;
+              right: -0.4rem; }
+        .deals-featured__slider .deal-slide__bottom__title {
+          color: #1d2225; }
+          .deals-featured__slider .deal-slide__bottom__title:link, .deals-featured__slider .deal-slide__bottom__title:visited {
+            text-decoration: none;
+            color: #1d2225; }
+            .deals-featured__slider .deal-slide__bottom__title:link:hover, .deals-featured__slider .deal-slide__bottom__title:visited:hover {
+              color: #4d8eff; }
+          .deals-featured__slider .deal-slide__bottom__title h3 {
+            font-size: 3rem;
+            font-weight: 500;
+            letter-spacing: 0.1rem;
+            line-height: 4rem;
+            margin: 0.5rem 0;
+            transition: all 0.2s; }
+        .deals-featured__slider .deal-slide__bottom__snippet {
+          font-size: 1.6rem;
+          padding: 1rem 0;
+          padding-bottom: 2rem; }
+        .deals-featured__slider .deal-slide__bottom__cta--multiple {
+          display: flex;
+          flex-wrap: wrap;
+          border-top: 1px solid #c2c6c9;
+          position: relative;
+          margin-top: 2rem;
+          padding-top: 1rem; }
+          .deals-featured__slider .deal-slide__bottom__cta--multiple span {
+            position: absolute;
+            top: -2rem;
+            font-size: 1.2rem;
+            color: #1d2225;
+            letter-spacing: 0.1rem; }
+          .deals-featured__slider .deal-slide__bottom__cta--multiple a {
+            color: #1d2225;
+            background-color: #e6e6e6;
+            padding: .5rem 1rem;
+            border: none;
+            margin: .5rem 1rem;
+            margin-left: 0rem;
+            letter-spacing: 0.1rem;
+            cursor: pointer;
+            border-radius: 4rem;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            position: relative;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all .2s; }
+            .deals-featured__slider .deal-slide__bottom__cta--multiple a:hover {
+              background-color: #c2c6c9; }
+
+.deals-destinations {
+  width: 100%;
+  padding: 0 6rem;
+  margin-bottom: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  @media only screen and (max-width: 50em) {
+    .deals-destinations {
+      margin-bottom: 3rem;
+      padding: 0; } }
+  .deals-destinations__title {
+    font-size: 3.5rem;
+    color: #1d2225;
+    letter-spacing: 0.2rem;
+    font-weight: 600;
+    line-height: 6rem;
+    text-align: center;
+    line-height: 4rem;
+    margin-bottom: 4rem;
+    margin-top: 0rem; }
+  .deals-destinations__slider {
+    width: 100%;
+    max-width: 140rem;
+    z-index: 10;
+    padding: 0 9rem; }
+    @media only screen and (max-width: 37.5em) {
+      .deals-destinations__slider {
+        padding: 0rem; } }
+    .deals-destinations__slider .slick-dots {
+      max-width: 35rem;
+      left: 50%;
+      transform: translateX(-50%); }
+    .deals-destinations__slider .slick-slide {
+      margin: 1rem;
+      box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.25);
+      min-width: 0; }
+      @media only screen and (max-width: 37.5em) {
+        .deals-destinations__slider .slick-slide {
+          margin: .5rem; } }
+      .deals-destinations__slider .slick-slide .card-square {
+        margin-top: 1.5rem !important; }
+    .deals-destinations__slider__btn--left {
+      transform: translateY(-50%);
+      position: absolute;
+      z-index: 10;
+      top: 50%;
+      left: 1.5rem; }
+    .deals-destinations__slider__btn--right {
+      transform: translateY(-50%);
+      position: absolute;
+      z-index: 10;
+      top: 50%;
+      right: 1.5rem; }
+
 .home-hero {
   display: flex;
   width: 100%;
@@ -8787,7 +9020,7 @@ h5 {
     width: 100%;
     max-width: 160rem;
     padding: 0 6rem; }
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 50em) {
       .home-hero__content {
         padding: 0 3rem; } }
     @media only screen and (max-width: 62.5em) {
@@ -8841,7 +9074,7 @@ h5 {
     display: flex;
     justify-content: space-between;
     align-items: center; }
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 50em) {
       .home-hero__bottom {
         padding: 0 3rem; } }
     @media only screen and (max-width: 62.5em) {
@@ -9543,7 +9776,7 @@ h5 {
   flex-direction: column;
   max-width: calc(112rem + 12rem);
   padding: 0 6rem; }
-  @media only screen and (max-width: 37.5em) {
+  @media only screen and (max-width: 50em) {
     .home-intro {
       padding: 0 3rem; } }
   @media only screen and (max-width: 50em) {
@@ -9724,7 +9957,7 @@ h5 {
   max-width: 160rem;
   margin: 3rem 0;
   padding: 0 6rem; }
-  @media only screen and (max-width: 37.5em) {
+  @media only screen and (max-width: 50em) {
     .home-arctic-newest {
       padding: 0 3rem; } }
   .home-arctic-newest__title {
@@ -10191,7 +10424,7 @@ h5 {
   padding: 0 6rem;
   padding-top: 3rem !important;
   padding-bottom: 3rem; }
-  @media only screen and (max-width: 37.5em) {
+  @media only screen and (max-width: 50em) {
     .testimonial {
       padding: 0 3rem; } }
   .testimonial__content {
@@ -10452,7 +10685,7 @@ h5 {
     justify-content: space-around;
     padding: 0 6rem;
     max-width: calc(112rem + 12rem); }
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 50em) {
       .experience-hero__content {
         padding: 0 3rem; } }
     @media only screen and (max-width: 37.5em) {
@@ -10710,7 +10943,7 @@ h5 {
   padding: 0 6rem;
   padding-top: 12rem;
   padding-bottom: 4rem; }
-  @media only screen and (max-width: 37.5em) {
+  @media only screen and (max-width: 50em) {
     .experience-intro {
       padding: 0 3rem; } }
   @media only screen and (max-width: 62.5em) {
@@ -10770,7 +11003,7 @@ h5 {
   display: flex;
   flex-direction: column;
   align-items: center; }
-  @media only screen and (max-width: 37.5em) {
+  @media only screen and (max-width: 50em) {
     .about-mission {
       padding: 0 3rem; } }
   .about-mission__intro {
@@ -11009,7 +11242,7 @@ h5 {
   display: flex;
   flex-direction: column;
   align-items: center; }
-  @media only screen and (max-width: 37.5em) {
+  @media only screen and (max-width: 50em) {
     .about-team {
       padding: 0 3rem; } }
   @media only screen and (max-width: 37.5em) {
@@ -11079,7 +11312,7 @@ h5 {
     max-width: 85rem;
     display: flex;
     padding: 0 6rem; }
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 50em) {
       .about-partners__content {
         padding: 0 3rem; } }
     @media only screen and (max-width: 37.5em) {
@@ -11131,7 +11364,7 @@ h5 {
     column-gap: 6rem;
     margin-top: 6rem;
     margin-bottom: 2rem; }
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 50em) {
       .about-partners__continents {
         padding: 0 3rem; } }
     @media only screen and (max-width: 62.5em) {
@@ -11971,7 +12204,7 @@ h5 {
   @media only screen and (max-width: 50em) {
     .newsletter {
       margin: 6rem 0; } }
-  @media only screen and (max-width: 37.5em) {
+  @media only screen and (max-width: 50em) {
     .newsletter {
       padding: 0 3rem; } }
   .newsletter__content {

@@ -39,7 +39,7 @@
 
 //COMPONENTS
 
-.cabins-card {
+.resource-card {
     position: relative;
 
     &:link,
@@ -50,7 +50,13 @@
     display: flex !important;
     flex-direction: column;
 
-    &__image-slider {
+    &--small {
+        & img {
+            height: 22rem !important;            
+        }
+    }
+
+    &__image-area {
         position: relative;
         &.slick-dotted {
             margin-bottom: 0rem;
@@ -118,6 +124,14 @@
     &__content {
         padding: 1rem 0rem;
 
+        &__title {
+            font-weight: 700;
+            color: $color-primary;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
         &__title-group {
             color: $color-primary;
             display: grid;
@@ -128,7 +142,7 @@
                 font-weight: 700;
             }
 
-            &__cabins {
+            &__sub {
                 font-size: 1.4rem;
             }
 
@@ -136,7 +150,7 @@
         }
 
         &__specs {
-            margin-bottom: .5rem;
+            margin-bottom: 0.5rem;
 
             &__item {
                 font-size: 1.4rem;
@@ -151,6 +165,7 @@
                         fill: $color-primary;
                         color: $color-primary;
                         transform: translateY(1px);
+                       
                     }
                     margin-right: 1rem;
                 }
@@ -160,31 +175,24 @@
         }
 
         &__description {
-            margin-bottom: .5rem;
-            padding-bottom: .5rem;
-            border-bottom: 1px solid $color-grey-light-1a;
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            color: $color-grey-3;
+            
         }
 
-        &__bottom {
+        &__price-group {
+            color: $color-primary;
+            font-size: 1.6rem;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            &__price-group {
-                color: $color-primary;
-                font-size: 1.6rem;
-                display: flex;
-                align-items: flex-end;
-                &__amount {
-                    font-weight: 700;
-                    margin-right: .5rem;
-                }
-                &__text {
-                    font-size: 1.4rem;
-                    padding-bottom: 1px;
-                }
+            align-items: flex-end;
+            &__amount {
+                font-weight: 700;
+                margin-right: 0.5rem;
             }
-
-            &__cta {
+            &__text {
+                font-size: 1.4rem;
+                padding-bottom: 1px;
             }
         }
     }
