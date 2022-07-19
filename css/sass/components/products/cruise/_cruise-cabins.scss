@@ -11,14 +11,14 @@
 
         max-width: $page-width;
         margin-top: 3rem;
-        margin-bottom: 6rem;
+        margin-bottom: 2rem;
 
 
         &__slider {
             width: 100%;
             margin-top: 2rem;
 
-            & .slick-slide {
+            & .slick-slide { 
                 margin-right: 2rem;
             }
 

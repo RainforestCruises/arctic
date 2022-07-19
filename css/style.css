@@ -3715,7 +3715,7 @@ h5 {
       grid-template-columns: 1fr 1fr;
       gap: 4rem 8rem;
       margin-top: 2rem;
-      margin-bottom: 4rem;
+      margin-bottom: 2rem;
       max-width: 90%; }
       @media only screen and (max-width: 50em) {
         .product-reviews__content__grid {
@@ -4416,8 +4416,7 @@ h5 {
       width: 100%;
       display: grid;
       grid-template-columns: 55% 45%;
-      position: relative;
-      margin-bottom: 1.5rem; }
+      position: relative; }
       @media only screen and (max-width: 50em) {
         .cruise-overview__content__grid {
           grid-template-columns: 100%; } }
@@ -4441,7 +4440,7 @@ h5 {
                 color: #1d2225 !important;
                 margin-right: 2rem; }
         .cruise-overview__content__grid__overview__text {
-          padding-bottom: 5rem;
+          padding-bottom: 2rem;
           padding-top: 3rem;
           position: relative; }
           .cruise-overview__content__grid__overview__text::before {
@@ -4697,7 +4696,7 @@ h5 {
     padding-top: 3rem !important;
     max-width: 122rem;
     margin-top: 3rem;
-    margin-bottom: 6rem; }
+    margin-bottom: 2rem; }
     @media only screen and (max-width: 50em) {
       .cruise-cabins__content {
         padding: 0 3rem; } }
@@ -4739,7 +4738,7 @@ h5 {
     padding-top: 3rem !important;
     max-width: 122rem;
     margin-top: 3rem;
-    margin-bottom: 6rem; }
+    margin-bottom: 2rem; }
     @media only screen and (max-width: 50em) {
       .cruise-areas__content {
         padding: 0 3rem; } }
