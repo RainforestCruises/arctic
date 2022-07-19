@@ -802,26 +802,37 @@ h5 {
   overflow: hidden;
   height: 100%; }
 
-.cta-round-icon {
-  background-color: #1d2225;
-  font-family: "Metropolis", sans-serif;
-  color: #fff;
+.cta-primary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 1.4rem 2rem;
   border: none;
   border-radius: 1rem;
-  font-size: 1.4rem;
-  padding: 1.4rem 2rem;
-  letter-spacing: 0rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
   outline: none;
   white-space: nowrap;
   text-decoration: none;
-  display: flex;
-  align-items: center; }
-  .cta-round-icon:hover {
+  font-size: 1.4rem;
+  letter-spacing: 0rem;
+  font-weight: 600;
+  background-color: #1d2225;
+  font-family: "Metropolis", sans-serif;
+  color: #fff;
+  transition: all 0.2s; }
+  .cta-primary--white {
+    background-color: #fff;
+    color: #1d2225; }
+    .cta-primary--white:hover {
+      background-color: #e6e6e6 !important; }
+  .cta-primary--inverse {
+    background-color: #fff;
+    color: #1d2225;
+    border: 1px solid currentColor; }
+    .cta-primary--inverse:hover {
+      background-color: #e6e6e6 !important; }
+  .cta-primary:hover {
     background-color: #347fff; }
-  .cta-round-icon svg {
+  .cta-primary svg {
     height: 1.8rem;
     width: 1.8rem;
     color: currentColor;
@@ -908,7 +919,7 @@ h5 {
   .btn-scroll--down svg {
     transform: rotate(90deg); }
   .btn-scroll:hover {
-    box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.25); }
+    box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.4); }
   .btn-scroll::after {
     content: "";
     transition: all 0.15s;
@@ -929,9 +940,9 @@ h5 {
 .btn-scroll-overlay {
   width: 3.5rem;
   height: 3.5rem;
-  background-color: rgba(255, 255, 255, 0.4);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -943,12 +954,13 @@ h5 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #1d2225;
+  color: rgba(29, 34, 37, 0.9);
   transition: all 0.2s; }
   .btn-scroll-overlay svg {
     height: 1.3rem;
     width: 1.3rem;
-    stroke: currentColor; }
+    stroke: currentColor;
+    fill: currentColor; }
   .btn-scroll-overlay--left svg {
     transform: rotate(180deg); }
   .btn-scroll-overlay--up svg {
@@ -996,6 +1008,20 @@ h5 {
   position: absolute;
   top: -5rem;
   right: calc(4rem);
+  z-index: 20; }
+
+.btn-gallery-top__right {
+  transform: translateY(-50%);
+  position: absolute;
+  top: -3rem;
+  left: calc(5rem);
+  z-index: 20; }
+
+.btn-gallery-top__left {
+  transform: translateY(-50%);
+  position: absolute;
+  top: -3rem;
+  left: calc(0rem);
   z-index: 20; }
 
 .close-button {
@@ -3242,7 +3268,7 @@ h5 {
             font-weight: 300;
             letter-spacing: 0.1rem;
             display: block;
-            padding-bottom: 2rem;
+            padding-bottom: 1.5rem;
             padding-top: 0.8rem; }
             @media only screen and (max-width: 62.5em) {
               .product-hero__content__top__content__title-group__subtitle {
@@ -3328,7 +3354,8 @@ h5 {
       justify-content: center;
       border-bottom: 1px solid #e6e6e6;
       border-top: 1px solid #e6e6e6;
-      padding: 0 6rem; }
+      padding: 0 6rem;
+      padding-bottom: 1rem; }
       @media only screen and (max-width: 37.5em) {
         .product-hero__content__bottom {
           padding: 0 3rem; } }
@@ -3533,7 +3560,6 @@ h5 {
         z-index: 20;
         height: min-content;
         width: 100%;
-        margin-bottom: 5rem;
         visibility: hidden; }
         @media only screen and (max-width: 62.5em) {
           .product-hero__content__gallery__slick {
@@ -3543,38 +3569,29 @@ h5 {
         .product-hero__content__gallery__slick .slick-slide {
           outline: none;
           margin: 1rem;
-          margin-bottom: 3rem;
+          margin-left: 0rem;
+          margin-right: 2rem;
+          margin-bottom: 3.5rem;
           transition: all 0.3s; }
         .product-hero__content__gallery__slick__item {
           position: relative;
           height: min-content;
           width: 100%;
-          box-shadow: 0 2rem 2rem -1rem rgba(0, 0, 0, 0.25);
+          box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.4);
           border-radius: 1rem;
           overflow: hidden; }
           .product-hero__content__gallery__slick__item img {
             height: 100%;
             width: 100%;
             object-fit: contain; }
-        .product-hero__content__gallery__slick__btn {
-          opacity: 0.8; }
-          .product-hero__content__gallery__slick__btn--left {
-            position: absolute;
-            bottom: -3rem;
-            left: -1rem;
-            z-index: 8; }
-          .product-hero__content__gallery__slick__btn--right {
-            position: absolute;
-            bottom: -3rem;
-            left: 5rem;
-            z-index: 8; }
 
 .product-departures {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 6rem; }
+  padding: 0 6rem;
+  position: relative; }
   @media only screen and (max-width: 50em) {
     .product-departures {
       padding: 0 3rem; } }
@@ -3662,10 +3679,24 @@ h5 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 6rem; }
+  padding: 0 6rem;
+  position: relative;
+  position: relative; }
   @media only screen and (max-width: 50em) {
     .product-related {
       padding: 0 3rem; } }
+  .product-related__background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: flex-end; }
+    .product-related__background img {
+      height: auto;
+      width: 100%;
+      object-fit: contain; }
   .product-related__content {
     position: relative;
     display: flex;
@@ -3673,7 +3704,7 @@ h5 {
     width: 100%;
     max-width: calc(112rem + 12rem);
     margin-top: 3rem;
-    margin-bottom: 6rem;
+    margin-bottom: 12rem;
     position: relative; }
     .product-related__content::after {
       content: "";
@@ -3694,7 +3725,8 @@ h5 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 6rem; }
+  padding: 0 6rem;
+  position: relative; }
   @media only screen and (max-width: 50em) {
     .product-reviews {
       padding: 0 3rem; } }
@@ -3721,6 +3753,10 @@ h5 {
       margin-top: 2rem;
       margin-bottom: 4rem;
       max-width: 90%; }
+      @media only screen and (max-width: 50em) {
+        .product-reviews__content__grid {
+          max-width: 100%;
+          grid-template-columns: 1fr; } }
 
 .review-item__profile {
   display: flex;
@@ -3743,12 +3779,180 @@ h5 {
   grid-column: 1 / -1;
   font-size: 1.6rem; }
 
+.overlay-card {
+  height: 33rem;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all .2s; }
+  .overlay-card:link, .overlay-card:visited {
+    text-decoration: none; }
+  .overlay-card__image-area {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    .overlay-card__image-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+  .overlay-card__content {
+    z-index: 2;
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; }
+    .overlay-card__content__title-section {
+      color: #fff; }
+      .overlay-card__content__title-section__sub {
+        font-size: 1.2rem; }
+      .overlay-card__content__title-section__title {
+        font-size: 1.8rem;
+        font-weight: 700; }
+
+.resource-card {
+  position: relative;
+  display: flex !important;
+  flex-direction: column; }
+  .resource-card:link, .resource-card:visited {
+    text-decoration: none; }
+  .resource-card--small img {
+    height: 22rem !important; }
+  .resource-card__image-area {
+    position: relative; }
+    .resource-card__image-area.slick-dotted {
+      margin-bottom: 0rem; }
+    .resource-card__image-area .slick-slide {
+      margin-right: 0rem; }
+    .resource-card__image-area .slick-dots {
+      bottom: 2rem; }
+    .resource-card__image-area .slick-dots li {
+      margin: 0rem !important; }
+      .resource-card__image-area .slick-dots li button {
+        width: 12px;
+        height: 12px;
+        padding: 3px; }
+        .resource-card__image-area .slick-dots li button::before {
+          color: #fff; }
+    .resource-card__image-area .slick-arrow {
+      opacity: 0;
+      transition: opacity 0.2s; }
+    .resource-card__image-area:hover .slick-arrow {
+      opacity: 1; }
+    .resource-card__image-area img {
+      width: 100%;
+      height: 33rem;
+      object-fit: cover;
+      border-radius: 1rem;
+      overflow: hidden; }
+    .resource-card__image-area__btn-left {
+      transform: translateY(-50%);
+      position: absolute;
+      top: 50%;
+      left: calc(1rem);
+      z-index: 20; }
+    .resource-card__image-area__btn-right {
+      transform: translateY(-50%);
+      position: absolute;
+      top: 50%;
+      right: calc(1rem);
+      z-index: 20; }
+  .resource-card__content {
+    padding: 1rem 0rem; }
+    .resource-card__content__title {
+      font-weight: 700;
+      color: #1d2225;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem; }
+    .resource-card__content__title-group {
+      color: #1d2225;
+      display: grid;
+      grid-template-columns: 1fr max-content;
+      align-items: center;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem; }
+      .resource-card__content__title-group__title {
+        font-weight: 700; }
+      .resource-card__content__title-group__sub {
+        font-size: 1.4rem; }
+    .resource-card__content__specs {
+      margin-bottom: 0.5rem; }
+      .resource-card__content__specs__item {
+        font-size: 1.4rem;
+        display: grid;
+        grid-template-columns: min-content 1fr;
+        color: #747474;
+        align-items: center; }
+        .resource-card__content__specs__item__icon {
+          margin-right: 1rem; }
+          .resource-card__content__specs__item__icon svg {
+            height: 1.4rem;
+            width: 1.4rem;
+            fill: #1d2225;
+            color: #1d2225;
+            transform: translateY(1px); }
+    .resource-card__content__description {
+      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+      color: #747474; }
+    .resource-card__content__price-group {
+      color: #1d2225;
+      font-size: 1.6rem;
+      display: flex;
+      align-items: flex-end; }
+      .resource-card__content__price-group__amount {
+        font-weight: 700;
+        margin-right: 0.5rem; }
+      .resource-card__content__price-group__text {
+        font-size: 1.4rem;
+        padding-bottom: 1px; }
+
+.product-extras {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 6rem;
+  position: relative; }
+  @media only screen and (max-width: 50em) {
+    .product-extras {
+      padding: 0 3rem; } }
+  .product-extras__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: calc(112rem + 12rem);
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+    position: relative; }
+    .product-extras__content .title-single {
+      margin-bottom: 1rem !important; }
+    .product-extras__content::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      top: -3rem;
+      left: 0;
+      background-color: #e6e6e6; }
+    .product-extras__content__slider {
+      width: 100%;
+      margin-top: 2rem; }
+      .product-extras__content__slider .slick-slide {
+        margin-right: 2rem; }
+
 .itinerary-overview {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 6rem; }
+  padding: 0 6rem;
+  position: relative; }
   @media only screen and (max-width: 50em) {
     .itinerary-overview {
       padding: 0 3rem; } }
@@ -3942,7 +4146,8 @@ h5 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 6rem; }
+  padding: 0 6rem;
+  position: relative; }
   @media only screen and (max-width: 50em) {
     .itinerary-days {
       padding: 0 3rem; } }
@@ -4147,6 +4352,7 @@ h5 {
   flex-direction: column;
   align-items: center;
   padding: 0 6rem;
+  position: relative;
   margin-bottom: 22rem; }
   @media only screen and (max-width: 50em) {
     .itinerary-requirements {
@@ -4193,7 +4399,8 @@ h5 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 6rem; }
+  padding: 0 6rem;
+  position: relative; }
   @media only screen and (max-width: 50em) {
     .cruise-overview {
       padding: 0 3rem; } }
@@ -4362,7 +4569,8 @@ h5 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 6rem; }
+  padding: 0 6rem;
+  position: relative; }
   @media only screen and (max-width: 50em) {
     .cruise-itineraries {
       padding: 0 3rem; } }
@@ -4468,7 +4676,8 @@ h5 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 6rem; }
+  padding: 0 6rem;
+  position: relative; }
   @media only screen and (max-width: 50em) {
     .cruise-cabins {
       padding: 0 3rem; } }
@@ -4489,120 +4698,19 @@ h5 {
       top: -3rem;
       left: 0;
       background-color: #e6e6e6; }
-    .cruise-cabins__content__title {
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: #1d2225; }
     .cruise-cabins__content__slider {
       width: 100%;
       margin-top: 2rem; }
       .cruise-cabins__content__slider .slick-slide {
         margin-right: 2rem; }
 
-.resource-card {
-  position: relative;
-  display: flex !important;
-  flex-direction: column; }
-  .resource-card:link, .resource-card:visited {
-    text-decoration: none; }
-  .resource-card--small img {
-    height: 22rem !important; }
-  .resource-card__image-area {
-    position: relative; }
-    .resource-card__image-area.slick-dotted {
-      margin-bottom: 0rem; }
-    .resource-card__image-area .slick-slide {
-      margin-right: 0rem; }
-    .resource-card__image-area .slick-dots {
-      bottom: 2rem; }
-    .resource-card__image-area .slick-dots li {
-      margin: 0rem !important; }
-      .resource-card__image-area .slick-dots li button {
-        width: 12px;
-        height: 12px;
-        padding: 3px; }
-        .resource-card__image-area .slick-dots li button::before {
-          color: #fff; }
-    .resource-card__image-area .slick-arrow {
-      opacity: 0;
-      transition: opacity 0.2s; }
-    .resource-card__image-area:hover .slick-arrow {
-      opacity: 1; }
-    .resource-card__image-area img {
-      width: 100%;
-      height: 33rem;
-      object-fit: cover;
-      border-radius: 1rem;
-      overflow: hidden; }
-    .resource-card__image-area__btn-left {
-      transform: translateY(-50%);
-      position: absolute;
-      top: 50%;
-      left: calc(1rem);
-      z-index: 20; }
-    .resource-card__image-area__btn-right {
-      transform: translateY(-50%);
-      position: absolute;
-      top: 50%;
-      right: calc(1rem);
-      z-index: 20; }
-  .resource-card__content {
-    padding: 1rem 0rem; }
-    .resource-card__content__title {
-      font-weight: 700;
-      color: #1d2225;
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem; }
-    .resource-card__content__title-group {
-      color: #1d2225;
-      display: grid;
-      grid-template-columns: 1fr max-content;
-      align-items: center;
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem; }
-      .resource-card__content__title-group__title {
-        font-weight: 700; }
-      .resource-card__content__title-group__sub {
-        font-size: 1.4rem; }
-    .resource-card__content__specs {
-      margin-bottom: 0.5rem; }
-      .resource-card__content__specs__item {
-        font-size: 1.4rem;
-        display: grid;
-        grid-template-columns: min-content 1fr;
-        color: #747474;
-        align-items: center; }
-        .resource-card__content__specs__item__icon {
-          margin-right: 1rem; }
-          .resource-card__content__specs__item__icon svg {
-            height: 1.4rem;
-            width: 1.4rem;
-            fill: #1d2225;
-            color: #1d2225;
-            transform: translateY(1px); }
-    .resource-card__content__description {
-      margin-bottom: 0.5rem;
-      font-size: 1.4rem;
-      color: #747474; }
-    .resource-card__content__price-group {
-      color: #1d2225;
-      font-size: 1.6rem;
-      display: flex;
-      align-items: flex-end; }
-      .resource-card__content__price-group__amount {
-        font-weight: 700;
-        margin-right: 0.5rem; }
-      .resource-card__content__price-group__text {
-        font-size: 1.4rem;
-        padding-bottom: 1px; }
-
 .cruise-areas {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 6rem; }
+  padding: 0 6rem;
+  position: relative; }
   @media only screen and (max-width: 50em) {
     .cruise-areas {
       padding: 0 3rem; } }
@@ -5929,7 +6037,7 @@ h5 {
       transform: translateX(-50%); }
     .product-hotels__slider .slick-slide {
       margin: 1.5rem;
-      box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.25);
+      box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.4);
       min-width: 0; }
     .product-hotels__slider__btn--left {
       transform: translateY(-50%);
@@ -8969,7 +9077,7 @@ h5 {
       transform: translateX(-50%); }
     .deals-destinations__slider .slick-slide {
       margin: 1rem;
-      box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.25);
+      box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.4);
       min-width: 0; }
       @media only screen and (max-width: 37.5em) {
         .deals-destinations__slider .slick-slide {
@@ -10361,7 +10469,7 @@ h5 {
       width: 100%;
       height: auto;
       margin-bottom: 2rem;
-      box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.25);
+      box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.4);
       position: relative; }
       @media only screen and (max-width: 50em) {
         .home-featured-item__image-area img {

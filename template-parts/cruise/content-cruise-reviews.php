@@ -46,7 +46,7 @@ $reviews = get_field('reviews');
         <!-- CTA -->
         <div class="cruise-overview__content__cta">
 
-            <button class="cta-round-icon" id="deckplan-button">
+            <button class="cta-primary cta-primary--inverse" id="deckplan-button">
                 See All Reviews
             </button>
 

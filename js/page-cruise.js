@@ -92,7 +92,6 @@ jQuery(document).ready(function ($) {
 
 
     //Slick Sliders --------------------------------------------
-    //Product gallery, social area, Reviews, Related,
 
     //Product Gallery
     $('#product-gallery').slick({
@@ -103,8 +102,8 @@ jQuery(document).ready(function ($) {
         initialSlide: 0,
         focusOnSelect: true,
         arrows: true,
-        prevArrow: '<button class="btn-circle btn-circle--small btn-circle--noborder btn-circle--left product-hero__content__gallery__slick__btn--left"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg></button>',
-        nextArrow: '<button class="btn-circle btn-circle--small btn-circle--noborder btn-circle--right product-hero__content__gallery__slick__btn--right"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+        prevArrow: '<button class="btn-scroll-overlay btn-scroll-overlay--left btn-gallery-top__left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+        nextArrow: '<button class="btn-scroll-overlay btn-gallery-top__right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
         responsive: [
             {
                 breakpoint: 1375,
@@ -159,10 +158,10 @@ jQuery(document).ready(function ($) {
 
 
     //itineraries-slider
-    $('#itineraries-slider').slick({
+    $('#itineraries-slider, #extras-slider').slick({
         slidesToShow: 2,
         slidesToScroll: 1,
-        infinite: false,
+        infinite: true,
         arrows: true,
         prevArrow: '<button class="btn-scroll btn-scroll--left btn-slider-top__left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
         nextArrow: '<button class="btn-scroll btn-slider-top__right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',

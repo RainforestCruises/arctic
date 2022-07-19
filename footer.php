@@ -21,6 +21,7 @@ $menu_group = [];
 
 <!-- Footer -->
 <footer class="footer">
+    
     <div class="footer__first">
         <div class="footer__first__compass">
             <svg>

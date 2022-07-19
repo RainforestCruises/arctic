@@ -112,7 +112,23 @@ jQuery(document).ready(function ($) {
       }
     ]
   });
-
+  //related
+  $('#related-slider').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    infinite: true,
+    arrows: true,
+    prevArrow: '<button class="btn-scroll btn-scroll--left btn-slider-top__left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    nextArrow: '<button class="btn-scroll btn-slider-top__right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+    responsive: [
+        {
+            breakpoint: 800,
+            settings: {
+                slidesToShow: 2,
+            }
+        }
+    ]
+});
 
   //departure filter
   $(".departure-filter").on('click', function () {

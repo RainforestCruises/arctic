@@ -1,31 +1,54 @@
-//Arctic -- Big Rounded Button with Icon
-.cta-round-icon {
-  background-color: $color-primary;
-  font-family: $font-primary;
-  color: $color-white;
+//Arctic -- Main button
+.cta-primary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 1.4rem 2rem;
   border: none;
   border-radius: 1rem;
-  font-size: 1.4rem;
-  padding: 1.4rem 2rem;
-  letter-spacing: 0rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
   outline: none;
   white-space: nowrap;
   text-decoration: none;
+  font-size: 1.4rem;
+  letter-spacing: 0rem;
+  font-weight: 600;
+  background-color: $color-primary;
+  font-family: $font-primary;
+  color: $color-white; 
+  transition: all 0.2s;
+  
+
+  &--white {   
+    background-color: $color-white;
+    color: $color-primary; 
+  
+    &:hover {
+      background-color: $color-grey-light-1a !important;
+    }
+  }
+
+  &--inverse {
+    background-color: $color-white;
+    color: $color-primary; 
+    border: 1px solid currentColor;
+    &:hover {
+      background-color: $color-grey-light-1a !important;
+    }
+  }
+
   &:hover {
     background-color: $color-supporting;
   }
 
-  display: flex;
-  align-items: center;
+
   & svg {
     height: 1.8rem;
     width: 1.8rem;
     color: currentColor;
     margin-left: 0.5rem;
   }
+
+
 }
 
 //Arctic -- Rectangular Button
@@ -171,9 +194,9 @@
 .btn-scroll-overlay {
   width: 3.5rem;
   height: 3.5rem;
-  background-color: rgba($color-white, 0.4);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
+  background-color: rgba($color-white, 0.3);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
 
   border: none;
   border-radius: 50%;
@@ -188,12 +211,13 @@
   justify-content: center;
   align-items: center;
 
-  color: $color-primary;
+  color: rgba($color-primary, 0.9);
   transition: all 0.2s;
   svg {
     height: 1.3rem;
     width: 1.3rem;
     stroke: currentColor;
+    fill: currentColor;
   }
 
   &--left {
@@ -271,6 +295,24 @@
     position: absolute;
     top: -5rem;
     right: calc(4rem);
+    z-index: 20;
+  }
+}
+
+.btn-gallery-top {
+  &__right {
+    transform: translateY(-50%);
+    position: absolute;
+    top: -3rem;
+    left: calc(5rem);
+    z-index: 20;
+  }
+
+  &__left {
+    transform: translateY(-50%);
+    position: absolute;
+    top: -3rem;
+    left: calc(0rem);
     z-index: 20;
   }
 }

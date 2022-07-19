@@ -119,6 +119,11 @@ while (have_posts()) :
     get_template_part('template-parts/cruise/content', 'cruise-departures', $args);
     ?>
 
+    <!-- Extras -->
+    <?php
+    get_template_part('template-parts/cruise/content', 'cruise-extras', $args);
+    ?>
+
     <!-- Reviews -->
     <?php
     get_template_part('template-parts/cruise/content', 'cruise-reviews', $args);

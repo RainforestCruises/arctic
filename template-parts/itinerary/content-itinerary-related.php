@@ -29,7 +29,7 @@ if ($destinations) {
 }
 
 
-$ships = get_posts($queryArgs);
+$itineraries = get_posts($queryArgs);
 
 ?>
 <section class="product-related" id="related">
@@ -38,20 +38,28 @@ $ships = get_posts($queryArgs);
 
         <div class="title-group">
             <div class="title-group__title">
-                Related Cruises
+                Related Itineraries
             </div>
             <div class="title-group__sub">
-                There are departures available
+                There are <?php echo count($itineraries); ?> itineraries available
             </div>
         </div>
 
         <div class="product-related__content__slider" id="related-slider">
-            <?php foreach ($ships as $ship) :
-                $image = get_field('featured_image', $ship);
-                $title = get_the_title($ship);
-                $cruise_data = get_field('cruise_data', $ship);
-                $itineraryDisplay = itineraryRange($cruise_data, "-") . " Days, " . count($cruise_data['Itineraries']) . ' Itineraries';
-                $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . 'Luxury';
+            <?php foreach ($itineraries as $itinerary) :
+                $image = get_field('hero_image', $itinerary);
+                $title = get_the_title($itinerary);
+                $cruise_data = get_field('cruise_data', $itinerary);
+                // $itinerary_id = get_field('itinerary_id', $itinerary);
+                // $itinerary_data;
+                // //Get Itinerary from cruise data
+                // foreach ($itineraries as $i) {
+                //   if ($i['Id'] == $itinerary_id) {
+                //     $itinerary_data = $i;
+                //   }
+                // }
+
+                $itineraryDisplay = '5 Days';
             ?>
 
                 <a class="resource-card resource-card--small">
@@ -88,7 +96,7 @@ $ships = get_posts($queryArgs);
                                     </svg>
                                 </div>
                                 <div class="resource-card__content__specs__item__text">
-                                    <?php echo $guestsDisplay; ?>
+                                   
                                 </div>
                             </div>
 

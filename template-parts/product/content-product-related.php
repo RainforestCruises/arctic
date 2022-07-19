@@ -31,25 +31,14 @@ if ($destinations) {
 
 $posts = get_posts($queryArgs);
 
-
-// if(count($posts) == 0){
-//     $queryArgs2 = array(
-//         'post_type' => get_post_type(),
-//         'posts_per_page' => -1,
-//         'post__not_in' => array($post->ID),
-//         'meta_key' => 'search_rank',
-//         'orderby' => 'meta_value_num',
-//         'order' => 'DESC',
-//     );
-
-//     $regions = get_field('regions');
-// }
-// console_log($posts);
 $resultCount = 0;
 
 ?>
 
 <div class="product-related">
+    <div class="product-related__background">
+        <img src="<?php echo bloginfo('template_url') ?>/img/bg/footer-bg.jpg"></img>
+    </div>
     <h2 class="page-divider page-divider--padding u-margin-bottom-medium u-margin-top-small">
         Related <?php echo $args['productType'] . 's'; ?>
     </h2>

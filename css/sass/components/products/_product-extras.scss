@@ -1,24 +1,5 @@
-.product-related {
+.product-extras {
     @include flexBlock;
-
-    position: relative;
-
-    //BG
-    &__background {
-        
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        bottom: 0;
-        left: 0;
-        display: flex;
-        align-items: flex-end;
-        & img {
-            height: auto;
-            width: 100%;
-            object-fit: contain;
-        }
-    }
 
     &__content {
         position: relative;
@@ -27,7 +8,11 @@
         width: 100%;
         max-width: $page-width;
         margin-top: 3rem;
-        margin-bottom: 12rem;
+        margin-bottom: 6rem;
+
+     .title-single {
+            margin-bottom: 1rem !important;
+        }
 
         position: relative;
         &::after {
@@ -35,11 +20,10 @@
             width: 100%;
             height: 1px;
             position: absolute;
-            top: -3rem; 
+            top: -3rem;
             left: 0;
             background-color: $color-grey-light-1a;
         }
-
 
 
 
@@ -50,8 +34,6 @@
                 margin-right: 2rem;
             }
         }
-
-       
     }
 }
- 
+

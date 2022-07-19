@@ -221,12 +221,9 @@
                         "id": ""
                     },
                     "post_type": [
-                        "page"
+                        "rfc_cruises"
                     ],
-                    "taxonomy": [
-                        "category:destinations",
-                        "category:search"
-                    ],
+                    "taxonomy": "",
                     "allow_null": 0,
                     "allow_archives": 0,
                     "multiple": 0
@@ -1335,5 +1332,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1657226779
+    "modified": 1658174345
 }

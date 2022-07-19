@@ -74,8 +74,6 @@ while (have_posts()) :
 
   $hasDeals = (count($dealPosts) > 0) ? true : false;
 
-  console_log($itinerary_data);
-
 
   $args = array(
     'lowestPrice' => $lowestPrice,
@@ -130,6 +128,9 @@ while (have_posts()) :
     get_template_part('template-parts/itinerary/content', 'itinerary-requirements', $args);
     ?>
 
+  <!-- Reviews -->
+  <!-- Extras -->
+  <!-- Related -->
 
 
   </main>

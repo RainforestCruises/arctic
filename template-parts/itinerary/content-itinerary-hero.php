@@ -134,7 +134,7 @@ $hero_image = get_field('hero_image');
 
                         <div class="product-hero__content__bottom__content__info-group__info__cta">
 
-                            <button class="cta-round-icon " id="nav-page-cta">
+                            <button class="cta-primary" id="nav-page-cta">
                                 Inquire
                                 <svg>
                                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>
