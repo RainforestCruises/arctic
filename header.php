@@ -45,4 +45,4 @@
 <body <?php body_class("global"); ?> id="body">
 
 
-    <?php get_template_part('template-parts/content', 'nav-arctic'); ?>
+    <?php get_template_part('template-parts/nav/content', 'nav-arctic'); ?>

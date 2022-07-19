@@ -4703,6 +4703,8 @@ h5 {
       margin-top: 2rem; }
       .cruise-cabins__content__slider .slick-slide {
         margin-right: 2rem; }
+      .cruise-cabins__content__slider .resource-card__image-area .slick-slide {
+        margin-right: 0rem; }
 
 .cruise-areas {
   display: flex;

@@ -3,7 +3,7 @@ $extras = get_field('extras');
 ?>
 
 
-<div class="product-extras">
+<div class="product-extras" id="extras">
     <div class="product-extras__content">
         <!-- Title Group -->
         <div class="title-single">

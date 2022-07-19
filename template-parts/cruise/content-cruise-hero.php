@@ -91,17 +91,16 @@ $images = get_field('highlight_gallery');
                                 <a href="#overview" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Overview</a>
                             </li>
                             <li class="product-hero__content__top__content__nav__list__item">
-                                <a href="#cruise" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Amenities</a>
-                            </li>
-   
-                            <li class="product-hero__content__top__content__nav__list__item">
-                                <a href="#cruise" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Itineraries</a>
+                                <a href="#amenities" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Amenities</a>
                             </li>
                             <li class="product-hero__content__top__content__nav__list__item">
-                                <a href="#cruise" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Extras</a>
+                                <a href="#itineraries" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Itineraries</a>
+                            </li>
+                            <li class="product-hero__content__top__content__nav__list__item">
+                                <a href="#extras" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Extras</a>
                             </li>
                             <li class="product-hero__content__top__content__nav__list__item ">
-                                <a href="#departures" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Reviews</a>
+                                <a href="#reviews" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Reviews</a>
                             </li>
 
                         </ul>
@@ -131,7 +130,7 @@ $images = get_field('highlight_gallery');
         <!-- Gallery  -->
         <div class="product-hero__content__gallery">
 
-            <div class="product-hero__content__gallery__slick" id="product-gallery">
+            <div class="product-hero__content__gallery__slick" id="hero-gallery">
                 <?php
 
                 if ($images) : ?>

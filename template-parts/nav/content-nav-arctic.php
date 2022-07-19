@@ -367,17 +367,20 @@ foreach ($menuitems as $m) {
 
 
 
-    <!-- Product Secondary Nav -->
-    <?php if (get_post_type() == 'rfc_cruises' || get_post_type() == 'rfc_itineraries' || get_post_type() == 'rfc_tours' || get_post_type() == 'rfc_lodges') :
-        get_template_part('template-parts/content', 'nav-product');
+    <!-- Cruise Nav -->
+    <?php if (get_post_type() == 'rfc_cruises') :
+        get_template_part('template-parts/nav/content', 'nav-cruise');
     endif; ?>
 
-
+    <!-- Itinerary Nav -->
+    <?php if (get_post_type() == 'rfc_itineraries') :
+        get_template_part('template-parts/nav/content', 'nav-itinerary');
+    endif; ?>
 
     <!-- Destination Secondary Nav -->
     <?php
     if (is_page_template('template-destinations-destination.php') || is_page_template('template-destinations-cruise.php') || is_page_template('template-destinations-region.php')) :
-        get_template_part('template-parts/content', 'nav-destination');
+        get_template_part('template-parts/nav/content', 'nav-destination');
     endif; ?>
 
 </header>

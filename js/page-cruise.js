@@ -3,8 +3,7 @@ jQuery(document).ready(function ($) {
     var currentYear = new Date().getFullYear();
     var body = $('body');
 
-    //NEW --------------
-
+    //Panels --------------------------------------------
     //expand/hide
     $(".outline-panel__heading").on("click", function (e) {
         e.preventDefault();
@@ -16,85 +15,9 @@ jQuery(document).ready(function ($) {
 
 
 
-    //MODALS ---------------------
-    //Contact Modal (generic)
-    var contactModal = document.getElementById("contactModal");
-    var departureFormText = document.getElementById("contactModalDepartureText");
-
-    var dealsModal = document.getElementById("dealsModal");
-
-
-    //Deals Slider
-    $('.deal-modal-cta-button').on('click', () => {
-        dealsModal.classList.add('active');
-        $('#deals-slider')[0].slick.setPosition()
-    });
-
-    //Activate contact modal (generic)
-    $('#nav-secondary-cta, #nav-page-cta').on('click', () => {
-        body.addClass('no-scroll');
-        contactModal.style.display = "flex";
-        departureFormText.style.display = "none"; //not departure specific
-    });
-
-
-    //Price Notes Modal
-    var priceNotesModal = document.getElementById("page-modal");
-
-
-    //Activare Price Notes
-    const priceNoteButtons = [...document.querySelectorAll('.price-notes')];
-    priceNoteButtons.forEach(item => {
-        item.addEventListener('click', () => {
-            body.addClass('no-scroll');
-            priceNotesModal.classList.add('active');
-        });
-    })
-
-    //Notification Modal (doesnt need open)
-    var notificationModal = document.getElementById("notification-modal");
-
-    //Close modals
-    //Buttons
-    $('.close-button, #notification-close-cta').on('click', () => {
-        contactModal.style.display = "none";
-        body.removeClass('no-scroll');
-        if (priceNotesModal) {
-            priceNotesModal.classList.remove('active');
-        }
-        if (notificationModal) {
-            notificationModal.classList.remove('active');
-        }
-    });
-
-
-    //Background Click
-    window.onclick = function (event) { //trigger by background click
-        if (event.target == contactModal) {
-            contactModal.style.display = "none";
-            body.removeClass('no-scroll');
-        }
-        if (event.target == priceNotesModal) {
-            priceNotesModal.classList.remove('active');
-            body.removeClass('no-scroll');
-        }
-        if (event.target == notificationModal) {
-            notificationModal.classList.remove('active');
-            body.removeClass('no-scroll');
-        }
-
-        if (event.target == dealsModal) {
-            dealsModal.classList.remove('active');
-            body.removeClass('no-scroll');
-        }
-    }
-
-
-
     //Slick Sliders --------------------------------------------
-
-    //Product Gallery
-    $('#product-gallery').slick({
+    //--Hero Gallery
+    $('#hero-gallery').slick({
         infinite: true,
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -293,6 +216,94 @@ jQuery(document).ready(function ($) {
     $('#deckplan-image').magnificPopup({
         type: 'image',
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    //MODALS ---------------------
+    //Contact Modal (generic)
+    var contactModal = document.getElementById("contactModal");
+    var departureFormText = document.getElementById("contactModalDepartureText");
+
+    var dealsModal = document.getElementById("dealsModal");
+
+
+    //Deals Slider
+    $('.deal-modal-cta-button').on('click', () => {
+        dealsModal.classList.add('active');
+        $('#deals-slider')[0].slick.setPosition()
+    });
+
+    //Activate contact modal (generic)
+    $('#nav-secondary-cta, #nav-page-cta').on('click', () => {
+        body.addClass('no-scroll');
+        contactModal.style.display = "flex";
+        departureFormText.style.display = "none"; //not departure specific
+    });
+
+
+    //Price Notes Modal
+    var priceNotesModal = document.getElementById("page-modal");
+
+
+    //Activate Price Notes
+    const priceNoteButtons = [...document.querySelectorAll('.price-notes')];
+    priceNoteButtons.forEach(item => {
+        item.addEventListener('click', () => {
+            body.addClass('no-scroll');
+            priceNotesModal.classList.add('active');
+        });
+    })
+
+    //Notification Modal (doesnt need open)
+    var notificationModal = document.getElementById("notification-modal");
+
+    //Close modals
+    //Buttons
+    $('.close-button, #notification-close-cta').on('click', () => {
+        contactModal.style.display = "none";
+        body.removeClass('no-scroll');
+        if (priceNotesModal) {
+            priceNotesModal.classList.remove('active');
+        }
+        if (notificationModal) {
+            notificationModal.classList.remove('active');
+        }
+    });
+
+
+    //Background Click
+    window.onclick = function (event) { //trigger by background click
+        if (event.target == contactModal) {
+            contactModal.style.display = "none";
+            body.removeClass('no-scroll');
+        }
+        if (event.target == priceNotesModal) {
+            priceNotesModal.classList.remove('active');
+            body.removeClass('no-scroll');
+        }
+        if (event.target == notificationModal) {
+            notificationModal.classList.remove('active');
+            body.removeClass('no-scroll');
+        }
+
+        if (event.target == dealsModal) {
+            dealsModal.classList.remove('active');
+            body.removeClass('no-scroll');
+        }
+    }
+
 
 
 });

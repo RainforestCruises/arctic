@@ -94,14 +94,14 @@ jQuery(document).ready(function ($) {
         if ($(window).width() > 1200) {
 
             if (!isScrollUp) {
-                target = target - 160;
+                target = target - 115;
             } else {
                 target = target - 80;
             }
 
         } else { // small screen 
             if (!isScrollUp) {
-                target = target - 125;
+                target = target - 85;
             } else {
                 target = target - 60;
             }

@@ -374,7 +374,7 @@
             "label": "Hero Image",
             "name": "hero_image",
             "type": "image",
-            "instructions": "Hero image for cruise (1920 x 730). Boat should be in left side of image, ideally an angled profile.",
+            "instructions": "Hero image (1920 x 730).",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -382,42 +382,9 @@
                 "class": "",
                 "id": ""
             },
-            "admin_column_enabled": 0,
-            "admin_column_post_types": "",
-            "admin_column_taxonomies": "",
             "return_format": "array",
             "preview_size": "medium",
             "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
-        },
-        {
-            "key": "field_62b21d8610fdd",
-            "label": "Highlight Gallery",
-            "name": "highlight_gallery",
-            "type": "gallery",
-            "instructions": "Add images to the highlights slider at the top (750 x 750)",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "admin_column_enabled": 0,
-            "admin_column_post_types": "",
-            "admin_column_taxonomies": "",
-            "return_format": "array",
-            "preview_size": "medium",
-            "insert": "append",
-            "library": "all",
-            "min": "",
-            "max": "",
             "min_width": "",
             "min_height": "",
             "min_size": "",
@@ -1332,5 +1299,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1658174345
+    "modified": 1658257422
 }

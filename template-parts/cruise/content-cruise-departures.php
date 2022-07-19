@@ -40,7 +40,7 @@ console_log($departures);
                 Departures
             </div>
             <div class="title-group__sub">
-                There are <?php echo count($departures); ?> departures available
+                There are <?php echo count($departures); ?> departures available aboard the <?php echo get_the_title(); ?>
             </div>
         </div>
 

@@ -41,7 +41,7 @@ $ships = get_posts($queryArgs);
                 Related Cruises
             </div>
             <div class="title-group__sub">
-                There are departures available
+                Explore from <?php echo count($ships) ?> ships sailing the Antarctic
             </div>
         </div>
 

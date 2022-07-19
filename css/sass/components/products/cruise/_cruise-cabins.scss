@@ -25,8 +25,16 @@
         &__slider {
             width: 100%;
             margin-top: 2rem;
+
             & .slick-slide {
                 margin-right: 2rem;
+            }
+
+            //needed so margin not applied to image slider
+            & .resource-card__image-area {
+                & .slick-slide {
+                    margin-right: 0rem;
+                }
             }
         }
     }

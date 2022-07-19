@@ -5,7 +5,7 @@ $cabins = $cruise_data['CabinDTOs'];
 $curentYear = date("Y");
 
 ?>
-<section class="cruise-cabins" id="cabins">
+<section class="cruise-cabins" id="amenities">
     <div class="cruise-cabins__content">
 
         <!-- Title -->
