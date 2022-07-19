@@ -8,7 +8,7 @@ $destinations = get_field('destinations');
     <div class="home-destinations__content">
 
         <div class="title-single">
-            Explore the Regions of Antarctica
+            Explore Antarctica
         </div>
 
         <div class="home-destinations__content__slider" id="destinations-slider">
