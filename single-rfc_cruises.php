@@ -87,7 +87,7 @@ while (have_posts()) :
 ?>
 
   <!-- Product Page Container -->
-  <main class="product-page">
+  <main>
 
     <!-- Hero -->
     <?php

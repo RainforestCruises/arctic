@@ -20,59 +20,26 @@ $newsletter_snippet = get_field('newsletter_snippet');
 ?>
 
 
-<main class="home-page">
+<main>
 
   <!-- Hero -->
-  <section class="home-page__section-hero" id="top">
-    <?php
-    get_template_part('template-parts/home/content', 'home-hero');
-    ?>
+  <?php
+  get_template_part('template-parts/home/content', 'home-hero');
+  ?>
 
-  </section>
+  <!-- Newest Cruises  -->
+  <?php
+  get_template_part('template-parts/home/content', 'home-newest');
+  ?>
 
-  <!-- Arctic Newest Cruises  -->
-  <section class="home-page__section-intro" id="intro">
-    <?php
-    get_template_part('template-parts/home/content', 'home-arctic-newest');
-    ?>
-  </section>
-
-  <!-- Arctic Destinations -->
-  <section class="home-page__section-intro" id="intro">
-    <?php
-    get_template_part('template-parts/home/content', 'home-arctic-destinations');
-    ?>
-  </section>
+  <!-- Destinations -->
+  <?php
+  get_template_part('template-parts/home/content', 'home-destinations');
+  ?>
 
 
 
-  <!-- Featured Cruises -->
-  <section class="home-page__section-featured">
-    <?php
-    get_template_part('template-parts/home/content', 'home-featured-cruises');
-    ?>
-  </section>
 
-  <!-- Featured Bucket List -->
-  <section class="home-page__section-featured">
-    <?php
-    get_template_part('template-parts/home/content', 'home-featured-bucket-list');
-    ?>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="home-page__section-testimonials">
-    <?php
-    get_template_part('template-parts/home/content', 'home-testimonials');
-    ?>
-  </section>
-
-  <!-- Newsletter -->
-  <section class="home-page__section-newsletter">
-    <?php
-    get_template_part('template-parts/home/content', 'shared-newsletter');
-    ?>
-  </section>
 </main>
 
 <!-- Full Search Mobile -->

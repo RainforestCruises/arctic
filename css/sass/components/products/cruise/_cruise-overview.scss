@@ -8,6 +8,7 @@
         flex-direction: column;
         width: 100%;
         max-width: $page-width;
+        @include flexPadding;
 
         &__grid {
             width: 100%;

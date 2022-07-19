@@ -4,9 +4,12 @@
     &__content {
         position: relative;
 
-        width: 100%;
+        @include flexPadding;
+        @include topDivider;
+
         max-width: $page-width;
         margin-top: 3rem;
+        margin-bottom: 2rem;
 
         &__layout {
             display: grid;

@@ -20,6 +20,7 @@ $images = get_field('highlight_gallery');
 
 ?>
 
+<!-- Cruise Hero -->
 <section class="product-hero" id="top">
     <div class="product-hero__content">
 
@@ -256,8 +257,6 @@ $images = get_field('highlight_gallery');
 
             </div>
         </div>
-
-
 
     </div>
 </section>

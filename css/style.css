@@ -337,7 +337,7 @@ p {
 .page-divider {
   grid-column: center-start / center-end;
   width: 100%;
-  max-width: calc(112rem + 12rem);
+  max-width: 122rem;
   display: flex;
   flex-direction: row;
   color: #1d2225;
@@ -483,7 +483,7 @@ p {
   text-align: center;
   font-size: 1.6rem;
   margin-bottom: 4rem;
-  max-width: calc(112rem + 12rem);
+  max-width: 122rem;
   padding: 0 6rem; }
   @media only screen and (max-width: 37.5em) {
     .sub-divider-text {
@@ -999,14 +999,14 @@ h5 {
 .btn-slider-top__right {
   transform: translateY(-50%);
   position: absolute;
-  top: -5rem;
+  top: -4rem;
   right: calc(0rem);
   z-index: 20; }
 
 .btn-slider-top__left {
   transform: translateY(-50%);
   position: absolute;
-  top: -5rem;
+  top: -4rem;
   right: calc(4rem);
   z-index: 20; }
 
@@ -1816,72 +1816,6 @@ h5 {
   border: none;
   box-shadow: 0px 0px 0px 1px #aaa; }
 
-.home-page {
-  position: relative; }
-  .home-page__section-hero {
-    background-color: #1d2225; }
-  .home-page__section-arctic-newest {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    overflow: visible; }
-  .home-page__section-intro {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%; }
-  .home-page__section-newsletter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%; }
-
-.product-page__section-hero {
-  background-color: #1d2225; }
-
-.product-page__section-overview {
-  margin: 4rem 0;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 100%; }
-
-.product-page__section-itineraries {
-  margin: 4rem 0;
-  display: flex;
-  justify-content: center;
-  width: 100%; }
-
-.product-page__section-accommodation {
-  margin-top: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%; }
-
-.product-page__section-prices {
-  margin: 4rem 0; }
-
-.product-page__section-dates {
-  margin: 4rem 0; }
-
-.product-page__section-reviews {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%; }
-
-.product-page__section-related {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%; }
-
 .search-page {
   padding-top: 9rem;
   display: flex;
@@ -1895,7 +1829,8 @@ h5 {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: calc(112rem + 12rem);
+    max-width: 122rem;
+    width: 100%;
     padding: 0 6rem; }
     @media only screen and (max-width: 50em) {
       .search-page__intro {
@@ -1903,7 +1838,8 @@ h5 {
   .search-page__content {
     display: flex;
     width: 100%;
-    max-width: calc(112rem + 12rem);
+    max-width: 122rem;
+    width: 100%;
     padding: 0 6rem;
     margin-bottom: 6rem; }
     @media only screen and (max-width: 50em) {
@@ -1915,7 +1851,8 @@ h5 {
   .search-page__bottom {
     display: flex;
     flex-direction: column;
-    max-width: calc(112rem + 12rem);
+    max-width: 122rem;
+    width: 100%;
     padding: 0 6rem;
     height: 10rem;
     background-color: #e6e6e6; }
@@ -1968,7 +1905,7 @@ h5 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: calc(112rem + 12rem);
+  max-width: 122rem;
   padding: 0 6rem; }
   @media only screen and (max-width: 37.5em) {
     .travel-guide {
@@ -2387,10 +2324,10 @@ h5 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: calc(112rem + 12rem); }
+  max-width: 122rem; }
 
 .wp-caption-text {
-  max-width: calc(112rem + 12rem) !important;
+  max-width: 122rem !important;
   align-self: center;
   font-size: 1.6rem !important;
   margin-bottom: 2rem;
@@ -2450,7 +2387,7 @@ h5 {
           color: currentColor;
           opacity: 1; }
   .travel-guide-landing-page__header {
-    max-width: calc(112rem + 12rem);
+    max-width: 122rem;
     padding: 0 6rem;
     position: relative;
     margin-bottom: 6rem; }
@@ -2510,14 +2447,14 @@ h5 {
       font-weight: 500;
       line-height: 6rem;
       text-align: center;
-      max-width: calc(112rem + 12rem);
+      max-width: 122rem;
       padding: 0 6rem; }
       @media only screen and (max-width: 37.5em) {
         .travel-guide-landing-page__content__title {
           padding: 0 3rem; } }
     .travel-guide-landing-page__content__search-area {
       width: 100%;
-      max-width: calc(112rem + 12rem);
+      max-width: 122rem;
       padding: 2rem 6rem;
       display: flex;
       justify-content: center;
@@ -2547,7 +2484,7 @@ h5 {
       font-size: 1.6rem;
       margin: 2rem 0;
       text-align: center;
-      max-width: calc(112rem + 12rem);
+      max-width: 122rem;
       padding: 0 6rem; }
       @media only screen and (max-width: 37.5em) {
         .travel-guide-landing-page__content__subtext {
@@ -2557,7 +2494,7 @@ h5 {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      max-width: calc(112rem + 12rem);
+      max-width: 122rem;
       padding: 0 6rem; }
       @media only screen and (max-width: 37.5em) {
         .travel-guide-landing-page__content__categories {
@@ -2632,7 +2569,7 @@ h5 {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: calc(112rem + 12rem);
+    max-width: 122rem;
     padding: 0 6rem;
     margin-bottom: 6rem; }
     @media only screen and (max-width: 37.5em) {
@@ -2694,9 +2631,10 @@ h5 {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: calc(112rem + 12rem);
+    max-width: 122rem;
     align-items: center;
     margin-bottom: 8rem;
+    width: 100%;
     padding: 0 6rem; }
     @media only screen and (max-width: 50em) {
       .generic-page__content {
@@ -2851,6 +2789,7 @@ h5 {
     justify-content: center;
     width: 100%;
     max-width: 135rem;
+    width: 100%;
     padding: 0 6rem; }
     @media only screen and (max-width: 50em) {
       .test-hero__content {
@@ -2902,6 +2841,7 @@ h5 {
     max-width: 135rem;
     margin-bottom: 4rem;
     z-index: 10;
+    width: 100%;
     padding: 0 6rem;
     display: flex;
     justify-content: space-between;
@@ -2964,7 +2904,7 @@ h5 {
       padding-top: 7rem; } }
   .error404-page__content {
     width: 100%;
-    max-width: calc(112rem + 12rem);
+    max-width: 122rem;
     padding: 3rem 0;
     height: 60rem;
     display: flex;
@@ -2972,8 +2912,9 @@ h5 {
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: calc(112rem + 12rem);
+    max-width: 122rem;
     align-items: center;
+    width: 100%;
     padding: 0 6rem; }
     @media only screen and (max-width: 37.5em) {
       .error404-page__content {
@@ -3103,8 +3044,7 @@ h5 {
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      align-items: center;
-      padding: 0 6rem; }
+      align-items: center; }
       .product-hero__content__top__bg {
         position: absolute;
         top: 0;
@@ -3131,9 +3071,6 @@ h5 {
           @media only screen and (max-width: 62.5em) {
             .product-hero__content__top__bg::after {
               background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent 20%), linear-gradient(to bottom, rgba(30, 30, 30, 0.4), rgba(30, 30, 30, 0.4)), linear-gradient(to top, rgba(30, 30, 30, 0.7), rgba(30, 30, 30, 0.1) 70%); } }
-      @media only screen and (max-width: 37.5em) {
-        .product-hero__content__top {
-          padding: 0 3rem; } }
       .product-hero__content__top__content {
         z-index: 8;
         width: 100%;
@@ -3144,7 +3081,12 @@ h5 {
         position: relative;
         justify-content: space-between;
         color: #fff;
-        max-width: calc(112rem + 12rem); }
+        max-width: 122rem;
+        width: 100%;
+        padding: 0 6rem; }
+        @media only screen and (max-width: 50em) {
+          .product-hero__content__top__content {
+            padding: 0 3rem; } }
         @media only screen and (max-width: 62.5em) {
           .product-hero__content__top__content {
             align-items: center;
@@ -3354,16 +3296,17 @@ h5 {
       justify-content: center;
       border-bottom: 1px solid #e6e6e6;
       border-top: 1px solid #e6e6e6;
-      padding: 0 6rem;
       padding-bottom: 1rem; }
-      @media only screen and (max-width: 37.5em) {
-        .product-hero__content__bottom {
-          padding: 0 3rem; } }
       .product-hero__content__bottom__content {
         width: 100%;
         display: flex;
         flex-direction: column;
-        max-width: calc(112rem + 12rem); }
+        max-width: 122rem;
+        width: 100%;
+        padding: 0 6rem; }
+        @media only screen and (max-width: 50em) {
+          .product-hero__content__bottom__content {
+            padding: 0 3rem; } }
         .product-hero__content__bottom__content__info-group {
           display: flex;
           flex-direction: column;
@@ -3590,28 +3533,35 @@ h5 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 6rem;
-  position: relative; }
-  @media only screen and (max-width: 50em) {
-    .product-departures {
-      padding: 0 3rem; } }
+  position: relative;
+  width: 100%; }
   .product-departures__content {
     position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: calc(112rem + 12rem);
+    padding: 0 6rem;
+    position: relative;
+    margin-top: 3rem !important;
+    padding-top: 3rem !important;
+    max-width: 122rem;
     margin-top: 3rem;
-    margin-bottom: 6rem;
-    position: relative; }
+    margin-bottom: 2rem; }
+    @media only screen and (max-width: 50em) {
+      .product-departures__content {
+        padding: 0 3rem; } }
     .product-departures__content::after {
       content: "";
-      width: 100%;
+      width: calc(100% - 12rem);
       height: 1px;
       position: absolute;
-      top: -3rem;
-      left: 0;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
       background-color: #e6e6e6; }
+      @media only screen and (max-width: 50em) {
+        .product-departures__content::after {
+          width: calc(100% - 6rem); } }
     .product-departures__content__title {
       font-size: 2.4rem;
       font-weight: 700;
@@ -3679,12 +3629,9 @@ h5 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 6rem;
   position: relative;
+  width: 100%;
   position: relative; }
-  @media only screen and (max-width: 50em) {
-    .product-related {
-      padding: 0 3rem; } }
   .product-related__background {
     position: absolute;
     height: 100%;
@@ -3702,18 +3649,28 @@ h5 {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: calc(112rem + 12rem);
+    padding: 0 6rem;
+    position: relative;
+    margin-top: 3rem !important;
+    padding-top: 3rem !important;
+    max-width: 122rem;
     margin-top: 3rem;
-    margin-bottom: 12rem;
-    position: relative; }
+    margin-bottom: 6rem; }
+    @media only screen and (max-width: 50em) {
+      .product-related__content {
+        padding: 0 3rem; } }
     .product-related__content::after {
       content: "";
-      width: 100%;
+      width: calc(100% - 12rem);
       height: 1px;
       position: absolute;
-      top: -3rem;
-      left: 0;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
       background-color: #e6e6e6; }
+      @media only screen and (max-width: 50em) {
+        .product-related__content::after {
+          width: calc(100% - 6rem); } }
     .product-related__content__slider {
       width: 100%;
       margin-top: 2rem; }
@@ -3725,27 +3682,34 @@ h5 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 6rem;
-  position: relative; }
-  @media only screen and (max-width: 50em) {
-    .product-reviews {
-      padding: 0 3rem; } }
+  position: relative;
+  width: 100%; }
   .product-reviews__content {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: calc(112rem + 12rem);
+    padding: 0 6rem;
+    position: relative;
+    margin-top: 3rem !important;
+    padding-top: 3rem !important;
+    max-width: 122rem;
     margin-top: 3rem;
-    margin-bottom: 6rem;
-    position: relative; }
+    margin-bottom: 2rem; }
+    @media only screen and (max-width: 50em) {
+      .product-reviews__content {
+        padding: 0 3rem; } }
     .product-reviews__content::after {
       content: "";
-      width: 100%;
+      width: calc(100% - 12rem);
       height: 1px;
       position: absolute;
-      top: -3rem;
-      left: 0;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
       background-color: #e6e6e6; }
+      @media only screen and (max-width: 50em) {
+        .product-reviews__content::after {
+          width: calc(100% - 6rem); } }
     .product-reviews__content__grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -3784,12 +3748,12 @@ h5 {
   position: relative;
   border-radius: 1rem;
   overflow: hidden;
-  transition: all .2s; }
+  transition: all 0.2s; }
   .overlay-card:link, .overlay-card:visited {
     text-decoration: none; }
   .overlay-card__image-area {
     z-index: -1;
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -3798,7 +3762,20 @@ h5 {
       width: 100%;
       height: 100%;
       object-fit: cover; }
+    .overlay-card__image-area::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 30%;
+      width: 100%;
+      z-index: 1;
+      border-radius: 0.4rem;
+      background-image: linear-gradient(to bottom, rgba(30, 30, 30, 0.2), rgba(30, 30, 30, 0)); }
   .overlay-card__content {
+    position: absolute;
+    top: 0;
+    left: 0;
     z-index: 2;
     padding: 2rem 3rem;
     display: flex;
@@ -3916,33 +3893,37 @@ h5 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 6rem;
-  position: relative; }
-  @media only screen and (max-width: 50em) {
-    .product-extras {
-      padding: 0 3rem; } }
+  position: relative;
+  width: 100%; }
   .product-extras__content {
     position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: calc(112rem + 12rem);
+    padding: 0 6rem;
+    position: relative;
+    margin-top: 3rem !important;
+    padding-top: 3rem !important;
+    max-width: 122rem;
     margin-top: 3rem;
-    margin-bottom: 6rem;
-    position: relative; }
-    .product-extras__content .title-single {
-      margin-bottom: 1rem !important; }
+    margin-bottom: 2rem; }
+    @media only screen and (max-width: 50em) {
+      .product-extras__content {
+        padding: 0 3rem; } }
     .product-extras__content::after {
       content: "";
-      width: 100%;
+      width: calc(100% - 12rem);
       height: 1px;
       position: absolute;
-      top: -3rem;
-      left: 0;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
       background-color: #e6e6e6; }
+      @media only screen and (max-width: 50em) {
+        .product-extras__content::after {
+          width: calc(100% - 6rem); } }
     .product-extras__content__slider {
-      width: 100%;
-      margin-top: 2rem; }
+      width: 100%; }
       .product-extras__content__slider .slick-slide {
         margin-right: 2rem; }
 
@@ -3951,38 +3932,30 @@ h5 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 6rem;
-  position: relative; }
-  @media only screen and (max-width: 50em) {
-    .itinerary-overview {
-      padding: 0 3rem; } }
+  position: relative;
+  width: 100%; }
   .itinerary-overview__content {
     z-index: 2;
     position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: calc(112rem + 12rem); }
+    padding: 0 6rem;
+    max-width: 122rem; }
+    @media only screen and (max-width: 50em) {
+      .itinerary-overview__content {
+        padding: 0 3rem; } }
     .itinerary-overview__content__grid {
       width: 100%;
       display: grid;
       grid-template-columns: 55% 45%;
-      grid-template-rows: 30rem min-content;
-      position: relative; }
+      grid-template-rows: 30rem min-content; }
       @media only screen and (max-width: 62.5em) {
         .itinerary-overview__content__grid {
           grid-template-rows: min-content; } }
       @media only screen and (max-width: 50em) {
         .itinerary-overview__content__grid {
           grid-template-columns: 100%; } }
-      .itinerary-overview__content__grid::after {
-        content: "";
-        width: 100%;
-        height: 1px;
-        position: absolute;
-        bottom: 0rem;
-        left: 0;
-        background-color: #e6e6e6; }
       .itinerary-overview__content__grid__overview {
         grid-row: 1 / -1;
         padding-top: 3rem;
@@ -4146,16 +4119,33 @@ h5 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 6rem;
-  position: relative; }
-  @media only screen and (max-width: 50em) {
-    .itinerary-days {
-      padding: 0 3rem; } }
+  position: relative;
+  width: 100%; }
   .itinerary-days__content {
     position: relative;
     width: 100%;
-    max-width: calc(112rem + 12rem);
-    margin-top: 3rem; }
+    padding: 0 6rem;
+    position: relative;
+    margin-top: 3rem !important;
+    padding-top: 3rem !important;
+    max-width: 122rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem; }
+    @media only screen and (max-width: 50em) {
+      .itinerary-days__content {
+        padding: 0 3rem; } }
+    .itinerary-days__content::after {
+      content: "";
+      width: calc(100% - 12rem);
+      height: 1px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #e6e6e6; }
+      @media only screen and (max-width: 50em) {
+        .itinerary-days__content::after {
+          width: calc(100% - 6rem); } }
     .itinerary-days__content__layout {
       display: grid;
       grid-template-columns: 30rem calc(100% - 31rem);
@@ -4351,25 +4341,34 @@ h5 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 6rem;
   position: relative;
+  width: 100%;
   margin-bottom: 22rem; }
-  @media only screen and (max-width: 50em) {
-    .itinerary-requirements {
-      padding: 0 3rem; } }
   .itinerary-requirements__content {
     position: relative;
     width: 100%;
-    max-width: calc(112rem + 12rem);
-    padding-top: 5rem; }
+    padding: 0 6rem;
+    position: relative;
+    margin-top: 3rem !important;
+    padding-top: 3rem !important;
+    max-width: 122rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem; }
+    @media only screen and (max-width: 50em) {
+      .itinerary-requirements__content {
+        padding: 0 3rem; } }
     .itinerary-requirements__content::after {
       content: "";
-      width: 100%;
+      width: calc(100% - 12rem);
       height: 1px;
       position: absolute;
-      top: 0rem;
-      left: 0;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
       background-color: #e6e6e6; }
+      @media only screen and (max-width: 50em) {
+        .itinerary-requirements__content::after {
+          width: calc(100% - 6rem); } }
     .itinerary-requirements__content__grid {
       width: 100%;
       display: grid;
@@ -4399,18 +4398,20 @@ h5 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 6rem;
-  position: relative; }
-  @media only screen and (max-width: 50em) {
-    .cruise-overview {
-      padding: 0 3rem; } }
+  position: relative;
+  width: 100%; }
   .cruise-overview__content {
     z-index: 2;
     position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: calc(112rem + 12rem); }
+    max-width: 122rem;
+    width: 100%;
+    padding: 0 6rem; }
+    @media only screen and (max-width: 50em) {
+      .cruise-overview__content {
+        padding: 0 3rem; } }
     .cruise-overview__content__grid {
       width: 100%;
       display: grid;
@@ -4569,28 +4570,35 @@ h5 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 6rem;
-  position: relative; }
-  @media only screen and (max-width: 50em) {
-    .cruise-itineraries {
-      padding: 0 3rem; } }
+  position: relative;
+  width: 100%; }
   .cruise-itineraries__content {
     position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: calc(112rem + 12rem);
+    padding: 0 6rem;
+    position: relative;
+    margin-top: 3rem !important;
+    padding-top: 3rem !important;
+    max-width: 122rem;
     margin-top: 3rem;
-    margin-bottom: 6rem;
-    position: relative; }
+    margin-bottom: 2rem; }
+    @media only screen and (max-width: 50em) {
+      .cruise-itineraries__content {
+        padding: 0 3rem; } }
     .cruise-itineraries__content::after {
       content: "";
-      width: 100%;
+      width: calc(100% - 12rem);
       height: 1px;
       position: absolute;
-      top: -3rem;
-      left: 0;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
       background-color: #e6e6e6; }
+      @media only screen and (max-width: 50em) {
+        .cruise-itineraries__content::after {
+          width: calc(100% - 6rem); } }
     .cruise-itineraries__content__slider {
       width: 100%;
       margin-top: 2rem; }
@@ -4676,28 +4684,35 @@ h5 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 6rem;
-  position: relative; }
-  @media only screen and (max-width: 50em) {
-    .cruise-cabins {
-      padding: 0 3rem; } }
+  position: relative;
+  width: 100%; }
   .cruise-cabins__content {
     position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: calc(112rem + 12rem);
+    padding: 0 6rem;
+    position: relative;
+    margin-top: 3rem !important;
+    padding-top: 3rem !important;
+    max-width: 122rem;
     margin-top: 3rem;
-    margin-bottom: 6rem;
-    position: relative; }
+    margin-bottom: 6rem; }
+    @media only screen and (max-width: 50em) {
+      .cruise-cabins__content {
+        padding: 0 3rem; } }
     .cruise-cabins__content::after {
       content: "";
-      width: 100%;
+      width: calc(100% - 12rem);
       height: 1px;
       position: absolute;
-      top: -3rem;
-      left: 0;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
       background-color: #e6e6e6; }
+      @media only screen and (max-width: 50em) {
+        .cruise-cabins__content::after {
+          width: calc(100% - 6rem); } }
     .cruise-cabins__content__slider {
       width: 100%;
       margin-top: 2rem; }
@@ -4711,28 +4726,35 @@ h5 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 6rem;
-  position: relative; }
-  @media only screen and (max-width: 50em) {
-    .cruise-areas {
-      padding: 0 3rem; } }
+  position: relative;
+  width: 100%; }
   .cruise-areas__content {
     position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: calc(112rem + 12rem);
+    padding: 0 6rem;
+    position: relative;
+    margin-top: 3rem !important;
+    padding-top: 3rem !important;
+    max-width: 122rem;
     margin-top: 3rem;
-    margin-bottom: 6rem;
-    position: relative; }
+    margin-bottom: 6rem; }
+    @media only screen and (max-width: 50em) {
+      .cruise-areas__content {
+        padding: 0 3rem; } }
     .cruise-areas__content::after {
       content: "";
-      width: 100%;
+      width: calc(100% - 12rem);
       height: 1px;
       position: absolute;
-      top: -3rem;
-      left: 0;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
       background-color: #e6e6e6; }
+      @media only screen and (max-width: 50em) {
+        .cruise-areas__content::after {
+          width: calc(100% - 6rem); } }
     .cruise-areas__content__grid {
       width: 100%;
       height: 60vh;
@@ -4807,7 +4829,7 @@ h5 {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: calc(112rem + 12rem);
+  max-width: 122rem;
   padding: 0 6rem; }
   @media only screen and (max-width: 37.5em) {
     .product-overview {
@@ -4876,7 +4898,7 @@ h5 {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: calc(112rem + 12rem);
+  max-width: 122rem;
   padding: 0 6rem; }
   @media only screen and (max-width: 37.5em) {
     .product-itineraries {
@@ -5670,7 +5692,7 @@ h5 {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: calc(112rem + 12rem);
+  max-width: 122rem;
   padding: 0 6rem;
   margin-bottom: 6rem; }
   @media only screen and (max-width: 37.5em) {
@@ -5893,7 +5915,7 @@ h5 {
     z-index: 2; }
   .product-technical__content {
     width: 100%;
-    max-width: calc(112rem + 12rem);
+    max-width: 122rem;
     display: flex;
     margin: 6rem 0;
     z-index: 10;
@@ -7177,6 +7199,7 @@ h5 {
   position: relative;
   display: none;
   transition: all 0.3s;
+  width: 100%;
   padding: 0 6rem; }
   .search-filter-bar.scrollUp {
     transform: translateY(-7rem); }
@@ -8579,7 +8602,7 @@ h5 {
     font-size: 1.6rem;
     margin-top: 1rem;
     margin-bottom: 4rem;
-    max-width: calc(112rem + 12rem);
+    max-width: 122rem;
     padding: 0 6rem; }
     @media only screen and (max-width: 37.5em) {
       .destination-guides__sub-text {
@@ -8665,7 +8688,8 @@ h5 {
   flex-direction: column;
   background-color: #f8f8f8; }
   .destination-testimonials__header {
-    max-width: calc(112rem + 12rem);
+    max-width: 122rem;
+    width: 100%;
     padding: 0 6rem; }
     @media only screen and (max-width: 50em) {
       .destination-testimonials__header {
@@ -9183,6 +9207,7 @@ h5 {
     justify-content: center;
     width: 100%;
     max-width: 160rem;
+    width: 100%;
     padding: 0 6rem; }
     @media only screen and (max-width: 50em) {
       .home-hero__content {
@@ -9231,13 +9256,14 @@ h5 {
   .home-hero__bottom {
     width: 100%;
     height: 10rem;
-    max-width: 160rem;
-    margin-bottom: 4rem;
-    z-index: 10;
-    padding: 0 6rem;
     display: flex;
     justify-content: space-between;
-    align-items: center; }
+    align-items: center;
+    max-width: 160rem;
+    width: 100%;
+    padding: 0 6rem;
+    margin-bottom: 4rem;
+    z-index: 10; }
     @media only screen and (max-width: 50em) {
       .home-hero__bottom {
         padding: 0 3rem; } }
@@ -9933,12 +9959,169 @@ h5 {
   100% {
     transform: translate3d(0, 3rem, 0); } }
 
+.home-newest {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  position: relative; }
+  .home-newest__content {
+    width: 100%;
+    padding: 0 6rem;
+    max-width: 160rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem; }
+    @media only screen and (max-width: 50em) {
+      .home-newest__content {
+        padding: 0 3rem; } }
+    .home-newest__content__slider {
+      width: 100%;
+      margin-top: 2rem; }
+      .home-newest__content__slider .slick-slide {
+        margin-right: 2rem; }
+
+.arctic-card-wide {
+  height: 33rem;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all .2s; }
+  .arctic-card-wide:link, .arctic-card-wide:visited {
+    text-decoration: none; }
+  .arctic-card-wide__image {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    .arctic-card-wide__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+  .arctic-card-wide__content {
+    z-index: 2;
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; }
+    .arctic-card-wide__content__title-section {
+      color: #fff; }
+      .arctic-card-wide__content__title-section__sub {
+        font-size: 1.2rem; }
+      .arctic-card-wide__content__title-section__title {
+        font-size: 1.8rem;
+        font-weight: 700; }
+
+.arctic-card-portrait {
+  height: 33rem;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden; }
+  .arctic-card-portrait:link, .arctic-card-portrait:visited {
+    text-decoration: none; }
+  .arctic-card-portrait__image {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    .arctic-card-portrait__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+  .arctic-card-portrait__content {
+    z-index: 2;
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; }
+    .arctic-card-portrait__content__title-section {
+      color: #fff; }
+      .arctic-card-portrait__content__title-section__sub {
+        font-size: 1.2rem; }
+      .arctic-card-portrait__content__title-section__title {
+        font-size: 1.8rem;
+        font-weight: 700; }
+
+.arctic-card-square-small {
+  height: 19rem;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden; }
+  .arctic-card-square-small:link, .arctic-card-square-small:visited {
+    text-decoration: none; }
+  .arctic-card-square-small__image {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    .arctic-card-square-small__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+  .arctic-card-square-small__content {
+    z-index: 2;
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; }
+    .arctic-card-square-small__content__title-section {
+      color: #fff; }
+      .arctic-card-square-small__content__title-section__sub {
+        font-size: 1.2rem; }
+      .arctic-card-square-small__content__title-section__title {
+        font-size: 1.8rem;
+        font-weight: 700; }
+
+.home-destinations {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%; }
+  .home-destinations__content {
+    width: 100%;
+    padding: 0 6rem;
+    position: relative;
+    margin-top: 3rem !important;
+    padding-top: 3rem !important;
+    max-width: 160rem;
+    margin-bottom: 12rem; }
+    @media only screen and (max-width: 50em) {
+      .home-destinations__content {
+        padding: 0 3rem; } }
+    .home-destinations__content::after {
+      content: "";
+      width: calc(100% - 12rem);
+      height: 1px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #e6e6e6; }
+      @media only screen and (max-width: 50em) {
+        .home-destinations__content::after {
+          width: calc(100% - 6rem); } }
+    .home-destinations__content__slider {
+      width: 100%;
+      margin-top: 2rem; }
+      .home-destinations__content__slider .slick-slide {
+        margin-right: 2rem; }
+
 .home-intro {
   margin-top: 12rem;
   margin-bottom: 6rem;
   display: flex;
   flex-direction: column;
-  max-width: calc(112rem + 12rem);
+  max-width: 122rem;
+  width: 100%;
   padding: 0 6rem; }
   @media only screen and (max-width: 50em) {
     .home-intro {
@@ -10113,211 +10296,6 @@ h5 {
   .home-intro__cta {
     display: flex;
     justify-content: center; }
-
-.home-arctic-newest {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 160rem;
-  margin: 3rem 0;
-  padding: 0 6rem; }
-  @media only screen and (max-width: 50em) {
-    .home-arctic-newest {
-      padding: 0 3rem; } }
-  .home-arctic-newest__title {
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: #1d2225; }
-  .home-arctic-newest__slider {
-    margin-top: 3rem;
-    width: calc(100%);
-    position: relative; }
-    .home-arctic-newest__slider .slick-slide {
-      margin-right: 2rem; }
-    .home-arctic-newest__slider__btn-left {
-      transform: translateY(-50%);
-      position: absolute;
-      top: -6rem;
-      right: calc(5rem);
-      z-index: 20; }
-    .home-arctic-newest__slider__btn-right {
-      transform: translateY(-50%);
-      position: absolute;
-      top: -6rem;
-      right: calc(0rem);
-      z-index: 20; }
-
-.arctic-card-wide {
-  height: 33rem;
-  position: relative;
-  border-radius: 1rem;
-  overflow: hidden;
-  transition: all .2s; }
-  .arctic-card-wide:link, .arctic-card-wide:visited {
-    text-decoration: none; }
-  .arctic-card-wide__image {
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; }
-    .arctic-card-wide__image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; }
-  .arctic-card-wide__content {
-    z-index: 2;
-    padding: 2rem 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; }
-    .arctic-card-wide__content__title-section {
-      color: #fff; }
-      .arctic-card-wide__content__title-section__sub {
-        font-size: 1.2rem; }
-      .arctic-card-wide__content__title-section__title {
-        font-size: 1.8rem;
-        font-weight: 700; }
-
-.arctic-card-portrait {
-  height: 33rem;
-  position: relative;
-  border-radius: 1rem;
-  overflow: hidden; }
-  .arctic-card-portrait:link, .arctic-card-portrait:visited {
-    text-decoration: none; }
-  .arctic-card-portrait__image {
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; }
-    .arctic-card-portrait__image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; }
-  .arctic-card-portrait__content {
-    z-index: 2;
-    padding: 2rem 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; }
-    .arctic-card-portrait__content__title-section {
-      color: #fff; }
-      .arctic-card-portrait__content__title-section__sub {
-        font-size: 1.2rem; }
-      .arctic-card-portrait__content__title-section__title {
-        font-size: 1.8rem;
-        font-weight: 700; }
-
-.arctic-card-square-small {
-  height: 19rem;
-  position: relative;
-  border-radius: 1rem;
-  overflow: hidden; }
-  .arctic-card-square-small:link, .arctic-card-square-small:visited {
-    text-decoration: none; }
-  .arctic-card-square-small__image {
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; }
-    .arctic-card-square-small__image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; }
-  .arctic-card-square-small__content {
-    z-index: 2;
-    padding: 2rem 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; }
-    .arctic-card-square-small__content__title-section {
-      color: #fff; }
-      .arctic-card-square-small__content__title-section__sub {
-        font-size: 1.2rem; }
-      .arctic-card-square-small__content__title-section__title {
-        font-size: 1.8rem;
-        font-weight: 700; }
-
-.home-destinations {
-  display: grid;
-  grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
-  position: relative;
-  grid-column: 1 / -1;
-  padding-top: 6rem;
-  outline: none;
-  position: relative; }
-  .home-destinations::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-image: linear-gradient(to top, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(img/bg/topo-1.png);
-    opacity: 0.35;
-    top: 0;
-    left: 0;
-    z-index: -3; }
-  .home-destinations__header {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
-    margin-bottom: 4rem; }
-    @media only screen and (max-width: 37.5em) {
-      .home-destinations__header {
-        grid-template-columns: [full-start] minmax(3rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(3rem, 1fr) [full-end]; } }
-    @media only screen and (max-width: 37.5em) {
-      .home-destinations__header__title {
-        margin-bottom: 2rem; } }
-    .home-destinations__header__sub-text {
-      grid-column: center-start / center-end;
-      font-size: 1.6rem;
-      text-align: center; }
-  .home-destinations__destinations-area {
-    grid-column: 1 / -1;
-    display: flex;
-    justify-content: center;
-    margin: 0 10rem;
-    margin-bottom: 4rem;
-    height: min-content; }
-    @media only screen and (max-width: 37.5em) {
-      .home-destinations__destinations-area {
-        margin: 0;
-        margin-bottom: 3rem; } }
-    .home-destinations__destinations-area__slider {
-      max-width: 120rem;
-      width: 100%;
-      margin: 0 6rem;
-      max-height: 96rem; }
-      .home-destinations__destinations-area__slider .slick-track {
-        display: flex !important; }
-      .home-destinations__destinations-area__slider .slick-slide {
-        margin: 0 2rem;
-        height: inherit !important; }
-        @media only screen and (max-width: 37.5em) {
-          .home-destinations__destinations-area__slider .slick-slide {
-            margin: 0 1rem; } }
-    .home-destinations__destinations-area__btn--left {
-      position: absolute;
-      z-index: 10;
-      bottom: 50%;
-      left: -7rem;
-      transform: translateY(60%); }
-    .home-destinations__destinations-area__btn--right {
-      position: absolute;
-      z-index: 10;
-      bottom: 50%;
-      right: -7rem;
-      transform: translateY(60%); }
-  .home-destinations__btn {
-    grid-column: 1 / -1;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap; }
 
 .home-featured {
   display: grid;
@@ -10585,6 +10563,7 @@ h5 {
   color: #fff;
   column-gap: 6rem;
   width: 100%;
+  width: 100%;
   padding: 0 6rem;
   padding-top: 3rem !important;
   padding-bottom: 3rem; }
@@ -10847,8 +10826,9 @@ h5 {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    width: 100%;
     padding: 0 6rem;
-    max-width: calc(112rem + 12rem); }
+    max-width: 122rem; }
     @media only screen and (max-width: 50em) {
       .experience-hero__content {
         padding: 0 3rem; } }
@@ -11103,7 +11083,8 @@ h5 {
   grid-template-columns: repeat(3, 1fr);
   column-gap: 8rem;
   grid-column: 1 / -1;
-  max-width: calc(112rem + 12rem);
+  max-width: 122rem;
+  width: 100%;
   padding: 0 6rem;
   padding-top: 12rem;
   padding-bottom: 4rem; }
@@ -11162,7 +11143,8 @@ h5 {
 
 .about-mission {
   width: 100%;
-  max-width: calc(112rem + 12rem);
+  max-width: 122rem;
+  width: 100%;
   padding: 0 6rem;
   display: flex;
   flex-direction: column;
@@ -11264,7 +11246,7 @@ h5 {
             margin-left: 4rem;
             text-align: center; } }
   .about-mission__statement {
-    max-width: calc(80rem + 12rem);
+    max-width: 92rem;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -11399,7 +11381,8 @@ h5 {
 
 .about-team {
   width: 100%;
-  max-width: calc(112rem + 12rem);
+  max-width: 122rem;
+  width: 100%;
   padding: 0 6rem;
   margin-bottom: 10rem;
   margin-top: 4rem;
@@ -11475,6 +11458,7 @@ h5 {
   .about-partners__content {
     max-width: 85rem;
     display: flex;
+    width: 100%;
     padding: 0 6rem; }
     @media only screen and (max-width: 50em) {
       .about-partners__content {
@@ -11521,7 +11505,8 @@ h5 {
           width: 100%; } }
   .about-partners__continents {
     width: 100%;
-    max-width: calc(112rem + 12rem);
+    max-width: 122rem;
+    width: 100%;
     padding: 0 6rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -12363,7 +12348,8 @@ h5 {
 .newsletter {
   display: flex;
   margin: 10rem 0;
-  max-width: calc(112rem + 12rem);
+  max-width: 122rem;
+  width: 100%;
   padding: 0 6rem; }
   @media only screen and (max-width: 50em) {
     .newsletter {
@@ -12461,7 +12447,7 @@ h5 {
 
 .contact {
   width: 100%;
-  max-width: calc(80rem + 12rem);
+  max-width: 92rem;
   height: min-content; }
   .contact__wrapper {
     padding: 6rem 2rem;
@@ -12670,16 +12656,19 @@ h5 {
     .header__main__content {
       display: grid;
       width: 100%;
-      max-width: calc(160rem - 12rem);
-      margin: 0 6rem;
+      max-width: 160rem;
+      width: 100%;
+      padding: 0 6rem;
       grid-template-columns: min-content 1fr min-content;
       column-gap: 4rem; }
+      @media only screen and (max-width: 50em) {
+        .header__main__content {
+          padding: 0 3rem; } }
       @media only screen and (max-width: 62.5em) {
         .header__main__content {
           display: flex;
           justify-content: space-between;
-          align-items: center;
-          margin: 0 3rem; } }
+          align-items: center; } }
       .header__main__content__logo-area {
         width: min-content;
         z-index: 5;
@@ -13310,35 +13299,30 @@ h5 {
     display: none !important; }
   .nav-secondary__main {
     flex-grow: 1;
-    display: flex;
     font-size: 1.3rem;
     letter-spacing: 0.1rem;
     font-weight: 600;
     align-items: center;
     height: 100%;
-    padding: 0 4rem; }
+    max-width: 122rem;
+    width: 100%;
+    padding: 0 6rem;
+    display: grid;
+    grid-template-columns: max-content 1fr 12rem;
+    width: 100%; }
+    @media only screen and (max-width: 50em) {
+      .nav-secondary__main {
+        padding: 0 3rem; } }
     @media only screen and (max-width: 62.5em) {
       .nav-secondary__main {
-        justify-content: space-between;
-        padding: 0rem; } }
+        grid-template-columns: 1fr 12rem; } }
     .nav-secondary__main__title-area {
-      display: flex;
-      justify-content: flex-end;
       position: relative;
-      margin-right: 1rem;
-      flex-grow: 1;
-      width: min-content;
-      height: 100%; }
-      @media only screen and (max-width: 62.5em) {
-        .nav-secondary__main__title-area {
-          margin-right: 0rem;
-          justify-content: flex-start;
-          flex-grow: 1; }
-          .nav-secondary__main__title-area::after {
-            display: none; } }
+      margin-right: 1rem; }
       .nav-secondary__main__title-area__title {
         text-decoration: none;
         height: 100%;
+        width: 100%;
         display: flex;
         align-items: center;
         text-align: right;
@@ -13349,7 +13333,8 @@ h5 {
             white-space: normal; } }
         .nav-secondary__main__title-area__title:link, .nav-secondary__main__title-area__title:visited {
           color: #1d2225;
-          font-weight: 600; }
+          font-weight: 600;
+          width: 100%; }
         .nav-secondary__main__title-area__title:hover {
           color: #4d8eff; }
       .nav-secondary__main__title-area::after {
@@ -13435,15 +13420,11 @@ h5 {
             color: #4d8eff; }
     .nav-secondary__main__cta {
       flex-grow: 1;
-      width: max-content;
-      display: flex; }
-      @media only screen and (max-width: 62.5em) {
-        .nav-secondary__main__cta {
-          margin-right: 3rem;
-          margin-left: 1rem;
-          flex-grow: 0; }
-          .nav-secondary__main__cta::after {
-            display: none; } }
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding-left: 2rem; }
 
 .nav-secondary-mobile {
   display: none;
@@ -13595,7 +13576,7 @@ h5 {
     opacity: 1; } }
 
 .nav-page-width .header__main__content {
-  max-width: calc(112rem + 12rem); }
+  max-width: 122rem; }
 
 .footer {
   grid-row: footer-start / footer-end;

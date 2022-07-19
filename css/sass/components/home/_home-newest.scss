@@ -1,47 +1,32 @@
-.home-arctic-newest {
-    display: flex;
-    flex-direction: column;
+.home-newest {
+  
+    @include flexBlock;
+    position: relative;
 
-    width: 100%;
-    max-width: 160rem;
+ 
+    &__content {
+        @include flexPadding;
 
-    margin: 3rem 0;
-
-    @include flexPadding;
-
-    &__title {
-        font-size: 2.4rem;
-        font-weight: 700;
-        color: $color-primary;
-    }
-
-    &__slider {
+        max-width: $page-width-full;
+        
         margin-top: 3rem;
-        width: calc(100%);
-        position: relative;
+        margin-bottom: 3rem;
+        
+
+
+
+
+        &__slider {
+            width: 100%;
+            margin-top: 2rem;
+            & .slick-slide {
+                margin-right: 2rem;
+            }
+        }
+
        
-        & .slick-slide {
-            margin-right: 2rem;
-        }
-
-
-        &__btn-left {
-            transform: translateY(-50%);
-            position: absolute;
-            top: -6rem;
-            right: calc(5rem);
-            z-index: 20;
-        }
-
-        &__btn-right {
-            transform: translateY(-50%);
-
-            position: absolute;
-            top: -6rem;
-            right: calc(0rem);
-            z-index: 20;
-        }
     }
+
 }
 
 .arctic-card-wide {

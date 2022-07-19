@@ -119,15 +119,18 @@ $bp-small: 37.5em; // 600px
 $bp-xsmall: 25em; // 400px
 $bp-xxsmall: 22em; // 352px -- iphone 5/SE
 
-
-//FLEX
-$page-width: calc(112rem + 12rem);
-//$page-width: 160rem;
-
+//remove
 $page-top-padding: 12rem;
 
 
-$page-width-narrow: calc(80rem + 12rem);
+//Page Width
+$page-width: 122rem;
+$page-width-full: 160rem;
+
+
+
+
+$page-width-narrow: 92rem;
 
 
 

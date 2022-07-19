@@ -30,42 +30,56 @@ jQuery(document).ready(function ($) {
 
 
 
-    //Arctic Sliders
+    //Newest Cruises Slider
     $('#newest-cruises-slider').slick({
         slidesToShow: 3,
         slidesToScroll: 1,
-  
+
         arrows: true,
-        prevArrow: '<button class="btn-circle btn-circle--small btn-circle--left home-arctic-newest__slider__btn-left"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg></button>',
-        nextArrow: '<button class="btn-circle btn-circle--small btn-circle--right home-arctic-newest__slider__btn-right"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+        prevArrow: '<button class="btn-scroll btn-scroll--left btn-slider-top__left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+        nextArrow: '<button class="btn-scroll btn-slider-top__right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
         responsive: [
             {
                 breakpoint: 800,
                 settings: {
                     slidesToShow: 2,
-                
+
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+
                 }
             }
         ]
     });
-//arctic-destinations-slider
-$('#arctic-destinations-slider').slick({
-    slidesToShow: 5,
-    slidesToScroll: 1,
+    //destinations slider
+    $('#destinations-slider').slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
 
-    arrows: true,
-    prevArrow: '<button class="btn-circle btn-circle--small btn-circle--left home-arctic-newest__slider__btn-left"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg></button>',
-    nextArrow: '<button class="btn-circle btn-circle--small btn-circle--right home-arctic-newest__slider__btn-right"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-    responsive: [
-        {
-            breakpoint: 800,
-            settings: {
-                slidesToShow: 3,
-            
+        arrows: true,
+        prevArrow: '<button class="btn-scroll btn-scroll--left btn-slider-top__left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+        nextArrow: '<button class="btn-scroll btn-slider-top__right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
+        responsive: [
+            {
+                breakpoint: 1000,
+                settings: {
+                    slidesToShow: 3,
+
+                }
+            },
+            {
+                breakpoint: 800,
+                settings: {
+                    slidesToShow: 2,
+
+                }
             }
-        }
-    ]
-});
+        ]
+    });
 
     //Slick Sliders
     $('#intro-testimonials').slick({

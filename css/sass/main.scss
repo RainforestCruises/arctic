@@ -101,10 +101,11 @@
 
 //home
 @import "components/home/home-hero";
-@import "components/home/home-intro";
-@import "components/home/home-arctic-newest";
-
+@import "components/home/home-newest";
 @import "components/home/home-destinations";
+
+
+@import "components/home/home-intro";
 @import "components/home/home-featured";
 @import "components/home/home-testimonials";
 @import "components/home/home-full-search";

@@ -131,15 +131,17 @@
         &__content {
             display: grid;
             width: 100%;
-            max-width: calc(160rem - 12rem);
-            margin: 0 6rem;
+
+             max-width: $page-width-full;
+             @include flexPadding;
+         
             grid-template-columns: min-content 1fr min-content;
 
             @media only screen and (max-width: $bp-large) {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                margin: 0 3rem;
+          
             }
 
             column-gap: 4rem;
@@ -1053,46 +1055,37 @@
 
     &__main {
         flex-grow: 1;
-        display: flex;
-
         font-size: 1.3rem;
-        //text-transform: uppercase;
         letter-spacing: 0.1rem;
         font-weight: 600;
         align-items: center;
         height: 100%;
 
-        padding: 0 4rem; //main side padding
+
+        max-width: $page-width;
+        @include flexPadding;
+
+        display: grid;
+        grid-template-columns: max-content 1fr 12rem;
+        width: 100%;
 
         @media only screen and (max-width: $bp-large) {
-            justify-content: space-between;
-            padding: 0rem; //full width - no padding
+            grid-template-columns: 1fr 12rem;
         }
 
         &__title-area {
-            display: flex;
-            justify-content: flex-end;
 
-            position: relative;
 
+            position: relative;   
             margin-right: 1rem;
-            flex-grow: 1;
-            width: min-content;
-            height: 100%;
-            @media only screen and (max-width: $bp-large) {
-                margin-right: 0rem;
-                justify-content: flex-start;
-                flex-grow: 1;
-
-                &::after {
-                    display: none;
-                }
-            }
+            //margin-right: 1rem;
+    
 
             &__title {
                 //desktop link (hidden on mobile)
                 text-decoration: none;
                 height: 100%;
+                width: 100%;
                 display: flex;
                 align-items: center;
 
@@ -1108,6 +1101,7 @@
                 &:visited {
                     color: $color-primary;
                     font-weight: 600;
+                    width: 100%;
                 }
 
                 &:hover {
@@ -1232,18 +1226,12 @@
 
         &__cta {
             flex-grow: 1;
-            width: max-content;
+            width: 100%;
             display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-left: 2rem;
 
-            @media only screen and (max-width: $bp-large) {
-                margin-right: 3rem;
-                margin-left: 1rem;
-                flex-grow: 0;
-
-                &::after {
-                    display: none;
-                }
-            }
         }
     }
 }

@@ -1,27 +1,41 @@
-
-
 @mixin flexBlock {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    padding: 0 6rem;
     position: relative;
-    @media only screen and (max-width: $bp-medium) {
-        padding: 0 3rem;
-    }
+    width: 100%;
 }
 
+//flex margin
 @mixin flexPadding {
-
+    width: 100%;
     padding: 0 6rem;
     @media only screen and (max-width: $bp-medium) {
         padding: 0 3rem;
     }
-    
 }
 
+@mixin topDivider {
+    position: relative;
+    margin-top: 3rem !important;
+    padding-top: 3rem !important;
 
+
+    &::after {
+        content: "";
+        width: calc(100% - 12rem);
+        @media only screen and (max-width: $bp-medium) {
+            width: calc(100% - 6rem);
+        }
+        height: 1px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: $color-grey-light-1a;
+    }
+}
 
 //Unused
 @mixin absCenter {
@@ -30,7 +44,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
 
 @mixin pageTopPadding {
     padding-top: $page-top-padding; //top padding
