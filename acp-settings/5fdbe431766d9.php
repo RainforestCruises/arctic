@@ -1,11 +1,11 @@
 <?php
 
 return array (
-  'version' => '5.5.1',
+  'version' => '5.6.4',
   'title' => 'Cruises',
   'type' => 'rfc_cruises',
   'id' => '5fdbe431766d9',
-  'updated' => 1622061868,
+  'updated' => 1658873532,
   'columns' => 
   array (
     'title' => 
@@ -39,6 +39,23 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '5fdbe4e7a6683',
+    ),
+    '62e0669729fbe8' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Vessel Capacity',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_602bf5195119f',
+      'number_format' => '',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '62e0669729fbe8',
     ),
     '5fdbe4e7a6686' => 
     array (
@@ -151,39 +168,6 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '60aeb31bf645a0',
-    ),
-    '5fdbe4e7a668a' => 
-    array (
-      'type' => 'column-author_name',
-      'label' => 'Author',
-      'width' => '',
-      'width_unit' => '%',
-      'display_author_as' => 'display_name',
-      'user_link_to' => 'edit_user',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'off',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '5fdbe4e7a668a',
-    ),
-    'date' => 
-    array (
-      'type' => 'date',
-      'label' => 'Date',
-      'width' => '',
-      'width_unit' => '%',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'off',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'filter_format' => '',
-      'name' => 'date',
     ),
     '609305e9428f5c' => 
     array (

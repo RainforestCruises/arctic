@@ -40,7 +40,6 @@ function load_scripts()
     wp_enqueue_script('header', get_template_directory_uri() . '/js/header.js', array('jquery'), false, true);
 
     $alwaysActiveHeader = checkActiveHeader();
-
     wp_localize_script(
         'header',
         'header_vars',

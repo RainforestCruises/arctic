@@ -24,10 +24,12 @@ jQuery(document).ready(function ($) {
             $("#nav-secondary-button").removeClass('active');
         } else { //if template nav is out of view
             //and if burger menu isnt active
-            if ($(".burger-menu").hasClass('burger-menu--active') != true) {
-                $('.nav-secondary').addClass('active');
+            // if ($(".burger-menu").hasClass('burger-menu--active') != true) {
+                
 
-            }
+            // }
+
+            $('.nav-secondary').addClass('active');
         }
 
         isSelected($(window).scrollTop());

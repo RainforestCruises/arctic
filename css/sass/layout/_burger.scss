@@ -1,0 +1,99 @@
+
+//Burger ------------------
+
+.burger-button {
+    cursor: pointer;
+    display: none;
+    height: 7rem;
+    //width: 8rem;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+
+    @media only screen and (max-width: $bp-large) {
+        display: flex;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        display: flex;
+    }
+
+    &__bar {
+        width: 2.7rem;
+        height: 1px;
+        background-color: $color-white;
+        display: block;
+
+        &::before {
+            content: "";
+            position: absolute;
+            transform: translateY(-0.7rem);
+            width: 2.7rem;
+            height: 1px;
+            background-color: inherit;
+            display: block;
+
+            transition: transform 0.3s;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            transform: translateY(0.7rem);
+
+            width: 2.7rem;
+            height: 1px;
+            background-color: inherit;
+            display: block;
+
+            transition: transform 0.3s;
+        }
+    }
+
+    &.close {
+        position: absolute;
+        top: 0;
+        right: 20rem;
+        z-index: 999999999;
+
+        & .burger-button__bar {
+            visibility: hidden;
+            &::before {
+                transform: rotate(-45deg) translateY(0);
+                visibility: visible;
+            }
+            &::after {
+                transform: rotate(45deg) translateY(0);
+                visibility: visible;
+            }
+        }
+
+        &:hover {
+            & .burger-button__bar {
+                visibility: hidden;
+                &::before {
+                    transform: rotate(-45deg) translateY(0);
+                    visibility: visible;
+                }
+                &::after {
+                    transform: rotate(45deg) translateY(0);
+                    visibility: visible;
+                }
+            }
+        }
+    }
+}
+
+.change .bar-1 {
+    -webkit-transform: rotate(-45deg) translate(-10px, 5px);
+    transform: rotate(-45deg) translate(-10px, 8px);
+}
+
+.change .bar-2 {
+    opacity: 0;
+}
+
+.change .bar-3 {
+    -webkit-transform: rotate(45deg) translate(-10px, 5px);
+    transform: rotate(45deg) translate(-10px, -5px);
+}

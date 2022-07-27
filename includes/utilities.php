@@ -440,6 +440,9 @@ function structuredDataFaq()
 }
 
 
+
+
+
 function checkActiveHeader()
 {
     $alwaysActiveHeader = false;
@@ -455,4 +458,23 @@ function checkActiveHeader()
     }
 
     return $alwaysActiveHeader;
+}
+
+
+
+function renderHeaderClasses()
+{
+    $classes = '';
+    $templateName = get_page_template_slug();
+    $postTypeName = get_post_type();
+
+    if ($templateName == 'template-home.php') {
+        $classes .= ' fixed ';
+    }
+    
+    if ($postTypeName == 'rfc_cruises' || $postTypeName == 'rfc_itineraries' ) {
+        $classes .= ' small-width ';
+    }
+
+    return $classes;
 }

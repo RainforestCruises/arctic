@@ -36,6 +36,20 @@ body {
             }
         }
 
+        & .header {
+            top: 32px;
+            @media only screen and (max-width: 800px) {
+                top: 46px;
+            }
+        }
+
+        & .nav-secondary {
+            top: 32px;
+            @media only screen and (max-width: 800px) {
+                top: 46px;
+            }
+        }
+
         & .nav-mobile,
         .burger-menu,
         .burger-menu-close {
@@ -46,16 +60,6 @@ body {
         }
     }
 
-    // &::after {
-    //     //gradient overlay
-    //     content: "";
-    //     height: 100%;
-    //     width: 100%;
-    //     background-image: linear-gradient(to left, rgba($color-black, 0.7), rgba($color-black, 0.7));
-    //     opacity: 0;
-    //     display: none;
-        
-    // }
 }
 
 body.no-scroll {
