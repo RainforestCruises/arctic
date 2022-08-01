@@ -47,11 +47,11 @@
             "maxlength": ""
         },
         {
-            "key": "field_5fdbdeec81832",
-            "label": "Is Country",
-            "name": "is_country",
-            "type": "true_false",
-            "instructions": "Check if this destination is also a country",
+            "key": "field_62e0aa2f56ad1",
+            "label": "Feature Image",
+            "name": "feature_image",
+            "type": "image",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -59,49 +59,16 @@
                 "class": "",
                 "id": ""
             },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_60104914eb05b",
-            "label": "Is Bucket List",
-            "name": "is_bucket_list",
-            "type": "true_false",
-            "instructions": "Check if this destination is a bucket list destination (ie: Machu Picchu)",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_613b9e4c6516e",
-            "label": "Non Cruise Destination",
-            "name": "non_cruise_destination",
-            "type": "true_false",
-            "instructions": "Check if doesn't offer cruises, for example: Machu Picchu",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
         },
         {
             "key": "field_5fea3a88df109",
@@ -194,5 +161,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "Destinations - CPT",
-    "modified": 1631297166
+    "show_in_rest": 0,
+    "modified": 1658890833
 }

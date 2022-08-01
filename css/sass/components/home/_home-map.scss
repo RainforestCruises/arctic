@@ -1,0 +1,26 @@
+.home-map {
+    @include flexBlock;
+
+
+
+    &__content {
+        
+
+        @include flexPadding;
+        @include topDivider;
+
+        max-width: $page-width-full;
+
+
+        margin-bottom: 12rem;
+
+        &__map {
+            width: 40rem;
+            height: 50rem;
+      
+        }
+
+       
+    }
+
+}

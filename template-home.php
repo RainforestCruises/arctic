@@ -2,6 +2,8 @@
 /*Template Name: Home*/
 
 wp_enqueue_script('page-home', get_template_directory_uri() . '/js/page-home.js', array('jquery'), false, true);
+wp_enqueue_script('map-sample', get_template_directory_uri() . '/js/map-sample.js', array(), false, true);
+
 $templateUrl = get_template_directory_uri();
 wp_localize_script(
   'page-home',
@@ -36,7 +38,10 @@ $newsletter_snippet = get_field('newsletter_snippet');
   <?php
   get_template_part('template-parts/home/content', 'home-destinations');
   ?>
-
+  <!-- Map -->
+  <?php
+   get_template_part('template-parts/home/content', 'home-map');
+  ?>
 
 
 

@@ -10124,6 +10124,40 @@ h5 {
       .home-destinations__content__slider .slick-slide {
         margin-right: 2rem; }
 
+.home-map {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%; }
+  .home-map__content {
+    width: 100%;
+    padding: 0 6rem;
+    position: relative;
+    margin-top: 3rem !important;
+    padding-top: 3rem !important;
+    max-width: 160rem;
+    margin-bottom: 12rem; }
+    @media only screen and (max-width: 50em) {
+      .home-map__content {
+        padding: 0 3rem; } }
+    .home-map__content::after {
+      content: "";
+      width: calc(100% - 12rem);
+      height: 1px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #e6e6e6; }
+      @media only screen and (max-width: 50em) {
+        .home-map__content::after {
+          width: calc(100% - 6rem); } }
+    .home-map__content__map {
+      width: 40rem;
+      height: 50rem; }
+
 .home-intro {
   margin-top: 12rem;
   margin-bottom: 6rem;
@@ -12723,19 +12757,17 @@ h5 {
           top: 5.5rem;
           right: 0;
           opacity: 0;
-          transition: all .2s;
-          display: none; }
+          transition: all .2s; }
           .header__main__content__nav__mega.active {
             opacity: 1;
             display: block; }
           .header__main__content__nav__mega__panel {
-            height: 20rem;
-            width: 50vw;
-            padding: 2rem;
-            display: none; }
+            padding: 2rem; }
             .header__main__content__nav__mega__panel.active {
               opacity: 1;
-              display: grid; }
+              display: grid;
+              grid-template-columns: 1fr 1fr 1fr 1fr;
+              gap: 2rem; }
       .header__main__content__right {
         transition: all 0.3s;
         display: flex;
@@ -12987,6 +13019,18 @@ h5 {
       height: 1.6rem;
       width: 1.6rem;
       fill: #fff; }
+
+.destination-nav-item__image-area {
+  height: 15rem;
+  width: 15rem; }
+  .destination-nav-item__image-area img {
+    border-radius: 1rem;
+    height: 100%;
+    width: 100%;
+    object-fit: cover; }
+
+.destination-nav-item__title {
+  margin-top: 1rem; }
 
 .footer {
   grid-row: footer-start / footer-end;

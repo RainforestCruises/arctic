@@ -1,11 +1,11 @@
 <?php
 
 return array (
-  'version' => '5.5.3',
+  'version' => '5.6.4',
   'title' => 'Destinations',
   'type' => 'rfc_destinations',
   'id' => '5fdbb28b974a8',
-  'updated' => 1631297248,
+  'updated' => 1658890880,
   'columns' => 
   array (
     'title' => 
@@ -37,6 +37,25 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '5fdbb2c07cd75',
+    ),
+    '62e0aa6b004188' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Feature Image',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_62e0aa2f56ad1',
+      'image_size' => 'cpac-custom',
+      'image_size_w' => '60',
+      'image_size_h' => '60',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '62e0aa6b004188',
     ),
     '5fdbb2c07cd7a' => 
     array (
@@ -94,54 +113,6 @@ return array (
       'filter_label' => '',
       'name' => '5fe12a9d773a9',
     ),
-    '5fdbe00b3c529' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Is Country',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_5fdbdeec81832',
-      'export' => 'on',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '5fdbe00b3c529',
-    ),
-    '60104960a82c1' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Is Bucket List',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_60104914eb05b',
-      'export' => 'on',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '60104960a82c1',
-    ),
-    '613b9ece8dd2f0' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Non Cruise Destination',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_613b9e4c6516e',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '613b9ece8dd2f0',
-    ),
     '6011c0bb62e39' => 
     array (
       'type' => 'column-acf_field',
@@ -159,39 +130,6 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '6011c0bb62e39',
-    ),
-    '5fe1247f20602' => 
-    array (
-      'type' => 'column-author_name',
-      'label' => 'Author',
-      'width' => '',
-      'width_unit' => '%',
-      'display_author_as' => 'display_name',
-      'user_link_to' => 'edit_user',
-      'export' => 'on',
-      'sort' => 'on',
-      'edit' => 'off',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '5fe1247f20602',
-    ),
-    'date' => 
-    array (
-      'type' => 'date',
-      'label' => 'Date',
-      'width' => '',
-      'width_unit' => '%',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'off',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'filter_format' => '',
-      'name' => 'date',
     ),
   ),
   'settings' => 

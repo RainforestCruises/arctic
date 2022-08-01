@@ -1,13 +1,9 @@
 <?php
-$menu_name = 'arctic_main_menu';
-$locations = get_nav_menu_locations();
-$menu = wp_get_nav_menu_object($locations[$menu_name]);
-$menuitems = wp_get_nav_menu_items($menu->term_id);
-$show_translate_nav = get_field('show_translate_nav', 'options');
 
-$menu_toplevel = [];
-$menu_destinations = [];
-$menu_ships = [];
+$show_translate_nav = get_field('show_translate_nav', 'options');
+$destinations = get_field('destinations', 'options');
+
+
 
 $alwaysActiveHeader = checkActiveHeader();
 $headerClasses = renderHeaderClasses();
@@ -79,7 +75,20 @@ $headerClasses = renderHeaderClasses();
                 </ul>
                 <div class="header__main__content__nav__mega">
                     <div class="header__main__content__nav__mega__panel" panel="destinations">
-                        Destinations
+                        <?php foreach ($destinations as $d) :
+                            $image =  get_field('feature_image', $d);
+                            $title =  get_field('navigation_title', $d);
+                        ?>
+                            <div class="destination-nav-item">
+                                <div class="destination-nav-item__image-area">
+                                    <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
+                                </div>
+                                <div class="destination-nav-item__title">
+                                    <?php echo $title ?>
+                                </div>
+                            </div>
+
+                        <?php endforeach; ?>
                     </div>
                     <div class="header__main__content__nav__mega__panel" panel="ships">
                         Ships
