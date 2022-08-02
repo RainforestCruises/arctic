@@ -11,16 +11,16 @@ var root = am5.Root.new("destinations-map");
 
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_Spirited.new(root)]);
 
 // Create the map chart
 // https://www.amcharts.com/docs/v5/charts/map-chart/
 var chart = root.container.children.push(
   am5map.MapChart.new(root, {
-    panX: "none",
-    panY: "none",
+    panX: "translateX",
+    panY: "translateY",
     projection: am5map.geoMercator(),
-    homeZoomLevel: 6,
+    homeZoomLevel: 4,
     homeGeoPoint: { longitude: -60, latitude: -62 }
   })
 );
@@ -111,51 +111,51 @@ pointSeries.bullets.push(function () {
 
 var paris = addCity({ latitude: -51, longitude: -59 }, "Falkland Islands");
 var toronto = addCity({ latitude: -62, longitude: -57 }, "Peninsula");
-var la = addCity({ latitude: 34.3, longitude: -118.15 }, "Los Angeles");
-var havana = addCity({ latitude: 23, longitude: -82 }, "Havana");
+var la = addCity({ latitude: -54, longitude: -68 }, "Ushuaia");
+var havana = addCity({ latitude: -57, longitude: -26 }, "South Georgia");
 
 var lineDataItem = lineSeries.pushDataItem({
   pointsToConnect: [paris, toronto, la, havana]
 });
 
-var planeSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+// var planeSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
 
-var plane = am5.Graphics.new(root, {
-  svgPath:
-    "m2,106h28l24,30h72l-44,-133h35l80,132h98c21,0 21,34 0,34l-98,0 -80,134h-35l43,-133h-71l-24,30h-28l15,-47",
-  scale: 0.06,
-  centerY: am5.p50,
-  centerX: am5.p50,
-  fill: am5.color(0x000000)
-});
+// var plane = am5.Graphics.new(root, {
+//   svgPath:
+//     "m2,106h28l24,30h72l-44,-133h35l80,132h98c21,0 21,34 0,34l-98,0 -80,134h-35l43,-133h-71l-24,30h-28l15,-47",
+//   scale: 0.06,
+//   centerY: am5.p50,
+//   centerX: am5.p50,
+//   fill: am5.color(0x000000)
+// });
 
-planeSeries.bullets.push(function () {
-  var container = am5.Container.new(root, {});
-  container.children.push(plane);
-  return am5.Bullet.new(root, { sprite: container });
-});
+// planeSeries.bullets.push(function () {
+//   var container = am5.Container.new(root, {});
+//   container.children.push(plane);
+//   return am5.Bullet.new(root, { sprite: container });
+// });
 
-var planeDataItem = planeSeries.pushDataItem({
-  lineDataItem: lineDataItem,
-  positionOnLine: 0,
-  autoRotate: true
-});
+// var planeDataItem = planeSeries.pushDataItem({
+//   lineDataItem: lineDataItem,
+//   positionOnLine: 0,
+//   autoRotate: true
+// });
 
-planeDataItem.animate({
-  key: "positionOnLine",
-  to: 1,
-  duration: 10000,
-  loops: Infinity,
-  easing: am5.ease.yoyo(am5.ease.linear)
-});
+// planeDataItem.animate({
+//   key: "positionOnLine",
+//   to: 1,
+//   duration: 10000,
+//   loops: Infinity,
+//   easing: am5.ease.yoyo(am5.ease.linear)
+// });
 
-planeDataItem.on("positionOnLine", function (value) {
-  if (value >= 0.99) {
-    plane.set("rotation", 180);
-  } else if (value <= 0.01) {
-    plane.set("rotation", 0);
-  }
-});
+// planeDataItem.on("positionOnLine", function (value) {
+//   if (value >= 0.99) {
+//     plane.set("rotation", 180);
+//   } else if (value <= 0.01) {
+//     plane.set("rotation", 0);
+//   }
+// });
 
 function addCity(coords, title) {
   return pointSeries.pushDataItem({

@@ -4,6 +4,30 @@ $show_translate_nav = get_field('show_translate_nav', 'options');
 $destinations = get_field('destinations', 'options');
 
 
+$queryArgs = array(
+    'post_type' => 'rfc_cruises',
+    'posts_per_page' => -1,
+    'meta_key' => 'search_rank',
+    'orderby' => 'meta_value_num',
+    'order' => 'DESC',
+);
+$ships = get_posts($queryArgs);
+
+
+$small = [];
+$medium = [];
+$large = [];
+foreach ($ships as $s) {
+    $capacity = get_field('vessel_capacity', $s);
+    if ($capacity <= 80) {
+        $small[] = $s;
+    } else if ($capacity <= 150 && $capacity > 80) {
+        $medium[] = $s;
+    } else {
+        $large[] = $s;
+    }
+}
+
 
 $alwaysActiveHeader = checkActiveHeader();
 $headerClasses = renderHeaderClasses();
@@ -22,8 +46,8 @@ $headerClasses = renderHeaderClasses();
 
         <div class="header__main__content">
             <!-- Logo -->
-            <div class="header__main__content__logo-area">
-                <a href="<?php echo get_home_url(); ?>" class="header__main__content__logo-area__logo">
+            <div class="header__main__content__left">
+                <a href="<?php echo get_home_url(); ?>" class="header__main__content__left__logo-area">
                     <?php
                     $logo = get_theme_mod('custom_logo');
                     $image = wp_get_attachment_image_src($logo, 'full');
@@ -32,7 +56,7 @@ $headerClasses = renderHeaderClasses();
                     <img src="<?php echo $image_url ?>" alt="<?php echo get_bloginfo('name') ?>" />
                 </a>
             </div>
-            <div class="header__main__content__search">
+            <div class="header__main__content__center">
 
                 <!-- Search Element -->
                 <div class="search-element">
@@ -57,46 +81,149 @@ $headerClasses = renderHeaderClasses();
 
                     </div>
                 </div>
-            </div>
 
-            <!-- Main Nav -->
-            <nav class="header__main__content__nav">
+                <!-- Main Nav -->
+                <nav class="header__main__content__center__nav">
 
-                <ul class="header__main__content__nav__list">
-                    <li class="header__main__content__nav__list__item">
-                        <span class="header__main__content__nav__list__item__link" navelement="destinations">Destinations</span>
-                    </li>
-                    <li class="header__main__content__nav__list__item">
-                        <span class="header__main__content__nav__list__item__link" navelement="ships">Ships</span>
-                    </li>
-                    <li class="header__main__content__nav__list__item">
-                        <span class="header__main__content__nav__list__item__link" navelement="guides">Guides</span>
-                    </li>
-                </ul>
-                <div class="header__main__content__nav__mega">
-                    <div class="header__main__content__nav__mega__panel" panel="destinations">
-                        <?php foreach ($destinations as $d) :
-                            $image =  get_field('feature_image', $d);
-                            $title =  get_field('navigation_title', $d);
-                        ?>
-                            <div class="destination-nav-item">
-                                <div class="destination-nav-item__image-area">
-                                    <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
+                    <ul class="header__main__content__center__nav__list">
+                        <li class="header__main__content__center__nav__list__item">
+                            <span class="header__main__content__center__nav__list__item__link" navelement="destinations">Destinations</span>
+                        </li>
+                        <li class="header__main__content__center__nav__list__item">
+                            <span class="header__main__content__center__nav__list__item__link" navelement="ships">Ships</span>
+                        </li>
+                        <li class="header__main__content__center__nav__list__item">
+                            <span class="header__main__content__center__nav__list__item__link" navelement="guides">Guides</span>
+                        </li>
+                    </ul>
+
+                </nav>
+
+                <!-- Mega Menu -->
+                <div class="nav-mega">
+                    <div class="nav-mega__panel active" panel="destinations">
+                        <div class="nav-mega__panel__destinations">
+
+                            <div class="nav-mega__panel__destinations__items">
+                                <?php foreach ($destinations as $d) :
+                                    $image =  get_field('feature_image', $d);
+                                    $title =  get_field('navigation_title', $d);
+                                ?>
+                                    <div class="nav-mega__panel__destinations__items__item">
+                                        <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
+                                        <div class="nav-mega__panel__destinations__items__item__title-group">
+
+                                            <div class="nav-mega__panel__destinations__items__item__title-group__title">
+                                                <?php echo $title ?>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                <?php endforeach; ?>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                    <div class="nav-mega__panel " panel="ships">
+                        <div class="nav-mega__panel__ships">
+
+                            <div class="nav-mega__panel__ships__group">
+                                <div class="nav-mega__panel__ships__group__title">
+                                    Under 80 Passengers
                                 </div>
-                                <div class="destination-nav-item__title">
-                                    <?php echo $title ?>
+                                <div class="nav-mega__panel__ships__group__items">
+                                    <?php foreach ($small as $ship) :
+                                        $image = get_field('featured_image', $ship);
+                                        $title = get_the_title($ship);
+                                        $cruise_data = get_field('cruise_data', $ship);
+                                        $sub = itineraryRange($cruise_data, "-") . " Days, Luxury"
+                                    ?>
+                                        <div class="nav-mega__panel__ships__group__items__item">
+                                            <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
+                                            <div class="nav-mega__panel__ships__group__items__item__title-group">
+                                                <div class="nav-mega__panel__ships__group__items__item__title-group__title">
+                                                    <?php echo $title ?>
+                                                </div>
+                                                <div class="nav-mega__panel__ships__group__items__item__title-group__sub">
+                                                    <?php echo $sub ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
 
-                        <?php endforeach; ?>
+
+                            <div class="nav-mega__panel__ships__group">
+                                <div class="nav-mega__panel__ships__group__title">
+                                    80 - 150 Passengers
+                                </div>
+                                <div class="nav-mega__panel__ships__group__items">
+                                    <?php foreach ($medium as $ship) :
+                                        $image = get_field('featured_image', $ship);
+                                        $title = get_the_title($ship);
+                                        $cruise_data = get_field('cruise_data', $ship);
+                                        $sub = itineraryRange($cruise_data, "-") . " Days, Luxury"
+                                    ?>
+                                        <div class="nav-mega__panel__ships__group__items__item">
+                                            <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
+                                            <div class="nav-mega__panel__ships__group__items__item__title-group">
+                                                <div class="nav-mega__panel__ships__group__items__item__title-group__title">
+                                                    <?php echo $title ?>
+                                                </div>
+                                                <div class="nav-mega__panel__ships__group__items__item__title-group__sub">
+                                                    <?php echo $sub ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+
+                            <div class="nav-mega__panel__ships__group">
+                                <div class="nav-mega__panel__ships__group__title">
+                                    150+ Passengers
+                                </div>
+                                <div class="nav-mega__panel__ships__group__items">
+                                    <?php foreach ($large as $ship) :
+                                        $image = get_field('featured_image', $ship);
+                                        $title = get_the_title($ship);
+                                        $cruise_data = get_field('cruise_data', $ship);
+                                        $sub = itineraryRange($cruise_data, "-") . " Days, Luxury"
+                                    ?>
+                                        <div class="nav-mega__panel__ships__group__items__item">
+                                            <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
+
+                                            <div class="nav-mega__panel__ships__group__items__item__title-group">
+                                                <div class="nav-mega__panel__ships__group__items__item__title-group__title">
+                                                    <?php echo $title ?>
+                                                </div>
+                                                <div class="nav-mega__panel__ships__group__items__item__title-group__sub">
+                                                    <?php echo $sub ?>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
-                    <div class="header__main__content__nav__mega__panel" panel="ships">
-                        Ships
+                    <div class="nav-mega__panel" panel="gudies">
+                        <div class="nav-mega__panel__guides">
+                            Guides
+                        </div>
                     </div>
                 </div>
+            </div>
 
 
-            </nav>
 
 
 
@@ -156,6 +283,7 @@ $headerClasses = renderHeaderClasses();
             </div>
         </div>
 
+        <div class="header__main__overlay"></div>
     </div>
 
 

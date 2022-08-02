@@ -38,10 +38,7 @@ $newsletter_snippet = get_field('newsletter_snippet');
   <?php
   get_template_part('template-parts/home/content', 'home-destinations');
   ?>
-  <!-- Map -->
-  <?php
-   get_template_part('template-parts/home/content', 'home-map');
-  ?>
+
 
 
 

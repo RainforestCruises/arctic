@@ -23,7 +23,7 @@ jQuery(document).ready(function ($) {
   const headerDiv = document.querySelector('.header');
   const headerMain = document.querySelector('.header__main');
 
-  const megaMenu = document.querySelector('.header__main__content__nav__mega');
+  const megaMenu = document.querySelector('.nav-mega');
 
   let fixedHeader = headerDiv.classList.contains('fixed');
 
@@ -96,44 +96,34 @@ jQuery(document).ready(function ($) {
 
   //MEGA MENU ----------
 
-
-
   let megaActive = false;
-  $('.header__main__content__nav__list__item__link').click(
-    function (e) {
+  $('.header__main__content__center__nav__list__item__link').hover(
+    function () {
 
-      megaActive = true;
-      $('.header__main__content__nav__mega').addClass('active');
+      // megaActive = true;
+      // $('.nav-mega').addClass('active');
 
-      var panelId = this.getAttribute("navelement");
-      var panelTarget = $(".header__main__content__nav__mega__panel[panel='" + panelId + "']");
+      // var panelId = this.getAttribute("navelement");
+      // var panelTarget = $(".nav-mega__panel[panel='" + panelId + "']");
 
-      $('.header__main__content__nav__mega__panel').removeClass('active');
-      (panelTarget).addClass('active');
-
-      // var allLinks = $(".nav-mega__nav-arctic__menu__list__item__link");
-      // $(allLinks).removeClass('active');
-
-      // var targetLink = $(".nav-mega__nav-arctic__menu__list__item__link[panel='" + panelId + "']");
-      // $(targetLink).addClass('active');
+      // $('.nav-mega__panel').removeClass('active');
+      // (panelTarget).addClass('active');
 
     },
   );
-
-
 
 
   //CLICK AWAY
   if(megaActive == true){
     document.addEventListener('click', evt => {
 
-      const isMegaMenu = megaMenu.contains(evt.target);
+      // const isMegaMenu = megaMenu.contains(evt.target);
   
-      console.log('aaaa')
-      if (!isMegaMenu) {
-        $('.header__main__content__nav__mega__panel').removeClass('active');
-        $('.header__main__content__nav__mega').removeClass('active');
-      }
+      // console.log('aaaa')
+      // if (!isMegaMenu) {
+      //   $('.nav-mega__panel').removeClass('active');
+      //   $('.nav-mega').removeClass('active');
+      // }
 
     });
   }
@@ -141,18 +131,9 @@ jQuery(document).ready(function ($) {
 
 
 
-
-
-
-
-
-
-
-
-
   //Mouse Leave Browser - remove mega / active
   $(document).mouseleave(function () {
-    $('.header__main__content__nav__mega').removeClass('active');
+    //$('.nav-mega').removeClass('active');
 
     //$('.nav-secondary').removeClass('mega-hide');
     //let menuActive = navMobile.classList.contains('nav-mobile--active');

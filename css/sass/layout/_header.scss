@@ -15,6 +15,11 @@
         & .header__main__content {
             max-width: $page-width;
         }
+
+        & .nav-mega {
+            width: calc(100% + 30rem);
+            transform: translateX(15rem);
+        }
     }
 
     //not used
@@ -38,6 +43,7 @@
         backdrop-filter: blur(8px);
         color: $color-grey-light-1;
         transition: all 0.3s;
+        flex-direction: column;
 
         @media only screen and (max-width: $bp-large) {
             justify-content: space-between;
@@ -48,13 +54,13 @@
             background-color: $color-nav; //make background opaque
             border-bottom: 1px solid rgba($color-grey-light-2, 0.9);
 
-            & .header__main__content__logo-area__logo {
+            & .header__main__content__left__logo-area {
                 & img {
                     filter: brightness(1) invert(0);
                 }
             }
 
-            & .header__main__content__nav {
+            & .header__main__content__center__nav {
                 //change links to dark colors
                 &__list {
                     &__item {
@@ -66,7 +72,7 @@
                 }
             }
 
-            & .header__main__content__search {
+            & .header__main__content__center {
                 & .search-element {
                     color: $color-primary;
                     border: 1px solid $color-grey-light-1a;
@@ -133,7 +139,7 @@
             @include flexPadding;
 
             display: grid;
-            grid-template-columns: min-content min-content 1fr min-content;
+            grid-template-columns: min-content 1fr min-content;
             align-items: center;
             column-gap: 4rem;
 
@@ -141,11 +147,10 @@
                 grid-template-columns: min-content min-content 1fr;
             }
 
-            &__logo-area {
-                transform: translateY(2px);
-
-                &__logo {
+            &__left {
+                &__logo-area {
                     & img {
+                        transform: translateY(2px);
                         transition: all 0.4s;
                         filter: brightness(0) invert(1);
                         height: 4.5rem;
@@ -157,84 +162,50 @@
                 }
             }
 
-            //Level 1 nav
-            &__nav {
-                display: flex;
+            &__center {
                 width: 100%;
-                justify-content: flex-end;
-                z-index: 1800;
-                height: 100%;
-                transition: all 0.3s;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
                 position: relative;
-
-                @media only screen and (max-width: $bp-large) {
-                    display: none;
-                }
-
-                &__list {
+                &__nav {
                     display: flex;
-                    list-style: none;
+                    width: 100%;
+                    justify-content: flex-end;
+                    z-index: 1800;
                     height: 100%;
-                    align-items: center;
+                    transition: all 0.3s;
+                    position: relative;
 
-                    &__item {
-                        &__link {
-                            color: currentColor;
-                            display: flex;
-                            height: 100%;
-                            align-items: center;
-                            cursor: pointer;
-                            transition: all 0.4s;
+                    @media only screen and (max-width: $bp-large) {
+                        display: none;
+                    }
 
-                            text-decoration: none;
-                            margin-right: 2.5rem;
-                        }
+                    &__list {
+                        display: flex;
+                        list-style: none;
+                        height: 100%;
+                        align-items: center;
 
-                        &__link:hover {
-                            color: $color-supporting-light;
+                        &__item {
+                            &__link {
+                                color: currentColor;
+                                display: flex;
+                                height: 100%;
+                                align-items: center;
+                                cursor: pointer;
+                                transition: all 0.4s;
+
+                                text-decoration: none;
+                                margin-right: 2.5rem;
+                            }
+
+                            &__link:hover {
+                                color: $color-supporting-light;
+                            }
                         }
                     }
                 }
-
-                &__mega {
-                    
-                    background-color: $color-white;
-                    color: $color-primary;
-                    
-                    border-radius: 1rem;
-                    box-shadow: $shadow-medium-around;
-      
-                    border: 1px solid $color-grey-light-2;
-
-                    position: absolute;
-                    top: 5.5rem;
-                    right: 0;
-
-                    opacity: 0;
-                    transition: all .2s;
-                    //display: none;
-
-                    &.active {
-                        opacity: 1;
-                        display: block;
-                    }
-
-                    &__panel {
-                       
-                        padding: 2rem;
-                        //display: none;
-                        &.active {
-                            opacity: 1;
-                            display: grid;
-                            grid-template-columns: 1fr 1fr 1fr 1fr;
-                            gap: 2rem;
-                        }
-                    }
-                    
-                }
-            }
-
-            &__search {
             }
 
             &__right {
@@ -517,6 +488,18 @@
                 }
             }
         }
+
+        //overlay
+        &__overlay {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(to left, rgba($color-black, 0.5), rgba($color-black, 0.5));
+            
+            z-index: -1;
+        }
     }
 }
 
@@ -579,29 +562,5 @@
                 fill: $color-white;
             }
         }
-    }
-}
-
-
-//componetns
-
-//destination nav item
-.destination-nav-item {
-   
- 
-    &__image-area {
-        
-        height: 15rem;
-        width: 15rem;
-        & img {
-            border-radius: 1rem;
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-        }
-    }
-
-    &__title {
-        margin-top: 1rem;
     }
 }

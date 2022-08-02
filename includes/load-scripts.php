@@ -36,13 +36,12 @@ function load_scripts()
 
      wp_enqueue_script('amcharts-index', get_template_directory_uri() . '/vendor/amcharts5/index.js', array(), false, true);
      wp_enqueue_script('amcharts-map', get_template_directory_uri() . '/vendor/amcharts5/map.js', array(), false, true);
-     wp_enqueue_script('amcharts-world', get_template_directory_uri() . '/vendor/amcharts5/geodata/worldHigh.js', array(), false, true);
+     wp_enqueue_script('amcharts-world', get_template_directory_uri() . '/vendor/amcharts5/geodata/worldLow.js', array(), false, true);
      wp_enqueue_script('amcharts-theme', get_template_directory_uri() . '/vendor/amcharts5/themes/Animated.js', array(), false, true);
+     //wp_enqueue_script('amcharts-theme2', get_template_directory_uri() . '/vendor/amcharts5/themes/Dark.js', array(), false, true);
 
-    // wp_enqueue_script('amcharts-index', 'https://cdn.amcharts.com/lib/5/index.js', array(), false, true);
-    // wp_enqueue_script('amcharts-map', 'https://cdn.amcharts.com/lib/5/map.js', array(), false, true);
-    // wp_enqueue_script('amcharts-world', 'https://cdn.amcharts.com/lib/5/geodata/worldLow.js', array(), false, true);
-    // wp_enqueue_script('amcharts-theme', 'https://cdn.amcharts.com/lib/5/themes/Animated.js', array(), false, true);
+
+
 
     wp_enqueue_script('utility', get_template_directory_uri() . '/js/utilities.js', array('jquery'), false, true);
     wp_enqueue_script('header', get_template_directory_uri() . '/js/header.js', array('jquery'), false, true);
