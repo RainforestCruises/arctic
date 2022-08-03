@@ -8,34 +8,6 @@
     <meta name="author" content="Ryan">
 
     <!-- Structured Data / Rich Snippets -->
-    <?php
-    //Destination
-    if (is_page_template('template-destinations-destination.php') || is_page_template('template-destinations-cruise.php') || is_page_template('template-destinations-region.php')) {
-        echo structuredData('destination'); //Breadcrumbs test
-        echo structuredDataFaq(); // FAQ
-    }
-
-    //Product
-    if (get_post_type() == 'rfc_cruises' || get_post_type() == 'rfc_tours' || get_post_type() == 'rfc_lodges') {
-        echo structuredData('product');
-    }
-
-    //Search
-    if (is_page_template('template-search.php')) {
-        echo structuredData('product'); //identical structures
-    }
-
-    //Travel Guide Landing Page
-    if (is_page_template('template-travel-guide.php')) {
-        echo structuredData('guideLanding');
-    }
-
-    //Travel Guide
-    if (get_post_type() == 'rfc_travel_guides') {
-        echo structuredData('guide');
-    }
-
-    ?>
 
     <!-- Load Head / Style Sheets -->
     <?php wp_head(); ?>

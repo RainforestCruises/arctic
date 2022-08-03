@@ -34,9 +34,9 @@ $headerClasses = renderHeaderClasses();
 <header class="header <?php echo $headerClasses; ?>" id="header">
 
     <!-- Nav Main -->
-    <div class="nav-main  <?php echo ($alwaysActiveHeader == true) ? 'active' : ''; ?>">
+    <div class="nav-main <?php echo ($alwaysActiveHeader == true) ? 'active' : ''; ?>">
         <div class="nav-main__content">
-
+       
             <!-- Left (logo) -->
             <div class="nav-main__content__left">
                 <a href="<?php echo get_home_url(); ?>" class="nav-main__content__left__logo-area">
@@ -49,10 +49,13 @@ $headerClasses = renderHeaderClasses();
                 </a>
             </div>
 
+
             <!-- Center -->
             <div class="nav-main__content__center">
+
                 <!-- Search Element -->
-                <div class="nav-main__content__center__search-area">              
+                <div class="nav-main__content__center__search-area">
+                    
                     <div class="search-element">
                         <div class="search-element__inputs">
                             <div class="search-element__inputs__item">
@@ -76,8 +79,6 @@ $headerClasses = renderHeaderClasses();
                         </div>
                     </div>
                 </div>
-
-
                 <!-- Nav Links -->
                 <nav class="nav-main__content__center__nav">
 
@@ -94,7 +95,6 @@ $headerClasses = renderHeaderClasses();
                     </ul>
 
                 </nav>
-
                 <!-- Nav Mega -->
                 <div class="nav-mega">
 
@@ -243,8 +243,8 @@ $headerClasses = renderHeaderClasses();
                     </div>
 
                 </div>
-            </div>
 
+            </div>
 
             <!-- Right (contact) -->
             <div class="nav-main__content__right">

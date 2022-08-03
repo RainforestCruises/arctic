@@ -2,7 +2,7 @@
     z-index: 100;
     width: 100%;
     user-select: none;
-    transition: all 0.3s;
+    transition: all 0.2s;
     position: absolute;
     top: 0; //admin bar offset in base
     left: 0;
@@ -22,10 +22,6 @@
         }
     }
 
-    //not used
-    &.scrollUp {
-        transform: translateY(-7rem);
-    }
 }
 
 .nav-backdrop {
@@ -40,16 +36,10 @@
     height: 100%;
     width: 100%;
     display: none;
-  
-    
+   
     &.active {
         display: block;
      
         animation: fadein 0.2s;
     }
-
-
-
-    
-
 }

@@ -4,7 +4,6 @@
 jQuery(document).ready(function ($) {
 
 
-
   //Variables
   const bodyDiv = document.querySelector('#body');
   const headerDiv = document.querySelector('.header');
@@ -23,37 +22,46 @@ jQuery(document).ready(function ($) {
   const navMobile = document.querySelector('.nav-mobile');
 
 
-
   //apply header styles on scroll if fixed header
   if (fixedHeader == true) {
     window.addEventListener('scroll', applyNavStyle);
-  } 
+  }
 
   if (fixedHeader == false) {
     window.addEventListener('scroll', clearMega);
-  } 
+  }
 
   function applyNavStyle() {
+    let megaActive = navMega.classList.contains('active');
+    let mainActive = navMain.classList.contains('active');
 
     //reduce size (height)
     if (window.scrollY == 0) {
       navMain.classList.remove('small-nav');
+      if(!megaActive){
+        navBackdrop.classList.remove('active');
+      }
+      
     } else {
       navMain.classList.add('small-nav');
     }
 
     //set active bg past threshold
-    if (!opaqueNavAlways && !navMain.classList.contains('active')) {
+    if (!opaqueNavAlways && !megaActive) {
+
       if (window.scrollY > 300) {
         navMain.classList.add('active');
       } else {
+
         navMain.classList.remove('active');
+        navBackdrop.classList.remove('active');
+
       }
     }
   }
 
   function clearMega() {
-    
+
     navMega.classList.remove('active');
     navMain.classList.remove('mega-active');
     navBackdrop.classList.remove('active');
@@ -64,7 +72,7 @@ jQuery(document).ready(function ($) {
 
   //Main nav hover
   $('.nav-main').hover(
-    
+
     function () { //hover-over
       console.log('hover');
       navMain.classList.add('active');
@@ -82,7 +90,7 @@ jQuery(document).ready(function ($) {
       if (!megaActive) {
         navBackdrop.classList.remove('active');
       }
-      
+
     }
   )
 
@@ -94,6 +102,7 @@ jQuery(document).ready(function ($) {
 
       navMega.classList.add('active');
       navBackdrop.classList.add('active');
+      navMain.classList.add('active');
       navMain.classList.add('mega-active');
 
       $('.nav-main__content__center__nav__list__item').removeClass('active');
@@ -117,7 +126,7 @@ jQuery(document).ready(function ($) {
 
       if (!megaActive) {
         navBackdrop.classList.remove('active');
-        
+
       }
 
     },
@@ -158,7 +167,7 @@ jQuery(document).ready(function ($) {
       navMain.classList.remove('mega-active');
       $('.nav-main__content__center__nav__list__item').removeClass('active');
     },
-    
+
 
   )
 
@@ -203,16 +212,9 @@ jQuery(document).ready(function ($) {
 
 
 
-
-
-
-
-
-
-
   //OLD -------------------
 
-  
+
 
   //Scroll to Top on Reload
   if (history.scrollRestoration) {

@@ -12634,7 +12634,7 @@ h5 {
   z-index: 100;
   width: 100%;
   user-select: none;
-  transition: all 0.3s;
+  transition: all 0.2s;
   position: absolute;
   top: 0;
   left: 0; }
@@ -12645,8 +12645,6 @@ h5 {
   .header.small-width .nav-mega {
     width: calc(100% + 30rem);
     transform: translateX(-15rem); }
-  .header.scrollUp {
-    transform: translateY(-7rem); }
 
 .nav-backdrop {
   content: "";
