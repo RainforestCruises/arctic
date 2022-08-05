@@ -1,27 +1,16 @@
 <?php
-$queryArgs = array(
-    'post_type' => array('rfc_destinations', 'rfc_regions'),
-    'meta_key' => 'navigation_title',
-    'orderby' => 'meta_value',
-    'order' => 'ASC',
-    'posts_per_page' => -1
-);
 
-$destinations = get_posts($queryArgs);
-
+$hero_slider = get_field('hero_slider');
 $hero_title = get_field('hero_title');
 $hero_subtitle = get_field('hero_subtitle');
-$hero_slider = get_field('hero_slider');
-$currentYear = date("Y");
-
 ?>
 
 <!--  Hero -->
-<div class="home-hero">
-    <div class="home-hero__bg" id="home-hero__bg">
+<div class="home-hero hero">
 
+    <!-- Background Slider -->
+    <div class="home-hero__bg">
 
-        <!-- Slider -->
         <?php
         $slideCount = 0;
         foreach ($hero_slider as $s) :
@@ -32,159 +21,130 @@ $currentYear = date("Y");
             if ($sliderDestination) {
                 $sliderDestinationPostId = $sliderDestination->ID;
             }
-
         ?>
             <div class="home-hero__bg__slide" postid="<?php echo $sliderDestinationPostId ?>" slidenumber="<?php echo $slideCount; ?>">
-                <?php if ($sliderImage) : ?>
-                    <div class="home-hero__bg__slide__image-area">
-                        <img <?php afloat_image_markup($sliderImage['id'], 'full-hero-large', array('full-hero-large', 'full-hero-medium', 'full-hero-small', 'full-hero-xsmall'), true); ?>>
-                        <div class="home-hero__bg__slide__image-area__location" postId="<?php echo $sliderDestinationPostId ?>">
-                            <?php echo $sliderTitle; ?>
-                        </div>
-                    </div>
-
-                <?php endif; ?>
+                <img <?php afloat_image_markup($sliderImage['id'], 'full-hero-large', array('full-hero-large', 'full-hero-medium', 'full-hero-small', 'full-hero-xsmall'), false); ?>>
             </div>
-
-        <?php
-            $slideCount++;
+        <?php $slideCount++;
         endforeach; ?>
-
-
     </div>
 
+    <!-- Map -->
+    <div class="home-hero__map" id="hero-map"></div>
+
+    <!-- Content -->
     <div class="home-hero__content">
-        <div class="home-hero__content__title-group">
-            <div class="home-hero__content__title-group__title">
-                <?php echo $hero_title ?>
-            </div>
-            <h1 class="home-hero__content__title-group__subtitle">
-                <?php echo $hero_subtitle ?>
-            </h1>
-        </div>
 
-        <!-- Search Area -->
-        <div class="home-hero__content__search-area">
+        <!-- Content Slider -->
+        <div class="home-hero__content__slider">
 
-            <!-- Search Container -->
-            <div class="home-search" id="search-container">
+            <?php
+            $slideCount = 0;
+            foreach ($hero_slider as $s) :
+                $title = $s['title'];
+                $subtitle = $s['subtitle'];
 
-                <!-- Destination -->
-                <div class="home-search__destination" id="destination-input-container">
-                    <label for="destination-input" class="home-search__destination__label">
-                        <svg>
-                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-location-pin"></use>
-                        </svg>
-                    </label>
-                    <input class="home-search__destination__input" id="destination-input" value="" placeholder="Where would you like to go?" autocomplete="off">
-                    <button class="home-search__destination__clear">
-                        <svg>
-                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-cross"></use>
-                        </svg>
-                    </button>
+                $destination = $s['destination']; //destination or region post
+                $destinationPostId = $destination->ID;
+                $isRegion = get_post_type($destination) == 'rfc_regions';
 
-                    <ul class="home-search__destination__list" id="destination-list">
-                        <li postid="anywhere" class="anywhere">Anywhere</li>
-                        <?php foreach ($destinations as $d) : ?>
-                            <li postid="<?php echo $d->ID ?>"><?php echo get_field('navigation_title', $d) ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
+                $tab_items = $s['tab_items'];
 
-                <!-- Dates -->
-                <div class="home-search__dates">
-                    <label for="dates-input" class="home-search__dates__label">
-                        <svg>
-                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-calendar-2"></use>
-                        </svg>
-                    </label>
-                    <div class="home-search__dates__input" id="dates-input">
-                        When would you like to travel?
+            ?>
+
+                <!-- Content Slide -->
+                <div class="hero-content-slide <?php echo $isRegion ? "regional" : ""; ?>" postid="<?php echo $destinationPostId ?>" slidenumber="<?php echo $slideCount; ?>">
+                    <h1 class="hero-content-slide__subtitle">
+                        <?php echo $subtitle ?>
+                    </h1>
+                    <div class="hero-content-slide__title">
+                        <?php echo $title ?>
                     </div>
-                    <div class="home-search__dates__list" id="dates-list">
-                        <div class="home-search__dates__list__years">
+
+                    <!-- Content -->
+                    <div class="hero-content-slide__content">
+
+
+                        <!-- Tabs -->
+                        <div class="hero-content-slide__content__tabs">
+
                             <?php
-                            for ($y = 0; $y < 2; $y++) :
-                                $loopYear = $currentYear + $y;
-                            ?>
-                                <div class="home-search__dates__list__years__year <?php echo ($y == 0) ? "selected" : ""; ?>" year="<?php echo $loopYear; ?>">
-                                    <?php echo $loopYear; ?>
-                                </div>
-                            <?php endfor;
+                            $tabIndex = 0;
+                            foreach ($tab_items as $tab) :
+                                $title = $tab['title'];
+                                $svg = $tab['svg'];
+                                $content_type = $tab['content_type'];
+                                $iconTab = $svg != "";
                             ?>
 
+                                <?php if ($iconTab) : ?>
+                                    <div class="btn-pill-hero btn-pill-hero--circular active" tabindex="<?php echo $tabIndex; ?>">
+                                        <?php echo $svg; ?>
+                                    </div>
+                                <?php else : ?>
+                                    <div class="btn-pill-hero" tabindex="<?php echo $tabIndex; ?>">
+                                        <?php echo $title; ?>
+                                    </div>
+                                <?php endif; ?>
+
+                            <?php $tabIndex++;
+                            endforeach; ?>
+
                         </div>
-                        <ul class="home-search__dates__list__months selected">
-                            <li value="01" name="January">Jan</li>
-                            <li value="02" name="February">Feb</li>
-                            <li value="03" name="March">Mar</li>
-                            <li value="04" name="April">Apr</li>
-                            <li value="05" name="May">May</li>
-                            <li value="06" name="June">Jun</li>
-                            <li value="07" name="July">Jul</li>
-                            <li value="08" name="August">Aug</li>
-                            <li value="09" name="September">Sep</li>
-                            <li value="10" name="October">Oct</li>
-                            <li value="11" name="November">Nov</li>
-                            <li value="12" name="December">Dec</li>
-                        </ul>
+                        <!-- End Tabs -->
+                        <div class="hero-content-slide__content__panels">
+
+                            <?php
+                            $tabIndex = 0;
+                            foreach ($tab_items as $tab) :
+                                $title = $tab['title'];
+                                $svg = $tab['svg'];
+                                $iconTab = $svg != "";
+
+                                $content_type = $tab['content_type'];
+                                $snippet = $tab['snippet'];
+                                $item = $tab['cruises']; //wip
+                                $item = $tab['itineraries'];
+                            ?>
+
+                                <?php if ($content_type == 'snippet') : ?>
+                                    <!-- Panel Snippet -->
+                                    <div class="hero-content-slide__content__panels__panel-snippet">
+                                        <?php echo $snippet; ?> 
+                                    </div>
+                                <?php else : ?>
+                                    <!-- Panel Series -->
+                                    <div class="hero-content-slide__content__panels__panel-series">
+                                        Series
+                                    </div>
+                                <?php endif; ?>
+
+
+
+
+                            <?php $tabIndex++;
+                            endforeach; ?>
+                        </div>
 
                     </div>
                 </div>
+                <!-- End Content Slide -->
 
-                <!-- CTA Button -->
-                <div class="home-search__cta">
-                    <button class="home-search__cta__button" id="search-button" type="submit" form="home-search-form">
-                        <span>
-                            Search
-                        </span>
-                        <svg>
-                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-magnifying-glass"></use>
-                        </svg>
 
-                        <div class="lds-ring">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </button>
-                </div>
 
-            </div>
 
-            <!-- Search Container / button Mobile -->
-            <div class="home-search-mobile">
-                <button id="mobile-search-button">
-                    Where would you like to go?
+            <?php $slideCount++;
+            endforeach; ?>
 
-                    <svg>
-                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-magnifying-glass"></use>
-                    </svg>
-                </button>
-            </div>
+
+
 
         </div>
 
 
 
-
     </div>
 
-    <div class="home-hero__bottom">
-
-        <button class="btn-circle btn-circle--small btn-white btn-circle--down" id="scroll-down" href="#intro">
-            <svg class="btn-circle--arrow-main">
-                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-arrow-down"></use>
-            </svg>
-            <svg class="btn-circle--arrow-animate">
-                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-arrow-down"></use>
-            </svg>
-        </button>
-
-
-
-    </div>
 
 
 

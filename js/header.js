@@ -3,7 +3,6 @@
 
 jQuery(document).ready(function ($) {
 
-
   //Variables
   const bodyDiv = document.querySelector('#body');
   const headerDiv = document.querySelector('.header');
@@ -38,10 +37,10 @@ jQuery(document).ready(function ($) {
     //reduce size (height)
     if (window.scrollY == 0) {
       navMain.classList.remove('small-nav');
-      if(!megaActive){
+      if (!megaActive) {
         navBackdrop.classList.remove('active');
       }
-      
+
     } else {
       navMain.classList.add('small-nav');
     }
@@ -49,7 +48,7 @@ jQuery(document).ready(function ($) {
     //set active bg past threshold
     if (!opaqueNavAlways && !megaActive) {
 
-      if (window.scrollY > 300) {
+      if (window.scrollY > 600) {
         navMain.classList.add('active');
       } else {
 
@@ -94,9 +93,8 @@ jQuery(document).ready(function ($) {
     }
   )
 
-
-  //nav link hover----------
-
+  //Nav Links ----------
+  //Nav links hover ----------
   $('.nav-main__content__center__nav__list__item').hover(
     function () { //over
 
@@ -133,8 +131,8 @@ jQuery(document).ready(function ($) {
   );
 
 
-  //MEGA MENU ----------
-  //Hover behavior
+  //Mega Menu ----------
+  //Remove mega and backdrop when hover back to page
   $('.nav-mega').hover(
     function () {//on hover over
       //Nada
@@ -159,39 +157,14 @@ jQuery(document).ready(function ($) {
 
   )
 
-
-
+  //Remove mega when hover over other nav elements 
   $('.nav-main__content__center__search-area, .nav-main__content__right').hover(
     function () {//on hover over
       navMega.classList.remove('active');
       navMain.classList.remove('mega-active');
       $('.nav-main__content__center__nav__list__item').removeClass('active');
     },
-
-
   )
-
-
-
-
-
-
-  // //CLICK AWAY
-  // if (megaActive == true) {
-  //   document.addEventListener('click', evt => {
-
-  //     // const isMegaMenu = megaMenu.contains(evt.target);
-
-  //     // console.log('aaaa')
-  //     // if (!isMegaMenu) {
-  //     //   $('.nav-mega__panel').removeClass('active');
-  //     //   $('.nav-mega').removeClass('active');
-  //     // }
-
-  //   });
-  // }
-
-
 
 
   //Mouse Leave Browser - remove mega / active
@@ -254,23 +227,23 @@ jQuery(document).ready(function ($) {
 
 
 
-  //TEMPLATE SPECIFIC EXTRAS -----------------------------------------------------------------
-  //SERP
-  const searchFilterBar = document.getElementById('search-filter-bar'); //for search template
+  // //TEMPLATE SPECIFIC EXTRAS -----------------------------------------------------------------
+  // //SERP
+  // const searchFilterBar = document.getElementById('search-filter-bar'); //for search template
 
-  //Resize Window - Close menus
-  $(window).resize(function () {
+  // //Resize Window - Close menus
+  // $(window).resize(function () {
 
-    if ($(window).width() > 1000) {
-      navMobile.classList.remove('nav-mobile--active');
-      bodyDiv.classList.remove('overlay');
-    }
-    if ($(window).width() <= 1000) {
-      navMega.classList.remove('active');
-      megaMenuOverlay.classList.remove('active');
+  //   if ($(window).width() > 1000) {
+  //     navMobile.classList.remove('nav-mobile--active');
+  //     bodyDiv.classList.remove('overlay');
+  //   }
+  //   if ($(window).width() <= 1000) {
+  //     navMega.classList.remove('active');
+  //     megaMenuOverlay.classList.remove('active');
 
-    }
-  });
+  //   }
+  // });
 
 });
 

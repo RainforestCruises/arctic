@@ -1,0 +1,144 @@
+.nav-search {
+    display: grid;
+    grid-template-columns: min-content min-content;
+    border-radius: 4rem;
+    border: 1px solid rgba($color-grey-light-1a, 0);
+    align-items: center;
+    background-color: rgba($color-white, 0.05);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    padding: 0 0.4rem;
+
+    &__inputs {
+        display: grid;
+        grid-template-columns: min-content min-content min-content;
+        align-items: center;
+
+        &__item {
+            padding: 1rem 2rem;
+            position: relative;
+            cursor: pointer;
+
+            &:not(:last-child) {
+                &::after {
+                    content: "";
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 1px;
+                    height: 50%;
+                    background-color: $color-grey-light-1a;
+                    opacity: 0.6;
+                }
+            }
+
+           
+        }
+    }
+
+    &__cta {
+        button {
+            transform: translateX(1px);
+            height: 3.5rem;
+            width: 3.5rem;
+            background-color: rgba($color-white, 0.1);
+            -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
+            cursor: pointer;
+            border: none;
+            border-radius: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            & svg {
+                transform: translateX(1px);
+                height: 1.6rem;
+                width: 1.6rem;
+                fill: $color-white;
+            }
+        }
+    }
+}
+
+
+.nav-search-control {
+    display: none;
+ 
+    &.active {
+        display: grid;
+        //animation: zoomEffect 0.4s;
+       
+    }
+    //transform-origin: center left;
+    
+    grid-template-columns: min-content min-content;
+    border-radius: 4rem;
+    border: 1px solid $color-primary;
+    align-items: center;
+    background-color: rgba($color-white, 0.05);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    padding: 0 0.4rem;
+
+    color: currentColor;
+    box-shadow: $shadow-short-bottom-light;
+    &__cta {
+        button {
+            background-color: currentColor;
+        }
+    }
+
+
+    &__inputs {
+        display: grid;
+        grid-template-columns: min-content min-content min-content;
+        align-items: center;
+
+        &__item {
+            padding: 1rem 2rem;
+            position: relative;
+            cursor: pointer;
+           
+
+            &:not(:last-child) {
+                &::after {
+                    content: "";
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 1px;
+                    height: 50%;
+                    background-color: $color-grey-light-1a;
+                    opacity: 0.6;
+                }
+            }
+
+           
+        }
+    }
+
+    &__cta {
+        button {
+            transform: translateX(1px);
+            height: 3.5rem;
+            width: 3.5rem;
+            background-color: rgba($color-white, 0.1);
+            -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
+            cursor: pointer;
+            border: none;
+            border-radius: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            & svg {
+                transform: translateX(1px);
+                height: 1.6rem;
+                width: 1.6rem;
+                fill: $color-white;
+            }
+        }
+    }
+}

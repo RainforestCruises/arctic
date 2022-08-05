@@ -34,17 +34,19 @@ function load_scripts()
     wp_enqueue_script('odometer', get_template_directory_uri() . '/vendor/odometer/odometer.min.js', array('jquery'), false, true);
     wp_enqueue_script('moment',  get_template_directory_uri() . '/vendor/moment/moment.min.js', array('jquery'), false, true);
 
-     wp_enqueue_script('amcharts-index', get_template_directory_uri() . '/vendor/amcharts5/index.js', array(), false, true);
-     wp_enqueue_script('amcharts-map', get_template_directory_uri() . '/vendor/amcharts5/map.js', array(), false, true);
-     wp_enqueue_script('amcharts-world', get_template_directory_uri() . '/vendor/amcharts5/geodata/worldLow.js', array(), false, true);
-     wp_enqueue_script('amcharts-theme', get_template_directory_uri() . '/vendor/amcharts5/themes/Animated.js', array(), false, true);
-     //wp_enqueue_script('amcharts-theme2', get_template_directory_uri() . '/vendor/amcharts5/themes/Dark.js', array(), false, true);
+    wp_enqueue_script('amcharts-index', get_template_directory_uri() . '/vendor/amcharts5/index.js', array(), false, true);
+    wp_enqueue_script('amcharts-map', get_template_directory_uri() . '/vendor/amcharts5/map.js', array(), false, true);
+    wp_enqueue_script('amcharts-world', get_template_directory_uri() . '/vendor/amcharts5/geodata/worldLow.js', array(), false, true);
+    wp_enqueue_script('amcharts-theme', get_template_directory_uri() . '/vendor/amcharts5/themes/Animated.js', array(), false, true);
+    wp_enqueue_script('amcharts-theme2', get_template_directory_uri() . '/vendor/amcharts5/themes/Dark.js', array(), false, true);
 
 
 
 
     wp_enqueue_script('utility', get_template_directory_uri() . '/js/utilities.js', array('jquery'), false, true);
     wp_enqueue_script('header', get_template_directory_uri() . '/js/header.js', array('jquery'), false, true);
+    wp_enqueue_script('nav-search', get_template_directory_uri() . '/js/nav-search.js', array('jquery'), false, true);
+
 
     $alwaysActiveHeader = checkActiveHeader();
     wp_localize_script(
@@ -54,8 +56,15 @@ function load_scripts()
             'alwaysActiveHeader' =>  $alwaysActiveHeader
         )
     );
-    
 
+    $templateUrl = get_template_directory_uri();
+    wp_localize_script(
+        'nav-search',
+        'page_vars',
+        array(
+            'templateUrl' =>  $templateUrl
+        )
+    );
 }
 
 add_action('wp_enqueue_scripts', 'load_scripts');

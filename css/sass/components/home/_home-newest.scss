@@ -3,7 +3,7 @@
     @include flexBlock;
     position: relative;
 
- 
+    //transform: translateY(-25rem);
     &__content {
         @include flexPadding;
 
@@ -13,7 +13,9 @@
         margin-bottom: 3rem;
         
 
-
+        & .title-single {
+            //color: $color-white;
+        }
 
 
         &__slider {

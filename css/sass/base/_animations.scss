@@ -31,9 +31,10 @@
 
 @keyframes zoomEffect {
   from {  
-    transform: scale(1.05);
+    
+    transform: scaleX(.2);
   }
   to {
-    transform: scale(1);
+    transform: scaleX(1);
   }
 }
