@@ -140,24 +140,34 @@
         @media only screen and (max-width: $bp-large) {
             margin-left: 0rem;
         }
+
         &__tabs {
             display: grid;
             grid-template-columns: repeat(4, min-content);
             column-gap: 1.5rem;
             margin-bottom: 1.5rem;
             transform: translateX(-.5rem);
+
+            &__tab {
+
+            }
         }
 
         &__panels {
             font-size: 1.6rem;
             max-width: 40rem;
 
-            &__panel-snippet {
-
+            &__panel {
+                display: none;
+               
+                &.active {
+                    display: block;
+                    animation: fadein .3s both;
+                    animation-timing-function: ease-out;
+                   
+                }
             }
-            &__panel-series {
 
-            }
 
            
         }

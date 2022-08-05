@@ -1,4 +1,5 @@
 jQuery(document).ready(function ($) {
+  const destinationPoints = page_vars.destinationPoints;
 
   // Create root element
   // https://www.amcharts.com/docs/v5/getting-started/#Root_element
@@ -112,43 +113,39 @@ homeButton.events.on("click", function() {
   });
 
 
-  var originCities = [
-    {
-      title: "Falkland Islands",
-      postid: 2924,
-      slide: 1,
-      geometry: { type: "Point", coordinates: [-59, -52] },
-      zoomPoint: { longitude: -60, latitude: -54 },
-      zoomLevel: 3.8,
-    },
-    {
-      title: "Antarctic Peninsula",
-      postid: 2922,
-      slide: 4,
-      geometry: { type: "Point", coordinates: [-63, -65] },
-      zoomPoint: { longitude: -55, latitude: -62 },
-      zoomLevel: 3.7,
-    },
-    {
-      title: "Ushuaia",
-      postid: 2927,
-      slide: 2,
-      geometry: { type: "Point", coordinates: [-68, -54] },
+  // var originCities = [
+  //   {
+  //     title: "Falkland Islands",
+  //     postid: 2924,
+  //     geometry: { type: "Point", coordinates: [-59, -52] },
+  //     zoomPoint: { longitude: -60, latitude: -54 },
+  //     zoomLevel: 3.8,
+  //   },
+  //   {
+  //     title: "Antarctic Peninsula",
+  //     postid: 2922,
 
-      zoomPoint: { longitude: -62, latitude: -55 },
-      zoomLevel: 3.8,
-    },
-    {
-      title: "South Georgia",
-      postid: 2923,
-      slide: 3,
-      geometry: { type: "Point", coordinates: [-26, -57] },
-      zoomPoint: { longitude: -46, latitude: -57 },
-      zoomLevel: 3.5,
-    }
-  ];
-
-  originSeries.data.setAll(originCities);
+  //     geometry: { type: "Point", coordinates: [-63, -65] },
+  //     zoomPoint: { longitude: -55, latitude: -62 },
+  //     zoomLevel: 3.7,
+  //   },
+  //   {
+  //     title: "Ushuaia",
+  //     postid: 2927,
+  //     geometry: { type: "Point", coordinates: [-68, -54] },
+  //     zoomPoint: { longitude: -62, latitude: -55 },
+  //     zoomLevel: 3.8,
+  //   },
+  //   {
+  //     title: "South Georgia",
+  //     postid: 2923,
+  //     geometry: { type: "Point", coordinates: [-26, -57] },
+  //     zoomPoint: { longitude: -46, latitude: -57 },
+  //     zoomLevel: 3.5,
+  //   }
+  // ];
+  console.log(destinationPoints);
+  originSeries.data.setAll(destinationPoints);
 
 
   //BG Slider
@@ -157,6 +154,7 @@ homeButton.events.on("click", function() {
     pageDots: false,
     fade: true,
     //lazyLoad: true,
+    imagesLoaded: true,
     selectedAttraction: 0.01,
     friction: 0.15
   });
@@ -174,26 +172,29 @@ homeButton.events.on("click", function() {
 
 
 
+
+
+
+
   function selectOrigin(id) {
     var dataItem = originSeries.getDataItemById(id);
     var dataContext = dataItem.dataContext;
     chart.zoomToGeoPoint(dataContext.zoomPoint, dataContext.zoomLevel, true);
     homeButton.show();
 
-
-    const slideDiv = document.querySelector('.home-hero__bg__slide[postid="' + id + '"]');
-    if (slideDiv) {
-        const slideNumber = slideDiv.getAttribute('slidenumber');
+    //Slider BG
+    const bgSlideDiv = document.querySelector('.home-hero__bg__slide[postid="' + id + '"]');
+    if (bgSlideDiv) {
+        const slideNumber = bgSlideDiv.getAttribute('slidenumber');
         flickitySlider.select(slideNumber);
     }
 
-    //Another Slider for Content
+    //Slider Content
     const contentSlideDiv = document.querySelector('.hero-content-slide[postid="' + id + '"]');
-    console.log(contentSlideDiv)
     if (contentSlideDiv) {
         const slideNumber = contentSlideDiv.getAttribute('slidenumber');
         contentSlider.select(slideNumber);
-        
+        resetTabs(); //set tabs to first one
     }
    
   }
@@ -203,6 +204,32 @@ homeButton.events.on("click", function() {
   // Make stuff animate on load
   chart.appear(1000, 100);
 
+
+
+  //TABS
+  const tabButtons = [...document.querySelectorAll('.hero-content-slide__content__tabs__button')];
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const slideindex = button.getAttribute('slideindex');
+      const tabindex = button.getAttribute('tabindex');
+
+      $(".hero-content-slide__content__tabs__button[slideindex='" + slideindex + "']").removeClass('active');  
+      button.classList.add('active');
+
+      $(".hero-content-slide__content__panels__panel[slideindex='" + slideindex + "']").removeClass('active');  
+      $(".hero-content-slide__content__panels__panel[slideindex='" + slideindex + "'][tabindex='" + tabindex + "']").addClass('active');  
+
+    });
+  })
+
+  function resetTabs() {
+    $(".hero-content-slide__content__tabs__button").removeClass('active');  
+    $(".hero-content-slide__content__tabs__button[tabindex='0']").addClass('active')
+
+    $(".hero-content-slide__content__panels__panel").removeClass('active');  
+    $(".hero-content-slide__content__panels__panel[tabindex='0']").addClass('active')
+
+  }
 
 });
 

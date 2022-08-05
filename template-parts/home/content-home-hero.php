@@ -1,8 +1,48 @@
 <?php
 
 $hero_slider = get_field('hero_slider');
-$hero_title = get_field('hero_title');
-$hero_subtitle = get_field('hero_subtitle');
+
+$destinationPoints = [];
+foreach ($hero_slider as $s) {
+
+    $destination = $s['destination']; //destination or region post
+    $destinationPostId = $destination->ID;
+    $isRegion = get_post_type($destination) == 'rfc_regions';
+
+    if (!$isRegion) {
+
+        $geometry = [
+            'type' => "Point",
+            'coordinates' => [get_field('longitude', $destination), get_field('latitude', $destination)],
+        ];
+
+        $zoomPoint = [
+            'longitude' => get_field('longitude', $destination),
+            'latitude' => get_field('latitude', $destination),
+        ];
+
+        $point  = [
+            'title' => get_field('navigation_title', $destination),
+            'postid' => $destination->ID,
+            'geometry' => $geometry,
+            'zoomPoint' => $zoomPoint,
+            'zoomLevel' => get_field('zoom_level', $destination),
+        ];
+
+        $destinationPoints[] = $point;
+    }
+}
+
+
+wp_enqueue_script('page-home-hero', get_template_directory_uri() . '/js/page-home-hero.js', array(), false, true);
+wp_localize_script(
+    'page-home-hero',
+    'page_vars',
+    array(
+        'destinationPoints' =>  $destinationPoints
+    )
+);
+
 ?>
 
 <!--  Hero -->
@@ -72,19 +112,19 @@ $hero_subtitle = get_field('hero_subtitle');
                             $tabIndex = 0;
                             foreach ($tab_items as $tab) :
                                 $title = $tab['title'];
-                                $svg = $tab['svg'];
                                 $content_type = $tab['content_type'];
-                                $iconTab = $svg != "";
                             ?>
 
-                                <?php if ($iconTab) : ?>
-                                    <div class="btn-pill-hero btn-pill-hero--circular active" tabindex="<?php echo $tabIndex; ?>">
-                                        <?php echo $svg; ?>
-                                    </div>
+                                <?php if ($content_type == 'about') : ?>
+                                    <button class="hero-content-slide__content__tabs__button btn-pill-hero btn-pill-hero--circular active" slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
+                                        <svg>
+                                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-compass-06"></use>
+                                        </svg>
+                                    </button>
                                 <?php else : ?>
-                                    <div class="btn-pill-hero" tabindex="<?php echo $tabIndex; ?>">
+                                    <button class="hero-content-slide__content__tabs__button btn-pill-hero" slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
                                         <?php echo $title; ?>
-                                    </div>
+                                    </button>
                                 <?php endif; ?>
 
                             <?php $tabIndex++;
@@ -98,25 +138,43 @@ $hero_subtitle = get_field('hero_subtitle');
                             $tabIndex = 0;
                             foreach ($tab_items as $tab) :
                                 $title = $tab['title'];
-                                $svg = $tab['svg'];
-                                $iconTab = $svg != "";
-
                                 $content_type = $tab['content_type'];
                                 $snippet = $tab['snippet'];
-                                $item = $tab['cruises']; //wip
-                                $item = $tab['itineraries'];
                             ?>
 
-                                <?php if ($content_type == 'snippet') : ?>
+                                <?php if ($content_type == 'about') : ?>
                                     <!-- Panel Snippet -->
-                                    <div class="hero-content-slide__content__panels__panel-snippet">
-                                        <?php echo $snippet; ?> 
+                                    <div class="hero-content-slide__content__panels__panel active"  slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
+                                        <?php echo $snippet; ?>
                                     </div>
-                                <?php else : ?>
+                                <?php else :
+                                    $items = [];
+                                    if ($content_type == 'cruise') {
+                                        $items = $tab['cruises'];
+                                    } else if ($content_type == 'itinerary') {
+                                        $items = $tab['itineraries'];
+                                    } else if ($content_type == 'experience') {
+                                        $items = $tab['experiences'];
+                                    } else if ($content_type == 'location') {
+                                        $items = $tab['locations'];
+                                    }
+                                ?>
+
                                     <!-- Panel Series -->
-                                    <div class="hero-content-slide__content__panels__panel-series">
-                                        Series
+                                    <div class="hero-content-slide__content__panels__panel"  slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
+                                        <?php
+                                        foreach ($items as $i) :
+                                            $title = get_the_title($i);
+                                        ?>
+                                            <div class="hero-content-slide__content__panels__panel__card">
+                                                <?php echo $title; ?>
+                                            </div>
+
+                                        <?php
+                                        endforeach;
+                                        ?>
                                     </div>
+
                                 <?php endif; ?>
 
 

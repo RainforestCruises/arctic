@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_6001c678ed1d8",
-            "label": "Intro",
+            "label": "Hero",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -142,44 +142,6 @@
                     "button_label": "",
                     "sub_fields": [
                         {
-                            "key": "field_62ed6d7809ddd",
-                            "label": "Title",
-                            "name": "title",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
-                        },
-                        {
-                            "key": "field_62ed6d4309ddc",
-                            "label": "SVG",
-                            "name": "svg",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
-                        },
-                        {
                             "key": "field_62ed6eafd14e3",
                             "label": "Content Type",
                             "name": "content_type",
@@ -193,9 +155,11 @@
                                 "id": ""
                             },
                             "choices": {
+                                "about": "About",
                                 "cruise": "Cruise",
-                                "snippet": "Snippet",
-                                "itinerary": "Itinerary"
+                                "itinerary": "Itinerary",
+                                "experience": "Experience",
+                                "location": "Location"
                             },
                             "default_value": false,
                             "allow_null": 0,
@@ -204,6 +168,33 @@
                             "return_format": "value",
                             "ajax": 0,
                             "placeholder": ""
+                        },
+                        {
+                            "key": "field_62ed6d7809ddd",
+                            "label": "Title",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_62ed6eafd14e3",
+                                        "operator": "!=",
+                                        "value": "about"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
                         },
                         {
                             "key": "field_62ed6d9e09dde",
@@ -217,7 +208,7 @@
                                     {
                                         "field": "field_62ed6eafd14e3",
                                         "operator": "==",
-                                        "value": "snippet"
+                                        "value": "about"
                                     }
                                 ]
                             ],
@@ -297,172 +288,74 @@
                             "min": "",
                             "max": "",
                             "return_format": "object"
+                        },
+                        {
+                            "key": "field_62ed91158d062",
+                            "label": "Experiences",
+                            "name": "experiences",
+                            "type": "relationship",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_62ed6eafd14e3",
+                                        "operator": "==",
+                                        "value": "experience"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "rfc_experiences"
+                            ],
+                            "taxonomy": "",
+                            "filters": [
+                                "search"
+                            ],
+                            "elements": "",
+                            "min": "",
+                            "max": "",
+                            "return_format": "object"
+                        },
+                        {
+                            "key": "field_62ed91308d063",
+                            "label": "Locations",
+                            "name": "locations",
+                            "type": "relationship",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_62ed6eafd14e3",
+                                        "operator": "==",
+                                        "value": "location"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "rfc_locations"
+                            ],
+                            "taxonomy": "",
+                            "filters": [
+                                "search"
+                            ],
+                            "elements": "",
+                            "min": "",
+                            "max": "",
+                            "return_format": "object"
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "key": "field_6019bad5aa9e6",
-            "label": "Hero Title",
-            "name": "hero_title",
-            "type": "text",
-            "instructions": "Main tagline",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_6019baf7aa9e7",
-            "label": "Hero Subtitle",
-            "name": "hero_subtitle",
-            "type": "text",
-            "instructions": "Sub text under main tagline",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_6001c6d3ed1d9",
-            "label": "Intro Image",
-            "name": "intro_image",
-            "type": "image",
-            "instructions": "Image 500x700",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "preview_size": "medium",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
-        },
-        {
-            "key": "field_6001c7cded1da",
-            "label": "Intro PreTitle",
-            "name": "intro_pretitle",
-            "type": "text",
-            "instructions": "Text above the intro title",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_6001c806ed1db",
-            "label": "Intro Title",
-            "name": "intro_title",
-            "type": "text",
-            "instructions": "Main title text for intro section",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_6005f125f7e50",
-            "label": "Intro Testimonials",
-            "name": "intro_testimonials",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": 0,
-            "max": 0,
-            "layout": "table",
-            "button_label": "",
-            "sub_fields": [
-                {
-                    "key": "field_6005f13ef7e51",
-                    "label": "Avatar",
-                    "name": "avatar",
-                    "type": "image",
-                    "instructions": "80 x 80",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "preview_size": "medium",
-                    "library": "all",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": ""
-                },
-                {
-                    "key": "field_6005f158f7e52",
-                    "label": "Snippet",
-                    "name": "snippet",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": "",
-                    "new_lines": ""
                 }
             ]
         },
@@ -1305,5 +1198,5 @@
     "active": true,
     "description": "Home Page",
     "show_in_rest": 0,
-    "modified": 1659728145
+    "modified": 1659740306
 }

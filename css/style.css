@@ -1064,6 +1064,8 @@ h5 {
   background-color: rgba(255, 255, 255, 0.1);
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
+  border: none;
+  font-family: "Metropolis", sans-serif;
   border-radius: 4rem;
   cursor: pointer;
   position: relative;
@@ -9304,6 +9306,12 @@ h5 {
     .hero-content-slide__content__panels {
       font-size: 1.6rem;
       max-width: 40rem; }
+      .hero-content-slide__content__panels__panel {
+        display: none; }
+        .hero-content-slide__content__panels__panel.active {
+          display: block;
+          animation: fadein .3s both;
+          animation-timing-function: ease-out; }
 
 .home-newest {
   display: flex;

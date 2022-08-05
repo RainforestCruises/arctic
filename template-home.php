@@ -2,7 +2,6 @@
 /*Template Name: Home*/
 
 wp_enqueue_script('page-home', get_template_directory_uri() . '/js/page-home.js', array('jquery'), false, true);
-wp_enqueue_script('page-home-hero', get_template_directory_uri() . '/js/page-home-hero.js', array(), false, true);
 
 $templateUrl = get_template_directory_uri();
 wp_localize_script(
