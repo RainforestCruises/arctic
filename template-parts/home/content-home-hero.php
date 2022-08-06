@@ -143,8 +143,8 @@ wp_localize_script(
                             ?>
 
                                 <?php if ($content_type == 'about') : ?>
-                                    <!-- Panel Snippet -->
-                                    <div class="hero-content-slide__content__panels__panel active"  slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
+                                    <!-- Panel text -->
+                                    <div class="hero-content-slide__content__panels__panel panel-text active" slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
                                         <?php echo $snippet; ?>
                                     </div>
                                 <?php else :
@@ -161,14 +161,39 @@ wp_localize_script(
                                 ?>
 
                                     <!-- Panel Series -->
-                                    <div class="hero-content-slide__content__panels__panel"  slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
+                                    <div class="hero-content-slide__content__panels__panel panel-series" slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
                                         <?php
                                         foreach ($items as $i) :
+                                            $image =  get_field('hero_image', $i);
                                             $title = get_the_title($i);
+                                            $link = get_the_permalink($i);
                                         ?>
-                                            <div class="hero-content-slide__content__panels__panel__card">
-                                                <?php echo $title; ?>
-                                            </div>
+
+
+                                            <a class="resource-card small inverse shadow" href="<?php echo $link; ?>">
+                                                <div class="resource-card__image-area">
+                                                    <img <?php afloat_image_markup($image['id'], 'square-medium'); ?>>
+                                                </div>
+                                                <div class="resource-card__content">
+
+                                                    <!-- Title -->
+                                                    <div class="resource-card__content__title-group-vertical">
+                                                        <div class="resource-card__content__title-group-vertical__title">
+                                                            <?php echo $title; ?>
+                                                        </div>
+                                                        <div class="resource-card__content__title-group-vertical__sub">
+                                                            Starting at $4,399
+                                                        </div>
+
+                                                    </div>
+
+
+                                                </div>
+
+                                            </a>
+
+
+
 
                                         <?php
                                         endforeach;

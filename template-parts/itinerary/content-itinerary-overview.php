@@ -101,16 +101,16 @@ $cruise_data = $args['cruiseData'];
                     foreach ($cabins as $cabin) :
                     ?>
 
-                        <a class="arctic-card-square-small">
-                            <div class="arctic-card-square-small__image">
+                        <a class="overlay-card small">
+                            <div class="overlay-card__image-area">
                                 <img src=<?php echo afloat_dfcloud_image($cabin['ImageDTOs'][0]['ImageUrl']); ?>>
                             </div>
-                            <div class="arctic-card-square-small__content">
-                                <div class="arctic-card-square-small__content__title-section">
-                                    <div class="arctic-card-square-small__content__title-section__sub">
+                            <div class="overlay-card__content">
+                                <div class="overlay-card__content__title-section">
+                                    <div class="overlay-card__content__title-section__sub">
                                         Label
                                     </div>
-                                    <div class="arctic-card-square-small__content__title-section__title">
+                                    <div class="overlay-card__content__title-section__title">
                                         <?php echo $cabin['Name']; ?>
                                     </div>
                                 </div>

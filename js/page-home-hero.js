@@ -165,7 +165,7 @@ homeButton.events.on("click", function() {
     prevNextButtons: false,
     pageDots: false,
     fade: true,
-
+    adaptiveHeight: true,
     selectedAttraction: 0.1,
     friction: 0.6
   });

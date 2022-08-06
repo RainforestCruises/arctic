@@ -10,6 +10,17 @@
         text-decoration: none;
     }
 
+    &.small {
+        height: 22rem;
+
+        & .overlay-card__content {
+            padding: 1.5rem 2rem;
+        }
+    }
+    &.shadow {
+        box-shadow: $shadow-medium-around;
+    }
+
     &__image-area {
         z-index: -1;
         position: relative;
@@ -34,7 +45,7 @@
             width: 100%;
             z-index: 1;
             border-radius: 0.4rem;
-            background-image: linear-gradient(to bottom, rgba($color-black, 0.2), rgba($color-black, 0));
+            background-image: linear-gradient(to bottom, rgba($color-black, 0.3), rgba($color-black, 0));
         }
     }
 
@@ -66,9 +77,10 @@
     }
 }
 
-//Image (slider) with stats bottom - cabins, related
+//Image with stats bottom - (image-area can be slider)
 .resource-card {
     position: relative;
+    color: $color-primary;
 
     &:link,
     &:visited {
@@ -78,10 +90,20 @@
     display: flex !important;
     flex-direction: column;
 
-    &--small {
+    &.small {
         & img {
             height: 22rem !important;
         }
+    }
+    &.shadow {
+        & img {
+            box-shadow: $shadow-short-bottom;
+        }
+        
+    }
+
+    &.inverse {
+        color: rgba($color-white, 0.9);
     }
 
     &__image-area {
@@ -151,20 +173,33 @@
 
     &__content {
         padding: 1rem 0rem;
-
+        color: currentColor;
         &__title {
             font-weight: 700;
-            color: $color-primary;
+            color: currentColor;
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
         }
 
         &__title-group {
-            color: $color-primary;
+            color: currentColor;
             display: grid;
             grid-template-columns: 1fr max-content;
             align-items: center;
+            font-size: 1.8rem;
+            &__title {
+                font-weight: 700;
+            }
+
+            &__sub {
+                font-size: 1.4rem;
+            }
+
+            margin-bottom: 0.5rem;
+        }
+        &__title-group-vertical {
+            color: currentColor;
             font-size: 1.8rem;
             &__title {
                 font-weight: 700;
@@ -190,8 +225,8 @@
                     & svg {
                         height: 1.4rem;
                         width: 1.4rem;
-                        fill: $color-primary;
-                        color: $color-primary;
+                        fill: currentColor;
+                        color: currentColor;
                         transform: translateY(1px);
                     }
                     margin-right: 1rem;
@@ -208,7 +243,7 @@
         }
 
         &__price-group {
-            color: $color-primary;
+            color: currentColor;
             font-size: 1.6rem;
             display: flex;
             align-items: flex-end;

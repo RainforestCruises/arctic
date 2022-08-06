@@ -54,7 +54,7 @@ $ships = get_posts($queryArgs);
                 $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . 'Luxury';
             ?>
 
-                <a class="resource-card resource-card--small">
+                <a class="resource-card small">
                     <div class="resource-card__image-area">
                         <img <?php afloat_image_markup($image['id'], 'vertical-small', array('featured=medium')); ?>>
                     </div>

@@ -62,7 +62,7 @@ $itineraries = get_posts($queryArgs);
                 $itineraryDisplay = '5 Days';
             ?>
 
-                <a class="resource-card resource-card--small">
+                <a class="resource-card small">
                     <div class="resource-card__image-area">
                         <img <?php afloat_image_markup($image['id'], 'vertical-small', array('featured=medium')); ?>>
                     </div>

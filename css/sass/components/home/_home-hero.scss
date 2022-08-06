@@ -79,16 +79,13 @@
 
         width: 100%;
         max-width: $page-width-full;
-        
 
         position: relative;
-
-     
 
         &__slider {
             position: absolute;
             left: 0;
-            top: 36vh;
+            top: 32vh;
             width: 100%;
             max-width: 50%;
 
@@ -109,6 +106,25 @@
     margin-bottom: 5rem;
     width: 100%;
 
+    &.is-selected {
+        & .hero-content-slide__subtitle {
+            animation: slideFade .8s both;
+            animation-timing-function: ease-out;
+            animation-delay: .4s;
+        }
+        & .hero-content-slide__title {
+            animation: slideFade .8s both;
+            animation-timing-function: ease-out;
+            animation-delay: .8s;
+        }
+        & .hero-content-slide__content {
+            animation: fadein .8s both;
+            animation-timing-function: ease-out;
+            animation-delay: 1.5s;
+        }
+       
+    }
+
     @media only screen and (max-width: $bp-large) {
         align-items: center;
         text-align: center;
@@ -120,7 +136,7 @@
         font-weight: 400;
         letter-spacing: 0.2rem;
         text-transform: uppercase;
-        margin-left: 6rem;
+        margin-left: 5rem;
 
         @media only screen and (max-width: $bp-large) {
             margin-left: 0rem;
@@ -137,6 +153,7 @@
 
     &__content {
         margin-left: 2rem;
+
         @media only screen and (max-width: $bp-large) {
             margin-left: 0rem;
         }
@@ -146,30 +163,37 @@
             grid-template-columns: repeat(4, min-content);
             column-gap: 1.5rem;
             margin-bottom: 1.5rem;
-            transform: translateX(-.5rem);
+            //transform: translateX(-0.5rem);
 
             &__tab {
-
             }
         }
 
         &__panels {
             font-size: 1.6rem;
-            max-width: 40rem;
+            max-width: 50rem;
 
             &__panel {
                 display: none;
-               
+                height: 40rem;
+
                 &.active {
-                    display: block;
-                    animation: fadein .3s both;
+                    &.panel-text {
+                        display: block;
+                    }
+
+                    &.panel-series {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        column-gap: 2rem;
+                        margin-top: 3rem;
+                        transform: translateX(-2rem);
+                    }
+
+                    animation: fadein 0.3s both;
                     animation-timing-function: ease-out;
-                   
                 }
             }
-
-
-           
         }
     }
 }
