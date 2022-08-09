@@ -137,7 +137,7 @@ jQuery(document).ready(function ($) {
 
   //resize
   $(window).resize(function () {
-    flickitySlider.resize(); //hack
+    //flickitySlider.resize(); //hack
     checkDots();
   });
 

@@ -9551,78 +9551,6 @@ h5 {
       width: 40rem;
       height: 50rem; }
 
-.home-itineraries {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  position: relative; }
-  .home-itineraries__content {
-    width: 100%;
-    padding: 0 6rem;
-    max-width: 160rem;
-    margin-top: 3rem;
-    margin-bottom: 3rem; }
-    @media only screen and (max-width: 50em) {
-      .home-itineraries__content {
-        padding: 0 3rem; } }
-    .home-itineraries__content__top {
-      display: grid;
-      grid-template-columns: 1fr min-content; }
-      .home-itineraries__content__top__nav {
-        position: relative;
-        display: grid;
-        grid-template-columns: min-content min-content;
-        column-gap: .8rem; }
-    .home-itineraries__content__slider {
-      width: 100%; }
-
-.swiper-button-custom {
-  width: 3.6rem;
-  height: 3.6rem;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #1d2225;
-  box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.1);
-  transition: all 0.2s; }
-  .swiper-button-custom__next svg {
-    transform: translateX(1px);
-    height: 1.4rem;
-    width: 1.4rem;
-    stroke: currentColor; }
-  .swiper-button-custom__prev svg {
-    transform: translateX(-1px) rotate(180deg);
-    height: 1.4rem;
-    width: 1.4rem;
-    stroke: currentColor; }
-  .swiper-button-custom:after {
-    display: none; }
-  .swiper-button-custom:hover {
-    box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.4); }
-  .swiper-button-custom::before {
-    content: "";
-    transition: all 0.15s;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    transform-origin: center;
-    height: 95%;
-    width: 95%;
-    border-radius: 50%;
-    border: 1px solid #e6e6e6; }
-  .swiper-button-custom:hover::before {
-    height: 100%;
-    width: 100%;
-    border: 1px solid #c2c6c9; }
-
 .home-intro {
   margin-top: 12rem;
   margin-bottom: 6rem;
@@ -12094,6 +12022,78 @@ h5 {
   -moz-appearance: checkbox !important;
   appearance: checkbox !important;
   cursor: pointer; }
+
+.slider-block {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  position: relative; }
+  .slider-block.narrow .slider-block__content {
+    max-width: 128rem; }
+  .slider-block__content {
+    width: 100%;
+    padding: 0 6rem;
+    max-width: 160rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem; }
+    @media only screen and (max-width: 50em) {
+      .slider-block__content {
+        padding: 0 3rem; } }
+    .slider-block__content__top {
+      display: grid;
+      grid-template-columns: 1fr min-content; }
+      .slider-block__content__top__nav {
+        position: relative;
+        display: grid;
+        grid-template-columns: min-content min-content;
+        column-gap: .8rem; }
+    .slider-block__content__slider {
+      width: 100%; }
+
+.btn-swiper {
+  width: 3.6rem;
+  height: 3.6rem;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #1d2225;
+  box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.1);
+  transition: all 0.2s; }
+  .btn-swiper__next svg {
+    transform: translateX(1px);
+    height: 1.4rem;
+    width: 1.4rem;
+    stroke: currentColor; }
+  .btn-swiper__prev svg {
+    transform: translateX(-1px) rotate(180deg);
+    height: 1.4rem;
+    width: 1.4rem;
+    stroke: currentColor; }
+  .btn-swiper::before {
+    content: "";
+    transition: all 0.15s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    transform-origin: center;
+    height: 95%;
+    width: 95%;
+    border-radius: 50%;
+    border: 1px solid #e6e6e6; }
+  .btn-swiper:hover {
+    box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.4); }
+  .btn-swiper:hover::before {
+    height: 100%;
+    width: 100%;
+    border: 1px solid #c2c6c9; }
 
 .header {
   z-index: 100;

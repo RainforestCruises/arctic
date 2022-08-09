@@ -36,7 +36,7 @@ get_template_part('template-parts/home/content', 'home-hero');
 
     <!-- Newest Cruises  -->
     <?php
-    get_template_part('template-parts/home/content', 'home-newest');
+    get_template_part('template-parts/home/content', 'home-cruises');
     ?>
 
 

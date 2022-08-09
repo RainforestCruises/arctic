@@ -1,5 +1,5 @@
 <?php
-$itineraries = get_field('itineraries');
+$newest_ships = get_field('newest_ships');
 ?>
 
 
@@ -13,7 +13,7 @@ $itineraries = get_field('itineraries');
             <!-- Title -->
             <div class="slider-block__content__top__title">
                 <div class="title-single">
-                    Popular Itineraries
+                    Newest Cruises
                 </div>
             </div>
 
@@ -21,13 +21,13 @@ $itineraries = get_field('itineraries');
             <div class="slider-block__content__top__nav">
 
                 <!-- Prev -->
-                <div class="itineraries-slider-btn-prev btn-swiper btn-swiper__prev">
+                <div class="cruises-slider-btn-prev btn-swiper btn-swiper__prev">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
                     </svg>
                 </div>
                 <!-- Next -->
-                <div class="itineraries-slider-btn-next btn-swiper btn-swiper__next">
+                <div class="cruises-slider-btn-next btn-swiper btn-swiper__next">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
                     </svg>
@@ -40,13 +40,13 @@ $itineraries = get_field('itineraries');
         <div class="slider-block__content__slider">
 
             <!-- Swiper -->
-            <div class="swiper" id="itineraries-slider">
+            <div class="swiper" id="cruises-slider">
                 <div class="swiper-wrapper">
 
-                    <?php foreach ($itineraries as $itinerary) :
-                        $image =  get_field('hero_image_portrait', $itinerary);
-                        $title = get_the_title($itinerary);
-                        $link = get_the_permalink($itinerary);
+                    <?php foreach ($newest_ships as $ship) :
+                        $image =  get_field('hero_image_portrait', $ship);
+                        $title = get_the_title($ship);
+                        $link = get_the_permalink($ship);
                     ?>
 
                         <!-- Overlay Card -->
