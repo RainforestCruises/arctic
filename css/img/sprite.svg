@@ -2,6 +2,12 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
+        <symbol id="icon-ctrl-right" viewBox="0 0 12 12">
+            <title>ctrl right</title>
+            <g class="nc-icon-wrapper">
+                <path d="M4.781.375a1,1,0,0,0-1.562,1.25L6.719,6l-3.5,4.375a1,1,0,0,0,1.562,1.25l4-5a1,1,0,0,0,0-1.25Z" fill="currentColor" stroke="none"></path>
+            </g>
+        </symbol>
         <symbol id="icon-pin-3-small" viewBox="0 0 16 16">
             <title>pin 3 small</title>
             <g class="nc-icon-wrapper">

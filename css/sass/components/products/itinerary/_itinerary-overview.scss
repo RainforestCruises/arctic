@@ -118,11 +118,6 @@
             
             &__map-area {
 
-
-       
-
-
-
                 position: relative;
                 @media only screen and (max-width: $bp-large) {
                     padding-top: 3rem;
@@ -130,6 +125,7 @@
                 @media only screen and (max-width: $bp-medium) {
                     padding-top: 0rem;
                     padding-bottom: 5rem;
+                    
                 }
 
                 &__map {
@@ -144,28 +140,14 @@
                     width: 100%;
                     background-color: $color-supporting-selection;
 
-
+                    //cursor: grab;  
                     overflow: hidden;
                     border-radius: 1rem;
-                    //border: 1px solid $color-grey-1;
                     box-shadow: $shadow-medium-bottom;
 
                 }
     
-                // & img {
-                //     //transform: translateY(55%);
-                   
-    
-                   
-    
-                //     border-radius: 1rem;
-                //     border: 1px solid $color-grey-light-1a;
-                //     box-shadow: $shadow-medium-bottom;
-                //     object-fit: contain;
-                //     width: 100%;
-                //     max-width: 50rem;
-                //     height: auto;
-                // }
+               
             }
     
             &__ship-area {

@@ -6,18 +6,99 @@
         @include flexPadding;
 
         max-width: $page-width-full;
-        
+
         margin-top: 3rem;
         margin-bottom: 3rem;
-        
-        &__slider {
-            width: 100%;
-            margin-top: 2rem; 
-           
+
+        &__top {
+            display: grid;
+            grid-template-columns: 1fr min-content;
+            &__title {
+            }
+
+            &__nav {
+                position: relative;
+                display: grid;
+                grid-template-columns: min-content min-content;
+                column-gap: .8rem;
+            }
         }
 
-       
+        &__slider {
+            width: 100%;
+        }
     }
-
 }
 
+.swiper-button-custom {
+    width: 3.6rem;
+    height: 3.6rem;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    //position: absolute;
+    //margin-top: 0;
+    //left: auto;
+    //top: 1.8rem;
+    //right: 1.8rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: $color-primary;
+    box-shadow: $shadow-short-bottom-light;
+    //transform: translate(-50%, -50%);
+    transition: all 0.2s;
+
+
+
+    &__next {
+        //right: 1.8rem;
+        svg {
+            transform: translateX(1px);
+            height: 1.4rem;
+            width: 1.4rem;
+            stroke: currentColor;
+        }
+    }
+
+    &__prev {
+        //right: 6rem;
+        svg {
+            transform: translateX(-1px) rotate(180deg);
+            height: 1.4rem;
+            width: 1.4rem;
+            stroke: currentColor;
+        }
+    }
+
+    &:after {
+        display: none; //hide default swiper svg arrow
+    }
+
+    &:hover {
+        box-shadow: $shadow-short-bottom;
+    }
+
+    //border -----------
+    &::before {
+        content: "";
+        transition: all 0.15s;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        transform-origin: center;
+        height: 95%;
+        width: 95%;
+        border-radius: 50%;
+        border: 1px solid $color-grey-light-1a;
+    }
+
+    &:hover::before {
+        height: 100%;
+        width: 100%;
+        border: 1px solid $color-grey-light-2;
+    }
+}

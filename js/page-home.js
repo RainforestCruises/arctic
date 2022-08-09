@@ -88,13 +88,21 @@ jQuery(document).ready(function ($) {
     const swiper = new Swiper('#itineraries-slider', {
         // Optional parameters
         loop: true,
-        spaceBetween: 10,
-        slidesPerView: 3,
+        spaceBetween: 15,
+        slidesPerView: 1,
         // Navigation arrows
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          nextEl: '.swiper-button-custom__next',
+          prevEl: '.swiper-button-custom__prev',
         },
+        breakpoints: {
+            600: {
+              slidesPerView: 2,
+            },
+            800: {
+              slidesPerView: 3,
+            }
+          }
       
 
       });
