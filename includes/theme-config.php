@@ -59,6 +59,10 @@ function afloat_images_sizes()
     add_image_size('square-medium', 500, 500, true);
     add_image_size('square-small', 325, 325, true);
 
+    //NEW
+    add_image_size('portrait-large', 1024, 768, true);
+    add_image_size('portrait-medium', 640, 480, true);
+    add_image_size('portrait-small', 440, 330, true);
 
     
 }

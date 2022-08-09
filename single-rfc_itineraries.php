@@ -1,14 +1,67 @@
 <?php
 wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', array('jquery'), false, true);
 wp_enqueue_script('page-itinerary', get_template_directory_uri() . '/js/page-itinerary.js', array('jquery'), false, true);
+
+$days = get_field('itinerary');
+
+//Destination Point Series
+$destinationPoints = [];
+foreach ($days as $day) {
+
+  $destination = $day['destination'];
+
+  $geometry = [
+    'type' => "Point",
+    'coordinates' => [get_field('longitude', $destination), get_field('latitude', $destination)],
+  ];
+
+  $zoomPoint = [
+    'longitude' => get_field('longitude', $destination),
+    'latitude' => get_field('latitude', $destination),
+  ];
+
+  $point  = [
+    'title' => get_field('navigation_title', $destination),
+    'postid' => $destination->ID,
+    'geometry' => $geometry,
+    'zoomPoint' => $zoomPoint,
+    'zoomLevel' => get_field('zoom_level', $destination),
+  ];
+
+  $destinationPoints[] = $point;
+}
+
+//Destination Line Series
+$destinationLines = [];
+$lineObject = [
+  'geometry' => [
+    'type' => "LineString",
+    'coordinates' => [],
+  ]
+];
+
+foreach ($days as $day) {
+
+  $destination = $day['destination'];
+  $lineObject['geometry']['coordinates'][] = [get_field('longitude', $destination), get_field('latitude', $destination)];
+
+}
+$destinationLines[] = $lineObject;
+
 $templateUrl = get_template_directory_uri();
 wp_localize_script(
   'page-itinerary',
-  'page_vars',
+  'page_vars_itinerary',
   array(
-    'templateUrl' =>  $templateUrl
+    'templateUrl' =>  $templateUrl,
+    'destinationPoints' =>  $destinationPoints,
+    'destinationLines' =>  $destinationLines
+
   )
 );
+
+
+
 
 get_header();
 ?>
@@ -128,9 +181,9 @@ while (have_posts()) :
     get_template_part('template-parts/itinerary/content', 'itinerary-requirements', $args);
     ?>
 
-  <!-- Reviews -->
-  <!-- Extras -->
-  <!-- Related -->
+    <!-- Reviews -->
+    <!-- Extras -->
+    <!-- Related -->
 
 
   </main>

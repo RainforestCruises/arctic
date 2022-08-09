@@ -48,6 +48,10 @@ wp_localize_script(
 <!--  Hero -->
 <div class="home-hero hero">
 
+    <div class="btn-pill-hero" id="mobile-map-return-cta">
+        Back
+    </div>
+
     <!-- Background Slider -->
     <div class="home-hero__bg">
 
@@ -86,14 +90,13 @@ wp_localize_script(
 
                 $destination = $s['destination']; //destination or region post
                 $destinationPostId = $destination->ID;
-                $isRegion = get_post_type($destination) == 'rfc_regions';
-
+                $is_toplevel = $s['is_toplevel'];
                 $tab_items = $s['tab_items'];
 
             ?>
 
                 <!-- Content Slide -->
-                <div class="hero-content-slide <?php echo $isRegion ? "regional" : ""; ?>" postid="<?php echo $destinationPostId ?>" slidenumber="<?php echo $slideCount; ?>">
+                <div class="hero-content-slide <?php echo $is_toplevel ? "regional" : ""; ?>" postid="<?php echo $destinationPostId ?>" slidenumber="<?php echo $slideCount; ?>">
                     <h1 class="hero-content-slide__subtitle">
                         <?php echo $subtitle ?>
                     </h1>
@@ -106,107 +109,128 @@ wp_localize_script(
 
 
                         <!-- Tabs -->
-                        <div class="hero-content-slide__content__tabs">
+                        <?php if (!$is_toplevel) : ?>
+                            <div class="hero-content-slide__content__tabs">
 
-                            <?php
-                            $tabIndex = 0;
-                            foreach ($tab_items as $tab) :
-                                $title = $tab['title'];
-                                $content_type = $tab['content_type'];
-                            ?>
+                                <?php
+                                $tabIndex = 0;
+                                foreach ($tab_items as $tab) :
+                                    $content_type = $tab['content_type'];
 
-                                <?php if ($content_type == 'about') : ?>
-                                    <button class="hero-content-slide__content__tabs__button btn-pill-hero btn-pill-hero--circular active" slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
-                                        <svg>
-                                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-compass-06"></use>
-                                        </svg>
-                                    </button>
-                                <?php else : ?>
-                                    <button class="hero-content-slide__content__tabs__button btn-pill-hero" slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
-                                        <?php echo $title; ?>
-                                    </button>
-                                <?php endif; ?>
-
-                            <?php $tabIndex++;
-                            endforeach; ?>
-
-                        </div>
-                        <!-- End Tabs -->
-                        <div class="hero-content-slide__content__panels">
-
-                            <?php
-                            $tabIndex = 0;
-                            foreach ($tab_items as $tab) :
-                                $title = $tab['title'];
-                                $content_type = $tab['content_type'];
-                                $snippet = $tab['snippet'];
-                            ?>
-
-                                <?php if ($content_type == 'about') : ?>
-                                    <!-- Panel text -->
-                                    <div class="hero-content-slide__content__panels__panel panel-text active" slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
-                                        <?php echo $snippet; ?>
-                                    </div>
-                                <?php else :
-                                    $items = [];
                                     if ($content_type == 'cruise') {
-                                        $items = $tab['cruises'];
+                                        $title = 'Cruises';
                                     } else if ($content_type == 'itinerary') {
-                                        $items = $tab['itineraries'];
+                                        $title = 'Itineraries';
                                     } else if ($content_type == 'experience') {
-                                        $items = $tab['experiences'];
+                                        $title = 'Experiences';
                                     } else if ($content_type == 'location') {
-                                        $items = $tab['locations'];
+                                        $title = 'Locations';
                                     }
                                 ?>
 
-                                    <!-- Panel Series -->
-                                    <div class="hero-content-slide__content__panels__panel panel-series" slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
-                                        <?php
-                                        foreach ($items as $i) :
-                                            $image =  get_field('hero_image', $i);
-                                            $title = get_the_title($i);
-                                            $link = get_the_permalink($i);
-                                        ?>
+                                    <?php if ($content_type == 'about') : ?>
+                                        <button class="hero-content-slide__content__tabs__button btn-pill-hero btn-pill-hero--circular active" slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
+                                            <svg>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-compass-06"></use>
+                                            </svg>
+                                        </button>
+                                    <?php else : ?>
+                                        <button class="hero-content-slide__content__tabs__button btn-pill-hero" slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
+                                            <?php echo $title; ?>
+                                        </button>
+                                    <?php endif; ?>
 
+                                <?php $tabIndex++;
+                                endforeach; ?>
 
-                                            <a class="resource-card small inverse shadow" href="<?php echo $link; ?>">
-                                                <div class="resource-card__image-area">
-                                                    <img <?php afloat_image_markup($image['id'], 'square-medium'); ?>>
-                                                </div>
-                                                <div class="resource-card__content">
+                            </div>
+                        <?php endif; ?>
+                        <!-- End Tabs -->
 
-                                                    <!-- Title -->
-                                                    <div class="resource-card__content__title-group-vertical">
-                                                        <div class="resource-card__content__title-group-vertical__title">
-                                                            <?php echo $title; ?>
+                        <!-- Panels -->
+                        <div class="hero-content-slide__content__panels">
+
+                            <?php if ($is_toplevel) :
+                                $snippet = $s['snippet'];
+                            ?>
+                                <div class="hero-content-slide__content__panels__static" slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
+                                    <?php echo $snippet; ?>
+                                    <div class="hero-content-slide__content__panels__static__cta">
+                                        <div class="btn-pill-hero" id="mobile-map-cta">
+                                            Explore Map
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <?php else :
+                                $tabIndex = 0;
+                                foreach ($tab_items as $tab) :
+                                    $content_type = $tab['content_type'];
+                                    $snippet = $tab['snippet'];
+                                ?>
+
+                                    <?php if ($content_type == 'about') : ?>
+                                        <!-- Panel text -->
+                                        <div class="hero-content-slide__content__panels__panel panel-text active" slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
+                                            <?php echo $snippet; ?>
+                                        </div>
+                                    <?php else :
+                                        $items = [];
+                                        if ($content_type == 'cruise') {
+                                            $items = $tab['cruises'];
+                                        } else if ($content_type == 'itinerary') {
+                                            $items = $tab['itineraries'];
+                                        } else if ($content_type == 'experience') {
+                                            $items = $tab['experiences'];
+                                        } else if ($content_type == 'location') {
+                                            $items = $tab['locations'];
+                                        }
+                                    ?>
+
+                                        <!-- Panel Series -->
+                                        <div class="hero-content-slide__content__panels__panel panel-series" slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
+                                            <?php
+                                            foreach ($items as $i) :
+                                                $image =  get_field('hero_image_portrait', $i);
+                                                $title = get_the_title($i);
+                                                $link = get_the_permalink($i);
+                                            ?>
+
+                                                <a class="resource-card small inverse shadow" href="<?php echo $link; ?>">
+                                                    <div class="resource-card__image-area">
+                                                        <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
+                                                    </div>
+                                                    <div class="resource-card__content">
+
+                                                        <!-- Title -->
+                                                        <div class="resource-card__content__title-group-vertical">
+                                                            <div class="resource-card__content__title-group-vertical__title">
+                                                                <?php echo $title; ?>
+                                                            </div>
+                                                            <div class="resource-card__content__title-group-vertical__sub">
+                                                                Starting at $4,399
+                                                            </div>
+
                                                         </div>
-                                                        <div class="resource-card__content__title-group-vertical__sub">
-                                                            Starting at $4,399
-                                                        </div>
+
 
                                                     </div>
 
+                                                </a>
+                                            <?php
+                                            endforeach;
+                                            ?>
+                                        </div>
 
-                                                </div>
-
-                                            </a>
-
-
-
-
-                                        <?php
-                                        endforeach;
-                                        ?>
-                                    </div>
-
-                                <?php endif; ?>
-
-
-
+                                    <?php endif; ?>
 
                             <?php $tabIndex++;
-                            endforeach; ?>
+                                endforeach;
+
+                            endif; ?>
+
+
                         </div>
 
                     </div>

@@ -20,7 +20,7 @@ $destinations = get_field('destinations');
 
                 <a class="overlay-card"  href="<?php echo $d['page_link'] ?>">
                     <div class="overlay-card__image-area">
-                        <img <?php afloat_image_markup($image['id'], 'vertical-small'); ?>>
+                        <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
                     </div>
                     <div class="overlay-card__content">
                         <div class="overlay-card__content__title-section">

@@ -5,7 +5,7 @@ return array (
   'title' => 'Cruises',
   'type' => 'rfc_cruises',
   'id' => '5fdbe431766d9',
-  'updated' => 1658873532,
+  'updated' => 1660003590,
   'columns' => 
   array (
     'title' => 
@@ -114,25 +114,6 @@ return array (
       'filter_label' => '',
       'name' => '5fdbe4e7a6688',
     ),
-    '5fdcfeca4a42d' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Featured Image',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_5f690d2b40945',
-      'image_size' => 'cpac-custom',
-      'image_size_w' => '60',
-      'image_size_h' => '60',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '5fdcfeca4a42d',
-    ),
     '5fdcfeca4a430' => 
     array (
       'type' => 'column-acf_field',
@@ -151,6 +132,25 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '5fdcfeca4a430',
+    ),
+    '62f1a4f4c624dc' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Hero Image Portrait',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_5f690d2b40945',
+      'image_size' => 'cpac-custom',
+      'image_size_w' => '60',
+      'image_size_h' => '60',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '62f1a4f4c624dc',
     ),
     '60aeb31bf645a0' => 
     array (

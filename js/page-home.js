@@ -84,6 +84,21 @@ jQuery(document).ready(function ($) {
         ]
     });
 
+
+    const swiper = new Swiper('#itineraries-slider', {
+        // Optional parameters
+        loop: true,
+        spaceBetween: 10,
+        slidesPerView: 3,
+        // Navigation arrows
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      
+
+      });
+
     
 });
 

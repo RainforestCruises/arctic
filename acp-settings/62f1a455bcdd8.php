@@ -2,10 +2,10 @@
 
 return array (
   'version' => '5.6.4',
-  'title' => 'Activities',
-  'type' => 'rfc_activities',
-  'id' => '5fe1211e43e30',
-  'updated' => 1660002911,
+  'title' => 'Itineraries',
+  'type' => 'rfc_itineraries',
+  'id' => '62f1a455bcdd8',
+  'updated' => 1660003413,
   'columns' => 
   array (
     'title' => 
@@ -21,30 +21,22 @@ return array (
       'search' => 'on',
       'name' => 'title',
     ),
-    '5fe121fd07a2f' => 
+    'post_type' => 
     array (
-      'type' => 'column-acf_field',
-      'label' => 'Navigation Title',
+      'type' => 'post_type',
+      'label' => 'Type',
       'width' => '',
       'width_unit' => '%',
-      'field' => 'field_5fe10551de30a',
-      'character_limit' => '20',
       'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '5fe121fd07a2f',
+      'name' => 'post_type',
     ),
-    '62f1a2578624dc' => 
+    '62f1a434df3b64' => 
     array (
       'type' => 'column-acf_field',
-      'label' => 'Advanced Custom Fields',
+      'label' => 'Hero Image',
       'width' => '',
       'width_unit' => '%',
-      'field' => 'field_62f1a21c85337',
+      'field' => 'field_62b21d860955b',
       'image_size' => 'cpac-custom',
       'image_size_w' => '60',
       'image_size_h' => '60',
@@ -55,24 +47,26 @@ return array (
       'search' => 'on',
       'filter' => 'off',
       'filter_label' => '',
-      'name' => '62f1a2578624dc',
+      'name' => '62f1a434df3b64',
     ),
-    '5fe121fd07a39' => 
+    '62f1a441810624' => 
     array (
-      'type' => 'column-author_name',
-      'label' => 'Author',
+      'type' => 'column-acf_field',
+      'label' => 'Hero Image Portrait',
       'width' => '',
       'width_unit' => '%',
-      'display_author_as' => 'display_name',
-      'user_link_to' => 'edit_user',
+      'field' => 'field_62f1a15fe48ab',
+      'image_size' => 'cpac-custom',
+      'image_size_w' => '60',
+      'image_size_h' => '60',
       'export' => 'off',
       'sort' => 'on',
-      'edit' => 'off',
+      'edit' => 'on',
       'bulk_edit' => 'on',
       'search' => 'on',
       'filter' => 'off',
       'filter_label' => '',
-      'name' => '5fe121fd07a39',
+      'name' => '62f1a441810624',
     ),
     'date' => 
     array (

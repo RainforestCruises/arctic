@@ -12,21 +12,41 @@
         padding-bottom: 12rem;
     }
 
+    & #mobile-map-return-cta {
+        position: absolute;
+        bottom: 12rem;
+      
+        display: none;
+        z-index: 50;
+
+        &.active {
+
+            @media only screen and (max-width: $bp-large) {
+                display: flex;  
+            }
+                      
+        }
+
+
+    }
+
     &__map {
         position: absolute;
         bottom: 0;
         right: 0;
         z-index: 50;
-        width: 70%;
+        width: 60%;
         height: 100%;
         mix-blend-mode: luminosity; //exclusion lumin
-        mask-image: linear-gradient(to left, rgba($color-black, 1) 50%, transparent);
-        -webkit-mask-image: linear-gradient(to left, rgba($color-black, 1) 50%, transparent);
+        mask-image: linear-gradient(to right, transparent, rgba($color-black, 1) 40%);
+        -webkit-mask-image: linear-gradient(to right, transparent, rgba($color-black, 1) 40%);
         @media only screen and (max-width: $bp-large) {
             width: 100%;
             z-index: 2;
+            mask-image: none;
+            -webkit-mask-image: none;
         }
-    }
+    } 
 
     &__bg {
         position: absolute;
@@ -57,7 +77,7 @@
                 background-image: linear-gradient(to left, rgba($color-black, 0.9) 10%, transparent),
                     linear-gradient(to right, rgba($color-black, 0.1) 5%, transparent),
                     linear-gradient(to top, rgba($color-black, 0.1), rgba($color-black, 0.1)),
-                    linear-gradient(to top, rgba($color-black, 0.7), transparent 60%);
+                    linear-gradient(to top, rgba($color-black, 1), transparent 60%);
 
                 position: absolute;
                 top: 0;
@@ -67,7 +87,7 @@
                 @media only screen and (max-width: $bp-large) {
                     background-image: linear-gradient(to top, rgba($color-black, 0.9) 10%, transparent),
                         linear-gradient(to top, rgba($color-black, 0.1), rgba($color-black, 0.1)),
-                        linear-gradient(to top, rgba($color-black, 0.7), transparent 60%);
+                        linear-gradient(to top, rgba($color-black, 1), transparent 60%);
                 }
             }
         }
@@ -81,6 +101,13 @@
         max-width: $page-width-full;
 
         position: relative;
+
+        @media only screen and (max-width: $bp-large) {
+            &.content-hidden { 
+                display: none;
+            }
+        }
+        
 
         &__slider {
             position: absolute;
@@ -105,25 +132,9 @@
     position: relative;
     margin-bottom: 5rem;
     width: 100%;
+    opacity: 0;
 
-    &.is-selected {
-        & .hero-content-slide__subtitle {
-            animation: slideFade .8s both;
-            animation-timing-function: ease-out;
-            animation-delay: .4s;
-        }
-        & .hero-content-slide__title {
-            animation: slideFade .8s both;
-            animation-timing-function: ease-out;
-            animation-delay: .8s;
-        }
-        & .hero-content-slide__content {
-            animation: fadein .8s both;
-            animation-timing-function: ease-out;
-            animation-delay: 1.5s;
-        }
-       
-    }
+
 
     @media only screen and (max-width: $bp-large) {
         align-items: center;
@@ -154,24 +165,45 @@
     &__content {
         margin-left: 2rem;
 
+     
+
         @media only screen and (max-width: $bp-large) {
-            margin-left: 0rem;
+            margin-left: 0rem;        
         }
 
         &__tabs {
-            display: grid;
-            grid-template-columns: repeat(4, min-content);
-            column-gap: 1.5rem;
-            margin-bottom: 1.5rem;
-            //transform: translateX(-0.5rem);
+            display: flex;
 
-            &__tab {
+            margin-bottom: 1.5rem;
+
+            @media only screen and (max-width: $bp-large) {
+                justify-content: center;      
+            }
+            
+
+            &__button:not(:last-child) {
+
+                margin-right: 1.5rem;
             }
         }
 
         &__panels {
             font-size: 1.6rem;
             max-width: 50rem;
+
+            &__static {
+
+                &__cta {
+                    margin-top: 3rem;
+                    
+                    justify-content: center;
+                    display: none;
+
+                    @media only screen and (max-width: $bp-large) {
+                        display: flex;
+                    }
+                }
+            }
 
             &__panel {
                 display: none;
@@ -187,7 +219,7 @@
                         grid-template-columns: 1fr 1fr;
                         column-gap: 2rem;
                         margin-top: 3rem;
-                        transform: translateX(-2rem);
+                        //transform: translateX(-2rem);
                     }
 
                     animation: fadein 0.3s both;

@@ -1,0 +1,23 @@
+.home-itineraries {
+    @include flexBlock;
+    position: relative;
+
+    &__content {
+        @include flexPadding;
+
+        max-width: $page-width-full;
+        
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        
+        &__slider {
+            width: 100%;
+            margin-top: 2rem; 
+           
+        }
+
+       
+    }
+
+}
+

@@ -1,9 +1,10 @@
 .home-newest {
-  
+    //background-image: linear-gradient(to bottom, transparent, rgba($color-black, 1) 40%);
     @include flexBlock;
     position: relative;
-
+    //padding-top: 12rem;
     //transform: translateY(-25rem);
+    //background-color: $color-black;
     &__content {
         @include flexPadding;
 

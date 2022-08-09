@@ -97,9 +97,7 @@ $images = get_field('highlight_gallery');
                             <li class="product-hero__content__top__content__nav__list__item">
                                 <a href="#itineraries" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Itineraries</a>
                             </li>
-                            <li class="product-hero__content__top__content__nav__list__item">
-                                <a href="#extras" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Extras</a>
-                            </li>
+                        
                             <li class="product-hero__content__top__content__nav__list__item ">
                                 <a href="#reviews" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Reviews</a>
                             </li>

@@ -355,44 +355,6 @@
             "endpoint": 0
         },
         {
-            "key": "field_5f690d2b40945",
-            "label": "Featured Image",
-            "name": "featured_image",
-            "type": "image",
-            "instructions": "Featured Image in cards, search results, etc (750 x 500). Left facing boat if possible",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "admin_column_enabled": 0,
-            "admin_column_post_types": [
-                "post",
-                "page",
-                "rfc_cruises",
-                "rfc_destinations",
-                "rfc_sub_destinations",
-                "rfc_countries"
-            ],
-            "admin_column_taxonomies": [
-                "category",
-                "post_tag",
-                "link_category"
-            ],
-            "return_format": "array",
-            "preview_size": "medium",
-            "library": "all",
-            "min_width": 750,
-            "min_height": 500,
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
-        },
-        {
             "key": "field_5f68f3acab0ab",
             "label": "Hero Image",
             "name": "hero_image",
@@ -413,6 +375,30 @@
             "library": "all",
             "min_width": "",
             "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5f690d2b40945",
+            "label": "Hero Image Portrait",
+            "name": "hero_image_portrait",
+            "type": "image",
+            "instructions": "Featured Image in cards, search results, etc (750 x 500). Left facing boat if possible",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 750,
+            "min_height": 500,
             "min_size": "",
             "max_width": "",
             "max_height": "",
@@ -1688,5 +1674,5 @@
     "active": true,
     "description": "Cruise - CPT",
     "show_in_rest": 0,
-    "modified": 1658250912
+    "modified": 1660003550
 }

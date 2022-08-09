@@ -50,9 +50,11 @@ $cruise_data = $args['cruiseData'];
             </div>
 
 
-            <!-- Itinerary Map -->
+            <!-- Itinerary Map  -->
             <div class="itinerary-overview__content__grid__map-area">
-                <img <?php afloat_image_markup($map_image['id'], 'vertical-large', array('vertical-large')); ?>>
+                <div class="itinerary-overview__content__grid__map-area__map" id="itinerary-map">
+
+                </div>
             </div>
 
             <!-- Ship Area -->

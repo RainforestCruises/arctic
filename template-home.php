@@ -27,18 +27,13 @@ get_template_part('template-parts/home/content', 'home-hero');
 
 <div class="content">
   <main>
-
-
+ 
 
     <!-- Newest Cruises  -->
     <?php
-    get_template_part('template-parts/home/content', 'home-newest');
+    get_template_part('template-parts/home/content', 'home-itineraries');
     ?>
 
-    <!-- Destinations -->
-    <?php
-    get_template_part('template-parts/home/content', 'home-destinations');
-    ?>
 
 
 

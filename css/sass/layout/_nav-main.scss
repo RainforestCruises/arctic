@@ -100,16 +100,16 @@
             }
         }
 
-        //mega & search
+        
         //--dim other elements
+        //--mega & search
         &.mega-active {
-            //search / nav-links
+            
             & .nav-main__content__center {
                 &__search-area {
                     opacity: 0.5;
                 }
 
-                //change links to dark colors
                 &__nav {
                     &__list {
                         &__item {

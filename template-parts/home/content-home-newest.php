@@ -15,14 +15,14 @@ $newest_ships = get_field('newest_ships');
 
 
             <?php foreach ($newest_ships as $ship) :
-                $image =  get_field('hero_image', $ship);
+                $image =  get_field('hero_image_portrait', $ship);
                 $title = get_the_title($ship);
                 $link = get_the_permalink($ship);
             ?>
 
                 <a class="overlay-card" href="<?php echo $link; ?>">
                     <div class="overlay-card__image-area">
-                        <img <?php afloat_image_markup($image['id'], 'wide-slider-medium'); ?>>
+                        <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
                     </div>
                     <div class="overlay-card__content">
                         <div class="overlay-card__content__title-section">

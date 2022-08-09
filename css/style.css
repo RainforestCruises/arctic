@@ -183,7 +183,7 @@ body .hero:before {
   content: '';
   height: 100%;
   width: 100%;
-  height: 170vh;
+  height: 100vh;
   width: 100vw;
   background: rgba(44, 123, 183, 0.5);
   position: absolute; }
@@ -191,9 +191,8 @@ body .hero:before {
 body .content {
   position: absolute;
   top: 100vh;
-  background: #faf8f8;
-  width: 100%;
-  box-shadow: 0 -2px 1px rgba(0, 0, 0, 0.15); }
+  background: #fff;
+  width: 100%; }
 
 p a:link, p a:visited {
   color: #347fff;
@@ -4111,19 +4110,18 @@ h5 {
           .itinerary-overview__content__grid__map-area {
             padding-top: 0rem;
             padding-bottom: 5rem; } }
-        .itinerary-overview__content__grid__map-area img {
+        .itinerary-overview__content__grid__map-area__map {
           position: absolute;
           bottom: 0;
           left: 0;
-          border-radius: 1rem;
-          border: 1px solid #e6e6e6;
-          box-shadow: 0 2rem 2rem -1rem rgba(0, 0, 0, 0.25);
-          object-fit: contain;
+          height: 70rem;
           width: 100%;
-          max-width: 50rem;
-          height: auto; }
+          background-color: #eff6ff;
+          overflow: hidden;
+          border-radius: 1rem;
+          box-shadow: 0 2rem 2rem -1rem rgba(0, 0, 0, 0.25); }
           @media only screen and (max-width: 62.5em) {
-            .itinerary-overview__content__grid__map-area img {
+            .itinerary-overview__content__grid__map-area__map {
               position: relative; } }
       .itinerary-overview__content__grid__ship-area {
         padding-top: 5rem;
@@ -4375,7 +4373,7 @@ h5 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #d4dfe8;
+    background-color: #eff6ff;
     border-radius: 50%;
     height: 1.5rem;
     width: 1.5rem;
@@ -4388,7 +4386,7 @@ h5 {
         display: none; } }
   .day-slide-nav__line {
     position: absolute;
-    background-color: #d4dfe8;
+    background-color: #eff6ff;
     left: 0.7rem;
     height: 100%;
     width: 2px;
@@ -9222,20 +9220,30 @@ h5 {
     .home-hero {
       min-height: 60rem;
       padding-bottom: 12rem; } }
+  .home-hero #mobile-map-return-cta {
+    position: absolute;
+    bottom: 12rem;
+    display: none;
+    z-index: 50; }
+    @media only screen and (max-width: 62.5em) {
+      .home-hero #mobile-map-return-cta.active {
+        display: flex; } }
   .home-hero__map {
     position: absolute;
     bottom: 0;
     right: 0;
     z-index: 50;
-    width: 70%;
+    width: 60%;
     height: 100%;
     mix-blend-mode: luminosity;
-    mask-image: linear-gradient(to left, #1e1e1e 50%, transparent);
-    -webkit-mask-image: linear-gradient(to left, #1e1e1e 50%, transparent); }
+    mask-image: linear-gradient(to right, transparent, #1e1e1e 40%);
+    -webkit-mask-image: linear-gradient(to right, transparent, #1e1e1e 40%); }
     @media only screen and (max-width: 62.5em) {
       .home-hero__map {
         width: 100%;
-        z-index: 2; } }
+        z-index: 2;
+        mask-image: none;
+        -webkit-mask-image: none; } }
   .home-hero__bg {
     position: absolute;
     top: 0;
@@ -9257,20 +9265,23 @@ h5 {
         content: "";
         height: 100%;
         width: 100%;
-        background-image: linear-gradient(to left, rgba(30, 30, 30, 0.9) 10%, transparent), linear-gradient(to right, rgba(30, 30, 30, 0.1) 5%, transparent), linear-gradient(to top, rgba(30, 30, 30, 0.1), rgba(30, 30, 30, 0.1)), linear-gradient(to top, rgba(30, 30, 30, 0.7), transparent 60%);
+        background-image: linear-gradient(to left, rgba(30, 30, 30, 0.9) 10%, transparent), linear-gradient(to right, rgba(30, 30, 30, 0.1) 5%, transparent), linear-gradient(to top, rgba(30, 30, 30, 0.1), rgba(30, 30, 30, 0.1)), linear-gradient(to top, #1e1e1e, transparent 60%);
         position: absolute;
         top: 0;
         left: 0;
         z-index: 2; }
         @media only screen and (max-width: 62.5em) {
           .home-hero__bg__slide:after {
-            background-image: linear-gradient(to top, rgba(30, 30, 30, 0.9) 10%, transparent), linear-gradient(to top, rgba(30, 30, 30, 0.1), rgba(30, 30, 30, 0.1)), linear-gradient(to top, rgba(30, 30, 30, 0.7), transparent 60%); } }
+            background-image: linear-gradient(to top, rgba(30, 30, 30, 0.9) 10%, transparent), linear-gradient(to top, rgba(30, 30, 30, 0.1), rgba(30, 30, 30, 0.1)), linear-gradient(to top, #1e1e1e, transparent 60%); } }
   .home-hero__content {
     z-index: 5;
     height: 100%;
     width: 100%;
     max-width: 160rem;
     position: relative; }
+    @media only screen and (max-width: 62.5em) {
+      .home-hero__content.content-hidden {
+        display: none; } }
     .home-hero__content__slider {
       position: absolute;
       left: 0;
@@ -9292,19 +9303,8 @@ h5 {
   color: #fff;
   position: relative;
   margin-bottom: 5rem;
-  width: 100%; }
-  .hero-content-slide.is-selected .hero-content-slide__subtitle {
-    animation: slideFade .8s both;
-    animation-timing-function: ease-out;
-    animation-delay: .4s; }
-  .hero-content-slide.is-selected .hero-content-slide__title {
-    animation: slideFade .8s both;
-    animation-timing-function: ease-out;
-    animation-delay: .8s; }
-  .hero-content-slide.is-selected .hero-content-slide__content {
-    animation: fadein .8s both;
-    animation-timing-function: ease-out;
-    animation-delay: 1.5s; }
+  width: 100%;
+  opacity: 0; }
   @media only screen and (max-width: 62.5em) {
     .hero-content-slide {
       align-items: center;
@@ -9330,13 +9330,23 @@ h5 {
       .hero-content-slide__content {
         margin-left: 0rem; } }
     .hero-content-slide__content__tabs {
-      display: grid;
-      grid-template-columns: repeat(4, min-content);
-      column-gap: 1.5rem;
+      display: flex;
       margin-bottom: 1.5rem; }
+      @media only screen and (max-width: 62.5em) {
+        .hero-content-slide__content__tabs {
+          justify-content: center; } }
+      .hero-content-slide__content__tabs__button:not(:last-child) {
+        margin-right: 1.5rem; }
     .hero-content-slide__content__panels {
       font-size: 1.6rem;
       max-width: 50rem; }
+      .hero-content-slide__content__panels__static__cta {
+        margin-top: 3rem;
+        justify-content: center;
+        display: none; }
+        @media only screen and (max-width: 62.5em) {
+          .hero-content-slide__content__panels__static__cta {
+            display: flex; } }
       .hero-content-slide__content__panels__panel {
         display: none;
         height: 40rem; }
@@ -9349,8 +9359,7 @@ h5 {
             display: grid;
             grid-template-columns: 1fr 1fr;
             column-gap: 2rem;
-            margin-top: 3rem;
-            transform: translateX(-2rem); }
+            margin-top: 3rem; }
 
 .home-newest {
   display: flex;
@@ -9541,6 +9550,27 @@ h5 {
     .home-map__content__map {
       width: 40rem;
       height: 50rem; }
+
+.home-itineraries {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  position: relative; }
+  .home-itineraries__content {
+    width: 100%;
+    padding: 0 6rem;
+    max-width: 160rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem; }
+    @media only screen and (max-width: 50em) {
+      .home-itineraries__content {
+        padding: 0 3rem; } }
+    .home-itineraries__content__slider {
+      width: 100%;
+      margin-top: 2rem; }
 
 .home-intro {
   margin-top: 12rem;

@@ -12,6 +12,7 @@ function load_scripts()
     wp_enqueue_style('select2-css', get_template_directory_uri() . '/vendor/select2/select2.min.css', array(), false, 'all');
     wp_enqueue_style('ion-css', get_template_directory_uri() . '/vendor/ion-range-slider/css/ion.rangeSlider.min.css', array(), false, 'all');
     wp_enqueue_style('odometer-css', get_template_directory_uri() . '/vendor/odometer/odometer-theme-minimal.css', array(), false, 'all');
+    wp_enqueue_style('swiper-css', get_template_directory_uri() . '/vendor/swiper/swiper-bundle.min.css', array(), false, 'all');
 
 
 
@@ -25,6 +26,8 @@ function load_scripts()
     wp_enqueue_script('flickity-js', get_template_directory_uri() . '/vendor/flickity/flickity.pkgd.min.js', array(), false, true);
     wp_enqueue_script('flickity-fade-js', get_template_directory_uri() . '/vendor/flickity/flickity-fade.js', array(), false, true);
     wp_enqueue_script('flickity-nav-js', get_template_directory_uri() . '/vendor/flickity/as-nav-for.js', array(), false, true);
+    wp_enqueue_script('flickity-responsive', get_template_directory_uri() . '/vendor/flickity/flickityResponsive.js', array(), false, true);
+
 
     wp_enqueue_script('slick', get_template_directory_uri() . '/vendor/slick/slick.js', array('jquery'), false, true);
     wp_enqueue_script('magnific-js', get_template_directory_uri() .  '/vendor/magnific/jquery.magnific-popup.min.js', array('jquery'), false, true);
@@ -40,6 +43,7 @@ function load_scripts()
     wp_enqueue_script('amcharts-theme', get_template_directory_uri() . '/vendor/amcharts5/themes/Animated.js', array(), false, true);
     wp_enqueue_script('amcharts-theme2', get_template_directory_uri() . '/vendor/amcharts5/themes/Dark.js', array(), false, true);
 
+    wp_enqueue_script('swiper', get_template_directory_uri() . '/vendor/swiper/swiper-bundle.min.js', array(), false, true);
 
 
 

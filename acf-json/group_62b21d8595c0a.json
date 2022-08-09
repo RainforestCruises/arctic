@@ -394,6 +394,30 @@
             "mime_types": ""
         },
         {
+            "key": "field_62f1a15fe48ab",
+            "label": "Hero Image Portrait",
+            "name": "hero_image_portrait",
+            "type": "image",
+            "instructions": "1024 x 768",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
             "key": "field_62b21d85ee762",
             "label": "Top Snippet",
             "name": "top_snippet",
@@ -659,6 +683,28 @@
                     "max_height": "",
                     "max_size": "",
                     "mime_types": ""
+                },
+                {
+                    "key": "field_62f1cd6cc0dc8",
+                    "label": "Destination",
+                    "name": "destination",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "rfc_destinations"
+                    ],
+                    "taxonomy": "",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "object",
+                    "ui": 1
                 },
                 {
                     "key": "field_62b9d2e1164f8",
@@ -1299,5 +1345,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1658257422
+    "modified": 1660013970
 }
