@@ -1,16 +1,9 @@
 jQuery(document).ready(function ($) {
   const destinationPoints = page_vars.destinationPoints;
 
-  // Create root element
-  // https://www.amcharts.com/docs/v5/getting-started/#Root_element
-  var root = am5.Root.new("hero-map");
-
-  // Set themes
-  // https://www.amcharts.com/docs/v5/concepts/themes/
-  root.setThemes([am5themes_Animated.new(root), am5themes_Dark.new(root)]);
-
   // Create the map chart
-  // https://www.amcharts.com/docs/v5/charts/map-chart/
+  var root = am5.Root.new("hero-map");
+  root.setThemes([am5themes_Animated.new(root), am5themes_Dark.new(root)]);
   var chart = root.container.children.push(
     am5map.MapChart.new(root, {
       panX: "none",
@@ -22,14 +15,10 @@ jQuery(document).ready(function ($) {
       rotationY: 50, //80
       rotationX: 35,
       maxPanOut: 0.5
-
     })
   );
 
-
-
   // Create series for background fill
-  // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
   var backgroundSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {}));
   backgroundSeries.mapPolygons.template.setAll({
     fill: root.interfaceColors.get("alternativeBackground"),
@@ -38,19 +27,20 @@ jQuery(document).ready(function ($) {
   });
 
   // Add background polygon
-  // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
   backgroundSeries.data.push({
     geometry: am5map.getGeoRectangle(90, 180, -90, -180)
   });
 
   // Create main polygon series for countries
-  // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
   var polygonSeries = chart.series.push(
     am5map.MapPolygonSeries.new(root, {
       geoJSON: am5geodata_worldLow
     })
   );
-
+  polygonSeries.mapPolygons.template.setAll({
+    fill: am5.color(0xc2c6c9),
+    fillOpacity: 0.4,
+  });
   polygonSeries.events.on("datavalidated", function () {
     chart.goHome();
   });
@@ -59,44 +49,17 @@ jQuery(document).ready(function ($) {
   var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {}));
   graticuleSeries.mapLines.template.setAll({
     stroke: root.interfaceColors.get("alternativeBackground"),
-    strokeOpacity: 0.08
-  });
-
-  // Add a button to go back to continents view
-  var homeButton = chart.children.push(am5.Button.new(root, {
-    paddingTop: 10,
-    paddingBottom: 10,
-    x: am5.percent(95),
-    y: am5.percent(90),
-    position: "absolute",
-    centerX: am5.percent(100),
-    opacity: 0,
-    interactiveChildren: false,
-    icon: am5.Graphics.new(root, {
-      svgPath: "M17.545 15.467l-3.779-3.779c0.57-0.935 0.898-2.035 0.898-3.21 0-3.417-2.961-6.377-6.378-6.377s-6.186 2.769-6.186 6.186c0 3.416 2.961 6.377 6.377 6.377 1.137 0 2.2-0.309 3.115-0.844l3.799 3.801c0.372 0.371 0.975 0.371 1.346 0l0.943-0.943c0.371-0.371 0.236-0.84-0.135-1.211zM4.004 8.287c0-2.366 1.917-4.283 4.282-4.283s4.474 2.107 4.474 4.474c0 2.365-1.918 4.283-4.283 4.283s-4.473-2.109-4.473-4.474z",
-      fill: am5.color(0xffffff)
-    })
-  }));
-
-  homeButton.events.on("click", function () {
-    chart.goHome();
-    flickitySlider.select(0);
-    contentSlider.select(0);
-    homeButton.hide();
-    mapZoomed = false;
-    heroContent.classList.remove('content-hidden');
-    backButton.classList.remove('active');
-
+    strokeOpacity: 0.08,
   });
 
 
-  // Create point series for markers
-  // https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
-  var originSeries = chart.series.push(
+
+  // Destination Markers
+  var pointSeries = chart.series.push(
     am5map.MapPointSeries.new(root, { idField: "postid" })
   );
 
-  originSeries.bullets.push(function () {
+  pointSeries.bullets.push(function () {
     var circle = am5.Circle.new(root, {
       radius: 6,
       tooltipY: 0,
@@ -108,9 +71,7 @@ jQuery(document).ready(function ($) {
     });
 
     circle.events.on("click", function (e) {
-      selectOrigin(e.target.dataItem.get("id"));
-      heroContent.classList.remove('content-hidden');
-      checkDots();
+      selectOrigin(e.target.dataItem.get("id"));     
     });
 
     return am5.Bullet.new(root, {
@@ -119,32 +80,30 @@ jQuery(document).ready(function ($) {
   });
 
 
-  originSeries.data.setAll(destinationPoints);
+  pointSeries.data.setAll(destinationPoints);
 
+
+  //Main Slider
+  let mapZoomed = false;
+  
+  //resize
+  $(window).resize(function () {
+    checkDots();
+  });
 
   //BG Slider
-  var flickitySlider = new Flickity('.home-hero__bg', {
+  const backgroundSlider = new Flickity('.home-hero__bg', {
     prevNextButtons: false,
+    setGallerySize: false,
     pageDots: false,
     fade: true,
-    //lazyLoad: true,
     imagesLoaded: true,
     selectedAttraction: 0.04,
     friction: 0.4
   });
 
-
-
-  //resize
-  $(window).resize(function () {
-    //flickitySlider.resize(); //hack
-    checkDots();
-  });
-
-
-
-
-  var contentSlider = new Flickity('.home-hero__content__slider', {
+  const mainSliderDiv = document.querySelector('.home-hero__content__main-slider');
+  const mainSlider = new Flickity('.home-hero__content__main-slider', {
     prevNextButtons: false,
     pageDots: false,
     fade: true,
@@ -152,79 +111,67 @@ jQuery(document).ready(function ($) {
     selectedAttraction: 0.1,
     friction: 0.6,
     draggable: false,
-
-  });
-
+  })
 
 
 
-
-
-
+  //Click on dots
   function selectOrigin(id) {
-    var dataItem = originSeries.getDataItemById(id);
+    var dataItem = pointSeries.getDataItemById(id); //postid
     var dataContext = dataItem.dataContext;
     chart.zoomToGeoPoint(dataContext.zoomPoint, dataContext.zoomLevel, true);
-    if ($(window).width() > 1000) {
-      homeButton.show();
-    }
 
     mapZoomed = true;
+    backButton.classList.add('active')
+
+    if ($(window).width() < 1000) {
+      mainSliderDiv.classList.remove('hide');
+    }
+    
 
     //Slider BG
     const bgSlideDiv = document.querySelector('.home-hero__bg__slide[postid="' + id + '"]');
     if (bgSlideDiv) {
       const slideNumber = bgSlideDiv.getAttribute('slidenumber');
-      flickitySlider.select(slideNumber);
+      backgroundSlider.select(slideNumber);
     }
 
     //Slider Content
-    const contentSlideDiv = document.querySelector('.hero-content-slide[postid="' + id + '"]');
+    const contentSlideDiv = document.querySelector('.main-slider-slide[postid="' + id + '"]');
     if (contentSlideDiv) {
       const slideNumber = contentSlideDiv.getAttribute('slidenumber');
-      contentSlider.select(slideNumber);
+      mainSlider.select(slideNumber);
       resetTabs(); //set tabs to first one
     }
 
+    checkDots();
+
   }
 
-  //home-hero__mobile-return
-  const heroContent = document.querySelector('.home-hero__content');
+  
+ 
 
-  let mapZoomed = false;
-
-  //Back Button
-  const backButton = document.querySelector('#mobile-map-return-cta');
-  backButton.addEventListener('click', () => {
-
-    if (mapZoomed) {
-      heroContent.classList.add('content-hidden');
-      //go home
-
-      chart.goHome();
-      flickitySlider.select(0);
-      contentSlider.select(0);
-   
-      mapZoomed = false;
-
-
-    } else {
-      heroContent.classList.remove('content-hidden');
-      backButton.classList.remove('active');
-    }
-
-    checkDots();
+  const backButton = document.querySelector('#back-cta');
+  backButton.addEventListener("click", function () {
+    console.log('backClick');
+    chart.goHome();
+    backgroundSlider.select(0);
+    mainSlider.select(0);
+    backButton.classList.remove('active'); 
+    mainSliderDiv.classList.remove('hide');
+    mapZoomed = false;
   });
 
-  //Explore Map Button
-  const mobileMapCTA = document.querySelector('#mobile-map-cta');
-  mobileMapCTA.addEventListener('click', () => {
+  //Explore Button
+  const exploreButton = document.querySelector('#explore-cta');
+  exploreButton.addEventListener('click', () => {
 
-    heroContent.classList.add('content-hidden');
+    mainSliderDiv.classList.add('hide');
     backButton.classList.add('active');
     checkDots();
 
   });
+
 
   // Make stuff animate on load
   chart.appear(1000, 100);
@@ -234,53 +181,68 @@ jQuery(document).ready(function ($) {
   checkDots();
 
   function checkDots() {
-    if ($(window).width() < 1000 ) { //if mobile
-      
-      homeButton.hide();
-
-      if(!heroContent.classList.contains('content-hidden')){
-        originSeries.hide();
-        
+    if ($(window).width() < 1000) { //mobile
+      console.log(mainSliderDiv);
+      if (mainSliderDiv.classList.contains('hide')) {
+        pointSeries.show();
       } else {
-        originSeries.show();
+        pointSeries.hide();
       }
-    } else {
-      originSeries.show();
-      homeButton.show();
-      //heroContent.classList.remove('content-hidden');
-      //backButton.classList.remove('active');
+
+    } else { //desktop
+      pointSeries.show();
     }
 
     console.log('checkDots');
   }
 
 
+  //hero-content-slide__content__panels__panel panel-series
+  const seriesSlider = new Swiper('.main-slider-slide__secondary__panels__panel.panel-series', {
+    // Optional parameters
+    loop: true,
+    spaceBetween: 15,
+    slidesPerView: 1,
+    // Navigation arrows
+    scrollbar: {
+      el: '.swiper-scrollbar',
+      draggable: true,
+    },
+
+    breakpoints: {
+      600: {
+        slidesPerView: 2,
+      }
+
+    }
+  });
 
 
 
 
   //TABS --------------------------
-  const tabButtons = [...document.querySelectorAll('.hero-content-slide__content__tabs__button')];
+  const tabButtons = [...document.querySelectorAll('.main-slider-slide__secondary__tabs__button')];
   tabButtons.forEach(button => {
     button.addEventListener('click', () => {
       const slideindex = button.getAttribute('slideindex');
       const tabindex = button.getAttribute('tabindex');
+      console.log('tabButton')
 
-      $(".hero-content-slide__content__tabs__button[slideindex='" + slideindex + "']").removeClass('active');
+      $(".main-slider-slide__secondary__tabs__button[slideindex='" + slideindex + "']").removeClass('active');
       button.classList.add('active');
 
-      $(".hero-content-slide__content__panels__panel[slideindex='" + slideindex + "']").removeClass('active');
-      $(".hero-content-slide__content__panels__panel[slideindex='" + slideindex + "'][tabindex='" + tabindex + "']").addClass('active');
+      $(".main-slider-slide__secondary__panels__panel[slideindex='" + slideindex + "']").removeClass('active');
+      $(".main-slider-slide__secondary__panels__panel[slideindex='" + slideindex + "'][tabindex='" + tabindex + "']").addClass('active');
 
     });
   })
 
   function resetTabs() {
-    $(".hero-content-slide__content__tabs__button").removeClass('active');
-    $(".hero-content-slide__content__tabs__button[tabindex='0']").addClass('active')
+    $(".main-slider-slide__secondary__tabs__button").removeClass('active');
+    $(".main-slider-slide__secondary__tabs__button[tabindex='0']").addClass('active')
 
-    $(".hero-content-slide__content__panels__panel").removeClass('active');
-    $(".hero-content-slide__content__panels__panel[tabindex='0']").addClass('active')
+    $(".main-slider-slide__secondary__panels__panel").removeClass('active');
+    $(".main-slider-slide__secondary__panels__panel[tabindex='0']").addClass('active')
 
   }
 

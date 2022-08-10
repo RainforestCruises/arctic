@@ -50,6 +50,9 @@ jQuery(document).ready(function ($) {
             },
             800: {
                 slidesPerView: 3,
+            },
+            1000: {
+                slidesPerView: 5,
             }
         }
     });

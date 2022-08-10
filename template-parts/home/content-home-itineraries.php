@@ -63,11 +63,7 @@ $itineraries = get_field('itineraries');
                                         <?php echo $title ?>
                                     </div>
                                 </div>
-                                <div class="overlay-card__content__cta">
-                                    <button class="cta-primary cta-primary--white">
-                                        View Details
-                                    </button>
-                                </div>
+                               
                             </div>
                         </a>
 

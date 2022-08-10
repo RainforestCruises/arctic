@@ -9,50 +9,33 @@
 
     @media only screen and (max-width: $bp-large) {
         min-height: 60rem;
-        padding-bottom: 12rem;
+        //padding-bottom: 12rem;
     }
 
-    & #mobile-map-return-cta {
+    & #back-cta {
         position: absolute;
-        bottom: 12rem;
-      
+        bottom: 6rem;
+        right: 6rem;
+
+        z-index: 50;
         display: none;
-        z-index: 50;
-
         &.active {
-
-            @media only screen and (max-width: $bp-large) {
-                display: flex;  
-            }
-                      
+            display: flex;
         }
 
-
+        @media only screen and (max-width: $bp-large) {
+            transform: translateX(50%);
+            right: 50%;
+            bottom: 12rem;
+        }
     }
 
-    &__map {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        z-index: 50;
-        width: 60%;
-        height: 100%;
-        mix-blend-mode: luminosity; //exclusion lumin
-        mask-image: linear-gradient(to right, transparent, rgba($color-black, 1) 40%);
-        -webkit-mask-image: linear-gradient(to right, transparent, rgba($color-black, 1) 40%);
-        @media only screen and (max-width: $bp-large) {
-            width: 100%;
-            z-index: 2;
-            mask-image: none;
-            -webkit-mask-image: none;
-        }
-    } 
-
+    //Background Image Slider
     &__bg {
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 1;
+        z-index: 0;
         width: 100%;
         height: 100%;
         &__slide {
@@ -93,6 +76,7 @@
         }
     }
 
+    //Hero Content
     &__content {
         z-index: 5;
         height: 100%;
@@ -102,30 +86,49 @@
 
         position: relative;
 
-        @media only screen and (max-width: $bp-large) {
-            &.content-hidden { 
-                display: none;
+        &__map {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            z-index: 8;
+            width: calc(50vw + 20rem);
+            transform: translateX(-20rem);
+            height: 100%;
+            mask-image: linear-gradient(to right, transparent, rgba($color-black, 1) 40%);
+            -webkit-mask-image: linear-gradient(to right, transparent, rgba($color-black, 1) 40%);
+            @media only screen and (max-width: $bp-large) {
+                width: 100%;
+                z-index: 2;
+                mask-image: none;
+                -webkit-mask-image: none;
+                transform: translateX(0);
+                left: auto;
             }
         }
-        
 
-        &__slider {
+        //Main Slider
+        &__main-slider {
             position: absolute;
             left: 0;
-            top: 32vh;
+            top: 30vh;
             width: 100%;
+            //height: 100%;
             max-width: 50%;
-
+            z-index: 9;
             @include flexPadding;
 
             @media only screen and (max-width: $bp-large) {
                 max-width: 100%;
+                &.hide {
+                    display: none;
+                }
             }
         }
     }
 }
 
-.hero-content-slide {
+//Main Slider Slide
+.main-slider-slide {
     display: flex;
     flex-direction: column;
     color: $color-white;
@@ -134,68 +137,93 @@
     width: 100%;
     opacity: 0;
 
-
-
     @media only screen and (max-width: $bp-large) {
         align-items: center;
         text-align: center;
     }
 
-    &__subtitle {
-        font-size: 1.4rem;
-        line-height: 1.4rem;
-        font-weight: 400;
-        letter-spacing: 0.2rem;
-        text-transform: uppercase;
-        margin-left: 5rem;
+    &__primary {
+        &__subtitle {
+            font-size: 1.4rem;
+            line-height: 1.4rem;
+            font-weight: 400;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+            margin-left: 5rem;
 
-        @media only screen and (max-width: $bp-large) {
-            margin-left: 0rem;
+            @media only screen and (max-width: $bp-large) {
+                margin-left: 0rem;
+            }
+        }
+
+        &__title {
+            font-size: 9rem;
+            line-height: 9rem;
+            font-family: $font-secondary;
+
+            margin-bottom: 1.5rem;
+        }
+        &__snippet {
+            font-size: 1.6rem;
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+            @media only screen and (max-width: $bp-large) {
+                margin-left: 0rem;
+            }
         }
     }
 
-    &__title {
-        font-size: 9rem;
-        line-height: 9rem;
-        font-family: $font-secondary;
-
-        margin-bottom: 1.5rem;
-    }
-
-    &__content {
-        margin-left: 2rem;
-
-     
+    &__explore-cta {
+        display: none;
+        justify-content: center;
+        margin-top: 3rem;
 
         @media only screen and (max-width: $bp-large) {
-            margin-left: 0rem;        
+            display: flex;
         }
+    }
 
+    &__region-nav {
+        margin-top: 6rem;
+        display: none;
+        justify-content: space-between;
+        font-weight: 700;
+        font-size: 2rem;
+    }
+
+    //Tabs and Panels
+    &__secondary {
         &__tabs {
             display: flex;
-
+            margin-left: 2rem;
             margin-bottom: 1.5rem;
 
             @media only screen and (max-width: $bp-large) {
-                justify-content: center;      
+                justify-content: center;
+                margin-left: 0rem;
             }
-            
 
             &__button:not(:last-child) {
-
                 margin-right: 1.5rem;
             }
         }
 
         &__panels {
             font-size: 1.6rem;
-            max-width: 50rem;
+            width: 100%;
+            height: 30rem;
 
             &__static {
+                max-width: 50rem;
+                padding-left: 2rem;
+
+                @media only screen and (max-width: $bp-large) {
+                    padding-left: 0rem;
+                }
 
                 &__cta {
                     margin-top: 3rem;
-                    
+
                     justify-content: center;
                     display: none;
 
@@ -207,19 +235,15 @@
 
             &__panel {
                 display: none;
-                height: 40rem;
-
+                width: 100%;
                 &.active {
                     &.panel-text {
                         display: block;
+                        padding-left: 2rem;
                     }
 
                     &.panel-series {
-                        display: grid;
-                        grid-template-columns: 1fr 1fr;
-                        column-gap: 2rem;
-                        margin-top: 3rem;
-                        //transform: translateX(-2rem);
+                        display: block;
                     }
 
                     animation: fadein 0.3s both;
