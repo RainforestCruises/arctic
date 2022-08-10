@@ -52,6 +52,7 @@ wp_localize_script(
         Back
     </div>
 
+
     <!-- Background Slider -->
     <div class="home-hero__bg">
 
@@ -185,10 +186,10 @@ wp_localize_script(
                                             $title = 'Cruises';
                                         } else if ($content_type == 'itinerary') {
                                             $title = 'Itineraries';
-                                        } else if ($content_type == 'experience') {
-                                            $title = 'Experiences';
-                                        } else if ($content_type == 'location') {
-                                            $title = 'Locations';
+                                        } else if ($content_type == 'activities') {
+                                            $title = 'Activities';
+                                        } else if ($content_type == 'wildlife') {
+                                            $title = 'Wildlife';
                                         }
                                     ?>
                                         <button class="main-slider-slide__secondary__tabs__button btn-pill-hero" slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
@@ -222,10 +223,10 @@ wp_localize_script(
                                             $items = $tab['cruises'];
                                         } else if ($content_type == 'itinerary') {
                                             $items = $tab['itineraries'];
-                                        } else if ($content_type == 'experience') {
-                                            $items = $tab['experiences'];
-                                        } else if ($content_type == 'location') {
-                                            $items = $tab['locations'];
+                                        } else if ($content_type == 'activities') {
+                                            $items = $tab['activities'];
+                                        } else if ($content_type == 'wildlife') {
+                                            $items = $tab['wildlife'];
                                         }
                                     ?>
 
@@ -250,10 +251,12 @@ wp_localize_script(
                                                                 <div class="resource-card__content__title-group-vertical__title">
                                                                     <?php echo $title; ?>
                                                                 </div>
-                                                                <div class="resource-card__content__title-group-vertical__sub">
-                                                                    Starting at $4,399
-                                                                </div>
 
+                                                                <?php if ($content_type == 'cruise' || $content_type == 'itinerary') : ?>
+                                                                    <div class="resource-card__content__title-group-vertical__sub">
+                                                                        Starting at $4,399
+                                                                    </div>
+                                                                <?php endif; ?>
                                                             </div>
 
 
@@ -264,6 +267,8 @@ wp_localize_script(
                                                 endforeach;
                                                 ?>
                                             </div>
+                                            <div class="swiper-button-prev"></div>
+                                            <div class="swiper-button-next"></div>
 
                                         </div>
 

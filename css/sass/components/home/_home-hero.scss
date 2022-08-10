@@ -12,6 +12,8 @@
         //padding-bottom: 12rem;
     }
 
+    
+
     & #back-cta {
         position: absolute;
         bottom: 6rem;
@@ -110,20 +112,31 @@
         &__main-slider {
             position: absolute;
             left: 0;
-            top: 30vh;
-            width: 100%;
-            //height: 100%;
+            top: 28vh;
+            width: 100%;        
             max-width: 50%;
             z-index: 9;
             @include flexPadding;
 
+            &.destination {
+             
+                @media only screen and (max-width: $bp-large) {
+                    top: 16rem;
+                }
+            }
+
             @media only screen and (max-width: $bp-large) {
                 max-width: 100%;
+                padding: 0;
                 &.hide {
                     display: none;
                 }
             }
+        
         }
+
+       
+
     }
 }
 
@@ -143,6 +156,10 @@
     }
 
     &__primary {
+        @media only screen and (max-width: $bp-large) {
+            padding: 0 3rem;
+        }
+
         &__subtitle {
             font-size: 1.4rem;
             line-height: 1.4rem;
@@ -154,19 +171,28 @@
             @media only screen and (max-width: $bp-large) {
                 margin-left: 0rem;
             }
+            @media only screen and (max-width: $bp-small) {
+                font-size: 1.2rem;
+                line-height: 1.2rem;
+            }
         }
 
         &__title {
             font-size: 9rem;
             line-height: 9rem;
             font-family: $font-secondary;
-
             margin-bottom: 1.5rem;
+
+            @media only screen and (max-width: $bp-small) {
+                font-size: 6rem;
+                line-height: 6rem;
+            }
+
         }
         &__snippet {
             font-size: 1.6rem;
             margin-left: 2rem;
-            margin-bottom: 1.5rem;
+            height: 35rem;
             @media only screen and (max-width: $bp-large) {
                 margin-left: 0rem;
             }
@@ -176,7 +202,7 @@
     &__explore-cta {
         display: none;
         justify-content: center;
-        margin-top: 3rem;
+        
 
         @media only screen and (max-width: $bp-large) {
             display: flex;
@@ -193,6 +219,7 @@
 
     //Tabs and Panels
     &__secondary {
+        width: 100%;
         &__tabs {
             display: flex;
             margin-left: 2rem;
@@ -211,35 +238,29 @@
         &__panels {
             font-size: 1.6rem;
             width: 100%;
-            height: 30rem;
-
-            &__static {
-                max-width: 50rem;
-                padding-left: 2rem;
-
-                @media only screen and (max-width: $bp-large) {
-                    padding-left: 0rem;
-                }
-
-                &__cta {
-                    margin-top: 3rem;
-
-                    justify-content: center;
-                    display: none;
-
-                    @media only screen and (max-width: $bp-large) {
-                        display: flex;
-                    }
-                }
-            }
-
+            height: 35rem;
+            position: relative;
             &__panel {
                 display: none;
                 width: 100%;
+
+                &.panel-text {
+                    display: none;
+                    padding-left: 2rem;
+
+                    @media only screen and (max-width: $bp-large) {
+                        padding-left: 0rem;
+                        padding: 0 3rem;
+                    }
+                }
+
+                &.panel-series {
+                    margin-top: 2rem;
+                }
+
                 &.active {
                     &.panel-text {
                         display: block;
-                        padding-left: 2rem;
                     }
 
                     &.panel-series {
@@ -252,4 +273,86 @@
             }
         }
     }
+}
+
+.swiper-button-next {
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: rgba($color-white, 0.1);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+
+    outline: none;
+
+    top: auto;
+    bottom: 0;
+    right: 0;
+    left: auto;
+
+    @media only screen and (max-width: $bp-large) {
+        top: 12rem;
+        bottom: auto;
+        right: 1.5rem;
+        left: auto;
+    }
+
+
+    transition: all 0.2s;
+
+    &::after {
+        font-size: .9rem;
+        color: rgba($color-white, .9);
+        font-weight: 700;
+    }
+
+    &:hover {
+        //opacity: 1;
+        background-color: rgba($color-white, 0.3);
+    }
+}
+
+.swiper-button-prev {
+
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: rgba($color-white, 0.1);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+
+    outline: none;
+
+    top: auto;
+    bottom: 0;
+    right: 5rem;
+    left: auto;
+
+    @media only screen and (max-width: $bp-large) {
+        top: 12rem;
+        bottom: auto;
+        right: auto;
+        left: 1.5rem;
+    }
+
+
+    transition: all 0.2s;
+
+    &::after {
+        font-size: .9rem;
+        color: rgba($color-white, .9);
+        font-weight: 700;
+    }
+
+    &:hover {
+        //opacity: 1;
+        background-color: rgba($color-white, 0.3);
+    }
+
 }

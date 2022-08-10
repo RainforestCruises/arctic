@@ -2,10 +2,10 @@
 
 return array (
   'version' => '5.6.4',
-  'title' => 'Activities',
-  'type' => 'rfc_activities',
-  'id' => '5fe1211e43e30',
-  'updated' => 1660171495,
+  'title' => 'Wildlife',
+  'type' => 'rfc_wildlife',
+  'id' => '62f430c44dab1',
+  'updated' => 1660170436,
   'columns' => 
   array (
     'title' => 
@@ -21,13 +21,13 @@ return array (
       'search' => 'on',
       'name' => 'title',
     ),
-    '62f1a2578624dc' => 
+    '62f430ae55c290' => 
     array (
       'type' => 'column-acf_field',
       'label' => 'Hero Image Portrait',
       'width' => '',
       'width_unit' => '%',
-      'field' => 'field_62f1a21c85337',
+      'field' => 'field_62f42fdd089c9',
       'image_size' => 'cpac-custom',
       'image_size_w' => '60',
       'image_size_h' => '60',
@@ -38,7 +38,7 @@ return array (
       'search' => 'on',
       'filter' => 'off',
       'filter_label' => '',
-      'name' => '62f1a2578624dc',
+      'name' => '62f430ae55c290',
     ),
   ),
   'settings' => 

@@ -1,9 +1,9 @@
 {
-    "key": "group_5fe10551d2743",
-    "title": "Activities Post",
+    "key": "group_62f42fdce5beb",
+    "title": "Wildlife Post",
     "fields": [
         {
-            "key": "field_62f1a21c85337",
+            "key": "field_62f42fdd089c9",
             "label": "Hero Image Portrait",
             "name": "hero_image_portrait",
             "type": "image",
@@ -32,7 +32,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "rfc_activities"
+                "value": "rfc_wildlife"
             }
         ]
     ],
@@ -43,7 +43,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Activities - CPT",
+    "description": "Wildlife - CPT",
     "show_in_rest": 0,
-    "modified": 1660170192
+    "modified": 1660170332
 }

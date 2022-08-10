@@ -71,7 +71,7 @@ jQuery(document).ready(function ($) {
     });
 
     circle.events.on("click", function (e) {
-      selectOrigin(e.target.dataItem.get("id"));     
+      selectOrigin(e.target.dataItem.get("id"));
     });
 
     return am5.Bullet.new(root, {
@@ -85,7 +85,7 @@ jQuery(document).ready(function ($) {
 
   //Main Slider
   let mapZoomed = false;
-  
+
   //resize
   $(window).resize(function () {
     checkDots();
@@ -99,7 +99,8 @@ jQuery(document).ready(function ($) {
     fade: true,
     imagesLoaded: true,
     selectedAttraction: 0.04,
-    friction: 0.4
+    friction: 0.4,
+    draggable: false,
   });
 
   const mainSliderDiv = document.querySelector('.home-hero__content__main-slider');
@@ -127,7 +128,8 @@ jQuery(document).ready(function ($) {
     if ($(window).width() < 1000) {
       mainSliderDiv.classList.remove('hide');
     }
-    
+
+    mainSliderDiv.classList.add('destination');
 
     //Slider BG
     const bgSlideDiv = document.querySelector('.home-hero__bg__slide[postid="' + id + '"]');
@@ -137,9 +139,9 @@ jQuery(document).ready(function ($) {
     }
 
     //Slider Content
-    const contentSlideDiv = document.querySelector('.main-slider-slide[postid="' + id + '"]');
-    if (contentSlideDiv) {
-      const slideNumber = contentSlideDiv.getAttribute('slidenumber');
+    const selectedSlideDiv = document.querySelector('.main-slider-slide[postid="' + id + '"]');
+    if (selectedSlideDiv) {
+      const slideNumber = selectedSlideDiv.getAttribute('slidenumber');
       mainSlider.select(slideNumber);
       resetTabs(); //set tabs to first one
     }
@@ -148,8 +150,9 @@ jQuery(document).ready(function ($) {
 
   }
 
+
+
   
- 
 
   const backButton = document.querySelector('#back-cta');
   backButton.addEventListener("click", function () {
@@ -157,8 +160,13 @@ jQuery(document).ready(function ($) {
     chart.goHome();
     backgroundSlider.select(0);
     mainSlider.select(0);
-    backButton.classList.remove('active'); 
+    backButton.classList.remove('active');
     mainSliderDiv.classList.remove('hide');
+    mainSliderDiv.classList.remove('destination');
+
+
+    
+
     mapZoomed = false;
   });
 
@@ -177,9 +185,8 @@ jQuery(document).ready(function ($) {
   chart.appear(1000, 100);
 
 
-  //responsive dots
-  checkDots();
-
+  //--responsive dots
+  checkDots(); //once on load
   function checkDots() {
     if ($(window).width() < 1000) { //mobile
       console.log(mainSliderDiv);
@@ -192,28 +199,30 @@ jQuery(document).ready(function ($) {
     } else { //desktop
       pointSeries.show();
     }
-
-    console.log('checkDots');
   }
 
 
-  //hero-content-slide__content__panels__panel panel-series
+  //series Slider
   const seriesSlider = new Swiper('.main-slider-slide__secondary__panels__panel.panel-series', {
     // Optional parameters
     loop: true,
     spaceBetween: 15,
-    slidesPerView: 1,
+    slidesPerView: 1.3,
+    centeredSlides: true,
     // Navigation arrows
-    scrollbar: {
-      el: '.swiper-scrollbar',
-      draggable: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
     },
-
     breakpoints: {
       600: {
+        slidesPerView: 3.3,
+        centeredSlides: true
+      },
+      1000: {
         slidesPerView: 2,
+        centeredSlides: false
       }
-
     }
   });
 
@@ -239,10 +248,10 @@ jQuery(document).ready(function ($) {
 
   function resetTabs() {
     $(".main-slider-slide__secondary__tabs__button").removeClass('active');
-    $(".main-slider-slide__secondary__tabs__button[tabindex='0']").addClass('active')
+    $(".main-slider-slide__secondary__tabs__button[tabindex='0']").addClass('active');
 
     $(".main-slider-slide__secondary__panels__panel").removeClass('active');
-    $(".main-slider-slide__secondary__panels__panel[tabindex='0']").addClass('active')
+    $(".main-slider-slide__secondary__panels__panel[tabindex='0']").addClass('active');
 
   }
 

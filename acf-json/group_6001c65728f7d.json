@@ -179,6 +179,33 @@
                     "maxlength": ""
                 },
                 {
+                    "key": "field_62f18a5ef3af8",
+                    "label": "Snippet",
+                    "name": "snippet",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62f18a83f3af9",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": ""
+                },
+                {
                     "key": "field_62ed6d2909ddb",
                     "label": "Tab Items",
                     "name": "tab_items",
@@ -222,8 +249,8 @@
                                 "about": "About",
                                 "cruise": "Cruise",
                                 "itinerary": "Itinerary",
-                                "experience": "Experience",
-                                "location": "Location"
+                                "wildlife": "Wildlife",
+                                "activities": "Activities"
                             },
                             "default_value": false,
                             "allow_null": 0,
@@ -328,8 +355,8 @@
                         },
                         {
                             "key": "field_62ed91158d062",
-                            "label": "Experiences",
-                            "name": "experiences",
+                            "label": "Activities",
+                            "name": "activities",
                             "type": "relationship",
                             "instructions": "",
                             "required": 0,
@@ -338,7 +365,7 @@
                                     {
                                         "field": "field_62ed6eafd14e3",
                                         "operator": "==",
-                                        "value": "experience"
+                                        "value": "activities"
                                     }
                                 ]
                             ],
@@ -348,7 +375,7 @@
                                 "id": ""
                             },
                             "post_type": [
-                                "rfc_experiences"
+                                "rfc_activities"
                             ],
                             "taxonomy": "",
                             "filters": [
@@ -361,8 +388,8 @@
                         },
                         {
                             "key": "field_62ed91308d063",
-                            "label": "Locations",
-                            "name": "locations",
+                            "label": "Wildlife",
+                            "name": "wildlife",
                             "type": "relationship",
                             "instructions": "",
                             "required": 0,
@@ -371,7 +398,7 @@
                                     {
                                         "field": "field_62ed6eafd14e3",
                                         "operator": "==",
-                                        "value": "location"
+                                        "value": "wildlife"
                                     }
                                 ]
                             ],
@@ -381,7 +408,7 @@
                                 "id": ""
                             },
                             "post_type": [
-                                "rfc_locations"
+                                "rfc_wildlife"
                             ],
                             "taxonomy": "",
                             "filters": [
@@ -393,25 +420,6 @@
                             "return_format": "object"
                         }
                     ]
-                },
-                {
-                    "key": "field_62f18a5ef3af8",
-                    "label": "Snippet",
-                    "name": "snippet",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": "",
-                    "new_lines": ""
                 }
             ]
         },
@@ -609,5 +617,5 @@
     "active": true,
     "description": "Home Page",
     "show_in_rest": 0,
-    "modified": 1660012914
+    "modified": 1660172275
 }

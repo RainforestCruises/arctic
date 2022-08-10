@@ -235,6 +235,27 @@ function create_post_type_rfc_experiences()
 }
 add_action('init', 'create_post_type_rfc_experiences');
 
+
+// Custom Post Type - Wildlife
+function create_post_type_rfc_wildlife()
+{
+    register_post_type(
+        'rfc_wildlife',
+        array(
+            'labels' => array(
+                'name' => __('Wildlife'),
+                'singular_name' => __('Wildlife'),
+            ),
+            'public' => true,
+            'rewrite' => array('slug' => 'wildlife'),
+            'supports' => array(
+                'title',
+            )
+        )
+    );
+}
+add_action('init', 'create_post_type_rfc_wildlife');
+
 // Custom Post Type - Amenities
 function create_post_type_rfc_amenities()
 {
