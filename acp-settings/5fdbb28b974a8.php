@@ -5,7 +5,7 @@ return array (
   'title' => 'Destinations',
   'type' => 'rfc_destinations',
   'id' => '5fdbb28b974a8',
-  'updated' => 1660230950,
+  'updated' => 1660236217,
   'columns' => 
   array (
     'title' => 
@@ -21,27 +21,10 @@ return array (
       'search' => 'on',
       'name' => 'title',
     ),
-    '5fdbb2c07cd75' => 
+    '62f5314e2d0e58' => 
     array (
       'type' => 'column-acf_field',
-      'label' => 'Navigation Title',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_5fdbaeda25a3a',
-      'character_limit' => '20',
-      'export' => 'on',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '5fdbb2c07cd75',
-    ),
-    '62e0aa6b004188' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Feature Image',
+      'label' => 'Hero Image Portrait',
       'width' => '',
       'width_unit' => '%',
       'field' => 'field_62e0aa2f56ad1',
@@ -55,7 +38,26 @@ return array (
       'search' => 'on',
       'filter' => 'off',
       'filter_label' => '',
-      'name' => '62e0aa6b004188',
+      'name' => '62f5314e2d0e58',
+    ),
+    '62f531ad9e3540' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Hero Image',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_62f5318538a33',
+      'image_size' => 'cpac-custom',
+      'image_size_w' => '60',
+      'image_size_h' => '60',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '62f531ad9e3540',
     ),
     '62f51c281ef9dc' => 
     array (

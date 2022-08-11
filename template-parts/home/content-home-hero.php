@@ -19,7 +19,7 @@ foreach ($hero_slider as $s) {
         ];
 
         $point  = [
-            'title' => get_field('navigation_title', $destination),
+            'title' => get_the_title($destination),
             'postid' => $destination->ID,
             'geometry' => $geometry,
             'zoomPoint' => $zoomPoint,
