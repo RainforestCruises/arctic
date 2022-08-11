@@ -1,11 +1,11 @@
 <?php
 
 return array (
-  'version' => '5.4',
+  'version' => '5.6.4',
   'title' => 'Regions',
   'type' => 'rfc_regions',
   'id' => '5fdbb49d840f9',
-  'updated' => 1611787123,
+  'updated' => 1660235671,
   'columns' => 
   array (
     'title' => 
@@ -19,15 +19,16 @@ return array (
       'edit' => 'off',
       'bulk_edit' => 'on',
       'search' => 'on',
+      'name' => 'title',
     ),
-    '5fdbb4c6e1ea1' => 
+    '62f52f5bdfbe78' => 
     array (
       'type' => 'column-acf_field',
-      'label' => 'Navigation Title',
+      'label' => 'Longitude',
       'width' => '',
       'width_unit' => '%',
-      'field' => 'field_5fdbae096391e',
-      'character_limit' => '20',
+      'field' => 'field_62ed762b1edf0',
+      'number_format' => '',
       'export' => 'off',
       'sort' => 'on',
       'edit' => 'on',
@@ -35,16 +36,16 @@ return array (
       'search' => 'on',
       'filter' => 'off',
       'filter_label' => '',
+      'name' => '62f52f5bdfbe78',
     ),
-    '6011eb7344555' => 
+    '62f52f7bd0624c' => 
     array (
       'type' => 'column-acf_field',
-      'label' => 'Default Search Link',
+      'label' => 'Latitude',
       'width' => '',
       'width_unit' => '%',
-      'field' => 'field_6011eb1e4c9c8',
-      'post_property_display' => 'title',
-      'post_link_to' => 'edit_post',
+      'field' => 'field_62ed761e1edef',
+      'number_format' => '',
       'export' => 'off',
       'sort' => 'on',
       'edit' => 'on',
@@ -52,37 +53,58 @@ return array (
       'search' => 'on',
       'filter' => 'off',
       'filter_label' => '',
+      'name' => '62f52f7bd0624c',
     ),
-    '5fe124d93f938' => 
+    '62f52f833be76c' => 
     array (
-      'type' => 'column-author_name',
-      'label' => 'Author',
+      'type' => 'column-acf_field',
+      'label' => 'Longitude Zoom Point',
       'width' => '',
       'width_unit' => '%',
-      'display_author_as' => 'display_name',
-      'user_link_to' => 'edit_user',
+      'field' => 'field_62f52f1546b5c',
+      'number_format' => '',
       'export' => 'off',
       'sort' => 'on',
-      'edit' => 'off',
+      'edit' => 'on',
       'bulk_edit' => 'on',
       'search' => 'on',
       'filter' => 'off',
       'filter_label' => '',
+      'name' => '62f52f833be76c',
     ),
-    'date' => 
+    '62f52f88e872b0' => 
     array (
-      'type' => 'date',
-      'label' => 'Date',
+      'type' => 'column-acf_field',
+      'label' => 'Latitude Zoom Point',
       'width' => '',
       'width_unit' => '%',
+      'field' => 'field_62f52efc46b5b',
+      'number_format' => '',
       'export' => 'off',
       'sort' => 'on',
-      'edit' => 'off',
+      'edit' => 'on',
       'bulk_edit' => 'on',
       'search' => 'on',
       'filter' => 'off',
       'filter_label' => '',
-      'filter_format' => '',
+      'name' => '62f52f88e872b0',
+    ),
+    '62f52f8e8147b0' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Zoom Level',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_62f52f2b46b5d',
+      'number_format' => '',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '62f52f8e8147b0',
     ),
   ),
   'settings' => 

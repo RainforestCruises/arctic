@@ -85,6 +85,69 @@
             "min": "",
             "max": "",
             "step": ""
+        },
+        {
+            "key": "field_62f52efc46b5b",
+            "label": "Latitude Zoom Point",
+            "name": "latitude_zoom_point",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_62f52f1546b5c",
+            "label": "Longitude Zoom Point",
+            "name": "longitude_zoom_point",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_62f52f2b46b5d",
+            "label": "Zoom Level",
+            "name": "zoom_level",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
         }
     ],
     "location": [
@@ -105,5 +168,5 @@
     "active": true,
     "description": "Regions - CPT",
     "show_in_rest": 0,
-    "modified": 1659729466
+    "modified": 1660235577
 }

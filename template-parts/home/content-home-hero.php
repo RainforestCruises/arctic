@@ -1,15 +1,12 @@
 <?php
-
 $hero_slider = get_field('hero_slider');
 
 $destinationPoints = [];
 foreach ($hero_slider as $s) {
-
-    $destination = $s['destination']; //destination or region post
-    $destinationPostId = $destination->ID;
-    $isRegion = get_post_type($destination) == 'rfc_regions';
-
+    $isRegion =  $s['is_toplevel'];
     if (!$isRegion) {
+        $destination = $s['destination'];
+        $destinationPostId = $destination->ID;
 
         $geometry = [
             'type' => "Point",
@@ -17,8 +14,8 @@ foreach ($hero_slider as $s) {
         ];
 
         $zoomPoint = [
-            'longitude' => get_field('longitude', $destination),
-            'latitude' => get_field('latitude', $destination),
+            'longitude' => get_field('zoom_point_longitude', $destination),
+            'latitude' => get_field('zoom_point_latitude', $destination),
         ];
 
         $point  = [
@@ -33,7 +30,6 @@ foreach ($hero_slider as $s) {
     }
 }
 
-
 wp_enqueue_script('page-home-hero', get_template_directory_uri() . '/js/page-home-hero.js', array(), false, true);
 wp_localize_script(
     'page-home-hero',
@@ -45,13 +41,13 @@ wp_localize_script(
 
 ?>
 
-<!--  Hero -->
+<!-- Hero -->
 <div class="home-hero hero">
 
+    <!-- Back Button -->
     <div class="btn-pill-hero" id="back-cta">
         Back
     </div>
-
 
     <!-- Background Slider -->
     <div class="home-hero__bg">
@@ -73,7 +69,6 @@ wp_localize_script(
         <?php $slideCount++;
         endforeach; ?>
     </div>
-
 
 
     <!-- Base Content (Page Width Full) -->
@@ -160,7 +155,7 @@ wp_localize_script(
                                 <?php echo $title ?>
                             </div>
                         </div>
-
+                        <!-- End Primary -->
 
                         <!-- Secondary -->
                         <div class="main-slider-slide__secondary">
@@ -213,7 +208,7 @@ wp_localize_script(
                                     if ($content_type == 'about') :
                                         $snippet = $tab['snippet'];
                                 ?>
-                                        <!-- Panel text -->
+                                        <!-- Panel Text -->
                                         <div class="main-slider-slide__secondary__panels__panel panel-text active" slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
                                             <?php echo $snippet; ?>
                                         </div>
@@ -272,17 +267,15 @@ wp_localize_script(
 
                                         </div>
 
-                                    <?php endif; ?>
-
-                                <?php $tabIndex++;
-                                endforeach;
-
-                                ?>
+                                <?php endif;
+                                    $tabIndex++;
+                                endforeach; ?>
 
 
                             </div>
 
                         </div>
+                        <!-- End Secondary -->
                     </div>
                     <!-- End Content Slide -->
 
@@ -290,10 +283,15 @@ wp_localize_script(
             <?php $slideCount++;
                 endif;
             endforeach; ?>
+        </div>
+        <!-- End Main Slider -->
 
-
-
+        <!-- Info Text -->
+        <div class="home-hero__content__info-text">
+            Click locations to view
         </div>
 
     </div>
+    <!-- End Base Content -->
 </div>
+<!-- End Hero -->

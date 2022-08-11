@@ -4,8 +4,26 @@
 
     &.narrow {
         & .slider-block__content {
-            max-width: $page-width
+            max-width: $page-width;
+            
         }
+    }
+
+    &.inverse {
+        background-color: $color-black;
+        
+        & .slider-block__content {
+            transform: translateY(-12rem);
+            
+        }
+        & .title-single {
+            color: $color-white !important;
+        }
+    }
+
+    &.topfade {
+        background-color: transparent;
+        background-image:  linear-gradient(to top, rgba($color-black, 1) 70%, transparent)
     }
 
     &__content {

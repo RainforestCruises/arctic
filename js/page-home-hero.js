@@ -61,10 +61,10 @@ jQuery(document).ready(function ($) {
 
   pointSeries.bullets.push(function () {
     var circle = am5.Circle.new(root, {
-      radius: 6,
+      radius: 7,
       tooltipY: 0,
-      fill: am5.color(0xeeeeee),
-      stroke: root.interfaceColors.get("background"),
+      fill: am5.color(0xffffff),
+      stroke: am5.color(0x3b3b3b),
       strokeWidth: 2,
       tooltipText: "{title}",
       cursorOverStyle: "pointer"
@@ -115,6 +115,7 @@ jQuery(document).ready(function ($) {
   })
 
 
+  const infoText = document.querySelector('.home-hero__content__info-text');
 
   //Click on dots
   function selectOrigin(id) {
@@ -129,6 +130,7 @@ jQuery(document).ready(function ($) {
       mainSliderDiv.classList.remove('hide');
     }
 
+    infoText.remove();
     mainSliderDiv.classList.add('destination');
 
     //Slider BG
