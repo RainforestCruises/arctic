@@ -5,16 +5,6 @@ $breadcrumb = get_field('breadcrumb');
 
 
 
-$charter_view = false;
-$charter_available = false;
-$charter_only = false;
-if ($args['productType'] == 'Cruise') {
-    $charter_view = $args['charter_view'];
-    $charter_available = $args['charter_available'];
-    $charter_only = $args['charter_only'];
-}
-
-
 $itineraryCount = count($args['cruise_data']['Itineraries']);
 $images = get_field('highlight_gallery');
 
@@ -27,8 +17,7 @@ $images = get_field('highlight_gallery');
         <!-- Top Section -->
         <div class="product-hero__content__top">
             <div class="product-hero__content__top__bg" id="top">
-                <img <?php afloat_image_markup($hero_image['id'], 'full-hero-large', array('full-hero-large', 'full-hero-medium', 'full-hero-small', 'full-hero-xsmall')); ?>>
-
+                <img <?php afloat_image_markup($hero_image['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
             </div>
 
             <!-- Title / Navigation -->
@@ -60,14 +49,6 @@ $images = get_field('highlight_gallery');
                 <div>
                     <!-- H1 Title / Subtitle -->
                     <div class="product-hero__content__top__content__title-group">
-                        <?php if ($charter_view) : ?>
-                            <div class="product-hero__content__top__content__title-group__badge-area">
-                                <span>
-                                    Private Charter
-                                </span>
-                            </div>
-                        <?php endif; ?>
-
 
                         <h1 class="product-hero__content__top__content__title-group__title" id="template-nav-title">
                             <div>

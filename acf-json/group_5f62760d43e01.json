@@ -382,11 +382,11 @@
             "mime_types": ""
         },
         {
-            "key": "field_5f690d2b40945",
-            "label": "Hero Image Portrait",
-            "name": "hero_image_portrait",
-            "type": "image",
-            "instructions": "Featured Image in cards, search results, etc (750 x 500). Left facing boat if possible",
+            "key": "field_5f6b863fe1d13",
+            "label": "Hero Gallery",
+            "name": "hero_gallery",
+            "type": "gallery",
+            "instructions": "1920 x 1080, hero gallery, boat-specific shots, interiors",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -396,9 +396,12 @@
             },
             "return_format": "array",
             "preview_size": "medium",
+            "insert": "append",
             "library": "all",
-            "min_width": 750,
-            "min_height": 500,
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
             "min_size": "",
             "max_width": "",
             "max_height": "",
@@ -423,36 +426,6 @@
             "maxlength": 250,
             "rows": "",
             "new_lines": ""
-        },
-        {
-            "key": "field_5f6b863fe1d13",
-            "label": "Highlight Gallery",
-            "name": "highlight_gallery",
-            "type": "gallery",
-            "instructions": "Add images to the highlights slider at the top (750 x 750)",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "admin_column_enabled": 0,
-            "admin_column_post_types": "",
-            "admin_column_taxonomies": "",
-            "return_format": "array",
-            "preview_size": "medium",
-            "insert": "append",
-            "library": "all",
-            "min": "",
-            "max": "",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
         },
         {
             "key": "field_5f69066367db7",
@@ -1674,5 +1647,5 @@
     "active": true,
     "description": "Cruise - CPT",
     "show_in_rest": 0,
-    "modified": 1660003550
+    "modified": 1661973222
 }

@@ -60,6 +60,11 @@ function afloat_images_sizes()
     add_image_size('square-small', 325, 325, true);
 
     //NEW
+    add_image_size('landscape-large', 1920, 1080, true);
+    //add_image_size('landscape-large-hero', 1920, 730, true);
+    add_image_size('landscape-medium', 1280, 720, true);
+    add_image_size('landscape-small', 640, 360, true);
+
     add_image_size('portrait-large', 1024, 768, true);
     add_image_size('portrait-medium', 640, 480, true);
     add_image_size('portrait-small', 440, 330, true);
