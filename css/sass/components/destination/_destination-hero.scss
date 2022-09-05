@@ -264,7 +264,7 @@
 
                     border-bottom: 1px solid rgba($color-grey-light-2, 0.9); //alpha 0 to prevent pixel jump
 
-                    background-color: $color-nav;
+                    background-color: $color-white;
 
                     @media only screen and (max-width: $bp-large) {
                         flex-direction: column;

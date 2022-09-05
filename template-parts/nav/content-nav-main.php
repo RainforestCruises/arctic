@@ -35,12 +35,13 @@ $alwaysActiveMainNav = checkActiveHeader();
         <!-- Left (logo) -->
         <div class="nav-main__content__left">
             <a href="<?php echo get_home_url(); ?>" class="nav-main__content__left__logo-area">
-                <?php
-                $logo = get_theme_mod('custom_logo');
-                $image = wp_get_attachment_image_src($logo, 'full');
-                $image_url = $image[0];
+                <?php 
+                $logo = get_field('logo_main', 'options'); 
+                $logoMinimal = get_field('logo_minimal', 'options'); 
+
                 ?>
-                <img src="<?php echo $image_url ?>" alt="<?php echo get_bloginfo('name') ?>" />
+                <img src="<?php echo $logo['url']; ?>" class="nav-main__content__left__logo-area__logo-main" alt="<?php echo get_bloginfo('name') ?>" />
+                <img src="<?php echo $logoMinimal['url']; ?>" class="nav-main__content__left__logo-area__logo-minimal" alt="<?php echo get_bloginfo('name') ?>" />
             </a>
         </div>
 

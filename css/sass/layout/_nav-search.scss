@@ -14,6 +14,10 @@
         grid-template-columns: min-content min-content min-content;
         align-items: center;
 
+        @media only screen and (max-width: $bp-small) {
+            display: none;
+        }
+
         &__item {
             padding: 1rem 2rem;
             position: relative;
@@ -32,12 +36,14 @@
                     opacity: 0.6;
                 }
             }
-
-           
         }
     }
 
     &__cta {
+        @media only screen and (max-width: $bp-small) {
+            display: none;
+        }
+
         button {
             transform: translateX(1px);
             height: 3.5rem;
@@ -59,19 +65,56 @@
             }
         }
     }
-}
 
+    &__mobile-cta {
+        display: none;
+        padding: .8rem 1.5rem;
+        padding-right: 2rem;
+        cursor: pointer;
+        @media only screen and (max-width: $bp-small) {
+            display: flex;
+        }
+
+        &__icon-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            & svg {
+                height: 1.8rem;
+                width: 1.8rem;
+                fill: $color-primary;
+            }
+            margin-right: 1.5rem;
+        }
+
+        &__text {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: $color-primary;
+            width: max-content;
+            &__sub {
+                display: flex;
+                font-size: 1rem;
+                line-height: 1rem;
+                color: $color-grey-1;
+                font-weight: 400;
+                & span {
+                    margin-right: 1rem;
+                }
+            }
+        }
+    }
+}
 
 .nav-search-control {
     display: none;
- 
+
     &.active {
         display: grid;
         //animation: zoomEffect 0.4s;
-       
     }
     //transform-origin: center left;
-    
+
     grid-template-columns: min-content min-content;
     border-radius: 4rem;
     border: 1px solid $color-primary;
@@ -89,7 +132,6 @@
         }
     }
 
-
     &__inputs {
         display: grid;
         grid-template-columns: min-content min-content min-content;
@@ -99,7 +141,6 @@
             padding: 1rem 2rem;
             position: relative;
             cursor: pointer;
-           
 
             &:not(:last-child) {
                 &::after {
@@ -114,8 +155,6 @@
                     opacity: 0.6;
                 }
             }
-
-           
         }
     }
 

@@ -1,3 +1,83 @@
+@mixin solidNav {
+    background-color: $color-white;
+    border-bottom: 1px solid $color-grey-light-2;
+
+    //logo image
+    & .nav-main__content__left__logo-area {
+        & img {
+            filter: brightness(1) invert(0);
+        }
+    }
+    //search / nav-links
+    & .nav-main__content__center {
+        color: $color-primary;
+
+        &__search-area {
+            & .nav-search {
+                color: currentColor;
+                border: 1px solid $color-grey-light-1a;
+                box-shadow: $shadow-short-bottom-light;
+                &__cta {
+                    button {
+                        background-color: currentColor;
+                    }
+                }
+            }
+        }
+
+        //change links to dark colors
+        &__nav {
+            &__list {
+                &__item {
+                    color: currentColor;
+                    position: relative;
+                    &:hover {
+                        color: $color-supporting-light;
+                    }
+                }
+            }
+        }
+    }
+    //contact / phone
+    & .nav-main__content__right {
+        color: $color-primary;
+
+        &__contact-link {
+            &:link,
+            &:visited {
+                color: currentColor;
+            }
+            &:hover {
+                color: $color-supporting-light;
+            }
+        }
+
+        &__language {
+            & .trp-language-switcher {
+                cursor: pointer;
+                color: currentColor;
+
+                & > div {
+                    & > a {
+                        color: $color-primary;
+                    }
+                }
+            }
+        }
+    }
+    //burger
+    & .burger-button {
+        &::after {
+            background-color: rgba($color-primary, 0.3);
+        }
+
+        &__bar {
+            background-color: $color-primary;
+        }
+    }
+}
+
+
 //main nav
 .nav-main {
     z-index: 1;
@@ -20,91 +100,14 @@
     @media only screen and (max-width: $bp-large) {
         justify-content: space-between;
         height: 7rem;
+        @include solidNav;
     }
 
     &.active {
-        background-color: $color-nav; //make background opaque
-        border-bottom: 1px solid rgba($color-grey-light-2, 0.9);
-
-        //logo image
-        & .nav-main__content__left__logo-area {
-            & img {
-                filter: brightness(1) invert(0);
-            }
-        }
-        //search / nav-links
-        & .nav-main__content__center {
-            color: $color-primary;
-
-            &__search-area {
-                & .nav-search {
-                    color: currentColor;
-                    border: 1px solid rgba($color-grey-light-1a, 1);
-                    box-shadow: $shadow-short-bottom-light;
-                    &__cta {
-                        button {
-                            background-color: currentColor;
-                        }
-                    }
-                }
-            }
-
-            //change links to dark colors
-            &__nav {
-                &__list {
-                    &__item {
-                        color: currentColor;
-                        position: relative;
-                        &:hover {
-                            color: $color-supporting-light;
-                        }
-                    }
-                }
-            }
-        }
-        //contact / phone
-        & .nav-main__content__right {
-            color: $color-primary;
-
-            &__contact-link {
-                &:link,
-                &:visited {
-                    color: currentColor;
-                }
-                &:hover {
-                    color: $color-supporting-light;
-                }
-            }
-
-            &__language {
-                & .trp-language-switcher {
-                    cursor: pointer;
-                    color: currentColor;
-
-                    & > div {
-                        & > a {
-                            color: $color-primary;
-                        }
-                    }
-                }
-            }
-        }
-        //burger
-        & .burger-button {
-            &::after {
-                background-color: rgba($color-primary, 0.3);
-            }
-
-            &__bar {
-                background-color: $color-primary;
-            }
-        }
-
-        
+        @include solidNav;
         //--dim other elements
         //--mega & search
         &.mega-active {
-            
             & .nav-main__content__center {
                 &__search-area {
                     opacity: 0.5;
@@ -119,8 +122,6 @@
                 }
             }
         }
-
-
     }
 
     //reduce height of nav from 9 to 7rem
@@ -139,20 +140,30 @@
         align-items: center;
         column-gap: 4rem;
 
-        @media only screen and (max-width: $bp-large) {
-            grid-template-columns: min-content min-content 1fr;
+        @media only screen and (max-width: $bp-small) {
+            column-gap: 2rem;
         }
 
         &__left {
             &__logo-area {
                 & img {
-                    transform: translateY(2px);
                     transition: all 0.2s;
                     filter: brightness(0) invert(1);
                     height: 4.5rem;
                     width: auto;
+   
+                }
+                &__logo-main {
+
                     @media only screen and (max-width: $bp-small) {
-                        height: 3.5rem;
+                        display: none;
+                    }
+                }
+
+                &__logo-minimal {
+                    display: none;
+                    @media only screen and (max-width: $bp-small) {
+                        display: block;
                     }
                 }
             }
@@ -167,14 +178,16 @@
             position: relative;
             z-index: 0;
 
+            @media only screen and (max-width: $bp-small) {
+                justify-content: center;
+            }
+
             &__search-area {
                 height: 100%;
                 display: flex;
                 align-items: center;
                 padding-right: 1rem;
-                @media only screen and (max-width: $bp-small) {
-                    display: none;
-                }
+             
             }
             &__nav {
                 display: flex;
@@ -210,7 +223,6 @@
                             color: $color-supporting-light;
                             font-weight: 700;
                         }
-               
 
                         &.active {
                             color: $color-supporting-light !important;
@@ -220,7 +232,7 @@
                                 content: "";
                                 position: absolute;
                                 bottom: 0;
-                                
+
                                 left: 50%;
                                 width: 1.2rem;
                                 height: 1.2rem;
@@ -229,11 +241,9 @@
                                 border-top: 1px solid $color-grey-light-2;
                                 z-index: 20;
                                 transform: rotate(45deg) translateX(-50%);
-                                animation-delay: .2s;
+                                animation-delay: 0.2s;
                                 animation: fadeIn;
                             }
-
-                           
                         }
                     }
                 }
@@ -533,3 +543,4 @@
         z-index: -1;
     }
 }
+

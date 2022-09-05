@@ -23,13 +23,18 @@
     </form>
 
 
-    <!-- Header -->
+    <!-- Header (Main Nav) -->
     <?php $headerClasses = renderHeaderClasses(); ?>
     <header class="header <?php echo $headerClasses; ?>" id="header">
         <?php get_template_part('template-parts/nav/content', 'nav-main'); ?>
     </header>
     <div class="nav-backdrop"></div>
-    
+
+    <!-- Cruise Nav -->
+    <?php if (get_post_type() == 'rfc_cruises') :
+        get_template_part('template-parts/nav/secondary/content', 'nav-cruise');
+    endif; ?>
+
     <!-- Itinerary Nav -->
     <?php if (get_post_type() == 'rfc_itineraries') :
         get_template_part('template-parts/nav/secondary/content', 'nav-itinerary');
@@ -40,10 +45,3 @@
     if (is_page_template('template-destinations-destination.php') || is_page_template('template-destinations-cruise.php') || is_page_template('template-destinations-region.php')) :
         get_template_part('template-parts/nav/secondary/content', 'nav-destination');
     endif; ?>
-
-    <!-- Cruise Nav -->
-    <?php if (get_post_type() == 'rfc_cruises') :
-        get_template_part('template-parts/nav/secondary/content', 'nav-cruise');
-    endif; ?>
-
-   

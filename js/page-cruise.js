@@ -41,7 +41,12 @@ jQuery(document).ready(function ($) {
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
-        },
+        }
+    });
+
+    const counter = document.querySelector('.cruise-hero__bg-slider__count');
+    heroMobileSlider.on('slideChange', function (swiper) {
+        counter.innerHTML = (swiper.realIndex + 1) + ' / ' + (swiper.slides.length  - 2);
     });
 
 

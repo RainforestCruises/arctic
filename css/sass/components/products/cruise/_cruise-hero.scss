@@ -10,7 +10,7 @@
 
     @media only screen and (max-width: $bp-large) {
         height: auto;
-        //margin-top: 7rem;
+        margin-top: 7rem;
     }
 
     // desktop hero
@@ -107,11 +107,12 @@
         }
     }
 
-    // mobile hero bg slider
+    // mobile hero slider
     &__bg-slider {
         display: none;
         height: 100%;
         width: 100%;
+        position: relative;
 
         @media only screen and (max-width: $bp-large) {
             display: block;
@@ -127,6 +128,27 @@
                 width: 100%;
                 object-fit: cover;
             }
+        }
+
+        // &__button-prev {
+        //     left: 20px;
+        // }
+
+        // &__button-next {
+        //     right: 20px;
+        // }
+
+        &__count {
+            position: absolute;
+            bottom: 2rem;
+            right: 3rem;
+            color: $color-white;
+            background-color: rgba($color-black, .5);
+            font-size: 1.3rem;
+            font-weight: 600;
+            z-index: 10;
+            padding: .8rem 1.6rem;
+            border-radius: 1rem;
         }
     }
 
@@ -420,6 +442,7 @@
 
 // Components ----------------------------
 
+// Starting Price / CTA Mobile
 .mobile-info {
     display: none;
     justify-content: space-between;
@@ -433,7 +456,7 @@
     left: 0;
     width: 100%;
     z-index: 150;
-    background-color: $color-grey-light-1;
+    background-color: $color-white;
 
     @media only screen and (max-width: $bp-large) {
         display: flex;
@@ -443,6 +466,7 @@
         display: flex;
         align-items: center;
         position: relative;
+
 
         &__title-area {
             color: $color-primary;
@@ -462,6 +486,7 @@
                 font-size: 1.4rem;
                 line-height: 1.4rem;
                 font-weight: 700;
+                white-space: nowrap;
             }
         }
 
@@ -470,7 +495,7 @@
             padding-left: 1.3rem;
             font-size: 3rem;
             font-weight: 500;
-
+            white-space: nowrap;
             & span {
                 transform: translateX(-1rem);
                 color: $color-primary;

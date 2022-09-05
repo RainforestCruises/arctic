@@ -75,7 +75,11 @@ jQuery(document).ready(function ($) {
     function () { //hover-over
       console.log('hover');
       navMain.classList.add('active');
-      navBackdrop.classList.add('active');
+      if (window.innerWidth > 1000) {
+        navBackdrop.classList.add('active');
+      }
+
+
     },
 
     function () { //hover-out
@@ -99,7 +103,6 @@ jQuery(document).ready(function ($) {
     function () { //over
 
       navMega.classList.add('active');
-      navBackdrop.classList.add('active');
       navMain.classList.add('active');
       navMain.classList.add('mega-active');
 

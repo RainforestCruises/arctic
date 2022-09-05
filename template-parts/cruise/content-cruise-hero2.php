@@ -17,7 +17,7 @@ $images = get_field('hero_gallery');
         <img <?php afloat_image_markup($hero_image['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
     </div>
 
-    <!-- Gallery -->
+    <!-- Desktop Gallery -->
     <div class="cruise-hero__gallery">
 
         <!-- Nav -->
@@ -71,7 +71,11 @@ $images = get_field('hero_gallery');
                     </a>
             <?php endforeach;
             endif; ?>
-
+        </div>
+        <div class="swiper-button-prev cruise-hero__bg-slider__button-prev"></div>
+        <div class="swiper-button-next cruise-hero__bg-slider__button-next"></div>
+        <div class="cruise-hero__bg-slider__count">
+            <?php echo '1 / ' . (count($images) + 1)?>
         </div>
     </div>
 
