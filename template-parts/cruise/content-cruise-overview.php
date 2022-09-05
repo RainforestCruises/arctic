@@ -20,7 +20,7 @@ $cruise_data = $args['cruiseData'];
 
                 <!-- Highlights -->
                 <div class="cruise-overview__content__grid__overview__highlights">
-                    <h3 class="title-single">Overview</h3>
+                    <h3 class="title-single">Highlights</h3>
                     <ul class="cruise-overview__content__grid__overview__highlights__list">
                         <?php if (have_rows('highlights')) : ?>
                             <?php while (have_rows('highlights')) : the_row(); ?>

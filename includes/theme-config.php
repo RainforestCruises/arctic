@@ -55,9 +55,7 @@ function afloat_images_sizes()
     add_image_size('featured-small', 400, 260, true);
     add_image_size('featured-square', 600, 500, true);
 
-    //square
-    add_image_size('square-medium', 500, 500, true);
-    add_image_size('square-small', 325, 325, true);
+
 
     //NEW
     add_image_size('landscape-large', 1920, 1080, true);
@@ -69,7 +67,8 @@ function afloat_images_sizes()
     add_image_size('portrait-medium', 640, 480, true);
     add_image_size('portrait-small', 440, 330, true);
 
-    
+    add_image_size('square-medium', 500, 500, true);
+    add_image_size('square-small', 325, 325, true);
 }
 
 add_filter('image_size_names_choose', 'afloat_images_sizes_add');
@@ -89,21 +88,22 @@ function afloat_images_sizes_add($sizes)
 //Variable Additions
 
 //Add this-- 2022/23
-add_action( 'rank_math/vars/register_extra_replacements', function(){
+add_action('rank_math/vars/register_extra_replacements', function () {
     rank_math_register_var_replacement(
-            'seo_years',
-            [
-                    'name'        => esc_html__( 'SEO Years', 'rank-math' ),
-                    'description' => esc_html__( 'This year / next year', 'rank-math' ),
-                    'variable'    => 'seo_years',
-                    'example'     => date("Y") . "/" . date('y', strtotime('+1 year')),
-            ],
-            'shortcode_rankmath_years'
-            );
+        'seo_years',
+        [
+            'name'        => esc_html__('SEO Years', 'rank-math'),
+            'description' => esc_html__('This year / next year', 'rank-math'),
+            'variable'    => 'seo_years',
+            'example'     => date("Y") . "/" . date('y', strtotime('+1 year')),
+        ],
+        'shortcode_rankmath_years'
+    );
 });
 
-function shortcode_rankmath_years(){
-	return date("Y") . "/" . date('y', strtotime('+1 year')); /* FIELD FROM OPTIONS PAGE */
+function shortcode_rankmath_years()
+{
+    return date("Y") . "/" . date('y', strtotime('+1 year')); /* FIELD FROM OPTIONS PAGE */
 }
 
 
@@ -114,7 +114,7 @@ function shortcode_rankmath_years(){
  *
  * @param boolean $unsigned Enable cache or not, defaults to true
  */
-add_filter( 'rank_math/sitemap/enable_caching', '__return_false');
+add_filter('rank_math/sitemap/enable_caching', '__return_false');
 
 
 //Removes P tags on blog posts
@@ -201,36 +201,40 @@ add_action('wp_before_admin_bar_render', 'mytheme_admin_bar_render');
 
 
 //PASSIVE LISTENER FIX ------------
-function wp_dereg_script_comment_reply(){wp_deregister_script( 'comment-reply' );}
-add_action('init','wp_dereg_script_comment_reply');
+function wp_dereg_script_comment_reply()
+{
+    wp_deregister_script('comment-reply');
+}
+add_action('init', 'wp_dereg_script_comment_reply');
 
 add_action('wp_head', 'wp_reload_script_comment_reply');
-function wp_reload_script_comment_reply() {
-    ?>
-<script>
-//Function checks if a given script is already loaded
-function isScriptLoaded(src){
-    return document.querySelector('script[src="' + src + '"]') ? true : false;
-}
-//When a reply link is clicked, check if reply-script is loaded. If not, load it and emulate the click
-document.getElementsByClassName("comment-reply-link").onclick = function() { 
-    if(!(isScriptLoaded("/wp-includes/js/comment-reply.min.js"))){
-        var script = document.createElement('script');
-        script.src = "/wp-includes/js/comment-reply.min.js"; 
-    script.onload = emRepClick($(this).attr('data-commentid'));        
-        document.head.appendChild(script);
-    } 
-}
-//Function waits 50 ms before it emulates a click on the relevant reply link now that the reply script is loaded
-function emRepClick(comId) {
-sleep(50).then(() => {
-document.querySelectorAll('[data-commentid="'+comId+'"]')[0].dispatchEvent(new Event('click'));
-});
-}
-//Function does nothing, for a given amount of time
-function sleep (time) {
-  return new Promise((resolve) => setTimeout(resolve, time));
-}
-</script>
-    <?php
+function wp_reload_script_comment_reply()
+{
+?>
+    <script>
+        //Function checks if a given script is already loaded
+        function isScriptLoaded(src) {
+            return document.querySelector('script[src="' + src + '"]') ? true : false;
+        }
+        //When a reply link is clicked, check if reply-script is loaded. If not, load it and emulate the click
+        document.getElementsByClassName("comment-reply-link").onclick = function() {
+            if (!(isScriptLoaded("/wp-includes/js/comment-reply.min.js"))) {
+                var script = document.createElement('script');
+                script.src = "/wp-includes/js/comment-reply.min.js";
+                script.onload = emRepClick($(this).attr('data-commentid'));
+                document.head.appendChild(script);
+            }
+        }
+        //Function waits 50 ms before it emulates a click on the relevant reply link now that the reply script is loaded
+        function emRepClick(comId) {
+            sleep(50).then(() => {
+                document.querySelectorAll('[data-commentid="' + comId + '"]')[0].dispatchEvent(new Event('click'));
+            });
+        }
+        //Function does nothing, for a given amount of time
+        function sleep(time) {
+            return new Promise((resolve) => setTimeout(resolve, time));
+        }
+    </script>
+<?php
 }

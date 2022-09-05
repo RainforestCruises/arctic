@@ -10,6 +10,13 @@
         max-width: $page-width;
         @include flexPadding;
 
+        @media only screen and (max-width: $bp-large) {
+            margin-top: 3rem;
+        }
+        @media only screen and (max-width: $bp-medium) {
+            margin-top: 0rem;
+        }
+
         &__grid {
             width: 100%;
             display: grid;
@@ -33,6 +40,14 @@
 
                 &__highlights {
                     padding-bottom: 1.5rem;
+
+                    @media only screen and (max-width: $bp-medium) {
+                        & .title-single {
+                            display: none;
+                        }
+                    }
+
+                   
 
                     &__list {
                         list-style: none;

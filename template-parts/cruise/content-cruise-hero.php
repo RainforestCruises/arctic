@@ -6,7 +6,7 @@ $breadcrumb = get_field('breadcrumb');
 
 
 $itineraryCount = count($args['cruise_data']['Itineraries']);
-$images = get_field('highlight_gallery');
+$images = get_field('hero_gallery');
 
 ?>
 
@@ -15,6 +15,29 @@ $images = get_field('highlight_gallery');
     <div class="product-hero__content">
 
         <!-- Top Section -->
+
+        <div class="product-hero__content__top-slider swiper" id="hero-bg-slider">
+            <div class="swiper-wrapper">
+                <div class="product-hero__content__top-slider__item swiper-slide">
+                    <a href="<?php echo esc_url($hero_image['url']); ?>" title="test title" class="product-hero__content__top-slider__item__link">
+                        <img <?php afloat_image_markup($hero_image['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
+                    </a>
+                </div>
+                <?php
+                if ($images) :
+                    foreach ($images as $image) : ?>
+                        <div class="product-hero__content__top-slider__item swiper-slide">
+                            <a href="<?php echo esc_url($image['url']); ?>" title="test title" class="product-hero__content__top-slider__item__link">
+                                <img <?php afloat_image_markup($image['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
+                            </a>
+                        </div>
+                <?php endforeach;
+                endif; ?>
+
+            </div>
+        </div>
+
+        <!-- Top Desktop -->
         <div class="product-hero__content__top">
             <div class="product-hero__content__top__bg" id="top">
                 <img <?php afloat_image_markup($hero_image['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
@@ -78,7 +101,7 @@ $images = get_field('highlight_gallery');
                             <li class="product-hero__content__top__content__nav__list__item">
                                 <a href="#itineraries" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Itineraries</a>
                             </li>
-                        
+
                             <li class="product-hero__content__top__content__nav__list__item ">
                                 <a href="#reviews" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Reviews</a>
                             </li>
@@ -98,30 +121,44 @@ $images = get_field('highlight_gallery');
                         </button>
                     </div>
                 </div>
-                <!-- Mobile - Expand Gallery Button-->
-                <?php if ($images) : ?>
-                    <div class="product-hero__content__top__content__gallery-expand" id="gallery-expand-button">
-                        Photos
-                    </div>
-                <?php endif; ?>
+
             </div>
         </div>
 
         <!-- Gallery  -->
         <div class="product-hero__content__gallery">
 
-            <div class="product-hero__content__gallery__slick" id="hero-gallery">
-                <?php
+            <div class="product-hero__content__gallery__nav">
+                <!-- Prev -->
+                <div class="hero-gallery-slider-prev btn-swiper-blur btn-swiper-blur__prev">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                    </svg>
+                </div>
+                <!-- Next -->
+                <div class="hero-gallery-slider-next btn-swiper-blur btn-swiper-blur__next">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                    </svg>
+                </div>
+            </div>
 
-                if ($images) : ?>
-                    <?php foreach ($images as $image) : ?>
-                        <div class="product-hero__content__gallery__slick__item">
-                            <a href="<?php echo esc_url($image['url']); ?>">
-                                <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
-                            </a>
-                        </div>
-                    <?php endforeach; ?>
-                <?php endif; ?>
+            <div class="product-hero__content__gallery__slider swiper" id="hero-gallery">
+                <div class="swiper-wrapper">
+                    <?php
+                    if ($images) :
+                        foreach ($images as $image) : ?>
+                            <div class="product-hero__content__gallery__slider__item swiper-slide">
+                                <a href="<?php echo esc_url($image['url']); ?>" title="test title" class="product-hero__content__gallery__slider__item__link">
+                                    <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
+                                </a>
+                            </div>
+                    <?php endforeach;
+                    endif; ?>
+                </div>
+
+
+
             </div>
         </div>
 
@@ -130,7 +167,7 @@ $images = get_field('highlight_gallery');
 
             <!-- Info Area -->
             <div class="product-hero__content__bottom__content">
-                <div class="product-hero__content__bottom__content__info-group">
+                <div class="product-hero__content__bottom__content__info-group" id="info-group">
 
                     <!-- Starting Price -->
                     <div class="product-hero__content__bottom__content__info-group__info" id="page-title">
@@ -168,13 +205,12 @@ $images = get_field('highlight_gallery');
 
                         <!-- Itineraries -->
                         <div class="product-hero__content__bottom__content__info-group__attributes__item">
-                            <div class="product-hero__content__bottom__content__info-group__attributes__item__data">
-                                <div class="product-hero__content__bottom__content__info-group__attributes__item__data__icon">
+                                <div class="product-hero__content__bottom__content__info-group__attributes__item__icon">
                                     <svg>
                                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-m-time"></use>
                                     </svg>
                                 </div>
-                                <div class="product-hero__content__bottom__content__info-group__attributes__item__data__text">
+                                <div class="product-hero__content__bottom__content__info-group__attributes__item__text">
                                     <div class="sub-attribute">
                                         <?php echo $itineraryCount ?> Itineraries
                                     </div>
@@ -183,47 +219,42 @@ $images = get_field('highlight_gallery');
 
                                 </div>
 
-                            </div>
                         </div>
 
 
                         <!-- Capacity icon-pin-3 -->
-                        <div class="product-hero__content__bottom__content__info-group__attributes__item nomargin-attributes">
+                        <div class="product-hero__content__bottom__content__info-group__attributes__item">
 
-                            <div class="product-hero__content__bottom__content__info-group__attributes__item__data">
-
-                                <div class="product-hero__content__bottom__content__info-group__attributes__item__data__icon">
+                                <div class="product-hero__content__bottom__content__info-group__attributes__item__icon">
                                     <svg>
                                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat-front"></use>
                                     </svg>
                                 </div>
-                                <div class="product-hero__content__bottom__content__info-group__attributes__item__data__text">
+                                <div class="product-hero__content__bottom__content__info-group__attributes__item__text">
                                     <div class="sub-attribute">
                                         Ship Size
                                     </div>
                                     <?php echo get_field('vessel_capacity', $cruisePost) . ' Guests'; ?>
                                 </div>
 
-                            </div>
+                           
                         </div>
                         <!-- Departing From -->
                         <div class="product-hero__content__bottom__content__info-group__attributes__item">
 
-                            <div class="product-hero__content__bottom__content__info-group__attributes__item__data">
 
-                                <div class="product-hero__content__bottom__content__info-group__attributes__item__data__icon">
+                                <div class="product-hero__content__bottom__content__info-group__attributes__item__icon">
                                     <svg>
                                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-pin-3"></use>
                                     </svg>
                                 </div>
-                                <div class="product-hero__content__bottom__content__info-group__attributes__item__data__text">
+                                <div class="product-hero__content__bottom__content__info-group__attributes__item__text">
                                     <div class="sub-attribute">
                                         Service Level
                                     </div>
                                     Luxury
                                 </div>
 
-                            </div>
                         </div>
 
 
@@ -239,3 +270,32 @@ $images = get_field('highlight_gallery');
 
     </div>
 </section>
+<div class="mobile-info">
+
+    <div class="mobile-info__starting-price">
+        <div class="mobile-info__starting-price__title-area">
+
+            <div class="mobile-info__starting-price__title-area__text">
+                Starting at:
+            </div>
+            <div class="mobile-info__starting-price__title-area__subtext">
+                Per Person
+            </div>
+        </div>
+        <div class="mobile-info__starting-price__amount">
+            <?php echo "$" . number_format($args['lowestPrice'], 0); ?>
+            <span class="u-small-text">USD</span>
+        </div>
+
+    </div>
+
+    <!-- Inquire CTA Button -->
+    <div class="mobile-info__cta">
+        <button class="cta-primary  " id="nav-page-cta">
+            Inquire
+            <svg>
+                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>
+            </svg>
+        </button>
+    </div>
+</div>

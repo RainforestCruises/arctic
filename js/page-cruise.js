@@ -3,6 +3,8 @@ jQuery(document).ready(function ($) {
     var currentYear = new Date().getFullYear();
     var body = $('body');
 
+
+
     //Panels --------------------------------------------
     //expand/hide
     $(".outline-panel__heading").on("click", function (e) {
@@ -14,30 +16,34 @@ jQuery(document).ready(function ($) {
 
 
 
-
-    //Slick Sliders --------------------------------------------
-    //--Hero Gallery
-    $('#hero-gallery').slick({
-        infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        lazyLoad: 'ondemand',
-        initialSlide: 0,
-        focusOnSelect: true,
-        arrows: true,
-        prevArrow: '<button class="btn-scroll-overlay btn-scroll-overlay--left btn-gallery-top__left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-        nextArrow: '<button class="btn-scroll-overlay btn-gallery-top__right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-        responsive: [
-            {
-                breakpoint: 1375,
-                settings: {
-                    slidesToShow: 2,
-
-
-                }
+    // Swiper Sliders -------------------
+    // hero desktop
+    const heroDesktopSlider = new Swiper('#hero-desktop-slider', {
+        loop: true,
+        spaceBetween: 5,
+        slidesPerView: 2,
+        navigation: {
+            nextEl: '.hero-gallery-slider-next',
+            prevEl: '.hero-gallery-slider-prev',
+        },
+        breakpoints: {
+            1280: {
+                slidesPerView: 3,
             }
-        ],
+        }
     });
+
+    // hero mobile
+    const heroMobileSlider = new Swiper('#hero-mobile-slider', {
+        loop: true,
+        draggable: true,
+        slidesPerView: 1,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
 
 
     //Cabins Slider
@@ -75,9 +81,8 @@ jQuery(document).ready(function ($) {
         dots: true,
         prevArrow: '<button class="btn-scroll-overlay btn-scroll-overlay--left resource-card__image-area__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
         nextArrow: '<button class="btn-scroll-overlay resource-card__image-area__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-        
-    });
 
+    });
 
 
     //itineraries-slider
@@ -115,7 +120,6 @@ jQuery(document).ready(function ($) {
             }
         ]
     });
-
 
     //departures slider
     $('#departures-slider').slick({
@@ -182,9 +186,9 @@ jQuery(document).ready(function ($) {
 
 
     //Magnific Popups ---------------------------------------------------------------------------
-    //--Product Gallery
-    $('#product-gallery').magnificPopup({
-        delegate: '.slick-slide:not(.slick-cloned) .product-hero__content__gallery__slick__item a',
+    //Desktop Slider
+    $('#hero-desktop-slider').magnificPopup({
+        delegate: '.swiper-slide:not(.swiper-slide-duplicate) .cruise-hero__gallery__slider__item__link',
         type: 'image',
         navigateByImgClick: true,
         gallery: {
@@ -193,44 +197,25 @@ jQuery(document).ready(function ($) {
             preload: [0, 1] // Will preload 0 - before current, and 1 after 
         }
     });
-    //--Product Gallery Mobile
-    $('#gallery-expand-button').on('click', function () {
-        var gallery = $('#product-gallery');
 
-        $(gallery).magnificPopup({
-            delegate: '.slick-slide:not(.slick-cloned) .product-hero__content__gallery__slick__item a',
-            type: 'image',
-            gallery: {
-                enabled: true,
-                navigateByImgClick: true,
-                preload: [0, 1] // Will preload 0 - before current, and 1 after 
-            }
-        }).magnificPopup('open');
-    });
-
-    //Itinerary Map
-    $('.itinerary-map-image').magnificPopup({
+    //Mobile Slider
+    $('#hero-mobile-slider').magnificPopup({
+        delegate: '.swiper-slide:not(.swiper-slide-duplicate).cruise-hero__bg-slider__slide',
         type: 'image',
+        navigateByImgClick: true,
+        gallery: {
+            enabled: true,
+            navigateByImgClick: true,
+            preload: [0, 1] // Will preload 0 - before current, and 1 after 
+        }
     });
+
     //deckplan
     $('#deckplan-image').magnificPopup({
         type: 'image',
     });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
     //MODALS ---------------------
     //Contact Modal (generic)
     var contactModal = document.getElementById("contactModal");
@@ -303,7 +288,6 @@ jQuery(document).ready(function ($) {
             body.removeClass('no-scroll');
         }
     }
-
 
 
 });

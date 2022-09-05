@@ -87,11 +87,11 @@ while (have_posts()) :
 ?>
 
   <!-- Product Page Container -->
-  <main>
+  <main id="main-content">
 
     <!-- Hero -->
     <?php
-    get_template_part('template-parts/cruise/content', 'cruise-hero', $args);
+    get_template_part('template-parts/cruise/content', 'cruise-hero2', $args);
     ?>
 
     <!-- Overview -->
