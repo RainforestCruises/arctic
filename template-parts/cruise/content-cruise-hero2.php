@@ -42,17 +42,14 @@ $images = get_field('hero_gallery');
                 <?php
                 if ($images) :
                     foreach ($images as $image) : ?>
-                        <div class="cruise-hero__gallery__slider__item swiper-slide">
-                            <a href="<?php echo esc_url($image['url']); ?>" title="test title" class="cruise-hero__gallery__slider__item__link">
-                                <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
-                            </a>
+                        <div class="cruise-hero__gallery__slider__item swiper-slide" imageId="<?php echo $image['id']; ?>">
+                            <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
                         </div>
                 <?php endforeach;
                 endif; ?>
             </div>
         </div>
     </div>
-
 
 
     <!-- Mobile Slider BG -->
@@ -75,14 +72,15 @@ $images = get_field('hero_gallery');
         <div class="swiper-button-prev cruise-hero__bg-slider__button-prev"></div>
         <div class="swiper-button-next cruise-hero__bg-slider__button-next"></div>
         <div class="cruise-hero__bg-slider__count">
-            <?php echo '1 / ' . (count($images) + 1)?>
+            <?php echo '1 / ' . (count($images) + 1) ?>
         </div>
     </div>
 
 
-
+    <!-- Hero Content -->
     <div class="cruise-hero__content">
         <div class="cruise-hero__content__main">
+            <!-- Primary (Title + Description) -->
             <div class="cruise-hero__content__main__primary">
                 <div class="cruise-hero__content__main__primary__title">
                     <?php echo $title ?>
@@ -97,14 +95,16 @@ $images = get_field('hero_gallery');
                     <a href="#overview" class="cruise-hero__content__main__primary__nav__link">Reviews</a>
                 </div>
             </div>
+
+            <!-- Secondary (Info + Attributes) -->
             <div class="cruise-hero__content__main__secondary">
 
-                <!-- Starting Price -->
+                <!-- Info -->
                 <div class="cruise-hero__content__main__secondary__info">
 
+                    <!-- Starting Price -->
                     <div class="cruise-hero__content__main__secondary__info__starting-price">
                         <div class="cruise-hero__content__main__secondary__info__starting-price__title-area">
-
                             <div class="cruise-hero__content__main__secondary__info__starting-price__title-area__text">
                                 Starting at:
                             </div>
@@ -116,18 +116,18 @@ $images = get_field('hero_gallery');
                             <?php echo "$" . number_format($args['lowestPrice'], 0); ?>
                             <span class="u-small-text">USD</span>
                         </div>
-
                     </div>
 
                     <!-- Inquire CTA Button -->
                     <div class="cruise-hero__content__main__secondary__info__cta">
-                        <button class="cta-primary  " id="nav-page-cta">
+                        <button class="cta-primary inquire-cta">
                             Inquire
                             <svg>
                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>
                             </svg>
                         </button>
                     </div>
+
                 </div>
 
                 <!-- Attributes -->
@@ -199,7 +199,31 @@ $images = get_field('hero_gallery');
     </div>
 </section>
 
+<!-- Cruise Gallery Modal -->
+<div class="modal" id="cruiseGalleryModal">
+    <div class="modal__content cruise-gallery">
+        <div class="cruise-gallery__top">
+            <button class="btn-text-icon close-modal-button">
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
+                </svg>
+                Close
+            </button>
+            <span>Title</span>
+            <span>Count</span>
+        </div>
+        <div class="cruise-gallery__content">
+            <div class="cruise-gallery__content__main">
+                main image slider
+            </div>
+            <div class="cruise-gallery__content__nav">
+                thumbs image slider
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- Mobile Info -->
 <div class="mobile-info">
 
     <div class="mobile-info__starting-price">
@@ -221,7 +245,7 @@ $images = get_field('hero_gallery');
 
     <!-- Inquire CTA Button -->
     <div class="mobile-info__cta">
-        <button class="cta-primary  " id="nav-page-cta">
+        <button class="cta-primary inquire-cta">
             Inquire
             <svg>
                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>

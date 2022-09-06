@@ -175,11 +175,8 @@ input {
     appearance: none;
 }
 
-// .slick-slider {
-//     display: none;
-
-  
-// }
-// .slick-initialized {
-//     display: block;
-// }
+button {
+    font-family: $font-primary;
+    border: none;
+    cursor: pointer;
+}

@@ -1,7 +1,7 @@
 jQuery(document).ready(function ($) {
     const templateUrl = page_vars.templateUrl;
     var currentYear = new Date().getFullYear();
-    var body = $('body');
+    //var body = $('body');
 
 
 
@@ -46,7 +46,7 @@ jQuery(document).ready(function ($) {
 
     const counter = document.querySelector('.cruise-hero__bg-slider__count');
     heroMobileSlider.on('slideChange', function (swiper) {
-        counter.innerHTML = (swiper.realIndex + 1) + ' / ' + (swiper.slides.length  - 2);
+        counter.innerHTML = (swiper.realIndex + 1) + ' / ' + (swiper.slides.length - 2);
     });
 
 
@@ -190,108 +190,57 @@ jQuery(document).ready(function ($) {
 
 
 
-    //Magnific Popups ---------------------------------------------------------------------------
-    //Desktop Slider
-    $('#hero-desktop-slider').magnificPopup({
-        delegate: '.swiper-slide:not(.swiper-slide-duplicate) .cruise-hero__gallery__slider__item__link',
-        type: 'image',
-        navigateByImgClick: true,
-        gallery: {
-            enabled: true,
-            navigateByImgClick: true,
-            preload: [0, 1] // Will preload 0 - before current, and 1 after 
-        }
-    });
 
-    //Mobile Slider
-    $('#hero-mobile-slider').magnificPopup({
-        delegate: '.swiper-slide:not(.swiper-slide-duplicate).cruise-hero__bg-slider__slide',
-        type: 'image',
-        navigateByImgClick: true,
-        gallery: {
-            enabled: true,
-            navigateByImgClick: true,
-            preload: [0, 1] // Will preload 0 - before current, and 1 after 
-        }
-    });
-
-    //deckplan
-    $('#deckplan-image').magnificPopup({
-        type: 'image',
-    });
 
 
     //MODALS ---------------------
-    //Contact Modal (generic)
-    var contactModal = document.getElementById("contactModal");
-    var departureFormText = document.getElementById("contactModalDepartureText");
+    const body = document.getElementById("body");
 
-    var dealsModal = document.getElementById("dealsModal");
-
-
-    //Deals Slider
-    $('.deal-modal-cta-button').on('click', () => {
-        dealsModal.classList.add('active');
-        $('#deals-slider')[0].slick.setPosition()
-    });
-
-    //Activate contact modal (generic)
-    $('#nav-secondary-cta, #nav-page-cta').on('click', () => {
-        body.addClass('no-scroll');
-        contactModal.style.display = "flex";
-        departureFormText.style.display = "none"; //not departure specific
-    });
-
-
-    //Price Notes Modal
-    var priceNotesModal = document.getElementById("page-modal");
-
-
-    //Activate Price Notes
-    const priceNoteButtons = [...document.querySelectorAll('.price-notes')];
-    priceNoteButtons.forEach(item => {
+    //Inquire
+    const inquireCtaButtons = [...document.querySelectorAll('.inquire-cta')];
+    const inquireModal = document.getElementById("inquireModal");
+    inquireCtaButtons.forEach(item => {
         item.addEventListener('click', () => {
-            body.addClass('no-scroll');
-            priceNotesModal.classList.add('active');
+            inquireModal.style.display = 'flex';
+            body.classList.add('no-scroll');
         });
     })
 
-    //Notification Modal (doesnt need open)
-    var notificationModal = document.getElementById("notification-modal");
-
-    //Close modals
-    //Buttons
-    $('.close-button, #notification-close-cta').on('click', () => {
-        contactModal.style.display = "none";
-        body.removeClass('no-scroll');
-        if (priceNotesModal) {
-            priceNotesModal.classList.remove('active');
-        }
-        if (notificationModal) {
-            notificationModal.classList.remove('active');
-        }
-    });
+    //Hero Gallery
+    const heroGalleryImages = [...document.querySelectorAll('.cruise-hero__gallery__slider__item')];
+    const cruiseGalleryModal = document.getElementById("cruiseGalleryModal");
+    heroGalleryImages.forEach(item => {
+        item.addEventListener('click', () => {
+            cruiseGalleryModal.style.display = 'flex';      
+            body.classList.add('no-scroll');
+        });
+    })
 
 
-    //Background Click
-    window.onclick = function (event) { //trigger by background click
-        if (event.target == contactModal) {
-            contactModal.style.display = "none";
-            body.removeClass('no-scroll');
-        }
-        if (event.target == priceNotesModal) {
-            priceNotesModal.classList.remove('active');
-            body.removeClass('no-scroll');
-        }
-        if (event.target == notificationModal) {
-            notificationModal.classList.remove('active');
-            body.removeClass('no-scroll');
-        }
 
-        if (event.target == dealsModal) {
-            dealsModal.classList.remove('active');
-            body.removeClass('no-scroll');
-        }
+ 
+    // Generic Close Modals (move to global) ------------------------------
+    const closeModalButtons = [...document.querySelectorAll('.close-modal-button')]; 
+    closeModalButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            closeModals();          
+        });
+    })
+
+    const allModals = [...document.querySelectorAll('.modal')];
+    window.onclick = function (event) { 
+        allModals.forEach(modal => {
+            if (event.target == modal) {
+                closeModals();
+            }
+        })
+    }
+
+    function closeModals() {
+        allModals.forEach(modal => {
+            modal.style.display = 'none';
+        })
+        body.classList.remove('no-scroll');
     }
 
 

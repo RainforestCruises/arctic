@@ -8,7 +8,7 @@
 @import "base/utilities";
 @import "base/buttons";
 
-@import "base/popups";
+@import "base/modal";
 @import "base/tabs";
 @import "base/selection-controls";
 
@@ -56,6 +56,7 @@
 @import "components/products/cruise/cruise-areas";
 @import "components/products/cruise/cruise-hero";
 
+@import "components/products/cruise/cruise-gallery";
 
 
 
@@ -130,6 +131,7 @@
 @import "components/shared/newsletter";
 @import "components/shared/contact";
 @import "components/shared/slider-block";
+@import "components/shared/inquire-form";
 
 //header / footer
 @import "layout/header";

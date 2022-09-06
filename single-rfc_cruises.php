@@ -20,7 +20,7 @@ while (have_posts()) :
 
   $cruise_data = get_field('cruise_data');
   $itinerary_data = $cruise_data['Itineraries'];
-
+  $productName = get_the_title();
 
   //Time Variables
   $currentYear = date("Y");
@@ -64,6 +64,7 @@ while (have_posts()) :
 
 
   $args = array(
+    'productName' => $productName,
     'lowestPrice' => $lowestPrice,
     'cruise_data' => $cruise_data,
     'itinerary_data' => $itinerary_data,
@@ -137,32 +138,12 @@ while (have_posts()) :
   </main>
 
 
-
-
-  <!-- Deals Modal -->
+  <!-- Inquire Modal -->
   <?php
-  if ($hasDeals == true) {
-    get_template_part('template-parts/product/content', 'product-deals-modal', $args);
-  }
+  get_template_part('template-parts/shared/content', 'shared-inquire-modal', $args);
   ?>
 
-  <!-- Contact Modal -->
-  <?php
-  get_template_part('template-parts/product/content', 'shared-contact-modal', $args);
-  ?>
 
-  <!-- Prices Extra -->
-  <?php
-  get_template_part('template-parts/product/content', 'product-prices-extra', $args);
-  ?>
-
-  <!-- Notification Message-->
-  <?php
-  $show_notification = get_field('show_notification');
-  if ($show_notification) :
-    get_template_part('template-parts/product/content', 'product-notification', $args);
-  endif;
-  ?>
 
 
 <?php

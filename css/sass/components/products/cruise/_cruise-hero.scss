@@ -47,7 +47,7 @@
             z-index: 2;
         }
     }
-
+    // desktop hero gallery container
     &__gallery {
         position: absolute;
         bottom: 2rem;
@@ -88,20 +88,15 @@
                 width: 100%;
                 padding: 1rem 0;
                 padding-right: 1rem;
+                cursor: pointer;
 
-                &__link {
-                    // link wrapper
+                & img {
                     height: 100%;
                     width: 100%;
-
-                    & img {
-                        height: 100%;
-                        width: 100%;
-                        object-fit: cover;
-                        border-radius: 1rem;
-                        overflow: hidden;
-                        box-shadow: $shadow-short-bottom;
-                    }
+                    object-fit: cover;
+                    border-radius: 1rem;
+                    overflow: hidden;
+                    box-shadow: $shadow-short-bottom;
                 }
             }
         }
@@ -129,14 +124,6 @@
                 object-fit: cover;
             }
         }
-
-        // &__button-prev {
-        //     left: 20px;
-        // }
-
-        // &__button-next {
-        //     right: 20px;
-        // }
 
         &__count {
             position: absolute;

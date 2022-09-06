@@ -148,6 +148,7 @@
             &__logo-area {
                 & img {
                     transition: all 0.2s;
+                    transform: translateY(2px);
                     filter: brightness(0) invert(1);
                     height: 4.5rem;
                     width: auto;
