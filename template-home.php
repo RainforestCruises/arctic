@@ -29,12 +29,12 @@ get_template_part('template-parts/home/content', 'home-hero');
   <main>
 
 
-    <!-- Newest Cruises  -->
+    <!-- Itineraries  -->
     <?php
     get_template_part('template-parts/home/content', 'home-itineraries');
     ?>
 
-    <!-- Newest Cruises  -->
+    <!-- Cruises  -->
     <?php
     get_template_part('template-parts/home/content', 'home-cruises');
     ?>

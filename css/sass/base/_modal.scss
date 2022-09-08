@@ -15,7 +15,12 @@
     animation: fadein 0.2s;
     display: none;
 
-    @media only screen and (max-width: $bp-small) {
+    &--gallery {
+        background-color: rgba($color-black, 0.95);
+        padding: 0;
+    }
+
+    @media only screen and (max-width: $bp-medium) {
         padding: 0rem;
     }
 

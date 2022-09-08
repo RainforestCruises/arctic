@@ -3,9 +3,8 @@ $newest_ships = get_field('newest_ships');
 ?>
 
 
-<div class="slider-block">
+<section class="slider-block">
     <div class="slider-block__content">
-
 
         <!-- Top - Title/Nav -->
         <div class="slider-block__content__top">
@@ -20,18 +19,8 @@ $newest_ships = get_field('newest_ships');
             <!-- Nav Buttons -->
             <div class="slider-block__content__top__nav">
 
-                <!-- Prev -->
-                <div class="cruises-slider-btn-prev btn-swiper btn-swiper__prev">
-                    <svg>
-                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                    </svg>
-                </div>
-                <!-- Next -->
-                <div class="cruises-slider-btn-next btn-swiper btn-swiper__next">
-                    <svg>
-                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                    </svg>
-                </div>
+                <div class="swiper-button-prev swiper-button-prev--white-border cruises-slider-btn-prev"></div>
+                <div class="swiper-button-next swiper-button-next--white-border cruises-slider-btn-next"></div>
 
             </div>
         </div>
@@ -43,18 +32,27 @@ $newest_ships = get_field('newest_ships');
             <div class="swiper" id="cruises-slider">
                 <div class="swiper-wrapper">
 
-                    <?php foreach ($newest_ships as $ship) :
-                        $image =  get_field('hero_image_portrait', $ship);
+                    <?php 
+                    $index = 0;
+                    foreach ($newest_ships as $ship) :
+                        $images =  get_field('hero_gallery', $ship);
                         $title = get_the_title($ship);
                         $link = get_the_permalink($ship);
                     ?>
 
                         <!-- Overlay Card -->
-                        <a class="overlay-card swiper-slide" href="<?php echo $link; ?>">
-                            <div class="overlay-card__image-area">
-                                <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
+                        <div class="overlay-card swiper-slide">
+                            <div class="overlay-card__image-area swiper cruise-card-image-area cruise-card-image-area-<?php echo $index ?>">
+                                <div class="swiper-wrapper">
+                                    <?php foreach ($images as $image) : ?>
+                                        <div class="overlay-card__image-area__item swiper-slide">
+                                            <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+
                             </div>
-                            <div class="overlay-card__content">
+                            <a class="overlay-card__content" href="<?php echo $link; ?>">
                                 <div class="overlay-card__content__title-section">
                                     <div class="overlay-card__content__title-section__sub">
                                         $2995 Per Person
@@ -64,14 +62,15 @@ $newest_ships = get_field('newest_ships');
                                     </div>
                                 </div>
                                 <div class="overlay-card__content__cta">
-                                    <button class="cta-primary cta-primary--white">
-                                        View Details
-                                    </button>
+                                   
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                            <div class="swiper-pagination cruise-card-image-area-pagination-<?php echo $index ?>"></div>
+                            <div class="swiper-button-prev swiper-button-prev--white cruise-card-image-area-button-prev-<?php echo $index ?>"></div>
+                            <div class="swiper-button-next swiper-button-next--white cruise-card-image-area-button-next-<?php echo $index ?>"></div>
+                        </div>
 
-                    <?php endforeach; ?>
+                    <?php $index++; endforeach; ?>
                 </div>
             </div>
 
@@ -79,3 +78,4 @@ $newest_ships = get_field('newest_ships');
 
         </div>
     </div>
+</section>

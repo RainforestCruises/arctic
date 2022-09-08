@@ -3,7 +3,7 @@ $itineraries = get_field('itineraries');
 ?>
 
 
-<div class="slider-block">
+<section class="slider-block">
     <div class="slider-block__content">
 
 
@@ -20,18 +20,14 @@ $itineraries = get_field('itineraries');
             <!-- Nav Buttons -->
             <div class="slider-block__content__top__nav">
 
-                <!-- Prev -->
-                <div class="itineraries-slider-btn-prev btn-swiper btn-swiper__prev">
-                    <svg>
-                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                    </svg>
+                <div class="slider-block__content__top__nav">
+
+                    <div class="swiper-button-prev swiper-button-prev--white-border itineraries-slider-btn-prev"></div>
+                    <div class="swiper-button-next swiper-button-next--white-border itineraries-slider-btn-next"></div>
+
                 </div>
-                <!-- Next -->
-                <div class="itineraries-slider-btn-next btn-swiper btn-swiper__next">
-                    <svg>
-                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                    </svg>
-                </div>
+
+                
 
             </div>
         </div>
@@ -63,7 +59,7 @@ $itineraries = get_field('itineraries');
                                         <?php echo $title ?>
                                     </div>
                                 </div>
-                               
+
                             </div>
                         </a>
 
@@ -75,3 +71,4 @@ $itineraries = get_field('itineraries');
 
         </div>
     </div>
+</section>

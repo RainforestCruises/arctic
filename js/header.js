@@ -75,9 +75,9 @@ jQuery(document).ready(function ($) {
     function () { //hover-over
       console.log('hover');
       navMain.classList.add('active');
-      if (window.innerWidth > 1000) {
-        navBackdrop.classList.add('active');
-      }
+      // if (window.innerWidth > 1000) {
+      //   navBackdrop.classList.add('active');
+      // }
 
 
     },
@@ -105,6 +105,7 @@ jQuery(document).ready(function ($) {
       navMega.classList.add('active');
       navMain.classList.add('active');
       navMain.classList.add('mega-active');
+      navBackdrop.classList.add('active');
 
       $('.nav-main__content__center__nav__list__item').removeClass('active');
       this.classList.add('active');

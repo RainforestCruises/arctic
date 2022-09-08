@@ -1,111 +1,172 @@
 <?php
-$cruise_data = $args['cruise_data'];
-$cabins = $cruise_data['CabinDTOs'];
-
+$cabins = $args['cruise_data']['CabinDTOs'];
 $curentYear = date("Y");
 
+console_log($cabins);
+
 ?>
-<section class="cruise-cabins" id="amenities">
-    <div class="cruise-cabins__content">
 
-        <!-- Title -->
-        <div class="title-group">
-            <div class="title-group__title">
-                Cabins
+<section class="slider-block narrow">
+    <div class="slider-block__content">
+
+        <!-- Top - Title/Nav -->
+        <div class="slider-block__content__top">
+
+            <!-- Title -->
+            <div class="slider-block__content__top__title">
+                <div class="title-single">
+                    Cabins
+                </div>
             </div>
-            <div class="title-group__sub">
-                There are <?php echo count($cabins); ?> cabin types available
+
+            <!-- Nav Buttons -->
+            <div class="slider-block__content__top__nav">
+
+                <div class="swiper-button-prev swiper-button-prev--white-border cabins-slider-btn-prev"></div>
+                <div class="swiper-button-next swiper-button-next--white-border cabins-slider-btn-next"></div>
+
             </div>
         </div>
 
-        <!-- Cabins slider -->
-        <div class="cruise-cabins__content__slider" id="cabins-slider">
-            <?php
-            $cabinCount = 0;
-            foreach ($cabins as $cabin) :
-            ?>
+        <!-- Slider Area -->
+        <div class="slider-block__content__slider">
 
-                <!-- Cabin Card -->
-                <a class="resource-card">
+            <!-- Swiper -->
+            <div class="swiper" id="cabins-slider">
+                <div class="swiper-wrapper">
 
-                    <!-- Images Slider -->
-                    <div class="resource-card__image-area">
 
-                        <!-- Image from DF -->
-                        <?php
-                        $cabinImages = $cabin['ImageDTOs'];
-                        foreach ($cabinImages as $cabinImage) : ?>
+                    <?php
+                    $index = 0;
+                    foreach ($cabins as $cabin) : ?>
 
-                            <img src="<?php echo afloat_dfcloud_image($cabinImage['ImageUrl']); ?>" alt="<?php echo esc_html($cabinImage['AltText']); ?>">
+                        <!-- Cabin Card -->
+                        <div class="resource-card swiper-slide">
 
-                        <?php endforeach; ?>
+                            <!-- Images Slider -->
+                            <div class="resource-card__image-area swiper cabin-card-image-area">
+                                <div class="swiper-wrapper">
+                                    <!-- Image from DF -->
+                                    <?php
+                                    $cabinImages = $cabin['ImageDTOs'];
+                                    foreach ($cabinImages as $cabinImage) : ?>
+                                        <div class="resource-card__image-area__item swiper-slide">
+                                            <img src="<?php echo afloat_dfcloud_image($cabinImage['ImageUrl']); ?>" alt="<?php echo esc_html($cabinImage['AltText']); ?>">
 
-                    </div>
+                                        </div>
 
-                    <!-- Content -->
-                    <div class="resource-card__content">
+                                    <?php endforeach; ?>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                                <div class="swiper-button-prev swiper-button-prev--white"></div>
+                                <div class="swiper-button-next swiper-button-prev--white"></div>
 
-                        <!-- Title -->
-                        <div class="resource-card__content__title-group">
-                            <div class="resource-card__content__title-group__title">
-                                <?php echo $cabin['Name']; ?>
                             </div>
-                            <div class="resource-card__content__title-group__sub">
-                                <?php echo getCabinCountDisplay($cabin) ?>
+
+                            <!-- Content -->
+                            <div class="resource-card__content">
+
+                                <!-- Title -->
+                                <div class="resource-card__content__title-group">
+                                    <div class="resource-card__content__title-group__title">
+                                        <?php echo $cabin['Name']; ?>
+                                    </div>
+                                    <div class="resource-card__content__title-group__sub">
+                                        <?php echo getCabinCountDisplay($cabin) ?>
+                                    </div>
+                                </div>
+
+                                <!-- Specs -->
+                                <div class="resource-card__content__specs">
+
+                                    <!-- Guests -->
+                                    <div class="resource-card__content__specs__item">
+                                        <div class="resource-card__content__specs__item__icon">
+                                            <svg>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-profile"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="resource-card__content__specs__item__text">
+                                            <?php echo getOccupancyDisplay($cabin); ?> Guests, <?php echo ($cabin['Beds']); ?> Bed
+                                        </div>
+                                    </div>
+
+                                    <!-- Size -->
+                                    <div class="resource-card__content__specs__item">
+                                        <div class="resource-card__content__specs__item__icon">
+                                            <svg>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-zoom-square"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="resource-card__content__specs__item__text">
+                                            <?php echo ($cabin['Size']); ?>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <!-- Price Group -->
+                                <div class="resource-card__content__price-group">
+                                    <div class="resource-card__content__price-group__amount">
+                                        $2,955
+                                    </div>
+                                    <div class="resource-card__content__price-group__text">
+                                        Per Person
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
 
-                        <!-- Specs -->
-                        <div class="resource-card__content__specs">
-
-                            <!-- Guests -->
-                            <div class="resource-card__content__specs__item">
-                                <div class="resource-card__content__specs__item__icon">
-                                    <svg>
-                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-profile"></use>
-                                    </svg>
-                                </div>
-                                <div class="resource-card__content__specs__item__text">
-                                    <?php echo getOccupancyDisplay($cabin); ?> Guests, <?php echo ($cabin['Beds']); ?> Bed
-                                </div>
-                            </div>
-
-                            <!-- Size -->
-                            <div class="resource-card__content__specs__item">
-                                <div class="resource-card__content__specs__item__icon">
-                                    <svg>
-                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-zoom-square"></use>
-                                    </svg>
-                                </div>
-                                <div class="resource-card__content__specs__item__text">
-                                    <?php echo ($cabin['Size']); ?>
-                                </div>
-                            </div>
-
-                        </div>
 
 
-                        <!-- Price Group -->
-                        <div class="resource-card__content__price-group">
-                            <div class="resource-card__content__price-group__amount">
-                                $2,955
-                            </div>
-                            <div class="resource-card__content__price-group__text">
-                                Per Person
-                            </div>
-                        </div>
-
-
-                    </div>
-                </a>
+                    <?php $index++;
+                    endforeach; ?>
 
 
 
-            <?php endforeach; ?>
+
+
+
+                </div>
+            </div>
+
+
+
         </div>
-
     </div>
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <?php
 function checkDeparturesInYear($year, $departureList)

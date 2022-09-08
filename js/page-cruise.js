@@ -1,23 +1,8 @@
 jQuery(document).ready(function ($) {
-    const templateUrl = page_vars.templateUrl;
-    var currentYear = new Date().getFullYear();
-    //var body = $('body');
 
 
-
-    //Panels --------------------------------------------
-    //expand/hide
-    $(".outline-panel__heading").on("click", function (e) {
-        e.preventDefault();
-        let $this = $(this);
-        $this.parent().find('.outline-panel__content').slideToggle(350);
-        $this.parent().find('.outline-panel__heading').toggleClass('closed');
-    });
-
-
-
-    // Swiper Sliders -------------------
-    // hero desktop
+    // Hero Sliders -------------------
+    // hero desktop slider
     const heroDesktopSlider = new Swiper('#hero-desktop-slider', {
         loop: true,
         spaceBetween: 5,
@@ -32,8 +17,7 @@ jQuery(document).ready(function ($) {
             }
         }
     });
-
-    // hero mobile
+    // hero mobile slider
     const heroMobileSlider = new Swiper('#hero-mobile-slider', {
         loop: true,
         draggable: true,
@@ -43,152 +27,10 @@ jQuery(document).ready(function ($) {
             prevEl: '.swiper-button-prev',
         }
     });
-
     const counter = document.querySelector('.cruise-hero__bg-slider__count');
     heroMobileSlider.on('slideChange', function (swiper) {
         counter.innerHTML = (swiper.realIndex + 1) + ' / ' + (swiper.slides.length - 2);
     });
-
-
-
-    //Cabins Slider
-    $('#cabins-slider').slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        infinite: false,
-        arrows: true,
-        prevArrow: '<button class="btn-scroll btn-scroll--left btn-slider-top__left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-        nextArrow: '<button class="btn-scroll btn-slider-top__right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-        responsive: [
-            {
-                breakpoint: 1000,
-                settings: {
-                    slidesToShow: 2,
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                }
-            }
-        ]
-    });
-
-    //cabin image sliders
-    $('.resource-card__image-area').slick({
-        fade: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        lazyLoad: 'ondemand',
-        focusOnSelect: true,
-        draggable: false,
-        dots: true,
-        prevArrow: '<button class="btn-scroll-overlay btn-scroll-overlay--left resource-card__image-area__btn-left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-        nextArrow: '<button class="btn-scroll-overlay resource-card__image-area__btn-right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-
-    });
-
-
-    //itineraries-slider
-    $('#itineraries-slider, #extras-slider').slick({
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        infinite: true,
-        arrows: true,
-        prevArrow: '<button class="btn-scroll btn-scroll--left btn-slider-top__left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-        nextArrow: '<button class="btn-scroll btn-slider-top__right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-        responsive: [
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                }
-            }
-        ]
-    });
-
-    //related
-    $('#related-slider').slick({
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        infinite: true,
-        arrows: true,
-        prevArrow: '<button class="btn-scroll btn-scroll--left btn-slider-top__left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-        nextArrow: '<button class="btn-scroll btn-slider-top__right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-        responsive: [
-            {
-                breakpoint: 800,
-                settings: {
-                    slidesToShow: 2,
-                }
-            }
-        ]
-    });
-
-    //departures slider
-    $('#departures-slider').slick({
-        slidesToShow: 6,
-        slidesToScroll: 6,
-        infinite: false,
-        arrows: true,
-        prevArrow: '<button class="btn-scroll btn-scroll--left btn-slider-top__left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-        nextArrow: '<button class="btn-scroll btn-slider-top__right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-        responsive: [
-            {
-                breakpoint: 1000,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
-
-                }
-            },
-            {
-                breakpoint: 800,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                }
-            }
-        ]
-    });
-
-
-    //departure filter
-    $(".departure-filter").on('click', function () {
-        var filter = $(this).data('filter');
-        var currentYear = new Date().getFullYear();
-
-        $(".departure-filter").removeClass('active');
-        $(this).addClass('active');
-        $("#departures-slider").slick('slickUnfilter');
-
-        if (filter == currentYear) {
-            $("#departures-slider").slick('slickFilter', 'div:contains("' + (currentYear) + '")');
-        }
-        else if (filter == (currentYear + 1)) {
-            $("#departures-slider").slick('slickFilter', 'div:contains("' + (currentYear + 1) + '")');
-        }
-        else if (filter == (currentYear + 2)) {
-            $("#departures-slider").slick('slickFilter', 'div:contains("' + (currentYear + 2) + '")');
-        }
-        else if (filter == 'all') {
-
-            $("#departures-slider").slick('slickUnfilter');
-        }
-
-    })
-
-
-
 
 
 
@@ -206,42 +48,124 @@ jQuery(document).ready(function ($) {
         });
     })
 
-    //Hero Gallery
+
+    // Fullscreen Gallery Modal
+    const modalGalleryNav = new Swiper("#modal-gallery-nav", {
+        spaceBetween: 10,
+        slidesPerView: 3,
+        freeMode: true,
+        watchSlidesProgress: true,
+        breakpoints: {
+            600: {
+                slidesPerView: 4,
+            }
+        }
+    });
+    const modalGalleryMain = new Swiper("#modal-gallery-main", {
+        spaceBetween: 10,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        thumbs: {
+            swiper: modalGalleryNav,
+        },
+        keyboard: {
+            enabled: true,
+            onlyInViewport: false,
+        },
+    });
+    const counterGallery = document.querySelector('#cruiseGalleryModalCount');
+    const titleGallery = document.querySelector('#cruiseGalleryModalTitle');
+    modalGalleryMain.on('slideChange', function (swiper) {
+        counterGallery.innerHTML = (swiper.realIndex + 1) + ' / ' + (swiper.slides.length);
+
+        const slideDiv = document.querySelector('.cruise-gallery__main__slider__item[slideIndex="' + (swiper.realIndex + 1) + '"]');
+        const slideTitle = slideDiv.getAttribute('title');
+        titleGallery.innerHTML = slideTitle;
+        console.log('sc')
+    });
+
+
+    // Hero Desktop Gallery Images - Click event listeners
     const heroGalleryImages = [...document.querySelectorAll('.cruise-hero__gallery__slider__item')];
     const cruiseGalleryModal = document.getElementById("cruiseGalleryModal");
     heroGalleryImages.forEach(item => {
         item.addEventListener('click', () => {
-            cruiseGalleryModal.style.display = 'flex';      
+            cruiseGalleryModal.style.display = 'flex';
             body.classList.add('no-scroll');
+
+            const imageId = item.getAttribute('imageId');
+            const slideDiv = document.querySelector('.cruise-gallery__main__slider__item[imageId="' + imageId + '"]');
+            const slideIndex = slideDiv.getAttribute('slideIndex');
+
+            modalGalleryMain.update();
+            modalGalleryMain.slideTo(slideIndex - 1, 0);
+        });
+    })
+
+    // Hero Mobile Gallery Images - Click event listeners 
+    const heroMobileGalleryImages = [...document.querySelectorAll('.cruise-hero__bg-slider__slide')];
+    heroMobileGalleryImages.forEach(item => {
+        item.addEventListener('click', () => {
+            cruiseGalleryModal.style.display = 'flex';
+            body.classList.add('no-scroll');
+
+            const imageId = item.getAttribute('imageId');
+            const slideDiv = document.querySelector('.cruise-gallery__main__slider__item[imageId="' + imageId + '"]');
+            const slideIndex = slideDiv.getAttribute('slideIndex');
+
+            modalGalleryMain.slideTo(2, 0)
+            modalGalleryMain.update();
+            modalGalleryMain.slideTo(slideIndex - 1, 0);
         });
     })
 
 
 
- 
-    // Generic Close Modals (move to global) ------------------------------
-    const closeModalButtons = [...document.querySelectorAll('.close-modal-button')]; 
-    closeModalButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            closeModals();          
-        });
-    })
 
-    const allModals = [...document.querySelectorAll('.modal')];
-    window.onclick = function (event) { 
-        allModals.forEach(modal => {
-            if (event.target == modal) {
-                closeModals();
+
+    //Panels --------------------------------------------
+    //expand/hide (move to generic??)
+    $(".outline-panel__heading").on("click", function (e) {
+        e.preventDefault();
+        let $this = $(this);
+        $this.parent().find('.outline-panel__content').slideToggle(350);
+        $this.parent().find('.outline-panel__heading').toggleClass('closed');
+    });
+
+
+    new Swiper('#cabins-slider', {
+        spaceBetween: 15,
+        slidesPerView: 1,
+        navigation: {
+            nextEl: '.cabins-slider-btn-next',
+            prevEl: '.cabins-slider-btn-prev',
+        },
+        breakpoints: {
+            600: {
+                slidesPerView: 2,
+            },
+            800: {
+                slidesPerView: 3,
             }
-        })
-    }
+        }
+    });
 
-    function closeModals() {
-        allModals.forEach(modal => {
-            modal.style.display = 'none';
-        })
-        body.classList.remove('no-scroll');
-    }
-
+    new Swiper('.cabin-card-image-area', {
+        slidesPerView: 1,
+        loop: true,
+        allowTouchMove: false,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            dynamicBullets: true,
+            dynamicMainBullets: 3,
+          },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },         
+    });           
 
 });

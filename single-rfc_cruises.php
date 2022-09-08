@@ -1,153 +1,117 @@
 <?php
 wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', array('jquery'), false, true);
 wp_enqueue_script('page-cruise', get_template_directory_uri() . '/js/page-cruise.js', array('jquery'), false, true);
-$templateUrl = get_template_directory_uri();
-wp_localize_script(
-  'page-cruise',
-  'page_vars',
-  array(
-    'templateUrl' =>  $templateUrl
-  )
-);
+wp_enqueue_script('page-cruise-old', get_template_directory_uri() . '/js/page-cruise-old.js', array('jquery'), false, true);
 
 get_header();
-?>
-
-<?php
-while (have_posts()) :
-  the_post();
 
 
-  $cruise_data = get_field('cruise_data');
-  $itinerary_data = $cruise_data['Itineraries'];
-  $productName = get_the_title();
+$cruise_data = get_field('cruise_data');
+$itinerary_data = $cruise_data['Itineraries'];
+$productName = get_the_title();
 
-  //Time Variables
-  $currentYear = date("Y");
-  $currentMonth = date("m");
-  $years = array($currentYear, ($currentYear + 1), ($currentYear + 2));
-  $months = array("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC");
-  $monthNames = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
-
-
-  $charter_only = get_field('charter_only');
-  $charter_available = get_field('charter_available');
-  $charter_daily_price = 0;
-
-  if (array_key_exists("LowestCharterPrice", $cruise_data)) {
-    $charter_daily_price = $cruise_data['LowestCharterPrice'];
-  }
+//Time Variables
+$currentYear = date("Y");
+$currentMonth = date("m");
+$years = array($currentYear, ($currentYear + 1), ($currentYear + 2));
+$months = array("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC");
+$monthNames = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 
 
-  $vessel_capacity = get_field('vessel_capacity');
-  $charter_min_days = get_field('charter_min_days');
+$charter_only = get_field('charter_only');
+$charter_available = get_field('charter_available');
+$charter_daily_price = 0;
+
+if (array_key_exists("LowestCharterPrice", $cruise_data)) {
+  $charter_daily_price = $cruise_data['LowestCharterPrice'];
+}
 
 
-  //check URL for charter flag
-  $charter_view = false;
-  if (isset($_GET['charter'])) {
-    if ($_GET['charter'] == "true" && $charter_available == true) {
-      $charter_view = true;
-    }
-  }
+$vessel_capacity = get_field('vessel_capacity');
+$charter_min_days = get_field('charter_min_days');
 
-  if ($charter_only == true) {
+
+//check URL for charter flag
+$charter_view = false;
+if (isset($_GET['charter'])) {
+  if ($_GET['charter'] == "true" && $charter_available == true) {
     $charter_view = true;
   }
+}
 
-  $lowestPrice = lowest_property_price($cruise_data, 0, $currentYear, true);
+if ($charter_only == true) {
+  $charter_view = true;
+}
+
+$lowestPrice = lowest_property_price($cruise_data, 0, $currentYear, true);
 
 
-  //Get Deals
-  $dealPosts = listDealsForProduct(get_post(), $charter_view);
-  $hasDeals = (count($dealPosts) > 0) ? true : false;
+//Get Deals
+$dealPosts = listDealsForProduct(get_post(), $charter_view);
+$hasDeals = (count($dealPosts) > 0) ? true : false;
 
 
-  $args = array(
-    'productName' => $productName,
-    'lowestPrice' => $lowestPrice,
-    'cruise_data' => $cruise_data,
-    'itinerary_data' => $itinerary_data,
-    'productType' => 'Cruise',
-    'currentYear' => $currentYear,
-    'currentMonth' => $currentMonth,
-    'years' => $years,
-    'months' => $months,
-    'monthNames' => $monthNames,
-    'charter_view' => $charter_view,
-    'charter_available' => $charter_available,
-    'charter_daily_price' => $charter_daily_price,
-    'vessel_capacity' => $vessel_capacity,
-    'charter_min_days' => $charter_min_days,
-    'charter_only' => $charter_only,
-    'hasDeals' => $hasDeals,
-    'dealPosts' => $dealPosts
+$args = array(
+  'productName' => $productName,
+  'lowestPrice' => $lowestPrice,
+  'cruise_data' => $cruise_data,
+  'itinerary_data' => $itinerary_data,
+  'productType' => 'Cruise',
+  'currentYear' => $currentYear,
+  'currentMonth' => $currentMonth,
+  'years' => $years,
+  'months' => $months,
+  'monthNames' => $monthNames,
+  'charter_view' => $charter_view,
+  'charter_available' => $charter_available,
+  'charter_daily_price' => $charter_daily_price,
+  'vessel_capacity' => $vessel_capacity,
+  'charter_min_days' => $charter_min_days,
+  'charter_only' => $charter_only,
+  'hasDeals' => $hasDeals,
+  'dealPosts' => $dealPosts
 
-  );
+);
 
 ?>
 
-  <!-- Product Page Container -->
-  <main id="main-content">
+<!-- Product Page Container -->
+<main id="main-content">
 
-    <!-- Hero -->
-    <?php
-    get_template_part('template-parts/cruise/content', 'cruise-hero2', $args);
-    ?>
-
-    <!-- Overview -->
-    <?php
-    get_template_part('template-parts/cruise/content', 'cruise-overview', $args);
-    ?>
-
-    <!-- Cabins -->
-    <?php
-    get_template_part('template-parts/cruise/content', 'cruise-cabins', $args);
-    ?>
-
-    <!-- Explore -->
-    <?php
-    get_template_part('template-parts/cruise/content', 'cruise-areas', $args);
-    ?>
-
-    <!-- Itineraries -->
-    <?php
-    get_template_part('template-parts/cruise/content', 'cruise-itineraries', $args);
-    ?>
-
-    <!-- Departures -->
-    <?php
-    get_template_part('template-parts/cruise/content', 'cruise-departures', $args);
-    ?>
-
-    <!-- Extras -->
-    <?php
-    get_template_part('template-parts/cruise/content', 'cruise-extras', $args);
-    ?>
-
-    <!-- Reviews -->
-    <?php
-    get_template_part('template-parts/cruise/content', 'cruise-reviews', $args);
-    ?>
-
-    <!-- Related -->
-    <?php
-    get_template_part('template-parts/cruise/content', 'cruise-related', $args);
-    ?>
-
-  </main>
-
-
-  <!-- Inquire Modal -->
+  <!-- Hero -->
   <?php
-  get_template_part('template-parts/shared/content', 'shared-inquire-modal', $args);
+  get_template_part('template-parts/cruise/content', 'cruise-hero', $args);
+  ?>
+
+  <!-- Overview -->
+  <?php
+  get_template_part('template-parts/cruise/content', 'cruise-overview', $args);
+  ?>
+
+  <!-- Cabins -->
+  <?php
+  get_template_part('template-parts/cruise/content', 'cruise-cabins', $args);
   ?>
 
 
 
+  <!-- Reviews -->
+  <?php
+  get_template_part('template-parts/cruise/content', 'cruise-reviews', $args);
+  ?>
 
+
+</main>
+
+
+<!-- Inquire Modal -->
 <?php
-endwhile;
+get_template_part('template-parts/shared/content', 'shared-inquire-modal', $args);
 ?>
+
+
+
+
+
 <!-- #site-wrapper end-->
 <?php get_footer() ?>

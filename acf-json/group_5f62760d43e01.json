@@ -355,38 +355,11 @@
             "endpoint": 0
         },
         {
-            "key": "field_5f68f3acab0ab",
-            "label": "Hero Image",
-            "name": "hero_image",
-            "type": "image",
-            "instructions": "Hero image for cruise (1920 x 730). Boat should be in left side of image, ideally an angled profile.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "admin_column_enabled": 0,
-            "admin_column_post_types": "",
-            "admin_column_taxonomies": "",
-            "return_format": "array",
-            "preview_size": "medium",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
-        },
-        {
             "key": "field_5f6b863fe1d13",
             "label": "Hero Gallery",
             "name": "hero_gallery",
             "type": "gallery",
-            "instructions": "1920 x 1080, hero gallery, boat-specific shots, interiors",
+            "instructions": "1920 x 1080 (16:9) or 1024 x 768 (4:3) minimum. First image is used as the hero background. so a 1920 x 1080 (16:9) exterior shot of the ship is required for first image.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -413,7 +386,7 @@
             "label": "Top Snippet",
             "name": "top_snippet",
             "type": "textarea",
-            "instructions": "To appear in result item cards, and as the sub-text to the product page title",
+            "instructions": "Sub-text to the product page title",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -426,28 +399,6 @@
             "maxlength": 250,
             "rows": "",
             "new_lines": ""
-        },
-        {
-            "key": "field_5f69066367db7",
-            "label": "Overview Content",
-            "name": "overview_content",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "admin_column_enabled": 0,
-            "admin_column_post_types": "",
-            "admin_column_taxonomies": "",
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 0,
-            "delay": 0
         },
         {
             "key": "field_5f6cffc96e15f",
@@ -505,6 +456,28 @@
             ]
         },
         {
+            "key": "field_5f69066367db7",
+            "label": "Overview Content",
+            "name": "overview_content",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "admin_column_enabled": 0,
+            "admin_column_post_types": "",
+            "admin_column_taxonomies": "",
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
             "key": "field_618c23e9ce2d2",
             "label": "Show Notification",
             "name": "show_notification",
@@ -549,36 +522,6 @@
             "toolbar": "full",
             "media_upload": 0,
             "delay": 0
-        },
-        {
-            "key": "field_5f6bca4524289",
-            "label": "Areas Gallery",
-            "name": "areas_gallery",
-            "type": "gallery",
-            "instructions": "Images for the areas of the ship (750x500)",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "admin_column_enabled": 0,
-            "admin_column_post_types": "",
-            "admin_column_taxonomies": "",
-            "return_format": "array",
-            "preview_size": "medium",
-            "insert": "append",
-            "library": "all",
-            "min": "",
-            "max": "",
-            "min_width": 750,
-            "min_height": 500,
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
         },
         {
             "key": "field_5f9708afcab59",
@@ -1647,5 +1590,5 @@
     "active": true,
     "description": "Cruise - CPT",
     "show_in_rest": 0,
-    "modified": 1661973222
+    "modified": 1662660479
 }

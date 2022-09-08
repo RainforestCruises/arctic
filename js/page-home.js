@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-    const templateUrl = page_vars.templateUrl;
+    //const templateUrl = page_vars.templateUrl;
 
     $(window).scroll(function (e) {
         parallax();
@@ -57,12 +57,10 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    const cruisesSlider = new Swiper('#cruises-slider', {
-        // Optional parameters
-        loop: true,
+
+    new Swiper('#cruises-slider', {
         spaceBetween: 15,
         slidesPerView: 1,
-        // Navigation arrows
         navigation: {
             nextEl: '.cruises-slider-btn-next',
             prevEl: '.cruises-slider-btn-prev',
@@ -76,6 +74,25 @@ jQuery(document).ready(function ($) {
             }
         }
     });
+
+    
+    const cruiseCardImageAreas = [...document.querySelectorAll('.cruise-card-image-area')];
+    cruiseCardImageAreas.forEach((element, index) => {
+        new Swiper('.cruise-card-image-area-' + index, {
+            slidesPerView: 1,
+            loop: true,
+            pagination: {
+                el: '.cruise-card-image-area-pagination-' + index,
+                clickable: true,
+                dynamicBullets: true,
+                dynamicMainBullets: 3,
+              },
+            navigation: {
+                nextEl: '.cruise-card-image-area-button-next-' + index,
+                prevEl: '.cruise-card-image-area-button-prev-' + index,
+            },         
+        });           
+    })
 
 
 });

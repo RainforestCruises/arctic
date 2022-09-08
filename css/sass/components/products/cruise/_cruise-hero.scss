@@ -55,6 +55,8 @@
         z-index: 12;
         width: calc(50% - 6rem); //minus 6rem because there is a total of 12rem margin
 
+        
+
         &__nav {
             & .hero-gallery-slider-prev {
                 position: absolute;
@@ -77,6 +79,13 @@
         &__slider {
             z-index: 20;
             width: 100%;
+            visibility: hidden;
+            opacity: 0;
+            &.swiper-initialized {
+                visibility: visible;
+                transition: opacity .3s;
+                opacity: 1;
+            }
 
             @media only screen and (max-width: $bp-large) {
                 display: none;
@@ -102,7 +111,7 @@
         }
     }
 
-    // mobile hero slider
+    // mobile bg hero slider
     &__bg-slider {
         display: none;
         height: 100%;
@@ -118,6 +127,8 @@
         &__slide {
             height: 100%;
             width: 100%;
+            cursor: pointer;
+
             & img {
                 height: 100%;
                 width: 100%;

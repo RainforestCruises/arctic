@@ -45,6 +45,13 @@
                 display: grid;
                 grid-template-columns: min-content min-content;
                 column-gap: .8rem;
+                //width: 10rem;
+
+                & .swiper-button-prev, .swiper-button-next {
+                    position: relative !important;
+                    right: auto;
+                    left: auto;
+                }
             }
         }
 

@@ -5,7 +5,7 @@ return array (
   'title' => 'Cruises',
   'type' => 'rfc_cruises',
   'id' => '5fdbe431766d9',
-  'updated' => 1660003590,
+  'updated' => 1662664637,
   'columns' => 
   array (
     'title' => 
@@ -20,6 +20,23 @@ return array (
       'bulk_edit' => 'on',
       'search' => 'on',
       'name' => 'title',
+    ),
+    '631a3f9da7ef9c' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Hero Gallery',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_5f6b863fe1d13',
+      'image_size' => 'cpac-custom',
+      'image_size_w' => '60',
+      'image_size_h' => '60',
+      'number_of_items' => '10',
+      'export' => 'off',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'name' => '631a3f9da7ef9c',
     ),
     '5fdbe4e7a6683' => 
     array (
@@ -113,44 +130,6 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '5fdbe4e7a6688',
-    ),
-    '5fdcfeca4a430' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Hero Image',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_5f68f3acab0ab',
-      'image_size' => 'cpac-custom',
-      'image_size_w' => '60',
-      'image_size_h' => '60',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '5fdcfeca4a430',
-    ),
-    '62f1a4f4c624dc' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Hero Image Portrait',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_5f690d2b40945',
-      'image_size' => 'cpac-custom',
-      'image_size_w' => '60',
-      'image_size_h' => '60',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '62f1a4f4c624dc',
     ),
     '60aeb31bf645a0' => 
     array (

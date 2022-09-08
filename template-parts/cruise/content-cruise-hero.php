@@ -1,275 +1,196 @@
 <?php
-$hero_image = get_field('hero_image');
-$productTitle = get_the_title();
-$breadcrumb = get_field('breadcrumb');
 
-
-
+$title = get_the_title();
+$snippet = get_field('top_snippet');
 $itineraryCount = count($args['cruise_data']['Itineraries']);
 $images = get_field('hero_gallery');
+$desktopImages = array_slice($images, 1);
 
 ?>
 
 <!-- Cruise Hero -->
-<section class="product-hero" id="top">
-    <div class="product-hero__content">
+<section class="cruise-hero" id="top">
+    <!-- Desktop BG Image -->
+    <div class="cruise-hero__bg-image">
+        <img <?php afloat_image_markup($images[0]['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
+    </div>
 
-        <!-- Top Section -->
+    <!-- Desktop Gallery -->
+    <div class="cruise-hero__gallery">
 
-        <div class="product-hero__content__top-slider swiper" id="hero-bg-slider">
-            <div class="swiper-wrapper">
-                <div class="product-hero__content__top-slider__item swiper-slide">
-                    <a href="<?php echo esc_url($hero_image['url']); ?>" title="test title" class="product-hero__content__top-slider__item__link">
-                        <img <?php afloat_image_markup($hero_image['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
-                    </a>
-                </div>
-                <?php
-                if ($images) :
-                    foreach ($images as $image) : ?>
-                        <div class="product-hero__content__top-slider__item swiper-slide">
-                            <a href="<?php echo esc_url($image['url']); ?>" title="test title" class="product-hero__content__top-slider__item__link">
-                                <img <?php afloat_image_markup($image['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
-                            </a>
-                        </div>
-                <?php endforeach;
-                endif; ?>
-
+        <!-- Nav -->
+        <div class="cruise-hero__gallery__nav">
+            <!-- Prev -->
+            <div class="hero-gallery-slider-prev btn-swiper-blur btn-swiper-blur__prev">
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                </svg>
+            </div>
+            <!-- Next -->
+            <div class="hero-gallery-slider-next btn-swiper-blur btn-swiper-blur__next">
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                </svg>
             </div>
         </div>
 
-        <!-- Top Desktop -->
-        <div class="product-hero__content__top">
-            <div class="product-hero__content__top__bg" id="top">
-                <img <?php afloat_image_markup($hero_image['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
+        <!-- Desktop Slider -->
+        <div class="cruise-hero__gallery__slider swiper" id="hero-desktop-slider">
+            <div class="swiper-wrapper">
+                <?php
+                foreach ($desktopImages as $image) : ?>
+                    <div class="cruise-hero__gallery__slider__item swiper-slide" imageId="<?php echo $image['id']; ?>">
+                        <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Mobile Slider BG -->
+    <div class="cruise-hero__bg-slider swiper" id="hero-mobile-slider">
+        <div class="swiper-wrapper">
+            <!-- Gallery Images -->
+            <?php foreach ($images as $image) : ?>
+                <div class="cruise-hero__bg-slider__slide swiper-slide" imageId="<?php echo $image['id']; ?>">
+                    <img <?php afloat_image_markup($image['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="swiper-button-prev cruise-hero__bg-slider__button-prev"></div>
+        <div class="swiper-button-next cruise-hero__bg-slider__button-next"></div>
+        <div class="cruise-hero__bg-slider__count">
+            <?php echo '1 / ' . (count($images) + 1) ?>
+        </div>
+    </div>
+
+
+    <!-- Hero Content -->
+    <div class="cruise-hero__content">
+        <div class="cruise-hero__content__main">
+            <!-- Primary (Title + Description) -->
+            <div class="cruise-hero__content__main__primary">
+                <div class="cruise-hero__content__main__primary__title">
+                    <?php echo $title ?>
+                </div>
+                <div class="cruise-hero__content__main__primary__snippet">
+                    <?php echo $snippet; ?>
+                </div>
+                <div class="cruise-hero__content__main__primary__nav">
+                    <a href="#overview" class="cruise-hero__content__main__primary__nav__link">Cabins</a>
+                    <a href="#overview" class="cruise-hero__content__main__primary__nav__link">Itineraries</a>
+                    <a href="#overview" class="cruise-hero__content__main__primary__nav__link">Dates</a>
+                    <a href="#overview" class="cruise-hero__content__main__primary__nav__link">Reviews</a>
+                </div>
             </div>
 
-            <!-- Title / Navigation -->
-            <div class="product-hero__content__top__content">
+            <!-- Secondary (Info + Attributes) -->
+            <div class="cruise-hero__content__main__secondary">
 
-                <!-- Breadcrumb -->
-                <ol class="product-hero__content__top__content__breadcrumb">
-                    <li>
-                        <a href="<?php echo home_url() ?>">Home</a>
-                    </li>
-                    <?php
-                    if ($breadcrumb) :
-                        foreach ($breadcrumb as $b) :
-                            if ($b['link'] != null) : ?>
-                                <li>
-                                    <a href=" <?php echo $b['link']  ?>"><?php echo $b['title'] ?></a>
-                                </li>
-                            <?php else : ?>
-                                <li>
-                                    <?php echo $b['title'] ?>
-                                </li>
-                    <?php endif;
-                        endforeach;
-                    endif; ?>
+                <!-- Info -->
+                <div class="cruise-hero__content__main__secondary__info">
 
-                </ol>
-
-                <!-- Title and Navigation -->
-                <div>
-                    <!-- H1 Title / Subtitle -->
-                    <div class="product-hero__content__top__content__title-group">
-
-                        <h1 class="product-hero__content__top__content__title-group__title" id="template-nav-title">
-                            <div>
-                                <?php echo $productTitle ?>
+                    <!-- Starting Price -->
+                    <div class="cruise-hero__content__main__secondary__info__starting-price">
+                        <div class="cruise-hero__content__main__secondary__info__starting-price__title-area">
+                            <div class="cruise-hero__content__main__secondary__info__starting-price__title-area__text">
+                                Starting at:
                             </div>
-                            <?php if ($args['hasDeals'] == true) : ?>
-                                <button class="btn-cta-round btn-cta-round--small btn-cta-round--green deal-modal-cta-button" style="height: 2.5rem;">
-                                    Deals
-                                </button>
-                            <?php endif; ?>
-                        </h1>
-                        <div class="product-hero__content__top__content__title-group__subtitle"><?php echo get_field('top_snippet') ?></div>
+                            <div class="cruise-hero__content__main__secondary__info__starting-price__title-area__subtext">
+                                Per Person
+                            </div>
+                        </div>
+                        <div class="cruise-hero__content__main__secondary__info__starting-price__amount">
+                            <?php echo "$" . number_format($args['lowestPrice'], 0); ?>
+                            <span class="u-small-text">USD</span>
+                        </div>
                     </div>
 
-                    <!-- Navigation Wrapper -->
-                    <nav class="product-hero__content__top__content__nav" id="template-nav">
-
-                        <!-- nav list -->
-                        <ul class="product-hero__content__top__content__nav__list">
-
-                            <li class="product-hero__content__top__content__nav__list__item current">
-                                <a href="#overview" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Overview</a>
-                            </li>
-                            <li class="product-hero__content__top__content__nav__list__item">
-                                <a href="#amenities" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Amenities</a>
-                            </li>
-                            <li class="product-hero__content__top__content__nav__list__item">
-                                <a href="#itineraries" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Itineraries</a>
-                            </li>
-
-                            <li class="product-hero__content__top__content__nav__list__item ">
-                                <a href="#reviews" class="product-hero__content__top__content__nav__list__item__link page-nav-template">Reviews</a>
-                            </li>
-
-                        </ul>
-                    </nav>
-
-                    <!-- Mobile scroll down CTA -->
-                    <div class="product-hero__content__top__content__cta">
-                        <button class="btn-circle btn-circle--small btn-white btn-circle--down" id="down-arrow-button" href="<?php echo (get_post_type() != 'rfc_tours') ? '#overview' : '#itineraries'; ?>">
-                            <svg class="btn-circle--arrow-main">
-                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-arrow-down"></use>
-                            </svg>
-                            <svg class="btn-circle--arrow-animate">
-                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-arrow-down"></use>
+                    <!-- Inquire CTA Button -->
+                    <div class="cruise-hero__content__main__secondary__info__cta">
+                        <button class="cta-primary inquire-cta">
+                            Inquire
+                            <svg>
+                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>
                             </svg>
                         </button>
                     </div>
+
                 </div>
 
-            </div>
-        </div>
+                <!-- Attributes -->
+                <div class="cruise-hero__content__main__secondary__attributes">
 
-        <!-- Gallery  -->
-        <div class="product-hero__content__gallery">
-
-            <div class="product-hero__content__gallery__nav">
-                <!-- Prev -->
-                <div class="hero-gallery-slider-prev btn-swiper-blur btn-swiper-blur__prev">
-                    <svg>
-                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                    </svg>
-                </div>
-                <!-- Next -->
-                <div class="hero-gallery-slider-next btn-swiper-blur btn-swiper-blur__next">
-                    <svg>
-                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                    </svg>
-                </div>
-            </div>
-
-            <div class="product-hero__content__gallery__slider swiper" id="hero-gallery">
-                <div class="swiper-wrapper">
-                    <?php
-                    if ($images) :
-                        foreach ($images as $image) : ?>
-                            <div class="product-hero__content__gallery__slider__item swiper-slide">
-                                <a href="<?php echo esc_url($image['url']); ?>" title="test title" class="product-hero__content__gallery__slider__item__link">
-                                    <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
-                                </a>
+                    <!-- Itineraries -->
+                    <div class="cruise-hero__content__main__secondary__attributes__item">
+                        <div class="cruise-hero__content__main__secondary__attributes__item__icon">
+                            <svg>
+                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-m-time"></use>
+                            </svg>
+                        </div>
+                        <div class="cruise-hero__content__main__secondary__attributes__item__text">
+                            <div class="sub-attribute">
+                                <?php echo $itineraryCount ?> Itineraries
                             </div>
-                    <?php endforeach;
-                    endif; ?>
-                </div>
 
-
-
-            </div>
-        </div>
-
-        <!-- Bottom Section -->
-        <div class="product-hero__content__bottom">
-
-            <!-- Info Area -->
-            <div class="product-hero__content__bottom__content">
-                <div class="product-hero__content__bottom__content__info-group" id="info-group">
-
-                    <!-- Starting Price -->
-                    <div class="product-hero__content__bottom__content__info-group__info" id="page-title">
-
-                        <div class="product-hero__content__bottom__content__info-group__info__starting-price">
-                            <div class="product-hero__content__bottom__content__info-group__info__starting-price__title-area">
-
-                                <div class="product-hero__content__bottom__content__info-group__info__starting-price__title-area__text">
-                                    Starting at:
-                                </div>
-                                <div class="product-hero__content__bottom__content__info-group__info__starting-price__title-area__subtext">
-                                    Per Person
-                                </div>
-                            </div>
-                            <div class="product-hero__content__bottom__content__info-group__info__starting-price__amount">
-                                <?php echo "$" . number_format($args['lowestPrice'], 0); ?>
-                                <span class="u-small-text">USD</span>
-                            </div>
+                            <?php echo itineraryRange($args['cruise_data'], " - ") . " Days"; ?>
 
                         </div>
 
-                        <!-- Inquire CTA Button -->
-                        <div class="product-hero__content__bottom__content__info-group__info__cta">
-                            <button class="cta-primary  " id="nav-page-cta">
-                                Inquire
-                                <svg>
-                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>
-                                </svg>
-                            </button>
-                        </div>
                     </div>
 
-                    <!-- Attributes -->
-                    <div class="product-hero__content__bottom__content__info-group__attributes">
+                    <!-- Capacity -->
+                    <div class="cruise-hero__content__main__secondary__attributes__item">
 
-                        <!-- Itineraries -->
-                        <div class="product-hero__content__bottom__content__info-group__attributes__item">
-                                <div class="product-hero__content__bottom__content__info-group__attributes__item__icon">
-                                    <svg>
-                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-m-time"></use>
-                                    </svg>
-                                </div>
-                                <div class="product-hero__content__bottom__content__info-group__attributes__item__text">
-                                    <div class="sub-attribute">
-                                        <?php echo $itineraryCount ?> Itineraries
-                                    </div>
-
-                                    <?php echo itineraryRange($args['cruise_data'], " - ") . " Days"; ?>
-
-                                </div>
-
+                        <div class="cruise-hero__content__main__secondary__attributes__item__icon">
+                            <svg>
+                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat-front"></use>
+                            </svg>
+                        </div>
+                        <div class="cruise-hero__content__main__secondary__attributes__item__text">
+                            <div class="sub-attribute">
+                                Ship Size
+                            </div>
+                            <?php echo get_field('vessel_capacity', $cruisePost) . ' Guests'; ?>
                         </div>
 
 
-                        <!-- Capacity icon-pin-3 -->
-                        <div class="product-hero__content__bottom__content__info-group__attributes__item">
+                    </div>
+                    <!-- Service Level -->
+                    <div class="cruise-hero__content__main__secondary__attributes__item">
 
-                                <div class="product-hero__content__bottom__content__info-group__attributes__item__icon">
-                                    <svg>
-                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat-front"></use>
-                                    </svg>
-                                </div>
-                                <div class="product-hero__content__bottom__content__info-group__attributes__item__text">
-                                    <div class="sub-attribute">
-                                        Ship Size
-                                    </div>
-                                    <?php echo get_field('vessel_capacity', $cruisePost) . ' Guests'; ?>
-                                </div>
 
-                           
+                        <div class="cruise-hero__content__main__secondary__attributes__item__icon">
+                            <svg>
+                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-pin-3"></use>
+                            </svg>
                         </div>
-                        <!-- Departing From -->
-                        <div class="product-hero__content__bottom__content__info-group__attributes__item">
-
-
-                                <div class="product-hero__content__bottom__content__info-group__attributes__item__icon">
-                                    <svg>
-                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-pin-3"></use>
-                                    </svg>
-                                </div>
-                                <div class="product-hero__content__bottom__content__info-group__attributes__item__text">
-                                    <div class="sub-attribute">
-                                        Service Level
-                                    </div>
-                                    Luxury
-                                </div>
-
+                        <div class="cruise-hero__content__main__secondary__attributes__item__text">
+                            <div class="sub-attribute">
+                                Service Level
+                            </div>
+                            Luxury
                         </div>
-
-
-
 
                     </div>
 
 
+
+
                 </div>
 
             </div>
         </div>
+
+
 
     </div>
 </section>
+
+
+
+<!-- Mobile Info -->
 <div class="mobile-info">
 
     <div class="mobile-info__starting-price">
@@ -291,11 +212,65 @@ $images = get_field('hero_gallery');
 
     <!-- Inquire CTA Button -->
     <div class="mobile-info__cta">
-        <button class="cta-primary  " id="nav-page-cta">
+        <button class="cta-primary inquire-cta">
             Inquire
             <svg>
                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>
             </svg>
         </button>
     </div>
+</div>
+
+
+<!-- Cruise Gallery Modal -->
+<div class="modal modal--gallery" id="cruiseGalleryModal">
+    <div class="modal__content cruise-gallery">
+
+        <!-- Top Section -->
+        <div class="cruise-gallery__top">
+            <button class="btn-text-icon close-modal-button">
+                Close
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
+                </svg>
+            </button>
+            <span id="cruiseGalleryModalTitle">Title</span>
+            <span id="cruiseGalleryModalCount">Count</span>
+        </div>
+
+        <!-- Main Slider -->
+        <div class="cruise-gallery__main">
+            <div class="cruise-gallery__main__slider swiper noselect" id="modal-gallery-main">
+                <div class="swiper-wrapper">
+
+                    <?php
+                    $count = 1;
+                    foreach ($images as $image) : ?>
+                        <div class="cruise-gallery__main__slider__item swiper-slide" slideIndex="<?php echo $count; ?>" imageId="<?php echo $image['id']; ?>" title="<?php echo $image['title']; ?>">
+                            <img <?php afloat_image_markup($image['id'], 'landscape-medium', array('landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
+                        </div>
+                    <?php $count++;
+                    endforeach; ?>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+
+        <!-- Nav Slider -->
+        <div class="cruise-gallery__nav">
+
+            <div class="cruise-gallery__nav__slider swiper noselect" id="modal-gallery-nav">
+                <div class="swiper-wrapper">
+                    <?php foreach ($images as $image) : ?>
+                        <div class="cruise-gallery__nav__slider__item swiper-slide">
+                            <img <?php afloat_image_markup($image['id'], 'landscape-small', array('landscape-small')); ?>>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 </div>
