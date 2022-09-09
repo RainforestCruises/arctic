@@ -32,84 +32,132 @@ if ($destinations) {
 $ships = get_posts($queryArgs);
 
 ?>
-<section class="product-related" id="related">
- 
-    <div class="product-related__content">
 
-        <div class="title-group">
-            <div class="title-group__title">
-                Related Cruises
+
+
+
+
+
+<section class="slider-block narrow product-related">
+    <div class="slider-block__content product-related__content">
+
+        <!-- Top - Title/Nav -->
+        <div class="slider-block__content__top">
+
+            <!-- Title -->
+            <div class="slider-block__content__top__title">
+                <div class="title-group__title">
+                    Related Cruises
+                </div>
+                <div class="title-group__sub">
+                    Explore from <?php echo count($ships) ?> ships sailing the Antarctic
+                </div>
             </div>
-            <div class="title-group__sub">
-                Explore from <?php echo count($ships) ?> ships sailing the Antarctic
+
+            <!-- Nav Buttons -->
+            <div class="slider-block__content__top__nav">
+
+                <div class="swiper-button-prev swiper-button-prev--white-border related-slider-btn-prev"></div>
+                <div class="swiper-button-next swiper-button-next--white-border related-slider-btn-next"></div>
+
             </div>
         </div>
 
-        <div class="product-related__content__slider" id="related-slider">
-            <?php foreach ($ships as $ship) :
-                $image = get_field('featured_image', $ship);
-                $title = get_the_title($ship);
-                $cruise_data = get_field('cruise_data', $ship);
-                $itineraryDisplay = itineraryRange($cruise_data, "-") . " Days, " . count($cruise_data['Itineraries']) . ' Itineraries';
-                $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . 'Luxury';
-            ?>
+        <!-- Slider Area -->
+        <div class="slider-block__content__slider">
 
-                <a class="resource-card small">
-                    <div class="resource-card__image-area">
-                        <img <?php afloat_image_markup($image['id'], 'vertical-small', array('featured=medium')); ?>>
-                    </div>
-                    <div class="resource-card__content">
+            <!-- Swiper -->
+            <div class="swiper" id="related-slider">
+                <div class="swiper-wrapper">
 
-                        <!-- Title -->
-                        <div class="resource-card__content__title">
-                            <?php echo $title; ?>
+
+                    <?php foreach ($ships as $ship) :
+                        $images =  get_field('hero_gallery', $ship);
+                        $title = get_the_title($ship);
+                        $cruise_data = get_field('cruise_data', $ship);
+                        $itineraryDisplay = itineraryRange($cruise_data, "-") . " Days, " . count($cruise_data['Itineraries']) . ' Itineraries';
+                        $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . 'Luxury';
+                    ?>
+
+                        <!-- Cabin Card -->
+                        <div class="resource-card swiper-slide">
+
+                            <!-- Images Slider -->
+                            <div class="resource-card__image-area swiper related-card-image-area">
+                                <div class="swiper-wrapper">
+                                    <?php foreach ($images as $image) : ?>
+                                        <a class="resource-card__image-area__item swiper-slide" href="<?php echo get_permalink($ship) ?>">
+                                            <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+
+                                <div class="swiper-pagination"></div>
+                                <div class="swiper-button-prev swiper-button-prev--white"></div>
+                                <div class="swiper-button-next swiper-button-prev--white"></div>
+                            </div>
+
+                            <!-- Content -->
+                            <div class="resource-card__content">
+
+                                <!-- Title -->
+                                <a class="resource-card__content__title" href="<?php echo get_permalink($ship) ?>">
+                                    <?php echo $title; ?>
+                                </a>
+
+                                <!-- Specs -->
+                                <div class="resource-card__content__specs">
+
+                                    <!-- Itinerary -->
+                                    <div class="resource-card__content__specs__item">
+                                        <div class="resource-card__content__specs__item__icon">
+                                            <svg>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-time-clock"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="resource-card__content__specs__item__text">
+                                            <?php echo $itineraryDisplay; ?>
+                                        </div>
+                                    </div>
+
+                                    <!-- Size -->
+                                    <div class="resource-card__content__specs__item">
+                                        <div class="resource-card__content__specs__item__icon">
+                                            <svg>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-profile"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="resource-card__content__specs__item__text">
+                                            <?php echo $guestsDisplay; ?>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- Price Group -->
+                                <div class="resource-card__content__price-group">
+                                    <div class="resource-card__content__price-group__amount">
+                                        $2,955
+                                    </div>
+                                    <div class="resource-card__content__price-group__text">
+                                        Per Person
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- Specs -->
-                        <div class="resource-card__content__specs">
 
-                            <!-- Itinerary -->
-                            <div class="resource-card__content__specs__item">
-                                <div class="resource-card__content__specs__item__icon">
-                                    <svg>
-                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-time-clock"></use>
-                                    </svg>
-                                </div>
-                                <div class="resource-card__content__specs__item__text">
-                                    <?php echo $itineraryDisplay; ?>
-                                </div>
-                            </div>
+                    <?php endforeach; ?>
 
-                            <!-- Size -->
-                            <div class="resource-card__content__specs__item">
-                                <div class="resource-card__content__specs__item__icon">
-                                    <svg>
-                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-profile"></use>
-                                    </svg>
-                                </div>
-                                <div class="resource-card__content__specs__item__text">
-                                    <?php echo $guestsDisplay; ?>
-                                </div>
-                            </div>
 
-                        </div>
 
-                        <!-- Price Group -->
-                        <div class="resource-card__content__price-group">
-                            <div class="resource-card__content__price-group__amount">
-                                $2,955
-                            </div>
-                            <div class="resource-card__content__price-group__text">
-                                Per Person
-                            </div>
-                        </div>
-                    </div>
 
-                </a>
 
-            <?php endforeach; ?>
+                </div>
+            </div>
+
+
+
         </div>
-
-
     </div>
 </section>

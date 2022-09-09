@@ -27,7 +27,7 @@ jQuery(document).ready(function ($) {
 
 
     //escape key close modals
-    document.onkeydown = function(evt) {
+    document.onkeydown = function (evt) {
         evt = evt || window.event;
         var isEscape = false;
         if ("key" in evt) {
@@ -39,6 +39,18 @@ jQuery(document).ready(function ($) {
             closeModals();
         }
     };
+
+
+
+
+    //Panels --------------------------------------------
+    //expand/hide (move to generic??)
+    $(".outline-panel__heading").on("click", function (e) {
+        e.preventDefault();
+        let $this = $(this);
+        $this.parent().find('.outline-panel__content').slideToggle(350);
+        $this.parent().find('.outline-panel__heading').toggleClass('closed');
+    });
 
 
 

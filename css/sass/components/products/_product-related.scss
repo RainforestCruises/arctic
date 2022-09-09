@@ -1,49 +1,7 @@
 .product-related {
-    @include flexBlock;
-
-    position: relative;
-
-    //BG
-    &__background {
-        
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        bottom: 0;
-        left: 0;
-        display: flex;
-        align-items: flex-end;
-        & img {
-            height: auto;
-            width: 100%;
-            object-fit: contain;
-        }
-    }
-
-    &__content {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        @include flexPadding;
+ 
+    &__content{
         @include topDivider;
-
-        max-width: $page-width;
-        margin-top: 3rem;
-        margin-bottom: 6rem;
-
-
-
-
-
-        &__slider {
-            width: 100%;
-            margin-top: 2rem;
-            & .slick-slide {
-                margin-right: 2rem;
-            }
-        }
-
-       
     }
 }
  

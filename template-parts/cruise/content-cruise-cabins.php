@@ -6,8 +6,8 @@ console_log($cabins);
 
 ?>
 
-<section class="slider-block narrow">
-    <div class="slider-block__content">
+<section class="slider-block narrow cruise-cabins">
+    <div class="slider-block__content cruise-cabins__content">
 
         <!-- Top - Title/Nav -->
         <div class="slider-block__content__top">

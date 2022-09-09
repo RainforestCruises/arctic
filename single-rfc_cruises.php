@@ -100,6 +100,11 @@ $args = array(
   get_template_part('template-parts/cruise/content', 'cruise-reviews', $args);
   ?>
 
+  <!-- Related -->
+  <?php
+  get_template_part('template-parts/cruise/content', 'cruise-related', $args);
+  ?>
+
 
 </main>
 

@@ -125,16 +125,9 @@ jQuery(document).ready(function ($) {
 
 
 
-    //Panels --------------------------------------------
-    //expand/hide (move to generic??)
-    $(".outline-panel__heading").on("click", function (e) {
-        e.preventDefault();
-        let $this = $(this);
-        $this.parent().find('.outline-panel__content').slideToggle(350);
-        $this.parent().find('.outline-panel__heading').toggleClass('closed');
-    });
 
 
+    // Cabins Swiper
     new Swiper('#cabins-slider', {
         spaceBetween: 15,
         slidesPerView: 1,
@@ -155,7 +148,7 @@ jQuery(document).ready(function ($) {
     new Swiper('.cabin-card-image-area', {
         slidesPerView: 1,
         loop: true,
-        allowTouchMove: false,
+        allowTouchMove: true,
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
@@ -165,7 +158,54 @@ jQuery(document).ready(function ($) {
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
-        },         
-    });           
+        },
+        breakpoints: {
+            800: {
+                allowTouchMove: false,
+            },
+        }
+                 
+    });
+    
+    
+    // Related
+    // Cabins Swiper
+    new Swiper('#related-slider', {
+        spaceBetween: 15,
+        slidesPerView: 1,
+        navigation: {
+            nextEl: '.related-slider-btn-next',
+            prevEl: '.related-slider-btn-prev',
+        },
+        breakpoints: {
+            600: {
+                slidesPerView: 2,
+            },
+            800: {
+                slidesPerView: 3,
+            }
+        }
+    });
+    new Swiper('.related-card-image-area', {
+        slidesPerView: 1,
+        loop: true,
+        allowTouchMove: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            dynamicBullets: true,
+            dynamicMainBullets: 3,
+          },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },     
+        breakpoints: {
+            800: {
+                allowTouchMove: false,
+            },
+        }      
+    });
+
 
 });
