@@ -73,6 +73,76 @@ $args = array(
 
 );
 
+
+
+$itineraries = get_field('itineraries');
+$days = get_field('itinerary', $itineraries[0]);
+
+//Destination Point Series
+$destinationPoints = [];
+foreach ($days as $day) {
+
+  $destination = $day['destination'];
+
+  $geometry = [
+    'type' => "Point",
+    'coordinates' => [get_field('longitude', $destination), get_field('latitude', $destination)],
+  ];
+
+  $zoomPoint = [
+    'longitude' => get_field('longitude', $destination),
+    'latitude' => get_field('latitude', $destination),
+  ];
+
+  $point  = [
+    'title' => get_field('navigation_title', $destination),
+    'postid' => $destination->ID,
+    'geometry' => $geometry,
+    'zoomPoint' => $zoomPoint,
+    'zoomLevel' => get_field('zoom_level', $destination),
+  ];
+
+  $destinationPoints[] = $point;
+}
+
+//Destination Line Series
+$destinationLines = [];
+$lineObject = [
+  'geometry' => [
+    'type' => "LineString",
+    'coordinates' => [],
+  ]
+];
+
+foreach ($days as $day) {
+  $destination = $day['destination'];
+  $lineObject['geometry']['coordinates'][] = [get_field('longitude', $destination), get_field('latitude', $destination)];
+}
+$destinationLines[] = $lineObject;
+
+$templateUrl = get_template_directory_uri();
+wp_localize_script(
+  'page-itinerary',
+  'page_vars_itinerary',
+  array(
+    'templateUrl' =>  $templateUrl,
+    'destinationPoints' =>  $destinationPoints,
+    'destinationLines' =>  $destinationLines
+
+  )
+);
+
+
+
+wp_localize_script(
+  'page-cruise',
+  'page_vars_cruise',
+  array(
+    'destinationPoints' =>  $destinationPoints,
+    'destinationLines' =>  $destinationLines
+  )
+);
+
 ?>
 
 <!-- Product Page Container -->
@@ -93,7 +163,10 @@ $args = array(
   get_template_part('template-parts/cruise/content', 'cruise-cabins', $args);
   ?>
 
-
+<!-- itineraries -->
+<?php
+  get_template_part('template-parts/cruise/content', 'cruise-itineraries2', $args);
+  ?>
 
   <!-- Reviews -->
   <?php

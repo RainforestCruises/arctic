@@ -41,10 +41,8 @@ $lineObject = [
 ];
 
 foreach ($days as $day) {
-
   $destination = $day['destination'];
   $lineObject['geometry']['coordinates'][] = [get_field('longitude', $destination), get_field('latitude', $destination)];
-
 }
 $destinationLines[] = $lineObject;
 

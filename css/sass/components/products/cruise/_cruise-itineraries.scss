@@ -5,129 +5,68 @@
         position: relative;
         display: flex;
         flex-direction: column;
-
         @include flexPadding;
         @include topDivider;
 
         max-width: $page-width;
-        margin-top: 3rem;
-        margin-bottom: 2rem;
-
+        padding-bottom: 3rem;
 
         &__slider {
             width: 100%;
-            margin-top: 2rem;
-            & .slick-slide {
-                margin-right: 2rem;
+            height: 60rem;
+            @media only screen and (max-width: $bp-small) {
+                height: min-content;       
+                margin-bottom: 3rem;
             }
-        }
-    }
-}
+            &__slide {
+                position: relative;
+                display: flex;
+                justify-content: flex-end;
+                width: 100%;
+                height: 100%;
+                &__detail-area {
+                    width: 40rem;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: 0;
+                    z-index: 2;
 
-.itinerary-card {
-    display: grid !important;
-    grid-template-columns: 13rem 1fr;
-    gap: 2rem;
-    align-items: center;
+                    @media only screen and (max-width: $bp-small) {
+                        width: 100%;
+                        position: relative;
+                        top: auto;
+                        transform: translateY(0);         
+                    }
 
-    border: 1px solid $color-grey-light-1a;
-    border-radius: 1rem;
-    padding: 1.5rem;
-    transition: all 0.2s;
 
-    @media only screen and (max-width: $bp-medium) {
-        grid-template-columns: 1fr;
-        grid-template-rows: 20rem min-content;
-    }
+                }
 
-    &:link,
-    &:visited {
-        text-decoration: none;
-        color: $color-grey-3;
-    }
-    &:hover {
-        border: 1px solid $color-grey-light-2;
-    }
-
-    &__image-area {
-        width: 100%;
-        height: 100%;
-
-        & img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 1rem;
-            overflow: hidden;
-        }
-    }
-
-    &__content {
-        position: relative;
-
-        &__title {
-            font-size: 1.6rem;
-            color: $color-primary;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        &__description {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-        }
-
-        &__price-group {
-            display: flex;
-            align-items: flex-end;
-
-            color: $color-primary;
-
-            margin-bottom: 0.5rem;
-            &__amount {
-                font-size: 1.6rem;
-                font-weight: 700;
-                margin-right: 0.5rem;
-            }
-            &__text {
-                font-size: 1.4rem;
-                padding-bottom: 1px;
-            }
-        }
-
-        &__bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            &__departures {
-                &__items {
-                    display: flex;
-
-                    &__item {
-                        font-size: 1.4rem;
-                        color: $color-primary;
-                        padding: 0.5rem 1.2rem;
-                        border: 1px solid $color-primary;
+                &__map-area {
+                    width: 80%;
+                    height: 100%;
+                    @media only screen and (max-width: $bp-small) {
+                        display: none;
+                    }
+                    border-radius: 1rem;
+                    border: 1px solid $color-grey-light-1a;
+                    background-color: $color-grey-light-1;
+                    &__map {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
                         border-radius: 1rem;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        margin-right: 1rem;
+                        overflow: hidden;
+                        
+                    }
+
+                    & img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        
                     }
                 }
-
-                &__fineprint {
-                    color: $color-grey-1;
-                    font-size: 1rem;
-                    padding-bottom: 0.2rem;
-                }
-            }
-
-            &__cta {
-                margin-top: 0.2rem;
-
-                display: flex;
-                justify-content: space-between;
             }
         }
     }

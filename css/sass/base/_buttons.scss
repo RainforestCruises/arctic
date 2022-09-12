@@ -20,6 +20,7 @@
 
   &::after {
     font-size: 0.9rem;
+
     color: rgba($color-white, 0.9);
     font-weight: 700;
     z-index: 10;
@@ -42,9 +43,17 @@
   &--white-border {
     box-shadow: $shadow-short-bottom-light;
     transition: all 0.2s;
+
+    & svg {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+
     &::after { //svg
       color: $color-primary !important;
+      display: none;
     }
+    
     &::before { //border
       content: "";
       transition: all 0.15s;

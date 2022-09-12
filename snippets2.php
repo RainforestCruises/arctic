@@ -1,83 +1,134 @@
-<section class="product-departures" id="departures">
-    <div class="product-departures__content">
+.cruise-itineraries {
+    @include flexBlock;
 
-        <div class="title-group">
-            <div class="title-group__title">
-                Departures
-            </div>
-            <div class="title-group__sub">
-                There are  departures available
-            </div>
-        </div>
-        <div class="product-departures__content__slider" id="departures-slider">
-            <?php foreach ($departures as $d) :
-                $departureStartDate = strtotime($d['DepartureDate']);
-            ?>
+    &__content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
 
-                <div class="departure-card" year="<?php echo date("Y", $departureStartDate); ?>">
-                    <div class="departure-card__content">
-                        <div class="departure-card__content__date-group">
+        @include flexPadding;
+        @include topDivider;
 
-                            <div class="departure-card__content__date-group__date">
-                                <?php echo  date("F j", $departureStartDate); ?>
-                            </div>
-                            <div class="departure-card__content__date-group__year">
-                                <?php echo date("Y", $departureStartDate); ?>
-                            </div>
-                        </div>
-                        <div class="departure-card__content__price-group">
-                            <div class="departure-card__content__price-group__price">
-                                <?php echo "$ " . number_format($d['LowestPrice'], 0);  ?>
-                            </div>
-                            <div class="departure-card__content__price-group__details">
-                                Per Person
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="departure-card__cta">
-                        <button class="cta-square-icon">
-                            Inquire
-                            <svg>
-                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                            </svg>
-                        </button>
-                    </div>
-
-                </div>
-
-            <?php endforeach; ?>
-        </div>
-
-        <div class="product-departures__content__filters">
-            <button class="btn-pill departure-filter active" data-filter="all">
-                All
-            </button>
-            <?php for ($i = 0; $i < 3; $i++) :
-
-                $yearToCheck = $curentYear + $i;
-                if(checkDeparturesInYear($yearToCheck, $departures)) :
-            ?>
-                <button class="btn-pill btn-pill--grey departure-filter" data-filter="<?php echo $curentYear + $i ?>">
-                    <?php echo $curentYear + $i ?>
-                </button>
-            <?php endif; endfor; ?>
+        max-width: $page-width;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
 
 
-        </div>
-    </div>
-</section>
-
-<?php
-function checkDeparturesInYear($year, $departureList)
-{
-    $match = false;
-    foreach ($departureList as $d) {
-        if (str_contains($d['DepartureDate'], strval($year))) {
-            $match = true;
+        &__slider {
+            width: 100%;
+            margin-top: 2rem;
+            & .slick-slide {
+                margin-right: 2rem;
+            }
         }
     }
-    return $match;
 }
 
-?>
+.itinerary-card {
+    display: grid !important;
+    grid-template-columns: 13rem 1fr;
+    gap: 2rem;
+    align-items: center;
+
+    border: 1px solid $color-grey-light-1a;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.2s;
+
+    @media only screen and (max-width: $bp-medium) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 20rem min-content;
+    }
+
+    &:link,
+    &:visited {
+        text-decoration: none;
+        color: $color-grey-3;
+    }
+    &:hover {
+        border: 1px solid $color-grey-light-2;
+    }
+
+    &__image-area {
+        width: 100%;
+        height: 100%;
+
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+    }
+
+    &__content {
+        position: relative;
+
+        &__title {
+            font-size: 1.6rem;
+            color: $color-primary;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        &__description {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        &__price-group {
+            display: flex;
+            align-items: flex-end;
+
+            color: $color-primary;
+
+            margin-bottom: 0.5rem;
+            &__amount {
+                font-size: 1.6rem;
+                font-weight: 700;
+                margin-right: 0.5rem;
+            }
+            &__text {
+                font-size: 1.4rem;
+                padding-bottom: 1px;
+            }
+        }
+
+        &__bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            &__departures {
+                &__items {
+                    display: flex;
+
+                    &__item {
+                        font-size: 1.4rem;
+                        color: $color-primary;
+                        padding: 0.5rem 1.2rem;
+                        border: 1px solid $color-primary;
+                        border-radius: 1rem;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-right: 1rem;
+                    }
+                }
+
+                &__fineprint {
+                    color: $color-grey-1;
+                    font-size: 1rem;
+                    padding-bottom: 0.2rem;
+                }
+            }
+
+            &__cta {
+                margin-top: 0.2rem;
+
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+}

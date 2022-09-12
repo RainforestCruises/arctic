@@ -57,8 +57,16 @@ $ships = get_posts($queryArgs);
             <!-- Nav Buttons -->
             <div class="slider-block__content__top__nav">
 
-                <div class="swiper-button-prev swiper-button-prev--white-border related-slider-btn-prev"></div>
-                <div class="swiper-button-next swiper-button-next--white-border related-slider-btn-next"></div>
+                <div class="swiper-button-prev swiper-button-prev--white-border related-slider-btn-prev">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-left"></use>
+                    </svg>
+                </div>
+                <div class="swiper-button-next swiper-button-next--white-border related-slider-btn-next">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                    </svg>
+                </div>
 
             </div>
         </div>

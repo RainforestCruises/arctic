@@ -2,7 +2,6 @@ jQuery(document).ready(function ($) {
   const templateUrl = page_vars_itinerary.templateUrl;
   const destinationPoints = page_vars_itinerary.destinationPoints;
   const destinationLines = page_vars_itinerary.destinationLines;
-  console.log(destinationLines);
 
   var root = am5.Root.new("itinerary-map");
   root.setThemes([am5themes_Animated.new(root), am5themes_Dark.new(root)]);
