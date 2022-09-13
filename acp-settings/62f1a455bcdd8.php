@@ -5,7 +5,7 @@ return array (
   'title' => 'Itineraries',
   'type' => 'rfc_itineraries',
   'id' => '62f1a455bcdd8',
-  'updated' => 1660003413,
+  'updated' => 1663024101,
   'columns' => 
   array (
     'title' => 
@@ -20,15 +20,6 @@ return array (
       'bulk_edit' => 'on',
       'search' => 'on',
       'name' => 'title',
-    ),
-    'post_type' => 
-    array (
-      'type' => 'post_type',
-      'label' => 'Type',
-      'width' => '',
-      'width_unit' => '%',
-      'export' => 'off',
-      'name' => 'post_type',
     ),
     '62f1a434df3b64' => 
     array (
@@ -67,6 +58,42 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '62f1a441810624',
+    ),
+    '631fbb9d343958' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Embarkation Point',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_631f8bd5db3a2',
+      'post_property_display' => 'title',
+      'post_link_to' => 'edit_post',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '631fbb9d343958',
+    ),
+    '631fbbb569ba60' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Disembarkation Point',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_631f8c08db3a3',
+      'post_property_display' => 'title',
+      'post_link_to' => 'edit_post',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '631fbbb569ba60',
     ),
     'date' => 
     array (

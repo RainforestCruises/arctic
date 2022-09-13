@@ -1,6 +1,5 @@
 <?php
-$itinerary_data = $args['itinerary_data'];
-$departures = $itinerary_data['Departures'];
+
 $itineraries = get_field('itineraries');
 
 $curentYear = date("Y");
@@ -9,76 +8,201 @@ $curentYear = date("Y");
 <section class="cruise-itineraries" id="itineraries">
     <div class="cruise-itineraries__content">
 
-        <div class="title-group">
-            <div class="title-group__title">
-                Itineraries
+        <div class="cruise-itineraries__content__top">
+            <div class="title-group">
+                <div class="title-group__title">
+                    Itineraries
+                </div>
+                <div class="title-group__sub">
+                    There are <?php echo count($itineraries); ?> itineraries available
+                </div>
             </div>
-            <div class="title-group__sub">
-                There are <?php echo count($itineraries); ?> itineraries available
+
+            <!-- Nav Buttons -->
+            <div class="cruise-itineraries__content__top__nav">
+                <div class="swiper-button-prev swiper-button-prev--white-border itineraries-slider-btn-prev">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-left"></use>
+                    </svg>
+                </div>
+                <div class="swiper-button-next swiper-button-next--white-border itineraries-slider-btn-next">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                    </svg>
+                </div>
             </div>
         </div>
-        <div class="cruise-itineraries__content__slider" id="itineraries-slider">
-            <?php foreach ($itineraries as $i) :
-                $hero_image = get_field('hero_image', $i);
-                $title = get_the_title($i);
-                $top_snippet = get_field('top_snippet', $i);
-            ?>
 
-                <a class="itinerary-card" href="<?php echo get_permalink($i); ?>">
-                    <div class="itinerary-card__image-area">
-                        <img <?php afloat_image_markup($hero_image['id'], 'vertical-small', array('vertical-small')); ?>>
-                    </div>
-                    <div class="itinerary-card__content">
-                        <div class="itinerary-card__content__title">
-                            <?php echo $title; ?>
-                        </div>
-                        <div class="itinerary-card__content__description">
-                            <?php echo $top_snippet; ?>
-                        </div>
-                        <div class="itinerary-card__content__price-group">
-                            <div class="itinerary-card__content__price-group__amount">
-                                $2,955
-                            </div>
-                            <div class="itinerary-card__content__price-group__text">
-                                Per Person
-                            </div>
-                        </div>
-                        <div class="itinerary-card__content__bottom">
-                            <div class="itinerary-card__content__bottom__departures">
-                            <div class="itinerary-card__content__bottom__departures__fineprint">
-                                    Next departures
-                                </div>
-                                <div class="itinerary-card__content__bottom__departures__items">
-                                    <div class="itinerary-card__content__bottom__departures__items__item">
-                                        Jun 1
-                                    </div>
-                                    <div class="itinerary-card__content__bottom__departures__items__item">
-                                        Jun 6
-                                    </div>
-                                    <div class="itinerary-card__content__bottom__departures__items__item">
-                                        Jun 21
-                                    </div>
-                                </div>
-                               
-                            </div>
 
-                            <div class="itinerary-card__content__bottom__cta">
 
-                                <button class="cta-text-icon">
-                                    Explore
-                                    <svg>
-                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                                    </svg>
+        <!-- Main -->
+        <div class="cruise-itineraries__content__main">
+
+            <!-- Nav Area -->
+            <div class="cruise-itineraries__content__main__nav-area">
+                <div class="cruise-itineraries__content__main__nav-area__slider swiper" id="itineraries-slider-nav">
+                    <div class="swiper-wrapper">
+                        <?php $count = 0;
+                        foreach ($itineraries as $itinerary) :
+                            $id = $itinerary->ID;
+                            $itinerary_data = get_field('itinerary_data', $itinerary);
+                            $title = get_the_title($itinerary);
+                            $length = $itinerary_data['LengthInDays'] . ' Day';
+
+                        ?>
+                            <div class="cruise-itineraries__content__main__nav-area__slider__item swiper-slide"  slideIndex="<?php echo $count ?>" postId="<?php echo $id ?>">
+                                <button class="btn-pill">
+                                    <?php echo $length; ?>
                                 </button>
                             </div>
-                        </div>
 
-
+                        <?php $count++; endforeach; ?>
                     </div>
+                </div>
+            </div>
 
-                </a>
+            <!-- Detail Area -->
+            <div class="cruise-itineraries__content__main__detail-area">
 
-            <?php endforeach; ?>
+                <!-- Itineraries Slider -->
+                <div class="cruise-itineraries__content__main__detail-area__slider swiper" id="itineraries-slider">
+                    <div class="swiper-wrapper">
+
+                        <?php 
+                        $count = 0;
+                        foreach ($itineraries as $itinerary) :
+                            $id = $itinerary->ID;
+                            $hero_image = get_field('hero_image', $itinerary);
+                            $embarkation_point = get_field('embarkation_point', $itinerary);
+                            $embarkation = get_the_title($embarkation_point);
+
+                            $days = get_field('itinerary', $itinerary);
+
+                            $destinations = [];
+                            foreach ($days as $day) {
+                                if ($embarkation_point != $day['destination']) {
+                                    $destination = $day['destination'];
+                                    $destinations[] = get_the_title($destination);
+                                }
+                            }
+                            //build list of unique, with embarkations removed
+
+                            $title = get_the_title($itinerary);
+                            $top_snippet = get_field('top_snippet', $itinerary);
+                            $link = get_the_permalink($itinerary);
+                            $itinerary_data = get_field('itinerary_data', $itinerary);
+                            $length = $itinerary_data['LengthInDays'] . ' Day / ' . $itinerary_data['LengthInNights'] . ' Night';
+                        ?>
+
+                            <!-- Itinerary Card -->
+                            <div class="cruise-itineraries__content__main__detail-area__slider__slide swiper-slide" slideIndex="<?php echo $count ?>" postId="<?php echo $id ?>">
+                                <div class="resource-card small encapsulated ">
+
+                                    <!-- Images Slider -->
+                                    <div class="resource-card__image-area">
+                                        <img <?php afloat_image_markup($hero_image['id'], 'landscape-small', array('landscape-small', 'portrait-small')); ?>>
+                                    </div>
+
+                                    <!-- Content -->
+                                    <div class="resource-card__content">
+
+                                        <!-- Title -->
+                                        <div class="resource-card__content__title-group">
+                                            <div class="resource-card__content__title-group__title">
+                                                <?php echo $title; ?>
+                                            </div>
+                                            <div class="resource-card__content__title-group__sub">
+
+                                            </div>
+                                        </div>
+
+                                        <!-- Description -->
+                                        <div class="resource-card__content__description divider">
+                                            <?php echo $top_snippet; ?>
+                                        </div>
+
+                                        <!-- Specs -->
+                                        <div class="resource-card__content__specs bottom-margin">
+
+                                            <!-- Length -->
+                                            <div class="resource-card__content__specs__item">
+                                                <div class="resource-card__content__specs__item__icon">
+                                                    <svg>
+                                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-time-clock"></use>
+                                                    </svg>
+                                                </div>
+                                                <div class="resource-card__content__specs__item__text">
+                                                    Length: <?php echo $length; ?>
+                                                </div>
+                                            </div>
+
+                                            <!-- Embark -->
+                                            <div class="resource-card__content__specs__item">
+                                                <div class="resource-card__content__specs__item__icon">
+                                                    <svg>
+                                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-check-in"></use>
+                                                    </svg>
+                                                </div>
+                                                <div class="resource-card__content__specs__item__text">
+                                                    Embarkation: <?php echo $embarkation; ?>
+                                                </div>
+                                            </div>
+
+                                            <!-- Destinations -->
+                                            <div class="resource-card__content__specs__item">
+                                                <div class="resource-card__content__specs__item__icon">
+                                                    <svg>
+                                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-pin-e"></use>
+                                                    </svg>
+                                                </div>
+                                                <div class="resource-card__content__specs__item__text">
+                                                    <?php foreach ($destinations as $destination) : ?>
+                                                            <span><?php echo $destination; ?>, </span>
+                                                    <?php endforeach; ?>     
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- Price Group -->
+                                        <div class="resource-card__content__price-group">
+                                            <div class="resource-card__content__price-group__amount">
+                                                $2,955
+                                            </div>
+                                            <div class="resource-card__content__price-group__text">
+                                                Per Person
+                                            </div>
+                                        </div>
+
+                                        <!-- CTA -->
+                                        <div class="resource-card__content__cta">
+                                            <a class="cta-square-icon" href="<?php echo $link; ?>">
+                                                Explore
+                                                <svg>
+                                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- End Itinerary Card -->
+
+                        <?php $count++; endforeach; ?>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <!-- Map Area -->
+            <div class="cruise-itineraries__content__main__map-area">
+                <div class="cruise-itineraries__content__main__map-area__map" id="map-01"></div>
+            </div>
+
+            <?php  ?>
         </div>
 
 

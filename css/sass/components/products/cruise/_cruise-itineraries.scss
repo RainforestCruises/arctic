@@ -9,63 +9,128 @@
         @include topDivider;
 
         max-width: $page-width;
-        padding-bottom: 3rem;
+        padding-bottom: 5rem;
+        
+        &__top {
+            display: grid;
+            grid-template-columns: 1fr min-content;
+            &__title {
+            }
 
-        &__slider {
+            &__nav {
+                position: relative;
+                display: grid;
+                grid-template-columns: min-content min-content;
+                column-gap: .8rem;
+                //width: 10rem;
+
+                & .swiper-button-prev, .swiper-button-next {
+                    position: relative !important;
+                    right: auto;
+                    left: auto;
+                }
+            }
+        }
+
+        &__main {
             width: 100%;
             height: 60rem;
+            display: flex;
+            justify-content: flex-end;
+            position: relative;
             @media only screen and (max-width: $bp-small) {
-                height: min-content;       
+                height: min-content;
                 margin-bottom: 3rem;
             }
-            &__slide {
-                position: relative;
-                display: flex;
-                justify-content: flex-end;
-                width: 100%;
-                height: 100%;
-                &__detail-area {
-                    width: 40rem;
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    left: 0;
-                    z-index: 2;
 
-                    @media only screen and (max-width: $bp-small) {
-                        width: 100%;
-                        position: relative;
-                        top: auto;
-                        transform: translateY(0);         
+            &__nav-area {
+                position: absolute;
+                top: 0rem;
+                right: 1rem;
+                height: 6rem;
+                width: min-content;
+                z-index: 10;
+                display: flex;
+                align-items: center;
+                user-select: none;
+                &__slider {
+                    
+                    width: 100%;
+
+                    &__item {
+                        width: max-content;
+                        padding: 1rem .2rem;
+
+                        & button {
+                            box-shadow: $shadow-short-bottom-light;
+                        }
+
+                        &.swiper-slide-thumb-active {
+                            & button {
+                                border: 1px solid $color-primary;
+                            }
+                        }
                     }
+
 
 
                 }
+            }
 
-                &__map-area {
-                    width: 80%;
+            &__detail-area {
+                width: 46rem;
+                position: absolute;
+                top: 0;
+                transform: translateX(-3rem) translateY(-1.5rem);
+                left: 0;
+                z-index: 2;
+
+                &__slider {
+                    &__slide {        
+                        user-select: none;  
+                        padding: 3rem;
+                        @media only screen and (max-width: $bp-small) {
+                            padding: 0rem;
+                            box-shadow: none !important;
+                            border: 1px solid $color-grey-light-1a;
+                            border-radius: 1rem;
+                        }
+
+                       
+                    }
+                }
+
+               
+
+                @media only screen and (max-width: $bp-small) {
+                    width: 100%;
+                    position: relative;
+                    top: auto;
+                    transform: translateY(0) translateX(0);
+                }
+            }
+
+            &__map-area {
+                width: 80%;
+                height: 100%;
+                @media only screen and (max-width: $bp-small) {
+                    display: none;
+                }
+                border-radius: 1rem;
+                border: 1px solid $color-grey-light-1a;
+                background-color: $color-grey-light-1;
+                &__map {
+                    width: 100%;
                     height: 100%;
-                    @media only screen and (max-width: $bp-small) {
-                        display: none;
-                    }
+                    object-fit: cover;
                     border-radius: 1rem;
-                    border: 1px solid $color-grey-light-1a;
-                    background-color: $color-grey-light-1;
-                    &__map {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                        border-radius: 1rem;
-                        overflow: hidden;
-                        
-                    }
+                    overflow: hidden;
+                }
 
-                    & img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                        
-                    }
+                & img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
                 }
             }
         }

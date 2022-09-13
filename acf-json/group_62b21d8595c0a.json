@@ -95,6 +95,25 @@
             "readonly": 1
         },
         {
+            "key": "field_631fba45036ae",
+            "label": "Itinerary Data",
+            "name": "itinerary_data",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_62b21d85c546d",
             "label": "Last Updated",
             "name": "last_updated",
@@ -618,6 +637,50 @@
             "endpoint": 0
         },
         {
+            "key": "field_631f8bd5db3a2",
+            "label": "Embarkation Point",
+            "name": "embarkation_point",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_destinations"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_631f8c08db3a3",
+            "label": "Disembarkation Point",
+            "name": "disembarkation_point",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_destinations"
+            ],
+            "taxonomy": "",
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
             "key": "field_62b9d1d2164f5",
             "label": "Itinerary",
             "name": "itinerary",
@@ -1052,255 +1115,6 @@
                     ]
                 }
             ]
-        },
-        {
-            "key": "field_62b21d865f192",
-            "label": "Charter Pricing",
-            "name": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_62b21d8662c2f",
-            "label": "Charter Available",
-            "name": "charter_available",
-            "type": "true_false",
-            "instructions": "Check if this vessel can be chartered",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_62b21d8666893",
-            "label": "Charter Header Text Override",
-            "name": "charter_header_text_override",
-            "type": "text",
-            "instructions": "50 character limit. If not blank, will replace the default text of \"Exclusive, private cruise based on full occupancy\"",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_62b21d8662c2f",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": 50
-        },
-        {
-            "key": "field_62b21d866a1f0",
-            "label": "Charter Daily Price (deprecated)",
-            "name": "charter_daily_price",
-            "type": "number",
-            "instructions": "Price per day to charter the vessel",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_62b21d8662c2f",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
-        },
-        {
-            "key": "field_62b21d866db80",
-            "label": "Charter Min Days",
-            "name": "charter_min_days",
-            "type": "number",
-            "instructions": "Minimum number of days vessel must be chartered",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_62b21d8662c2f",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
-        },
-        {
-            "key": "field_62b21d867177b",
-            "label": "Charter Only",
-            "name": "charter_only",
-            "type": "true_false",
-            "instructions": "Check if this vessel can ONLY be chartered -- NOTE: Itineraries will not display in Charter Only vessels unless the 'Is Sample' box is checked in DF.",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_62b21d8662c2f",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_62b21d8675366",
-            "label": "Charter Snippet",
-            "name": "charter_snippet",
-            "type": "wysiwyg",
-            "instructions": "Text that will display as default for all itineraries. To override individual itinerary text in charter view, edit the content in DF.",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_62b21d8662c2f",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 0,
-            "delay": 0
-        },
-        {
-            "key": "field_62b21d86790f3",
-            "label": "Display Charter Policies",
-            "name": "display_charter_policies",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_62b21d8662c2f",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_62b21d867cf36",
-            "label": "Charter Policies",
-            "name": "charter_policies",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_62b21d86790f3",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": 0,
-            "max": 0,
-            "layout": "table",
-            "button_label": "",
-            "sub_fields": [
-                {
-                    "key": "field_62b21d8a2cf19",
-                    "label": "Policy",
-                    "name": "policy",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                }
-            ]
         }
     ],
     "location": [
@@ -1321,5 +1135,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1660235098
+    "modified": 1663023706
 }

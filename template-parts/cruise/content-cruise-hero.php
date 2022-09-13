@@ -152,7 +152,7 @@ $desktopImages = array_slice($images, 1);
                             <div class="sub-attribute">
                                 Ship Size
                             </div>
-                            <?php echo get_field('vessel_capacity', $cruisePost) . ' Guests'; ?>
+                            <?php echo get_field('vessel_capacity') . ' Guests'; ?>
                         </div>
 
 

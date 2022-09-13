@@ -31,8 +31,8 @@ console_log($cabins);
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
                     </svg>
                 </div>
-
             </div>
+            
         </div>
 
         <!-- Slider Area -->

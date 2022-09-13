@@ -28,10 +28,34 @@
                 <circle cx="8" cy="6" r="2.5" fill="none"></circle>
             </g>
         </symbol>
-        <symbol id="icon-pin-3" viewBox="0 0 32 32">
-            <title>pin 3</title>
+        <symbol id="icon-check-in" viewBox="0 0 16 16">
+            <title>check in</title>
             <g class="nc-icon-wrapper">
-                <path fill="currentColor" d="M16,0C10.1,0,4,4.5,4,12c0,7.1,10.8,18.2,11.3,18.7c0.2,0.2,0.4,0.3,0.7,0.3s0.5-0.1,0.7-0.3 C17.2,30.2,28,19.2,28,12C28,4.5,21.9,0,16,0z M16,16c-2.2,0-4-1.8-4-4s1.8-4,4-4s4,1.8,4,4S18.2,16,16,16z" stroke="none"></path>
+                <path d="M2,3H3V1A1,1,0,0,1,5,1V3h6V1a1,1,0,0,1,2,0V3h1a2,2,0,0,1,2,2V8a1,1,0,0,1-2,0V7H2v7H8a1,1,0,0,1,0,2H2a2,2,0,0,1-2-2V5A2,2,0,0,1,2,3Z" fill="currentColor" stroke="none"></path>
+                <path d="M7,13a1,1,0,0,1,0-2h4V9a.5.5,0,0,1,.8-.4l4,3a.5.5,0,0,1,0,.8l-4,3a.5.5,0,0,1-.3.1.508.508,0,0,1-.224-.053A.5.5,0,0,1,11,15V13Z" stroke="none"></path>
+            </g>
+        </symbol>
+        <symbol id="icon-pin-e" viewBox="0 0 16 16">
+            <title>pin e</title>
+            <g class="nc-icon-wrapper">
+                <circle cx="8" cy="7" r="2" stroke="none"></circle>
+                <path fill="currentColor" d="M7.3,15.7c-0.1-0.1-4.2-3.7-4.2-3.8C1.7,10.7,1,8.9,1,7c0-3.9,3.1-7,7-7s7,3.1,7,7c0,1.9-0.7,3.7-2.1,5 c-0.1,0.1-4.1,3.7-4.2,3.8C8.3,16.1,7.7,16.1,7.3,15.7z M4.6,10.7l3.4,3l3.4-3c0,0,0,0,0,0c1-1,1.6-2.2,1.6-3.6c0-2.8-2.2-5-5-5 S3,4.2,3,7C3,8.4,3.6,9.7,4.6,10.7C4.6,10.6,4.6,10.6,4.6,10.7z" stroke="none"></path>
+            </g>
+        </symbol>
+        <symbol id="icon-pin-copy" viewBox="0 0 16 16">
+            <title>pin copy</title>
+            <g class="nc-icon-wrapper">
+                <path fill="currentColor" d="M6,1C3.1,1,0,3.2,0,7c0,3.7,6,9,6,9s6-5.3,6-9C12,3.2,8.9,1,6,1z M6,9C4.9,9,4,8.1,4,7c0-1.1,0.9-2,2-2 s2,0.9,2,2C8,8.1,7.1,9,6,9z" stroke="none"></path>
+                <path d="M14,7c0,1-0.3,2.1-0.8,3.2C14.5,8.7,16,6.6,16,4.9C16,1.8,13.4,0,11.1,0c-0.3,0-0.7,0-1,0.1 C12.3,1.4,14,3.8,14,7z" stroke="none"></path>
+            </g>
+        </symbol>
+        <symbol id="icon-pins" viewBox="0 0 16 16">
+            <title>pins</title>
+            <g class="nc-icon-wrapper">
+                <path d="M12.5,8c0,3.5-4.5,7.5-4.5,7.5S3.5,11.5,3.5,8a4.5,4.5,0,0,1,9,0Z" fill="none" stroke="currentColor"></path>
+                <path d="M1.9,7A5.584,5.584,0,0,1,.5,3.5,3,3,0,0,1,6,1.841" fill="none"></path>
+                <path d="M14.105,7A5.584,5.584,0,0,0,15.5,3.5,3,3,0,0,0,10,1.841" fill="none"></path>
+                <circle cx="8" cy="8" r="1.5" fill="none" stroke="currentColor"></circle>
             </g>
         </symbol>
         <symbol id="icon-info" viewBox="0 0 32 32">

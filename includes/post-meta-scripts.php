@@ -45,14 +45,32 @@ function my_acf_save_post($post_id)
         $dfPropertyId = get_field('property_id', $post_id); //get property data from DF
         refresh_cruise_info($dfPropertyId, $post_id);
     }
-    if ('rfc_lodges' == get_post_type()) {
-        $dfPropertyId = get_field('property_id', $post_id); //get property data from DF
-        refresh_cruise_info($dfPropertyId, $post_id);
-    }
 
     if ('rfc_itineraries' == get_post_type()) {
         $cruisePost = get_field('ship', $post_id); //get cruise post
         $dfPropertyId = get_field('property_id', $cruisePost); //get property data from DF
+        refresh_cruise_info($dfPropertyId, $post_id);
+
+        $cruiseDataUpdated = get_field('cruise_data', $post_id); //updated cruise data
+        $itinerary_id = get_field('itinerary_id', $post_id); //get itinerary id from field
+
+        $itineraries = $cruiseDataUpdated['Itineraries'];
+        $itinerary_data = "";
+      
+        //Get Itinerary from cruise data
+        foreach ($itineraries as $i) {
+          if ($i['Id'] == $itinerary_id) {
+            $itinerary_data = $i;
+          }
+        }
+        update_field('itinerary_data', $itinerary_data);
+
+    }
+
+
+
+    if ('rfc_lodges' == get_post_type()) {
+        $dfPropertyId = get_field('property_id', $post_id); //get property data from DF
         refresh_cruise_info($dfPropertyId, $post_id);
     }
 
