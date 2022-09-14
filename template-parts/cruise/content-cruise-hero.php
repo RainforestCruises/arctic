@@ -9,17 +9,17 @@ $desktopImages = array_slice($images, 1);
 ?>
 
 <!-- Cruise Hero -->
-<section class="cruise-hero" id="top">
+<section class="product-hero" id="top">
     <!-- Desktop BG Image -->
-    <div class="cruise-hero__bg-image">
+    <div class="product-hero__bg-image">
         <img <?php afloat_image_markup($images[0]['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
     </div>
 
     <!-- Desktop Gallery -->
-    <div class="cruise-hero__gallery">
+    <div class="product-hero__gallery">
 
         <!-- Nav -->
-        <div class="cruise-hero__gallery__nav">
+        <div class="product-hero__gallery__nav">
             <!-- Prev -->
             <div class="hero-gallery-slider-prev btn-swiper-blur btn-swiper-blur__prev">
                 <svg>
@@ -35,11 +35,11 @@ $desktopImages = array_slice($images, 1);
         </div>
 
         <!-- Desktop Slider -->
-        <div class="cruise-hero__gallery__slider swiper" id="hero-desktop-slider">
+        <div class="product-hero__gallery__slider swiper" id="hero-desktop-slider">
             <div class="swiper-wrapper">
                 <?php
                 foreach ($desktopImages as $image) : ?>
-                    <div class="cruise-hero__gallery__slider__item swiper-slide" imageId="<?php echo $image['id']; ?>">
+                    <div class="product-hero__gallery__slider__item swiper-slide" imageId="<?php echo $image['id']; ?>">
                         <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
                     </div>
                 <?php endforeach; ?>
@@ -49,66 +49,66 @@ $desktopImages = array_slice($images, 1);
 
 
     <!-- Mobile Slider BG -->
-    <div class="cruise-hero__bg-slider swiper" id="hero-mobile-slider">
+    <div class="product-hero__bg-slider swiper" id="hero-mobile-slider">
         <div class="swiper-wrapper">
             <!-- Gallery Images -->
             <?php foreach ($images as $image) : ?>
-                <div class="cruise-hero__bg-slider__slide swiper-slide" imageId="<?php echo $image['id']; ?>">
+                <div class="product-hero__bg-slider__slide swiper-slide" imageId="<?php echo $image['id']; ?>">
                     <img <?php afloat_image_markup($image['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
                 </div>
             <?php endforeach; ?>
         </div>
-        <div class="swiper-button-prev cruise-hero__bg-slider__button-prev"></div>
-        <div class="swiper-button-next cruise-hero__bg-slider__button-next"></div>
-        <div class="cruise-hero__bg-slider__count">
+        <div class="swiper-button-prev product-hero__bg-slider__button-prev"></div>
+        <div class="swiper-button-next product-hero__bg-slider__button-next"></div>
+        <div class="product-hero__bg-slider__count">
             <?php echo '1 / ' . (count($images) + 1) ?>
         </div>
     </div>
 
 
     <!-- Hero Content -->
-    <div class="cruise-hero__content">
-        <div class="cruise-hero__content__main">
+    <div class="product-hero__content">
+        <div class="product-hero__content__main">
             <!-- Primary (Title + Description) -->
-            <div class="cruise-hero__content__main__primary">
-                <div class="cruise-hero__content__main__primary__title">
+            <div class="product-hero__content__main__primary">
+                <div class="product-hero__content__main__primary__title">
                     <?php echo $title ?>
                 </div>
-                <div class="cruise-hero__content__main__primary__snippet">
+                <div class="product-hero__content__main__primary__snippet">
                     <?php echo $snippet; ?>
                 </div>
-                <div class="cruise-hero__content__main__primary__nav">
-                    <a href="#overview" class="cruise-hero__content__main__primary__nav__link">Cabins</a>
-                    <a href="#overview" class="cruise-hero__content__main__primary__nav__link">Itineraries</a>
-                    <a href="#overview" class="cruise-hero__content__main__primary__nav__link">Dates</a>
-                    <a href="#overview" class="cruise-hero__content__main__primary__nav__link">Reviews</a>
+                <div class="product-hero__content__main__primary__nav">
+                    <a href="#overview" class="product-hero__content__main__primary__nav__link">Cabins</a>
+                    <a href="#overview" class="product-hero__content__main__primary__nav__link">Itineraries</a>
+                    <a href="#overview" class="product-hero__content__main__primary__nav__link">Dates</a>
+                    <a href="#overview" class="product-hero__content__main__primary__nav__link">Reviews</a>
                 </div>
             </div>
 
             <!-- Secondary (Info + Attributes) -->
-            <div class="cruise-hero__content__main__secondary">
+            <div class="product-hero__content__main__secondary">
 
                 <!-- Info -->
-                <div class="cruise-hero__content__main__secondary__info">
+                <div class="product-hero__content__main__secondary__info">
 
                     <!-- Starting Price -->
-                    <div class="cruise-hero__content__main__secondary__info__starting-price">
-                        <div class="cruise-hero__content__main__secondary__info__starting-price__title-area">
-                            <div class="cruise-hero__content__main__secondary__info__starting-price__title-area__text">
+                    <div class="product-hero__content__main__secondary__info__starting-price">
+                        <div class="product-hero__content__main__secondary__info__starting-price__title-area">
+                            <div class="product-hero__content__main__secondary__info__starting-price__title-area__text">
                                 Starting at:
                             </div>
-                            <div class="cruise-hero__content__main__secondary__info__starting-price__title-area__subtext">
+                            <div class="product-hero__content__main__secondary__info__starting-price__title-area__subtext">
                                 Per Person
                             </div>
                         </div>
-                        <div class="cruise-hero__content__main__secondary__info__starting-price__amount">
+                        <div class="product-hero__content__main__secondary__info__starting-price__amount">
                             <?php echo "$" . number_format($args['lowestPrice'], 0); ?>
                             <span class="u-small-text">USD</span>
                         </div>
                     </div>
 
                     <!-- Inquire CTA Button -->
-                    <div class="cruise-hero__content__main__secondary__info__cta">
+                    <div class="product-hero__content__main__secondary__info__cta">
                         <button class="cta-primary inquire-cta">
                             Inquire
                             <svg>
@@ -120,16 +120,16 @@ $desktopImages = array_slice($images, 1);
                 </div>
 
                 <!-- Attributes -->
-                <div class="cruise-hero__content__main__secondary__attributes">
+                <div class="product-hero__content__main__secondary__attributes">
 
                     <!-- Itineraries -->
-                    <div class="cruise-hero__content__main__secondary__attributes__item">
-                        <div class="cruise-hero__content__main__secondary__attributes__item__icon">
+                    <div class="product-hero__content__main__secondary__attributes__item">
+                        <div class="product-hero__content__main__secondary__attributes__item__icon">
                             <svg>
                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-m-time"></use>
                             </svg>
                         </div>
-                        <div class="cruise-hero__content__main__secondary__attributes__item__text">
+                        <div class="product-hero__content__main__secondary__attributes__item__text">
                             <div class="sub-attribute">
                                 <?php echo $itineraryCount ?> Itineraries
                             </div>
@@ -141,14 +141,14 @@ $desktopImages = array_slice($images, 1);
                     </div>
 
                     <!-- Capacity -->
-                    <div class="cruise-hero__content__main__secondary__attributes__item">
+                    <div class="product-hero__content__main__secondary__attributes__item">
 
-                        <div class="cruise-hero__content__main__secondary__attributes__item__icon">
+                        <div class="product-hero__content__main__secondary__attributes__item__icon">
                             <svg>
                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat-front"></use>
                             </svg>
                         </div>
-                        <div class="cruise-hero__content__main__secondary__attributes__item__text">
+                        <div class="product-hero__content__main__secondary__attributes__item__text">
                             <div class="sub-attribute">
                                 Ship Size
                             </div>
@@ -158,15 +158,15 @@ $desktopImages = array_slice($images, 1);
 
                     </div>
                     <!-- Service Level -->
-                    <div class="cruise-hero__content__main__secondary__attributes__item">
+                    <div class="product-hero__content__main__secondary__attributes__item">
 
 
-                        <div class="cruise-hero__content__main__secondary__attributes__item__icon">
+                        <div class="product-hero__content__main__secondary__attributes__item__icon">
                             <svg>
                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-pin-3"></use>
                             </svg>
                         </div>
-                        <div class="cruise-hero__content__main__secondary__attributes__item__text">
+                        <div class="product-hero__content__main__secondary__attributes__item__text">
                             <div class="sub-attribute">
                                 Service Level
                             </div>
@@ -272,5 +272,4 @@ $desktopImages = array_slice($images, 1);
             </div>
         </div>
     </div>
-</div>
 </div>

@@ -65,8 +65,7 @@ get_header();
 ?>
 
 <?php
-while (have_posts()) :
-  the_post();
+
 
 
   $cruise_data = get_field('cruise_data');
@@ -185,36 +184,12 @@ while (have_posts()) :
 
 
   </main>
-
-
-  <!-- Deals Modal -->
-  <?php
-  if ($hasDeals == true) {
-    get_template_part('template-parts/product/content', 'product-deals-modal', $args);
-  }
-  ?>
-
-  <!-- Contact Modal -->
-  <?php
-  get_template_part('template-parts/shared/content', 'shared-contact-modal', $args);
-  ?>
-
-  <!-- Prices Extra -->
-  <?php
-  get_template_part('template-parts/product/content', 'product-prices-extra', $args);
-  ?>
-
-  <!-- Notification Message-->
-  <?php
-  $show_notification = get_field('show_notification');
-  if ($show_notification) :
-    get_template_part('template-parts/product/content', 'product-notification', $args);
-  endif;
-  ?>
-
-
+<!-- Inquire Modal -->
 <?php
-endwhile;
+get_template_part('template-parts/shared/content', 'shared-inquire-modal', $args);
 ?>
+
+
+
 <!-- #site-wrapper end-->
 <?php get_footer() ?>

@@ -89,7 +89,17 @@ jQuery(document).ready(function ($) {
 
 
 
+  const body = document.getElementById("body");
 
+  //Inquire
+  const inquireCtaButtons = [...document.querySelectorAll('.inquire-cta')];
+  const inquireModal = document.getElementById("inquireModal");
+  inquireCtaButtons.forEach(item => {
+      item.addEventListener('click', () => {
+          inquireModal.style.display = 'flex';
+          body.classList.add('no-scroll');
+      });
+  })
 
 
 

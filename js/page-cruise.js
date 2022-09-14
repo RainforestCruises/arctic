@@ -27,7 +27,7 @@ jQuery(document).ready(function ($) {
             prevEl: '.swiper-button-prev',
         }
     });
-    const counter = document.querySelector('.cruise-hero__bg-slider__count');
+    const counter = document.querySelector('.product-hero__bg-slider__count');
     heroMobileSlider.on('slideChange', function (swiper) {
         counter.innerHTML = (swiper.realIndex + 1) + ' / ' + (swiper.slides.length - 2);
     });
@@ -88,7 +88,7 @@ jQuery(document).ready(function ($) {
 
 
     // Hero Desktop Gallery Images - Click event listeners
-    const heroGalleryImages = [...document.querySelectorAll('.cruise-hero__gallery__slider__item')];
+    const heroGalleryImages = [...document.querySelectorAll('.product-hero__gallery__slider__item')];
     const cruiseGalleryModal = document.getElementById("cruiseGalleryModal");
     heroGalleryImages.forEach(item => {
         item.addEventListener('click', () => {
@@ -105,7 +105,7 @@ jQuery(document).ready(function ($) {
     })
 
     // Hero Mobile Gallery Images - Click event listeners 
-    const heroMobileGalleryImages = [...document.querySelectorAll('.cruise-hero__bg-slider__slide')];
+    const heroMobileGalleryImages = [...document.querySelectorAll('.product-hero__bg-slider__slide')];
     heroMobileGalleryImages.forEach(item => {
         item.addEventListener('click', () => {
             cruiseGalleryModal.style.display = 'flex';

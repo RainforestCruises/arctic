@@ -3,26 +3,6 @@ jQuery(document).ready(function ($) {
 
     var templateUrl = "";
 
-
-
-    //itineraries-slider
-    // $('#itineraries-slider, #extras-slider').slick({
-    //     slidesToShow: 2,
-    //     slidesToScroll: 1,
-    //     infinite: true,
-    //     arrows: true,
-    //     prevArrow: '<button class="btn-scroll btn-scroll--left btn-slider-top__left"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-    //     nextArrow: '<button class="btn-scroll btn-slider-top__right"><svg><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
-    //     responsive: [
-    //         {
-    //             breakpoint: 600,
-    //             settings: {
-    //                 slidesToShow: 1,
-    //             }
-    //         }
-    //     ]
-    // });
-
  
 
     //departures slider

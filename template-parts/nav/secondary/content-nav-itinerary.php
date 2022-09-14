@@ -1,70 +1,32 @@
 <?php
-$productTitle = "";
-$showOverview = true; //always true for Cruise / Lodge -- optional for Tour
-
-if (get_post_type() == 'rfc_tours') :
-    $productTitle = get_field('tour_name');
-    $showOverview  = get_field('show_overview');
-else :
-    $productTitle = get_the_title();
-endif;
+$title = get_the_title();
 ?>
 
-<nav class="nav-secondary" id="nav-secondary">
-    <div class="nav-secondary__main">
-        <div class="nav-secondary__main__title-area">
-            <a class="nav-secondary__main__title-area__title" id="nav-secondary-title" href="#top">
-                <?php echo $productTitle ?>
-            </a>
-            <button class="nav-secondary__main__title-area__button" id="nav-secondary-button">
-                <div class="nav-secondary__main__title-area__button__icon-area">
-                    <svg>
-                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-ic_chevron_right_36px"></use>
-                    </svg>
-                </div>
-                <div class="nav-secondary__main__title-area__button__text-area">
-                    <?php echo $productTitle ?>
-                </div>
-
+<nav class="nav-secondary">
+    <div class="nav-secondary__content">
+        <div class="nav-secondary__content__title">
+            <button class="nav-secondary__content__title__button btn-pill">
+                <?php echo $title; ?>
             </button>
-
         </div>
-        <ul class="nav-secondary__main__links">
-            <?php if ($showOverview) : ?>
-                <li>
-                    <a href="#overview">Overview</a>
-                </li>
-            <?php endif; ?>
-            <li>
-                <a href="#itinerary"><?php echo (get_post_type() != 'rfc_cruises') ? ('Itinerary') : ('Itineraries'); ?></a>
-            </li>
-            <li>
-                <a href="#departures">Departures</a>
-            </li>
-        </ul>
-        <div class="nav-secondary__main__cta">
-            <button class="btn-cta-round btn-cta-round--small" id="nav-secondary-cta">
+        <div class="nav-secondary__content__buttons">
+            <button class="nav-secondary__content__buttons__button btn-pill">
+                Itinerary
+            </button>
+            <button class="nav-secondary__content__buttons__button btn-pill">
+                Dates
+            </button>
+            <button class="nav-secondary__content__buttons__button btn-pill">
+                Services
+            </button>
+            <button class="nav-secondary__content__buttons__button btn-pill">
+                Reviews
+            </button>
+        </div>
+        <div class="nav-secondary__content__cta">
+            <button class="nav-secondary__content__cta__button btn-pill btn-pill--dark inquire-cta">
                 Inquire
             </button>
         </div>
     </div>
-</nav>
-
-
-
-<!--mobile menu expand-->
-<nav class="nav-secondary-mobile ">
-    <ul class="nav-secondary-mobile__list">
-        <?php if ($showOverview) : ?>
-            <li class="nav-secondary-mobile__list__item">
-                <a class="nav-secondary-mobile__list__item__link" href="#overview">Overview</a>
-            </li>
-        <?php endif; ?>
-        <li class="nav-secondary-mobile__list__item">
-            <a class="nav-secondary-mobile__list__item__link" href="#itinerary"><?php echo (get_post_type() != 'rfc_cruises') ? ('Itinerary') : ('Itineraries'); ?></a>
-        </li>
-        <li class="nav-secondary-mobile__list__item">
-            <a class="nav-secondary-mobile__list__item__link" href="#departures">Departures</a>
-        </li>
-    </ul>
 </nav>

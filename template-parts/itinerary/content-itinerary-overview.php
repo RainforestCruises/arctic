@@ -2,8 +2,8 @@
 
 $map_image = get_field('map_image');
 $ship = get_field('ship');
-
-$ship_featured_image = get_field('featured_image', $ship);
+$ship_image_gallery = get_field('hero_gallery', $ship);
+$ship_featured_image = $ship_image_gallery[0];
 $ship_snippet = get_field('top_snippet', $ship);
 $cruise_data = $args['cruiseData'];
 ?>
