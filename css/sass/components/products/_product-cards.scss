@@ -122,6 +122,11 @@
     &.encapsulated {
         box-shadow: $shadow-medium-around;
         border-radius: 1rem;
+
+        @media only screen and (max-width: $bp-small) {
+            box-shadow: none;
+
+        }
         
         & .resource-card__image-area {
             border-bottom-left-radius: 0;

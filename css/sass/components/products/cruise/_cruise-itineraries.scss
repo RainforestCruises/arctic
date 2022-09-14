@@ -7,10 +7,10 @@
         flex-direction: column;
         @include flexPadding;
         @include topDivider;
-
+        padding-bottom: 3rem !important;
         max-width: $page-width;
-        padding-bottom: 5rem;
-        
+       
+
         &__top {
             display: grid;
             grid-template-columns: 1fr min-content;
@@ -21,10 +21,11 @@
                 position: relative;
                 display: grid;
                 grid-template-columns: min-content min-content;
-                column-gap: .8rem;
+                column-gap: 0.8rem;
                 //width: 10rem;
 
-                & .swiper-button-prev, .swiper-button-next {
+                & .swiper-button-prev,
+                .swiper-button-next {
                     position: relative !important;
                     right: auto;
                     left: auto;
@@ -36,33 +37,65 @@
             width: 100%;
             height: 60rem;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
+       
             position: relative;
             @media only screen and (max-width: $bp-small) {
                 height: min-content;
                 margin-bottom: 3rem;
+                flex-direction: column;
             }
 
             &__nav-area {
-                position: absolute;
-                top: 0rem;
-                right: 1rem;
-                height: 6rem;
-                width: min-content;
+                height: min-content;
+                width: calc(100% - 46rem);
+                transform: translateX(-1px);
                 z-index: 10;
-                display: flex;
-                align-items: center;
                 user-select: none;
-                &__slider {
-                    
+
+                @media only screen and (max-width: $bp-small) {
                     width: 100%;
+                }
+
+                &__slider {
+                    position: relative;
+                    padding-left: 5rem;
+                    padding-right: 2rem;
+                    -webkit-mask-image: linear-gradient(to right, transparent, $color-black 5rem);
+                    mask-image: linear-gradient(to right, transparent, $color-black 5rem);
+
+                    @media only screen and (max-width: $bp-small) {
+                        padding-left: 0;
+                        padding-right: 0;
+                        -webkit-mask-image: none;
+                        mask-image: none;
+                    }
+
 
                     &__item {
-                        width: max-content;
-                        padding: 1rem .2rem;
-
-                        & button {
+                        padding: 1rem 0.2rem;
+                        width: min-content !important;
+                        
+                        &__button {
                             box-shadow: $shadow-short-bottom-light;
+                            width: max-content;
+                            padding: 0.8rem 1.6rem;
+                            cursor: pointer;
+                            position: relative;   
+                            background-color: $color-white;
+                            font-size: 1.4rem;
+                            border-radius: 1rem;
+                            transition: all 0.2s;               
+                            border: 1px solid $color-grey-light-1a;
+
+                            &__title {
+                                font-size: 1.4rem;
+                                padding-bottom: .5rem;
+                            }
+
+                            &__length {
+                                font-weight: 700;
+                            }
                         }
 
                         &.swiper-slide-thumb-active {
@@ -71,23 +104,17 @@
                             }
                         }
                     }
-
-
-
                 }
             }
 
             &__detail-area {
                 width: 46rem;
-                position: absolute;
-                top: 0;
-                transform: translateX(-3rem) translateY(-1.5rem);
-                left: 0;
+                transform: translateX(-3rem) translateY(-1.5rem); // for shadow
                 z-index: 2;
 
                 &__slider {
-                    &__slide {        
-                        user-select: none;  
+                    &__slide {
+                        user-select: none;
                         padding: 3rem;
                         @media only screen and (max-width: $bp-small) {
                             padding: 0rem;
@@ -95,24 +122,26 @@
                             border: 1px solid $color-grey-light-1a;
                             border-radius: 1rem;
                         }
-
-                       
                     }
                 }
-
-               
 
                 @media only screen and (max-width: $bp-small) {
                     width: 100%;
                     position: relative;
                     top: auto;
                     transform: translateY(0) translateX(0);
+                    order: 2;
                 }
             }
 
             &__map-area {
+                position: absolute;
+                top: 0;
+                right: 0;
+
                 width: 80%;
                 height: 100%;
+
                 @media only screen and (max-width: $bp-small) {
                     display: none;
                 }

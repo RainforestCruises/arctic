@@ -38,37 +38,15 @@ $curentYear = date("Y");
         <!-- Main -->
         <div class="cruise-itineraries__content__main">
 
-            <!-- Nav Area -->
-            <div class="cruise-itineraries__content__main__nav-area">
-                <div class="cruise-itineraries__content__main__nav-area__slider swiper" id="itineraries-slider-nav">
-                    <div class="swiper-wrapper">
-                        <?php $count = 0;
-                        foreach ($itineraries as $itinerary) :
-                            $id = $itinerary->ID;
-                            $itinerary_data = get_field('itinerary_data', $itinerary);
-                            $title = get_the_title($itinerary);
-                            $length = $itinerary_data['LengthInDays'] . ' Day';
 
-                        ?>
-                            <div class="cruise-itineraries__content__main__nav-area__slider__item swiper-slide"  slideIndex="<?php echo $count ?>" postId="<?php echo $id ?>">
-                                <button class="btn-pill">
-                                    <?php echo $length; ?>
-                                </button>
-                            </div>
-
-                        <?php $count++; endforeach; ?>
-                    </div>
-                </div>
-            </div>
 
             <!-- Detail Area -->
             <div class="cruise-itineraries__content__main__detail-area">
-
                 <!-- Itineraries Slider -->
                 <div class="cruise-itineraries__content__main__detail-area__slider swiper" id="itineraries-slider">
                     <div class="swiper-wrapper">
 
-                        <?php 
+                        <?php
                         $count = 0;
                         foreach ($itineraries as $itinerary) :
                             $id = $itinerary->ID;
@@ -157,8 +135,8 @@ $curentYear = date("Y");
                                                 </div>
                                                 <div class="resource-card__content__specs__item__text">
                                                     <?php foreach ($destinations as $destination) : ?>
-                                                            <span><?php echo $destination; ?>, </span>
-                                                    <?php endforeach; ?>     
+                                                        <span><?php echo $destination; ?>, </span>
+                                                    <?php endforeach; ?>
                                                 </div>
                                             </div>
 
@@ -189,14 +167,41 @@ $curentYear = date("Y");
 
                             <!-- End Itinerary Card -->
 
-                        <?php $count++; endforeach; ?>
+                        <?php $count++;
+                        endforeach; ?>
                     </div>
                 </div>
-
-
-
             </div>
+            <!-- Nav Area -->
+            <div class="cruise-itineraries__content__main__nav-area">
+                <div class="cruise-itineraries__content__main__nav-area__slider swiper" id="itineraries-slider-nav">
+                    <div class="swiper-wrapper">
+                        <?php $count = 0;
+                        foreach ($itineraries as $itinerary) :
+                            $id = $itinerary->ID;
+                            $itinerary_data = get_field('itinerary_data', $itinerary);
+                            $title = get_the_title($itinerary);
+                            $length = $itinerary_data['LengthInDays'] . ' Day';
 
+                        ?>
+                            <div class="cruise-itineraries__content__main__nav-area__slider__item swiper-slide" slideIndex="<?php echo $count ?>" postId="<?php echo $id ?>">
+                                <button class="cruise-itineraries__content__main__nav-area__slider__item__button">
+                                    <div class="cruise-itineraries__content__main__nav-area__slider__item__button__title">
+                                        <?php echo $title; ?>
+                                    </div>
+                                    <div class="cruise-itineraries__content__main__nav-area__slider__item__button__length">
+                                        <?php echo $length; ?>
+                                    </div>
+
+                                </button>
+                            </div>
+
+                        <?php $count++;
+                        endforeach; ?>
+                    </div>
+        
+                </div>
+            </div>
             <!-- Map Area -->
             <div class="cruise-itineraries__content__main__map-area">
                 <div class="cruise-itineraries__content__main__map-area__map" id="map-01"></div>

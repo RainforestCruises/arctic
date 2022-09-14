@@ -16,7 +16,7 @@ jQuery(document).ready(function ($) {
             wheelY: "none",
             projection: am5map.geoMercator(),
             homeZoomLevel: 10,
-            homeGeoPoint: { longitude: -65, latitude: -60 }, //lat = Y, long = X
+            homeGeoPoint: { longitude: -75, latitude: -60 }, //lat = Y, long = X
             rotationY: 50, //80
             rotationX: 35,
             maxPanOut: .4,
@@ -96,9 +96,10 @@ jQuery(document).ready(function ($) {
     //SLIDERS
     // Itineraries Swiper
     const itinerariesSliderNav = new Swiper('#itineraries-slider-nav', {
-        slidesPerView: 'auto',
-        
-        watchSlidesProgress: true,
+        slidesPerView: "auto",
+        slideToClickedSlide: true,
+        spaceBetween: 10,
+       
     });
     
     // Itineraries Swiper
@@ -113,14 +114,17 @@ jQuery(document).ready(function ($) {
         },
     });
     itinerariesSlider.on('slideChange', function (swiper) {
-        //swiper.realIndex
         let destinationPoints = itineraryObjects[swiper.realIndex].destinationPoints;
         let destinationLines = itineraryObjects[swiper.realIndex].destinationLines;
 
-        console.log(destinationPoints);
 
         pointSeries.data.setAll(destinationPoints);
         lineSeries.data.setAll(destinationLines);
     });
+
+    window.addEventListener('resize', function() {
+        chart.goHome();
+    });
+
 
 });
