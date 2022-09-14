@@ -40,7 +40,7 @@ $itineraries = get_field('itineraries');
                 <div class="swiper-wrapper">
 
                     <?php foreach ($itineraries as $itinerary) :
-                        $image =  get_field('hero_image_portrait', $itinerary);
+                        $image =  get_field('hero_image', $itinerary);
                         $title = get_the_title($itinerary);
                         $link = get_the_permalink($itinerary);
                     ?>
