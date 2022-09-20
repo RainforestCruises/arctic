@@ -38,8 +38,6 @@ $curentYear = date("Y");
         <!-- Main -->
         <div class="cruise-itineraries__content__main">
 
-
-
             <!-- Detail Area -->
             <div class="cruise-itineraries__content__main__detail-area">
                 <!-- Itineraries Slider -->
@@ -64,7 +62,6 @@ $curentYear = date("Y");
                                 }
                             }
                             //build list of unique, with embarkations removed
-
                             $title = get_the_title($itinerary);
                             $top_snippet = get_field('top_snippet', $itinerary);
                             $link = get_the_permalink($itinerary);

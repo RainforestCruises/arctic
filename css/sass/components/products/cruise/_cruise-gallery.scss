@@ -37,6 +37,7 @@
         width: 100%;
         padding-bottom: 4rem;
         @media only screen and (max-width: $bp-medium) {
+            height: auto;
             padding-bottom: 1rem;
         }
 
@@ -67,6 +68,10 @@
     &__nav {
         height: 20rem;
         width: 100%;
+
+        @media only screen and (max-width: $bp-medium) {
+            height: 10rem;
+        }
      
         &__slider {
             height: 100%;

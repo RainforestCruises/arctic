@@ -58,117 +58,17 @@
         &__slider {
             width: 100%;
         }
+
+        &__filters {
+            margin-top: 3rem;
+            width: 100%;
+            display: flex;
+
+            & button {
+                margin-right: 1rem;
+            }
+        }
     }
 }
 
 
-//swiper nav button
-.btn-swiper {
-    width: 3.6rem;
-    height: 3.6rem;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    position: relative; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    color: $color-primary;
-    box-shadow: $shadow-short-bottom-light;
-    transition: all 0.2s;
-
-
-    &__next {
-        svg {
-            transform: translateX(1px);
-            height: 1.4rem;
-            width: 1.4rem;
-            stroke: currentColor;
-        }
-    }
-
-    &__prev {
-        svg {
-            transform: translateX(-1px) rotate(180deg);
-            height: 1.4rem;
-            width: 1.4rem;
-            stroke: currentColor;
-        }
-    }
-
-    //border -----------
-    &::before {
-        content: "";
-        transition: all 0.15s;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-        transform-origin: center;
-        height: 95%;
-        width: 95%;
-        border-radius: 50%;
-        border: 1px solid $color-grey-light-1a;
-    }
-
-    &:hover {
-        box-shadow: $shadow-short-bottom;
-    }
-
-    &:hover::before {
-        height: 100%;
-        width: 100%;
-        border: 1px solid $color-grey-light-2;
-    }
-}
-
-
-//swiper nav button
-.btn-swiper-blur {
-    width: 3.5rem;
-    height: 3.5rem;
-    background-color: rgba($color-white, 0.3);
-    -webkit-backdrop-filter: blur(2px);
-    backdrop-filter: blur(2px);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    outline: none;
-
-    transition: all 0.2s;
-    color: $color-primary;
-
-    &:hover {
-        background-color: rgba($color-white, 0.8);
-    }
-
-    & svg {
-        height: 1.4rem;
-        width: 1.4rem;
-        stroke: currentColor;
-        fill: currentColor;
-    }
-
-
-    &__next {
-        svg {
-            transform: translateX(1px);
-           
-        }
-    }
-
-    &__prev {
-        svg {
-            transform: translateX(-1px) rotate(180deg);
-           
-        }
-    }
-
-
-}

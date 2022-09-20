@@ -182,7 +182,17 @@ console_log($departures);
 
                 </div>
             </div>
+        </div>
 
+        <!-- Filters -->
+        <div class="slider-block__content__filters">
+            <button class="btn-pill cruise-dates-departure-filter" data-filter="all">
+                Dates
+            </button>
+            <button class="btn-pill cruise-dates-departure-filter" data-filter="all">
+                Itineraries
+            </button>
+           
         </div>
     </div>
 </section>

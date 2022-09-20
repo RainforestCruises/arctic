@@ -277,7 +277,7 @@ button {
   font-size: 1.2rem;
   font-weight: 400;
   color: #747474;
-  padding-bottom: 1.5rem; }
+  padding-bottom: .5rem; }
 
 .title-single {
   font-family: "Metropolis", sans-serif;
@@ -4471,7 +4471,6 @@ h5 {
     padding: 0 6rem;
     position: relative;
     padding-top: 3rem !important;
-    padding-bottom: 3rem !important;
     max-width: 128rem; }
     @media only screen and (max-width: 50em) {
       .cruise-itineraries__content {
@@ -4510,7 +4509,6 @@ h5 {
       @media only screen and (max-width: 37.5em) {
         .cruise-itineraries__content__main {
           height: min-content;
-          margin-bottom: 3rem;
           flex-direction: column; } }
       .cruise-itineraries__content__main__nav-area {
         height: min-content;
@@ -4534,7 +4532,7 @@ h5 {
               -webkit-mask-image: none;
               mask-image: none; } }
           .cruise-itineraries__content__main__nav-area__slider__item {
-            padding: 1rem 0.2rem;
+            padding: 1rem 0;
             width: min-content !important; }
             .cruise-itineraries__content__main__nav-area__slider__item__button {
               box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.1);
@@ -4546,7 +4544,8 @@ h5 {
               font-size: 1.4rem;
               border-radius: 1rem;
               transition: all 0.2s;
-              border: 1px solid #e6e6e6; }
+              border: 1px solid #e6e6e6;
+              color: #1d2225; }
               .cruise-itineraries__content__main__nav-area__slider__item__button__title {
                 font-size: 1.4rem;
                 padding-bottom: .5rem; }
@@ -5064,6 +5063,33 @@ h5 {
   .mobile-info__cta {
     margin-left: 1rem; }
 
+.btn-swiper-blur {
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s;
+  color: #1d2225; }
+  .btn-swiper-blur:hover {
+    background-color: rgba(255, 255, 255, 0.8); }
+  .btn-swiper-blur svg {
+    height: 1.4rem;
+    width: 1.4rem;
+    stroke: currentColor;
+    fill: currentColor; }
+  .btn-swiper-blur__next svg {
+    transform: translateX(1px); }
+  .btn-swiper-blur__prev svg {
+    transform: translateX(-1px) rotate(180deg); }
+
 .cruise-dates__content {
   position: relative;
   padding-top: 3rem !important; }
@@ -5114,6 +5140,7 @@ h5 {
     padding-bottom: 4rem; }
     @media only screen and (max-width: 50em) {
       .cruise-gallery__main {
+        height: auto;
         padding-bottom: 1rem; } }
     .cruise-gallery__main__slider {
       height: 100%;
@@ -5136,6 +5163,9 @@ h5 {
   .cruise-gallery__nav {
     height: 20rem;
     width: 100%; }
+    @media only screen and (max-width: 50em) {
+      .cruise-gallery__nav {
+        height: 10rem; } }
     .cruise-gallery__nav__slider {
       height: 100%;
       width: 100%; }
@@ -12398,75 +12428,12 @@ h5 {
           left: auto; }
     .slider-block__content__slider {
       width: 100%; }
-
-.btn-swiper {
-  width: 3.6rem;
-  height: 3.6rem;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #1d2225;
-  box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.1);
-  transition: all 0.2s; }
-  .btn-swiper__next svg {
-    transform: translateX(1px);
-    height: 1.4rem;
-    width: 1.4rem;
-    stroke: currentColor; }
-  .btn-swiper__prev svg {
-    transform: translateX(-1px) rotate(180deg);
-    height: 1.4rem;
-    width: 1.4rem;
-    stroke: currentColor; }
-  .btn-swiper::before {
-    content: "";
-    transition: all 0.15s;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    transform-origin: center;
-    height: 95%;
-    width: 95%;
-    border-radius: 50%;
-    border: 1px solid #e6e6e6; }
-  .btn-swiper:hover {
-    box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.4); }
-  .btn-swiper:hover::before {
-    height: 100%;
-    width: 100%;
-    border: 1px solid #c2c6c9; }
-
-.btn-swiper-blur {
-  width: 3.5rem;
-  height: 3.5rem;
-  background-color: rgba(255, 255, 255, 0.3);
-  -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  outline: none;
-  transition: all 0.2s;
-  color: #1d2225; }
-  .btn-swiper-blur:hover {
-    background-color: rgba(255, 255, 255, 0.8); }
-  .btn-swiper-blur svg {
-    height: 1.4rem;
-    width: 1.4rem;
-    stroke: currentColor;
-    fill: currentColor; }
-  .btn-swiper-blur__next svg {
-    transform: translateX(1px); }
-  .btn-swiper-blur__prev svg {
-    transform: translateX(-1px) rotate(180deg); }
+    .slider-block__content__filters {
+      margin-top: 3rem;
+      width: 100%;
+      display: flex; }
+      .slider-block__content__filters button {
+        margin-right: 1rem; }
 
 .inquire-form {
   width: 100%;

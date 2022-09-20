@@ -99,12 +99,14 @@ jQuery(document).ready(function ($) {
         slidesPerView: "auto",
         slideToClickedSlide: true,
         spaceBetween: 10,
-       
+        watchSlidesProgress: true,
+
     });
     
     // Itineraries Swiper
     const itinerariesSlider =  new Swiper('#itineraries-slider', {
         slidesPerView: 1,
+        spaceBetween: 10,
         navigation: {
             nextEl: '.itineraries-slider-btn-next',
             prevEl: '.itineraries-slider-btn-prev',

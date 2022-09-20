@@ -124,16 +124,10 @@ jQuery(document).ready(function ($) {
 
 
 
-
-
-
-
-
-
     // Dates Swiper
     new Swiper('#dates-slider', {
         spaceBetween: 15,
-        slidesPerView: 1,
+        slidesPerView: 2,
         shortSwipes: false,
         watchSlidesProgress: true,
         navigation: {
@@ -157,11 +151,11 @@ jQuery(document).ready(function ($) {
 
 
 
-
     // Cabins Swiper
     new Swiper('#cabins-slider', {
         spaceBetween: 15,
         slidesPerView: 1,
+        watchSlidesProgress: true,
         navigation: {
             nextEl: '.cabins-slider-btn-next',
             prevEl: '.cabins-slider-btn-prev',
@@ -180,6 +174,7 @@ jQuery(document).ready(function ($) {
         slidesPerView: 1,
         loop: true,
         allowTouchMove: false,
+        watchSlidesProgress: true,
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
@@ -196,22 +191,12 @@ jQuery(document).ready(function ($) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     // Related Swiper
     new Swiper('#related-slider', {
         spaceBetween: 15,
         slidesPerView: 1,
         allowTouchMove: false,
+        watchSlidesProgress: true,
         navigation: {
             nextEl: '.related-slider-btn-next',
             prevEl: '.related-slider-btn-prev',
@@ -228,7 +213,8 @@ jQuery(document).ready(function ($) {
     new Swiper('.related-card-image-area', {
         slidesPerView: 1,
         loop: true,
-        allowTouchMove: true,
+        allowTouchMove: false,
+        watchSlidesProgress: true,
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
@@ -238,11 +224,6 @@ jQuery(document).ready(function ($) {
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
-        },
-        breakpoints: {
-            800: {
-                allowTouchMove: false,
-            },
         }
     });
 
