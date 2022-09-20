@@ -12431,9 +12431,12 @@ h5 {
     .slider-block__content__filters {
       margin-top: 3rem;
       width: 100%;
-      display: flex; }
-      .slider-block__content__filters button {
-        margin-right: 1rem; }
+      display: flex;
+      justify-content: space-between; }
+      .slider-block__content__filters__left {
+        display: flex; }
+        .slider-block__content__filters__left button {
+          margin-right: 1rem; }
 
 .inquire-form {
   width: 100%;

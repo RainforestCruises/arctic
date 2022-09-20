@@ -63,10 +63,20 @@
             margin-top: 3rem;
             width: 100%;
             display: flex;
+            justify-content: space-between;
 
-            & button {
-                margin-right: 1rem;
+            &__left {
+                display: flex;
+                & button {
+                    margin-right: 1rem;
+                }
             }
+
+            &__right {
+               
+            }
+
+            
         }
     }
 }

@@ -127,7 +127,7 @@ jQuery(document).ready(function ($) {
     // Dates Swiper
     new Swiper('#dates-slider', {
         spaceBetween: 15,
-        slidesPerView: 2,
+        slidesPerView: 1,
         shortSwipes: false,
         watchSlidesProgress: true,
         navigation: {
