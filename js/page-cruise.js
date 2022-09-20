@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-   
+
 
     // Hero Sliders -------------------
     // hero desktop slider
@@ -127,6 +127,37 @@ jQuery(document).ready(function ($) {
 
 
 
+
+
+
+    // Dates Swiper
+    new Swiper('#dates-slider', {
+        spaceBetween: 15,
+        slidesPerView: 1,
+        shortSwipes: false,
+        watchSlidesProgress: true,
+        navigation: {
+            nextEl: '.dates-slider-btn-next',
+            prevEl: '.dates-slider-btn-prev',
+        },
+        breakpoints: {
+            600: {
+                slidesPerView: 2,
+            },
+            800: {
+                slidesPerView: 3,
+            },
+            1000: {
+                slidesPerView: 4,
+            }
+     
+        }
+    });
+
+
+
+
+
     // Cabins Swiper
     new Swiper('#cabins-slider', {
         spaceBetween: 15,
@@ -148,7 +179,7 @@ jQuery(document).ready(function ($) {
     new Swiper('.cabin-card-image-area', {
         slidesPerView: 1,
         loop: true,
-        allowTouchMove: true,
+        allowTouchMove: false,
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
@@ -158,20 +189,29 @@ jQuery(document).ready(function ($) {
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
-        },
-        breakpoints: {
-            800: {
-                allowTouchMove: false,
-            },
         }
+        
 
     });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     // Related Swiper
     new Swiper('#related-slider', {
         spaceBetween: 15,
         slidesPerView: 1,
+        allowTouchMove: false,
         navigation: {
             nextEl: '.related-slider-btn-next',
             prevEl: '.related-slider-btn-prev',

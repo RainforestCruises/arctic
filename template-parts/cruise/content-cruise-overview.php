@@ -1,11 +1,7 @@
 <?php
 
 $map_image = get_field('map_image');
-$ship = get_field('ship');
 $amenities = get_field('amenities');
-
-$ship_featured_image = get_field('featured_image', $ship);
-$ship_snippet = get_field('top_snippet', $ship);
 $cruise_data = $args['cruiseData'];
 ?>
 <section class="cruise-overview" id="overview">

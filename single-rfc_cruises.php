@@ -20,6 +20,7 @@ $args = array(
 );
 
 
+//Itinerary JS Array
 $itineraryObjects = [];
 $itineraries = get_field('itineraries');
 foreach ($itineraries as $itinerary) {
@@ -75,7 +76,6 @@ foreach ($itineraries as $itinerary) {
     'postId' => $itinerary->ID,
   ];
   $itineraryObjects[] = $itineraryObject;
-
 }
 
 wp_localize_script(
@@ -86,7 +86,6 @@ wp_localize_script(
   )
 );
 
-console_log($itineraryObjects)
 ?>
 
 <!-- Product Page Container -->
@@ -110,6 +109,11 @@ console_log($itineraryObjects)
   <!-- itineraries -->
   <?php
   get_template_part('template-parts/cruise/content', 'cruise-itineraries', $args);
+  ?>
+
+  <!-- Dates -->
+  <?php
+  get_template_part('template-parts/cruise/content', 'cruise-dates', $args);
   ?>
 
   <!-- Reviews -->
