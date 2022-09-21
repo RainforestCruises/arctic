@@ -1,6 +1,6 @@
 <?php
 
-$map_image = get_field('map_image');
+$deck_plans = get_field('deck_plans');
 $amenities = get_field('amenities');
 $cruise_data = $args['cruiseData'];
 ?>
@@ -182,13 +182,14 @@ $cruise_data = $args['cruiseData'];
                 <!-- CTA / Deckplan -->
                 <div class="cruise-overview__content__grid__secondary__cta">
 
-                    <button class="cta-primary cta-primary--inverse" id="deckplan-button">
-                        View Deckplans
-                    </button>
+                    <?php if ($deck_plans) : ?>
+                        <button class="cta-primary cta-primary--inverse" id="deckplan-button" imageId="<?php echo $deck_plans[0]['id']; ?>">
+                            View Deckplans
+                        </button>
+                    <?php endif; ?>
 
                     <a class="cta-link-icon" href="#">
                         Flexible booking terms
-
                         <svg>
                             <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-shield"></use>
                         </svg>

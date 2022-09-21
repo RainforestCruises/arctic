@@ -1,4 +1,40 @@
 <?php
+
+function extractCabinImages($cruise_data)
+{
+    $cabins = $cruise_data['CabinDTOs'];
+
+    $cabinImagesArray = [];
+    foreach($cabins as $c) {
+        $images = $c['ImageDTOs'];
+        foreach($images as $i) {
+
+            $object = [
+                'id' => 'df-' . $i['Id'],
+                'title' => $i['AltText'],
+                'url' => $i['ImageUrl'],
+            ];
+            $cabinImagesArray[] = $object;
+        }
+    }
+
+    return $cabinImagesArray;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Get lowest price (Price From)
 function lowest_property_price($cruise_data, $fromLength, $fromYear, $currentYearOnly = false)
 {
@@ -409,7 +445,7 @@ function listDealsForProduct($post, $charterView = false)
 function deals_available($regionOrDestinationPost)
 {
 
-  
+
     $dealArgs = array(
         'post_type' => 'rfc_deals',
         'posts_per_page' => -1,
@@ -436,7 +472,7 @@ function deals_available($regionOrDestinationPost)
             'compare' => 'LIKE'
         );
     }
-   
+
     $dealPosts = get_posts($dealArgs);
     $count = count($dealPosts);
     return $count;

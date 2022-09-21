@@ -9,7 +9,7 @@
 .swiper-button-prev {
   width: 3.5rem;
   height: 3.5rem;
-  background-color: rgba($color-white, 0.1);
+  background-color: rgba($color-white, 0.5);
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   border: none;
@@ -21,24 +21,36 @@
   &::after {
     font-size: 0.9rem;
 
-    color: rgba($color-white, 0.9);
+    color: rgba($color-primary, 0.9);
     font-weight: 700;
     z-index: 10;
   }
 
   &:hover {
-    background-color: rgba($color-white, 0.3);
+    background-color: rgba($color-white, 0.8);
   }
 
-  &--white {
-    background-color: rgba($color-white, 0.5);
-    &::after {
-      color: rgba($color-primary, 1) !important;
-    }
-    &:hover {
-      background-color: rgba($color-white, 0.8);
+
+
+  &--overlay { //remove
+    &.swiper-button-disabled {
+      opacity: 0 !important;
+      pointer-events: all;
     }
   }
+
+
+
+
+  // &--white { //remove
+  //   background-color: rgba($color-white, 0.5);
+  //   &::after {
+  //     color: rgba($color-primary, 1) !important;
+  //   }
+  //   &:hover {
+  //     background-color: rgba($color-white, 0.8);
+  //   }
+  // }
 
   &--white-border {
     box-shadow: $shadow-short-bottom-light;

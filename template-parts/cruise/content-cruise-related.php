@@ -101,8 +101,8 @@ $ships = get_posts($queryArgs);
                                 </div>
 
                                 <div class="swiper-pagination"></div>
-                                <div class="swiper-button-prev swiper-button-prev--white"></div>
-                                <div class="swiper-button-next swiper-button-prev--white"></div>
+                                <div class="swiper-button-prev swiper-button-prev--overlay"></div>
+                                <div class="swiper-button-next swiper-button-prev--overlay"></div>
                             </div>
 
                             <!-- Content -->

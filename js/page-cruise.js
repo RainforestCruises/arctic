@@ -49,7 +49,7 @@ jQuery(document).ready(function ($) {
     })
 
 
-    // Fullscreen Gallery Modal
+    // Modal Gallery Slider (Main and Nav)
     const modalGalleryNav = new Swiper("#modal-gallery-nav", {
         spaceBetween: 10,
         slidesPerView: 3,
@@ -75,78 +75,91 @@ jQuery(document).ready(function ($) {
             onlyInViewport: false,
         },
     });
-    const counterGallery = document.querySelector('#cruiseGalleryModalCount');
-    const titleGallery = document.querySelector('#cruiseGalleryModalTitle');
+    const counterGallery = document.querySelector('#pageGalleryModalCount');
+    const titleGallery = document.querySelector('#pageGalleryModalTitle');
     modalGalleryMain.on('slideChange', function (swiper) {
         counterGallery.innerHTML = (swiper.realIndex + 1) + ' / ' + (swiper.slides.length);
 
-        const slideDiv = document.querySelector('.cruise-gallery__main__slider__item[slideIndex="' + (swiper.realIndex + 1) + '"]');
+        const slideDiv = document.querySelector('.page-gallery__main__slider__item[slideIndex="' + (swiper.realIndex + 1) + '"]');
         const slideTitle = slideDiv.getAttribute('title');
         titleGallery.innerHTML = slideTitle;
-        console.log('sc')
     });
 
 
-    // Hero Desktop Gallery Images - Click event listeners
+    // Hero Desktop Gallery - Click event listeners
     const heroGalleryImages = [...document.querySelectorAll('.product-hero__gallery__slider__item')];
-    const cruiseGalleryModal = document.getElementById("cruiseGalleryModal");
+    const pageGalleryModal = document.getElementById("pageGalleryModal");
     heroGalleryImages.forEach(item => {
         item.addEventListener('click', () => {
-            cruiseGalleryModal.style.display = 'flex';
+            pageGalleryModal.style.display = 'flex';
             body.classList.add('no-scroll');
 
             const imageId = item.getAttribute('imageId');
-            const slideDiv = document.querySelector('.cruise-gallery__main__slider__item[imageId="' + imageId + '"]');
+            const slideDiv = document.querySelector('.page-gallery__main__slider__item[imageId="' + imageId + '"]');
             const slideIndex = slideDiv.getAttribute('slideIndex');
 
             modalGalleryMain.update();
             modalGalleryMain.slideTo(slideIndex - 1, 0);
+            modalGalleryNav.slideTo(slideIndex - 1, 0);
+
         });
     })
 
-    // Hero Mobile Gallery Images - Click event listeners 
+    // Hero Mobile Gallery - Click event listeners 
     const heroMobileGalleryImages = [...document.querySelectorAll('.product-hero__bg-slider__slide')];
     heroMobileGalleryImages.forEach(item => {
         item.addEventListener('click', () => {
-            cruiseGalleryModal.style.display = 'flex';
+            pageGalleryModal.style.display = 'flex';
             body.classList.add('no-scroll');
 
             const imageId = item.getAttribute('imageId');
-            const slideDiv = document.querySelector('.cruise-gallery__main__slider__item[imageId="' + imageId + '"]');
+            const slideDiv = document.querySelector('.page-gallery__main__slider__item[imageId="' + imageId + '"]');
             const slideIndex = slideDiv.getAttribute('slideIndex');
 
             modalGalleryMain.slideTo(2, 0)
             modalGalleryMain.update();
             modalGalleryMain.slideTo(slideIndex - 1, 0);
+            modalGalleryNav.slideTo(slideIndex - 1, 0);
+
         });
     })
 
 
+    //Deck Plan Button
+    const deckPlanButton = document.getElementById("deckplan-button");
+    deckPlanButton.addEventListener('click', () => {
+        pageGalleryModal.style.display = 'flex';
+        body.classList.add('no-scroll');
 
+        const imageId = deckPlanButton.getAttribute('imageId');
+        const slideDiv = document.querySelector('.page-gallery__main__slider__item[imageId="' + imageId + '"]');
+        const slideIndex = slideDiv.getAttribute('slideIndex');
 
-    // Dates Swiper
-    new Swiper('#dates-slider', {
-        spaceBetween: 15,
-        slidesPerView: 1,
-        shortSwipes: false,
-        watchSlidesProgress: true,
-        navigation: {
-            nextEl: '.dates-slider-btn-next',
-            prevEl: '.dates-slider-btn-prev',
-        },
-        breakpoints: {
-            600: {
-                slidesPerView: 2,
-            },
-            800: {
-                slidesPerView: 3,
-            },
-            1000: {
-                slidesPerView: 4,
-            }
-     
-        }
+        modalGalleryMain.update();
+        modalGalleryMain.slideTo(slideIndex - 1, 0);
+        modalGalleryNav.slideTo(slideIndex - 1, 0);
     });
+
+    // Cabin Images - Click event listeners
+    const cabinGalleryImages = [...document.querySelectorAll('.cabin-image-slide')];
+    cabinGalleryImages.forEach(item => {
+        item.addEventListener('click', () => {
+            pageGalleryModal.style.display = 'flex';
+            body.classList.add('no-scroll');
+
+            const imageId = item.getAttribute('imageId');
+            console.log(imageId);
+            const slideDiv = document.querySelector('.page-gallery__main__slider__item[imageId="' + imageId + '"]');
+            const slideIndex = slideDiv.getAttribute('slideIndex');
+
+            modalGalleryMain.update();
+            modalGalleryMain.slideTo(slideIndex - 1, 0);
+            modalGalleryNav.slideTo(slideIndex - 1, 0);
+
+        });
+    })
+
+
 
 
 
@@ -172,7 +185,6 @@ jQuery(document).ready(function ($) {
 
     new Swiper('.cabin-card-image-area', {
         slidesPerView: 1,
-        loop: true,
         allowTouchMove: false,
         watchSlidesProgress: true,
         pagination: {
@@ -185,11 +197,33 @@ jQuery(document).ready(function ($) {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         }
-        
+
 
     });
 
+    // Dates Swiper
+    new Swiper('#dates-slider', {
+        spaceBetween: 15,
+        slidesPerView: 1,
+        shortSwipes: false,
+        watchSlidesProgress: true,
+        navigation: {
+            nextEl: '.dates-slider-btn-next',
+            prevEl: '.dates-slider-btn-prev',
+        },
+        breakpoints: {
+            600: {
+                slidesPerView: 2,
+            },
+            800: {
+                slidesPerView: 3,
+            },
+            1000: {
+                slidesPerView: 4,
+            }
 
+        }
+    });
 
     // Related Swiper
     new Swiper('#related-slider', {
@@ -212,7 +246,6 @@ jQuery(document).ready(function ($) {
     });
     new Swiper('.related-card-image-area', {
         slidesPerView: 1,
-        loop: true,
         allowTouchMove: false,
         watchSlidesProgress: true,
         pagination: {
@@ -226,11 +259,6 @@ jQuery(document).ready(function ($) {
             prevEl: '.swiper-button-prev',
         }
     });
-
-
-
-
-
 
 
 });

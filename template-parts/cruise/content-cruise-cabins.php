@@ -2,7 +2,7 @@
 $cabins = $args['cruise_data']['CabinDTOs'];
 $curentYear = date("Y");
 
-console_log($cabins);
+
 
 ?>
 
@@ -56,16 +56,14 @@ console_log($cabins);
                                     <?php
                                     $cabinImages = $cabin['ImageDTOs'];
                                     foreach ($cabinImages as $cabinImage) : ?>
-                                        <div class="resource-card__image-area__item swiper-slide">
-                                            <img src="<?php echo afloat_dfcloud_image($cabinImage['ImageUrl']); ?>" alt="<?php echo esc_html($cabinImage['AltText']); ?>">
-
+                                        <div class="resource-card__image-area__item cabin-image-slide swiper-slide" imageId="df-<?php echo $cabinImage['Id']; ?>">
+                                            <img src="<?php echo afloat_dfcloud_image($cabinImage['ImageUrl'], 640, 480); ?>"  alt="<?php echo esc_html($cabinImage['AltText']); ?>">
                                         </div>
-
                                     <?php endforeach; ?>
                                 </div>
                                 <div class="swiper-pagination"></div>
-                                <div class="swiper-button-prev swiper-button-prev--white"></div>
-                                <div class="swiper-button-next swiper-button-prev--white"></div>
+                                <div class="swiper-button-prev swiper-button-prev--overlay"></div>
+                                <div class="swiper-button-next swiper-button-prev--overlay"></div>
 
                             </div>
 

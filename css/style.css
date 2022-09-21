@@ -865,7 +865,7 @@ h5 {
 .swiper-button-prev {
   width: 3.5rem;
   height: 3.5rem;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.5);
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   border: none;
@@ -876,21 +876,16 @@ h5 {
   .swiper-button-next::after,
   .swiper-button-prev::after {
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(29, 34, 37, 0.9);
     font-weight: 700;
     z-index: 10; }
   .swiper-button-next:hover,
   .swiper-button-prev:hover {
-    background-color: rgba(255, 255, 255, 0.3); }
-  .swiper-button-next--white,
-  .swiper-button-prev--white {
-    background-color: rgba(255, 255, 255, 0.5); }
-    .swiper-button-next--white::after,
-    .swiper-button-prev--white::after {
-      color: #1d2225 !important; }
-    .swiper-button-next--white:hover,
-    .swiper-button-prev--white:hover {
-      background-color: rgba(255, 255, 255, 0.8); }
+    background-color: rgba(255, 255, 255, 0.8); }
+  .swiper-button-next--overlay.swiper-button-disabled,
+  .swiper-button-prev--overlay.swiper-button-disabled {
+    opacity: 0 !important;
+    pointer-events: all; }
   .swiper-button-next--white-border,
   .swiper-button-prev--white-border {
     box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.1);
@@ -4611,6 +4606,8 @@ h5 {
     @media only screen and (max-width: 50em) {
       .cruise-cabins__content::after {
         width: calc(100% - 6rem); } }
+  .cruise-cabins__content .cabin-image-slide {
+    cursor: pointer; }
 
 .cruise-areas {
   display: flex;
@@ -5105,79 +5102,6 @@ h5 {
     @media only screen and (max-width: 50em) {
       .cruise-dates__content::after {
         width: calc(100% - 6rem); } }
-
-.cruise-gallery {
-  width: 100%;
-  height: 100%;
-  max-width: 128rem;
-  display: flex;
-  flex-direction: column;
-  color: #fff;
-  align-items: center;
-  padding: 0 4rem;
-  padding-bottom: 4rem; }
-  @media only screen and (max-width: 50em) {
-    .cruise-gallery {
-      padding: 0 2rem;
-      padding-bottom: 10rem; } }
-  .cruise-gallery__top {
-    width: 100%;
-    height: 8rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.3rem; }
-    .cruise-gallery__top .close-modal-button {
-      background-color: rgba(255, 255, 255, 0.1);
-      -webkit-backdrop-filter: blur(2px);
-      backdrop-filter: blur(2px); }
-      .cruise-gallery__top .close-modal-button:hover {
-        background-color: rgba(255, 255, 255, 0.3); }
-  .cruise-gallery__main {
-    height: calc(100% - 28rem);
-    width: 100%;
-    padding-bottom: 4rem; }
-    @media only screen and (max-width: 50em) {
-      .cruise-gallery__main {
-        height: auto;
-        padding-bottom: 1rem; } }
-    .cruise-gallery__main__slider {
-      height: 100%;
-      width: 100%; }
-      .cruise-gallery__main__slider__item {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        justify-content: center; }
-        .cruise-gallery__main__slider__item img {
-          height: 100%;
-          width: 100%;
-          object-fit: cover;
-          border-radius: 1rem;
-          overflow: hidden;
-          margin: 0 8rem; }
-          @media only screen and (max-width: 50em) {
-            .cruise-gallery__main__slider__item img {
-              margin: 0rem; } }
-  .cruise-gallery__nav {
-    height: 20rem;
-    width: 100%; }
-    @media only screen and (max-width: 50em) {
-      .cruise-gallery__nav {
-        height: 10rem; } }
-    .cruise-gallery__nav__slider {
-      height: 100%;
-      width: 100%; }
-      .cruise-gallery__nav__slider__item {
-        height: 100%;
-        width: 100%;
-        cursor: pointer; }
-        .cruise-gallery__nav__slider__item img {
-          height: 100%;
-          width: 100%;
-          object-fit: cover;
-          border-radius: 1rem; }
 
 .product-related--old {
   width: 100%;
@@ -12519,6 +12443,79 @@ h5 {
         height: 2rem;
         width: 2rem;
         color: #1d2225; }
+
+.page-gallery {
+  width: 100%;
+  height: 100%;
+  max-width: 128rem;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  align-items: center;
+  padding: 0 4rem;
+  padding-bottom: 4rem; }
+  @media only screen and (max-width: 50em) {
+    .page-gallery {
+      padding: 0 2rem;
+      padding-bottom: 10rem; } }
+  .page-gallery__top {
+    width: 100%;
+    height: 8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3rem; }
+    .page-gallery__top .close-modal-button {
+      background-color: rgba(255, 255, 255, 0.1);
+      -webkit-backdrop-filter: blur(2px);
+      backdrop-filter: blur(2px); }
+      .page-gallery__top .close-modal-button:hover {
+        background-color: rgba(255, 255, 255, 0.3); }
+  .page-gallery__main {
+    height: calc(100% - 28rem);
+    width: 100%;
+    padding-bottom: 4rem; }
+    @media only screen and (max-width: 50em) {
+      .page-gallery__main {
+        height: auto;
+        padding-bottom: 1rem; } }
+    .page-gallery__main__slider {
+      height: 100%;
+      width: 100%; }
+      .page-gallery__main__slider__item {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center; }
+        .page-gallery__main__slider__item img {
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
+          border-radius: 1rem;
+          overflow: hidden;
+          margin: 0 8rem; }
+          @media only screen and (max-width: 50em) {
+            .page-gallery__main__slider__item img {
+              margin: 0rem; } }
+  .page-gallery__nav {
+    height: 20rem;
+    width: 100%; }
+    @media only screen and (max-width: 50em) {
+      .page-gallery__nav {
+        height: 10rem; } }
+    .page-gallery__nav__slider {
+      height: 100%;
+      width: 100%; }
+      .page-gallery__nav__slider__item {
+        height: 100%;
+        width: 100%;
+        cursor: pointer; }
+        .page-gallery__nav__slider__item img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          border-radius: 1rem; }
 
 .header {
   z-index: 100;

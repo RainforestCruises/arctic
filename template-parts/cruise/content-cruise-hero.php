@@ -3,14 +3,15 @@
 $title = get_the_title();
 $snippet = get_field('top_snippet');
 $itineraryCount = count($args['cruise_data']['Itineraries']);
+
 $images = get_field('hero_gallery');
-$desktopImages = array_slice($images, 1);
+$desktopImages = array_slice($images, 1); //for gallery desktop slider
 
 ?>
 
 <!-- Cruise Hero -->
 <section class="product-hero" id="top">
-    <!-- Desktop BG Image -->
+    <!-- Desktop BG Image (first image in main) -->
     <div class="product-hero__bg-image">
         <img <?php afloat_image_markup($images[0]['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
     </div>
@@ -221,55 +222,7 @@ $desktopImages = array_slice($images, 1);
     </div>
 </div>
 
-
-<!-- Cruise Gallery Modal -->
-<div class="modal modal--gallery" id="cruiseGalleryModal">
-    <div class="modal__content cruise-gallery">
-
-        <!-- Top Section -->
-        <div class="cruise-gallery__top">
-            <button class="btn-text-icon close-modal-button">
-                Close
-                <svg>
-                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
-                </svg>
-            </button>
-            <span id="cruiseGalleryModalTitle">Title</span>
-            <span id="cruiseGalleryModalCount">Count</span>
-        </div>
-
-        <!-- Main Slider -->
-        <div class="cruise-gallery__main">
-            <div class="cruise-gallery__main__slider swiper noselect" id="modal-gallery-main">
-                <div class="swiper-wrapper">
-
-                    <?php
-                    $count = 1;
-                    foreach ($images as $image) : ?>
-                        <div class="cruise-gallery__main__slider__item swiper-slide" slideIndex="<?php echo $count; ?>" imageId="<?php echo $image['id']; ?>" title="<?php echo $image['title']; ?>">
-                            <img <?php afloat_image_markup($image['id'], 'landscape-medium', array('landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
-                        </div>
-                    <?php $count++;
-                    endforeach; ?>
-                </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-            </div>
-        </div>
-
-        <!-- Nav Slider -->
-        <div class="cruise-gallery__nav">
-
-            <div class="cruise-gallery__nav__slider swiper noselect" id="modal-gallery-nav">
-                <div class="swiper-wrapper">
-                    <?php foreach ($images as $image) : ?>
-                        <div class="cruise-gallery__nav__slider__item swiper-slide">
-                            <img <?php afloat_image_markup($image['id'], 'landscape-small', array('landscape-small')); ?>>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
+  <!-- itineraries -->
+  <?php
+  get_template_part('template-parts/cruise/content', 'cruise-page-gallery', $args);
+  ?>

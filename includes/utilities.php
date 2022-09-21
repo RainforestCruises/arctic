@@ -63,7 +63,7 @@ function afloat_image_markup($image_id, $image_size, $sizes_array = [], $flickit
 }
 
 //For images from DF (Cruises / Lodges) - Cabins, D2D, Maps, apply cloudinary custom transformation for format/quality/crop
-function afloat_dfcloud_image($image_url)
+function afloat_dfcloud_image($image_url, $image_height = null, $image_width = null)
 {
 
     //check for res.cloudinary.com
@@ -76,8 +76,12 @@ function afloat_dfcloud_image($image_url)
     $first = substr($string, 0, strpos($string, '/image/upload/') + strlen($prefix));
 
     $transformationString = 'f_auto,q_auto/c_fill,g_auto/';
-    $index = strpos($string, $prefix) + strlen($prefix);
+    if($image_width && $image_height){
 
+        $transformationString = 'f_auto,q_auto/c_fill,g_auto' .  ',h_' . $image_width . ',w_' . $image_height .'/';
+    }
+
+    $index = strpos($string, $prefix) + strlen($prefix);
     $second = substr($string, $index);
 
     $new_url = $first . $transformationString . $second;

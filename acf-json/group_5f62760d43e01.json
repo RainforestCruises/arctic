@@ -359,7 +359,7 @@
             "label": "Hero Gallery",
             "name": "hero_gallery",
             "type": "gallery",
-            "instructions": "1920 x 1080 (16:9) or 1024 x 768 (4:3) minimum. First image is used as the hero background. so a 1920 x 1080 (16:9) exterior shot of the ship is required for first image.",
+            "instructions": "1920 x 1080 (16:9) exterior shot of the ship is required for first image. 1920 x 1080 (16:9) or 1024 x 768 (4:3) minimum required for others.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -507,7 +507,7 @@
             "label": "Deck Plans",
             "name": "deck_plans",
             "type": "gallery",
-            "instructions": "",
+            "instructions": "1920 x 1080 (16:9) or 1024 x 768 (4:3) minimum required",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -900,226 +900,6 @@
                             "maxlength": ""
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "key": "field_602bf5005119e",
-            "label": "Charter Pricing",
-            "name": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_602bf565511a0",
-            "label": "Charter Available",
-            "name": "charter_available",
-            "type": "true_false",
-            "instructions": "Check if this vessel can be chartered",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_61670fe8af725",
-            "label": "Charter Header Text Override",
-            "name": "charter_header_text_override",
-            "type": "text",
-            "instructions": "50 character limit. If not blank, will replace the default text of \"Exclusive, private cruise based on full occupancy\"",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_602bf565511a0",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": 50
-        },
-        {
-            "key": "field_602e90fcaa68f",
-            "label": "Charter Min Days",
-            "name": "charter_min_days",
-            "type": "number",
-            "instructions": "Minimum number of days vessel must be chartered",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_602bf565511a0",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
-        },
-        {
-            "key": "field_602bf5cd511a3",
-            "label": "Charter Only",
-            "name": "charter_only",
-            "type": "true_false",
-            "instructions": "Check if this vessel can ONLY be chartered -- NOTE: Itineraries will not display in Charter Only vessels unless the 'Is Sample' box is checked in DF.",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_602bf565511a0",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_602c2b9d49ad6",
-            "label": "Charter Snippet",
-            "name": "charter_snippet",
-            "type": "wysiwyg",
-            "instructions": "Text that will display as default for all itineraries. To override individual itinerary text in charter view, edit the content in DF.",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_602bf565511a0",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 0,
-            "delay": 0
-        },
-        {
-            "key": "field_60e5d8ad9bc65",
-            "label": "Display Charter Policies",
-            "name": "display_charter_policies",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_602bf565511a0",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_60e5d8979bc64",
-            "label": "Charter Policies",
-            "name": "charter_policies",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_60e5d8ad9bc65",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": 0,
-            "max": 0,
-            "layout": "table",
-            "button_label": "",
-            "sub_fields": [
-                {
-                    "key": "field_60e5d8f79bc66",
-                    "label": "Policy",
-                    "name": "policy",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
                 }
             ]
         },
@@ -1590,5 +1370,5 @@
     "active": true,
     "description": "Cruise - CPT",
     "show_in_rest": 0,
-    "modified": 1663620275
+    "modified": 1663778003
 }

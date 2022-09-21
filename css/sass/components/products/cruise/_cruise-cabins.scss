@@ -1,6 +1,10 @@
 .cruise-cabins {
     &__content{
         @include topDivider;
+
+        & .cabin-image-slide {
+            cursor: pointer;
+        }
     }
 }
 
