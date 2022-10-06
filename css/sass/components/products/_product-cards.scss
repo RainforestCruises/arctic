@@ -295,13 +295,44 @@
     border-radius: 1rem;
     padding: 1.5rem 2rem;
     color: $color-primary;
+    position: relative;
+    &--horizontal {
+        
+        
+        //above 600px
+        @media only screen and (min-width: $bp-small) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 12rem;
+
+            & .departure-card__title-group {
+                max-width: 24rem;
+            }
+
+            & .departure-card__title-group, .departure-card__specs {
+                margin: 0rem;
+                padding: 0rem;
+                border-bottom: none;
+            }
+
+            & .departure-card__specs__item {
+                margin-bottom: 0;
+            }
+        }
+
+
+    }
+
+    
     &__title-group {
         color: currentColor;
-        margin-bottom: 1rem;
-        padding-bottom: 1rem;
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        margin-top: .5rem;
         border-bottom: 1px solid $color-grey-light-1a;
         font-weight: 700;
-         display: flex;
+        display: flex;
         align-items: center;
 
         &__avatar {
@@ -333,8 +364,9 @@
     }
 
     &__specs {
+
         margin-bottom: 1.5rem;
-        padding-bottom: .5rem;
+        padding-bottom: 1.5rem;
         border-bottom: 1px solid $color-grey-light-1a;
 
         &__item {
@@ -342,7 +374,11 @@
             display: grid;
             grid-template-columns: min-content 1fr;
             color: $color-primary;
-            margin-bottom: .5rem;
+           
+
+            &:not(:last-child){
+                margin-bottom: .5rem;
+            }
             &__icon {
                 & svg {
                     height: 1.6rem;
@@ -355,11 +391,11 @@
             }
             &__text {
 
-                &__date {
+                &__main {
                     font-size: 1.4rem;
                     line-height: 2rem;
                 }
-                &__location {
+                &__sub {
                     font-size: 1rem;
                     color: $color-grey-3;
                     
@@ -368,25 +404,31 @@
         }
     }
 
-    &__price-group {
-        color: currentColor;
-        
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-        &__amount {
-            font-weight: 700;
-            font-size: 1.8rem;
-            line-height: 2rem;
+        &__price-group {
+            color: currentColor;
+            &__amount {
+                font-weight: 700;
+                font-size: 1.8rem;
+                line-height: 2rem;
+            }
+            &__text {
+                font-size: 1rem;
+                line-height: 1.5rem;
+                color: $color-grey-3;
+            }
+            margin-right: 3rem;
         }
-        &__text {
-            font-size: 1.3rem;
-            line-height: 1.3rem;
-            color: $color-grey-3;
+    
+        &__cta {
+            
         }
+
     }
 
-    &__cta {
-        position: absolute;
-        bottom: 1.5rem;
-        right: 2rem;
-    }
+ 
 }

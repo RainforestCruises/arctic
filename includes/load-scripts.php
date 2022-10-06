@@ -13,6 +13,7 @@ function load_scripts()
     wp_enqueue_style('ion-css', get_template_directory_uri() . '/vendor/ion-range-slider/css/ion.rangeSlider.min.css', array(), false, 'all');
     wp_enqueue_style('odometer-css', get_template_directory_uri() . '/vendor/odometer/odometer-theme-minimal.css', array(), false, 'all');
     wp_enqueue_style('swiper-css', get_template_directory_uri() . '/vendor/swiper/swiper-bundle.min.css', array(), false, 'all');
+    wp_enqueue_style('bootstrap-datepicker-css', get_template_directory_uri() . '/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css', array(), false, 'all');
 
 
 
@@ -44,6 +45,8 @@ function load_scripts()
     wp_enqueue_script('amcharts-theme2', get_template_directory_uri() . '/vendor/amcharts5/themes/Dark.js', array(), false, true);
 
     wp_enqueue_script('swiper', get_template_directory_uri() . '/vendor/swiper/swiper-bundle.min.js', array(), false, true);
+    wp_enqueue_script('bootstrap-datepicker', get_template_directory_uri() . '/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js', array(), false, true);
+    wp_enqueue_script('popper', get_template_directory_uri() . '/vendor/popperjs/popper.min.js', array(), false, true);
 
 
 

@@ -40,18 +40,6 @@
   }
 
 
-
-
-  // &--white { //remove
-  //   background-color: rgba($color-white, 0.5);
-  //   &::after {
-  //     color: rgba($color-primary, 1) !important;
-  //   }
-  //   &:hover {
-  //     background-color: rgba($color-white, 0.8);
-  //   }
-  // }
-
   &--white-border {
     box-shadow: $shadow-short-bottom-light;
     transition: all 0.2s;
@@ -379,6 +367,12 @@
   transition: all 0.2s;
   color: $color-primary;
   border: 1px solid $color-grey-light-1a;
+
+  &.active {
+    background-color: $color-grey-light-1a;
+    border: 1px solid $color-primary;
+
+  }
 
   &:hover {
     border: 1px solid $color-primary;

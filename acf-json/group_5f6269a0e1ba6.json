@@ -92,6 +92,44 @@
             "mime_types": ""
         },
         {
+            "key": "field_633f0e42059ad",
+            "label": "Country Name",
+            "name": "country_name",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_633f0e52059ae",
+            "label": "Country_Name_Short",
+            "name": "country_name_short",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5fea3a88df109",
             "label": "Locations",
             "name": "locations",
@@ -302,5 +340,5 @@
     "active": true,
     "description": "Destinations - CPT",
     "show_in_rest": 0,
-    "modified": 1660236189
+    "modified": 1665076842
 }

@@ -110,7 +110,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
 
                     <!-- Inquire CTA Button -->
                     <div class="product-hero__content__main__secondary__info__cta">
-                        <button class="cta-primary inquire-cta">
+                        <button class="cta-primary inquire-cta" tab-panel="inquire">
                             Inquire
                             <svg>
                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>
@@ -213,7 +213,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
 
     <!-- Inquire CTA Button -->
     <div class="mobile-info__cta">
-        <button class="cta-primary inquire-cta">
+        <button class="cta-primary inquire-cta" tab-panel="inquire">
             Inquire
             <svg>
                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>
@@ -222,7 +222,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
     </div>
 </div>
 
-  <!-- itineraries -->
+  <!-- gallery modal -->
   <?php
   get_template_part('template-parts/cruise/content', 'cruise-page-gallery', $args);
   ?>

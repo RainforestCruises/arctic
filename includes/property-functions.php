@@ -5,9 +5,9 @@ function extractCabinImages($cruise_data)
     $cabins = $cruise_data['CabinDTOs'];
 
     $cabinImagesArray = [];
-    foreach($cabins as $c) {
+    foreach ($cabins as $c) {
         $images = $c['ImageDTOs'];
-        foreach($images as $i) {
+        foreach ($images as $i) {
 
             $object = [
                 'id' => 'df-' . $i['Id'],
@@ -23,8 +23,62 @@ function extractCabinImages($cruise_data)
 
 
 
+function createDepartureList($cruise_data, $cruisePostItineraries)
+{
+    $cruise_data_itineraries = $cruise_data['Itineraries'];
+
+    $departures = [];
+    foreach ($cruise_data_itineraries as $i) {
+        $matchingPost = null;
+        foreach ($cruisePostItineraries as $ip) {
+            if (get_field('itinerary_id', $ip) == $i['Id']) {
+                $matchingPost = $ip;
+            }
+        }
+
+        if ($matchingPost) {
+            foreach ($i['Departures'] as $d) {
+
+                $returnDate = date('Y-m-d', strtotime($d['DepartureDate'] . ' + ' . $i['LengthInNights'] . ' days'));
+
+                $departure = [
+                    'Id' => $i['Id'],
+                    'DepartureDate' => $d['DepartureDate'],
+                    'ReturnDate' => $returnDate,
+                    'HasPromo' => $d['HasPromo'],
+                    'PromoName' => $d['PromoName'],
+                    'IsHighSeason' => $d['IsHighSeason'],
+                    'IsLowSeason' => $d['IsLowSeason'],
+                    'ItineraryPostId' => $matchingPost->ID,
+                    'ItineraryPost' => $matchingPost,
+                    'Name' => $i['Name'],
+                    'LengthInNights' => $i['LengthInNights'],
+                    'LengthInDays' => $i['LengthInDays'],
+                    'LowestPrice' => $i['LowestPrice'],
+                ];
+                $departures[] = $departure;
+            }
+        }
+    }
+
+    usort($departures, function ($a, $b) {
+        return strtotime($a['DepartureDate']) - strtotime($b['DepartureDate']);
+    });
+
+    return $departures;
+}
 
 
+function createYearSelection($curent, $yearsCount){
+
+    $years = [];
+    $count = 0;
+    while($count < $yearsCount){
+        $years[] = $curent + $count;
+        $count++;
+    }
+    return $years;
+}
 
 
 

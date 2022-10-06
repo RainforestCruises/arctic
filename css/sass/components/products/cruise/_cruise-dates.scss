@@ -1,5 +1,144 @@
 .cruise-dates {
-    &__content{
+    &__content {
         @include topDivider;
     }
 }
+
+//move to product
+.departures-modal {
+
+    &__filters {
+        
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transform: translateY(-2rem);
+    }
+    &__content {
+        & .departure-card {
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+
+
+
+//Generic Tooltop
+.popper-tooltip {
+    z-index: 90;
+    background-color: $color-white;
+    border: 1px solid $color-grey-light-1a;
+    font-weight: bold;
+    padding: 4px 8px;
+    font-size: 13px;
+    border-radius: 4px;
+    display: none;
+    box-shadow: $shadow-medium;
+
+    &[data-show] {
+        display: block;
+    }
+
+    #arrow,
+    #arrow::before {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: inherit;
+    }
+
+    #arrow {
+        visibility: hidden;
+    }
+
+    #arrow::before {
+        visibility: visible;
+        content: "";
+        transform: rotate(45deg);
+
+    }
+
+    &[data-popper-placement^="top"] > #arrow  {
+        bottom: -4px;
+
+        &::before {
+            border-bottom: 1px solid $color-grey-light-1a;
+            border-right: 1px solid $color-grey-light-1a;
+        }
+   
+        
+    }
+    &[data-popper-placement^="bottom"] > #arrow  {
+        top: -4px;
+        &::before {
+            border-top: 1px solid $color-grey-light-1a;
+            border-left: 1px solid $color-grey-light-1a;
+        }
+     
+    }
+    // &[data-popper-placement^="left"] > #arrow  {
+    //     right: -4px;
+    // }
+    // &[data-popper-placement^="right"] > #arrow  {
+    //     left: -4px;
+    // }
+
+    &__selection {
+
+        &__list {
+            padding: 1rem;
+            padding-right: 2rem;
+            list-style: none;
+            & label {
+                padding: 1rem 0;
+                width: 100%;
+            }
+        }
+    }
+
+    &__controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1rem;
+        padding-bottom: .6rem;
+        border-top: 1px solid $color-grey-light-1a;
+        & .btn-pill {
+            margin-right: 0;
+        }
+    }
+}
+
+
+//Datepicker Generic
+.datepicker {
+
+    & .datepicker-switch {
+            pointer-events: none;
+    }
+
+    & th {
+        height: 3.5rem;
+        color: $color-primary;
+        font-size: 1.8rem;
+    }
+
+    table {
+        width: 100%;
+
+        & tr td span { 
+            height: 4rem;
+            line-height: 4rem;
+            font-weight: 400;
+            &.active { 
+                background-color: $color-primary !important;
+                color: $color-white !important;
+                background-image: none !important;
+            }
+        }
+
+        
+    }
+}
+

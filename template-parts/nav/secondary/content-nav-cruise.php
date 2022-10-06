@@ -24,7 +24,7 @@ $title = get_the_title();
             </button>
         </div>
         <div class="nav-secondary__content__cta">
-            <button class="nav-secondary__content__cta__button btn-pill btn-pill--dark inquire-cta">
+            <button class="nav-secondary__content__cta__button btn-pill btn-pill--dark inquire-cta" tab-panel="inquire">
                 Inquire
             </button>
         </div>

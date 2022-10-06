@@ -45,8 +45,41 @@ jQuery(document).ready(function ($) {
         item.addEventListener('click', () => {
             inquireModal.style.display = 'flex';
             body.classList.add('no-scroll');
+
+            const tabId = item.getAttribute('tab-panel');
+            activeTabPanel(tabId);
         });
     })
+
+
+
+
+    //Modal Tabs
+    const modalTabButtons = [...document.querySelectorAll('.modal-tab-link')];
+    modalTabButtons.forEach(item => {
+        item.addEventListener('click', () => {
+            const tabId = item.getAttribute('tab-panel');
+            activeTabPanel(tabId);
+        });
+    })
+
+    const modalTabPanels = [...document.querySelectorAll('.modal-tab-panel')];
+    function activeTabPanel(tabId) {
+        modalTabPanels.forEach(panel => {
+            const panelId = panel.getAttribute('tab-panel');
+
+            if (tabId == panelId) {
+                panel.classList.add('active');
+            } else {
+                panel.classList.remove('active');
+            }
+
+        })
+    }
+
+
+
+
 
 
     // Modal Gallery Slider (Main and Nav)
@@ -80,7 +113,7 @@ jQuery(document).ready(function ($) {
     modalGalleryMain.on('slideChange', function (swiper) {
         counterGallery.innerHTML = (swiper.realIndex + 1) + ' / ' + (swiper.slides.length);
 
-        const slideDiv = document.querySelector('.page-gallery__main__slider__item[slideIndex="' + (swiper.realIndex + 1) + '"]');
+        const slideDiv = document.querySelector('.modal__gallery-content__main__slider__item[slideIndex="' + (swiper.realIndex + 1) + '"]');
         const slideTitle = slideDiv.getAttribute('title');
         titleGallery.innerHTML = slideTitle;
     });
@@ -95,7 +128,7 @@ jQuery(document).ready(function ($) {
             body.classList.add('no-scroll');
 
             const imageId = item.getAttribute('imageId');
-            const slideDiv = document.querySelector('.page-gallery__main__slider__item[imageId="' + imageId + '"]');
+            const slideDiv = document.querySelector('.modal__gallery-content__main__slider__item[imageId="' + imageId + '"]');
             const slideIndex = slideDiv.getAttribute('slideIndex');
 
             modalGalleryMain.update();
@@ -113,7 +146,7 @@ jQuery(document).ready(function ($) {
             body.classList.add('no-scroll');
 
             const imageId = item.getAttribute('imageId');
-            const slideDiv = document.querySelector('.page-gallery__main__slider__item[imageId="' + imageId + '"]');
+            const slideDiv = document.querySelector('.modal__gallery-content__main__slider__item[imageId="' + imageId + '"]');
             const slideIndex = slideDiv.getAttribute('slideIndex');
 
             modalGalleryMain.slideTo(2, 0)
@@ -132,7 +165,7 @@ jQuery(document).ready(function ($) {
         body.classList.add('no-scroll');
 
         const imageId = deckPlanButton.getAttribute('imageId');
-        const slideDiv = document.querySelector('.page-gallery__main__slider__item[imageId="' + imageId + '"]');
+        const slideDiv = document.querySelector('.modal__gallery-content__main__slider__item[imageId="' + imageId + '"]');
         const slideIndex = slideDiv.getAttribute('slideIndex');
 
         modalGalleryMain.update();
@@ -149,7 +182,7 @@ jQuery(document).ready(function ($) {
 
             const imageId = item.getAttribute('imageId');
             console.log(imageId);
-            const slideDiv = document.querySelector('.page-gallery__main__slider__item[imageId="' + imageId + '"]');
+            const slideDiv = document.querySelector('.modal__gallery-content__main__slider__item[imageId="' + imageId + '"]');
             const slideIndex = slideDiv.getAttribute('slideIndex');
 
             modalGalleryMain.update();
@@ -201,35 +234,19 @@ jQuery(document).ready(function ($) {
 
     });
 
-    // Dates Swiper
-    new Swiper('#dates-slider', {
-        spaceBetween: 15,
-        slidesPerView: 1,
-        shortSwipes: false,
-        watchSlidesProgress: true,
-        navigation: {
-            nextEl: '.dates-slider-btn-next',
-            prevEl: '.dates-slider-btn-prev',
-        },
-        breakpoints: {
-            600: {
-                slidesPerView: 2,
-            },
-            800: {
-                slidesPerView: 3,
-            },
-            1000: {
-                slidesPerView: 4,
-            }
 
-        }
-    });
+
+
+
+
+
+
+
 
     // Related Swiper
     new Swiper('#related-slider', {
         spaceBetween: 15,
         slidesPerView: 1,
-        allowTouchMove: false,
         watchSlidesProgress: true,
         navigation: {
             nextEl: '.related-slider-btn-next',

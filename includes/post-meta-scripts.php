@@ -13,25 +13,33 @@ function refresh_cruise_info_all()
      //get property_id of each rfc_cruises post types
     $args = array(
         'posts_per_page' => -1,
-        'post_type' => array('rfc_cruises', 'rfc_lodges'), //add itineraries
+        'post_type' => array('rfc_cruises', 'rfc_itineraries'), //add itineraries
     );
 
-    $the_query = new WP_Query($args);
-    if ($the_query->have_posts()) :
-        while ($the_query->have_posts()) :
-            $the_query->the_post();
-            // content goes here
-            $pid = get_field('property_id', get_the_ID()); 
-            if ($pid) {
-                
-                refresh_cruise_info($pid, get_the_ID());
+    $posts = get_posts($args);
+    foreach($posts as $post) {
+
+        $propertyId = null;
+        if ('rfc_cruises' == get_post_type($post)) {
+            $propertyId = get_field('property_id', $post); //get property data from DF
+            if($propertyId){
+                refresh_cruise_info($propertyId, $post);
                 usleep(1000000); //1 second pause
             }
+        }
+        if ('rfc_itineraries' == get_post_type($post)) {
+            $cruisePost = get_field('ship', $post); //get cruise post
+            $propertyId = get_field('property_id', $cruisePost); //get property data from DF
+            if($propertyId){
+                refresh_cruise_info($propertyId, $post);
+                usleep(1000000); //1 second pause
+            }
+            
+        }
 
-        endwhile;
-        wp_reset_postdata();
-    else :
-    endif;
+    }
+
+
 }
 //----------------------------------------------------------------
 
@@ -42,14 +50,14 @@ add_action('acf/save_post', 'my_acf_save_post');
 function my_acf_save_post($post_id)
 {
     if ('rfc_cruises' == get_post_type()) {
-        $dfPropertyId = get_field('property_id', $post_id); //get property data from DF
-        refresh_cruise_info($dfPropertyId, $post_id);
+        $propertyId = get_field('property_id', $post_id); //get property data from DF
+        refresh_cruise_info($propertyId, $post_id);
     }
 
     if ('rfc_itineraries' == get_post_type()) {
         $cruisePost = get_field('ship', $post_id); //get cruise post
-        $dfPropertyId = get_field('property_id', $cruisePost); //get property data from DF
-        refresh_cruise_info($dfPropertyId, $post_id);
+        $propertyId = get_field('property_id', $cruisePost); //get property data from DF
+        refresh_cruise_info($propertyId, $post_id);
 
         $cruiseDataUpdated = get_field('cruise_data', $post_id); //updated cruise data
         $itinerary_id = get_field('itinerary_id', $post_id); //get itinerary id from field
@@ -67,21 +75,6 @@ function my_acf_save_post($post_id)
 
     }
 
-
-
-    if ('rfc_lodges' == get_post_type()) {
-        $dfPropertyId = get_field('property_id', $post_id); //get property data from DF
-        refresh_cruise_info($dfPropertyId, $post_id);
-    }
-
-    if ('rfc_tours' == get_post_type()) {
-        $dailyActivities = get_field('daily_activities');
-        $count = 1;
-        if ($dailyActivities) {
-            $count = count($dailyActivities);
-        }
-        update_field('length_in_days', $count);
-    }    
   
 }
 function refresh_cruise_info($propertyId, $post_id)
@@ -90,7 +83,7 @@ function refresh_cruise_info($propertyId, $post_id)
     //$url = 'http://localhost:63665/api/wpproperties/';
 
     //DF WEB
-    $url = 'https://departurefinder.azurewebsites.net/api/wpproperties/';
+    $url = 'https://departurefinder-arctic.azurewebsites.net/api/wpproperties/';
     $url .= $propertyId;
 
     $request = wp_remote_get($url);

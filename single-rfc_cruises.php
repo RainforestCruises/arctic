@@ -7,6 +7,8 @@ get_header();
 
 
 $cruise_data = get_field('cruise_data');
+$itineraryPosts = get_field('itineraries');
+$departures = createDepartureList($cruise_data, $itineraryPosts);
 $productName = get_the_title();
 $vessel_capacity = get_field('vessel_capacity');
 $lowestPrice = lowest_property_price($cruise_data, 0, $currentYear, true);
@@ -17,6 +19,8 @@ $args = array(
   'lowestPrice' => $lowestPrice,
   'cruise_data' => $cruise_data,
   'vessel_capacity' => $vessel_capacity,
+  'itineraryPosts' => $itineraryPosts,
+  'departures' => $departures,
 );
 
 
