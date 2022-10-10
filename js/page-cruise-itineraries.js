@@ -3,7 +3,6 @@ jQuery(document).ready(function ($) {
     let destinationPoints = itineraryObjects[0].destinationPoints;
     let destinationLines = itineraryObjects[0].destinationLines;
 
-    console.log(itineraryObjects);
 
 
     //Map

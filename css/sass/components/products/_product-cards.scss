@@ -289,16 +289,16 @@
     }
 }
 
-//Departure Card
-.departure-card {
+// Departure / Cabin data
+.information-card {
     border: 1px solid $color-grey-light-1a;
     border-radius: 1rem;
     padding: 1.5rem 2rem;
     color: $color-primary;
     position: relative;
+    
+    
     &--horizontal {
-        
-        
         //above 600px
         @media only screen and (min-width: $bp-small) {
             display: flex;
@@ -306,103 +306,33 @@
             align-items: center;
             min-height: 12rem;
 
-            & .departure-card__title-group {
+            & .avatar-title-group {
                 max-width: 24rem;
             }
 
-            & .departure-card__title-group, .departure-card__specs {
+            & .information-card__section {
                 margin: 0rem;
                 padding: 0rem;
                 border-bottom: none;
             }
 
-            & .departure-card__specs__item {
-                margin-bottom: 0;
-            }
+        
         }
 
 
     }
 
-    
-    &__title-group {
-        color: currentColor;
-        margin-bottom: 2rem;
-        padding-bottom: 2rem;
-        margin-top: .5rem;
-        border-bottom: 1px solid $color-grey-light-1a;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-
-        &__avatar {
-            display: flex;
-            align-items: center;      
-            & img {
-                height: 5rem;
-                width: 5rem;
-                border-radius: 50%;
-            }
-        }
-
-        &__text {
-            margin-left: 1rem;
-            &__title {
-            
-                font-size: 1.6rem;
-                line-height: 2rem;
-            }
-    
-            &__sub {
-                font-size: 1.2rem;
-                color: $color-grey-3;
-            }
-        }
-
-       
-
-    }
-
-    &__specs {
-
+    &__section {
         margin-bottom: 1.5rem;
         padding-bottom: 1.5rem;
         border-bottom: 1px solid $color-grey-light-1a;
 
-        &__item {
-            font-size: 1.4rem;
-            display: grid;
-            grid-template-columns: min-content 1fr;
-            color: $color-primary;
-           
-
-            &:not(:last-child){
-                margin-bottom: .5rem;
-            }
-            &__icon {
-                & svg {
-                    height: 1.6rem;
-                    width: 1.6rem;
-                    fill: currentColor;
-                    color: currentColor;
-                    transform: translateY(1px);
-                }
-                margin-right: 1rem;
-            }
-            &__text {
-
-                &__main {
-                    font-size: 1.4rem;
-                    line-height: 2rem;
-                }
-                &__sub {
-                    font-size: 1rem;
-                    color: $color-grey-3;
-                    
-                }
-            }
+        &__specs {
+            
         }
     }
+
+    
 
     &__bottom {
         display: flex;
@@ -411,6 +341,14 @@
 
         &__price-group {
             color: currentColor;
+
+            &__large-text {
+                font-size: 1.5rem;
+                font-weight: 700;
+                line-height: 2rem;
+                color: $color-primary;
+            }
+
             &__amount {
                 font-weight: 700;
                 font-size: 1.8rem;
@@ -421,14 +359,128 @@
                 line-height: 1.5rem;
                 color: $color-grey-3;
             }
-            margin-right: 3rem;
+            margin-right: 4rem;
         }
     
         &__cta {
-            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            & .btn-text-plain {
+                margin-top: .3rem;
+            }
         }
 
     }
 
  
+}
+
+
+.avatar-title-group { //make generic
+    color: currentColor;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+
+    &__avatar { 
+        display: flex;
+        align-items: center;      
+        & img {
+            height: 5rem;
+            width: 5rem;
+            border-radius: 50%;
+        }
+    }
+
+    &__text {
+        margin-left: 1rem;
+        &__title {
+        
+            font-size: 1.6rem;
+            line-height: 2rem;
+        }
+
+        &__sub {
+            font-size: 1.2rem;
+            color: $color-grey-3;
+        }
+    }
+}
+
+
+
+
+
+
+.specs-item {
+    font-size: 1.4rem;
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    color: $color-primary;
+   
+
+    &:not(:last-child){
+        margin-bottom: .5rem;
+    }
+    &__icon {
+        & svg {
+            height: 1.6rem;
+            width: 1.6rem;
+            fill: currentColor;
+            color: currentColor;
+            transform: translateY(1px);
+        }
+        margin-right: 1rem;
+    }
+    &__text {
+
+        &__main {
+            font-size: 1.4rem;
+            line-height: 2rem;
+        }
+        &__sub {
+            font-size: 1rem;
+            color: $color-grey-3;
+            
+        }
+    }
+}
+
+
+.price-group-button {
+    border: none;
+    text-align: start;
+    background-color: transparent;
+
+    &__view {
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+        color: $color-primary;
+        white-space: nowrap;
+        transition: all .2s;
+    }
+
+    &__amount {
+        font-weight: 700;
+        font-size: 1.8rem;
+        line-height: 2rem;
+        white-space: nowrap;
+        transition: all .2s;
+    }
+    &__text {
+        font-size: 1rem;
+        line-height: 1.5rem;
+        color: $color-grey-3;
+        white-space: nowrap;
+    }
+
+    &:hover {
+        .price-group-button__amount, .price-group-button__view {
+            color: $color-supporting;
+            
+        }
+    }
+  
 }

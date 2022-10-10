@@ -2,6 +2,7 @@
 wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', array('jquery'), false, true);
 wp_enqueue_script('page-cruise', get_template_directory_uri() . '/js/page-cruise.js', array('jquery'), false, true);
 wp_enqueue_script('page-cruise-itineraries', get_template_directory_uri() . '/js/page-cruise-itineraries.js', array('jquery'), false, true);
+wp_enqueue_script('page-cruise-gallery', get_template_directory_uri() . '/js/page-cruise-gallery.js', array('jquery'), false, true);
 
 get_header();
 
@@ -12,6 +13,63 @@ $departures = createDepartureList($cruise_data, $itineraryPosts);
 $productName = get_the_title();
 $vessel_capacity = get_field('vessel_capacity');
 $lowestPrice = lowest_property_price($cruise_data, 0, $currentYear, true);
+$curentYear = date("Y");
+$yearSelections = createYearSelection($curentYear, 3);
+$cabins = $cruise_data['CabinDTOs'];
+
+
+
+
+$itinerary_cruise_data = $cruise_data['Itineraries'];
+$itineraryDataList = [];
+
+console_log($cruise_data);
+
+foreach ($itineraryPosts as $itinerary) {
+  $dfid = get_field('itinerary_id', $itinerary);
+
+  foreach ($itinerary_cruise_data as $i) {
+      if($i['Id'] == $dfid){
+
+        $object  = [
+          'postId' => $itinerary->ID,
+          'dfId' => $i['Id'],
+          'rateYears' => $i['RateYears'],
+        ];
+        $itineraryDataList[] = $object;
+      }
+  
+  }
+}
+
+
+//console_log($itineraryDataList);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 $args = array(
@@ -20,14 +78,18 @@ $args = array(
   'cruise_data' => $cruise_data,
   'vessel_capacity' => $vessel_capacity,
   'itineraryPosts' => $itineraryPosts,
+  'itineraryDataList' => $itineraryDataList,
   'departures' => $departures,
+  'curentYear' => $curentYear,
+  'yearSelections' => $yearSelections,
+  'cabins' => $cabins,
+
 );
 
 
 //Itinerary JS Array
 $itineraryObjects = [];
-$itineraries = get_field('itineraries');
-foreach ($itineraries as $itinerary) {
+foreach ($itineraryPosts as $itinerary) {
   $days = get_field('itinerary', $itinerary);
 
   //Destination Point Series

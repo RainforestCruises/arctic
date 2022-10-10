@@ -1,7 +1,193 @@
 jQuery(document).ready(function ($) {
 
 
-    // Hero Sliders -------------------
+    //MODALS ---------------------
+    const body = document.getElementById("body");
+
+
+    const departureSelectionDisplay = document.querySelector("#departure-selection-display");
+    const cabinSelectionDisplay = document.querySelector("#cabin-selection-display");
+
+
+    //hide outline panels on load (mobile)
+    checkOutlinePanels();
+    function checkOutlinePanels() {
+        if ($(window).width() < 1000) { //mobile view    
+            $('.outline-panel__content').toggle();
+            $('.outline-panel__heading').toggleClass('closed');
+        }
+    }
+
+    // Inquire buttons (generic)
+    // -- clear all selections
+    // -- hide tabs
+    // -- go to inquire form
+    const genericInquireCtaButtons = [...document.querySelectorAll('.generic-inquire-cta')];
+    genericInquireCtaButtons.forEach(item => {
+        item.addEventListener('click', () => {
+            inquireModal.style.display = 'flex';
+            body.classList.add('no-scroll');
+            activeTabPanel('inquire');
+
+
+            departureSelectionDisplay.style.display = "";
+            departureSelectionDisplay.innerHTML = "";
+            cabinSelectionDisplay.style.display = "";
+            cabinSelectionDisplay.innerHTML = "";
+            hideModalTabButtons();
+        });
+    })
+
+    // Inquire Buttons (on departures)
+    // -- go to inquire
+    // -- make selection of departure date
+    // -- hide tabs except return to dates
+    const departureInquireCtaButtons = [...document.querySelectorAll('.departure-inquire-cta')];
+    departureInquireCtaButtons.forEach(item => {
+        item.addEventListener('click', () => {
+            inquireModal.style.display = 'flex';
+            body.classList.add('no-scroll');
+            activeTabPanel('inquire');
+
+            var selection = item.getAttribute("itineraryTitle") + " - Departing " + item.getAttribute("departureDate");
+
+            departureSelectionDisplay.style.display = "block";
+            departureSelectionDisplay.innerHTML = selection;
+            hideModalTabButtons('dates')
+        });
+    })
+
+    // Inquire buttons (on cabins)
+    // -- complete the cabin selection
+    // -- go to inquire form
+    const cabinInquireCtaButtons = [...document.querySelectorAll('.cabin-inquire-cta')];
+    cabinInquireCtaButtons.forEach(item => {
+        item.addEventListener('click', () => {
+            inquireModal.style.display = 'flex';
+            body.classList.add('no-scroll');
+            activeTabPanel('inquire');
+            hideModalTabButtons('cabins');
+
+            var selection = item.getAttribute("cabinTitle");
+
+            cabinSelectionDisplay.style.display = "block";
+            cabinSelectionDisplay.innerHTML = selection;
+
+        });
+    })
+
+    // View Prices Buttons (on departures)
+    // -- go to cabin selection
+    // -- display itinerary selected
+    const departurePriceButtons = [...document.querySelectorAll('.price-group-button')];
+    departurePriceButtons.forEach(item => {
+        item.addEventListener('click', () => {
+
+            inquireModal.style.display = 'flex';
+            body.classList.add('no-scroll');
+
+            const year = item.getAttribute('year');
+            const itinerary = item.getAttribute('itinerary');
+            const title = item.getAttribute('itineraryTitle') + ' - Departing, ' + item.getAttribute('departureDate');
+
+            activeTabPanel('cabins');
+            filterCabins(year, itinerary, title);
+            hideModalTabButtons('dates'); // show the dates tab
+
+            departureSelectionDisplay.style.display = "block";
+            departureSelectionDisplay.innerHTML = title;
+
+            cabinSelectionDisplay.innerHTML = ""; // clear cabin selection
+            cabinSelectionDisplay.style.display = "none";
+        });
+    })
+
+    // Filter Cabins
+    // -- display the departure date
+    const modalCabinCards = [...document.querySelectorAll('.modal-cabin-card ')];
+    const cabinDepartureSubtitle = document.querySelector("#cabin-departure-subtitle");
+    function filterCabins(year, itineraryId, display) {
+        cabinDepartureSubtitle.innerHTML = display;
+        var count = 0;
+        modalCabinCards.forEach(item => {
+            item.style.display = "none";
+            var matchDate = false;
+            var matchItinerary = false;
+
+            if (item.getAttribute('year') == year) {
+                matchDate = true;
+            }
+
+            if (item.getAttribute('itinerary') == itineraryId) {
+                matchItinerary = true;
+            }
+
+            if (matchDate && matchItinerary) {
+                item.style.display = "";
+                count = count + 1;
+            }
+        });
+
+
+    }
+
+    // view all button
+    // -- show departures
+    // -- hide all modal tab buttons
+    const viewAllDates = document.querySelector("#view-all-dates-button");
+    viewAllDates.addEventListener('click', () => {
+        inquireModal.style.display = 'flex';
+        body.classList.add('no-scroll');
+        activeTabPanel('dates');
+        hideModalTabButtons();
+    });
+
+
+    // Modal Tabs
+    const modalTabButtons = [...document.querySelectorAll('.modal-tab-link')];
+    modalTabButtons.forEach(item => {
+        item.addEventListener('click', () => {
+            const tabId = item.getAttribute('tab-panel');
+            activeTabPanel(tabId);
+            if (tabId == 'cabins') {
+                cabinSelectionDisplay.style.display = ""; //erase cabin selection
+                cabinSelectionDisplay.innerHTML = "";
+                hideModalTabButtons('dates');
+            } else {
+                hideModalTabButtons();
+            }
+        });
+    })
+
+    // Hide Tabs
+    function hideModalTabButtons(exclude) {
+        modalTabButtons.forEach(item => {
+            if (item.getAttribute('tab-panel') == exclude) {
+                item.style.display = "";
+            } else {
+                item.style.display = "none";
+            }
+        })
+    }
+
+    // Modal Panels
+    const modalTabPanels = [...document.querySelectorAll('.modal-tab-panel')];
+    function activeTabPanel(tabId) {
+        modalTabPanels.forEach(panel => {
+            const panelId = panel.getAttribute('tab-panel');
+            if (tabId == panelId) {
+                panel.classList.add('active');
+            } else {
+                panel.classList.remove('active');
+            }
+        })
+    }
+
+
+
+
+
+    // Sliders -------------------
     // hero desktop slider
     const heroDesktopSlider = new Swiper('#hero-desktop-slider', {
         loop: true,
@@ -31,170 +217,6 @@ jQuery(document).ready(function ($) {
     heroMobileSlider.on('slideChange', function (swiper) {
         counter.innerHTML = (swiper.realIndex + 1) + ' / ' + (swiper.slides.length - 2);
     });
-
-
-
-
-    //MODALS ---------------------
-    const body = document.getElementById("body");
-
-    //Inquire
-    const inquireCtaButtons = [...document.querySelectorAll('.inquire-cta')];
-    const inquireModal = document.getElementById("inquireModal");
-    inquireCtaButtons.forEach(item => {
-        item.addEventListener('click', () => {
-            inquireModal.style.display = 'flex';
-            body.classList.add('no-scroll');
-
-            const tabId = item.getAttribute('tab-panel');
-            activeTabPanel(tabId);
-        });
-    })
-
-
-
-
-    //Modal Tabs
-    const modalTabButtons = [...document.querySelectorAll('.modal-tab-link')];
-    modalTabButtons.forEach(item => {
-        item.addEventListener('click', () => {
-            const tabId = item.getAttribute('tab-panel');
-            activeTabPanel(tabId);
-        });
-    })
-
-    const modalTabPanels = [...document.querySelectorAll('.modal-tab-panel')];
-    function activeTabPanel(tabId) {
-        modalTabPanels.forEach(panel => {
-            const panelId = panel.getAttribute('tab-panel');
-
-            if (tabId == panelId) {
-                panel.classList.add('active');
-            } else {
-                panel.classList.remove('active');
-            }
-
-        })
-    }
-
-
-
-
-
-
-    // Modal Gallery Slider (Main and Nav)
-    const modalGalleryNav = new Swiper("#modal-gallery-nav", {
-        spaceBetween: 10,
-        slidesPerView: 3,
-        freeMode: true,
-        watchSlidesProgress: true,
-        breakpoints: {
-            600: {
-                slidesPerView: 4,
-            }
-        }
-    });
-    const modalGalleryMain = new Swiper("#modal-gallery-main", {
-        spaceBetween: 10,
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        thumbs: {
-            swiper: modalGalleryNav,
-        },
-        keyboard: {
-            enabled: true,
-            onlyInViewport: false,
-        },
-    });
-    const counterGallery = document.querySelector('#pageGalleryModalCount');
-    const titleGallery = document.querySelector('#pageGalleryModalTitle');
-    modalGalleryMain.on('slideChange', function (swiper) {
-        counterGallery.innerHTML = (swiper.realIndex + 1) + ' / ' + (swiper.slides.length);
-
-        const slideDiv = document.querySelector('.modal__gallery-content__main__slider__item[slideIndex="' + (swiper.realIndex + 1) + '"]');
-        const slideTitle = slideDiv.getAttribute('title');
-        titleGallery.innerHTML = slideTitle;
-    });
-
-
-    // Hero Desktop Gallery - Click event listeners
-    const heroGalleryImages = [...document.querySelectorAll('.product-hero__gallery__slider__item')];
-    const pageGalleryModal = document.getElementById("pageGalleryModal");
-    heroGalleryImages.forEach(item => {
-        item.addEventListener('click', () => {
-            pageGalleryModal.style.display = 'flex';
-            body.classList.add('no-scroll');
-
-            const imageId = item.getAttribute('imageId');
-            const slideDiv = document.querySelector('.modal__gallery-content__main__slider__item[imageId="' + imageId + '"]');
-            const slideIndex = slideDiv.getAttribute('slideIndex');
-
-            modalGalleryMain.update();
-            modalGalleryMain.slideTo(slideIndex - 1, 0);
-            modalGalleryNav.slideTo(slideIndex - 1, 0);
-
-        });
-    })
-
-    // Hero Mobile Gallery - Click event listeners 
-    const heroMobileGalleryImages = [...document.querySelectorAll('.product-hero__bg-slider__slide')];
-    heroMobileGalleryImages.forEach(item => {
-        item.addEventListener('click', () => {
-            pageGalleryModal.style.display = 'flex';
-            body.classList.add('no-scroll');
-
-            const imageId = item.getAttribute('imageId');
-            const slideDiv = document.querySelector('.modal__gallery-content__main__slider__item[imageId="' + imageId + '"]');
-            const slideIndex = slideDiv.getAttribute('slideIndex');
-
-            modalGalleryMain.slideTo(2, 0)
-            modalGalleryMain.update();
-            modalGalleryMain.slideTo(slideIndex - 1, 0);
-            modalGalleryNav.slideTo(slideIndex - 1, 0);
-
-        });
-    })
-
-
-    //Deck Plan Button
-    const deckPlanButton = document.getElementById("deckplan-button");
-    deckPlanButton.addEventListener('click', () => {
-        pageGalleryModal.style.display = 'flex';
-        body.classList.add('no-scroll');
-
-        const imageId = deckPlanButton.getAttribute('imageId');
-        const slideDiv = document.querySelector('.modal__gallery-content__main__slider__item[imageId="' + imageId + '"]');
-        const slideIndex = slideDiv.getAttribute('slideIndex');
-
-        modalGalleryMain.update();
-        modalGalleryMain.slideTo(slideIndex - 1, 0);
-        modalGalleryNav.slideTo(slideIndex - 1, 0);
-    });
-
-    // Cabin Images - Click event listeners
-    const cabinGalleryImages = [...document.querySelectorAll('.cabin-image-slide')];
-    cabinGalleryImages.forEach(item => {
-        item.addEventListener('click', () => {
-            pageGalleryModal.style.display = 'flex';
-            body.classList.add('no-scroll');
-
-            const imageId = item.getAttribute('imageId');
-            console.log(imageId);
-            const slideDiv = document.querySelector('.modal__gallery-content__main__slider__item[imageId="' + imageId + '"]');
-            const slideIndex = slideDiv.getAttribute('slideIndex');
-
-            modalGalleryMain.update();
-            modalGalleryMain.slideTo(slideIndex - 1, 0);
-            modalGalleryNav.slideTo(slideIndex - 1, 0);
-
-        });
-    })
-
-
-
-
 
 
     // Cabins Swiper
@@ -235,14 +257,6 @@ jQuery(document).ready(function ($) {
     });
 
 
-
-
-
-
-
-
-
-
     // Related Swiper
     new Swiper('#related-slider', {
         spaceBetween: 15,
@@ -275,6 +289,22 @@ jQuery(document).ready(function ($) {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         }
+    });
+
+
+
+
+
+
+    // view all button
+    // -- show departures
+    // -- hide all modal tab buttons
+    const reviewsModal = document.querySelector("#reviewsModal");
+    const readAllReviews = document.querySelector("#read-all-reviews");
+    readAllReviews.addEventListener('click', () => {
+        reviewsModal.style.display = 'flex';
+        body.classList.add('no-scroll');
+        
     });
 
 

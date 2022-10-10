@@ -1,6 +1,21 @@
 <?php
 
 
+
+function findObjectById($id, $array)
+{
+
+    foreach ($array as $element) {
+        if ($id == $element->Id) {
+            return $element;
+        }
+    }
+
+    return false;
+}
+
+
+
 //Console Log Utility--------------
 function console_log($data)
 {
@@ -28,8 +43,7 @@ function afloat_image_markup($image_id, $image_size, $sizes_array = [], $flickit
             $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
             $image_attributes = wp_get_attachment_image_src($image_id, $image_size);
             echo 'height="' . $image_attributes[2] . '" width="' . $image_attributes[1] . '" src="' . $image_src . '" alt="' . $image_alt . '" class="size-' . $image_size . '"';
-        } 
-        else {
+        } else {
             //Cloudinary v2.6 (and everything else)
             //omit h/w, generate src and srcset
 
@@ -49,13 +63,12 @@ function afloat_image_markup($image_id, $image_size, $sizes_array = [], $flickit
                 }
             }
 
-            if($flickity == false){
+            if ($flickity == false) {
                 echo 'src="' . $image_src . '" srcset="' . $image_srcset . '" sizes="(max-width: ' . $max_width . 'px) 100vw, ' . $max_width . 'px" alt="' . $image_alt . '"';
-            }else {
+            } else {
                 //special markup for flickity slider with lazy loading
                 echo ' data-flickity-lazyload-src="' . $image_src . '" data-flickity-lazyload-srcset="' . $image_srcset . '" sizes="(max-width: ' . $max_width . 'px) 100vw, ' . $max_width . 'px" alt="' . $image_alt . '"';
             }
-
         }
     } else {
         'no-image-id';
@@ -76,9 +89,9 @@ function afloat_dfcloud_image($image_url, $image_height = null, $image_width = n
     $first = substr($string, 0, strpos($string, '/image/upload/') + strlen($prefix));
 
     $transformationString = 'f_auto,q_auto/c_fill,g_auto/';
-    if($image_width && $image_height){
+    if ($image_width && $image_height) {
 
-        $transformationString = 'f_auto,q_auto/c_fill,g_auto' .  ',h_' . $image_width . ',w_' . $image_height .'/';
+        $transformationString = 'f_auto,q_auto/c_fill,g_auto' .  ',h_' . $image_width . ',w_' . $image_height . '/';
     }
 
     $index = strpos($string, $prefix) + strlen($prefix);
@@ -475,8 +488,8 @@ function renderHeaderClasses()
     if ($templateName == 'template-home.php') {
         $classes .= ' fixed ';
     }
-    
-    if ($postTypeName == 'rfc_cruises' || $postTypeName == 'rfc_itineraries' ) {
+
+    if ($postTypeName == 'rfc_cruises' || $postTypeName == 'rfc_itineraries') {
         $classes .= ' small-width ';
     }
 

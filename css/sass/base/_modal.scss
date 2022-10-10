@@ -1,7 +1,7 @@
 //Contact Forms
 .modal {
     position: fixed;
-    background-color: rgba($color-black, 0.8);
+    background-color: rgba($color-black, 0.5);
     top: 0;
     left: 0;
     width: 100%; 
@@ -30,6 +30,8 @@
         border-radius: 1rem;
         display: flex;
         flex-direction: column;
+        border: 1px solid $color-grey-light-2;
+        box-shadow: $shadow-medium;
     
         @media only screen and (max-width: $bp-medium) {
             max-width: 100%;
@@ -44,7 +46,7 @@
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-
+            min-height: 7rem;
             &__nav {
                 display: flex;
                 & button {

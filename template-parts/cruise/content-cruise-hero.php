@@ -110,7 +110,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
 
                     <!-- Inquire CTA Button -->
                     <div class="product-hero__content__main__secondary__info__cta">
-                        <button class="cta-primary inquire-cta" tab-panel="inquire">
+                        <button class="cta-primary generic-inquire-cta">
                             Inquire
                             <svg>
                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>
@@ -213,7 +213,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
 
     <!-- Inquire CTA Button -->
     <div class="mobile-info__cta">
-        <button class="cta-primary inquire-cta" tab-panel="inquire">
+        <button class="cta-primary generic-inquire-cta">
             Inquire
             <svg>
                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>

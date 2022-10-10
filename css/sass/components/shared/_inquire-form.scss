@@ -12,11 +12,21 @@
             margin-bottom: 1rem;
         }
 
+        &__selection {
+
+            &__item{
+                font-size: 1.6rem;
+                font-weight: 700;
+                color: $color-supporting;
+                display: none;
+                margin-bottom: 1rem;
+            }
+        }
+
         &__subtext {
             font-size: 1.6rem;
             margin-bottom: 0;
         }
-
     }
 
     &__form {
@@ -34,5 +44,3 @@
         }
     }
 }
-
-

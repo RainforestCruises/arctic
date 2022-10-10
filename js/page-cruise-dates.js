@@ -1,4 +1,5 @@
 jQuery(document).ready(function ($) {
+    const body = document.getElementById("body");
 
 
     // Itinerary Filter ----------------------------------------------------------------------------------------
@@ -201,7 +202,6 @@ jQuery(document).ready(function ($) {
 
     clearFilters.forEach(item => {
         item.addEventListener('click', () => {
-            console.log('clear')
             dateValues = []
             dateValuesInitialState = []; //set initial values
             itineraryValues = [];
@@ -244,8 +244,9 @@ jQuery(document).ready(function ($) {
         }
     });
 
-
-    const departureCards = [...document.querySelectorAll('.departure-card')];
+    
+    
+    const departureCards = [...document.querySelectorAll('.info-departure-card')];
 
     function filterSlides() {
         var count = 0;
@@ -327,17 +328,7 @@ jQuery(document).ready(function ($) {
     }
 
 
-
-
-
-    //   //Inquire
-    //   const viewAllButton = document.querySelector('#view-all-dates-button');
-    //   const departuresModal = document.getElementById("departuresModal");
-
-    //   viewAllButton.addEventListener('click', () => {
-    //     departuresModal.style.display = 'flex';
-    //     body.classList.add('no-scroll');
-    // });
+ 
 
 
 

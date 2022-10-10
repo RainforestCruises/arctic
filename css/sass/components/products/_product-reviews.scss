@@ -69,3 +69,32 @@
     }
 
 }
+
+
+.reviews-modal {
+
+    &__filters {
+        
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transform: translateY(-2rem);
+
+        
+    }
+    &__content {
+        & .review-item{
+            margin-bottom: 8rem;
+            &:not(:last-of-type){
+                margin-bottom: 3rem;
+                padding-bottom: 3rem;
+                border-bottom: 1px solid $color-grey-light-1a;
+            }
+          
+        
+        }
+    }
+
+
+    
+}

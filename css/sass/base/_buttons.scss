@@ -107,6 +107,21 @@
   }
 }
 
+.btn-text-plain {
+  background-color: transparent;
+  color: currentColor;
+  font-size: 1.2rem;
+  //padding: 0.5rem 1rem;
+  transition: all 0.2s;
+  outline: none;
+  white-space: nowrap;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-supporting;
+  }
+}
+
 //Arctic -- Main button
 .cta-primary {
   cursor: pointer;
@@ -367,6 +382,16 @@
   transition: all 0.2s;
   color: $color-primary;
   border: 1px solid $color-grey-light-1a;
+
+  & svg {
+    height: 1.3rem;
+    width: 1.3rem;
+    transform: translateY(-1px);
+    margin-right: .5rem;
+    stroke: currentColor;
+    fill: currentColor;
+    stroke: 1;
+  }
 
   &.active {
     background-color: $color-grey-light-1a;

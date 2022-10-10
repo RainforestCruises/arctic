@@ -1,6 +1,6 @@
 <?php
-$cabins = $args['cruise_data']['CabinDTOs'];
-$curentYear = date("Y");
+$cabins = $args['cabins'];
+$curentYear = $args['curentYear'];
 
 
 
@@ -165,17 +165,9 @@ $curentYear = date("Y");
 
 
 <?php
-function checkDeparturesInYear($year, $departureList)
-{
-    $match = false;
-    foreach ($departureList as $d) {
-        if (str_contains($d['DepartureDate'], strval($year))) {
-            $match = true;
-        }
-    }
-    return $match;
-}
 
+
+//cabin count plurality
 function getCabinCountDisplay($cabin)
 {
     $cabinCountLabel = '';
@@ -189,6 +181,7 @@ function getCabinCountDisplay($cabin)
     return $cabinCountLabel;
 }
 
+//occupancy in cabin display from DF cabinDTO
 function getOccupancyDisplay($cabin)
 {
     $primaryOccupancy = $cabin['PrimaryOccupancy'];

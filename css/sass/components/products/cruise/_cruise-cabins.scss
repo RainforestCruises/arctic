@@ -8,3 +8,21 @@
     }
 }
 
+//move to product
+.cabins-modal {
+
+    &__filters {
+        display: flex;
+        align-items: center;
+        transform: translateY(-2rem);
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: $color-supporting;
+    }
+    &__content {
+        & .information-card {
+            margin-bottom: 2rem;
+        }
+    }
+}
+

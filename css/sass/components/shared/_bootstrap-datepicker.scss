@@ -1,0 +1,32 @@
+
+//Datepicker Generic
+.datepicker {
+
+    & .datepicker-switch {
+            pointer-events: none;
+    }
+
+    & th {
+        height: 3.5rem;
+        color: $color-primary;
+        font-size: 1.8rem;
+    }
+
+    table {
+        width: 100%;
+
+        & tr td span { 
+            height: 4rem;
+            line-height: 4rem;
+            font-weight: 400;
+            &.active { 
+                background-color: $color-primary !important;
+                color: $color-white !important;
+                background-image: none !important;
+            }
+        }
+
+        
+    }
+}
+
