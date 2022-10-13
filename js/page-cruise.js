@@ -161,6 +161,7 @@ jQuery(document).ready(function ($) {
 
     // Hide Tabs
     function hideModalTabButtons(exclude) {
+        
         modalTabButtons.forEach(item => {
             if (item.getAttribute('tab-panel') == exclude) {
                 item.style.display = "";
@@ -168,11 +169,16 @@ jQuery(document).ready(function ($) {
                 item.style.display = "none";
             }
         })
+
+      
     }
 
     // Modal Panels
     const modalTabPanels = [...document.querySelectorAll('.modal-tab-panel')];
+    const departureModalTitle = document.querySelector("#departure-modal-title");
+    const inquireModalMainContent = document.querySelector("#inquireModalMainContent");
     function activeTabPanel(tabId) {
+        inquireModalMainContent.scrollTop = 0;
         modalTabPanels.forEach(panel => {
             const panelId = panel.getAttribute('tab-panel');
             if (tabId == panelId) {
@@ -181,6 +187,10 @@ jQuery(document).ready(function ($) {
                 panel.classList.remove('active');
             }
         })
+        departureModalTitle.style.display = "none";
+        if(tabId == 'dates'){
+            departureModalTitle.style.display = "";
+        }
     }
 
 

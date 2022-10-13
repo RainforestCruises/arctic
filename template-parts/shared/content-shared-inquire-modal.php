@@ -6,8 +6,11 @@ $currentYear = $args['curentYear'];
 $yearSelections = $args['yearSelections'];
 $cabins = $args['cabins'];
 $itineraryDataList = $args['itineraryDataList'];
-
 ?>
+
+<!-- Scroll user to top of modal content -->
+<!-- Include titles always -->
+<!-- Fix break when no deckplan button -->
 
 <div class="modal" id="inquireModal">
     <div class="modal__content"">
@@ -15,6 +18,9 @@ $itineraryDataList = $args['itineraryDataList'];
 
         <!-- Top Modal Content -->
         <div class="modal__content__top__nav">
+            <div class="modal__content__top__nav" style="font-size: 14px; display: none;" id="departure-modal-title">
+                Departure Dates
+            </div>
             <button class="btn-pill modal-tab-link" tab-panel="dates">
                 <svg>
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-left"></use>
@@ -37,7 +43,7 @@ $itineraryDataList = $args['itineraryDataList'];
     </div>
 
     <!-- Main Modal Content -->
-    <div class="modal__content__main">
+    <div class="modal__content__main" id="inquireModalMainContent">
 
         <!-- Inquire Form -->
         <div class="inquire-form tabpanel modal-tab-panel" tab-panel="inquire">
