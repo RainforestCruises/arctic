@@ -43,35 +43,6 @@ foreach ($itineraryPosts as $itinerary) {
 }
 
 
-//console_log($itineraryDataList);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $args = array(
   'productName' => $productName,
   'lowestPrice' => $lowestPrice,

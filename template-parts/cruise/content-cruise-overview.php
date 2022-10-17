@@ -3,6 +3,13 @@
 $deck_plans = get_field('deck_plans');
 $amenities = get_field('amenities');
 $cruise_data = $args['cruiseData'];
+$productName = $args['productName'];
+
+$overview_content = get_field('overview_content');
+$expand = strlen($overview_content) > 1100 ? true : false;
+$overview_content_limited = substr($overview_content, 0, 1100) . '...';
+
+
 ?>
 <section class="cruise-overview" id="overview">
 
@@ -31,7 +38,18 @@ $cruise_data = $args['cruiseData'];
 
                 <!-- Text -->
                 <div class="cruise-overview__content__grid__overview__text ">
-                    <?php echo get_field('overview_content') ?>
+                    <?php echo $overview_content_limited; ?>
+                </div>
+
+                <div class="cruise-overview__content__grid__overview__expand">
+                    <?php if ($expand) : ?>
+                        <button class="btn-text-icon" id="expand-content">
+                            Read More
+                            <svg>
+                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                            </svg>
+                        </button>
+                    <?php endif; ?>
                 </div>
             </div>
 
@@ -167,12 +185,29 @@ $cruise_data = $args['cruiseData'];
                     </div>
                     <!-- Panel Content -->
                     <div class="outline-panel__content">
-                        <div class="icon-area">
-                            <?php foreach ($amenities as $a) : ?>
-                                <div class="icon-circle">
-                                    <?php echo get_field('icon', $a); ?>
-                                    <span class="tooltiptext"><?php echo get_the_title($a); ?></span>
+                        <div class="ammenities">
+                            <?php foreach ($amenities as $a) :
+                                $amenity_post = $a['standard_amenity'];
+                                $icon = get_field('icon', $amenity_post);
+                                $title = $a['title_override'] == "" ? get_the_title($amenity_post) : $a['title_override'];
+                                $subtitle = $a['subtitle'];
+                            ?>
+
+                                <div class="ammenities__item">
+                                    <?php echo $icon ?>
+
+                                    <div class="ammenities__item__title-group">
+                                        <div class="ammenities__item__title-group__title">
+                                            <?php echo $title ?>
+                                        </div>
+                                        <?php if ($subtitle != "") : ?>
+                                            <div class="ammenities__item__title-group__sub">
+                                                <?php echo $subtitle ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
+
                             <?php endforeach; ?>
                         </div>
 
@@ -204,3 +239,29 @@ $cruise_data = $args['cruiseData'];
 
     </div>
 </section>
+
+
+<div class="modal" id="contentModal">
+    <div class="modal__content"">
+        <div class=" modal__content__top">
+            <!-- Top Modal Content -->
+            <div class="modal__content__top__nav" style="font-size: 14px;">
+                About the <?php echo $productName; ?>
+            </div>
+            <button class="btn-text-icon close-modal-button ">
+                Close
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Main Modal Content -->
+        <div class="modal__content__main">
+
+            <?php echo $overview_content; ?>
+
+
+        </div>
+    </div>
+</div>

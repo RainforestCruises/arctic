@@ -4,6 +4,13 @@ jQuery(document).ready(function ($) {
     //MODALS ---------------------
     const body = document.getElementById("body");
 
+    const contentModal = document.querySelector("#contentModal");
+    const expandContent = document.querySelector("#expand-content");
+    expandContent.addEventListener('click', () => {
+        contentModal.style.display = 'flex';
+        body.classList.add('no-scroll');    
+    });
+
 
     const departureSelectionDisplay = document.querySelector("#departure-selection-display");
     const cabinSelectionDisplay = document.querySelector("#cabin-selection-display");
@@ -313,8 +320,7 @@ jQuery(document).ready(function ($) {
     const readAllReviews = document.querySelector("#read-all-reviews");
     readAllReviews.addEventListener('click', () => {
         reviewsModal.style.display = 'flex';
-        body.classList.add('no-scroll');
-        
+        body.classList.add('no-scroll');    
     });
 
 

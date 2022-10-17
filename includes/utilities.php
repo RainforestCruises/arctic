@@ -495,3 +495,17 @@ function renderHeaderClasses()
 
     return $classes;
 }
+
+
+function renderFooterClasses()
+{
+    $classes = '';
+    $templateName = get_page_template_slug();
+    $postTypeName = get_post_type();
+
+    if ($postTypeName == 'rfc_cruises' || $postTypeName == 'rfc_itineraries') {
+        $classes .= ' narrow ';
+    }
+
+    return $classes;
+}

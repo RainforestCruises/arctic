@@ -27,7 +27,6 @@
             }
 
             position: relative;
-        
 
             //Overview -- contains highlights and text
             &__overview {
@@ -47,8 +46,6 @@
                         }
                     }
 
-                   
-
                     &__list {
                         list-style: none;
                         font-size: 1.6rem;
@@ -60,17 +57,14 @@
                             & span {
                                 font-weight: 700;
                                 color: $color-primary !important;
-                                //height: 2rem;
-                                //width: 2rem;
                                 margin-right: 2rem;
-                                //margin-top: .2rem;
                             }
                         }
                     }
                 }
 
                 &__text {
-                    padding-bottom: 2rem;
+                    //padding-bottom: 2rem;
                     padding-top: 3rem;
                     position: relative;
 
@@ -84,13 +78,18 @@
                         background-color: $color-grey-light-1a;
                     }
                 }
+                &__expand {
+                    display: flex;
+                    justify-content: flex-end;
+                    min-height: 2rem;
+                    font-weight: 700;
+                    color: $color-primary;
+                }
             }
 
             &__secondary {
                 margin-top: 1.5rem;
 
-                
-             
                 //view deckplans / terms
                 &__cta {
                     display: flex;
@@ -103,10 +102,34 @@
 }
 
 //COMPONENTS
-.icon-area {
-    display:flex;
-    flex-wrap: wrap;
-    margin-top: 1.5rem;
+.ammenities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    padding-bottom: 1rem;
+    color: $color-primary;
+    &__item {
+        display: flex;
+        align-items: center;
+
+        & svg {
+            height: 2.5rem;
+            width: 2.5rem;
+            color: currentColor;
+        }
+
+        &__title-group {
+            margin-left: 1.5rem;
+            font-size: 1.4rem;
+            &__title {
+                color: currentColor;
+            }
+            &__sub {
+                color: $color-grey-3;
+            }
+        }
+    }
 }
 //specs
 .specs {
@@ -114,7 +137,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     padding: 2rem;
-
+    padding-bottom: 1rem;
     &__item {
         font-size: 1.4rem;
         &__title {
@@ -127,10 +150,7 @@
     }
 }
 
-
 //generic components?
-
-
 
 //icon circle
 .icon-circle {
@@ -142,12 +162,12 @@
     width: 5rem;
     border-radius: 50%;
 
-    margin: 1rem .5rem;
-   
+    margin: 1rem 0.5rem;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     cursor: pointer;
 
     &:hover .tooltiptext {
@@ -163,7 +183,7 @@
         color: $color-primary;
         text-align: center;
         border-radius: 6px;
-        padding: .5rem 1rem;
+        padding: 0.5rem 1rem;
         font-size: 1rem;
         font-weight: 600;
 
@@ -178,7 +198,6 @@
         width: 2rem;
         color: $color-primary;
     }
-
 }
 
 .cta-link-icon {
@@ -189,7 +208,7 @@
     font-size: 1.4rem;
     //line-height: 1.4rem;
     white-space: no-wrap;
-    transition: all .2s;
+    transition: all 0.2s;
 
     & svg {
         margin-left: 1rem;

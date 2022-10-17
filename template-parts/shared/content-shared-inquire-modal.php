@@ -216,7 +216,7 @@ $itineraryDataList = $args['itineraryDataList'];
                                         </div>
                                         <div class="avatar-title-group__text">
                                             <div class="avatar-title-group__text__title">
-                                                <?php echo  $title; ?> - <?php echo  $year; ?>- <?php echo  $itineraryPostId; ?>
+                                                <?php echo  $title; ?>
                                             </div>
                                             <div class="avatar-title-group__text__sub">
                                                 <?php echo getOccupancyDisplay($cabinDto); ?> Guests, <?php echo ($cabinDto['Beds']); ?> Bed
