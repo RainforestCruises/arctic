@@ -20,7 +20,7 @@
     }
 
     &__content {
-        font-weight: 600;
+        
         align-items: center;
         height: 100%;
         width: 100%;
@@ -41,20 +41,23 @@
                 display: none;
             }
 
-            &__button {
-                border: none;
-                font-size: 1.3rem;
-                padding: 0.8rem 1rem;
-                padding-left: 0;
-                font-weight: 600;
+            &__link {
+                &:visited,
+                &:link {
+                    font-size: 1.3rem;
+                    text-decoration: none;
+                    color: $color-primary;
+                    font-weight: 600;
+                    padding: .5rem 0;
+                }
+
                 &:hover {
-                    border: none;
                     color: $color-supporting;
                 }
             }
 
-            padding-right: 0.7rem;
-            margin-right: 0.5rem;
+          
+            padding-right: 1.5rem;
 
             &::after {
                 content: "";
@@ -72,7 +75,7 @@
             }
         }
 
-        &__buttons {
+        &__links {
             max-width: 114rem;
             width: 100%;
             display: flex;
@@ -81,19 +84,32 @@
                 justify-content: center;
             }
 
-            &__button {
-                margin-right: .5rem;
-                @media only screen and (min-width: $bp-medium) {
-                    border: none;
+            &__link {
+                margin-left: 1.5rem;
+                &:visited,
+                &:link {
+                    padding: .5rem 0;           
                     font-size: 1.3rem;
-                    padding: 0.8rem 1rem;
-                    margin-right: 0rem;
-                    &:hover {
-                        border: none;
-                        color: $color-supporting;
+                    text-decoration: none;
+                    color: $color-primary;
+
+                    @media only screen and (max-width: $bp-medium) {
+                        justify-content: center;
+                        border-radius: 4rem;
+                        border: 1px solid $color-grey-light-1a;
+                        padding: 0.5rem 1.6rem;
                     }
                 }
-             
+
+                &:hover {
+                    color: $color-supporting;
+                }
+
+                &.active {
+                    color: $color-supporting;
+                }
+
+                
             }
         }
 
@@ -109,7 +125,6 @@
         }
     }
 }
-
 
 // ??
 @keyframes SlideFromLeft {

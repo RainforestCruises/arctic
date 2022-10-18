@@ -1,16 +1,17 @@
 <?php
-
-$deck_plans = get_field('deck_plans');
-$amenities = get_field('amenities');
 $cruise_data = $args['cruiseData'];
 $productName = $args['productName'];
 
+$deck_plans = get_field('deck_plans');
+$amenities = get_field('amenities');
 $overview_content = get_field('overview_content');
-$expand = strlen($overview_content) > 1100 ? true : false;
-$overview_content_limited = substr($overview_content, 0, 1100) . '...';
 
+$expand = strlen($overview_content) > 950 ? true : false;
+$overview_content_limited = substr($overview_content, 0, 950) . '...';
 
 ?>
+
+<!-- Cruise Overview -->
 <section class="cruise-overview" id="overview">
 
     <div class="cruise-overview__content">
@@ -28,13 +29,16 @@ $overview_content_limited = substr($overview_content, 0, 1100) . '...';
                         <?php if (have_rows('highlights')) : ?>
                             <?php while (have_rows('highlights')) : the_row(); ?>
                                 <li>
-                                    <span>&#8212;</span><?php echo get_sub_field('highlight'); ?>
+                                    <svg>
+                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-diamonds-suits"></use>
+                                    </svg>
+
+                                    <?php echo get_sub_field('highlight'); ?>
                                 </li>
                             <?php endwhile; ?>
                         <?php endif; ?>
                     </ul>
                 </div>
-
 
                 <!-- Text -->
                 <div class="cruise-overview__content__grid__overview__text ">
@@ -231,22 +235,20 @@ $overview_content_limited = substr($overview_content, 0, 1100) . '...';
                     </a>
                 </div>
             </div>
-
-
         </div>
-
-
-
     </div>
 </section>
 
 
+<!-- Content Modal -->
 <div class="modal" id="contentModal">
     <div class="modal__content"">
         <div class=" modal__content__top">
-            <!-- Top Modal Content -->
-            <div class="modal__content__top__nav" style="font-size: 14px;">
+        <!-- Top Modal Content -->
+            <div class="modal__content__top__nav">
+                <div class="modal__content__top__nav__title">
                 About the <?php echo $productName; ?>
+                </div>          
             </div>
             <button class="btn-text-icon close-modal-button ">
                 Close
@@ -258,10 +260,7 @@ $overview_content_limited = substr($overview_content, 0, 1100) . '...';
 
         <!-- Main Modal Content -->
         <div class="modal__content__main">
-
             <?php echo $overview_content; ?>
-
-
         </div>
     </div>
 </div>

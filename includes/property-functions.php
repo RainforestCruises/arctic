@@ -82,6 +82,16 @@ function createYearSelection($curent, $yearsCount){
 
 
 
+function shipSizeDisplay($pax){
+
+    $displayText = "Small Size";
+    if($pax > 150){
+        $displayText = "Large Size";
+    } else if ($pax >= 80) {
+        $displayText = "Medium Size";
+    }
+    return $displayText;
+}
 
 
 

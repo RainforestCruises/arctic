@@ -1834,6 +1834,10 @@ h5 {
       min-height: 7rem; }
       .modal__content__top__nav {
         display: flex; }
+        .modal__content__top__nav__title {
+          font-size: 1.6rem;
+          font-weight: 700;
+          color: #1d2225; }
         .modal__content__top__nav button {
           margin-right: 2rem; }
     .modal__content__main {
@@ -3686,6 +3690,7 @@ h5 {
     padding: 0 6rem;
     position: relative;
     padding-top: 3rem !important;
+    margin-top: 3rem;
     max-width: 128rem; }
     @media only screen and (max-width: 50em) {
       .product-reviews__content {
@@ -4601,10 +4606,12 @@ h5 {
               display: grid;
               grid-template-columns: min-content 1fr;
               margin-bottom: 1.5rem; }
-              .cruise-overview__content__grid__overview__highlights__list li span {
-                font-weight: 700;
-                color: #1d2225 !important;
-                margin-right: 2rem; }
+              .cruise-overview__content__grid__overview__highlights__list li svg {
+                height: 1.2rem;
+                width: 1.2rem;
+                color: #1d2225;
+                margin-right: 2rem;
+                transform: translateY(7px); }
         .cruise-overview__content__grid__overview__text {
           padding-top: 3rem;
           position: relative; }
@@ -4729,6 +4736,7 @@ h5 {
     padding: 0 6rem;
     position: relative;
     padding-top: 3rem !important;
+    margin-top: 3rem;
     max-width: 128rem; }
     @media only screen and (max-width: 50em) {
       .cruise-itineraries__content {
@@ -12619,8 +12627,7 @@ h5 {
     width: 100%;
     padding: 0 6rem;
     max-width: 160rem;
-    margin-top: 3rem;
-    margin-bottom: 3rem; }
+    margin-top: 3rem; }
     @media only screen and (max-width: 50em) {
       .slider-block__content {
         padding: 0 3rem; } }
@@ -12789,7 +12796,8 @@ h5 {
   position: relative;
   background-color: #f8f8f8;
   border-top: 1px solid #c2c6c9;
-  font-size: 1.4rem; }
+  font-size: 1.4rem;
+  margin-top: 6rem; }
   @media only screen and (max-width: 62.5em) {
     .footer {
       padding-bottom: 16rem; } }
@@ -13568,7 +13576,6 @@ h5 {
     left: 0;
     z-index: 95; }
   .nav-secondary__content {
-    font-weight: 600;
     align-items: center;
     height: 100%;
     width: 100%;
@@ -13586,20 +13593,18 @@ h5 {
         grid-template-columns: 1fr; } }
     .nav-secondary__content__title {
       position: relative;
-      padding-right: 0.7rem;
-      margin-right: 0.5rem; }
+      padding-right: 1.5rem; }
       @media only screen and (max-width: 50em) {
         .nav-secondary__content__title {
           display: none; } }
-      .nav-secondary__content__title__button {
-        border: none;
+      .nav-secondary__content__title__link:visited, .nav-secondary__content__title__link:link {
         font-size: 1.3rem;
-        padding: 0.8rem 1rem;
-        padding-left: 0;
-        font-weight: 600; }
-        .nav-secondary__content__title__button:hover {
-          border: none;
-          color: #347fff; }
+        text-decoration: none;
+        color: #1d2225;
+        font-weight: 600;
+        padding: .5rem 0; }
+      .nav-secondary__content__title__link:hover {
+        color: #347fff; }
       .nav-secondary__content__title::after {
         content: "";
         position: absolute;
@@ -13612,24 +13617,30 @@ h5 {
         @media only screen and (max-width: 50em) {
           .nav-secondary__content__title::after {
             display: none; } }
-    .nav-secondary__content__buttons {
+    .nav-secondary__content__links {
       max-width: 114rem;
       width: 100%;
       display: flex; }
       @media only screen and (max-width: 50em) {
-        .nav-secondary__content__buttons {
+        .nav-secondary__content__links {
           justify-content: center; } }
-      .nav-secondary__content__buttons__button {
-        margin-right: .5rem; }
-        @media only screen and (min-width: 50em) {
-          .nav-secondary__content__buttons__button {
-            border: none;
-            font-size: 1.3rem;
-            padding: 0.8rem 1rem;
-            margin-right: 0rem; }
-            .nav-secondary__content__buttons__button:hover {
-              border: none;
-              color: #347fff; } }
+      .nav-secondary__content__links__link {
+        margin-left: 1.5rem; }
+        .nav-secondary__content__links__link:visited, .nav-secondary__content__links__link:link {
+          padding: .5rem 0;
+          font-size: 1.3rem;
+          text-decoration: none;
+          color: #1d2225; }
+          @media only screen and (max-width: 50em) {
+            .nav-secondary__content__links__link:visited, .nav-secondary__content__links__link:link {
+              justify-content: center;
+              border-radius: 4rem;
+              border: 1px solid #e6e6e6;
+              padding: 0.5rem 1.6rem; } }
+        .nav-secondary__content__links__link:hover {
+          color: #347fff; }
+        .nav-secondary__content__links__link.active {
+          color: #347fff; }
     .nav-secondary__content__cta {
       display: flex;
       justify-content: flex-end; }

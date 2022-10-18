@@ -1,11 +1,10 @@
 <?php
-
 $itineraries = get_field('itineraries');
-
 $curentYear = date("Y");
-
 ?>
-<section class="cruise-itineraries" id="itineraries">
+
+<!-- Itineraries -->
+<section class="cruise-itineraries" id="section-itineraries">
     <div class="cruise-itineraries__content">
 
         <div class="cruise-itineraries__content__top">

@@ -4,7 +4,7 @@
     background-color: rgba($color-black, 0.5);
     top: 0;
     left: 0;
-    width: 100%; 
+    width: 100%;
     height: 100%;
     overflow: auto;
     z-index: 999999;
@@ -22,7 +22,7 @@
         padding: 0rem;
     }
 
-    &__content {            
+    &__content {
         width: 100%;
         height: 100%;
         max-width: 80rem;
@@ -32,16 +32,16 @@
         flex-direction: column;
         border: 1px solid $color-grey-light-2;
         box-shadow: $shadow-medium;
-    
+
         @media only screen and (max-width: $bp-medium) {
             max-width: 100%;
             border-radius: 0rem;
         }
-    
+
         &__top {
             padding: 2rem;
             width: 100%;
-           
+
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -49,19 +49,23 @@
             min-height: 7rem;
             &__nav {
                 display: flex;
+                &__title {
+                    font-size: 1.6rem;
+                    font-weight: 700;
+                    color: $color-primary;
+                }
                 & button {
                     margin-right: 2rem;
                 }
             }
         }
-    
+
         &__main {
             height: 100%;
             padding: 2rem;
-            overflow-y: scroll;     
+            overflow-y: scroll;
         }
     }
-
 
     //MODAL GALLERY
     &__gallery-content {
@@ -78,7 +82,7 @@
             padding: 0 2rem;
             padding-bottom: 10rem;
         }
-    
+
         &__top {
             width: 100%;
             height: 8rem;
@@ -91,22 +95,21 @@
                 background-color: rgba($color-white, 0.1);
                 -webkit-backdrop-filter: blur(2px);
                 backdrop-filter: blur(2px);
-    
+
                 &:hover {
                     background-color: rgba($color-white, 0.3);
                 }
             }
         }
-     
+
         &__main {
             height: calc(100% - 28rem);
             width: 100%;
             padding-bottom: 4rem;
             @media only screen and (max-width: $bp-medium) {
-               
                 padding-bottom: 1rem;
             }
-    
+
             &__slider {
                 height: 100%;
                 width: 100%;
@@ -115,7 +118,7 @@
                     width: 100%;
                     display: flex;
                     justify-content: center;
-                    
+
                     & img {
                         height: 100%;
                         width: 100%;
@@ -130,15 +133,15 @@
                 }
             }
         }
-    
+
         &__nav {
             height: 20rem;
             width: 100%;
-    
+
             @media only screen and (max-width: $bp-medium) {
                 height: 10rem;
             }
-         
+
             &__slider {
                 height: 100%;
                 width: 100%;
@@ -156,6 +159,4 @@
             }
         }
     }
-    
 }
-

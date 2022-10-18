@@ -5,23 +5,23 @@ $title = get_the_title();
 <nav class="nav-secondary">
     <div class="nav-secondary__content">
         <div class="nav-secondary__content__title">
-            <button class="nav-secondary__content__title__button btn-pill">
+            <a href="#section-top" class="nav-secondary__content__title__link">
                 <?php echo $title; ?>
-            </button>
+            </a>
         </div>
-        <div class="nav-secondary__content__buttons">
-            <button class="nav-secondary__content__buttons__button btn-pill">
+        <div class="nav-secondary__content__links">
+            <a href="#section-cabins" class="nav-secondary__content__links__link">
                 Cabins
-            </button>
-            <button class="nav-secondary__content__buttons__button btn-pill">
+            </a>
+            <a href="#section-itineraries" class="nav-secondary__content__links__link">
                 Itineraries
-            </button>
-            <button class="nav-secondary__content__buttons__button btn-pill">
+            </a>
+            <a href="#section-dates" class="nav-secondary__content__links__link">
                 Dates
-            </button>
-            <button class="nav-secondary__content__buttons__button btn-pill">
+            </a>
+            <a href="#section-reviews" class="nav-secondary__content__links__link">
                 Reviews
-            </button>
+            </a>
         </div>
         <div class="nav-secondary__content__cta">
             <button class="nav-secondary__content__cta__button btn-pill btn-pill--dark generic-inquire-cta">

@@ -10,7 +10,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
 ?>
 
 <!-- Cruise Hero -->
-<section class="product-hero" id="top">
+<section class="product-hero" id="section-top">
     <!-- Desktop BG Image (first image in main) -->
     <div class="product-hero__bg-image">
         <img <?php afloat_image_markup($images[0]['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
@@ -79,10 +79,10 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                     <?php echo $snippet; ?>
                 </div>
                 <div class="product-hero__content__main__primary__nav">
-                    <a href="#overview" class="product-hero__content__main__primary__nav__link">Cabins</a>
-                    <a href="#overview" class="product-hero__content__main__primary__nav__link">Itineraries</a>
-                    <a href="#overview" class="product-hero__content__main__primary__nav__link">Dates</a>
-                    <a href="#overview" class="product-hero__content__main__primary__nav__link">Reviews</a>
+                    <a href="#section-cabins" class="product-hero__content__main__primary__nav__link">Cabins</a>
+                    <a href="#section-itineraries" class="product-hero__content__main__primary__nav__link">Itineraries</a>
+                    <a href="#section-dates" class="product-hero__content__main__primary__nav__link">Dates</a>
+                    <a href="#section-reviews" class="product-hero__content__main__primary__nav__link">Reviews</a>
                 </div>
             </div>
 
@@ -151,7 +151,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                         </div>
                         <div class="product-hero__content__main__secondary__attributes__item__text">
                             <div class="sub-attribute">
-                                Ship Size
+                                <?php echo shipSizeDisplay(get_field('vessel_capacity')); ?>
                             </div>
                             <?php echo get_field('vessel_capacity') . ' Guests'; ?>
                         </div>
@@ -164,7 +164,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
 
                         <div class="product-hero__content__main__secondary__attributes__item__icon">
                             <svg>
-                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-pin-3"></use>
+                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-diamond"></use>
                             </svg>
                         </div>
                         <div class="product-hero__content__main__secondary__attributes__item__text">
@@ -188,7 +188,6 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
 
     </div>
 </section>
-
 
 
 <!-- Mobile Info -->
@@ -222,7 +221,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
     </div>
 </div>
 
-  <!-- gallery modal -->
-  <?php
-  get_template_part('template-parts/cruise/content', 'cruise-page-gallery', $args);
-  ?>
+<!-- Gallery Modal -->
+<?php
+get_template_part('template-parts/cruise/content', 'cruise-page-gallery', $args);
+?>

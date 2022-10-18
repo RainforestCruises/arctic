@@ -6,7 +6,7 @@ $curentYear = $args['curentYear'];
 
 ?>
 
-<section class="slider-block narrow cruise-cabins">
+<section class="slider-block narrow cruise-cabins" id="section-cabins">
     <div class="slider-block__content cruise-cabins__content">
 
         <!-- Top - Title/Nav -->

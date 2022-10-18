@@ -3,7 +3,7 @@
 $reviews = get_field('reviews');
 
 ?>
-<section class="product-reviews" id="reviews">
+<section class="product-reviews" id="section-reviews">
     <div class="product-reviews__content">
 
         <div class="title-group">
@@ -58,10 +58,12 @@ $reviews = get_field('reviews');
 
 <div class="modal" id="reviewsModal">
     <div class="modal__content"">
-        <div class="modal__content__top">
-        <!-- Top Modal Content -->
-            <div class="modal__content__top__nav" style="font-size: 14px;">
-                All Reviews
+        <div class=" modal__content__top">
+            <!-- Top Modal Content -->
+            <div class="modal__content__top__nav">
+                <div class="modal__content__top__nav__title">
+                    All Reviews
+                </div>
             </div>
             <button class="btn-text-icon close-modal-button ">
                 Close
@@ -76,7 +78,7 @@ $reviews = get_field('reviews');
 
             <div class="reviews-modal">
                 <div class="reviews-modal__filters">
-                    
+
                 </div>
                 <div class="reviews-modal__content">
                     <?php foreach ($reviews as $r) :
