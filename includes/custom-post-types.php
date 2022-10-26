@@ -132,6 +132,33 @@ function create_post_type_rfc_itineraries()
 }
 add_action('init', 'create_post_type_rfc_itineraries');
 
+// Custom Post Type - Cabins 
+function create_post_type_rfc_cabins()
+{
+    register_post_type(
+        'rfc_cabins',
+        array(
+            'labels' => array(
+                'name' => __('Cabins'),
+                'singular_name' => __('Cabin'),
+            ),
+            'public' => true,
+            'rewrite' => array('slug' => 'cabins'),
+            'supports' => array(
+                'title',
+            )
+        )
+    );
+}
+add_action('init', 'create_post_type_rfc_cabins');
+
+
+
+
+
+
+
+
 // Custom Post Type - Tours 
 function create_post_type_rfc_tours()
 {
