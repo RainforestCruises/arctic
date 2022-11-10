@@ -6,6 +6,7 @@ $currentYear = $args['curentYear'];
 $yearSelections = $args['yearSelections'];
 $itineraryDataList = $args['itineraryDataList'];
 $itineraryPosts = $args['itineraryPosts'];
+$ships = $args['ships'];
 
 ?>
 
@@ -85,18 +86,28 @@ $itineraryPosts = $args['itineraryPosts'];
             <div class="departures-modal__content">
                 <?php foreach ($departures as $d) :
                     $departureId = $d['ID'];
-                    $itineraryPost = $d['ItineraryPost'];
+                    $itineraryPost = $d['ItineraryPost'];          
                     $itineraryPostId = $d['ItineraryPostId'];
                     $departureStartDate = strtotime($d['DepartureDate']);
                     $departureReturnDate = strtotime($d['ReturnDate']);
                     $title = get_field('display_name', $itineraryPost);
-                    $hero_gallery = get_field('hero_gallery', $itineraryPost);
-                    $image = $hero_gallery[0];
+                    $hero_gallery = get_field('hero_gallery', $itineraryPost); 
                     $embarkationPost = get_field('embarkation_point', $itineraryPost);
                     $embarkationName = get_the_title($embarkationPost) . ', ' . get_field('country_name', $embarkationPost);
+                    $secondaryFilterId = $itineraryPostId;
+                    $subtitleDisplay = $d['LengthInDays'] . ' Days / ' . $d['LengthInNights'] . ' Nights';
+                    if (get_post_type() == 'rfc_itineraries') {
+                        $ship = $d['Ship'];
+                        $shipId = $d['ShipId'];
+                        $secondaryFilterId = $shipId;
+                        $title = get_the_title($ship);
+                        $hero_gallery = get_field('hero_gallery', $ship);
+                        $subtitleDisplay = get_field('vessel_capacity', $ship) . ' Guests';
+                    }
+                    $image = $hero_gallery[0];
                 ?>
 
-                    <div class="information-card information-card--horizontal info-departure-card" data-filter-date="<?php echo date("Y", $departureStartDate); ?>" data-filter-itinerary="<?php echo $itineraryPostId; ?>">
+                    <div class="information-card information-card--horizontal info-departure-card" data-filter-date="<?php echo date("Y", $departureStartDate); ?>" data-filter-secondary="<?php echo $secondaryFilterId; ?>">
                         <!-- Title Group -->
                         <div class="information-card__section">
                             <div class="avatar-title-group">
@@ -110,7 +121,7 @@ $itineraryPosts = $args['itineraryPosts'];
 
                                     </div>
                                     <div class="avatar-title-group__text__sub">
-                                        <?php echo $d['LengthInDays'] . ' Days / ' . $d['LengthInNights'] . ' Nights'; ?>
+                                        <?php echo $subtitleDisplay; ?>
                                     </div>
                                 </div>
                             </div>
@@ -153,7 +164,7 @@ $itineraryPosts = $args['itineraryPosts'];
                         <div class="information-card__bottom">
                             <!-- Price Group -->
                             <div class="information-card__bottom__price-group">
-                                <button class="price-group-button" departureId="<?php echo $departureId; ?>" year="<?php echo date("Y", $departureStartDate); ?>" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itinerary="<?php echo $itineraryPostId; ?>" itineraryTitle="<?php echo $title; ?>">
+                                <button class="price-group-button" departureId="<?php echo $departureId; ?>" year="<?php echo date("Y", $departureStartDate); ?>" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itineraryTitle="<?php echo $title; ?>">
                                     <div class="price-group-button__text">
                                         From
                                     </div>
@@ -166,7 +177,7 @@ $itineraryPosts = $args['itineraryPosts'];
 
                             <!-- CTA -->
                             <div class="information-card__bottom__cta">
-                                <button class="cta-square-icon departure-inquire-cta" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itinerary="<?php echo $itineraryPostId; ?>" itineraryTitle="<?php echo $title; ?>">
+                                <button class="cta-square-icon departure-inquire-cta" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>"  itineraryTitle="<?php echo $title; ?>">
                                     Inquire
                                     <svg>
                                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>

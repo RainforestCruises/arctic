@@ -1,34 +1,69 @@
 <?php
 
-function createDepartureList($cruisePost, $itineraryPosts)
+function createDepartureList($post)
 {
     $departures = [];
-    foreach ($itineraryPosts as $i) { // each itinerary
-        $itineraryLength = get_field('length_in_nights', $i);
-        $itineraryDepartures = get_field('departures', $i);
-        //console_log('post');
-        //console_log($i);
-        foreach ($itineraryDepartures as $d) {   // each departure   
-            $departureShip = $d['ship'];
-            $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
-            $isShip = true;
-            if($cruisePost != null){
-                $isShip = $departureShip == $cruisePost;
+    if (get_post_type($post) == 'rfc_cruises') {
+        console_log('cruises');
+        $itineraryPosts = get_field('itineraries', $post);
+
+        foreach ($itineraryPosts as $i) { //each itinerary
+
+            $itineraryLength = get_field('length_in_nights', $i);
+            $itineraryDepartures = get_field('departures', $i);
+
+            foreach ($itineraryDepartures as $d) {   // each departure   
+                
+                $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
+                if($isCurrent) {
+                    $id = $i->ID . "-" . getRandomHex();
+                    $returnDate = date('Y-m-d', strtotime($d['date'] . ' + ' . $itineraryLength . ' days'));
+                    $cabin_prices = $d['cabin_prices'];
+                    $ship = $d['ship'];
+
+                    if($ship == $post){
+                        $departure = [
+                            'ID' => $id,
+                            'DepartureDate' => $d['date'],
+                            'ReturnDate' => $returnDate,
+                            'Cabins' => $cabin_prices,
+                            'ShipId' => $ship->ID,
+                            'Ship' => $ship,
+                            'ItineraryPostId' => $i->ID,
+                            'ItineraryPost' => $i,
+                            'LowestPrice' => getLowestDeparturePrice($d),
+                            'LengthInNights' => $itineraryLength,
+                        ];
+                        $departures[] = $departure;
+                    }
+
+                    
+                }
+                
             }
-
-            if ($isShip && $isCurrent) { // if current and matches ship
-
-                $id = $i->ID . "-" . getRandomHex();
+        }
+    } else if (get_post_type($post) == 'rfc_itineraries') {
+        $itineraryLength = get_field('length_in_nights', $post);
+        $itineraryDepartures = get_field('departures', $post);
+    
+        foreach ($itineraryDepartures as $d) {   // each departure   
+            $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
+            if ($isCurrent) { 
+                $id = $post->ID . "-" . getRandomHex();
                 $returnDate = date('Y-m-d', strtotime($d['date'] . ' + ' . $itineraryLength . ' days'));
                 $cabin_prices = $d['cabin_prices'];
+                $ship = $d['ship'];
 
                 $departure = [
                     'ID' => $id,
+                    'Ship' => $d['ship'],
+                    'ShipId' => $ship->ID,
+
                     'DepartureDate' => $d['date'],
                     'ReturnDate' => $returnDate,
                     'Cabins' => $cabin_prices,
-                    'ItineraryPostId' => $i->ID,
-                    'ItineraryPost' => $i,
+                    'ItineraryPostId' => $post->ID,
+                    'ItineraryPost' => $post,
                     'LowestPrice' => getLowestDeparturePrice($d),
                     'LengthInNights' => $itineraryLength,
                 ];
@@ -37,6 +72,7 @@ function createDepartureList($cruisePost, $itineraryPosts)
         }
     }
 
+
     usort($departures, function ($a, $b) {
         return strtotime($a['DepartureDate']) - strtotime($b['DepartureDate']);
     });
@@ -46,43 +82,6 @@ function createDepartureList($cruisePost, $itineraryPosts)
 
 
 
-
-function createItineraryDepartureList($i)
-{
-    $departures = [];
-    $itineraryLength = get_field('length_in_nights', $i);
-    $itineraryDepartures = get_field('departures', $i);
-
-    foreach ($itineraryDepartures as $d) {   // each departure   
-        $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
-
-
-        if ($isCurrent) { // if current and matches ship
-
-            $id = $i->ID . "-" . getRandomHex();
-            $returnDate = date('Y-m-d', strtotime($d['date'] . ' + ' . $itineraryLength . ' days'));
-            $cabin_prices = $d['cabin_prices'];
-
-            $departure = [
-                'ID' => $id,
-                'Ship' => $d['ship'],
-                'DepartureDate' => $d['date'],
-                'ReturnDate' => $returnDate,
-                'Cabins' => $cabin_prices,
-                'ItineraryPostId' => $i->ID,
-                'ItineraryPost' => $i,
-                'LowestPrice' => getLowestDeparturePrice($d),
-                'LengthInNights' => $itineraryLength,
-            ];
-            $departures[] = $departure;
-        }
-    }
-    usort($departures, function ($a, $b) {
-        return strtotime($a['DepartureDate']) - strtotime($b['DepartureDate']);
-    });
-
-    return $departures;
-}
 
 
 
@@ -99,7 +98,7 @@ function getItineraryShipSize($ships)
     $high = max($capacityArray); //lowest price, not sold out
     $display = $low . "-" . $high;
 
-   
+
     return $display;
 }
 

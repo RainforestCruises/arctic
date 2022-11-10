@@ -3450,7 +3450,8 @@ h5 {
             letter-spacing: 0.1rem;
             text-decoration: none;
             color: #fff;
-            margin-right: 3rem; }
+            margin-right: 3rem;
+            cursor: pointer; }
             .product-hero__content__main__primary__nav__link::after {
               content: "";
               position: absolute;
@@ -4050,6 +4051,8 @@ h5 {
     line-height: 1.5rem;
     color: #747474;
     white-space: nowrap; }
+  .price-group-button:hover {
+    color: #347fff !important; }
 
 .product-extras {
   display: flex;
@@ -4807,7 +4810,7 @@ h5 {
         user-select: none; }
         @media only screen and (max-width: 37.5em) {
           .cruise-itineraries__content__main__nav-area {
-            width: 100%; } }
+            display: none; } }
         .cruise-itineraries__content__main__nav-area__slider {
           position: relative;
           padding-left: 5rem;

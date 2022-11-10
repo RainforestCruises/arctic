@@ -477,5 +477,9 @@
         white-space: nowrap;
     }
 
+    &:hover {
+        color: $color-supporting !important;
+    }
+
   
 }

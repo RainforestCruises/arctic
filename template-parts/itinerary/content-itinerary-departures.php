@@ -1,5 +1,4 @@
 <?php
-wp_enqueue_script('page-cruise-dates', get_template_directory_uri() . '/js/page-cruise-dates.js', array('jquery'), false, true);
 
 
 $currentYear = date('Y');
@@ -54,6 +53,9 @@ $departures = $args['departures'];
                     <?php foreach ($departures as $d) :
                         $departureId = $d['ID'];
                         $ship = $d['Ship'];
+                        
+                        $shipId = $ship->ID;
+                       
                         $itineraryPost = $d['ItineraryPost'];
                         $itineraryPostId = $d['ItineraryPostId'];
                         $departureStartDate = strtotime($d['DepartureDate']);
@@ -67,7 +69,7 @@ $departures = $args['departures'];
                         $embarkationName = get_the_title($embarkationPost) . ', ' . get_field('country_name', $embarkationPost);
                     ?>
 
-                        <div class="information-card info-departure-card swiper-slide" data-filter-date="<?php echo date("Y", $departureStartDate); ?>" data-filter-itinerary="<?php echo $itineraryPostId; ?>">
+                        <div class="information-card info-departure-card swiper-slide" data-filter-date="<?php echo date("Y", $departureStartDate); ?>" data-filter-secondary="<?php echo $shipId; ?>">
                             <!-- Title Group -->
                             <div class="information-card__section">
                                 <div class="avatar-title-group">

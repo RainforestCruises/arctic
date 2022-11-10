@@ -62,10 +62,10 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                     <?php echo $snippet; ?>
                 </div>
                 <div class="product-hero__content__main__primary__nav">
-                    <a href="#itinerary" class="product-hero__content__main__primary__nav__link">Itinerary</a>
-                    <a href="#dates" class="product-hero__content__main__primary__nav__link">Dates</a>
-                    <a href="#services" class="product-hero__content__main__primary__nav__link">Services</a>
-                    <a href="#reviews" class="product-hero__content__main__primary__nav__link">Reviews</a>
+                    <a href="#section-highlights" class="product-hero__content__main__primary__nav__link">Highlights</a>
+                    <a href="#section-itinerary" class="product-hero__content__main__primary__nav__link">Itinerary</a>
+                    <a href="#section-dates" class="product-hero__content__main__primary__nav__link">Dates</a>
+                    <a href="#section-reviews" class="product-hero__content__main__primary__nav__link">Reviews</a>
                 </div>
             </div>
 
@@ -93,7 +93,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
 
                     <!-- Inquire CTA Button -->
                     <div class="product-hero__content__main__secondary__info__cta">
-                        <button class="cta-primary inquire-cta">
+                        <button class="cta-primary generic-inquire-cta">
                             Inquire
                             <svg>
                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>

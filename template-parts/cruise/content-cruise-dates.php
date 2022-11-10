@@ -1,9 +1,8 @@
 <?php
-wp_enqueue_script('page-cruise-dates', get_template_directory_uri() . '/js/page-cruise-dates.js', array('jquery'), false, true);
 
 $currentYear = $args['curentYear'];
 $yearSelections = $args['yearSelections'];
-$itineraryPosts = $args['itineraryPosts'];
+$itineraries = $args['itineraries'];
 $departures = $args['departures'];
 
 ?>
@@ -63,7 +62,7 @@ $departures = $args['departures'];
                         $embarkationName = get_the_title($embarkationPost) . ', ' . get_field('country_name', $embarkationPost);
                     ?>
 
-                        <div class="information-card info-departure-card swiper-slide" data-filter-date="<?php echo date("Y", $departureStartDate); ?>" data-filter-itinerary="<?php echo $itineraryPostId; ?>">
+                        <div class="information-card info-departure-card swiper-slide" data-filter-date="<?php echo date("Y", $departureStartDate); ?>" data-filter-secondary="<?php echo $itineraryPostId; ?>">
                             <!-- Title Group -->
                             <div class="information-card__section">
                                 <div class="avatar-title-group">
@@ -75,7 +74,7 @@ $departures = $args['departures'];
                                             <?php echo  $title; ?>
                                         </div>
                                         <div class="avatar-title-group__text__sub">
-                                            <?php echo $d['LengthInDays'] . ' Days / ' . $d['LengthInNights'] . ' Nights'; ?>
+                                            <?php echo $d['LengthInNights'] + 1 . ' Days / ' . $d['LengthInNights'] . ' Nights'; ?>
                                         </div>
                                     </div>
                                 </div>
@@ -117,21 +116,23 @@ $departures = $args['departures'];
 
                                 <!-- Price Group -->
                                 <div class="information-card__bottom__price-group">
-                                    <div class="price-group-button" departureId="<?php echo $departureId; ?>" year="<?php echo date("Y", $departureStartDate); ?>" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itinerary="<?php echo $itineraryPostId; ?>" itineraryTitle="<?php echo $title; ?>">
+                                    <button class="price-group-button" departureId="<?php echo $departureId; ?>" year="<?php echo date("Y", $departureStartDate); ?>" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itinerary="<?php echo $itineraryPostId; ?>" itineraryTitle="<?php echo $title; ?>">
                                         <div class="price-group-button__text">
                                             From
                                         </div>
                                         <div class="price-group-button__amount">
                                             <?php echo "$ " . number_format($d['LowestPrice'], 0);  ?>
                                         </div>
-                                        <div class="price-group-button__view">Per Person</div>
-                                    </div>
+                                        <div class="price-group-button__view">
+                                            View Prices
+                                        </div>
+                                    </butt>
                                 </div>
 
                                 <!-- CTA -->
                                 <div class="information-card__bottom__cta">
                                     <button class="cta-square-icon departure-inquire-cta" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itinerary="<?php echo $itineraryPostId; ?>" itineraryTitle="<?php echo $title; ?>">
-                                        Inquire
+                                         Inquire
                                         <svg>
                                             <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
                                         </svg>
@@ -189,7 +190,7 @@ $departures = $args['departures'];
 
                             <?php
                             $count = 1;
-                            foreach ($itineraryPosts as $itinerary) :
+                            foreach ($itineraries as $itinerary) :
                                 $title = get_field('display_name', $itinerary);
                                 $id = $itinerary->ID;
                             ?>

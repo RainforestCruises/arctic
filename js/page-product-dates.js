@@ -271,7 +271,7 @@ jQuery(document).ready(function ($) {
                 matchItinerary = true;
             } else {
                 itineraryValuesInitialState.forEach(itineraryValue => {
-                    if (item.getAttribute('data-filter-itinerary') == itineraryValue) {
+                    if (item.getAttribute('data-filter-secondary') == itineraryValue) {
                         matchItinerary = true;
                     }
                 })
@@ -326,11 +326,6 @@ jQuery(document).ready(function ($) {
             item.innerHTML = display;
         })
     }
-
-
- 
-
-
 
 
 });

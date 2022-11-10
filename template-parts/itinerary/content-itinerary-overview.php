@@ -8,7 +8,7 @@ $expand = strlen($overview_content) > 950 ? true : false;
 $overview_content_limited = substr($overview_content, 0, 950) . '...';
 ?>
 <!-- Cruise Overview -->
-<section class="cruise-overview" id="overview">
+<section class="cruise-overview" id="section-highlights">
 
     <div class="cruise-overview__content">
 

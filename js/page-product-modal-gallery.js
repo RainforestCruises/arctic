@@ -83,18 +83,21 @@ jQuery(document).ready(function ($) {
 
     //Deck Plan Button
     const deckPlanButton = document.getElementById("deckplan-button");
-    deckPlanButton.addEventListener('click', () => {
-        pageGalleryModal.style.display = 'flex';
-        body.classList.add('no-scroll');
+    if(deckPlanButton){
+        deckPlanButton.addEventListener('click', () => {
+            pageGalleryModal.style.display = 'flex';
+            body.classList.add('no-scroll');
+    
+            const imageId = deckPlanButton.getAttribute('imageId');
+            const slideDiv = document.querySelector('.modal__gallery-content__main__slider__item[imageId="' + imageId + '"]');
+            const slideIndex = slideDiv.getAttribute('slideIndex');
+    
+            modalGalleryMain.update();
+            modalGalleryMain.slideTo(slideIndex - 1, 0);
+            modalGalleryNav.slideTo(slideIndex - 1, 0);
+        });
+    }
 
-        const imageId = deckPlanButton.getAttribute('imageId');
-        const slideDiv = document.querySelector('.modal__gallery-content__main__slider__item[imageId="' + imageId + '"]');
-        const slideIndex = slideDiv.getAttribute('slideIndex');
-
-        modalGalleryMain.update();
-        modalGalleryMain.slideTo(slideIndex - 1, 0);
-        modalGalleryNav.slideTo(slideIndex - 1, 0);
-    });
 
     // Cabin Images - Click event listeners
     const cabinGalleryImages = [...document.querySelectorAll('.cabin-image-slide')];

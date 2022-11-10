@@ -1,8 +1,10 @@
 <?php
 wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', array('jquery'), false, true);
-wp_enqueue_script('page-cruise', get_template_directory_uri() . '/js/page-cruise.js', array('jquery'), false, true);
-wp_enqueue_script('page-cruise-itineraries', get_template_directory_uri() . '/js/page-cruise-itineraries.js', array('jquery'), false, true);
-wp_enqueue_script('page-cruise-gallery', get_template_directory_uri() . '/js/page-cruise-gallery.js', array('jquery'), false, true);
+wp_enqueue_script('page-product', get_template_directory_uri() . '/js/page-product.js', array('jquery'), false, true);
+wp_enqueue_script('page-product-cruise-itineraries', get_template_directory_uri() . '/js/page-product-cruise-itineraries.js', array('jquery'), false, true);
+wp_enqueue_script('page-product-modal-gallery', get_template_directory_uri() . '/js/page-product-modal-gallery.js', array('jquery'), false, true);
+wp_enqueue_script('page-product-dates', get_template_directory_uri() . '/js/page-product-dates.js', array('jquery'), false, true);
+
 
 get_header();
 
@@ -11,9 +13,10 @@ get_header();
 $ship = get_post();
 $productName = get_the_title();
 $itineraries = get_field('itineraries');
-$departures = createDepartureList($ship, $itineraries);
+$departures = createDepartureList($ship);
+
 $lowestPrice = getLowestDepartureListPrice($departures);
-console_log($itineraries);
+console_log($departures);
 
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
