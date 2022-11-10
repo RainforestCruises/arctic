@@ -91,8 +91,46 @@
         },
         {
             "key": "field_63596b4442a4c",
-            "label": "Size",
-            "name": "size",
+            "label": "Dimensions",
+            "name": "dimensions",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_6369315086c32",
+            "label": "Is Single",
+            "name": "is_single",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_636551accb56e",
+            "label": "Capacity",
+            "name": "capacity",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -126,6 +164,27 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_636aeaccbdf63",
+            "label": "Quantity",
+            "name": "quantity",
+            "type": "number",
+            "instructions": "Number of cabins of this type",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
         }
     ],
     "location": [
@@ -146,5 +205,5 @@
     "active": true,
     "description": "Cabins CPT",
     "show_in_rest": 0,
-    "modified": 1666804835
+    "modified": 1667951347
 }

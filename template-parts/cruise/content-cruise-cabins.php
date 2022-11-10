@@ -1,9 +1,6 @@
 <?php
 $cabins = $args['cabins'];
 $curentYear = $args['curentYear'];
-
-
-
 ?>
 
 <section class="slider-block narrow cruise-cabins" id="section-cabins">
@@ -44,7 +41,15 @@ $curentYear = $args['curentYear'];
 
                     <?php
                     $index = 0;
-                    foreach ($cabins as $cabin) : ?>
+                    foreach ($cabins as $cabinPost) : 
+                        $id = get_the_id($cabinPost);
+                        $title =  get_field('display_name', $cabinPost);
+                        $dimensions =  get_field('dimensions', $cabinPost);
+                        $is_single =  get_field('is_single', $cabinPost);
+                        $capacity =  get_field('capacity', $cabinPost);
+                        $beds =  get_field('beds', $cabinPost);
+                        $hero_gallery = get_field('images', $cabinPost);
+                    ?>
 
                         <!-- Cabin Card -->
                         <div class="resource-card swiper-slide">
@@ -53,18 +58,15 @@ $curentYear = $args['curentYear'];
                             <div class="resource-card__image-area swiper cabin-card-image-area">
                                 <div class="swiper-wrapper">
                                     <!-- Image from DF -->
-                                    <?php
-                                    $cabinImages = $cabin['ImageDTOs'];
-                                    foreach ($cabinImages as $cabinImage) : ?>
-                                        <div class="resource-card__image-area__item cabin-image-slide swiper-slide" imageId="df-<?php echo $cabinImage['Id']; ?>">
-                                            <img src="<?php echo afloat_dfcloud_image($cabinImage['ImageUrl'], 640, 480); ?>"  alt="<?php echo esc_html($cabinImage['AltText']); ?>">
+                                    <?php foreach ($hero_gallery as $image) : ?>
+                                        <div class="resource-card__image-area__item cabin-image-slide swiper-slide" imageId="<?php echo $image['id']; ?>">
+                                            <img <?php afloat_image_markup($image['id'], 'portrait-medium', array('portrait-medium', 'portrait-small')); ?>>
                                         </div>
                                     <?php endforeach; ?>
                                 </div>
                                 <div class="swiper-pagination"></div>
                                 <div class="swiper-button-prev swiper-button-prev--overlay"></div>
                                 <div class="swiper-button-next swiper-button-prev--overlay"></div>
-
                             </div>
 
                             <!-- Content -->
@@ -73,11 +75,9 @@ $curentYear = $args['curentYear'];
                                 <!-- Title -->
                                 <div class="resource-card__content__title-group">
                                     <div class="resource-card__content__title-group__title">
-                                        <?php echo $cabin['Name']; ?>
+                                        <?php echo $title ?>
                                     </div>
-                                    <div class="resource-card__content__title-group__sub">
-                                        <?php echo getCabinCountDisplay($cabin) ?>
-                                    </div>
+                                 
                                 </div>
 
                                 <!-- Specs -->
@@ -91,7 +91,7 @@ $curentYear = $args['curentYear'];
                                             </svg>
                                         </div>
                                         <div class="resource-card__content__specs__item__text">
-                                            <?php echo getOccupancyDisplay($cabin); ?> Guests, <?php echo ($cabin['Beds']); ?> Bed
+                                            <?php echo $capacity . ', ' . $beds ?> 
                                         </div>
                                     </div>
 
@@ -103,22 +103,16 @@ $curentYear = $args['curentYear'];
                                             </svg>
                                         </div>
                                         <div class="resource-card__content__specs__item__text">
-                                            <?php echo ($cabin['Size']); ?>
+                                            <?php echo $dimensions; ?>
                                         </div>
                                     </div>
 
+                                    
+
                                 </div>
 
 
-                                <!-- Price Group -->
-                                <div class="resource-card__content__price-group">
-                                    <div class="resource-card__content__price-group__amount">
-                                        $2,955
-                                    </div>
-                                    <div class="resource-card__content__price-group__text">
-                                        Per Person
-                                    </div>
-                                </div>
+                               
 
 
                             </div>
@@ -161,47 +155,3 @@ $curentYear = $args['curentYear'];
 
 
 
-
-
-
-<?php
-
-
-//cabin count plurality
-function getCabinCountDisplay($cabin)
-{
-    $cabinCountLabel = '';
-    if ($cabin['CabinCountLabel'] != null) {
-        if ($cabin['CabinCountLabel'] == 1) {
-            $cabinCountLabel = $cabin['CabinCountLabel'] . ' Cabin';
-        } else {
-            $cabinCountLabel = $cabin['CabinCountLabel'] . ' Cabins';
-        }
-    }
-    return $cabinCountLabel;
-}
-
-//occupancy in cabin display from DF cabinDTO
-function getOccupancyDisplay($cabin)
-{
-    $primaryOccupancy = $cabin['PrimaryOccupancy'];
-    $secondaryOccupancy = 0;
-    if ($cabin['SecondaryEnabled'] == true) {
-        $secondaryOccupancy = $cabin['SecondaryOccupancy'];
-    }
-    $totalOccupancy = $primaryOccupancy + $secondaryOccupancy;
-    $occupancyDisplay = '';
-    if ($totalOccupancy != $primaryOccupancy) {
-        $occupancyDisplay = $primaryOccupancy . ' - ' . $totalOccupancy;
-    } else {
-        $occupancyDisplay = $primaryOccupancy;
-    }
-
-
-    if ($cabin['CabinCapacityLabel'] != null) {
-        $occupancyDisplay = $cabin['CabinCapacityLabel'];
-    }
-    return $occupancyDisplay;
-}
-
-?>

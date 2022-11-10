@@ -7,49 +7,36 @@ wp_enqueue_script('page-cruise-gallery', get_template_directory_uri() . '/js/pag
 get_header();
 
 
-$cruise_data = get_field('cruise_data');
-$itineraryPosts = get_field('itineraries');
-$departures = createDepartureList($cruise_data, $itineraryPosts);
+
+$ship = get_post();
 $productName = get_the_title();
-$vessel_capacity = get_field('vessel_capacity');
-$lowestPrice = lowest_property_price($cruise_data, 0, $currentYear, true);
+$itineraries = get_field('itineraries');
+$departures = createDepartureList($ship, $itineraries);
+$lowestPrice = getLowestDepartureListPrice($departures);
+console_log($itineraries);
+
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
-$cabins = $cruise_data['CabinDTOs'];
 
 
+//cabin posts
+$args = array(
+  'posts_per_page' => -1,
+  'post_type' => 'rfc_cabins',
+);
+$args['meta_query'][] = array(
+  'key' => 'ship',
+  'value' => $ship,
+  'compare' => 'LIKE'
+);
+$cabins = get_posts($args);
 
-
-$itinerary_cruise_data = $cruise_data['Itineraries'];
-$itineraryDataList = [];
-
-console_log($cruise_data);
-
-foreach ($itineraryPosts as $itinerary) {
-  $dfid = get_field('itinerary_id', $itinerary);
-
-  foreach ($itinerary_cruise_data as $i) {
-      if($i['Id'] == $dfid){
-
-        $object  = [
-          'postId' => $itinerary->ID,
-          'dfId' => $i['Id'],
-          'rateYears' => $i['RateYears'],
-        ];
-        $itineraryDataList[] = $object;
-      }
-  
-  }
-}
 
 
 $args = array(
   'productName' => $productName,
   'lowestPrice' => $lowestPrice,
-  'cruise_data' => $cruise_data,
-  'vessel_capacity' => $vessel_capacity,
-  'itineraryPosts' => $itineraryPosts,
-  'itineraryDataList' => $itineraryDataList,
+  'itineraries' => $itineraries,
   'departures' => $departures,
   'curentYear' => $curentYear,
   'yearSelections' => $yearSelections,
@@ -60,7 +47,7 @@ $args = array(
 
 //Itinerary JS Array
 $itineraryObjects = [];
-foreach ($itineraryPosts as $itinerary) {
+foreach ($itineraries as $itinerary) {
   $days = get_field('itinerary', $itinerary);
 
   //Destination Point Series
@@ -131,6 +118,12 @@ wp_localize_script(
   <!-- Hero -->
   <?php
   get_template_part('template-parts/cruise/content', 'cruise-hero', $args);
+  ?>
+
+
+  <!-- Modal Gallery -->
+  <?php
+  get_template_part('template-parts/cruise/content', 'cruise-page-gallery', $args);
   ?>
 
   <!-- Overview -->

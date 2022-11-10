@@ -3,14 +3,13 @@ jQuery(document).ready(function ($) {
 
     //MODALS ---------------------
     const body = document.getElementById("body");
-
     const contentModal = document.querySelector("#contentModal");
+
     const expandContent = document.querySelector("#expand-content");
     expandContent.addEventListener('click', () => {
         contentModal.style.display = 'flex';
         body.classList.add('no-scroll');    
     });
-
 
     const departureSelectionDisplay = document.querySelector("#departure-selection-display");
     const cabinSelectionDisplay = document.querySelector("#cabin-selection-display");
@@ -93,12 +92,11 @@ jQuery(document).ready(function ($) {
             inquireModal.style.display = 'flex';
             body.classList.add('no-scroll');
 
-            const year = item.getAttribute('year');
-            const itinerary = item.getAttribute('itinerary');
+            const departureId = item.getAttribute('departureId');
             const title = item.getAttribute('itineraryTitle') + ' - Departing, ' + item.getAttribute('departureDate');
 
             activeTabPanel('cabins');
-            filterCabins(year, itinerary, title);
+            filterCabins(departureId, title);
             hideModalTabButtons('dates'); // show the dates tab
 
             departureSelectionDisplay.style.display = "block";
@@ -113,26 +111,17 @@ jQuery(document).ready(function ($) {
     // -- display the departure date
     const modalCabinCards = [...document.querySelectorAll('.modal-cabin-card ')];
     const cabinDepartureSubtitle = document.querySelector("#cabin-departure-subtitle");
-    function filterCabins(year, itineraryId, display) {
+    function filterCabins(departureId, display) {
         cabinDepartureSubtitle.innerHTML = display;
         var count = 0;
         modalCabinCards.forEach(item => {
             item.style.display = "none";
-            var matchDate = false;
-            var matchItinerary = false;
-
-            if (item.getAttribute('year') == year) {
-                matchDate = true;
-            }
-
-            if (item.getAttribute('itinerary') == itineraryId) {
-                matchItinerary = true;
-            }
-
-            if (matchDate && matchItinerary) {
+        
+            if (item.getAttribute('departureId') == departureId) {
                 item.style.display = "";
                 count = count + 1;
             }
+   
         });
 
 

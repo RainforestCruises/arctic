@@ -1,7 +1,6 @@
 <?php
 wp_enqueue_script('page-cruise-dates', get_template_directory_uri() . '/js/page-cruise-dates.js', array('jquery'), false, true);
 
-
 $currentYear = $args['curentYear'];
 $yearSelections = $args['yearSelections'];
 $itineraryPosts = $args['itineraryPosts'];
@@ -52,12 +51,14 @@ $departures = $args['departures'];
                 <div class="swiper-wrapper">
 
                     <?php foreach ($departures as $d) :
+                        $departureId = $d['ID'];
                         $itineraryPost = $d['ItineraryPost'];
                         $itineraryPostId = $d['ItineraryPostId'];
                         $departureStartDate = strtotime($d['DepartureDate']);
                         $departureReturnDate = strtotime($d['ReturnDate']);
-                        $title = $itineraryPost ? get_the_title($itineraryPost) : "Missing WP Itinerary";
-                        $image = get_field('hero_image', $itineraryPost);
+                        $title = get_field('display_name',$itineraryPost);
+                        $hero_gallery = get_field('hero_gallery', $itineraryPost);
+                        $image = $hero_gallery[0];
                         $embarkationPost = get_field('embarkation_point', $itineraryPost);
                         $embarkationName = get_the_title($embarkationPost) . ', ' . get_field('country_name', $embarkationPost);
                     ?>
@@ -116,15 +117,15 @@ $departures = $args['departures'];
 
                                 <!-- Price Group -->
                                 <div class="information-card__bottom__price-group">
-                                    <button class="price-group-button" year="<?php echo date("Y", $departureStartDate); ?>" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itinerary="<?php echo $itineraryPostId; ?>" itineraryTitle="<?php echo $title; ?>">
+                                    <div class="price-group-button" departureId="<?php echo $departureId; ?>" year="<?php echo date("Y", $departureStartDate); ?>" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itinerary="<?php echo $itineraryPostId; ?>" itineraryTitle="<?php echo $title; ?>">
                                         <div class="price-group-button__text">
                                             From
                                         </div>
                                         <div class="price-group-button__amount">
                                             <?php echo "$ " . number_format($d['LowestPrice'], 0);  ?>
                                         </div>
-                                        <div class="price-group-button__view">View Prices</div>
-                                    </button>
+                                        <div class="price-group-button__view">Per Person</div>
+                                    </div>
                                 </div>
 
                                 <!-- CTA -->
@@ -189,7 +190,7 @@ $departures = $args['departures'];
                             <?php
                             $count = 1;
                             foreach ($itineraryPosts as $itinerary) :
-                                $title = get_the_title($itinerary);
+                                $title = get_field('display_name', $itinerary);
                                 $id = $itinerary->ID;
                             ?>
                                 <li class="popper-tooltip__selection__list__item">

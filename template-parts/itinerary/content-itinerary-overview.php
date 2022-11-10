@@ -1,135 +1,184 @@
 <?php
 
-$map_image = get_field('map_image');
-$ship = get_field('ship');
-$ship_image_gallery = get_field('hero_gallery', $ship);
-$ship_featured_image = $ship_image_gallery[0];
-$ship_snippet = get_field('top_snippet', $ship);
-$cruise_data = $args['cruiseData'];
-?>
-<section class="itinerary-overview" id="overview">
+$ships = get_field('ships');
+$overview_content = get_field('overview_content');
+$activities = get_field('activities');
 
-    <div class="itinerary-overview__content">
+$expand = strlen($overview_content) > 950 ? true : false;
+$overview_content_limited = substr($overview_content, 0, 950) . '...';
+?>
+<!-- Cruise Overview -->
+<section class="cruise-overview" id="overview">
+
+    <div class="cruise-overview__content">
 
         <!-- Grid  -->
-        <div class="itinerary-overview__content__grid">
+        <div class="cruise-overview__content__grid">
 
-            <!-- Overview (Highlights, Transport, Text) -->
-            <div class="itinerary-overview__content__grid__overview">
+            <!-- Main Overview (Highlights, Transport, Text) -->
+            <div class="cruise-overview__content__grid__overview">
 
                 <!-- Highlights -->
-                <div class="itinerary-overview__content__grid__overview__highlights">
-                    <h3 class="arctic-heading-3">Overview</h3>
-                    <ul class="itinerary-overview__content__grid__overview__highlights__list">
+                <div class="cruise-overview__content__grid__overview__highlights">
+                    <h3 class="title-single">Highlights</h3>
+                    <ul class="cruise-overview__content__grid__overview__highlights__list">
                         <?php if (have_rows('highlights')) : ?>
                             <?php while (have_rows('highlights')) : the_row(); ?>
                                 <li>
-
-                                    <span>&#8212;</span><?php echo get_sub_field('highlight'); ?>
+                                    <svg>
+                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-diamonds-suits"></use>
+                                    </svg>
+                                    <?php echo get_sub_field('highlight'); ?>
                                 </li>
                             <?php endwhile; ?>
                         <?php endif; ?>
                     </ul>
                 </div>
 
-                <!-- Transport -->
-                <div class="itinerary-overview__content__grid__overview__transport ">
-                    <div class="itinerary-overview__content__grid__overview__transport__title">
-                        Itinerary Type: <span>Fly | Cruise</span>
-                    </div>
-                    <div class="itinerary-overview__content__grid__overview__transport__snippet">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium aliquam cum eveniet. Quisquam dolor perferendis soluta, architecto similique facilis
-                    </div>
-
-                </div>
-
                 <!-- Text -->
-                <div class="itinerary-overview__content__grid__overview__text ">
-                    <?php echo get_field('overview_content') ?>
+                <div class="cruise-overview__content__grid__overview__text ">
+                    <?php echo $overview_content_limited; ?>
+                </div>
+
+                <div class="cruise-overview__content__grid__overview__expand">
+                    <?php if ($expand) : ?>
+                        <button class="btn-text-icon" id="expand-content">
+                            Read More
+                            <svg>
+                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                            </svg>
+                        </button>
+                    <?php endif; ?>
                 </div>
             </div>
 
 
-            <!-- Itinerary Map  -->
-            <div class="itinerary-overview__content__grid__map-area">
-                <div class="itinerary-overview__content__grid__map-area__map" id="itinerary-map">
+            <!-- Side Section -->
+            <div class="cruise-overview__content__grid__secondary">
 
-                </div>
-            </div>
+                <!-- Ships Panel -->
+                <div class="outline-panel">
 
-            <!-- Ship Area -->
-            <div class="itinerary-overview__content__grid__ship-area">
-
-
-                <!-- Ship Card -->
-                <a class="itinerary-overview__content__grid__ship-area__ship" href="<?php echo get_permalink($ship); ?>">
-                    <div class="itinerary-overview__content__grid__ship-area__ship__avatar">
-                        <img <?php afloat_image_markup($ship_featured_image['id'], 'square-small', array('square-small')); ?>>
+                    <!-- Panel Heading -->
+                    <div class="outline-panel__heading">
+                        <h5 class="outline-panel__heading__text">
+                            Ships
+                        </h5>
+                        <svg>
+                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-down"></use>
+                        </svg>
                     </div>
-                    <div class="itinerary-overview__content__grid__ship-area__ship__info">
-                        <div class="itinerary-overview__content__grid__ship-area__ship__info__name">
-                            <div class="itinerary-overview__content__grid__ship-area__ship__info__name__title">
-                                The <?php echo get_the_title($ship); ?>
-                            </div>
-                            <div class="itinerary-overview__content__grid__ship-area__ship__info__name__sub">
-                                <?php echo $ship_snippet; ?>
-                            </div>
-                        </div>
-                        <div class="itinerary-overview__content__grid__ship-area__ship__info__cta">
-                            <button class="cta-text-icon">
-                                Explore
-                                <svg>
-                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                                </svg>
-                            </button>
 
-                        </div>
+                    <!-- Panel Content -->
+                    <div class="outline-panel__content">
 
-                    </div>
-                </a>
+                        <!-- Ships Grid -->
+                        <div class="itinerary-ships">
+                            <?php foreach ($ships as $ship) :
+                                $hero_gallery = get_field('hero_gallery', $ship);
+                                $ship_image = $hero_gallery[0];
+                            ?>
+                                <!-- Ship -->
+                                <div class="itinerary-ships__item">
 
-                <!-- Cabins Slider -->
-                <div class="itinerary-overview__content__grid__ship-area__title">
-                    Cabin Options
-                    <div class="itinerary-overview__content__grid__ship-area__title__sub">
-                        Choose from the available <?php echo count($cruise_data['CabinDTOs']); ?> cabin types
-                    </div>
-                </div>
-                <div class="itinerary-overview__content__grid__ship-area__slider" id="cabins-slider">
-
-                    <?php
-                    $cabinCount = 0;
-                    $cabins = $cruise_data['CabinDTOs'];
-                    foreach ($cabins as $cabin) :
-                    ?>
-
-                        <a class="overlay-card small">
-                            <div class="overlay-card__image-area">
-                                <img src=<?php echo afloat_dfcloud_image($cabin['ImageDTOs'][0]['ImageUrl']); ?>>
-                            </div>
-                            <div class="overlay-card__content">
-                                <div class="overlay-card__content__title-section">
-                                    <div class="overlay-card__content__title-section__sub">
-                                        Label
+                                    <a class="itinerary-ships__item__avatar" href="<?php echo get_permalink($ship); ?>">
+                                        <img <?php afloat_image_markup($ship_image['id'], 'square-small', array('square-small')); ?>>
+                                    </a>
+                                    <div class="itinerary-ships__item__title-group">
+                                        <a class="itinerary-ships__item__title-group__title" href="<?php echo get_permalink($ship); ?>">
+                                            <?php echo get_the_title($ship); ?>
+                                        </a>
+                                        <div class="itinerary-ships__item__title-group__text">
+                                            <?php echo get_field('top_snippet', $ship); ?>
+                                        </div>
                                     </div>
-                                    <div class="overlay-card__content__title-section__title">
-                                        <?php echo $cabin['Name']; ?>
+
+                                </div>
+                            <?php endforeach; ?>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- activities Panel -->
+                <div class="outline-panel">
+                    <!-- Panel Heading -->
+                    <div class="outline-panel__heading">
+                        <h5 class="outline-panel__heading__text">
+                            Activities
+                        </h5>
+                        <svg>
+                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-down"></use>
+                        </svg>
+                    </div>
+                    <!-- Panel Content -->
+                    <div class="outline-panel__content">
+                        <div class="ammenities">
+                            <?php foreach ($activities as $a) :
+                                $activity_post = $a['standard_activity'];
+                                $icon = get_field('icon', $activity_post);
+                                $title = $a['title_override'] == "" ? get_the_title($activity_post) : $a['title_override'];
+                                $subtitle = $a['subtitle'];
+                            ?>
+
+                                <div class="ammenities__item">
+                                    <?php echo $icon ?>
+
+                                    <div class="ammenities__item__title-group">
+                                        <div class="ammenities__item__title-group__title">
+                                            <?php echo $title ?>
+                                        </div>
+                                        <?php if ($subtitle != "") : ?>
+                                            <div class="ammenities__item__title-group__sub">
+                                                <?php echo $subtitle ?>
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
 
-                            </div>
-                        </a>
+                            <?php endforeach; ?>
+                        </div>
 
+                    </div>
+                </div>
 
+                <!-- CTA / Deckplan -->
+                <div class="cruise-overview__content__grid__secondary__cta">
 
-                    <?php endforeach; ?>
-
+                    <a class="cta-link-icon" href="#">
+                        Flexible booking terms
+                        <svg>
+                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-shield"></use>
+                        </svg>
+                    </a>
                 </div>
             </div>
-
         </div>
-
-
-
     </div>
 </section>
+
+
+<!-- Content Modal -->
+<div class="modal" id="contentModal">
+    <div class="modal__content"">
+        <div class=" modal__content__top">
+        <!-- Top Modal Content -->
+        <div class="modal__content__top__nav">
+            <div class="modal__content__top__nav__title">
+                About the <?php echo get_field('display_name'); ?>
+            </div>
+        </div>
+        <button class="btn-text-icon close-modal-button ">
+            Close
+            <svg>
+                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Main Modal Content -->
+    <div class="modal__content__main">
+        <?php echo $overview_content; ?>
+    </div>
+</div>
+</div>

@@ -1,60 +1,36 @@
 <?php
 
-function extractCabinImages($cruise_data)
+function createDepartureList($cruisePost, $itineraryPosts)
 {
-    $cabins = $cruise_data['CabinDTOs'];
-
-    $cabinImagesArray = [];
-    foreach ($cabins as $c) {
-        $images = $c['ImageDTOs'];
-        foreach ($images as $i) {
-
-            $object = [
-                'id' => 'df-' . $i['Id'],
-                'title' => $i['AltText'],
-                'url' => $i['ImageUrl'],
-            ];
-            $cabinImagesArray[] = $object;
-        }
-    }
-
-    return $cabinImagesArray;
-}
-
-
-
-function createDepartureList($cruise_data, $cruisePostItineraries)
-{
-    $cruise_data_itineraries = $cruise_data['Itineraries'];
-
     $departures = [];
-    foreach ($cruise_data_itineraries as $i) {
-        $matchingPost = null;
-        foreach ($cruisePostItineraries as $ip) {
-            if (get_field('itinerary_id', $ip) == $i['Id']) {
-                $matchingPost = $ip;
+    foreach ($itineraryPosts as $i) { // each itinerary
+        $itineraryLength = get_field('length_in_nights', $i);
+        $itineraryDepartures = get_field('departures', $i);
+        //console_log('post');
+        //console_log($i);
+        foreach ($itineraryDepartures as $d) {   // each departure   
+            $departureShip = $d['ship'];
+            $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
+            $isShip = true;
+            if($cruisePost != null){
+                $isShip = $departureShip == $cruisePost;
             }
-        }
 
-        if ($matchingPost) {
-            foreach ($i['Departures'] as $d) {
+            if ($isShip && $isCurrent) { // if current and matches ship
 
-                $returnDate = date('Y-m-d', strtotime($d['DepartureDate'] . ' + ' . $i['LengthInNights'] . ' days'));
+                $id = $i->ID . "-" . getRandomHex();
+                $returnDate = date('Y-m-d', strtotime($d['date'] . ' + ' . $itineraryLength . ' days'));
+                $cabin_prices = $d['cabin_prices'];
 
                 $departure = [
-                    'Id' => $i['Id'],
-                    'DepartureDate' => $d['DepartureDate'],
+                    'ID' => $id,
+                    'DepartureDate' => $d['date'],
                     'ReturnDate' => $returnDate,
-                    'HasPromo' => $d['HasPromo'],
-                    'PromoName' => $d['PromoName'],
-                    'IsHighSeason' => $d['IsHighSeason'],
-                    'IsLowSeason' => $d['IsLowSeason'],
-                    'ItineraryPostId' => $matchingPost->ID,
-                    'ItineraryPost' => $matchingPost,
-                    'Name' => $i['Name'],
-                    'LengthInNights' => $i['LengthInNights'],
-                    'LengthInDays' => $i['LengthInDays'],
-                    'LowestPrice' => $i['LowestPrice'],
+                    'Cabins' => $cabin_prices,
+                    'ItineraryPostId' => $i->ID,
+                    'ItineraryPost' => $i,
+                    'LowestPrice' => getLowestDeparturePrice($d),
+                    'LengthInNights' => $itineraryLength,
                 ];
                 $departures[] = $departure;
             }
@@ -69,12 +45,122 @@ function createDepartureList($cruise_data, $cruisePostItineraries)
 }
 
 
-function createYearSelection($curent, $yearsCount){
 
+
+function createItineraryDepartureList($i)
+{
+    $departures = [];
+    $itineraryLength = get_field('length_in_nights', $i);
+    $itineraryDepartures = get_field('departures', $i);
+
+    foreach ($itineraryDepartures as $d) {   // each departure   
+        $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
+
+
+        if ($isCurrent) { // if current and matches ship
+
+            $id = $i->ID . "-" . getRandomHex();
+            $returnDate = date('Y-m-d', strtotime($d['date'] . ' + ' . $itineraryLength . ' days'));
+            $cabin_prices = $d['cabin_prices'];
+
+            $departure = [
+                'ID' => $id,
+                'Ship' => $d['ship'],
+                'DepartureDate' => $d['date'],
+                'ReturnDate' => $returnDate,
+                'Cabins' => $cabin_prices,
+                'ItineraryPostId' => $i->ID,
+                'ItineraryPost' => $i,
+                'LowestPrice' => getLowestDeparturePrice($d),
+                'LengthInNights' => $itineraryLength,
+            ];
+            $departures[] = $departure;
+        }
+    }
+    usort($departures, function ($a, $b) {
+        return strtotime($a['DepartureDate']) - strtotime($b['DepartureDate']);
+    });
+
+    return $departures;
+}
+
+
+
+// get lowest price from a list of departures
+function getItineraryShipSize($ships)
+{
+    $display = "";
+    $capacityArray = [];
+    foreach ($ships as $ship) {
+        $capacityArray[] = get_field('vessel_capacity', $ship);
+    }
+
+    $low = min($capacityArray); //lowest price, not sold out
+    $high = max($capacityArray); //lowest price, not sold out
+    $display = $low . "-" . $high;
+
+   
+    return $display;
+}
+
+// get lowest price from a list of departures
+function getLowestDepartureListPrice($departures)
+{
+    $price = 0;
+    $priceArray = [];
+    foreach ($departures as $d) {
+
+        $lowestCabinPrice = $d['LowestPrice'];
+        if ($lowestCabinPrice > 0) {
+            $priceArray[] = $lowestCabinPrice;
+        }
+    }
+
+    $price = min($priceArray); //lowest price, not sold out
+    return $price;
+}
+
+
+
+
+// get lowest cabin price (not sold out) from a single departure
+function getLowestDeparturePrice($departure)
+{
+    $price = 0;
+    $cabin_prices = $departure['cabin_prices'];
+    if (!$cabin_prices) {
+        return $price;
+    }
+
+    $priceArray = [];
+    foreach ($cabin_prices as $c) {
+        if ($c['sold_out'] != true) {
+            $priceArray[] = $c['discounted_price'] == "" ? $c['price'] : $c['discounted_price'];
+        }
+    }
+
+    $price = min($priceArray); //lowest price, not sold out
+    return $price;
+}
+
+
+
+
+
+// Random Code Generator
+function getRandomHex($num_bytes = 4)
+{
+    return bin2hex(openssl_random_pseudo_bytes($num_bytes));
+}
+
+
+// generate array of years (generic)
+function createYearSelection($current, $yearsCount)
+{
     $years = [];
     $count = 0;
-    while($count < $yearsCount){
-        $years[] = $curent + $count;
+    while ($count < $yearsCount) {
+        $years[] = $current + $count;
         $count++;
     }
     return $years;
@@ -82,10 +168,10 @@ function createYearSelection($curent, $yearsCount){
 
 
 
-function shipSizeDisplay($pax){
-
+function shipSizeDisplay($pax)
+{
     $displayText = "Small Size";
-    if($pax > 150){
+    if ($pax > 150) {
         $displayText = "Large Size";
     } else if ($pax >= 80) {
         $displayText = "Medium Size";
@@ -96,106 +182,34 @@ function shipSizeDisplay($pax){
 
 
 
-
-
-
-//Get lowest price (Price From)
-function lowest_property_price($cruise_data, $fromLength, $fromYear, $currentYearOnly = false)
-{
-
-    $prices = [];
-    $lowestPrice = 0;
-    if (array_key_exists('Itineraries', $cruise_data)) {
-        $itineraries = $cruise_data['Itineraries'];
-
-        if (count($itineraries) > 0) {
-
-            foreach ($itineraries as $i) {
-                // needs to check If lodge and Is Sample then skip
-
-                if ($i['LengthInDays'] >= $fromLength) {
-                    $rateYears = $i['RateYears'];
-                    foreach ($rateYears as $r) {
-
-                        //Include sliding range of years
-                        if ($currentYearOnly == false) {
-                            if ($r['Year'] >= $fromYear) {
-                                $rates = $r['Rates'];
-                                $rateValues = [];
-                                foreach ($rates as $rate) {
-                                    if ($rate['WebAmount'] > 0) {
-                                        $rateValues[] = $rate['WebAmount'];
-                                    }
-                                }
-                                if ($rateValues) {
-                                    $prices[] = min($rateValues);
-                                }
-                            }
-                        } else { //Shown in product header
-                            if ($r['Year'] == date("Y")) {
-                                $rates = $r['Rates'];
-                                $rateValues = [];
-                                foreach ($rates as $rate) {
-                                    if ($rate['WebAmount'] > 0) {
-                                        $rateValues[] = $rate['WebAmount'];
-                                    }
-                                }
-                                if ($rateValues) {
-                                    $prices[] = min($rateValues);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (count($prices) > 0) {
-                $lowestPrice = min($prices);
-            } else {
-                $lowestPrice = 0;
-            }
-        } else {
-            $lowestPrice = 0;
-        }
-    }
-
-
-
-    return $lowestPrice;
-}
-
-
 //Range (From x Days to x Days)
-function itineraryRange($cruise_data, $separator, $onlyMin = false)
+function itineraryRange($itineraries, $separator, $onlyMin = false)
 {
     $returnString = "";
-    if (array_key_exists('Itineraries', $cruise_data)) {
-        $itineraries = $cruise_data['Itineraries'];
-        $itineraryValues  = [];
+    $itineraryValues  = [];
+
+    if (count($itineraries) > 0) {
+        foreach ($itineraries as $i) {
+            $itineraryValues[] = get_field('length_in_nights', $i) + 1;
+        }
+
+        $rangeFrom = min($itineraryValues);
+        $rangeTo = max($itineraryValues);
 
 
-        if (count($itineraries) > 0) {
-            foreach ($itineraries as $i) {
-                $itineraryValues[] = $i['LengthInDays'];
-            }
-
-            $rangeFrom = min($itineraryValues);
-            $rangeTo = max($itineraryValues);
-
-
-            if (!$onlyMin) {
-                if ($rangeFrom != $rangeTo) {
-                    $returnString = $rangeFrom . $separator . $rangeTo;
-                } else {
-                    $returnString = $rangeFrom;
-                }
+        if (!$onlyMin) {
+            if ($rangeFrom != $rangeTo) {
+                $returnString = $rangeFrom . $separator . $rangeTo;
             } else {
                 $returnString = $rangeFrom;
             }
         } else {
-            $returnString = "N/A";
+            $returnString = $rangeFrom;
         }
+    } else {
+        $returnString = "N/A";
     }
+
 
 
 

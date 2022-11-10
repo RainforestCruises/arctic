@@ -1,89 +1,232 @@
 <?php
-$itinerary_data = $args['itinerary_data'];
-$departures = $itinerary_data['Departures'];
-$curentYear = date("Y");
+wp_enqueue_script('page-cruise-dates', get_template_directory_uri() . '/js/page-cruise-dates.js', array('jquery'), false, true);
+
+
+$currentYear = date('Y');
+$yearSelections = $args['yearSelections'];
+$ships = $args['ships'];
+$departures = $args['departures'];
 
 ?>
-<section class="product-departures" id="departures">
-    <div class="product-departures__content">
 
-        <div class="title-group">
-            <div class="title-group__title">
-                Departures
+<section class="slider-block narrow cruise-dates" id="section-dates">
+    <div class="slider-block__content cruise-dates__content">
+
+        <!-- Top - Title/Nav -->
+        <div class="slider-block__content__top">
+
+            <!-- Title -->
+            <div class="slider-block__content__top__title">
+                <div class="title-group__title">
+                    Departure Dates
+                </div>
+                <div class="title-group__sub departure-date-subtitle">
+                    Showing <?php echo count($departures); ?> scheduled departures
+                </div>
             </div>
-            <div class="title-group__sub">
-                There are <?php echo count($departures); ?> departures available
+
+            <!-- Nav Buttons -->
+            <div class="slider-block__content__top__nav">
+                <div class="swiper-button-prev swiper-button-prev--white-border dates-slider-btn-prev">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-left"></use>
+                    </svg>
+                </div>
+                <div class="swiper-button-next swiper-button-next--white-border dates-slider-btn-next">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Slider Area -->
+        <div class="slider-block__content__slider">
+            <div class="slider-block__content__slider__no-results" id="dates-slider-no-results">
+                No Results
+                <button class="btn-pill clear-departure-filters">Clear Filters</button>
+            </div>
+            <!-- Swiper -->
+            <div class="swiper" id="dates-slider">
+                <div class="swiper-wrapper">
+
+                    <?php foreach ($departures as $d) :
+                        $departureId = $d['ID'];
+                        $ship = $d['Ship'];
+                        $itineraryPost = $d['ItineraryPost'];
+                        $itineraryPostId = $d['ItineraryPostId'];
+                        $departureStartDate = strtotime($d['DepartureDate']);
+                        $departureReturnDate = strtotime($d['ReturnDate']);
+                        $title = get_the_title($ship);
+                        $hero_gallery = get_field('hero_gallery', $ship);
+                        $vessel_capacity = get_field('vessel_capacity', $ship);
+
+                        $image = $hero_gallery[0];
+                        $embarkationPost = get_field('embarkation_point', $itineraryPost);
+                        $embarkationName = get_the_title($embarkationPost) . ', ' . get_field('country_name', $embarkationPost);
+                    ?>
+
+                        <div class="information-card info-departure-card swiper-slide" data-filter-date="<?php echo date("Y", $departureStartDate); ?>" data-filter-itinerary="<?php echo $itineraryPostId; ?>">
+                            <!-- Title Group -->
+                            <div class="information-card__section">
+                                <div class="avatar-title-group">
+                                    <div class="avatar-title-group__avatar">
+                                        <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
+                                    </div>
+                                    <div class="avatar-title-group__text">
+                                        <div class="avatar-title-group__text__title">
+                                            <?php echo  $title; ?>
+                                        </div>
+                                        <div class="avatar-title-group__text__sub">
+                                            <?php echo $vessel_capacity . ' Guests'; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Specs -->
+                            <div class="information-card__section">
+
+                                <!-- Dates -->
+                                <div class="specs-item">
+                                    <div class="specs-item__icon">
+                                        <svg>
+                                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-check-in"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="specs-item__text">
+                                        <div class="specs-item__text__main">
+                                            <span style="font-weight: 700;"><?php echo  date("F j", $departureStartDate); ?></span> - <?php echo  date("M j, Y", $departureReturnDate); ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Ports -->
+                                <div class="specs-item">
+                                    <div class="specs-item__icon">
+                                        <svg>
+                                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-pin-e"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="specs-item__text">
+                                        <div class="specs-item__text__main">
+                                            <?php echo $embarkationName ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="information-card__bottom">
+
+                                <!-- Price Group -->
+                                <div class="information-card__bottom__price-group">
+                                    <button class="price-group-button" departureId="<?php echo $departureId; ?>" year="<?php echo date("Y", $departureStartDate); ?>" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itinerary="<?php echo $itineraryPostId; ?>" itineraryTitle="<?php echo $title; ?>">
+                                        <div class="price-group-button__text">
+                                            From
+                                        </div>
+                                        <div class="price-group-button__amount">
+                                            <?php echo "$ " . number_format($d['LowestPrice'], 0);  ?>
+                                        </div>
+                                        <div class="price-group-button__view">View Prices</div>
+                                    </button>
+                                </div>
+
+                                <!-- CTA -->
+                                <div class="information-card__bottom__cta">
+                                    <button class="cta-square-icon departure-inquire-cta" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itinerary="<?php echo $itineraryPostId; ?>" itineraryTitle="<?php echo $title; ?>">
+                                        Inquire
+                                        <svg>
+                                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                                        </svg>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
-        <div class="product-departures__content__slider" id="departures-slider">
-            <?php foreach ($departures as $d) :
-                $departureStartDate = strtotime($d['DepartureDate']);
-            ?>
 
-                <div class="departure-card" year="<?php echo date("Y", $departureStartDate); ?>">
-                    <div class="departure-card__content">
-                        <div class="departure-card__content__date-group">
+        <!-- Filters -->
+        <div class="slider-block__content__filters">
 
-                            <div class="departure-card__content__date-group__date">
-                                <?php echo  date("F j", $departureStartDate); ?>
-                            </div>
-                            <div class="departure-card__content__date-group__year">
-                                <?php echo date("Y", $departureStartDate); ?>
-                            </div>
-                        </div>
-                        <div class="departure-card__content__price-group">
-                            <div class="departure-card__content__price-group__price">
-                                <?php echo "$ " . number_format($d['LowestPrice'], 0);  ?>
-                            </div>
-                            <div class="departure-card__content__price-group__details">
-                                Per Person
-                            </div>
+            <div class="slider-block__content__filters__left" id="date-filter-group">
 
-                        </div>
+                <!-- Dates Filter -->
+                <button class="btn-pill" data-filter="all" id="date-filter-button">
+                    Dates
+                </button>
+                <div class="popper-tooltip" id="date-filter-tooltip" role="tooltip">
+                    <div class="popper-tooltip__selection" id="date-filter-selection">
+                        <ul class="popper-tooltip__selection__list">
+                            <?php
+                            $count = 1;
+                            foreach ($yearSelections as $yearValue) : ?>
+                                <li class="popper-tooltip__selection__list__item">
+                                    <input class="checkbox date-checkbox" id="date-check-<?php echo $count; ?>" type="checkbox" value="<?php echo $yearValue ?>">
+                                    <label for="date-check-<?php echo $count; ?>"><?php echo $yearValue; ?> Departures</label>
+                                </li>
+                            <?php $count++;
+                            endforeach; ?>
+                        </ul>
                     </div>
-                    <div class="departure-card__cta">
-                        <button class="cta-square-icon">
-                            Inquire
-                            <svg>
-                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                            </svg>
+                    <div class="popper-tooltip__controls">
+                        <button class="btn-pill" id="date-filter-clear-button">
+                            Clear
+                        </button>
+                        <button class="btn-pill btn-pill--dark" id="date-filter-search-button">
+                            Search
                         </button>
                     </div>
-
+                    <div id="arrow" data-popper-arrow></div>
                 </div>
 
-            <?php endforeach; ?>
-        </div>
-
-        <div class="product-departures__content__filters">
-            <button class="btn-pill departure-filter active" data-filter="all">
-                All
-            </button>
-            <?php for ($i = 0; $i < 3; $i++) :
-
-                $yearToCheck = $curentYear + $i;
-                if(checkDeparturesInYear($yearToCheck, $departures)) :
-            ?>
-                <button class="btn-pill btn-pill--grey departure-filter" data-filter="<?php echo $curentYear + $i ?>">
-                    <?php echo $curentYear + $i ?>
+                <!-- Ship Filter -->
+                <button class="btn-pill cruise-dates-departure-filter" data-filter="all" id="itinerary-filter-button">
+                    Ships
                 </button>
-            <?php endif; endfor; ?>
+                <div class="popper-tooltip" id="itinerary-filter-tooltip" role="tooltip">
+                    <div class="popper-tooltip__selection" id="itinerary-filter-selection">
+                        <ul class="popper-tooltip__selection__list">
 
+                            <?php
+                            $count = 1;
+                            foreach ($ships as $ship) :
+                                $title = get_the_title($ship);
+                                $id = $ship->ID;
+                            ?>
+                                <li class="popper-tooltip__selection__list__item">
+                                    <input class="checkbox itinerary-checkbox" id="itinerary-check-<?php echo $count; ?>" type="checkbox" value="<?php echo $id ?>">
+                                    <label for="itinerary-check-<?php echo $count; ?>"><?php echo $title; ?></label>
+                                </li>
+                            <?php $count++;
+                            endforeach; ?>
+                        </ul>
+                    </div>
+                    <div class="popper-tooltip__controls">
+                        <button class="btn-pill" id="itinerary-filter-clear-button">
+                            Clear
+                        </button>
+                        <button class="btn-pill btn-pill--dark" id="itinerary-filter-search-button">
+                            Search
+                        </button>
+                    </div>
+                    <div id="arrow" data-popper-arrow></div>
+                </div>
+
+                <button class="btn-pill clear-departure-filters" style="display: none;">Clear Filters</button>
+
+            </div>
+
+            <!-- View All -->
+            <div class="slider-block__content__filters__right">
+                <button class="btn-pill cruise-dates-departure-filter" data-filter="all" id="view-all-dates-button">
+                    View All
+                </button>
+            </div>
 
         </div>
     </div>
 </section>
-
-<?php
-function checkDeparturesInYear($year, $departureList)
-{
-    $match = false;
-    foreach ($departureList as $d) {
-        if (str_contains($d['DepartureDate'], strval($year))) {
-            $match = true;
-        }
-    }
-    return $match;
-}
-
-?>

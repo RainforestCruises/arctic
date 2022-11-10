@@ -164,6 +164,31 @@
             "endpoint": 0
         },
         {
+            "key": "field_6365598f64356",
+            "label": "Ships",
+            "name": "ships",
+            "type": "relationship",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_cruises"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
+        },
+        {
             "key": "field_62b21d85d07ee",
             "label": "Destinations",
             "name": "destinations",
@@ -189,9 +214,9 @@
             "return_format": "object"
         },
         {
-            "key": "field_62b21d85ccd61",
-            "label": "Breadcrumb",
-            "name": "breadcrumb",
+            "key": "field_62b21d85d7c4e",
+            "label": "Activities",
+            "name": "activities",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -208,9 +233,31 @@
             "button_label": "",
             "sub_fields": [
                 {
-                    "key": "field_62b21d86a2fe9",
-                    "label": "Title",
-                    "name": "title",
+                    "key": "field_636beaa6c12ab",
+                    "label": "Standard Activity",
+                    "name": "standard_activity",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "rfc_activities"
+                    ],
+                    "taxonomy": "",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "object",
+                    "ui": 1
+                },
+                {
+                    "key": "field_636beabcc12ac",
+                    "label": "Title Override",
+                    "name": "title_override",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -227,10 +274,10 @@
                     "maxlength": ""
                 },
                 {
-                    "key": "field_62b21d86a6c0a",
-                    "label": "Link",
-                    "name": "link",
-                    "type": "page_link",
+                    "key": "field_636beac8c12ad",
+                    "label": "Subtitle",
+                    "name": "subtitle",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -239,114 +286,13 @@
                         "class": "",
                         "id": ""
                     },
-                    "post_type": [
-                        "rfc_cruises"
-                    ],
-                    "taxonomy": "",
-                    "allow_null": 0,
-                    "allow_archives": 0,
-                    "multiple": 0
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
-        },
-        {
-            "key": "field_62b21d85eab87",
-            "label": "Search Rank",
-            "name": "search_rank",
-            "type": "number",
-            "instructions": "Weight given to search priority, from 1-1000. A higher number will appear first in search results. A product with a weight of 1 will appear last. Score average products: ~500 range, products to appear first: 700+ range, products to rank last: sub 300 range.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": 1,
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": 1,
-            "max": 1000,
-            "step": ""
-        },
-        {
-            "key": "field_62b21d85d7c4e",
-            "label": "Activities",
-            "name": "activities",
-            "type": "relationship",
-            "instructions": "Include all that apply",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "rfc_activities"
-            ],
-            "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "object"
-        },
-        {
-            "key": "field_62b21d85d42df",
-            "label": "Locations",
-            "name": "locations",
-            "type": "relationship",
-            "instructions": "Include all that apply (Location - Parent Destination)",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "rfc_locations"
-            ],
-            "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "object"
-        },
-        {
-            "key": "field_62b21d85db702",
-            "label": "Experiences",
-            "name": "experiences",
-            "type": "relationship",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "admin_column_enabled": 0,
-            "admin_column_post_types": "",
-            "admin_column_taxonomies": "",
-            "post_type": [
-                "rfc_experiences"
-            ],
-            "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "object"
         },
         {
             "key": "field_62b21d85df4c9",
@@ -385,10 +331,10 @@
         },
         {
             "key": "field_62b21d860955b",
-            "label": "Hero Image",
-            "name": "hero_image",
-            "type": "image",
-            "instructions": "Hero image (1920 x 730).",
+            "label": "Hero Gallery",
+            "name": "hero_gallery",
+            "type": "gallery",
+            "instructions": "1920 x 1080 (16:9) is required for first image.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -398,7 +344,10 @@
             },
             "return_format": "array",
             "preview_size": "medium",
+            "insert": "append",
             "library": "all",
+            "min": "",
+            "max": "",
             "min_width": "",
             "min_height": "",
             "min_size": "",
@@ -570,52 +519,6 @@
             ]
         },
         {
-            "key": "field_62b21d85e32bb",
-            "label": "Show Notification",
-            "name": "show_notification",
-            "type": "true_false",
-            "instructions": "Check to display a notification message on page load",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_62b21d85e708a",
-            "label": "Notification Message",
-            "name": "notification_message",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_62b21d85e32bb",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 0,
-            "delay": 0
-        },
-        {
             "key": "field_62b9d1b9164f4",
             "label": "Itinerary Builder",
             "name": "",
@@ -630,6 +533,27 @@
             },
             "placement": "top",
             "endpoint": 0
+        },
+        {
+            "key": "field_63655a3f4eafa",
+            "label": "Length In Nights",
+            "name": "length_in_nights",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
         },
         {
             "key": "field_631f8bd5db3a2",
@@ -918,7 +842,7 @@
                             "key": "field_63595c348bb39",
                             "label": "Price",
                             "name": "price",
-                            "type": "text",
+                            "type": "number",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -931,13 +855,15 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "maxlength": ""
+                            "min": "",
+                            "max": "",
+                            "step": ""
                         },
                         {
                             "key": "field_63595cc2fee0a",
                             "label": "Discounted Price",
                             "name": "discounted_price",
-                            "type": "text",
+                            "type": "number",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -950,7 +876,9 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "maxlength": ""
+                            "min": "",
+                            "max": "",
+                            "step": ""
                         },
                         {
                             "key": "field_6359701d923ac",
@@ -974,6 +902,185 @@
                     ]
                 }
             ]
+        },
+        {
+            "key": "field_636be75b65534",
+            "label": "Technical",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_62b21d85eab87",
+            "label": "Search Rank",
+            "name": "search_rank",
+            "type": "number",
+            "instructions": "Weight given to search priority, from 1-1000. A higher number will appear first in search results. A product with a weight of 1 will appear last. Score average products: ~500 range, products to appear first: 700+ range, products to rank last: sub 300 range.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 1,
+            "max": 1000,
+            "step": ""
+        },
+        {
+            "key": "field_62b21d85e32bb",
+            "label": "Show Notification",
+            "name": "show_notification",
+            "type": "true_false",
+            "instructions": "Check to display a notification message on page load",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_62b21d85e708a",
+            "label": "Notification Message",
+            "name": "notification_message",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_62b21d85e32bb",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_636d1695f3687",
+            "label": "Inclusions \/ Exclusions",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_636d166cf3685",
+            "label": "Inclusions",
+            "name": "inclusions",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_636d167ff3686",
+                    "label": "item",
+                    "name": "item",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
+            "key": "field_636d16aaf3688",
+            "label": "Exclusions",
+            "name": "exclusions",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_636d16aaf3689",
+                    "label": "item",
+                    "name": "item",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -994,5 +1101,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1666806590
+    "modified": 1668093648
 }

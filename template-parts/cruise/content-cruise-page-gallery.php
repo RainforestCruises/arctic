@@ -1,7 +1,7 @@
 <?php
 $images = get_field('hero_gallery');
 $deckPlans = get_field('deck_plans');
-$cabinImages = extractCabinImages($args['cruise_data']);
+$cabins = $args['cabins'];
 
 
 
@@ -39,11 +39,16 @@ $cabinImages = extractCabinImages($args['cruise_data']);
                     endforeach; ?>
 
                     <?php // Cabins (DF)
-                    foreach ($cabinImages as $image) : ?>
-                        <div class="modal__gallery-content__main__slider__item swiper-slide" slideIndex="<?php echo $count; ?>" imageId="<?php echo $image['id']; ?>" title="<?php echo $image['title']; ?>">
-                            <img src="<?php echo afloat_dfcloud_image($image['url'], 1024, 768); ?>">
-                        </div>
+                    foreach ($cabins as $cabin) :
+                        $images = get_field('images', $cabin);
+                        $display_name = get_field('display_name', $cabin);
+                        foreach ($images as $image) :
+                    ?>
+                            <div class="modal__gallery-content__main__slider__item swiper-slide" slideIndex="<?php echo $count; ?>" imageId="<?php echo $image['id']; ?>" title="<?php echo $display_name; ?>">
+                                <img <?php afloat_image_markup($image['id'], 'landscape-medium', array('landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
+                            </div>
                     <?php $count++;
+                        endforeach;
                     endforeach; ?>
 
                     <?php // Deckplans

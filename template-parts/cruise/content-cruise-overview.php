@@ -1,7 +1,5 @@
 <?php
-$cruise_data = $args['cruiseData'];
 $productName = $args['productName'];
-
 $deck_plans = get_field('deck_plans');
 $amenities = get_field('amenities');
 $overview_content = get_field('overview_content');

@@ -1,30 +1,30 @@
 <?php
-$title = get_the_title();
+$title = get_field('display_name');
 ?>
 
 <nav class="nav-secondary">
     <div class="nav-secondary__content">
         <div class="nav-secondary__content__title">
-            <button class="nav-secondary__content__title__button btn-pill">
+            <a href="#section-top" class="nav-secondary__content__title__link">
                 <?php echo $title; ?>
-            </button>
+            </a>
         </div>
-        <div class="nav-secondary__content__buttons">
-            <button class="nav-secondary__content__buttons__button btn-pill">
+        <div class="nav-secondary__content__links">
+            <a href="#section-itineraries" class="nav-secondary__content__links__link">
                 Itinerary
-            </button>
-            <button class="nav-secondary__content__buttons__button btn-pill">
+            </a>
+            <a href="#section-dates" class="nav-secondary__content__links__link">
                 Dates
-            </button>
-            <button class="nav-secondary__content__buttons__button btn-pill">
+            </a>
+            <a href="#section-services" class="nav-secondary__content__links__link">
                 Services
-            </button>
-            <button class="nav-secondary__content__buttons__button btn-pill">
+            </a>
+            <a href="#section-reviews" class="nav-secondary__content__links__link">
                 Reviews
-            </button>
+            </a>
         </div>
         <div class="nav-secondary__content__cta">
-            <button class="nav-secondary__content__cta__button btn-pill btn-pill--dark inquire-cta">
+            <button class="nav-secondary__content__cta__button btn-pill btn-pill--dark generic-inquire-cta">
                 Inquire
             </button>
         </div>

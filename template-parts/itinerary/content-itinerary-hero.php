@@ -1,9 +1,13 @@
 <?php
 
-$title = get_the_title();
+$title = get_field('display_name');
 $snippet = get_field('top_snippet');
-$hero_image = get_field('hero_image');
-$desktopImages = array_slice($images, 1);
+$length = get_field('length_in_nights') + 1;
+$lowestPrice = $args['lowestPrice'];
+$shipSizeRange = $args['shipSizeRange'];
+
+$images = get_field('hero_gallery');
+$desktopImages = array_slice($images, 1); //for gallery desktop slider
 
 ?>
 
@@ -11,10 +15,40 @@ $desktopImages = array_slice($images, 1);
 <section class="product-hero" id="top">
     <!-- Desktop BG Image -->
     <div class="product-hero__bg-image">
-        <img <?php afloat_image_markup($hero_image['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
+        <img <?php afloat_image_markup($images[0]['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
     </div>
 
+    <!-- Desktop Gallery -->
+    <div class="product-hero__gallery">
 
+        <!-- Nav -->
+        <div class="product-hero__gallery__nav">
+            <!-- Prev -->
+            <div class="hero-gallery-slider-prev btn-swiper-blur btn-swiper-blur__prev">
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                </svg>
+            </div>
+            <!-- Next -->
+            <div class="hero-gallery-slider-next btn-swiper-blur btn-swiper-blur__next">
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Desktop Slider -->
+        <div class="product-hero__gallery__slider swiper" id="hero-desktop-slider">
+            <div class="swiper-wrapper">
+                <?php
+                foreach ($desktopImages as $image) : ?>
+                    <div class="product-hero__gallery__slider__item swiper-slide" imageId="<?php echo $image['id']; ?>">
+                        <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Content -->
     <div class="product-hero__content">
@@ -52,7 +86,7 @@ $desktopImages = array_slice($images, 1);
                             </div>
                         </div>
                         <div class="product-hero__content__main__secondary__info__starting-price__amount">
-                            <?php echo "$" . number_format(4995, 0); ?>
+                            <?php echo "$" . number_format($lowestPrice, 0); ?>
                             <span class="u-small-text">USD</span>
                         </div>
                     </div>
@@ -84,7 +118,7 @@ $desktopImages = array_slice($images, 1);
                                 Length
                             </div>
 
-                            <?php echo "7 Days"; ?>
+                            <?php echo $length . " Days"; ?>
 
                         </div>
 
@@ -102,7 +136,7 @@ $desktopImages = array_slice($images, 1);
                             <div class="sub-attribute">
                                 Ship Size
                             </div>
-                            <?php echo '100 Guests'; ?>
+                            <?php echo $shipSizeRange . ' Guests'; ?>
                         </div>
 
 
@@ -168,4 +202,3 @@ $desktopImages = array_slice($images, 1);
         </button>
     </div>
 </div>
-

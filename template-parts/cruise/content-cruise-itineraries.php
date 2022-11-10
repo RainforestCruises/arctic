@@ -47,10 +47,10 @@ $curentYear = date("Y");
                         $count = 0;
                         foreach ($itineraries as $itinerary) :
                             $id = $itinerary->ID;
-                            $hero_image = get_field('hero_image', $itinerary);
+                            $hero_gallery = get_field('hero_gallery', $itinerary);
+                            $hero_image = $hero_gallery[0];
                             $embarkation_point = get_field('embarkation_point', $itinerary);
                             $embarkation = get_the_title($embarkation_point);
-
                             $days = get_field('itinerary', $itinerary);
 
                             $destinations = [];
@@ -61,11 +61,12 @@ $curentYear = date("Y");
                                 }
                             }
                             //build list of unique, with embarkations removed
-                            $title = get_the_title($itinerary);
+                            $title = get_field('display_name',$itinerary);
+                            $length_in_nights = get_field('length_in_nights',$itinerary);
                             $top_snippet = get_field('top_snippet', $itinerary);
                             $link = get_the_permalink($itinerary);
                             $itinerary_data = get_field('itinerary_data', $itinerary);
-                            $length = $itinerary_data['LengthInDays'] . ' Day / ' . $itinerary_data['LengthInNights'] . ' Night';
+                            $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
                         ?>
 
                             <!-- Itinerary Card -->
@@ -175,9 +176,8 @@ $curentYear = date("Y");
                         <?php $count = 0;
                         foreach ($itineraries as $itinerary) :
                             $id = $itinerary->ID;
-                            $itinerary_data = get_field('itinerary_data', $itinerary);
-                            $title = get_the_title($itinerary);
-                            $length = $itinerary_data['LengthInDays'] . ' Day';
+                            $title = get_field('display_name',$itinerary);
+                            $length = get_field('length_in_nights',$itinerary) + 1 . ' Days';
 
                         ?>
                             <div class="cruise-itineraries__content__main__nav-area__slider__item swiper-slide" slideIndex="<?php echo $count ?>" postId="<?php echo $id ?>">

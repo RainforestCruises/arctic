@@ -449,6 +449,7 @@
 }
 
 
+//consolidate
 .price-group-button {
     border: none;
     text-align: start;
@@ -476,11 +477,5 @@
         white-space: nowrap;
     }
 
-    &:hover {
-        .price-group-button__amount, .price-group-button__view {
-            color: $color-supporting;
-            
-        }
-    }
   
 }
