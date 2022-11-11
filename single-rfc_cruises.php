@@ -106,7 +106,7 @@ foreach ($itineraries as $itinerary) {
 }
 
 wp_localize_script(
-  'page-cruise-itineraries',
+  'page-product-cruise-itineraries',
   'page_vars_cruise_itineraries',
   array(
     'itineraryObjects' =>  $itineraryObjects,

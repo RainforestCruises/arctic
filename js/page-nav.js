@@ -39,7 +39,7 @@ jQuery(document).ready(function ($) {
                 }
             }
         };
-        if(scrolledTo < 1200){
+        if(scrolledTo < 600){
             $('.nav-secondary__content__links__link').removeClass("active");
         }
     }

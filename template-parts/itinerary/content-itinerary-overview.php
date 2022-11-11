@@ -142,16 +142,7 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
                     </div>
                 </div>
 
-                <!-- CTA / Deckplan -->
-                <div class="cruise-overview__content__grid__secondary__cta">
-
-                    <a class="cta-link-icon" href="#">
-                        Flexible booking terms
-                        <svg>
-                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-shield"></use>
-                        </svg>
-                    </a>
-                </div>
+               
             </div>
         </div>
     </div>

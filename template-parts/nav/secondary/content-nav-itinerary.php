@@ -19,9 +19,7 @@ $title = get_field('display_name');
             <a href="#section-dates" class="nav-secondary__content__links__link">
                 Dates
             </a>
-            <a href="#section-reviews" class="nav-secondary__content__links__link">
-                Reviews
-            </a>
+
            
         </div>
         <div class="nav-secondary__content__cta">

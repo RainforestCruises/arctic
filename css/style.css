@@ -4428,6 +4428,11 @@ h5 {
     @media only screen and (max-width: 50em) {
       .day-slide__content img {
         width: 40%; } }
+  .day-slide__content__text {
+    margin-bottom: 1rem; }
+  .day-slide__content__expand {
+    display: flex;
+    justify-content: flex-end; }
 
 .day-slide-nav {
   width: 100%;
@@ -4499,6 +4504,40 @@ h5 {
           color: #1d2225;
           font-size: 1.6rem;
           font-weight: 700; } }
+
+.days-modal__filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateY(-2rem); }
+
+.days-modal__content .days-item {
+  margin-bottom: 8rem; }
+  .days-modal__content .days-item:not(:last-of-type) {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #e6e6e6; }
+
+.days-item__title-group__title {
+  color: #1d2225;
+  font-size: 2.2rem;
+  font-weight: 700; }
+
+.days-item__title-group__sub {
+  color: #747474;
+  font-size: 1.4rem; }
+
+.days-item__image {
+  margin: 1.5rem 0; }
+  .days-item__image img {
+    border-radius: 1rem;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 30rem; }
+
+.days-item__text {
+  font-size: 1.6rem; }
 
 .itinerary-requirements {
   display: flex;

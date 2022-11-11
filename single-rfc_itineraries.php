@@ -3,6 +3,7 @@ wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', 
 wp_enqueue_script('page-product', get_template_directory_uri() . '/js/page-product.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-modal-gallery', get_template_directory_uri() . '/js/page-product-modal-gallery.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-dates', get_template_directory_uri() . '/js/page-product-dates.js', array('jquery'), false, true);
+wp_enqueue_script('page-product-itinerary-days', get_template_directory_uri() . '/js/page-product-itinerary-days.js', array('jquery'), false, true);
 
 
 $ships = get_field('ships');
@@ -14,8 +15,6 @@ $lowestPrice = getLowestDepartureListPrice($departures);
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
 $shipSizeRange = getItineraryShipSize($ships);
-
-console_log($departures);
 
 //Destination Point Series
 $destinationPoints = [];
@@ -59,7 +58,25 @@ foreach ($days as $day) {
 }
 $destinationLines[] = $lineObject;
 
+// Itinerary Object
+$itineraryObject = [
+  'destinationPoints' => $destinationPoints,
+  'destinationLines' => $destinationLines,
+  'postId' => $itinerary->ID,
+];
+$itineraryObjects[] = $itineraryObject;
 
+$templateUrl = get_template_directory_uri();
+
+wp_localize_script(
+  'page-product-itinerary-days',
+  'page_vars_product_itinerary_days',
+  array(
+    'itineraryObjects' =>  $itineraryObjects,
+    'templateUrl' =>  $templateUrl
+
+  )
+);
 
 
 
@@ -104,6 +121,11 @@ $args = array(
   <!-- Overview -->
   <?php
   get_template_part('template-parts/itinerary/content', 'itinerary-overview', $args);
+  ?>
+
+  <!-- Itinerary Days -->
+  <?php
+  get_template_part('template-parts/itinerary/content', 'itinerary-days', $args);
   ?>
 
   <!-- Dates -->

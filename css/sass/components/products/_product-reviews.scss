@@ -33,7 +33,6 @@
 
 .review-item {
  
-
     &__profile {
         display: flex;
         align-items: center;
@@ -60,9 +59,6 @@
         }
         
     }
-
-    
-
     &__text {
         grid-column: 1 / -1;
         font-size: 1.6rem;
@@ -72,15 +68,11 @@
 
 
 .reviews-modal {
-
-    &__filters {
-        
+    &__filters {     
         display: flex;
         justify-content: space-between;
         align-items: center;
-        transform: translateY(-2rem);
-
-        
+        transform: translateY(-2rem);     
     }
     &__content {
         & .review-item{
@@ -94,7 +86,4 @@
         
         }
     }
-
-
-    
 }
