@@ -40,6 +40,8 @@
         get_template_part('template-parts/nav/secondary/content', 'nav-itinerary');
     endif; ?>
 
+
+
     <!-- Destination Nav -->
     <?php
     if (is_page_template('template-destinations-destination.php') || is_page_template('template-destinations-cruise.php') || is_page_template('template-destinations-region.php')) :

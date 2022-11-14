@@ -1,0 +1,33 @@
+.category-overview {
+    @include flexBlock;
+    margin-top: 6rem;
+    &__content {
+        z-index: 2;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%; 
+        max-width: $page-width-full;
+        @include flexPadding;
+
+        &__grid { 
+            width: 100%;
+            display: grid;
+            grid-template-columns: 50% 50%;
+            column-gap: 6rem;
+            @media only screen and (max-width: $bp-medium) {
+                grid-template-columns: 100%;
+            }
+
+            position: relative;
+
+            &__overview {
+  
+            }
+
+            &__highlights {
+                
+            }
+        }
+    }
+}

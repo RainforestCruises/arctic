@@ -50,6 +50,23 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
         </div>
     </div>
 
+    <!-- Mobile Slider BG -->
+    <div class="product-hero__bg-slider swiper" id="hero-mobile-slider">
+        <div class="swiper-wrapper">
+            <!-- Gallery Images -->
+            <?php foreach ($images as $image) : ?>
+                <div class="product-hero__bg-slider__slide swiper-slide" imageId="<?php echo $image['id']; ?>">
+                    <img <?php afloat_image_markup($image['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="swiper-button-prev product-hero__bg-slider__button-prev"></div>
+        <div class="swiper-button-next product-hero__bg-slider__button-next"></div>
+        <div class="product-hero__bg-slider__count">
+            <?php echo '1 / ' . (count($images) + 1) ?>
+        </div>
+    </div>
+
     <!-- Hero Content -->
     <div class="product-hero__content">
         <div class="product-hero__content__main">

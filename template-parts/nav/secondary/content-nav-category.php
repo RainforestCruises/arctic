@@ -1,5 +1,5 @@
 <?php
-$title = get_field('display_name');
+$title = get_the_title();
 ?>
 
 <nav class="nav-secondary">
@@ -10,16 +10,18 @@ $title = get_field('display_name');
             </a>
         </div>
         <div class="nav-secondary__content__links">
-
-            <a href="#section-itinerary" class="nav-secondary__content__links__link">
-                Itinerary
+            <a href="#section-highlights" class="nav-secondary__content__links__link">
+                Highlights
             </a>
-            <a href="#section-map" class="nav-secondary__content__links__link">
-                Map
+            <a href="#section-itineraries" class="nav-secondary__content__links__link">
+                Itineraries
             </a>
-            <a href="#section-dates" class="nav-secondary__content__links__link">
-                Dates
-            </a>       
+            <a href="#section-ships" class="nav-secondary__content__links__link">
+                Ships
+            </a>
+            <a href="#section-faq" class="nav-secondary__content__links__link">
+                Reviews
+            </a>
         </div>
         <div class="nav-secondary__content__cta">
             <button class="nav-secondary__content__cta__button btn-pill btn-pill--dark generic-inquire-cta">

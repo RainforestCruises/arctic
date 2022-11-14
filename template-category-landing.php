@@ -1,0 +1,53 @@
+<?php
+/*Template Name: Category Landing*/
+wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', array('jquery'), false, true);
+wp_enqueue_script('page-category-landing', get_template_directory_uri() . '/js/page-category-landing.js', array('jquery'), false, true);
+$templateUrl = get_template_directory_uri();
+wp_localize_script(
+    'page-category-landing',
+    'page_vars',
+    array(
+        'templateUrl' =>  $templateUrl
+    )
+);
+
+
+get_header();
+
+?>
+
+
+
+<main class="main-content">
+
+    <!-- Hero -->
+    <?php
+    get_template_part('template-parts/category-landing/content', 'category-hero', $args);
+    ?>
+
+    <!-- Overview / Highlights -->
+    <?php
+    get_template_part('template-parts/category-landing/content', 'category-overview', $args);
+    ?>
+
+    
+    <!-- Ships -->
+    <?php
+    get_template_part('template-parts/category-landing/content', 'category-ships', $args);
+    ?>
+
+    <!-- Itineraries  -->
+    <?php
+    get_template_part('template-parts/category-landing/content', 'category-itineraries', $args);
+    ?>
+
+
+
+
+</main>
+
+
+
+
+
+<?php get_footer(); ?>

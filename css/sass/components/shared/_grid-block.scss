@@ -1,0 +1,38 @@
+.grid-block {
+    @include flexBlock;
+    position: relative;
+
+    &.narrow {
+        & .grid-block__content {
+            max-width: $page-width;         
+        }
+    }
+
+    &__content {
+        @include flexPadding; 
+
+        max-width: $page-width-full;
+        margin-top: 3rem; 
+        
+
+        &__top {
+
+        }
+
+        &__grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, calc(33% - 1rem));
+            gap: 2rem;
+  
+        }
+
+        &__bottom {
+
+        }
+
+       
+    }
+}
+
+
