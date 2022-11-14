@@ -64,8 +64,8 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                 <div class="product-hero__content__main__primary__nav">
                     <a href="#section-highlights" class="product-hero__content__main__primary__nav__link">Highlights</a>
                     <a href="#section-itinerary" class="product-hero__content__main__primary__nav__link">Itinerary</a>
+                    <a href="#section-map" class="product-hero__content__main__primary__nav__link">Map</a>
                     <a href="#section-dates" class="product-hero__content__main__primary__nav__link">Dates</a>
-                    <a href="#section-reviews" class="product-hero__content__main__primary__nav__link">Reviews</a>
                 </div>
             </div>
 

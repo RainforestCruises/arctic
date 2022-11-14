@@ -100,6 +100,7 @@ $args = array(
   'curentYear' => $curentYear,
   'yearSelections' => $yearSelections,
   'shipSizeRange' => $shipSizeRange,
+  'destinationCount' => count($destinationPoints),
 
 );
 
@@ -123,11 +124,16 @@ $args = array(
   get_template_part('template-parts/itinerary/content', 'itinerary-overview', $args);
   ?>
 
+
   <!-- Itinerary Days -->
   <?php
   get_template_part('template-parts/itinerary/content', 'itinerary-days', $args);
   ?>
 
+  <!-- Itinerary Map -->
+  <?php
+  get_template_part('template-parts/itinerary/content', 'itinerary-map', $args);
+  ?>
   <!-- Dates -->
   <?php
   get_template_part('template-parts/itinerary/content', 'itinerary-departures', $args);
@@ -137,6 +143,11 @@ $args = array(
   <!-- Requirements -->
   <?php
   get_template_part('template-parts/itinerary/content', 'itinerary-requirements', $args);
+  ?>
+
+  <!-- Related -->
+  <?php
+  get_template_part('template-parts/itinerary/content', 'itinerary-related', $args);
   ?>
 
   <!-- Reviews -->

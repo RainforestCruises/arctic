@@ -29,8 +29,7 @@ $args = array(
 );
 $args['meta_query'][] = array(
   'key' => 'ship',
-  'value' => $ship,
-  'compare' => 'LIKE'
+  'value' => $ship->ID
 );
 $cabins = get_posts($args);
 

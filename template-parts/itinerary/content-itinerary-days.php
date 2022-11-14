@@ -137,7 +137,7 @@ function dayCountMarkup($string, $exclude_number = false)
             <!-- Top Modal Content -->
             <div class="modal__content__top__nav">
                 <div class="modal__content__top__nav__title">
-                    Itinerary Day Schedule
+                    Itinerary Schedule
                 </div>
             </div>
             <button class="btn-text-icon close-modal-button ">

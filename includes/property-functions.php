@@ -81,10 +81,6 @@ function createDepartureList($post)
 }
 
 
-
-
-
-
 // get lowest price from a list of departures
 function getItineraryShipSize($ships)
 {

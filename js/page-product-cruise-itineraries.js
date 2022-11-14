@@ -10,8 +10,8 @@ jQuery(document).ready(function ($) {
     root.setThemes([am5themes_Animated.new(root), am5themes_Dark.new(root)]);
     var chart = root.container.children.push(
         am5map.MapChart.new(root, {
-            panX: "translateX",
-            panY: "translateY",
+            panX: "none",
+            panY: "none",
             wheelY: "none",
             projection: am5map.geoMercator(),
             homeZoomLevel: 10,
@@ -123,9 +123,9 @@ jQuery(document).ready(function ($) {
         lineSeries.data.setAll(destinationLines);
     });
 
-    window.addEventListener('resize', function() {
-        chart.goHome();
-    });
+    // window.addEventListener('resize', function() {
+    //     chart.goHome();
+    // });
 
 
 });

@@ -11,8 +11,14 @@ $curentYear = $args['curentYear'];
 
             <!-- Title -->
             <div class="slider-block__content__top__title">
-                <div class="title-single">
+                <div class="title-group">
+                    <div class="title-group__title">
                     Cabins
+                    </div>
+                    <div class="title-group__sub">
+                        There are <?php echo count($cabins); ?> cabin types available
+                    </div>
+                    
                 </div>
             </div>
 

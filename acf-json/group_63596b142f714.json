@@ -132,7 +132,7 @@
             "label": "Capacity",
             "name": "capacity",
             "type": "text",
-            "instructions": "",
+            "instructions": "Example: 2 Guests, 1 Guest, 2-4 Guests",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -205,5 +205,5 @@
     "active": true,
     "description": "Cabins CPT",
     "show_in_rest": 0,
-    "modified": 1667951347
+    "modified": 1668444641
 }

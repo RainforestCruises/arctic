@@ -52,6 +52,7 @@ $curentYear = date("Y");
                             $embarkation_point = get_field('embarkation_point', $itinerary);
                             $embarkation = get_the_title($embarkation_point);
                             $days = get_field('itinerary', $itinerary);
+                            $static_price = get_field('static_price', $itinerary);
 
                             $destinations = [];
                             foreach ($days as $day) {
@@ -65,7 +66,6 @@ $curentYear = date("Y");
                             $length_in_nights = get_field('length_in_nights',$itinerary);
                             $top_snippet = get_field('top_snippet', $itinerary);
                             $link = get_the_permalink($itinerary);
-                            $itinerary_data = get_field('itinerary_data', $itinerary);
                             $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
                         ?>
 
@@ -142,7 +142,8 @@ $curentYear = date("Y");
                                         <!-- Price Group -->
                                         <div class="resource-card__content__price-group">
                                             <div class="resource-card__content__price-group__amount">
-                                                $2,955
+                                                <?php echo "$ " . number_format($static_price, 0);  ?>
+
                                             </div>
                                             <div class="resource-card__content__price-group__text">
                                                 Per Person

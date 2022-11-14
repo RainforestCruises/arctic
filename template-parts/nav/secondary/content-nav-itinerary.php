@@ -16,11 +16,12 @@ $title = get_field('display_name');
             <a href="#section-itinerary" class="nav-secondary__content__links__link">
                 Itinerary
             </a>
+            <a href="#section-map" class="nav-secondary__content__links__link">
+                Map
+            </a>
             <a href="#section-dates" class="nav-secondary__content__links__link">
                 Dates
-            </a>
-
-           
+            </a>       
         </div>
         <div class="nav-secondary__content__cta">
             <button class="nav-secondary__content__cta__button btn-pill btn-pill--dark generic-inquire-cta">

@@ -3,151 +3,6 @@
     "title": "Itinerary Post",
     "fields": [
         {
-            "key": "field_62b21d85ba29f",
-            "label": "Departure Finder Data",
-            "name": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_62b21f849fb41",
-            "label": "Ship",
-            "name": "ship",
-            "type": "post_object",
-            "instructions": "Will retrieve property ID from cruise post",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "rfc_cruises"
-            ],
-            "taxonomy": "",
-            "allow_null": 0,
-            "multiple": 0,
-            "return_format": "object",
-            "ui": 1
-        },
-        {
-            "key": "field_62b21e664bd82",
-            "label": "Itinerary Id",
-            "name": "itinerary_id",
-            "type": "text",
-            "instructions": "ID of itinerary in Departure Finder",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_62b21d85c18ba",
-            "label": "Cruise Data",
-            "name": "cruise_data",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "admin_column_enabled": 0,
-            "admin_column_post_types": [
-                "post",
-                "page",
-                "rfc_cruises",
-                "rfc_destinations",
-                "rfc_sub_destinations",
-                "rfc_countries",
-                "rfc_travel_styles"
-            ],
-            "admin_column_taxonomies": [
-                "category",
-                "post_tag",
-                "link_category"
-            ],
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
-            "readonly": 1
-        },
-        {
-            "key": "field_631fba45036ae",
-            "label": "Itinerary Data",
-            "name": "itinerary_data",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_62b21d85c546d",
-            "label": "Last Updated",
-            "name": "last_updated",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "admin_column_enabled": 0,
-            "admin_column_post_types": [
-                "post",
-                "page",
-                "rfc_cruises",
-                "rfc_destinations",
-                "rfc_sub_destinations",
-                "rfc_countries"
-            ],
-            "admin_column_taxonomies": [
-                "category",
-                "post_tag",
-                "link_category"
-            ],
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
-            "readonly": 1
-        },
-        {
             "key": "field_62b21d85c911a",
             "label": "Classifications",
             "name": "",
@@ -164,6 +19,28 @@
             "endpoint": 0
         },
         {
+            "key": "field_637273697b330",
+            "label": "Static Lowest Price",
+            "name": "static_price",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "readonly": 1
+        },
+        {
             "key": "field_6365598f64356",
             "label": "Ships",
             "name": "ships",
@@ -178,31 +55,6 @@
             },
             "post_type": [
                 "rfc_cruises"
-            ],
-            "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "object"
-        },
-        {
-            "key": "field_62b21d85d07ee",
-            "label": "Destinations",
-            "name": "destinations",
-            "type": "relationship",
-            "instructions": "Include all that apply",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "rfc_destinations"
             ],
             "taxonomy": "",
             "filters": [
@@ -477,46 +329,6 @@
             "toolbar": "full",
             "media_upload": 0,
             "delay": 0
-        },
-        {
-            "key": "field_62b611c8ec798",
-            "label": "Requirements",
-            "name": "requirements",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": 0,
-            "max": 0,
-            "layout": "table",
-            "button_label": "",
-            "sub_fields": [
-                {
-                    "key": "field_62b611deec799",
-                    "label": "Text",
-                    "name": "text",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                }
-            ]
         },
         {
             "key": "field_62b9d1b9164f4",
@@ -904,6 +716,142 @@
             ]
         },
         {
+            "key": "field_636d1695f3687",
+            "label": "Inclusions \/ Exclusions",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_62b611c8ec798",
+            "label": "Requirements",
+            "name": "requirements",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_62b611deec799",
+                    "label": "Text",
+                    "name": "text",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
+            "key": "field_636d166cf3685",
+            "label": "Inclusions",
+            "name": "inclusions",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_636d167ff3686",
+                    "label": "item",
+                    "name": "item",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
+            "key": "field_636d16aaf3688",
+            "label": "Exclusions",
+            "name": "exclusions",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_636d16aaf3689",
+                    "label": "item",
+                    "name": "item",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
             "key": "field_636be75b65534",
             "label": "Technical",
             "name": "",
@@ -985,102 +933,6 @@
             "toolbar": "full",
             "media_upload": 0,
             "delay": 0
-        },
-        {
-            "key": "field_636d1695f3687",
-            "label": "Inclusions \/ Exclusions",
-            "name": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_636d166cf3685",
-            "label": "Inclusions",
-            "name": "inclusions",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": 0,
-            "max": 0,
-            "layout": "table",
-            "button_label": "",
-            "sub_fields": [
-                {
-                    "key": "field_636d167ff3686",
-                    "label": "item",
-                    "name": "item",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                }
-            ]
-        },
-        {
-            "key": "field_636d16aaf3688",
-            "label": "Exclusions",
-            "name": "exclusions",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": 0,
-            "max": 0,
-            "layout": "table",
-            "button_label": "",
-            "sub_fields": [
-                {
-                    "key": "field_636d16aaf3689",
-                    "label": "item",
-                    "name": "item",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                }
-            ]
         }
     ],
     "location": [
@@ -1101,5 +953,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1668093648
+    "modified": 1668447407
 }
