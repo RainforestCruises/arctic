@@ -40,6 +40,13 @@
                 <circle cx="8" cy="6" r="2.5" fill="none"></circle>
             </g>
         </symbol>
+        <symbol id="icon-boat" viewBox="0 0 16 16">
+            <title>boat</title>
+            <g class="nc-icon-wrapper">
+                <polygon fill="currentColor" points="10,3 6,3 6,1 4,1 4,3 2,3 2,7 12,7 " stroke="none"></polygon>
+                <polygon points="2,15 0,9 16,9 13,15 " stroke="none"></polygon>
+            </g>
+        </symbol>
         <symbol id="icon-check-out" viewBox="0 0 16 16">
             <title>check out</title>
             <g class="nc-icon-wrapper">

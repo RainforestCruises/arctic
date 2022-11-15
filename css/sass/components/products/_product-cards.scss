@@ -13,6 +13,9 @@
             padding: 1.5rem 2rem;
         }
     }
+    &.large {
+        height: 44rem
+    }
     &.shadow {
         box-shadow: $shadow-medium-around;
     }
@@ -110,6 +113,11 @@
     &.small {
         & .resource-card__image-area {
             height: 22rem !important;
+        }
+    }
+    &.large {
+        & .resource-card__image-area {
+            height: 44rem !important;
         }
     }
     &.shadow {

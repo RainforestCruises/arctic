@@ -1,5 +1,5 @@
 <?php
-$destinations = get_field('destinations', 'options');
+$category_landing_pages = get_field('category_landing_pages', 'options');
 $guides = get_field('guides', 'options');
 
 $queryArgs = array(
@@ -35,10 +35,9 @@ $alwaysActiveMainNav = checkActiveHeader();
         <!-- Left (logo) -->
         <div class="nav-main__content__left">
             <a href="<?php echo get_home_url(); ?>" class="nav-main__content__left__logo-area">
-                <?php 
-                $logo = get_field('logo_main', 'options'); 
-                $logoMinimal = get_field('logo_minimal', 'options'); 
-
+                <?php
+                $logo = get_field('logo_main', 'options');
+                $logoMinimal = get_field('logo_minimal', 'options');
                 ?>
                 <img src="<?php echo $logo['url']; ?>" class="nav-main__content__left__logo-area__logo-main" alt="<?php echo get_bloginfo('name') ?>" />
                 <img src="<?php echo $logoMinimal['url']; ?>" class="nav-main__content__left__logo-area__logo-minimal" alt="<?php echo get_bloginfo('name') ?>" />
@@ -60,8 +59,8 @@ $alwaysActiveMainNav = checkActiveHeader();
             <nav class="nav-main__content__center__nav">
 
                 <ul class="nav-main__content__center__nav__list">
-                    <li class="nav-main__content__center__nav__list__item" navelement="destinations">
-                        Destinations
+                    <li class="nav-main__content__center__nav__list__item" navelement="categorical">
+                        Cruises
                     </li>
                     <li class="nav-main__content__center__nav__list__item" navelement="ships">
                         Ships
@@ -76,24 +75,25 @@ $alwaysActiveMainNav = checkActiveHeader();
             <!-- Nav Mega (abs position)-->
             <div class="nav-mega">
 
-                <!-- Destinations Panel -->
-                <div class="nav-mega__panel " panel="destinations">
-                    <div class="nav-mega__panel__destinations">
-                        <div class="nav-mega__panel__destinations__items">
-                            <?php foreach ($destinations as $d) :
-                                $image =  get_field('feature_image', $d);
-                                $title =  get_field('navigation_title', $d);
+                <!-- Cruises Panel -->
+                <div class="nav-mega__panel " panel="categorical">
+                    <div class="nav-mega__panel__categorical">
+                        <div class="nav-mega__panel__categorical__items">
+                            <?php foreach ($category_landing_pages as $page) :
+                                $hero_slider =  get_field('hero_slider', $page);
+                                $image = $hero_slider[0]['image'];
+                                $title =  get_the_title($page);
                             ?>
-                                <div class="nav-mega__panel__destinations__items__item">
+                                <a class="nav-mega__panel__categorical__items__item" href="<?php echo get_permalink($page); ?>">
                                     <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
-                                    <div class="nav-mega__panel__destinations__items__item__title-group">
+                                    <div class="nav-mega__panel__categorical__items__item__title-group">
 
-                                        <div class="nav-mega__panel__destinations__items__item__title-group__title">
+                                        <div class="nav-mega__panel__categorical__items__item__title-group__title">
                                             <?php echo $title ?>
                                         </div>
 
                                     </div>
-                                </div>
+                                </a>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -109,13 +109,13 @@ $alwaysActiveMainNav = checkActiveHeader();
                             </div>
                             <div class="nav-mega__panel__ships__group__items">
                                 <?php foreach ($small as $ship) :
-                                    $image = get_field('featured_image', $ship);
+                                    $hero_gallery = get_field('hero_gallery', $ship);
                                     $title = get_the_title($ship);
                                     $cruise_data = get_field('cruise_data', $ship);
                                     $sub = itineraryRange($cruise_data, "-") . " Days, Luxury"
                                 ?>
                                     <div class="nav-mega__panel__ships__group__items__item">
-                                        <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
+                                        <img <?php afloat_image_markup($hero_gallery[0]['id'], 'square-small'); ?>>
                                         <div class="nav-mega__panel__ships__group__items__item__title-group">
                                             <div class="nav-mega__panel__ships__group__items__item__title-group__title">
                                                 <?php echo $title ?>
@@ -135,13 +135,13 @@ $alwaysActiveMainNav = checkActiveHeader();
                             </div>
                             <div class="nav-mega__panel__ships__group__items">
                                 <?php foreach ($medium as $ship) :
-                                    $image = get_field('featured_image', $ship);
+                                    $hero_gallery = get_field('hero_gallery', $ship);
                                     $title = get_the_title($ship);
                                     $cruise_data = get_field('cruise_data', $ship);
                                     $sub = itineraryRange($cruise_data, "-") . " Days, Luxury"
                                 ?>
                                     <div class="nav-mega__panel__ships__group__items__item">
-                                        <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
+                                        <img <?php afloat_image_markup($hero_gallery[0]['id'], 'square-small'); ?>>
                                         <div class="nav-mega__panel__ships__group__items__item__title-group">
                                             <div class="nav-mega__panel__ships__group__items__item__title-group__title">
                                                 <?php echo $title ?>
@@ -161,13 +161,13 @@ $alwaysActiveMainNav = checkActiveHeader();
                             </div>
                             <div class="nav-mega__panel__ships__group__items">
                                 <?php foreach ($large as $ship) :
-                                    $image = get_field('featured_image', $ship);
+                                    $hero_gallery = get_field('hero_gallery', $ship);
                                     $title = get_the_title($ship);
                                     $cruise_data = get_field('cruise_data', $ship);
                                     $sub = itineraryRange($cruise_data, "-") . " Days, Luxury"
                                 ?>
                                     <div class="nav-mega__panel__ships__group__items__item">
-                                        <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
+                                        <img <?php afloat_image_markup($hero_gallery[0]['id'], 'square-small'); ?>>
 
                                         <div class="nav-mega__panel__ships__group__items__item__title-group">
                                             <div class="nav-mega__panel__ships__group__items__item__title-group__title">

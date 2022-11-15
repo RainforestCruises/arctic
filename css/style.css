@@ -278,6 +278,10 @@ button {
   font-weight: 400;
   color: #747474;
   padding-bottom: 1rem; }
+  .title-group__sub p {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    max-width: 80%; }
 
 .title-single {
   font-family: "Metropolis", sans-serif;
@@ -857,6 +861,22 @@ h5 {
 .lock-scroll {
   overflow: hidden;
   height: 100%; }
+
+.block-top-divider {
+  position: relative;
+  padding-top: 3rem !important; }
+  .block-top-divider::after {
+    content: "";
+    width: calc(100% - 12rem);
+    height: 1px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #e6e6e6; }
+    @media only screen and (max-width: 50em) {
+      .block-top-divider::after {
+        width: calc(100% - 6rem); } }
 
 .swiper-pagination .swiper-pagination-bullet {
   background-color: #fff; }
@@ -3787,6 +3807,8 @@ h5 {
     height: 22rem; }
     .overlay-card.small .overlay-card__content {
       padding: 1.5rem 2rem; }
+  .overlay-card.large {
+    height: 44rem; }
   .overlay-card.shadow {
     box-shadow: 0 0rem 3rem rgba(0, 0, 0, 0.2); }
   .overlay-card .swiper-button-next,
@@ -3848,6 +3870,8 @@ h5 {
   flex-direction: column; }
   .resource-card.small .resource-card__image-area {
     height: 22rem !important; }
+  .resource-card.large .resource-card__image-area {
+    height: 44rem !important; }
   .resource-card.shadow .resource-card__image-area {
     box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.4); }
   .resource-card.encapsulated {
@@ -6051,6 +6075,57 @@ h5 {
       @media only screen and (max-width: 50em) {
         .category-overview__content__grid {
           grid-template-columns: 100%; } }
+
+.category-guides {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem; }
+  .category-guides :nth-child(1) {
+    grid-column: 1 / span 3; }
+  .category-guides :nth-child(2) {
+    grid-column: 4 / span 3; }
+  .category-guides :nth-child(3) {
+    grid-column: 1 / span 2; }
+  .category-guides :nth-child(4) {
+    grid-column: 3 / span 2; }
+  .category-guides :nth-child(5) {
+    grid-column: 5 / span 2; }
+
+.category-faq__group__question {
+  font-size: 2rem;
+  line-height: 2.6rem;
+  color: #1d2225;
+  position: relative;
+  margin-bottom: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s; }
+  .category-faq__group__question h3 {
+    letter-spacing: 0 !important;
+    font-weight: 600 !important; }
+  @media only screen and (max-width: 50em) {
+    .category-faq__group__question {
+      font-size: 1.8rem;
+      line-height: 2.2rem; } }
+  .category-faq__group__question::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #e6e6e6;
+    bottom: -1rem;
+    left: 0; }
+  .category-faq__group__question:hover {
+    color: #4d8eff; }
+  .category-faq__group__question--active {
+    color: #4d8eff; }
+
+.category-faq__group__answer {
+  font-size: 1.6rem;
+  margin-bottom: 3rem; }
 
 .product-related--old {
   width: 100%;
@@ -13969,27 +14044,27 @@ h5 {
     .nav-mega__panel.active {
       opacity: 1;
       display: block; }
-    .nav-mega__panel__destinations__items {
+    .nav-mega__panel__categorical__items {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       row-gap: 2rem;
       column-gap: 1rem; }
-      .nav-mega__panel__destinations__items__item {
+      .nav-mega__panel__categorical__items__item {
         display: flex;
         align-items: center;
         padding: 1rem;
         width: 100%;
         border: 1px solid #e6e6e6;
         border-radius: 1rem; }
-        .nav-mega__panel__destinations__items__item img {
+        .nav-mega__panel__categorical__items__item img {
           height: 6rem;
           width: 6rem;
           border-radius: 50%;
           margin-right: 1rem; }
-        .nav-mega__panel__destinations__items__item__title-group__title {
+        .nav-mega__panel__categorical__items__item__title-group__title {
           font-size: 1.3rem;
           line-height: 1.8rem; }
-        .nav-mega__panel__destinations__items__item__title-group__sub {
+        .nav-mega__panel__categorical__items__item__title-group__sub {
           font-size: 1.1rem;
           line-height: 1.5rem;
           color: #747474; }

@@ -1,10 +1,12 @@
 <?php
 $itineraries = get_field('itineraries');
+$itineraries_title_subtext = get_field('travel_guide_title_subtext')
+
 ?>
 
 
 <section class="slider-block" section="section-itineraries">
-    <div class="slider-block__content product-related__content">
+    <div class="slider-block__content block-top-divider">
 
         <!-- Top - Title/Nav -->
         <div class="slider-block__content__top">
@@ -15,7 +17,7 @@ $itineraries = get_field('itineraries');
                     Itineraries
                 </div>
                 <div class="title-group__sub">
-                    Explore from <?php echo count($itineraries) ?> itineraries
+                    <?php echo $itineraries_title_subtext; ?>
                 </div>
             </div>
 
@@ -51,31 +53,67 @@ $itineraries = get_field('itineraries');
                         $images =  get_field('hero_gallery', $itinerary);
                         $image =  $images[0];
                         $title = get_field('display_name', $itinerary);
-                        $link = get_the_permalink($itinerary);
+                        $shipsDisplay = getItineraryShips($itinerary);
+                        $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
                         $static_price = get_field('static_price', $itinerary);
 
                     ?>
 
-                        <!-- Overlay Card -->
-                        <div class="overlay-card swiper-slide">
-                            <div class="overlay-card__image-area">
-                                <div class="overlay-card__image-area__item ">
+                        <!-- Itinerary Card -->
+                        <div class="resource-card swiper-slide">
+
+                            <!-- Images Slider -->
+                            <div class="resource-card__image-area">
+                                <a class="resource-card__image-area__item" href="<?php echo get_permalink($itinerary) ?>">
                                     <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
+                                </a>
+                            </div>
+
+                            <!-- Content -->
+                            <div class="resource-card__content">
+
+                                <!-- Title -->
+                                <a class="resource-card__content__title" href="<?php echo get_permalink($itinerary) ?>">
+                                    <?php echo $title; ?>
+                                </a>
+
+                                <!-- Specs -->
+                                <div class="resource-card__content__specs">
+
+                                    <!-- Itinerary -->
+                                    <div class="resource-card__content__specs__item">
+                                        <div class="resource-card__content__specs__item__icon">
+                                            <svg>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-time-clock"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="resource-card__content__specs__item__text">
+                                            Length: <?php echo $length; ?>
+                                        </div>
+                                    </div>
+                                    <!-- Ships -->
+                                    <div class="resource-card__content__specs__item">
+                                        <div class="resource-card__content__specs__item__icon">
+                                            <svg>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="resource-card__content__specs__item__text">
+                                            Ships: <?php echo $shipsDisplay; ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Price Group -->
+                                <div class="resource-card__content__price-group">
+                                    <div class="resource-card__content__price-group__amount">
+                                        <?php echo "$ " . number_format($static_price, 0);  ?>
+                                    </div>
+                                    <div class="resource-card__content__price-group__text">
+                                        Per Person
+                                    </div>
                                 </div>
                             </div>
-                            <a class="overlay-card__content" href="<?php echo $link; ?>">
-                                <div class="overlay-card__content__title-section">
-                                    <div class="overlay-card__content__title-section__sub">
-                                        <?php echo "$ " . number_format($static_price, 0);  ?> Per Person
-                                    </div>
-                                    <div class="overlay-card__content__title-section__title">
-                                        <?php echo $title ?>
-                                    </div>
-                                </div>
-                                <div class="overlay-card__content__cta">
-
-                                </div>
-                            </a>
                         </div>
 
                     <?php $index++;

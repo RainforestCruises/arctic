@@ -88,11 +88,14 @@ $itineraries = get_posts($queryArgs);
                         $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
                         $embarkation_point = get_field('embarkation_point', $itinerary);
                         $embarkation = get_the_title($embarkation_point);
+                        $shipsDisplay = getItineraryShips($itinerary);
+                        $destinations = getItineraryDestinations($itinerary);
+
                         $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
                         $guestsDisplay = get_field('vessel_capacity', $itinerary) . ' Guests, ' . 'Luxury';
                     ?>
 
-                        <!-- Cabin Card -->
+                        <!-- Itinerary Card -->
                         <div class="resource-card swiper-slide">
 
                             <!-- Images Slider -->
@@ -129,28 +132,26 @@ $itineraries = get_posts($queryArgs);
                                             </svg>
                                         </div>
                                         <div class="resource-card__content__specs__item__text">
-                                        Length: <?php echo $length; ?>
+                                            Length: <?php echo $length; ?>
                                         </div>
                                     </div>
-
-                                    <!-- Size -->
+                                    <!-- Ships -->
                                     <div class="resource-card__content__specs__item">
                                         <div class="resource-card__content__specs__item__icon">
                                             <svg>
-                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-check-in"></use>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat"></use>
                                             </svg>
                                         </div>
                                         <div class="resource-card__content__specs__item__text">
-                                        Embarkation: <?php echo $embarkation; ?>
+                                            Ships: <?php echo $shipsDisplay; ?>
                                         </div>
                                     </div>
-
                                 </div>
 
                                 <!-- Price Group -->
                                 <div class="resource-card__content__price-group">
                                     <div class="resource-card__content__price-group__amount">
-                                    <?php echo "$ " . number_format($static_price, 0);  ?>
+                                        <?php echo "$ " . number_format($static_price, 0);  ?>
 
                                     </div>
                                     <div class="resource-card__content__price-group__text">

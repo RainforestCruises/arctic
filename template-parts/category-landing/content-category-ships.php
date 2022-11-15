@@ -1,10 +1,12 @@
 <?php
 $ships = get_field('ships');
+$ships_title_subtext = get_field('travel_guide_title_subtext')
+
 ?>
 
 
 <section class="grid-block" section="section-ships">
-    <div class="grid-block__content product-related__content">
+    <div class="grid-block__content block-top-divider">
 
         <!-- Top - Title/Nav -->
         <div class="grid-block__content__top">
@@ -15,7 +17,7 @@ $ships = get_field('ships');
                     Ships
                 </div>
                 <div class="title-group__sub">
-                    Explore from <?php echo count($ships) ?> ships sailing the Antarctic
+                <?php echo $ships_title_subtext; ?>
                 </div>
             </div>
 

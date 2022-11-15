@@ -739,8 +739,8 @@
         },
         {
             "key": "field_62e0649c6bfb7",
-            "label": "Destinations",
-            "name": "destinations",
+            "label": "Category Landing Pages",
+            "name": "category_landing_pages",
             "type": "relationship",
             "instructions": "",
             "required": 0,
@@ -751,7 +751,7 @@
                 "id": ""
             },
             "post_type": [
-                "rfc_destinations"
+                "page"
             ],
             "taxonomy": "",
             "filters": [
@@ -1068,5 +1068,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1666035276
+    "modified": 1668543597
 }

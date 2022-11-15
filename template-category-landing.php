@@ -30,7 +30,6 @@ get_header();
     get_template_part('template-parts/category-landing/content', 'category-overview', $args);
     ?>
 
-    
     <!-- Ships -->
     <?php
     get_template_part('template-parts/category-landing/content', 'category-ships', $args);
@@ -40,8 +39,16 @@ get_header();
     <?php
     get_template_part('template-parts/category-landing/content', 'category-itineraries', $args);
     ?>
+    
+    <!-- Guides  -->
+    <?php
+    get_template_part('template-parts/category-landing/content', 'category-guides', $args);
+    ?>
 
-
+    <!-- Faq  -->
+    <?php
+    get_template_part('template-parts/category-landing/content', 'category-faq', $args);
+    ?>
 
 
 </main>

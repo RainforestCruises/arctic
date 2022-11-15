@@ -23,7 +23,7 @@
             "label": "Hero Slider",
             "name": "hero_slider",
             "type": "repeater",
-            "instructions": "The first slide does not display a title. Slides that contain a link will generate a link: 'View {title} tours'. Slides with no link (for example, activities) will not render a link below the paragraph.",
+            "instructions": "1920 x 1080",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -34,7 +34,7 @@
             "collapsed": "",
             "min": 0,
             "max": 0,
-            "layout": "table",
+            "layout": "block",
             "button_label": "",
             "sub_fields": [
                 {
@@ -251,6 +251,25 @@
             "endpoint": 0
         },
         {
+            "key": "field_6373ed609797f",
+            "label": "Ships Title Subtext",
+            "name": "ships_title_subtext",
+            "type": "wysiwyg",
+            "instructions": "Snippet under the title",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
             "key": "field_63729d966d75e",
             "label": "Ships",
             "name": "ships",
@@ -274,6 +293,25 @@
             "min": "",
             "max": "",
             "return_format": "object"
+        },
+        {
+            "key": "field_6373ed7d97980",
+            "label": "Itineraries Title Subtext",
+            "name": "itineraries_title_subtext",
+            "type": "wysiwyg",
+            "instructions": "Snippet under the title",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_63729e4c39559",
@@ -339,7 +377,7 @@
             "key": "field_63729d967c191",
             "label": "Travel Guide Posts",
             "name": "travel_guide_posts",
-            "type": "repeater",
+            "type": "relationship",
             "instructions": "Select 6 travel guides to highlight. Order as needed",
             "required": 0,
             "conditional_logic": 0,
@@ -348,35 +386,17 @@
                 "class": "",
                 "id": ""
             },
-            "collapsed": "",
-            "min": 0,
-            "max": 0,
-            "layout": "table",
-            "button_label": "",
-            "sub_fields": [
-                {
-                    "key": "field_63729d97ac0e2",
-                    "label": "Travel Guide",
-                    "name": "travel_guide",
-                    "type": "post_object",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "rfc_travel_guides"
-                    ],
-                    "taxonomy": "",
-                    "allow_null": 0,
-                    "multiple": 0,
-                    "return_format": "object",
-                    "ui": 1
-                }
-            ]
+            "post_type": [
+                "rfc_travel_guides"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
         },
         {
             "key": "field_63729d967fc45",
@@ -663,7 +683,7 @@
         "the_content"
     ],
     "active": true,
-    "description": "Destination (Destination) - Page",
+    "description": "Category Landning - Page",
     "show_in_rest": 0,
-    "modified": 1668456038
+    "modified": 1668543405
 }

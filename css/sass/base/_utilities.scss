@@ -68,3 +68,22 @@
     overflow: hidden;
     height: 100%;
 }
+
+.block-top-divider {
+    position: relative;
+    padding-top: 3rem !important;
+
+    &::after {
+        content: "";
+        width: calc(100% - 12rem);
+        @media only screen and (max-width: $bp-medium) {
+            width: calc(100% - 6rem);
+        }
+        height: 1px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: $color-grey-light-1a;
+    }
+}

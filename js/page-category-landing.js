@@ -127,12 +127,12 @@ jQuery(document).ready(function ($) {
     });
 
     //faq expand/hide
-    $(".category-faq__grid-container__faq__question").on("click", function (e) {
+    $(".category-faq__group__question").on("click", function (e) {
         e.preventDefault();
         let $this = $(this);
-        $this.parent().find('.category-faq__grid-container__faq__answer').slideToggle(350);
+        $this.parent().find('.category-faq__group__answer').slideToggle(350);
         $this.parent().find('.plus-minus-toggle').toggleClass('plus-collapsed');
-        $this.parent().find('.category-faq__grid-container__faq__question').toggleClass('category-faq__grid-container__faq__question--active');
+        $this.parent().find('.category-faq__group__question').toggleClass('category-faq__group__question--active');
 
     });
 

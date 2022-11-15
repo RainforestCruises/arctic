@@ -174,7 +174,54 @@ function shipSizeDisplay($pax)
     return $displayText;
 }
 
+function getItineraryDestinations($itinerary) {
+    $days = get_field('itinerary', $itinerary);
+    $embarkation_point = get_field('embarkation_point', $itinerary);
+    
+    $destinations = [];
+    foreach ($days as $day) {
+        if ($embarkation_point != $day['destination']) {
+            $destination = $day['destination'];
+            $destinations[] = get_the_title($destination);
+        }
+    }
 
+    $display = "";
+    $destinationCount = count($destinations);
+    $x = 1;
+    foreach($destinations as $d){
+        $name = $d;
+
+        if($x < $destinationCount){
+            $display .= $name . ", ";
+        } else {
+            $display .= $name;
+        }
+        $x++;
+    }
+
+    return $display;
+}
+
+function getItineraryShips($itinerary) {
+    $ships = get_field('ships', $itinerary);
+    $display = "";
+    $shipCount = count($ships);
+
+    $x = 1;
+    foreach($ships as $s){
+        $name = get_the_title($s);
+
+        if($x < $shipCount){
+            $display .= $name . ", ";
+        } else {
+            $display .= $name;
+        }
+        $x++;
+    }
+
+    return $display;
+}
 
 
 //Range (From x Days to x Days)

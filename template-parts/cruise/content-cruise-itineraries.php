@@ -54,13 +54,8 @@ $curentYear = date("Y");
                             $days = get_field('itinerary', $itinerary);
                             $static_price = get_field('static_price', $itinerary);
 
-                            $destinations = [];
-                            foreach ($days as $day) {
-                                if ($embarkation_point != $day['destination']) {
-                                    $destination = $day['destination'];
-                                    $destinations[] = get_the_title($destination);
-                                }
-                            }
+                            $destinations = getItineraryDestinations($itinerary);
+                    
                             //build list of unique, with embarkations removed
                             $title = get_field('display_name',$itinerary);
                             $length_in_nights = get_field('length_in_nights',$itinerary);
@@ -131,9 +126,7 @@ $curentYear = date("Y");
                                                     </svg>
                                                 </div>
                                                 <div class="resource-card__content__specs__item__text">
-                                                    <?php foreach ($destinations as $destination) : ?>
-                                                        <span><?php echo $destination; ?>, </span>
-                                                    <?php endforeach; ?>
+                                                    <?php echo $destinations; ?>
                                                 </div>
                                             </div>
 
