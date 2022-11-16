@@ -1,10 +1,12 @@
 <?php
 $travel_guide_posts = get_field('travel_guide_posts');
-$travel_guide_title_subtext = get_field('travel_guide_title_subtext')
+$travel_guide_title_subtext = get_field('travel_guide_title_subtext');
+$view_all_guide_link = get_field('view_all_guide_link');
+
 ?>
 
-
-<section class="grid-block" section="section-ships">
+<!-- Travel Guide -->
+<section class="grid-block" id="section-guide">
     <div class="grid-block__content block-top-divider">
 
         <!-- Top - Title/Nav -->
@@ -67,6 +69,12 @@ $travel_guide_title_subtext = get_field('travel_guide_title_subtext')
 
 
 
+        </div>
+
+        <div class="grid-block__content__cta">
+            <a class="cta-primary cta-primary--inverse" id="all-guides-link" href="<?php echo $view_all_guide_link ?>">
+                Read All Travel Guide
+            </a>
         </div>
     </div>
 </section>

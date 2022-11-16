@@ -2,7 +2,8 @@
 $title = get_field('display_name');
 ?>
 
-<nav class="nav-secondary">
+<!-- Itinerary Nav -->
+<nav class="nav-secondary small-width">
     <div class="nav-secondary__content">
         <div class="nav-secondary__content__title">
             <a href="#section-top" class="nav-secondary__content__title__link">

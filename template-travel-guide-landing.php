@@ -1,22 +1,9 @@
 <?php
-/*Template Name: Travel Guide*/
+/*Template Name: Travel Guide Landing*/
 wp_enqueue_script('page-travel-guide-landing', get_template_directory_uri() . '/js/page-travel-guide-landing.js', array('jquery'), false, true);
-?>
-
-<?php
 get_header();
-?>
 
-<?php
-$destination = get_field('destination');
-$region = get_field('region');
-$location = get_field('location');
-
-$image = get_field('image');
 $intro_snippet = get_field('intro_snippet');
-
-$destination_type = get_field('destination_type');
-
 $pageTitle = get_the_title();
 
 $categories = get_posts(array(
@@ -26,92 +13,11 @@ $categories = get_posts(array(
     'order' => 'ASC',
 ));
 
-//all related posts
-
-if ($destination_type == 'rfc_destinations') {
-    $args = array(
-        'posts_per_page' => -1,
-        'post_type' => 'rfc_travel_guides',
-        'meta_query' => array(
-            array(
-                'key' => 'destinations', // name of custom field
-                'value' => '"' . $destination->ID . '"',
-                'compare' => 'LIKE'
-            )
-        )
-
-    );
-    
-};
-
-if ($destination_type == 'rfc_regions') {
-    $args = array(
-        'posts_per_page' => -1,
-        'post_type' => 'rfc_travel_guides',
-        'meta_query' => array(
-            array(
-                'key' => 'region', // name of custom field
-                'value' => $region->ID, // strangely will not work with quotes around
-                'compare' => 'LIKE'
-            ),
-            array(
-                'key' => 'is_region_level', // name of custom field
-                'value' => true,
-                'compare' => 'LIKE'
-            )
-        )
-
-    );
-
-
-
-    //get all posts from child destinations also here
-    console_log('region');
-    console_log($region->ID);
-}
-
-
-if ($destination_type == 'rfc_locations') {
-    $args = array(
-        'posts_per_page' => -1,
-        'post_type' => 'rfc_travel_guides',
-        'meta_query' => array(
-            array(
-                'key' => 'locations', // name of custom field
-                'value' => '"' . $location->ID . '"',
-                'compare' => 'LIKE'
-            )
-        )
-    );
-};
-
-
-
-//breadcrumbs
-//destination / region
-$breadcrumbDestinationPage  = get_field('breadcrumb_destination_page');
-
-$breadcrumbDestinationURL = get_permalink($breadcrumbDestinationPage);
-
-$templateType = get_page_template_slug($breadcrumbDestinationPage->ID);
-$breadcrumbDestinationText = "";
-if ($templateType == 'template-destinations-destination.php' || $templateType == 'template-destinations-cruise.php') {
-    $destinationPost = get_field('destination_post', $breadcrumbDestinationPage);
-    $breadcrumbDestinationText  = get_field('navigation_title', $destinationPost);
-}
-if ($templateType == 'template-destinations-region.php') {
-    $regionPost = get_field('region_post', $breadcrumbDestinationPage);
-    $breadcrumbDestinationText  = get_field('navigation_title', $regionPost);
-}
-
-
-$posts = get_posts($args); //Stage I posts
-
-
+$breadcrumbs  = get_field('breadcrumbs');
+$posts = get_field('travel_guide_posts'); //Stage I posts
 ?>
 
 <main class="travel-guide-landing-page">
-
 
     <!-- Content -->
     <section class="travel-guide-landing-page__content">
@@ -120,18 +26,23 @@ $posts = get_posts($args); //Stage I posts
             <li>
                 <a href="<?php echo home_url() ?>">Home</a>
             </li>
-            <li>
-                <a href=" <?php echo $breadcrumbDestinationURL; ?>"><?php echo $breadcrumbDestinationText; ?></a>
-            </li>
+            <?php foreach ($breadcrumbs as $b) :
+                $page = $b['page_link'];
+                $display_text = $b['display_text'];
+            ?>
+                <li>
+                    <a href=" <?php echo get_permalink($page); ?>"><?php echo $display_text; ?></a>
+                </li>
+            <?php endforeach; ?>
 
             <li>
-                <?php echo get_the_title(); ?>
+                Guide
             </li>
         </ol>
         <h1 class="travel-guide-landing-page__content__title">
             <?php echo $pageTitle ?>
         </h1>
-       
+
         <div class="travel-guide-landing-page__content__subtext">
             <?php echo $intro_snippet ?>
         </div>
@@ -173,11 +84,10 @@ $posts = get_posts($args); //Stage I posts
 
             ?>
 
-
                     <div class="guide-item <?php echo $isoClasses ?>">
-                        <div class="guide-item__image-area">
+                        <a class="guide-item__image-area" href="<?php echo the_permalink($p) ?>">
                             <img <?php afloat_image_markup($imageID, 'featured-medium'); ?>>
-                        </div>
+                        </a>
                         <div class="guide-item__bottom">
                             <ul class="guide-item__bottom__category">
                                 <?php if ($guideCategories) :
@@ -192,7 +102,7 @@ $posts = get_posts($args); //Stage I posts
                                 endif;  ?>
                             </ul>
                             <a class="guide-item__bottom__title" href="<?php echo the_permalink($p) ?>">
-                            
+
                                 <h3>
                                     <?php echo get_field('navigation_title', $p); ?>
                                 </h3>
@@ -221,7 +131,7 @@ $posts = get_posts($args); //Stage I posts
             ?>
         </div>
         <div class="travel-guide-landing-page__content__no-results" id="no-results-message">
-        No travel guides available. Please select another category.
+            No travel guides available. Please select another category.
         </div>
     </section>
 

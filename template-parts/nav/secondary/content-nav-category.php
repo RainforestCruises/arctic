@@ -10,17 +10,19 @@ $title = get_the_title();
             </a>
         </div>
         <div class="nav-secondary__content__links">
-            <a href="#section-highlights" class="nav-secondary__content__links__link">
-                Highlights
-            </a>
-            <a href="#section-itineraries" class="nav-secondary__content__links__link">
-                Itineraries
-            </a>
+
             <a href="#section-ships" class="nav-secondary__content__links__link">
                 Ships
             </a>
+
+            <a href="#section-itineraries" class="nav-secondary__content__links__link">
+                Itineraries
+            </a>
+            <a href="#section-guide" class="nav-secondary__content__links__link">
+                Travel Guide
+            </a>
             <a href="#section-faq" class="nav-secondary__content__links__link">
-                Reviews
+                FAQ
             </a>
         </div>
         <div class="nav-secondary__content__cta">

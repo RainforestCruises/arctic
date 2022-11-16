@@ -47,10 +47,10 @@
         },
         {
             "key": "field_60abf5ae5dfe3",
-            "label": "Breadcrumb Destination Page",
-            "name": "breadcrumb_destination_page",
-            "type": "post_object",
-            "instructions": "Select Destination Page for guide",
+            "label": "Breadcrumbs",
+            "name": "breadcrumbs",
+            "type": "repeater",
+            "instructions": "Breadcrumb Links",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -58,40 +58,54 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "page"
-            ],
-            "taxonomy": [
-                "category:destinations"
-            ],
-            "allow_null": 0,
-            "multiple": 0,
-            "return_format": "object",
-            "ui": 1
-        },
-        {
-            "key": "field_60abf5ea5dfe4",
-            "label": "Breadcrumb Travel Guide Page",
-            "name": "breadcrumb_travel_guide_page",
-            "type": "post_object",
-            "instructions": "Select landing page Travel guide of this destination",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "page"
-            ],
-            "taxonomy": [
-                "category:travel-guide"
-            ],
-            "allow_null": 0,
-            "multiple": 0,
-            "return_format": "object",
-            "ui": 1
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_63751e7ede5b7",
+                    "label": "Page Link",
+                    "name": "page_link",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "page"
+                    ],
+                    "taxonomy": "",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "object",
+                    "ui": 1
+                },
+                {
+                    "key": "field_63751ebcde5b8",
+                    "label": "Display Text",
+                    "name": "display_text",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
         },
         {
             "key": "field_6001f3e694707",
@@ -227,5 +241,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "Travel Guide - CPT",
-    "modified": 1622221524
+    "show_in_rest": 0,
+    "modified": 1668619986
 }

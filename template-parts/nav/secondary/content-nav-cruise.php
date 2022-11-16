@@ -1,8 +1,8 @@
 <?php
 $title = get_the_title();
 ?>
-
-<nav class="nav-secondary">
+<!-- Cruise Nav -->
+<nav class="nav-secondary small-width">
     <div class="nav-secondary__content">
         <div class="nav-secondary__content__title">
             <a href="#section-top" class="nav-secondary__content__title__link">

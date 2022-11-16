@@ -9,194 +9,167 @@ wp_localize_script(
     'templateUrl' =>  $templateUrl
   )
 );
-?>
-
-<?php
-while (have_posts()) :
-  the_post();
-  $image  = get_field('featured_image');
-  $categories  = get_field('categories');
-  $displayCategory = "";
-
-  if ($categories) {
-    $firstCategoryPost = $categories[0];
-    $displayCategory = get_the_title($firstCategoryPost);
-  }
 
 
-  //breadcrumbs
-  //destination / region
-  $breadcrumbDestinationPage  = get_field('breadcrumb_destination_page');
-  $breadcrumbDestinationURL = get_permalink($breadcrumbDestinationPage);
+$image  = get_field('featured_image');
+$categories  = get_field('categories');
+$displayCategory = "";
 
-  $templateType = get_page_template_slug($breadcrumbDestinationPage->ID);
-  $breadcrumbDestinationText = "";
-  if ($templateType == 'template-destinations-destination.php' || $templateType == 'template-destinations-cruise.php') {
-    $destinationPost = get_field('destination_post', $breadcrumbDestinationPage);
-    $breadcrumbDestinationText  = get_field('navigation_title', $destinationPost);
-  }
-  if ($templateType == 'template-destinations-region.php') {
-    $regionPost = get_field('region_post', $breadcrumbDestinationPage);
-    $breadcrumbDestinationText  = get_field('navigation_title', $regionPost);
-  }
+if ($categories) {
+  $firstCategoryPost = $categories[0];
+  $displayCategory = get_the_title($firstCategoryPost);
+}
 
-  //breadcrumbs
-  //travel guide
-  $breadcrumbTravelGuidePage  = get_field('breadcrumb_travel_guide_page');
-  $breadcrumbTravelGuideURL = get_permalink($breadcrumbTravelGuidePage);
 
-  $guideType = get_field('destination_type', $breadcrumbTravelGuidePage);
+//breadcrumbs
+$breadcrumbs  = get_field('breadcrumbs');
 
-  $breadcrumbTravelGuideText  = "";
 
-  if ($guideType == 'rfc_destinations') {
-    $destinationPost = get_field('destination', $breadcrumbTravelGuidePage);
-    $breadcrumbTravelGuideText  = get_field('navigation_title', $destinationPost);
-  }
-  if ($guideType == 'rfc_regions') {
-    $regionPost = get_field('region', $breadcrumbTravelGuidePage);
-    $breadcrumbTravelGuideText  = get_field('navigation_title', $regionPost);
-  }
-  if ($guideType == 'rfc_locations') {
-    $locationPost = get_field('location', $breadcrumbTravelGuidePage);
-    $breadcrumbTravelGuideText  = get_field('navigation_title', $locationPost);
-  }
+//related posts
+$queryArgs = array(
+  'post_type' => 'rfc_travel_guides',
+  'posts_per_page' => 9,
+  'post__not_in' => array($post->ID)
+);
 
-  //related posts
-  $queryArgs = array(
-    'post_type' => 'rfc_travel_guides',
-    'posts_per_page' => 9,
-    'post__not_in' => array($post->ID)
-  );
+// $queryArgsDestination = array();
+// $queryArgsDestination['relation'] = 'OR';
+// $destinations = get_field('destinations');
+// if ($destinations) {
+//   foreach ($destinations as $d) {
+//     $queryArgsDestination[] = array(
+//       'key'     => 'destinations',
+//       'value'   =>  '"' . $d->ID . '"',
+//       'compare' => 'LIKE'
+//     );
+//   }
+// };
 
-  $queryArgsDestination = array();
-  $queryArgsDestination['relation'] = 'OR';
-  $destinations = get_field('destinations');
-  if ($destinations) {
-    foreach ($destinations as $d) {
-      $queryArgsDestination[] = array(
-        'key'     => 'destinations',
-        'value'   =>  '"' . $d->ID . '"',
-        'compare' => 'LIKE'
-      );
-    }
-  };
-
-  $queryArgs['meta_query'][] = $queryArgsDestination;
-  $travelGuidePosts = new WP_Query($queryArgs);
+// $queryArgs['meta_query'][] = $queryArgsDestination;
+$relatedGuidePosts = get_posts($queryArgs);
 
 ?>
 
 
-  <!-- Product Page Container -->
-  <div class="travel-guide-page">
-    <div class="travel-guide">
+<!-- Travel Guide Single -->
+<main>
+
+  <!-- Hero Section -->
+  <section class="guide-hero">
+    <div class="guide-hero__content">
       <!-- Breadcrumb -->
-      <ol class="travel-guide__breadcrumb">
+      <ol class="guide-hero__content__breadcrumb">
         <li>
           <a href="<?php echo home_url() ?>">Home</a>
         </li>
-        <li>
-          <a href=" <?php echo $breadcrumbDestinationURL; ?>"><?php echo $breadcrumbDestinationText; ?></a>
-        </li>
-        <li>
-          <a href=" <?php echo $breadcrumbTravelGuideURL; ?>"><?php echo $breadcrumbTravelGuideText; ?> Travel Guide</a>
-        </li>
+        <?php foreach ($breadcrumbs as $b) :
+          $page = $b['page_link'];
+          $display_text = $b['display_text'];
+        ?>
+          <li>
+            <a href=" <?php echo get_permalink($page); ?>"><?php echo $display_text; ?></a>
+          </li>
+        <?php endforeach; ?>
         <li>
           <?php echo get_field('navigation_title'); ?>
         </li>
       </ol>
-
-      <h1 class="travel-guide__title">
+      <!-- Title -->
+      <h1 class="guide-hero__content__title">
         <?php echo get_field('navigation_title'); ?>
       </h1>
-      <div class="travel-guide__category">
+      <!-- Category -->
+      <div class="guide-hero__content__category">
         <?php echo $displayCategory ?>
       </div>
-      <div class="travel-guide__image">
+      <!-- Image -->
+      <div class="guide-hero__content__image">
         <?php if ($image) : ?>
           <img <?php afloat_image_markup($image['ID'], 'featured-largest', array('featured-largest', 'featured-large')); ?>>
         <?php endif; ?>
       </div>
+    </div>
+  </section>
 
+  <!-- Main Section -->
+  <section class="guide-main">
+    <div class="guide-main__content">
 
-
-
-      <div class="travel-guide__content drop-cap-1a">
+      <!-- Copy Content -->
+      <div class="guide-main__content__copy">
         <?php echo the_content(); ?>
       </div>
 
-      <div class="travel-guide__disclaimer">
-        <h5 class="travel-guide__disclaimer__header">
+      <!-- Disclaimer -->
+      <div class="guide-main__content__disclaimer">
+        <h5 class="guide-main__content__disclaimer__header">
           Disclaimer
         </h5>
         <?php echo get_field('disclaimer', 'options'); ?>
       </div>
-      <div class="travel-guide__entry">
+
+      <!-- Entry Date -->
+      <div class="guide-main__content__entry">
         This entry was posted <?php echo get_the_date(); ?>
       </div>
 
     </div>
-    <div class="travel-guide-related">
-      <h2 class="travel-guide-related__title">
-        You may also like
+
+  </section>
+
+  <!-- Related Guides -->
+  <section class="guide-related">
+    <div class="guide-related__content">
+      <h2 class="guide-related__content__title">
+        You May Also Be Interested In
       </h2>
-      <div class="travel-guide-related__slider-area">
-        <div class="travel-guide-related__slider-area__slider" id="related-slider">
+      <div class="guide-related__content__slider-area">
+        <div class="guide-related__content__slider-area__slider" id="related-slider">
 
           <?php
-          if ($travelGuidePosts->have_posts()) :
-            while ($travelGuidePosts->have_posts()) : $travelGuidePosts->the_post();
-              $post_featured_image = get_field('featured_image');
-              $imageId = "";
-              if($post_featured_image){
-                $imageId = $post_featured_image['id'];
-              }
+          foreach ($relatedGuidePosts as $relatedPost) :
+            $post_featured_image = get_field('featured_image', $relatedPost);
+            $imageId = $post_featured_image['id'];
+     
           ?>
-              <!-- Item -->
-              <div class="travel-guide-related__slider-area__slider__item">
-                <img <?php afloat_image_markup($imageId, 'featured-medium'); ?> class="travel-guide-related__slider-area__slider__item__image">
-                <div class="travel-guide-related__slider-area__slider__item__content">
-                  <a class="travel-guide-related__slider-area__slider__item__content__title" href="<?php echo the_permalink(); ?>">
-                    <h3>
-                    <?php echo the_title(); ?>
-                    </h3>
-                    
+            <!-- Item -->
+            <div class="guide-related__content__slider-area__slider__item">
+              <img <?php afloat_image_markup($imageId, 'featured-medium'); ?> class="guide-related__content__slider-area__slider__item__image">
+              <div class="guide-related__content__slider-area__slider__item__content">
+                <a class="guide-related__content__slider-area__slider__item__content__title" href="<?php echo get_permalink($relatedPost); ?>">
+                  <h3>
+                    <?php echo get_the_title($relatedPost); ?>
+                  </h3>
+
+                </a>
+                <div class="guide-related__content__slider-area__slider__item__content__text">
+                  <?php echo get_the_excerpt($relatedPost); ?>
+                </div>
+                <div class="guide-related__content__slider-area__slider__item__content__cta">
+                  <a class="goto-button goto-button--small" href="<?php echo get_permalink($relatedPost); ?>">
+                    Read More
+                    <svg>
+                      <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-arrow-right"></use>
+                    </svg>
                   </a>
-                  <div class="travel-guide-related__slider-area__slider__item__content__text">
-                    <?php echo the_excerpt(); ?>
-                  </div>
-                  <div class="travel-guide-related__slider-area__slider__item__content__cta">
-                    <a class="goto-button goto-button--small" href="<?php echo the_permalink(); ?>">
-                      Read More
-                      <svg>
-                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-arrow-right"></use>
-                      </svg>
-                    </a>
-                  </div>
                 </div>
               </div>
+            </div>
           <?php
-            endwhile;
-            wp_reset_postdata(); //very important to rest after custom query
-          endif;
+          endforeach;
           ?>
         </div>
       </div>
 
     </div>
+  </section>
 
 
-  </div>
-  <div class="travel-guide-newsletter">
-    <?php
-    get_template_part('template-parts/shared/content', 'shared-newsletter');
-    ?>
 
-  </div>
 
-<?php
-endwhile;
-?>
+</main>
+
+
+
 <!-- #site-wrapper end-->
 <?php get_footer() ?>

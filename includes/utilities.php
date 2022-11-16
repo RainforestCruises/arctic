@@ -466,7 +466,7 @@ function checkActiveHeader()
     $templateName = get_page_template_slug();
     $postTypeName = get_post_type();
 
-    if ($templateName == 'template-reviews-toplevel.php' || $templateName == 'template-about.php' || $templateName == 'template-generic.php' || $templateName == 'template-deals.php' || $templateName == 'template-deals-toplevel.php' || $templateName == 'template-error404.php' || $templateName == 'template-contact.php' || $templateName == 'template-search.php' || $templateName == 'template-travel-guide.php') {
+    if ($templateName == 'template-reviews-toplevel.php' || $templateName == 'template-about.php' || $templateName == 'template-generic.php' || $templateName == 'template-deals.php' || $templateName == 'template-deals-toplevel.php' || $templateName == 'template-error404.php' || $templateName == 'template-contact.php' || $templateName == 'template-search.php' || $templateName == 'template-travel-guide-landing.php') {
         $alwaysActiveHeader = true;
     }
 
@@ -485,11 +485,13 @@ function renderHeaderClasses()
     $templateName = get_page_template_slug();
     $postTypeName = get_post_type();
 
+    //fixed to view always
     if ($templateName == 'template-home.php') {
         $classes .= ' fixed ';
     }
 
-    if ($postTypeName == 'rfc_cruises' || $postTypeName == 'rfc_itineraries') {
+    //small width
+    if ($postTypeName == 'rfc_cruises' || $postTypeName == 'rfc_itineraries' || $postTypeName == 'rfc_travel_guides') {
         $classes .= ' small-width ';
     }
 
@@ -503,7 +505,7 @@ function renderFooterClasses()
     $templateName = get_page_template_slug();
     $postTypeName = get_post_type();
 
-    if ($postTypeName == 'rfc_cruises' || $postTypeName == 'rfc_itineraries') {
+    if ($postTypeName == 'rfc_cruises' || $postTypeName == 'rfc_itineraries' || $postTypeName == 'rfc_travel_guides') {
         $classes .= ' narrow ';
     }
 

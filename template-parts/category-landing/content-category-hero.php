@@ -42,16 +42,16 @@ $title = get_the_title();
         <div class="category-hero__content__page-nav">
             <ul class="category-hero__content__page-nav__list">
                 <li class="category-hero__content__page-nav__list__item">
-                    <a href="#section-ships" class="category-hero__content__page-nav__list__item__link page-nav-template">Ships</a>
+                    <a href="#section-ships" class="category-hero__content__page-nav__list__item__link">Ships</a>
                 </li>
                 <li class="category-hero__content__page-nav__list__item">
-                    <a href="#section-itineraries" class="category-hero__content__page-nav__list__item__link page-nav-template">Itineraries</a>
+                    <a href="#section-itineraries" class="category-hero__content__page-nav__list__item__link">Itineraries</a>
                 </li>
                 <li class="category-hero__content__page-nav__list__item">
-                    <a href="#section-guide" class="category-hero__content__page-nav__list__item__link page-nav-template">Travel Guide</a>
+                    <a href="#section-guide" class="category-hero__content__page-nav__list__item__link">Travel Guide</a>
                 </li>
                 <li class="category-hero__content__page-nav__list__item">
-                    <a href="#section-faq" class="category-hero__content__page-nav__list__item__link page-nav-template">FAQ</a>
+                    <a href="#section-faq" class="category-hero__content__page-nav__list__item__link">FAQ</a>
                 </li>
 
             </ul>

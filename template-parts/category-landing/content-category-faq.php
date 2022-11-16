@@ -3,8 +3,8 @@ $faqs = get_field('faqs');
 ?>
 
 
-
-<section class="grid-block" section="section-ships">
+<!-- FAQ -->
+<section class="grid-block" id="section-faq">
     <div class="grid-block__content block-top-divider">
 
         <!-- Top - Title/Nav -->

@@ -753,7 +753,9 @@
             "post_type": [
                 "page"
             ],
-            "taxonomy": "",
+            "taxonomy": [
+                "category:category-landing"
+            ],
             "filters": [
                 "search"
             ],
@@ -1068,5 +1070,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1668543597
+    "modified": 1668613723
 }

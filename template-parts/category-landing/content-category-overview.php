@@ -6,7 +6,7 @@ $highlights = get_field('highlights');
 
 ?>
 
-<!-- Cruise Overview -->
+<!-- Overview / Highlights -->
 <section class="category-overview" id="section-highlights">
 
     <div class="category-overview__content ">

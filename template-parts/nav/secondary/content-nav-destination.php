@@ -27,6 +27,7 @@ else :
     $destinationType = "cruise";
 endif; ?>
 
+<!-- Destination Nav -->
 <nav class="nav-secondary" id="nav-secondary">
     <div class="nav-secondary__main">
         <div class="nav-secondary__main__title-area">

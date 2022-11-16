@@ -17,3 +17,55 @@
                                             <?php echo $destinations; ?>
                                         </div>
                                     </div>
+
+
+
+
+
+
+                                    
+  <div class="travel-guide-related">
+    <h2 class="travel-guide-related__title">
+      You May Also Be Interested In
+    </h2>
+    <div class="travel-guide-related__slider-area">
+      <div class="travel-guide-related__slider-area__slider" id="related-slider">
+
+        <?php
+        foreach ($relatedGuidePosts as $relatedPost) :
+          $post_featured_image = get_field('featured_image', $relatedPost);
+          $imageId = "";
+          if ($post_featured_image) {
+            $imageId = $post_featured_image['id'];
+          }
+        ?>
+          <!-- Item -->
+          <div class="travel-guide-related__slider-area__slider__item">
+            <img <?php afloat_image_markup($imageId, 'featured-medium'); ?> class="travel-guide-related__slider-area__slider__item__image">
+            <div class="travel-guide-related__slider-area__slider__item__content">
+              <a class="travel-guide-related__slider-area__slider__item__content__title" href="<?php echo the_permalink(); ?>">
+                <h3>
+                  <?php echo the_title(); ?>
+                </h3>
+
+              </a>
+              <div class="travel-guide-related__slider-area__slider__item__content__text">
+                <?php echo the_excerpt(); ?>
+              </div>
+              <div class="travel-guide-related__slider-area__slider__item__content__cta">
+                <a class="goto-button goto-button--small" href="<?php echo the_permalink(); ?>">
+                  Read More
+                  <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-arrow-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        <?php
+        endforeach;
+        ?>
+      </div>
+    </div>
+
+  </div>

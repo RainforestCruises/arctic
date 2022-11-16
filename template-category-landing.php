@@ -1,6 +1,5 @@
 <?php
 /*Template Name: Category Landing*/
-wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', array('jquery'), false, true);
 wp_enqueue_script('page-category-landing', get_template_directory_uri() . '/js/page-category-landing.js', array('jquery'), false, true);
 $templateUrl = get_template_directory_uri();
 wp_localize_script(
@@ -10,6 +9,7 @@ wp_localize_script(
         'templateUrl' =>  $templateUrl
     )
 );
+wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', array('jquery'), false, true);
 
 
 get_header();

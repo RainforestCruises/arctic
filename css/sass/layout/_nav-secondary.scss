@@ -9,6 +9,13 @@
     opacity: 0;
     z-index: 0;
 
+    &.small-width {
+        
+        .nav-secondary__content{
+            max-width: $page-width;
+        }
+    }
+
     &.active {
         display: flex;
         animation: fadein 0.4s;
@@ -24,7 +31,7 @@
         align-items: center;
         height: 100%;
         width: 100%;
-        max-width: $page-width;
+        max-width: $page-width-full;
         @include flexPadding;
 
         display: grid;

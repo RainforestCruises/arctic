@@ -4,8 +4,8 @@ $itineraries_title_subtext = get_field('travel_guide_title_subtext')
 
 ?>
 
-
-<section class="slider-block" section="section-itineraries">
+<!-- Itineraries -->
+<section class="slider-block" id="section-itineraries">
     <div class="slider-block__content block-top-divider">
 
         <!-- Top - Title/Nav -->

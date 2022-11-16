@@ -1,527 +1,516 @@
-.travel-guide-page {
-    padding-top: $page-top-padding;
-
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-
-    position: relative;
-    z-index: 0;
-
-    @media only screen and (max-width: $bp-medium) {
-        padding-top: $page-top-padding - 3rem;
-    }
-}
-
-.travel-guide-newsletter {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.travel-guide {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    max-width: $page-width;
-    padding: 0 6rem;
-    @media only screen and (max-width: $bp-small) { 
-        padding: 0 3rem;
-    }
-
-    &__category {
-        font-size: 1.6rem;
-        letter-spacing: 0.2rem;
-        text-transform: uppercase;
-        color: $color-gold;
-        text-align: center;
-        font-weight: 500;
-        margin-bottom: 3rem;
-    }
-
-    &__title {
-        font-size: 5rem;
-        line-height: 5.8rem;
-        color: $color-primary;
-        font-weight: 500;
-        letter-spacing: .2rem;
-        text-align: center;
-        margin-bottom: 1rem;
-
-        @media only screen and (max-width: $bp-small) {
-            font-size: 3.5rem;
-            line-height: 4rem;
-            margin-bottom: 1rem;
-        }
-    }
-
-    &__image {
-        & img {
-            object-fit: cover;
-            height: 100%;
-            width: 100%;
-            box-shadow: $shadow-medium;
-        }
-        margin-bottom: 3rem;
-    }
-
-    &__breadcrumb {
-        margin-bottom: 2rem;
-        font-size: 1.2rem;
-        letter-spacing: 0.1rem;
-        justify-self: flex-start;
-        font-weight: 400;
-
-        justify-content: center;
-
-        display: flex;
-        position: relative;
-        list-style: none;
-        height: max-content;
-        width: 100%;
-        max-width: max-content;
-
-        flex-wrap: wrap;
-
-        color: $color-supporting;
-
-        & li { 
-          display: inline-block;
-          width: max-content;
-          &:not(:last-child):after {
-            content: " / ";
-            padding-left: 1px;
-            padding-right: 4px;
-          }
-
-          & a {
-            position: relative;
-            text-decoration: none;
-            color: currentColor;
-
-            &::after {
-              content: "";
-              position: absolute;
-              bottom: -0.3rem;
-              left: 0;
-              width: 97%;
-              height: 1px;
-              background-color: currentColor;
-              transition: all 0.2s;
-              opacity: 0;
-            }
-
-            &:hover {
-              &::after {
-                color: currentColor;
-                opacity: 1;
-              }
-            }
-          }
-        }
-    }
-
- 
-
+.guide-hero {
+    @include flexBlock;
+    margin-top: 12rem;
     &__content {
+        z-index: 2;
+        position: relative;
         display: flex;
         flex-direction: column;
-        margin-bottom: 2rem;
-        hyphens: auto;
-        & p:not(.wp-caption-text):first-of-type {
-            font-size: 2.5rem;
+        align-items: center;
+        width: 100%;
+        max-width: $page-width;
+        @include flexPadding;
+
+        &__category {
+            font-size: 1.6rem;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+            color: $color-gold;
             text-align: center;
+            font-weight: 500;
+            margin-bottom: 3rem;
+        }
+
+        &__title {
+            font-size: 5rem;
+            line-height: 5.8rem;
+            color: $color-primary;
+            font-weight: 500;
+            letter-spacing: 0.2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+
+            @media only screen and (max-width: $bp-small) {
+                font-size: 3.5rem;
+                line-height: 4rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        &__image {
+            & img {
+                object-fit: cover;
+                height: 100%;
+                width: 100%;
+                box-shadow: $shadow-medium;
+                border-radius: 1rem;
+            }
+            margin-bottom: 3rem;
+        }
+
+        &__breadcrumb {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            letter-spacing: 0.1rem;
+            justify-self: flex-start;
+            font-weight: 400;
+
+            justify-content: center;
+
+            display: flex;
             position: relative;
-            line-height: 3.2rem;
+            list-style: none;
+            height: max-content;
+            width: 100%;
+            max-width: max-content;
+
+            flex-wrap: wrap;
+
+            color: $color-supporting;
+
+            & li {
+                display: inline-block;
+                width: max-content;
+                &:not(:last-child):after {
+                    content: " / ";
+                    padding-left: 1px;
+                    padding-right: 4px;
+                }
+
+                & a {
+                    position: relative;
+                    text-decoration: none;
+                    color: currentColor;
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        bottom: -0.3rem;
+                        left: 0;
+                        width: 97%;
+                        height: 1px;
+                        background-color: currentColor;
+                        transition: all 0.2s;
+                        opacity: 0;
+                    }
+
+                    &:hover {
+                        &::after {
+                            color: currentColor;
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.guide-main {
+    @include flexBlock;
+
+    &__content {
+        @include flexPadding;
+        max-width: $page-width;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__copy {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2rem;
+            hyphens: auto;
+            & p:not(.wp-caption-text):first-of-type {
+                font-size: 2.5rem;
+                text-align: center;
+                position: relative;
+                line-height: 3.2rem;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    height: 1px;
+                    width: 60%;
+                    background-color: $color-grey-light-1a;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+                padding: 4rem 0;
+                padding-top: 2rem;
+                margin-bottom: 4rem;
+
+                @media only screen and (max-width: $bp-small) {
+                    padding-top: 1rem;
+                    padding-bottom: 4rem;
+                    margin-bottom: 4rem;
+                    font-size: 2rem;
+                }
+            }
+
+            & p:not(:first-child) {
+                max-width: 80rem;
+                align-self: center;
+                font-size: 1.6rem;
+            }
+
+            & ul,
+            ol {
+                max-width: 80rem;
+                align-self: center;
+                font-size: 1.6rem;
+                width: 100%;
+                padding-left: 3rem;
+                padding-bottom: 2rem;
+            }
+
+            & img {
+                object-fit: cover;
+                height: auto;
+                width: 100%;
+                margin: 3rem 0;
+                border-radius: 1rem;
+            }
+            & p {
+                width: 100%;
+            }
+
+            & h2,
+            h3,
+            h4,
+            h5 {
+                align-self: center;
+                display: block;
+                width: 100%;
+                max-width: 80rem;
+                color: $color-primary;
+                font-weight: 600;
+            }
+
+            & h2 {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+            }
+            & h3 {
+                font-size: 2.5rem;
+                letter-spacing: 0rem;
+            }
+
+            & a:link,
+            a:visited {
+                text-decoration: none;
+                color: $color-supporting;
+                transition: all 0.2s;
+            }
+            & a:hover {
+                color: $color-supporting-light;
+            }
+
+            & hr {
+                align-self: center;
+                display: block;
+                width: 100%;
+                max-width: 80rem;
+                border-top: 1px solid $color-grey-light-1a;
+                font-weight: 600;
+                margin-top: 3rem;
+                margin-bottom: 6rem;
+            }
+
+            & iframe {
+                width: 100% !important;
+                height: 50rem;
+
+                @media only screen and (max-width: $bp-small) {
+                    height: 35rem;
+                }
+            }
+        }
+
+        &__question {
+            display: flex;
+            flex-direction: column;
+
+            width: 100%;
+            max-width: 80rem;
+            position: relative;
+            padding: 3rem 10rem;
+            text-align: center;
+            align-items: center;
+
+            @media only screen and (max-width: $bp-small) {
+                padding: 3rem 0rem;
+            }
+
+            &__title {
+                font-size: 3rem;
+                font-weight: 600;
+                color: $color-primary;
+            }
+            &__text {
+                font-size: 1.6rem;
+                margin-top: 2rem;
+                margin-bottom: 3rem;
+            }
+            &__button {
+                font-size: 1.3rem;
+                font-family: $font-primary;
+                color: $color-primary;
+                background-color: transparent;
+                border: none;
+                text-decoration: none;
+                cursor: pointer;
+                outline: none;
+                width: 30rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-transform: uppercase;
+                letter-spacing: 0.1rem;
+                font-weight: 600;
+                padding: 1.5rem 0;
+                text-align: center;
+
+                &:hover {
+                    & svg {
+                        transform: translateX(0.2rem) translateY(-0.1rem);
+                    }
+                }
+                & svg {
+                    margin-left: 0.5rem;
+                    transform: translateY(-0.1rem);
+                    height: 1.3rem;
+                    width: 1.3rem;
+                    fill: currentColor;
+                    transition: all 0.2s;
+                }
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                height: 1px;
+                width: 100%;
+                background-color: $color-grey-light-1a;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
             &::after {
                 content: "";
                 position: absolute;
                 height: 1px;
-                width: 60%;
+                width: 100%;
                 background-color: $color-grey-light-1a;
                 bottom: 0;
                 left: 50%;
                 transform: translateX(-50%);
             }
-            //padding: 5rem 0;
-            padding: 4rem 0;
-            padding-top: 2rem;
-            margin-bottom: 4rem;
-            
+        }
 
+        &__disclaimer {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 80rem;
+            position: relative;
+            padding: 3rem 10rem;
+            text-align: center;
+            align-items: center;
 
-            @media only screen and (max-width: $bp-small) {
-                padding-top: 1rem;
-                padding-bottom: 4rem;
-                margin-bottom: 4rem;
-                font-size: 2rem;
+            @media only screen and (max-width: $bp-medium) {
+                padding: 3rem 0rem;
             }
-            
+
+            & p {
+                font-size: 1.3rem;
+                line-height: 2rem;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                height: 1px;
+                width: 100%;
+                background-color: $color-grey-light-1a;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                height: 1px;
+                width: 100%;
+                background-color: $color-grey-light-1a;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            &__header {
+                font-size: 1.6rem;
+                color: $color-primary;
+                font-weight: 700;
+                margin-bottom: 1.5rem;
+            }
         }
 
-        & p:not(:first-child) {
-            max-width: 80rem;
-            align-self: center;
+        &__entry {
             font-size: 1.6rem;
-        }
-
-        & ul, ol {
-            max-width: 80rem;
-            align-self: center;
-            font-size: 1.6rem;
-            width: 100%;
-            padding-left: 3rem;
-            padding-bottom: 2rem;
-        }
- 
-        & img {
-            object-fit: cover;
-            height: auto;
-            width: 100%;
-            margin: 3rem 0;
-        }
-        & p {
-            width: 100%;
-        }
-
-        & h2,
-        h3,
-        h4,
-        h5 {
-            align-self: center;
-            display: block;
-            width: 100%;
-            max-width: 80rem;
-            color: $color-primary;
-            font-weight: 600;
-        }
-
-        & h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        & h3 {
-            font-size: 2.5rem;
-            letter-spacing: 0rem;
-        }
-
-        & a:link,
-        a:visited {
-            text-decoration: none;
-            color: $color-supporting;
-            transition: all 0.2s;
-        }
-        & a:hover {
-            color: $color-supporting-light;
-        }
-
-        & hr {
-            align-self: center;
-            display: block;
-            width: 100%;
-            max-width: 80rem;
-            border-top: 1px solid $color-grey-light-1a;
-            font-weight: 600;
             margin-top: 3rem;
+            margin-bottom: 3rem;
+            color: $color-primary;
+        }
+
+        &__social {
+            display: flex;
+
+            &__link {
+                &:link,
+                &:visited {
+                    color: $color-primary;
+                    transition: all 0.2s;
+                }
+                &:hover {
+                    color: $color-supporting-light;
+                }
+
+                & svg {
+                    height: 3rem;
+                    width: 3rem;
+                    fill: currentColor;
+                    margin: 0rem 0.5rem;
+                }
+            }
+
             margin-bottom: 6rem;
         }
-
-        & iframe {
-            width: 100% !important;
-            height: 50rem;
-
-            @media only screen and (max-width: $bp-small) {
-                height: 35rem;
-            }
-        }
     }
+}
 
-    &__question {
-        display: flex;
-        flex-direction: column;
+.guide-related {
+    @include flexBlock;
+    &__content {
+        background-color: $color-primary-dark;
+        justify-content: center;
 
         width: 100%;
-        max-width: 80rem;
-        position: relative;
-        padding: 3rem 10rem;
-        text-align: center;
+        display: flex;
+        flex-direction: column;
         align-items: center;
-
-        @media only screen and (max-width: $bp-small) {
-            padding: 3rem 0rem;
-        }
 
         &__title {
-            font-size: 3rem;
-            font-weight: 600;
-            color: $color-primary;
-        }
-        &__text {
-            font-size: 1.6rem;
-            margin-top: 2rem;
-            margin-bottom: 3rem;
-        }
-        &__button {
-            font-size: 1.3rem;
-            font-family: $font-primary;
-            color: $color-primary;
-            background-color: transparent;
-            border: none;
-            text-decoration: none;
-            cursor: pointer;
-            outline: none;
-            width: 30rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-transform: uppercase;
-            letter-spacing: 0.1rem;
-            font-weight: 600;
-            padding: 1.5rem 0;
             text-align: center;
-
-            &:hover {
-                & svg {
-                    transform: translateX(0.2rem) translateY(-0.1rem);
-                }
-            }
-            & svg {
-                margin-left: 0.5rem;
-                transform: translateY(-0.1rem);
-                height: 1.3rem;
-                width: 1.3rem;
-                fill: currentColor;
-                transition: all 0.2s;
-            }
-        }
-
-        &::before {
-            content: "";
-            position: absolute;
-            height: 1px;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            font-weight: 500;
+            color: $color-white;
+            margin-top: 6rem;
+            margin-bottom: 5rem;
             width: 100%;
-            background-color: $color-grey-light-1a;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
         }
 
-        &::after {
-            content: "";
-            position: absolute;
-            height: 1px;
+        &__slider-area {
+            display: flex;
+            justify-content: center;
             width: 100%;
-            background-color: $color-grey-light-1a;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-    }
+            max-width: 140rem;
+            margin-bottom: 6rem;
 
-    &__disclaimer {
-        position: relative;
-        &__header {
-            font-size: 1.6rem;
-            color: $color-primary;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-        display: flex;
-        flex-direction: column;
-
-        width: 100%;
-        max-width: 80rem;
-        position: relative;
-        padding: 3rem 10rem;
-        text-align: center;
-        align-items: center;
-
-        @media only screen and (max-width: $bp-medium) {
-            padding: 3rem 0rem;
-        }
-
-        & p {
-            font-size: 1.3rem ;
-            line-height: 2rem;
-        }
-
-        &::before {
-            content: "";
-            position: absolute;
-            height: 1px;
-            width: 100%;
-            background-color: $color-grey-light-1a;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        &::after {
-            content: "";
-            position: absolute;
-            height: 1px;
-            width: 100%;
-            background-color: $color-grey-light-1a;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-       
-    }
-
-    &__entry {
-        font-size: 1.6rem;
-        margin-top: 3rem;
-        margin-bottom: 3rem;
-        color: $color-primary;
-    }
-
-    &__social {
-        display: flex;
-
-        &__link {
-            &:link,
-            &:visited {
-                color: $color-primary;
-                transition: all 0.2s;
-            }
-            &:hover {
-                color: $color-supporting-light;
-            }
-
-            & svg {
-                height: 3rem;
-                width: 3rem;
-                fill: currentColor;
-                margin: 0rem 0.5rem;
-            }
-        }
-
-        margin-bottom: 6rem;
-    }
-}
-
-.travel-guide-related {
-    background-color: $color-primary-dark; 
-    justify-content: center;
-
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    &__title {
-        text-align: center;
-        font-size: 1.8rem;
-        text-transform: uppercase;
-        letter-spacing: 0.2rem;
-        font-weight: 500;
-        color: $color-white;
-        margin-top: 6rem;
-        margin-bottom: 5rem;
-        width: 100%;
-    }
-
-    &__slider-area {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        max-width: 140rem;
-        margin-bottom: 6rem;
-
-        &__slider {        
-            width: 100%;
-            padding: 0 9rem; //extra +3 for buttons
-            @media only screen and (max-width: $bp-small) {
-                padding: 0rem;
-            }
-
-            .slick-slide {
-                margin: 0 1.5rem;
-            }
-
-            &__item {
-                display: grid !important;
-                grid-template-rows: 25rem minmax(25rem, min-content);
+            &__slider {
                 width: 100%;
-
-                color: white;
-
-                &__image {
-                    grid-column: 1 / -1;
-                    grid-row: 1 / span 1;
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    object-position: center;
-                    position: relative;
+                padding: 0 9rem; //extra +3 for buttons
+                @media only screen and (max-width: $bp-small) {
+                    padding: 0rem;
                 }
 
-                &__content {
-                    grid-column: 1 / -1;
-                    grid-row: 2 / span 1;
+                .slick-slide {
+                    margin: 0 1.5rem;
+                }
+
+                &__item {
+                    display: grid !important;
+                    grid-template-rows: 25rem minmax(25rem, min-content);
                     width: 100%;
-                    display: flex;
-                    flex-direction: column;
 
-                    &__title {
-                      
+                    color: white;
 
+                    &__image {
+                        grid-column: 1 / -1;
+                        grid-row: 1 / span 1;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        object-position: center;
+                        position: relative;
+                        border-radius: 1rem;
+                    }
 
-                        &:link,
-                        &:visited {
-                            text-decoration: none;
-                            color: $color-white;
-                            &:hover {
-                                //color: $color-supporting-light;
+                    &__content {
+                        grid-column: 1 / -1;
+                        grid-row: 2 / span 1;
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+
+                        &__title {
+                            &:link,
+                            &:visited {
+                                text-decoration: none;
+                                color: $color-white;
+                                &:hover {
+                                    //color: $color-supporting-light;
+                                }
+                            }
+
+                            & h3 {
+                                font-size: 3rem;
+                                line-height: 3.5rem;
+                                margin-top: 2.5rem;
+                                font-weight: 600;
+                                text-decoration: none;
+                                color: $color-white;
                             }
                         }
-                
-                        & h3 {
-                            font-size: 3rem;
-                            line-height: 3.5rem;
-                            margin-top: 2.5rem;
-                            font-weight: 600;
-                            text-decoration: none;
-                            color: $color-white;
+                        &__text {
+                            font-size: 1.6rem;
+                            margin-top: 1rem;
+                        }
+                        &__cta {
+                            font-size: 1.6rem;
+                            text-transform: uppercase;
                         }
                     }
-                    &__text {
-                        font-size: 1.6rem;
-                        margin-top: 1rem;
-                    }
-                    &__cta {
-                        font-size: 1.6rem;
-                        text-transform: uppercase;
-                    }
                 }
-            }
 
-            &__btn {
-                &--left {
-                    transform: translateY(-50%);
+                &__btn {
+                    &--left {
+                        transform: translateY(-50%);
 
-                    position: absolute;
-                    z-index: 10;
-                    top: 40%;
-                    left: 1.5rem;
-                }
-                &--right {
-                    transform: translateY(-50%);
+                        position: absolute;
+                        z-index: 10;
+                        top: 40%;
+                        left: 1.5rem;
+                    }
+                    &--right {
+                        transform: translateY(-50%);
 
-                    position: absolute;
-                    z-index: 10;
-                    top: 40%;
-                    right: 1.5rem;
+                        position: absolute;
+                        z-index: 10;
+                        top: 40%;
+                        right: 1.5rem;
+                    }
                 }
             }
         }
     }
 }
 
+//Components ----------------
 .disclaimer-box {
     margin: 3rem;
     padding: 2rem 3rem;
@@ -610,7 +599,6 @@
     align-self: center;
     font-size: 1.6rem !important;
     margin-bottom: 2rem;
-     color: $color-grey-1;
-    
+    color: $color-grey-1;
     transform: translateY(-2rem);
 }

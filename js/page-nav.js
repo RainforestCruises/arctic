@@ -3,7 +3,6 @@ jQuery(document).ready(function ($) {
     //On Scroll Listener
     window.onscroll = function () { scrollCheck() };
     function scrollCheck() {
-
         var threshHold = 320
         if ($(window).width() > 1000) {
             threshHold = 700;
@@ -46,12 +45,14 @@ jQuery(document).ready(function ($) {
 
     //Get top distance
     function getTargetTop(elem) {
+        
         var id = elem.attr("href");
+       
         return $(id).offset().top;
     }
 
     // On Click - Nav Links, href change position
-    $('.nav-secondary__content__title__link, .nav-secondary__content__links__link, .product-hero__content__main__primary__nav__link, #down-arrow-button').click(function (event) {
+    $('.nav-secondary__content__title__link, .nav-secondary__content__links__link, .product-hero__content__main__primary__nav__link, .category-hero__content__page-nav__list__item__link, #down-arrow-button').click(function (event) {
         var id = $(this).attr('href');
         changePosition(id)
         event.preventDefault();
@@ -59,7 +60,7 @@ jQuery(document).ready(function ($) {
 
     // Animate Change Position
     function changePosition(id) {
-
+        console.log(id);
         if (id != "#top") {
             $('.header').addClass('preventExpand');
         }
