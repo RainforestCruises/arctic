@@ -83,16 +83,17 @@ $itineraries = get_posts($queryArgs);
                         $images =  get_field('hero_gallery', $itinerary);
                         $itineraries =  get_field('itineraries', $itinerary);
                         $title = get_field('display_name', $itinerary);
-                        $static_price = get_field('static_price', $itinerary);
                         $days = get_field('itinerary', $itinerary);
                         $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
                         $embarkation_point = get_field('embarkation_point', $itinerary);
                         $embarkation = get_the_title($embarkation_point);
                         $shipsDisplay = getItineraryShips($itinerary);
                         $destinations = getItineraryDestinations($itinerary);
-
                         $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
                         $guestsDisplay = get_field('vessel_capacity', $itinerary) . ' Guests, ' . 'Luxury';
+                        $departures = getDepartureList($itinerary);
+                        $lowestPrice = getLowestDepartureListPrice($departures);
+
                     ?>
 
                         <!-- Itinerary Card -->
@@ -151,8 +152,7 @@ $itineraries = get_posts($queryArgs);
                                 <!-- Price Group -->
                                 <div class="resource-card__content__price-group">
                                     <div class="resource-card__content__price-group__amount">
-                                        <?php echo "$ " . number_format($static_price, 0);  ?>
-
+                                        <?php echo "$ " . number_format($lowestPrice, 0);  ?>
                                     </div>
                                     <div class="resource-card__content__price-group__text">
                                         Per Person

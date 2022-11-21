@@ -32,8 +32,6 @@ $curentYear = date("Y");
             </div>
         </div>
 
-
-
         <!-- Main -->
         <div class="cruise-itineraries__content__main">
 
@@ -52,11 +50,10 @@ $curentYear = date("Y");
                             $embarkation_point = get_field('embarkation_point', $itinerary);
                             $embarkation = get_the_title($embarkation_point);
                             $days = get_field('itinerary', $itinerary);
-                            $static_price = get_field('static_price', $itinerary);
+                            $departures = getDepartureList($itinerary, get_post());
+                            $lowestPrice = getLowestDepartureListPrice($departures);
+                            $destinations = getItineraryDestinations($itinerary); //build list of unique, with embarkations removed
 
-                            $destinations = getItineraryDestinations($itinerary);
-                    
-                            //build list of unique, with embarkations removed
                             $title = get_field('display_name',$itinerary);
                             $length_in_nights = get_field('length_in_nights',$itinerary);
                             $top_snippet = get_field('top_snippet', $itinerary);
@@ -129,14 +126,12 @@ $curentYear = date("Y");
                                                     <?php echo $destinations; ?>
                                                 </div>
                                             </div>
-
                                         </div>
 
                                         <!-- Price Group -->
                                         <div class="resource-card__content__price-group">
                                             <div class="resource-card__content__price-group__amount">
-                                                <?php echo "$ " . number_format($static_price, 0);  ?>
-
+                                                <?php echo "$ " . number_format($lowestPrice, 0);  ?>
                                             </div>
                                             <div class="resource-card__content__price-group__text">
                                                 Per Person

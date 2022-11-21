@@ -2,12 +2,6 @@
 jQuery(document).ready(function ($) {
     const templateUrl = page_vars.templateUrl;
 
-
-    //Contact
-    var $body = $('body');
-
-
-
     //Flickity
     var flickitySlider = new Flickity('.category-hero__bg-slider', {
         prevNextButtons: false,
@@ -115,9 +109,6 @@ jQuery(document).ready(function ($) {
     //end progress
 
 
-
-
-
     $('#testimonials-slider').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -137,10 +128,7 @@ jQuery(document).ready(function ($) {
     });
 
 
-
-
-
-    //cruises image area
+    //NEW --------------------
     new Swiper('.ship-card-image-area', {
         slidesPerView: 1,
         allowTouchMove: false,

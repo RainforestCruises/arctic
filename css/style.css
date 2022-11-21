@@ -1012,7 +1012,7 @@ h5 {
   background-color: #1d2225;
   font-family: "Metropolis", sans-serif;
   color: #fff;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 1rem;
   font-size: 1.2rem;
   padding: 0.8rem 1.2rem;
@@ -1032,6 +1032,13 @@ h5 {
     color: currentColor;
     fill: currentColor;
     margin-left: 0.5rem; }
+  .cta-square-icon--inverse {
+    background-color: #fff;
+    color: #1d2225;
+    border: 1px solid #e6e6e6; }
+    .cta-square-icon--inverse:hover {
+      background-color: #fff;
+      border: 1px solid #1d2225; }
 
 .cta-text-icon {
   background-color: transparent;
@@ -1160,7 +1167,7 @@ h5 {
     height: 1.3rem;
     width: 1.3rem;
     transform: translateY(-1px);
-    margin-right: .5rem;
+    margin-right: 0.5rem;
     stroke: currentColor;
     fill: currentColor;
     stroke: 1; }
@@ -4022,16 +4029,24 @@ h5 {
   position: relative; }
   @media only screen and (min-width: 37.5em) {
     .information-card--horizontal {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr 22rem 18rem;
       align-items: center;
       min-height: 12rem; }
-      .information-card--horizontal .avatar-title-group {
-        max-width: 24rem; }
       .information-card--horizontal .information-card__section {
         margin: 0rem;
         padding: 0rem;
-        border-bottom: none; } }
+        border-bottom: none; }
+      .information-card--horizontal .information-card__bottom {
+        margin: 0rem;
+        padding: 0rem;
+        border-bottom: none;
+        flex-direction: column;
+        justify-content: center; }
+        .information-card--horizontal .information-card__bottom button {
+          margin: .5rem 0rem; }
+        .information-card--horizontal .information-card__bottom__price-group {
+          margin-right: 0rem; } }
   .information-card__section {
     margin-bottom: 1.5rem;
     padding-bottom: 1.5rem;
@@ -4040,22 +4055,6 @@ h5 {
     display: flex;
     justify-content: space-between;
     align-items: center; }
-    .information-card__bottom__price-group {
-      color: currentColor;
-      margin-right: 4rem; }
-      .information-card__bottom__price-group__large-text {
-        font-size: 1.5rem;
-        font-weight: 700;
-        line-height: 2rem;
-        color: #1d2225; }
-      .information-card__bottom__price-group__amount {
-        font-weight: 700;
-        font-size: 1.8rem;
-        line-height: 2rem; }
-      .information-card__bottom__price-group__text {
-        font-size: 1rem;
-        line-height: 1.5rem;
-        color: #747474; }
     .information-card__bottom__cta {
       display: flex;
       flex-direction: column;
@@ -4082,7 +4081,7 @@ h5 {
       line-height: 2rem; }
     .avatar-title-group__text__sub {
       font-size: 1.2rem;
-      color: #747474; }
+      color: #9ea0a4; }
 
 .specs-item {
   font-size: 1.4rem;
@@ -4106,29 +4105,35 @@ h5 {
     font-size: 1rem;
     color: #747474; }
 
-.price-group-button {
-  border: none;
-  text-align: start;
-  background-color: transparent; }
-  .price-group-button__view {
-    font-size: 1.2rem;
-    line-height: 1.5rem;
-    color: #1d2225;
-    white-space: nowrap;
-    transition: all .2s; }
-  .price-group-button__amount {
+.price-display-group {
+  width: min-content; }
+  .price-display-group__text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 2rem;
+    color: #1d2225; }
+  .price-display-group__amount {
     font-weight: 700;
     font-size: 1.8rem;
     line-height: 2rem;
     white-space: nowrap;
-    transition: all .2s; }
-  .price-group-button__text {
+    transition: all .2s;
+    display: flex; }
+    .price-display-group__amount__main {
+      margin-right: 1.5rem; }
+      .price-display-group__amount__main.discounted {
+        text-decoration: line-through;
+        color: #9ea0a4; }
+  .price-display-group__sub {
     font-size: 1rem;
     line-height: 1.5rem;
     color: #747474;
-    white-space: nowrap; }
-  .price-group-button:hover {
-    color: #347fff !important; }
+    display: flex;
+    justify-content: space-between; }
+    .price-display-group__sub__main {
+      margin-right: 1rem; }
+    .price-display-group__sub__discount {
+      color: #00a84b; }
 
 .product-extras {
   display: flex;

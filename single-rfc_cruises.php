@@ -13,10 +13,8 @@ get_header();
 $ship = get_post();
 $productName = get_the_title();
 $itineraries = get_field('itineraries');
-$departures = createDepartureList($ship);
-
+$departures = getDepartureList($ship);
 $lowestPrice = getLowestDepartureListPrice($departures);
-console_log($departures);
 
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);

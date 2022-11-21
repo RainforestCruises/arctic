@@ -1,12 +1,10 @@
 <?php
 
-function createDepartureList($post)
+function getDepartureList($post, $specificShip = null)
 {
     $departures = [];
     if (get_post_type($post) == 'rfc_cruises') {
-        console_log('cruises');
         $itineraryPosts = get_field('itineraries', $post);
-
         foreach ($itineraryPosts as $i) { //each itinerary
 
             $itineraryLength = get_field('length_in_nights', $i);
@@ -32,6 +30,7 @@ function createDepartureList($post)
                             'ItineraryPostId' => $i->ID,
                             'ItineraryPost' => $i,
                             'LowestPrice' => getLowestDeparturePrice($d),
+                            'HighestPrice' => getHighestDeparturePrice($d),
                             'LengthInNights' => $itineraryLength,
                         ];
                         $departures[] = $departure;
@@ -54,24 +53,31 @@ function createDepartureList($post)
                 $cabin_prices = $d['cabin_prices'];
                 $ship = $d['ship'];
 
-                $departure = [
-                    'ID' => $id,
-                    'Ship' => $d['ship'],
-                    'ShipId' => $ship->ID,
+                $match = true;
+                if($specificShip && ($specificShip != $ship)) {
+                    $match = false;
+                }
+                if($match){
+                    $departure = [
+                        'ID' => $id,
+                        'Ship' => $d['ship'],
+                        'ShipId' => $ship->ID,
+                        'DepartureDate' => $d['date'],
+                        'ReturnDate' => $returnDate,
+                        'Cabins' => $cabin_prices,
+                        'ItineraryPostId' => $post->ID,
+                        'ItineraryPost' => $post,
+                        'LowestPrice' => getLowestDeparturePrice($d),
+                        'HighestPrice' => getHighestDeparturePrice($d),
+                        'LengthInNights' => $itineraryLength,
+                    ];
+                    $departures[] = $departure;
+                }
 
-                    'DepartureDate' => $d['date'],
-                    'ReturnDate' => $returnDate,
-                    'Cabins' => $cabin_prices,
-                    'ItineraryPostId' => $post->ID,
-                    'ItineraryPost' => $post,
-                    'LowestPrice' => getLowestDeparturePrice($d),
-                    'LengthInNights' => $itineraryLength,
-                ];
-                $departures[] = $departure;
+                
             }
         }
     }
-
 
     usort($departures, function ($a, $b) {
         return strtotime($a['DepartureDate']) - strtotime($b['DepartureDate']);
@@ -81,22 +87,6 @@ function createDepartureList($post)
 }
 
 
-// get lowest price from a list of departures
-function getItineraryShipSize($ships)
-{
-    $display = "";
-    $capacityArray = [];
-    foreach ($ships as $ship) {
-        $capacityArray[] = get_field('vessel_capacity', $ship);
-    }
-
-    $low = min($capacityArray); //lowest price, not sold out
-    $high = max($capacityArray); //lowest price, not sold out
-    $display = $low . "-" . $high;
-
-
-    return $display;
-}
 
 // get lowest price from a list of departures
 function getLowestDepartureListPrice($departures)
@@ -104,18 +94,29 @@ function getLowestDepartureListPrice($departures)
     $price = 0;
     $priceArray = [];
     foreach ($departures as $d) {
-
         $lowestCabinPrice = $d['LowestPrice'];
         if ($lowestCabinPrice > 0) {
             $priceArray[] = $lowestCabinPrice;
         }
     }
-
     $price = min($priceArray); //lowest price, not sold out
     return $price;
 }
 
-
+// get highest price from a list of departures
+function getHighestDepartureListPrice($departures)
+{
+    $price = 0;
+    $priceArray = [];
+    foreach ($departures as $d) {
+        $highestCabinPrice = $d['HighestPrice'];
+        if ($highestCabinPrice > 0) {
+            $priceArray[] = $highestCabinPrice;
+        }
+    }
+    $price = max($priceArray); //lowest price, not sold out
+    return $price;
+}
 
 
 // get lowest cabin price (not sold out) from a single departure
@@ -135,6 +136,26 @@ function getLowestDeparturePrice($departure)
     }
 
     $price = min($priceArray); //lowest price, not sold out
+    return $price;
+}
+
+// get highest cabin price (not sold out) from a single departure
+function getHighestDeparturePrice($departure)
+{
+    $price = 0;
+    $cabin_prices = $departure['cabin_prices'];
+    if (!$cabin_prices) {
+        return $price;
+    }
+
+    $priceArray = [];
+    foreach ($cabin_prices as $c) {
+        if ($c['sold_out'] != true) {
+            $priceArray[] = $c['discounted_price'] == "" ? $c['price'] : $c['discounted_price'];
+        }
+    }
+
+    $price = max($priceArray); //highest price, not sold out
     return $price;
 }
 
@@ -161,6 +182,22 @@ function createYearSelection($current, $yearsCount)
     return $years;
 }
 
+
+// get lowest price from a list of departures
+function getItineraryShipSize($ships)
+{
+    $display = "";
+    $capacityArray = [];
+    foreach ($ships as $ship) {
+        $capacityArray[] = get_field('vessel_capacity', $ship);
+    }
+
+    $low = min($capacityArray); //lowest price, not sold out
+    $high = max($capacityArray); //lowest price, not sold out
+    $display = $low . "-" . $high;
+
+    return $display;
+}
 
 
 function shipSizeDisplay($pax)

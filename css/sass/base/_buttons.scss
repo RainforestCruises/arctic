@@ -30,15 +30,13 @@
     background-color: rgba($color-white, 0.8);
   }
 
-
-
-  &--overlay { //remove
+  &--overlay {
+    //remove
     &.swiper-button-disabled {
       opacity: 0 !important;
       pointer-events: all;
     }
   }
-
 
   &--white-border {
     box-shadow: $shadow-short-bottom-light;
@@ -49,11 +47,13 @@
       width: 1.5rem;
     }
 
-    &::after { //svg
+    &::after {
+      //svg
       display: none;
     }
-    
-    &::before { //border
+
+    &::before {
+      //border
       content: "";
       transition: all 0.15s;
       position: absolute;
@@ -176,7 +176,7 @@
   background-color: $color-primary;
   font-family: $font-primary;
   color: $color-white;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 1rem;
   font-size: 1.2rem;
   padding: 0.8rem 1.2rem;
@@ -201,6 +201,19 @@
     color: currentColor;
     fill: currentColor;
     margin-left: 0.5rem;
+  }
+
+  &--inverse {
+    background-color: $color-white;
+    color: $color-primary;
+    border: 1px solid $color-grey-light-1a;
+
+    &:hover {
+      background-color: $color-white;
+      border: 1px solid $color-primary;
+
+    }
+  
   }
 }
 
@@ -387,7 +400,7 @@
     height: 1.3rem;
     width: 1.3rem;
     transform: translateY(-1px);
-    margin-right: .5rem;
+    margin-right: 0.5rem;
     stroke: currentColor;
     fill: currentColor;
     stroke: 1;
@@ -396,7 +409,6 @@
   &.active {
     background-color: $color-grey-light-1a;
     border: 1px solid $color-primary;
-
   }
 
   &:hover {

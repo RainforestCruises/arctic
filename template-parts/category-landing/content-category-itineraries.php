@@ -55,8 +55,8 @@ $itineraries_title_subtext = get_field('travel_guide_title_subtext')
                         $title = get_field('display_name', $itinerary);
                         $shipsDisplay = getItineraryShips($itinerary);
                         $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
-                        $static_price = get_field('static_price', $itinerary);
-
+                        $departures = createDepartureList($itinerary);
+                        $lowestPrice = getLowestDepartureListPrice($departures)
                     ?>
 
                         <!-- Itinerary Card -->
@@ -107,7 +107,7 @@ $itineraries_title_subtext = get_field('travel_guide_title_subtext')
                                 <!-- Price Group -->
                                 <div class="resource-card__content__price-group">
                                     <div class="resource-card__content__price-group__amount">
-                                        <?php echo "$ " . number_format($static_price, 0);  ?>
+                                        <?php echo "$ " . number_format($lowestPrice, 0);  ?>
                                     </div>
                                     <div class="resource-card__content__price-group__text">
                                         Per Person

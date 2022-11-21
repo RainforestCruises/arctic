@@ -10,7 +10,7 @@ $ships = get_field('ships');
 $itinerary = get_post();
 $productName = get_field('display_name');
 $days = get_field('itinerary');
-$departures = createDepartureList($itinerary);
+$departures = getDepartureList($itinerary);
 $lowestPrice = getLowestDepartureListPrice($departures);
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
@@ -136,7 +136,7 @@ $args = array(
   ?>
   <!-- Dates -->
   <?php
-  get_template_part('template-parts/itinerary/content', 'itinerary-departures', $args);
+  get_template_part('template-parts/itinerary/content', 'itinerary-dates', $args);
   ?>
 
 

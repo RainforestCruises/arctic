@@ -86,16 +86,16 @@ $ships = $args['ships'];
             <div class="departures-modal__content">
                 <?php foreach ($departures as $d) :
                     $departureId = $d['ID'];
-                    $itineraryPost = $d['ItineraryPost'];          
+                    $itineraryPost = $d['ItineraryPost'];
                     $itineraryPostId = $d['ItineraryPostId'];
                     $departureStartDate = strtotime($d['DepartureDate']);
                     $departureReturnDate = strtotime($d['ReturnDate']);
                     $title = get_field('display_name', $itineraryPost);
-                    $hero_gallery = get_field('hero_gallery', $itineraryPost); 
+                    $hero_gallery = get_field('hero_gallery', $itineraryPost);
                     $embarkationPost = get_field('embarkation_point', $itineraryPost);
                     $embarkationName = get_the_title($embarkationPost) . ', ' . get_field('country_name', $embarkationPost);
                     $secondaryFilterId = $itineraryPostId;
-                    $subtitleDisplay = $d['LengthInDays'] . ' Days / ' . $d['LengthInNights'] . ' Nights';
+                    $subtitleDisplay = $d['LengthInNights'] + 1 . ' Days / ' . $d['LengthInNights'] . ' Nights';
                     if (get_post_type() == 'rfc_itineraries') {
                         $ship = $d['Ship'];
                         $shipId = $d['ShipId'];
@@ -157,6 +157,19 @@ $ships = $args['ships'];
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Prices -->
+                                <div class="specs-item">
+                                    <div class="specs-item__icon">
+                                        <svg>
+                                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-shopping-tag"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="specs-item__text">
+                                        <div class="specs-item__text__main">
+                                            <?php echo "$ " . number_format($d['LowestPrice'], 0);  ?> - <?php echo "$ " . number_format($d['HighestPrice'], 0);  ?>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -164,20 +177,15 @@ $ships = $args['ships'];
                         <div class="information-card__bottom">
                             <!-- Price Group -->
                             <div class="information-card__bottom__price-group">
-                                <button class="price-group-button" departureId="<?php echo $departureId; ?>" year="<?php echo date("Y", $departureStartDate); ?>" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itineraryTitle="<?php echo $title; ?>">
-                                    <div class="price-group-button__text">
-                                        From
-                                    </div>
-                                    <div class="price-group-button__amount">
-                                        <?php echo "$ " . number_format($d['LowestPrice'], 0);  ?>
-                                    </div>
-                                    <div class="price-group-button__view">View Prices</div>
+                                <button class="cta-square-icon cta-square-icon--inverse departure-price-group-button" departureId="<?php echo $departureId; ?>" year="<?php echo date("Y", $departureStartDate); ?>" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itineraryTitle="<?php echo $title; ?>">
+                                    View Prices
                                 </button>
+
                             </div>
 
                             <!-- CTA -->
                             <div class="information-card__bottom__cta">
-                                <button class="cta-square-icon departure-inquire-cta" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>"  itineraryTitle="<?php echo $title; ?>">
+                                <button class="cta-square-icon departure-inquire-cta" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itineraryTitle="<?php echo $title; ?>">
                                     Inquire
                                     <svg>
                                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
@@ -215,6 +223,7 @@ $ships = $args['ships'];
                         $hero_gallery = get_field('images', $cabinPost);
                         $image = $hero_gallery[0];
                         $price = $cabin['price'];
+                        $hasDiscount = $cabin['discounted_price'] ? true : false;
                         $discounted_price = $cabin['discounted_price'];
                         $sold_out = $cabin['sold_out'];
                 ?>
@@ -241,22 +250,41 @@ $ships = $args['ships'];
                                 </div>
                             </div>
 
-
+                            <div class="information-card__section">
+                                <!-- Price Group -->
+                                <div class="price-display-group">
+                                    <div class="price-display-group__text">
+                                        <?php echo !$is_single ? 'Double' : 'Single'; ?>
+                                    </div>
+                                    <div class="price-display-group__amount">
+                                        <div class="price-display-group__amount__main <?php echo ($hasDiscount ? 'discounted' : '') ?>">
+                                            <?php echo "$" . number_format($price, 0);  ?>
+                                        </div>
+                                        <?php if ($hasDiscount) : ?>
+                                            <div class="price-display-group__amount__discount">
+                                                <?php echo "$" . number_format($discounted_price, 0);  ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="price-display-group__sub">
+                                        <div class="price-display-group__sub__main">
+                                            Per Person
+                                        </div>
+                                        <?php if ($hasDiscount) : 
+                                            $difference = $price - $discounted_price;
+                                            $percentage = ceil(($difference / $price) * 100);
+                                            ?>
+                                            <div class="price-display-group__sub__discount">
+                                                <?php echo $percentage; ?>% Savings
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="information-card__bottom">
 
-                                <!-- Price Group -->
-                                <div class="information-card__bottom__price-group">
-                                    <div class="information-card__bottom__price-group__large-text">
-                                        <?php echo !$is_single ? 'Double' : 'Single'; ?>
-                                    </div>
-                                    <div class="information-card__bottom__price-group__amount">
-                                        <?php echo "$ " . number_format($price, 0);  ?>
-                                    </div>
-                                    <div class="information-card__bottom__price-group__text">
-                                        Per Person
-                                    </div>
-                                </div>
+
 
 
 

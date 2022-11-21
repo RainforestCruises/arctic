@@ -17,7 +17,7 @@ $ships_title_subtext = get_field('travel_guide_title_subtext')
                     Ships
                 </div>
                 <div class="title-group__sub">
-                <?php echo $ships_title_subtext; ?>
+                    <?php echo $ships_title_subtext; ?>
                 </div>
             </div>
 
@@ -31,6 +31,8 @@ $ships_title_subtext = get_field('travel_guide_title_subtext')
                 $title = get_the_title($ship);
                 $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
                 $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . 'Luxury';
+                $departures = createDepartureList($ship);
+                $lowestPrice = getLowestDepartureListPrice($departures)
             ?>
 
                 <!-- Cabin Card -->
@@ -91,7 +93,7 @@ $ships_title_subtext = get_field('travel_guide_title_subtext')
                         <!-- Price Group -->
                         <div class="resource-card__content__price-group">
                             <div class="resource-card__content__price-group__amount">
-                                $2,955
+                                <?php echo "$ " . number_format($lowestPrice, 0);  ?>
                             </div>
                             <div class="resource-card__content__price-group__text">
                                 Per Person
@@ -108,6 +110,6 @@ $ships_title_subtext = get_field('travel_guide_title_subtext')
 
         </div>
 
-       
+
     </div>
 </section>

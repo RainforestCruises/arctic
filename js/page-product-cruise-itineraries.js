@@ -123,9 +123,9 @@ jQuery(document).ready(function ($) {
         lineSeries.data.setAll(destinationLines);
     });
 
-    // window.addEventListener('resize', function() {
-    //     chart.goHome();
-    // });
+    window.addEventListener('resize', function() {
+        chart.goHome();
+    });
 
 
 });

@@ -24,7 +24,7 @@ function my_acf_save_post($post_id)
 
 
 
-//Make Last_Updated and Cruise_Data and Length in Days read only in Admin -----------------------
+//Make ACF Fields read only in Admin -----------------------
 add_filter('acf/load_field/name=static_price', 'acf_read_only_static_price');
 function acf_read_only_static_price($field)
 {

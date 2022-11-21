@@ -8,6 +8,13 @@
                 <path d="M4.781.375a1,1,0,0,0-1.562,1.25L6.719,6l-3.5,4.375a1,1,0,0,0,1.562,1.25l4-5a1,1,0,0,0,0-1.25Z" fill="currentColor" stroke="none"></path>
             </g>
         </symbol>
+        <symbol id="icon-shopping-tag" viewBox="0 0 16 16">
+            <title>shopping tag</title>
+            <g class="nc-icon-wrapper">
+                <path fill="currentColor" d="M15.7,8.3l-8-8C7.5,0.1,7.3,0,7,0H1C0.4,0,0,0.4,0,1v6c0,0.3,0.1,0.5,0.3,0.7l8,8C8.5,15.9,8.7,16,9,16 s0.5-0.1,0.7-0.3l6-6C16.1,9.3,16.1,8.7,15.7,8.3z M9,13.6l-7-7V2h4.6l7,7L9,13.6z" stroke="none"></path>
+                <circle cx="5" cy="5" r="1" stroke="none"></circle>
+            </g>
+        </symbol>
         <symbol id="icon-diamonds-suits" viewBox="0 0 16 16">
             <title>diamonds suits</title>
             <g class="nc-icon-wrapper">

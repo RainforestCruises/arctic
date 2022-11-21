@@ -55,7 +55,7 @@ $departures = $args['departures'];
                         $itineraryPostId = $d['ItineraryPostId'];
                         $departureStartDate = strtotime($d['DepartureDate']);
                         $departureReturnDate = strtotime($d['ReturnDate']);
-                        $title = get_field('display_name',$itineraryPost);
+                        $title = get_field('display_name', $itineraryPost);
                         $hero_gallery = get_field('hero_gallery', $itineraryPost);
                         $image = $hero_gallery[0];
                         $embarkationPost = get_field('embarkation_point', $itineraryPost);
@@ -110,29 +110,35 @@ $departures = $args['departures'];
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- Prices -->
+                                <div class="specs-item">
+                                    <div class="specs-item__icon">
+                                        <svg>
+                                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-shopping-tag"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="specs-item__text">
+                                        <div class="specs-item__text__main">
+                                            <?php echo "$ " . number_format($d['LowestPrice'], 0);  ?> - <?php echo "$ " . number_format($d['HighestPrice'], 0);  ?>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="information-card__bottom">
 
                                 <!-- Price Group -->
                                 <div class="information-card__bottom__price-group">
-                                    <button class="price-group-button" departureId="<?php echo $departureId; ?>" year="<?php echo date("Y", $departureStartDate); ?>" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itinerary="<?php echo $itineraryPostId; ?>" itineraryTitle="<?php echo $title; ?>">
-                                        <div class="price-group-button__text">
-                                            From
-                                        </div>
-                                        <div class="price-group-button__amount">
-                                            <?php echo "$ " . number_format($d['LowestPrice'], 0);  ?>
-                                        </div>
-                                        <div class="price-group-button__view">
-                                            View Prices
-                                        </div>
-                                    </butt>
+                                    <button class="cta-square-icon cta-square-icon--inverse departure-price-group-button" departureId="<?php echo $departureId; ?>" year="<?php echo date("Y", $departureStartDate); ?>" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itinerary="<?php echo $itineraryPostId; ?>" itineraryTitle="<?php echo $title; ?>">
+                                        View Prices
+                                    </button>
                                 </div>
 
                                 <!-- CTA -->
                                 <div class="information-card__bottom__cta">
                                     <button class="cta-square-icon departure-inquire-cta" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itinerary="<?php echo $itineraryPostId; ?>" itineraryTitle="<?php echo $title; ?>">
-                                         Inquire
+                                        Inquire
                                         <svg>
                                             <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
                                         </svg>

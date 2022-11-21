@@ -19,13 +19,14 @@ jQuery(document).ready(function ($) {
 
 
     //hide outline panels on load (mobile) -- on resize fix
-    checkOutlinePanels();
+    //checkOutlinePanels();
     function checkOutlinePanels() {
         if ($(window).width() < 1000) { //mobile view    
             $('.outline-panel__content').toggle();
             $('.outline-panel__heading').toggleClass('closed');
         } 
     }
+
 
     // Inquire buttons (generic)
     // -- clear all selections
@@ -88,7 +89,7 @@ jQuery(document).ready(function ($) {
     // View Prices Buttons (on departures)
     // -- go to cabin selection
     // -- display itinerary selected
-    const departurePriceButtons = [...document.querySelectorAll('.price-group-button')];
+    const departurePriceButtons = [...document.querySelectorAll('.departure-price-group-button')];
     departurePriceButtons.forEach(item => {
         item.addEventListener('click', () => {
 
