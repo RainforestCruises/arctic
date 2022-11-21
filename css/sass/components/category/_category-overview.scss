@@ -1,6 +1,6 @@
 .category-overview {
     @include flexBlock;
-    margin-top: 6rem;
+    margin-top: 4rem;
     &__content {
         z-index: 2;
         position: relative;
@@ -15,6 +15,7 @@
             display: grid;
             grid-template-columns: 50% 50%;
             column-gap: 6rem;
+            row-gap: 3rem;
             @media only screen and (max-width: $bp-medium) {
                 grid-template-columns: 100%;
             }

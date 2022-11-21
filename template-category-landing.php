@@ -53,6 +53,10 @@ get_header();
 
 </main>
 
+<!-- Inquire Modal -->
+<?php
+get_template_part('template-parts/shared/content', 'modal-inquiry', $args);
+?>
 
 
 

@@ -31,7 +31,7 @@ $ships_title_subtext = get_field('travel_guide_title_subtext')
                 $title = get_the_title($ship);
                 $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
                 $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . 'Luxury';
-                $departures = createDepartureList($ship);
+                $departures = getDepartureList($ship);
                 $lowestPrice = getLowestDepartureListPrice($departures)
             ?>
 

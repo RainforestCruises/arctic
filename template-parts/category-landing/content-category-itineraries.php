@@ -55,7 +55,7 @@ $itineraries_title_subtext = get_field('travel_guide_title_subtext')
                         $title = get_field('display_name', $itinerary);
                         $shipsDisplay = getItineraryShips($itinerary);
                         $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
-                        $departures = createDepartureList($itinerary);
+                        $departures = getDepartureList($itinerary);
                         $lowestPrice = getLowestDepartureListPrice($departures)
                     ?>
 

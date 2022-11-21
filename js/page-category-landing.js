@@ -169,5 +169,22 @@ jQuery(document).ready(function ($) {
         }
     });
 
+        // Inquire buttons (generic)
+    // -- clear all selections
+    // -- hide tabs
+    // -- go to inquire form
+    const inquireModal = document.querySelector("#inquireModal");
+
+    const genericInquireCtaButtons = [...document.querySelectorAll('.generic-inquire-cta')];
+    genericInquireCtaButtons.forEach(item => {
+        item.addEventListener('click', () => {
+            inquireModal.style.display = 'flex';
+            body.classList.add('no-scroll');
+
+
+        });
+    })
+
+
 
 });

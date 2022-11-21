@@ -23,7 +23,7 @@ $title = get_the_title();
                 Reviews
             </a>
         </div>
-        <div class="nav-secondary__content__cta">
+        <div class="nav-secondary__content__cta product-template">
             <button class="nav-secondary__content__cta__button btn-pill btn-pill--dark generic-inquire-cta">
                 Inquire
             </button>
