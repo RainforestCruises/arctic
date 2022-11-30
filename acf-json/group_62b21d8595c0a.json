@@ -19,28 +19,6 @@
             "endpoint": 0
         },
         {
-            "key": "field_637273697b330",
-            "label": "Static Lowest Price",
-            "name": "static_price",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": "",
-            "readonly": 1
-        },
-        {
             "key": "field_6365598f64356",
             "label": "Ships",
             "name": "ships",
@@ -66,7 +44,57 @@
             "return_format": "object"
         },
         {
-            "key": "field_62b21d85d7c4e",
+            "key": "field_6384e58d7c11f",
+            "label": "Styles",
+            "name": "styles",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_styles"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
+        },
+        {
+            "key": "field_6384e5c17c120",
+            "label": "Routes",
+            "name": "routes",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_routes"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
+        },
+        {
+            "key": "field_63863e7e084af",
             "label": "Activities",
             "name": "activities",
             "type": "repeater",
@@ -85,7 +113,7 @@
             "button_label": "",
             "sub_fields": [
                 {
-                    "key": "field_636beaa6c12ab",
+                    "key": "field_63863e8c084b0",
                     "label": "Standard Activity",
                     "name": "standard_activity",
                     "type": "post_object",
@@ -107,7 +135,7 @@
                     "ui": 1
                 },
                 {
-                    "key": "field_636beabcc12ac",
+                    "key": "field_63863eb2084b1",
                     "label": "Title Override",
                     "name": "title_override",
                     "type": "text",
@@ -126,7 +154,7 @@
                     "maxlength": ""
                 },
                 {
-                    "key": "field_636beac8c12ad",
+                    "key": "field_63863ebb084b2",
                     "label": "Subtitle",
                     "name": "subtitle",
                     "type": "text",
@@ -716,8 +744,8 @@
             ]
         },
         {
-            "key": "field_636d1695f3687",
-            "label": "Inclusions \/ Exclusions",
+            "key": "field_6384e551a397f",
+            "label": "Extra Activities",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -732,9 +760,9 @@
             "endpoint": 0
         },
         {
-            "key": "field_62b611c8ec798",
-            "label": "Requirements",
-            "name": "requirements",
+            "key": "field_62b21d85d7c4e",
+            "label": "Extra Activities",
+            "name": "extra_activities",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -747,13 +775,13 @@
             "collapsed": "",
             "min": 0,
             "max": 0,
-            "layout": "table",
+            "layout": "block",
             "button_label": "",
             "sub_fields": [
                 {
-                    "key": "field_62b611deec799",
-                    "label": "Text",
-                    "name": "text",
+                    "key": "field_636beabcc12ac",
+                    "label": "Title",
+                    "name": "title",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -768,8 +796,110 @@
                     "prepend": "",
                     "append": "",
                     "maxlength": ""
+                },
+                {
+                    "key": "field_636beac8c12ad",
+                    "label": "Description",
+                    "name": "description",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 0,
+                    "delay": 0
+                },
+                {
+                    "key": "field_6384e4b957dbc",
+                    "label": "Image",
+                    "name": "image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_6384e4c757dbd",
+                    "label": "Price",
+                    "name": "price",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": "",
+                    "max": "",
+                    "step": ""
+                },
+                {
+                    "key": "field_6384e4e957dbe",
+                    "label": "Standard Activity",
+                    "name": "standard_activity",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "rfc_activities"
+                    ],
+                    "taxonomy": "",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "object",
+                    "ui": 1
                 }
             ]
+        },
+        {
+            "key": "field_636d1695f3687",
+            "label": "Inclusions \/ Exclusions",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_636d166cf3685",
@@ -953,5 +1083,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1668447407
+    "modified": 1669742316
 }

@@ -4,9 +4,10 @@
     background-color: $color-grey-light-1;
     border-top: 1px solid $color-grey-light-2;
     font-size: 1.4rem;
-    
+    margin-top: 6rem;
     @media only screen and (max-width: $bp-large) {
         padding-bottom: 16rem;
+        margin-top: 4rem;
     }
 
     &.narrow {

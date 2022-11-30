@@ -805,7 +805,7 @@
             "collapsed": "",
             "min": 0,
             "max": 0,
-            "layout": "table",
+            "layout": "block",
             "button_label": "",
             "sub_fields": [
                 {
@@ -814,6 +814,25 @@
                     "name": "guide_group",
                     "type": "text",
                     "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_637d068b85961",
+                    "label": "Guide Group Icon",
+                    "name": "guide_group_icon",
+                    "type": "text",
+                    "instructions": "insert svg",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -867,9 +886,9 @@
                         },
                         {
                             "key": "field_62e94c01c2d4e",
-                            "label": "Link",
-                            "name": "link",
-                            "type": "page_link",
+                            "label": "Guide Post",
+                            "name": "guide_post",
+                            "type": "post_object",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -879,13 +898,13 @@
                                 "id": ""
                             },
                             "post_type": [
-                                "page",
                                 "rfc_travel_guides"
                             ],
                             "taxonomy": "",
                             "allow_null": 0,
-                            "allow_archives": 0,
-                            "multiple": 0
+                            "multiple": 0,
+                            "return_format": "object",
+                            "ui": 1
                         }
                     ]
                 }
@@ -1070,5 +1089,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1668613723
+    "modified": 1669138817
 }

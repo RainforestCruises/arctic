@@ -4,19 +4,17 @@
 
     &.narrow {
         & .grid-block__content {
-            max-width: $page-width;         
+            max-width: $page-width;
         }
     }
 
     &__content {
-        @include flexPadding; 
+        @include flexPadding;
 
         max-width: $page-width-full;
-        margin-top: 3rem; 
-        
+        margin-top: 3rem;
 
         &__top {
-
         }
 
         &__grid {
@@ -32,7 +30,46 @@
                 grid-template-columns: 100%;
                 gap: 4rem;
             }
-  
+
+            &.grid1 {
+                grid-template-columns: 100%;
+            }
+            &.grid2 { 
+                grid-template-columns: repeat(2, calc(50% - 1rem));
+                
+                @media only screen and (max-width: $bp-small) {
+                    grid-template-columns: 100%;
+                    gap: 4rem;
+                }
+            }
+
+            &.grid4 {
+                grid-template-columns: repeat(4, calc(25% - 1rem));
+                @media only screen and (max-width: $bp-large) {
+                    grid-template-columns: repeat(3, calc(33% - 1rem));
+                }
+                @media only screen and (max-width: $bp-medium) {
+                    grid-template-columns: repeat(2, calc(50% - 1rem));
+                }
+                @media only screen and (max-width: $bp-small) {
+                    grid-template-columns: 100%;
+                    gap: 4rem;
+                }
+            }
+
+            &.grid5 {
+                grid-template-columns: repeat(5, calc(20% - 1rem));
+                @media only screen and (max-width: $bp-large) {
+                    grid-template-columns: repeat(3, calc(33% - 1rem));
+                }
+                @media only screen and (max-width: $bp-medium) {
+                    grid-template-columns: repeat(2, calc(50% - 1rem));
+                }
+                @media only screen and (max-width: $bp-small) {
+                    grid-template-columns: 100%;
+                    gap: 4rem;
+                }
+            }
         }
 
         &__cta {
@@ -40,9 +77,5 @@
             justify-content: center;
             margin-top: 3rem;
         }
-
-       
     }
 }
-
-

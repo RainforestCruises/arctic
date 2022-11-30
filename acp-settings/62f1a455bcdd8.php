@@ -5,7 +5,7 @@ return array (
   'title' => 'Itineraries',
   'type' => 'rfc_itineraries',
   'id' => '62f1a455bcdd8',
-  'updated' => 1667586674,
+  'updated' => 1669655468,
   'columns' => 
   array (
     'title' => 
@@ -71,6 +71,44 @@ return array (
       'bulk_edit' => 'on',
       'search' => 'on',
       'name' => '62f1a434df3b64',
+    ),
+    '6384eb809c28f4' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Routes',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_6384e5c17c120',
+      'post_property_display' => 'title',
+      'post_link_to' => 'edit_post',
+      'number_of_items' => '10',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '6384eb809c28f4',
+    ),
+    '6384eb9a3be76c' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Styles',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_6384e58d7c11f',
+      'post_property_display' => 'title',
+      'post_link_to' => 'edit_post',
+      'number_of_items' => '10',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '6384eb9a3be76c',
     ),
     '631fbb9d343958' => 
     array (

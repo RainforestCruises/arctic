@@ -77,7 +77,14 @@
             grid-template-columns: 1fr 1fr;
             column-gap: 3rem;
             row-gap: 2rem;
+
+          
             &__group {
+                &:first-child {
+                    grid-row: 1 / span 2;
+                    grid-column: 1 / span 1;
+                }
+             
                 &__title {
                     font-weight: 600;
                     font-size: 1.3rem;
@@ -87,20 +94,31 @@
                     text-align: center;
                     padding: 0.5rem;
                     padding-top: 0.8rem;
+                    position: relative;
+
+                    & svg {
+                        position: absolute;
+                        left: 1rem;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        height: 1.3rem;
+                        width: 1.3rem;
+                        fill: rgba($color-primary, .5);
+
+                    }
                 }
 
                 &__items {
-                    &__item {
-                        margin-bottom: 0.5rem;
-
-                        &__title {
-                        }
-                    }
+                   display: grid;
+                   grid-template-columns: 1fr 1fr;
+                   
                 }
             }
         }
     }
 }
+
+
 
 .mega-category-item {
     &:hover {
@@ -145,6 +163,10 @@
     border-radius: 1rem;
     padding: 1rem;
     align-items: center;
+
+    &.no-border {
+        border: none !important;
+    }
 
     &:hover {
         border: 1px solid $color-grey-light-2;

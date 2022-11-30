@@ -58,7 +58,6 @@
 @import "components/products/cruise/cruise-itineraries";
 @import "components/products/cruise/cruise-cabins";
 @import "components/products/cruise/cruise-areas";
-@import "components/products/cruise/cruise-hero";
 @import "components/products/cruise/cruise-dates";
 
 
@@ -75,19 +74,6 @@
 
 
 
-
-//OLD----------------
-//product 
-@import "components/product/product-related";
-@import "components/product/product-overview";
-@import "components/product/product-itinerary"; 
-@import "components/product/product-cabins";
-@import "components/product/product-prices-extra";
-@import "components/product/product-widgets";
-@import "components/product/product-reviews";
-@import "components/product/product-areas";
-@import "components/product/product-dates";
-@import "components/product/product-deals-modal";
 
 //search
 @import "components/search/search-intro";
@@ -114,6 +100,9 @@
 
 //home
 @import "components/home/home-hero";
+@import "components/home/home-hero2";
+@import "components/home/home-guides";
+
 @import "components/home/home-newest";
 @import "components/home/home-destinations";
 @import "components/home/home-map";

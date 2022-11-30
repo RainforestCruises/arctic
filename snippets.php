@@ -74,3 +74,24 @@ endif; ?>
   View Prices
 
 </button>
+
+
+      <!-- Search Area -->
+      <div class="nav-main__content__center__search-area">
+                <!-- Nav Search Widget -->
+                <?php get_template_part('template-parts/nav/content', 'nav-search'); ?>
+            </div>
+
+            <div class="home-hero2__content__points">
+            <?php foreach ($hero_points as $point) : ?>
+                <div class="hero-point">
+                    <div class="hero-point__title">
+                        <?php echo $point['title']; ?>
+                    </div>
+                    <div class="hero-point__snippet">
+                        <?php echo $point['snippet']; ?>
+                    </div>
+                </div>
+
+            <?php endforeach; ?>
+        </div>

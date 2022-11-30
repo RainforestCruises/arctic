@@ -25,13 +25,11 @@ jQuery(document).ready(function ($) {
         slidesToShow: 1,
         slidesToScroll: 1,
         dots: false,
-        //asNavFor: '#category-hero__bg-slider',
         centerMode: false,
         arrows: true,
         draggable: false,
         fade: true,
         speed: 1800,
-        //lazyLoad: 'ondemand',
         prevArrow: '<button class="btn-circle btn-circle--small   btn-white btn-circle--left category-hero__content__location__slider__arrow-left"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-left"></use></svg></button>',
         nextArrow: '<button class="btn-circle btn-circle--small  btn-white btn-circle--right category-hero__content__location__slider__arrow-right"><svg class="btn-circle--arrow-main"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg><svg class="btn-circle--arrow-animate"><use xlink:href="' + templateUrl + '/css/img/sprite.svg#icon-chevron-right"></use></svg></button>',
         responsive: [
@@ -131,7 +129,6 @@ jQuery(document).ready(function ($) {
     //NEW --------------------
     new Swiper('.ship-card-image-area', {
         slidesPerView: 1,
-        allowTouchMove: false,
         watchSlidesProgress: true,
         pagination: {
             el: '.swiper-pagination',
@@ -147,11 +144,9 @@ jQuery(document).ready(function ($) {
 
 
     const itinerariesSlider = new Swiper('#itineraries-slider', {
-        // Optional parameters
         loop: false,
         spaceBetween: 15,
         slidesPerView: 1,
-        // Navigation arrows
         navigation: {
             nextEl: '.itineraries-slider-btn-next',
             prevEl: '.itineraries-slider-btn-prev',
@@ -169,22 +164,15 @@ jQuery(document).ready(function ($) {
         }
     });
 
-        // Inquire buttons (generic)
-    // -- clear all selections
-    // -- hide tabs
-    // -- go to inquire form
+    // Inquire buttons (generic)
     const inquireModal = document.querySelector("#inquireModal");
-
     const genericInquireCtaButtons = [...document.querySelectorAll('.generic-inquire-cta')];
     genericInquireCtaButtons.forEach(item => {
         item.addEventListener('click', () => {
             inquireModal.style.display = 'flex';
             body.classList.add('no-scroll');
-
-
         });
     })
-
 
 
 });

@@ -44,6 +44,11 @@
     color: $color-primary;
     font-size: 2.2rem;
     margin-bottom: 2rem;
+
+    @media only screen and (max-width: $bp-small) {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
 }
 
 
@@ -518,6 +523,14 @@ p {
     &--dark {
         color: $color-primary;
     }
+}
+
+
+.green-text {
+    color: $color-green;
+}
+.blue-text {
+    color: $color-supporting-light;
 }
 
 //Solid Badge

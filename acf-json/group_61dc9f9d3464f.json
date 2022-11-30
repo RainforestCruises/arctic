@@ -161,25 +161,6 @@
             "save_other_choice": 0
         },
         {
-            "key": "field_61fae150cc4f9",
-            "label": "Is Charter Deal",
-            "name": "is_charter_deal",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
             "key": "field_61e05fceebdd7",
             "label": "SERP Link",
             "name": "serp_link",
@@ -274,31 +255,6 @@
             "return_format": "object"
         },
         {
-            "key": "field_61dc9f9d65c9a",
-            "label": "Destinations",
-            "name": "destinations",
-            "type": "relationship",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "rfc_destinations"
-            ],
-            "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "object"
-        },
-        {
             "key": "field_61dc9f9d6d5d7",
             "label": "Categories",
             "name": "categories",
@@ -325,10 +281,10 @@
         },
         {
             "key": "field_61dca01434c1a",
-            "label": "Products",
-            "name": "products",
+            "label": "Cruises",
+            "name": "cruises",
             "type": "relationship",
-            "instructions": "Select Cruises\/Lodges\/Tours that this promo applies to",
+            "instructions": "Select Cruises that this promo applies to",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -337,9 +293,7 @@
                 "id": ""
             },
             "post_type": [
-                "rfc_cruises",
-                "rfc_lodges",
-                "rfc_tours"
+                "rfc_cruises"
             ],
             "taxonomy": "",
             "filters": [
@@ -368,5 +322,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "Deal - CPT",
-    "modified": 1643917569
+    "show_in_rest": 0,
+    "modified": 1669307458
 }

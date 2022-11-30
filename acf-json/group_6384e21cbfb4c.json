@@ -1,9 +1,9 @@
 {
-    "key": "group_5fe10551d2743",
-    "title": "Activities Post",
+    "key": "group_6384e21cbfb4c",
+    "title": "Styles Post",
     "fields": [
         {
-            "key": "field_62f1a21c85337",
+            "key": "field_6384e235a91dc",
             "label": "Image",
             "name": "image",
             "type": "image",
@@ -25,25 +25,6 @@
             "max_height": "",
             "max_size": "",
             "mime_types": ""
-        },
-        {
-            "key": "field_6384e2ac1959a",
-            "label": "Icon",
-            "name": "icon",
-            "type": "text",
-            "instructions": "svg code",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
         }
     ],
     "location": [
@@ -51,7 +32,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "rfc_activities"
+                "value": "rfc_styles"
             }
         ]
     ],
@@ -62,7 +43,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Activities - CPT",
+    "description": "",
     "show_in_rest": 0,
-    "modified": 1669653195
+    "modified": 1669653136
 }

@@ -47,11 +47,7 @@ $alwaysActiveMainNav = checkActiveHeader();
         <!-- Center -->
         <div class="nav-main__content__center">
 
-            <!-- Search Area -->
-            <div class="nav-main__content__center__search-area">
-                <!-- Nav Search Widget -->
-                <?php get_template_part('template-parts/nav/content', 'nav-search'); ?>
-            </div>
+
 
             <!-- Nav Links -->
             <nav class="nav-main__content__center__nav">
@@ -64,8 +60,9 @@ $alwaysActiveMainNav = checkActiveHeader();
                         Ships
                     </li>
                     <li class="nav-main__content__center__nav__list__item" navelement="guides">
-                        Guides
+                      Guides
                     </li>
+               
                 </ul>
 
             </nav>
@@ -112,7 +109,7 @@ $alwaysActiveMainNav = checkActiveHeader();
                                     $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests';
 
                                 ?>
-                                     <a class="mega-item"  href="<?php echo get_permalink($ship); ?>">
+                                    <a class="mega-item" href="<?php echo get_permalink($ship); ?>">
                                         <div class="mega-item__image-area">
                                             <img <?php afloat_image_markup($hero_gallery[0]['id'], 'square-small'); ?>>
                                         </div>
@@ -145,7 +142,7 @@ $alwaysActiveMainNav = checkActiveHeader();
                                     $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests';
 
                                 ?>
-                                     <a class="mega-item"  href="<?php echo get_permalink($ship); ?>">
+                                    <a class="mega-item" href="<?php echo get_permalink($ship); ?>">
                                         <div class="mega-item__image-area">
                                             <img <?php afloat_image_markup($hero_gallery[0]['id'], 'square-small'); ?>>
                                         </div>
@@ -178,7 +175,7 @@ $alwaysActiveMainNav = checkActiveHeader();
                                     $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests';
 
                                 ?>
-                                     <a class="mega-item"  href="<?php echo get_permalink($ship); ?>">
+                                    <a class="mega-item" href="<?php echo get_permalink($ship); ?>">
                                         <div class="mega-item__image-area">
                                             <img <?php afloat_image_markup($hero_gallery[0]['id'], 'square-small'); ?>>
                                         </div>
@@ -206,27 +203,37 @@ $alwaysActiveMainNav = checkActiveHeader();
 
                         <?php foreach ($guides as $g) :
                             $guide_group = $g['guide_group'];
+                            $guide_group_icon = $g['guide_group_icon'];
                             $items = $g['items'];
                         ?>
 
                             <!-- Group -->
                             <div class="nav-mega__panel__guides__group">
                                 <div class="nav-mega__panel__guides__group__title">
+                                    <?php echo $guide_group_icon ?>
                                     <?php echo $guide_group ?>
+
                                 </div>
 
                                 <!-- Items -->
                                 <div class="nav-mega__panel__guides__group__items">
                                     <?php foreach ($items as $i) :
                                         $title = $i['title'];
-                                        $link = $i['link'];
+                                        $guide_post = $i['guide_post'];
+                                        $featured_image = get_field('featured_image', $guide_post)
                                     ?>
-                                        <div class="nav-mega__panel__guides__group__items__item">
-                                            <!-- img -->
-                                            <a class="nav-mega__panel__guides__group__items__item__title" href="<?php echo $link; ?>">
-                                                <?php echo $title ?>
-                                            </a>
-                                        </div>
+
+                                        <a class="mega-item no-border" href="<?php echo get_permalink($guide_post); ?>">
+                                            <div class="mega-item__image-area">
+                                                <img <?php afloat_image_markup($featured_image['id'], 'square-small'); ?>>
+                                            </div>
+                                            <div class="mega-item__title-group">
+                                                <div class="mega-item__title-group__title">
+                                                    <?php echo $title ?>
+                                                </div>
+
+                                            </div>
+                                        </a>
                                     <?php endforeach; ?>
                                 </div>
                             </div>

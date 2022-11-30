@@ -15,6 +15,18 @@
                 <circle cx="5" cy="5" r="1" stroke="none"></circle>
             </g>
         </symbol>
+        <symbol id="icon-energy" viewBox="0 0 16 16">
+            <title>energy</title>
+            <g class="nc-icon-wrapper">
+                <path d="M9.724,6.293S10.47,1.905,7.426,0A5.37,5.37,0,0,1,5.4,3.887C4.1,5.03,1.655,7.6,1.681,10.34A6.285,6.285,0,0,0,5.132,16a3.984,3.984,0,0,1,1.394-2.755A3.253,3.253,0,0,0,7.772,11.06a5.856,5.856,0,0,1,3.1,4.881v.013A5.883,5.883,0,0,0,14.3,10.848c.216-2.574-1.194-6.074-2.445-7.218A6.793,6.793,0,0,1,9.724,6.293Z" fill="currentColor" stroke="none"></path>
+            </g>
+        </symbol>
+        <symbol id="icon-discount-2" viewBox="0 0 16 16">
+            <title>discount 2</title>
+            <g class="nc-icon-wrapper">
+                <polygon fill="none" stroke="currentColor" points="13.5,10 15.5,8 13.5,6 13.5,2.5 10,2.5 8,0.5 6,2.5 2.5,2.5 2.5,6 0.5,8 2.5,10 2.5,13.5 6,13.5 8,15.5 10,13.5 13.5,13.5 "></polygon>
+            </g>
+        </symbol>
         <symbol id="icon-diamonds-suits" viewBox="0 0 16 16">
             <title>diamonds suits</title>
             <g class="nc-icon-wrapper">

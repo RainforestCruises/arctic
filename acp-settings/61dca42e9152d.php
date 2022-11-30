@@ -1,11 +1,11 @@
 <?php
 
 return array (
-  'version' => '5.5.3',
+  'version' => '5.6.4',
   'title' => 'Deals',
   'type' => 'rfc_deals',
   'id' => '61dca42e9152d',
-  'updated' => 1643917708,
+  'updated' => 1669307505,
   'columns' => 
   array (
     'title' => 
@@ -54,43 +54,6 @@ return array (
       'filter_label' => '',
       'name' => '61e07c39ced918',
     ),
-    '61e07c5396c8b4' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'SERP Link',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_61e05fceebdd7',
-      'post_property_display' => 'title',
-      'post_link_to' => 'edit_post',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '61e07c5396c8b4',
-    ),
-    '61dca4264d9168' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Products',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_61dca01434c1a',
-      'post_property_display' => 'title',
-      'post_link_to' => 'edit_post',
-      'number_of_items' => '10',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '61dca4264d9168',
-    ),
     '61dca4107851ec' => 
     array (
       'type' => 'column-acf_field',
@@ -109,25 +72,6 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '61dca4107851ec',
-    ),
-    '61dca41eb4fdf4' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Destinations',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_61dc9f9d65c9a',
-      'post_property_display' => 'title',
-      'post_link_to' => 'edit_post',
-      'number_of_items' => '10',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '61dca41eb4fdf4',
     ),
     '61dca50672b020' => 
     array (
@@ -166,22 +110,6 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '61dca405c8f5c4',
-    ),
-    '61fae1a394fdf4' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Is Charter Deal',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_61fae150cc4f9',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '61fae1a394fdf4',
     ),
     '61dca3e7d020c4' => 
     array (
@@ -263,6 +191,25 @@ return array (
       'filter_label' => '',
       'filter_format' => '',
       'name' => 'date',
+    ),
+    '637f9c62445a1c' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Cruises',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_61dca01434c1a',
+      'post_property_display' => 'title',
+      'post_link_to' => 'edit_post',
+      'number_of_items' => '10',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '637f9c62445a1c',
     ),
   ),
   'settings' => 

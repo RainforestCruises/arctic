@@ -1,297 +1,114 @@
 <?php
-$hero_slider = get_field('hero_slider');
+$hero_featured_image = get_field('hero_featured_image');
+$hero_points = get_field('hero_points');
+$hero_title = get_field('hero_title');
+$hero_subtitle = get_field('hero_subtitle');
+$category_landing_pages = get_field('category_landing_pages', 'options');
+$hero_deals = get_field('hero_deals');
 
-$destinationPoints = [];
-foreach ($hero_slider as $s) {
-    $isRegion =  $s['is_toplevel'];
-    if (!$isRegion) {
-        $destination = $s['destination'];
-        $destinationPostId = $destination->ID;
 
-        $geometry = [
-            'type' => "Point",
-            'coordinates' => [get_field('longitude', $destination), get_field('latitude', $destination)],
-        ];
+//wp_enqueue_script('page-home-hero', get_template_directory_uri() . '/js/page-home-hero2.js', array(), false, true);
 
-        $zoomPoint = [
-            'longitude' => get_field('zoom_point_longitude', $destination),
-            'latitude' => get_field('zoom_point_latitude', $destination),
-        ];
-
-        $point  = [
-            'title' => get_the_title($destination),
-            'postid' => $destination->ID,
-            'geometry' => $geometry,
-            'zoomPoint' => $zoomPoint,
-            'zoomLevel' => get_field('zoom_level', $destination),
-        ];
-
-        $destinationPoints[] = $point;
-    }
-}
-
-wp_enqueue_script('page-home-hero', get_template_directory_uri() . '/js/page-home-hero.js', array(), false, true);
-wp_localize_script(
-    'page-home-hero',
-    'page_vars',
-    array(
-        'destinationPoints' =>  $destinationPoints
-    )
-);
 
 ?>
 
-<!-- Hero -->
-<div class="home-hero hero">
+<section class="home-hero2" id="section-top">
 
-    <!-- Back Button -->
-    <div class="btn-pill-hero" id="back-cta">
-        Back
+    <div class="home-hero2__bg-image">
+        <img <?php afloat_image_markup($hero_featured_image['id'], 'full-hero-large', array('full-hero-large', 'full-hero-medium', 'full-hero-small', 'full-hero-xsmall'), false); ?>>
     </div>
 
-    <!-- Background Slider -->
-    <div class="home-hero__bg">
 
-        <?php
-        $slideCount = 0;
-        foreach ($hero_slider as $s) :
-            $sliderImage = $s['image'];
-            $sliderTitle = $s['title'];
-            $sliderDestination = $s['destination'];
-            $sliderDestinationPostId = null;
-            if ($sliderDestination) {
-                $sliderDestinationPostId = $sliderDestination->ID;
-            }
-        ?>
-            <div class="home-hero__bg__slide" postid="<?php echo $sliderDestinationPostId ?>" slidenumber="<?php echo $slideCount; ?>">
-                <img <?php afloat_image_markup($sliderImage['id'], 'full-hero-large', array('full-hero-large', 'full-hero-medium', 'full-hero-small', 'full-hero-xsmall'), false); ?>>
+    <!-- Hero Content -->
+    <div class="home-hero2__content">
+
+        <div class="home-hero2__content__primary">
+            <div class="home-hero2__content__primary__title">
+                <?php echo $hero_title ?>
             </div>
-        <?php $slideCount++;
-        endforeach; ?>
-    </div>
+            <div class="home-hero2__content__primary__snippet">
+                <?php echo $hero_subtitle; ?>
+            </div>
+        </div>
 
+        <div class="home-hero2__content__secondary">
 
-    <!-- Base Content (Page Width Full) -->
-    <div class="home-hero__content">
+            <div class="title-single">
+                Great Deals on Upcoming Departures
+            </div>
 
-        <!-- Map -->
-        <div class="home-hero__content__map" id="hero-map"></div>
+            <div class="home-hero2__content__secondary__items">
+                <?php foreach ($hero_deals as $deal) :
+                    $featured_image = get_field('featured_image', $deal);
+                    $navigation_title = get_field('navigation_title', $deal);
+                    $description = get_field('description', $deal);
 
-        <!-- Main Slider -->
-        <div class="home-hero__content__main-slider">
+                    $image = $deal['image'];
+                    $title = $deal['title'];
+                    $percentage_savings = $deal['percentage_savings'];
 
-            <!-- Region Slide -->
-            <!-- Slide 0 -->
-            <div class="main-slider-slide" postid="region" slidenumber="0">
-                <!-- Loop Regions, TODO: Tabs-->
-                <?php
-                foreach ($hero_slider as $s) :
-                    $is_toplevel = $s['is_toplevel'];
-                    if ($is_toplevel) :
-                        $region = $s['region'];
-                        $regionPostId = $region->ID;
-                        $title = $s['title'];
-                        $subtitle = $s['subtitle'];
-                        $snippet = $s['snippet'];
                 ?>
+                    <div class="information-card">
+                        <!-- Title Group -->
+                        <div class="information-card__section">
+                            <div class="avatar-title-group">
+                                <div class="avatar-title-group__avatar">
+                                    <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
+                                </div>
+                                <div class="avatar-title-group__text">
+                                    <div class="avatar-title-group__text__title">
+                                        <?php echo  $title; ?>
+                                    </div>
+                                    <div class="avatar-title-group__text__sub">
+                                        Up to <span class="green-text"><?php echo $percentage_savings; ?>%</span> savings
+                                    </div>
 
-                        <!-- New Tab Content container Here -->
-                        <div class="main-slider-slide__primary">
-                            <h1 class="main-slider-slide__primary__subtitle">
-                                <?php echo $subtitle ?>
-                            </h1>
-                            <div class="main-slider-slide__primary__title">
-                                <?php echo $title ?>
-                            </div>
-                            <div class="main-slider-slide__primary__snippet">
-                                <?php echo $snippet ?>
-                            </div>
-                        </div>
-
-                        <div class="main-slider-slide__explore-cta">
-                            <div class="btn-pill-hero" id="explore-cta">
-                                Explore Map
-                            </div>
-                        </div>
-
-                        <!-- Regional Nav (Tabs) -->
-                        <div class="main-slider-slide__region-nav">
-                            <div class="main-slider-slide__region-nav__item">
-                                Antarctica
-                            </div>
-                            <div class="main-slider-slide__region-nav__item">
-                                Arctic
+                                </div>
                             </div>
                         </div>
 
-                <?php endif;
-                endforeach; ?>
-            </div>
-            <!-- End Regions -->
 
+                        <div class="information-card__bottom">
 
-            <!-- Destination Slides -->
-            <!-- Loop Destinations -->
-            <?php
-            $slideCount = 1;
-            foreach ($hero_slider as $s) :
-                $is_toplevel = $s['is_toplevel'];
-                if (!$is_toplevel) :
-                    $title = $s['title'];
-                    $subtitle = $s['subtitle'];
-                    $destination = $s['destination']; //destination
-                    $destinationPostId = $destination->ID;
-                    $tab_items = $s['tab_items'];
-            ?>
+                            <!-- Price Group -->
+                            <div class="information-card__bottom__deals">
+                                <svg>
+                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-energy"></use>
+                                </svg>
+                                <span>
+                                    12 Deals
+                                </span>
 
-                    <!-- Slide -->
-                    <div class="main-slider-slide" postid="<?php echo $destinationPostId ?>" slidenumber="<?php echo $slideCount; ?>">
-                        <!-- Primary -->
-                        <div class="main-slider-slide__primary">
-                            <h1 class="main-slider-slide__primary__subtitle">
-                                <?php echo $subtitle ?>
-                            </h1>
-                            <div class="main-slider-slide__primary__title">
-                                <?php echo $title ?>
+                            </div>
+
+                            <!-- CTA -->
+                            <div class="information-card__bottom__cta">
+                                <button class="cta-square-icon cta-square-icon--inverse departure-inquire-cta">
+                                    View All
+                                    <svg>
+                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                                    </svg>
+                                </button>
+
                             </div>
                         </div>
-                        <!-- End Primary -->
-
-                        <!-- Secondary -->
-                        <div class="main-slider-slide__secondary">
-
-
-                            <!-- Tabs -->
-                            <div class="main-slider-slide__secondary__tabs">
-
-                                <?php
-                                $tabIndex = 0;
-                                foreach ($tab_items as $tab) :
-                                    $content_type = $tab['content_type'];
-
-                                    // Icon Tab
-                                    if ($content_type == 'about') : ?>
-                                        <button class="main-slider-slide__secondary__tabs__button btn-pill-hero btn-pill-hero--circular active" slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
-                                            <svg>
-                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-compass-06"></use>
-                                            </svg>
-                                        </button>
-                                    <?php else : //Text Tab
-                                        if ($content_type == 'cruise') {
-                                            $title = 'Cruises';
-                                        } else if ($content_type == 'itinerary') {
-                                            $title = 'Itineraries';
-                                        } else if ($content_type == 'activities') {
-                                            $title = 'Activities';
-                                        } else if ($content_type == 'wildlife') {
-                                            $title = 'Wildlife';
-                                        }
-                                    ?>
-                                        <button class="main-slider-slide__secondary__tabs__button btn-pill-hero" slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
-                                            <?php echo $title; ?>
-                                        </button>
-                                    <?php endif; ?>
-
-                                <?php $tabIndex++;
-                                endforeach; ?>
-
-                            </div>
-                            <!-- End Tabs -->
-
-                            <!-- Panels -->
-                            <div class="main-slider-slide__secondary__panels">
-
-                                <?php
-                                $tabIndex = 0;
-                                foreach ($tab_items as $tab) :
-                                    $content_type = $tab['content_type'];
-                                    if ($content_type == 'about') :
-                                        $snippet = $tab['snippet'];
-                                ?>
-                                        <!-- Panel Text -->
-                                        <div class="main-slider-slide__secondary__panels__panel panel-text active" slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
-                                            <?php echo $snippet; ?>
-                                        </div>
-                                    <?php else :
-                                        $items = [];
-                                        if ($content_type == 'cruise') {
-                                            $items = $tab['cruises'];
-                                        } else if ($content_type == 'itinerary') {
-                                            $items = $tab['itineraries'];
-                                        } else if ($content_type == 'activities') {
-                                            $items = $tab['activities'];
-                                        } else if ($content_type == 'wildlife') {
-                                            $items = $tab['wildlife'];
-                                        }
-                                    ?>
-
-                                        <!-- Panel Series -->
-                                        <div class="main-slider-slide__secondary__panels__panel panel-series" slideindex="<?php echo $slideCount; ?>" tabindex="<?php echo $tabIndex; ?>">
-                                            <div class="swiper-wrapper">
-                                                <?php
-                                                foreach ($items as $item) :
-                                                    $image =  get_field('hero_image_portrait', $item);
-                                                    $title = get_the_title($item);
-                                                    $link = get_the_permalink($item);
-                                                ?>
-
-                                                    <a class="swiper-slide resource-card small inverse shadow" href="<?php echo $link; ?>">
-                                                        <div class="resource-card__image-area">
-                                                            <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
-                                                        </div>
-                                                        <div class="resource-card__content">
-
-                                                            <!-- Title -->
-                                                            <div class="resource-card__content__title-group-vertical">
-                                                                <div class="resource-card__content__title-group-vertical__title">
-                                                                    <?php echo $title; ?>
-                                                                </div>
-
-                                                                <?php if ($content_type == 'cruise' || $content_type == 'itinerary') : ?>
-                                                                    <div class="resource-card__content__title-group-vertical__sub">
-                                                                        Starting at $4,399
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            </div>
-
-
-                                                        </div>
-
-                                                    </a>
-                                                <?php
-                                                endforeach;
-                                                ?>
-                                            </div>
-                                            <div class="swiper-button-prev"></div>
-                                            <div class="swiper-button-next"></div>
-
-                                        </div>
-
-                                <?php endif;
-                                    $tabIndex++;
-                                endforeach; ?>
-
-
-                            </div>
-
-                        </div>
-                        <!-- End Secondary -->
                     </div>
-                    <!-- End Content Slide -->
+
+                <?php endforeach; ?>
+                <div class="home-hero2__content__secondary__items__see-more">
+                    See All 27 Deals
+                    <button class="btn-icon">
+                        <svg>
+                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                        </svg>
+                    </button>
+                </div>
+
+            </div>
 
 
-            <?php $slideCount++;
-                endif;
-            endforeach; ?>
         </div>
-        <!-- End Main Slider -->
 
-        <!-- Info Text -->
-        <div class="home-hero__content__info-text">
-            Click locations to view
-        </div>
 
     </div>
-    <!-- End Base Content -->
-</div>
-<!-- End Hero -->
+</section>

@@ -48,7 +48,7 @@ jQuery(document).ready(function ($) {
     //set active bg past threshold
     if (!opaqueNavAlways && !megaActive) {
 
-      if (window.scrollY > 600) {
+      if (window.scrollY > 150) {
         navMain.classList.add('active');
       } else {
 

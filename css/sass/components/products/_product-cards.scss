@@ -14,7 +14,7 @@
         }
     }
     &.large {
-        height: 44rem
+        height: 44rem;
     }
     &.shadow {
         box-shadow: $shadow-medium-around;
@@ -304,8 +304,7 @@
     padding: 1.5rem 2rem;
     color: $color-primary;
     position: relative;
-    
-    
+
     &--horizontal {
         //above 600px
         @media only screen and (min-width: $bp-small) {
@@ -315,7 +314,6 @@
             min-height: 12rem;
 
             & .avatar-title-group {
-               
             }
 
             & .information-card__section {
@@ -332,18 +330,14 @@
                 justify-content: center;
 
                 & button {
-                    margin: .5rem 0rem ;
+                    margin: 0.5rem 0rem;
                 }
 
                 &__price-group {
                     margin-right: 0rem;
                 }
             }
-
-        
         }
-
-
     }
 
     &__section {
@@ -352,46 +346,117 @@
         border-bottom: 1px solid $color-grey-light-1a;
 
         &__specs {
-            
         }
     }
-
-    
 
     &__bottom {
         display: flex;
         justify-content: space-between;
         align-items: center;
 
-        &__price-group {
-        
+        &__deals {
+            display: flex;
+            align-items: center;
+
+            & span {
+                background-color: $color-grey-light-1;
+                color: $color-primary;
+                border-radius: 0.5rem;
+                padding: 0.2rem 0.8rem;
+                font-size: 1.2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            & svg {
+                height: 1.6rem;
+                width: 1.6rem;
+                color: $color-orange;
+                margin-right: 0.5rem;
+            }
         }
-    
+
         &__cta {
             display: flex;
             flex-direction: column;
             align-items: center;
 
             & .btn-text-plain {
-                margin-top: .3rem;
+                margin-top: 0.3rem;
             }
         }
-
     }
-
- 
 }
 
+.block-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
 
-.avatar-title-group { //make generic
+    @media only screen and (max-width: $bp-large) {
+        grid-template-columns: 1fr;
+    }
+
+
+    &__image-area {
+        max-height: 44rem;
+        @media only screen and (max-width: $bp-large) {
+            max-height: 22rem;
+        }
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+    }
+
+    &__text-area {
+        padding: 0 2rem;
+        display: flex;
+        flex-direction: column;
+        
+
+        @media only screen and (max-width: $bp-large) {
+            padding: 0rem;
+        }
+
+        &__title {
+            font-size: 2rem;
+            line-height: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: $color-primary !important;
+            text-decoration: none;
+          
+        }
+
+        &__text {
+            font-size: 1.6rem;
+        }
+
+        &__cta {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: .5rem;
+        }
+    }
+}
+
+//Sub Components
+.avatar-title-group {
+    //make generic
     color: currentColor;
     font-weight: 700;
     display: flex;
     align-items: center;
 
-    &__avatar { 
+    &__avatar {
         display: flex;
-        align-items: center;      
+        align-items: center;
         & img {
             height: 5rem;
             width: 5rem;
@@ -402,7 +467,6 @@
     &__text {
         margin-left: 1rem;
         &__title {
-        
             font-size: 1.6rem;
             line-height: 2rem;
         }
@@ -414,16 +478,14 @@
     }
 }
 
-
 .specs-item {
     font-size: 1.4rem;
     display: grid;
     grid-template-columns: min-content 1fr;
     color: $color-primary;
-   
 
-    &:not(:last-child){
-        margin-bottom: .5rem;
+    &:not(:last-child) {
+        margin-bottom: 0.5rem;
     }
     &__icon {
         & svg {
@@ -436,7 +498,6 @@
         margin-right: 1rem;
     }
     &__text {
-
         &__main {
             font-size: 1.4rem;
             line-height: 2rem;
@@ -444,11 +505,9 @@
         &__sub {
             font-size: 1rem;
             color: $color-grey-3;
-            
         }
     }
 }
-
 
 .price-display-group {
     width: min-content;
@@ -464,7 +523,7 @@
         font-size: 1.8rem;
         line-height: 2rem;
         white-space: nowrap;
-        transition: all .2s;
+        transition: all 0.2s;
 
         display: flex;
 
@@ -477,7 +536,6 @@
         }
 
         &__discount {
-
         }
     }
 

@@ -32,7 +32,7 @@
 }
 
 .review-item {
- 
+    margin-bottom: 2rem;
     &__profile {
         display: flex;
         align-items: center;
@@ -60,7 +60,6 @@
         
     }
     &__text {
-        grid-column: 1 / -1;
         font-size: 1.6rem;
     }
 

@@ -1,81 +1,119 @@
 <?php
-$newest_ships = get_field('newest_ships');
+$ships = get_field('ships');
+$ships_title_subtext = get_field('ships_title_subtext')
+
 ?>
 
 
-<section class="slider-block">
-    <div class="slider-block__content">
+<section class="grid-block" id="section-ships">
+    <div class="grid-block__content">
 
         <!-- Top - Title/Nav -->
-        <div class="slider-block__content__top">
+        <div class="grid-block__content__top">
 
             <!-- Title -->
-            <div class="slider-block__content__top__title">
-                <div class="title-single">
-                    Newest Cruises
+            <div class="title-group">
+                <div class="title-group__title">
+                    Popular Antarctica Cruises
+                </div>
+                <div class="title-group__sub">
+                    <?php echo $ships_title_subtext; ?>
                 </div>
             </div>
 
-            <!-- Nav Buttons -->
-            <div class="slider-block__content__top__nav">
-
-                <div class="swiper-button-prev swiper-button-prev--white-border cruises-slider-btn-prev"></div>
-                <div class="swiper-button-next swiper-button-next--white-border cruises-slider-btn-next"></div>
-
-            </div>
         </div>
 
-        <!-- Slider Area -->
-        <div class="slider-block__content__slider">
+        <!-- Grid Area -->
+        <div class="grid-block__content__grid">
+            <?php foreach ($ships as $ship) :
+                $images =  get_field('hero_gallery', $ship);
+                $itineraries =  get_field('itineraries', $ship);
+                $title = get_the_title($ship);
+                $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
+                $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . 'Luxury';
+                $departures = getDepartureList($ship);
+                $lowestPrice = getLowestDepartureListPrice($departures)
+            ?>
 
-            <!-- Swiper -->
-            <div class="swiper" id="cruises-slider">
-                <div class="swiper-wrapper">
+                <!-- Cabin Card -->
+                <div class="resource-card">
 
-                    <?php 
-                    $index = 0;
-                    foreach ($newest_ships as $ship) :
-                        $images =  get_field('hero_gallery', $ship);
-                        $title = get_the_title($ship);
-                        $link = get_the_permalink($ship);
-                    ?>
-
-                        <!-- Overlay Card -->
-                        <div class="overlay-card swiper-slide">
-                            <div class="overlay-card__image-area swiper cruise-card-image-area cruise-card-image-area-<?php echo $index ?>">
-                                <div class="swiper-wrapper">
-                                    <?php foreach ($images as $image) : ?>
-                                        <div class="overlay-card__image-area__item swiper-slide">
-                                            <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-
-                            </div>
-                            <a class="overlay-card__content" href="<?php echo $link; ?>">
-                                <div class="overlay-card__content__title-section">
-                                    <div class="overlay-card__content__title-section__sub">
-                                        $2995 Per Person
-                                    </div>
-                                    <div class="overlay-card__content__title-section__title">
-                                        <?php echo $title ?>
-                                    </div>
-                                </div>
-                                <div class="overlay-card__content__cta">
-                                   
-                                </div>
-                            </a>
-                            <div class="swiper-pagination cruise-card-image-area-pagination-<?php echo $index ?>"></div>
-                            <div class="swiper-button-prev swiper-button-prev--white cruise-card-image-area-button-prev-<?php echo $index ?>"></div>
-                            <div class="swiper-button-next swiper-button-next--white cruise-card-image-area-button-next-<?php echo $index ?>"></div>
+                    <!-- Images Slider -->
+                    <div class="resource-card__image-area swiper ship-card-image-area">
+                        <div class="swiper-wrapper">
+                            <?php foreach ($images as $image) : ?>
+                                <a class="resource-card__image-area__item swiper-slide" href="<?php echo get_permalink($ship) ?>">
+                                    <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
+                                </a>
+                            <?php endforeach; ?>
                         </div>
 
-                    <?php $index++; endforeach; ?>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev swiper-button-prev--overlay"></div>
+                        <div class="swiper-button-next swiper-button-prev--overlay"></div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="resource-card__content">
+
+                        <!-- Title -->
+                        <a class="resource-card__content__title" href="<?php echo get_permalink($ship) ?>">
+                            <?php echo $title; ?>
+                        </a>
+
+                        <!-- Specs -->
+                        <div class="resource-card__content__specs">
+
+                            <!-- Itinerary -->
+                            <div class="resource-card__content__specs__item">
+                                <div class="resource-card__content__specs__item__icon">
+                                    <svg>
+                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-time-clock"></use>
+                                    </svg>
+                                </div>
+                                <div class="resource-card__content__specs__item__text">
+                                    <?php echo $itineraryDisplay; ?>
+                                </div>
+                            </div>
+
+                            <!-- Size -->
+                            <div class="resource-card__content__specs__item">
+                                <div class="resource-card__content__specs__item__icon">
+                                    <svg>
+                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-profile"></use>
+                                    </svg>
+                                </div>
+                                <div class="resource-card__content__specs__item__text">
+                                    <?php echo $guestsDisplay; ?>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Price Group -->
+                        <div class="resource-card__content__price-group">
+                            <div class="resource-card__content__price-group__amount">
+                                <?php echo "$ " . number_format($lowestPrice, 0);  ?>
+                            </div>
+                            <div class="resource-card__content__price-group__text">
+                                Per Person
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+
+
+            <?php endforeach; ?>
+
 
 
 
         </div>
+        <div class="grid-block__content__cta">
+            <a class="cta-primary cta-primary--inverse" id="all-guides-link">
+                View All Ships
+            </a>
+        </div>
+
     </div>
 </section>

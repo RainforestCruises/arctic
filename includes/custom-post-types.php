@@ -92,7 +92,7 @@ function create_post_type_rfc_guide_categories()
 }
 add_action('init', 'create_post_type_rfc_guide_categories');
 
-// Custom Post Type - Cruises 
+// Custom Post Type - Cruises (ships)
 function create_post_type_rfc_cruises()
 {
     register_post_type(
@@ -195,7 +195,7 @@ function create_post_type_rfc_amenities()
 }
 add_action('init', 'create_post_type_rfc_amenities');
 
-// Custom Post Type - activities
+// Custom Post Type - Activities
 function create_post_type_rfc_activities()
 {
     register_post_type(
@@ -256,25 +256,45 @@ function create_post_type_rfc_destinations()
 add_action('init', 'create_post_type_rfc_destinations');
 
 
-// Custom Post Type - Locations
-function create_post_type_rfc_locations()
+// Custom Post Type - Styles
+function create_post_type_rfc_styles()
 {
     register_post_type(
-        'rfc_locations',
+        'rfc_styles',
         array(
             'labels' => array(
-                'name' => __('Locations'),
-                'singular_name' => __('Location'),
+                'name' => __('Styles'),
+                'singular_name' => __('Style'),
             ),
             'public' => true,
-            'rewrite' => array('slug' => 'locations'),
+            'rewrite' => array('slug' => 'styles'),
             'supports' => array(
                 'title',
             )
         )
     );
 }
-add_action('init', 'create_post_type_rfc_locations');
+add_action('init', 'create_post_type_rfc_styles');
+
+// Custom Post Type - Routes
+function create_post_type_rfc_routes()
+{
+    register_post_type(
+        'rfc_routes',
+        array(
+            'labels' => array(
+                'name' => __('Routes'),
+                'singular_name' => __('Route'),
+            ),
+            'public' => true,
+            'rewrite' => array('slug' => 'routes'),
+            'supports' => array(
+                'title',
+            )
+        )
+    );
+}
+add_action('init', 'create_post_type_rfc_routes');
 
 
 
