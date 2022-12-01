@@ -6,6 +6,8 @@ $length = get_field('length_in_nights') + 1;
 $lowestPrice = $args['lowestPrice'];
 $shipSizeRange = $args['shipSizeRange'];
 
+
+
 $images = get_field('hero_gallery');
 $desktopImages = array_slice($images, 1); //for gallery desktop slider
 
@@ -83,6 +85,8 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                     <a href="#section-itinerary" class="product-hero__content__main__primary__nav__link">Itinerary</a>
                     <a href="#section-map" class="product-hero__content__main__primary__nav__link">Map</a>
                     <a href="#section-dates" class="product-hero__content__main__primary__nav__link">Dates</a>
+                    <a href="#section-extras" class="product-hero__content__main__primary__nav__link">Extras</a>
+
                 </div>
             </div>
 
@@ -158,7 +162,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
 
 
                     </div>
-                    <!-- Service Level -->
+                    <!-- Embarkation -->
                     <div class="product-hero__content__main__secondary__attributes__item">
                         <div class="product-hero__content__main__secondary__attributes__item__icon">
                             <svg>
@@ -167,23 +171,15 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                         </div>
                         <div class="product-hero__content__main__secondary__attributes__item__text">
                             <div class="sub-attribute">
-                                Service Level
+                                Embarkation
                             </div>
-                            Luxury
+                            
+                            <?php echo getEmbarkationDisplay(get_post()); ?>
                         </div>
-
                     </div>
-
-
-
-
                 </div>
-
             </div>
         </div>
-
-
-
     </div>
 </section>
 

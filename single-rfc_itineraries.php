@@ -134,25 +134,26 @@ $args = array(
   <?php
   get_template_part('template-parts/itinerary/content', 'itinerary-map', $args);
   ?>
+
   <!-- Dates -->
   <?php
   get_template_part('template-parts/itinerary/content', 'itinerary-dates', $args);
   ?>
 
-
-  <!-- Requirements -->
+  <!-- Extras -->
   <?php
-  get_template_part('template-parts/itinerary/content', 'itinerary-requirements', $args);
+  get_template_part('template-parts/itinerary/content', 'itinerary-extras', $args);
+  ?>
+
+  <!-- Inclusions / Exclusions -->
+  <?php
+  get_template_part('template-parts/itinerary/content', 'itinerary-inclusions', $args);
   ?>
 
   <!-- Related -->
   <?php
   get_template_part('template-parts/itinerary/content', 'itinerary-related', $args);
   ?>
-
-  <!-- Reviews -->
-  <!-- Extras -->
-  <!-- Related -->
 
 
 </main>
@@ -162,6 +163,4 @@ get_template_part('template-parts/shared/content', 'shared-inquire-modal', $args
 ?>
 
 
-
-<!-- #site-wrapper end-->
 <?php get_footer() ?>

@@ -53,7 +53,14 @@ jQuery(document).ready(function ($) {
     });
 
 
-
+    const newsletterModal = document.querySelector("#newsletterModal");
+    const newsletterSubscribeButton = document.querySelector("#newsletter-subscribe-button");
+    if(newsletterSubscribeButton){
+        newsletterSubscribeButton.addEventListener('click', () => {
+            newsletterModal.style.display = 'flex';
+            body.classList.add('no-scroll');    
+        });
+    }
 
 
 

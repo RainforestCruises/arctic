@@ -11,15 +11,15 @@ function getDepartureList($post, $specificShip = null)
             $itineraryDepartures = get_field('departures', $i);
 
             foreach ($itineraryDepartures as $d) {   // each departure   
-                
+
                 $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
-                if($isCurrent) {
+                if ($isCurrent) {
                     $id = $i->ID . "-" . getRandomHex();
                     $returnDate = date('Y-m-d', strtotime($d['date'] . ' + ' . $itineraryLength . ' days'));
                     $cabin_prices = $d['cabin_prices'];
                     $ship = $d['ship'];
 
-                    if($ship == $post){
+                    if ($ship == $post) {
                         $departure = [
                             'ID' => $id,
                             'DepartureDate' => $d['date'],
@@ -35,29 +35,26 @@ function getDepartureList($post, $specificShip = null)
                         ];
                         $departures[] = $departure;
                     }
-
-                    
                 }
-                
             }
         }
     } else if (get_post_type($post) == 'rfc_itineraries') {
         $itineraryLength = get_field('length_in_nights', $post);
         $itineraryDepartures = get_field('departures', $post);
-    
+
         foreach ($itineraryDepartures as $d) {   // each departure   
             $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
-            if ($isCurrent) { 
+            if ($isCurrent) {
                 $id = $post->ID . "-" . getRandomHex();
                 $returnDate = date('Y-m-d', strtotime($d['date'] . ' + ' . $itineraryLength . ' days'));
                 $cabin_prices = $d['cabin_prices'];
                 $ship = $d['ship'];
 
                 $match = true;
-                if($specificShip && ($specificShip != $ship)) {
+                if ($specificShip && ($specificShip != $ship)) {
                     $match = false;
                 }
-                if($match){
+                if ($match) {
                     $departure = [
                         'ID' => $id,
                         'Ship' => $d['ship'],
@@ -73,8 +70,6 @@ function getDepartureList($post, $specificShip = null)
                     ];
                     $departures[] = $departure;
                 }
-
-                
             }
         }
     }
@@ -85,8 +80,6 @@ function getDepartureList($post, $specificShip = null)
 
     return $departures;
 }
-
-
 
 // get lowest price from a list of departures
 function getLowestDepartureListPrice($departures)
@@ -161,8 +154,6 @@ function getHighestDeparturePrice($departure)
 
 
 
-
-
 // Random Code Generator
 function getRandomHex($num_bytes = 4)
 {
@@ -180,6 +171,21 @@ function createYearSelection($current, $yearsCount)
         $count++;
     }
     return $years;
+}
+
+function getEmbarkationDisplay($itinerary)
+{
+    $embarkation_point = get_field('embarkation_point', $itinerary);
+    $disembarkation_point = get_field('disembarkation_point', $itinerary);
+
+    $display = get_the_title($embarkation_point) . ', ' . get_field('country_name_short', $embarkation_point);
+    
+    if($disembarkation_point && ($embarkation_point != $disembarkation_point)){
+        $display .= ' - ' . get_the_title($disembarkation_point) . ', ' . get_field('country_name_short', $disembarkation_point);
+    } 
+
+
+    return $display;
 }
 
 
@@ -211,10 +217,11 @@ function shipSizeDisplay($pax)
     return $displayText;
 }
 
-function getItineraryDestinations($itinerary) {
+function getItineraryDestinations($itinerary)
+{
     $days = get_field('itinerary', $itinerary);
     $embarkation_point = get_field('embarkation_point', $itinerary);
-    
+
     $destinations = [];
     foreach ($days as $day) {
         if ($embarkation_point != $day['destination']) {
@@ -226,10 +233,10 @@ function getItineraryDestinations($itinerary) {
     $display = "";
     $destinationCount = count($destinations);
     $x = 1;
-    foreach($destinations as $d){
+    foreach ($destinations as $d) {
         $name = $d;
 
-        if($x < $destinationCount){
+        if ($x < $destinationCount) {
             $display .= $name . ", ";
         } else {
             $display .= $name;
@@ -240,16 +247,17 @@ function getItineraryDestinations($itinerary) {
     return $display;
 }
 
-function getItineraryShips($itinerary) {
+function getItineraryShips($itinerary)
+{
     $ships = get_field('ships', $itinerary);
     $display = "";
     $shipCount = count($ships);
 
     $x = 1;
-    foreach($ships as $s){
+    foreach ($ships as $s) {
         $name = get_the_title($s);
 
-        if($x < $shipCount){
+        if ($x < $shipCount) {
             $display .= $name . ", ";
         } else {
             $display .= $name;

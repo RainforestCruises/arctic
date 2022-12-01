@@ -132,8 +132,8 @@ function dayCountMarkup($string, $exclude_number = false)
 
 
 <div class="modal" id="itineraryDaysModal">
-    <div class="modal__content"">
-        <div class=" modal__content__top">
+    <div class="modal__content">
+        <div class="modal__content__top">
             <!-- Top Modal Content -->
             <div class="modal__content__top__nav">
                 <div class="modal__content__top__nav__title">

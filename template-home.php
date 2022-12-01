@@ -50,6 +50,11 @@ get_header();
     get_template_part('template-parts/home/content', 'home-guides');
     ?>
 
+    <!-- Newsletter  -->
+    <?php
+    get_template_part('template-parts/shared/content', 'shared-newsletter');
+    ?>
+
 </main>
 
 

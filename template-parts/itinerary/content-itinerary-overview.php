@@ -105,7 +105,7 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
                     <!-- Panel Heading -->
                     <div class="outline-panel__heading">
                         <h5 class="outline-panel__heading__text">
-                            Activities
+                            Standard Activities
                         </h5>
                         <svg>
                             <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-down"></use>

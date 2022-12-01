@@ -11,7 +11,9 @@ $title = get_field('display_name');
             </a>
         </div>
         <div class="nav-secondary__content__links">
-
+            <a href="#section-highlights" class="nav-secondary__content__links__link">
+                Highlights
+            </a>
             <a href="#section-itinerary" class="nav-secondary__content__links__link">
                 Itinerary
             </a>
@@ -20,7 +22,10 @@ $title = get_field('display_name');
             </a>
             <a href="#section-dates" class="nav-secondary__content__links__link">
                 Dates
-            </a>       
+            </a>  
+            <a href="#section-extras" class="nav-secondary__content__links__link">
+                Extras
+            </a>     
         </div>
         <div class="nav-secondary__content__cta product-template">
             <button class="nav-secondary__content__cta__button btn-pill btn-pill--dark generic-inquire-cta">

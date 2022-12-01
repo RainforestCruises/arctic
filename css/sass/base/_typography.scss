@@ -21,6 +21,9 @@
         line-height: 2.2rem;
         font-weight: 700;
         color: $color-primary;
+        @media only screen and (max-width: $bp-small) {
+            font-size: 1.8rem;
+        }
     }
 
     &__sub {

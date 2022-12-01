@@ -68,11 +68,11 @@
             "mime_types": ""
         },
         {
-            "key": "field_62e0aa2f56ad1",
-            "label": "Hero Image Portrait",
-            "name": "hero_image_portrait",
-            "type": "image",
-            "instructions": "1024 x 768",
+            "key": "field_6387c2f113254",
+            "label": "Is Port",
+            "name": "is_port",
+            "type": "true_false",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -80,16 +80,11 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
-            "preview_size": "medium",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         },
         {
             "key": "field_633f0e42059ad",
@@ -98,7 +93,15 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6387c2f113254",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -117,7 +120,15 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6387c2f113254",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -128,31 +139,6 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
-        },
-        {
-            "key": "field_5fea3a88df109",
-            "label": "Locations",
-            "name": "locations",
-            "type": "relationship",
-            "instructions": "Select all locations",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "rfc_locations"
-            ],
-            "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "object"
         },
         {
             "key": "field_5fe125b203346",
@@ -178,29 +164,6 @@
             "min": "",
             "max": "",
             "return_format": "object"
-        },
-        {
-            "key": "field_5fdbaf61814b6",
-            "label": "Default Search Link",
-            "name": "default_search_link",
-            "type": "page_link",
-            "instructions": "Default page to link for search results - ex: Peru (post type) points to Peru Travel (search page)",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "page"
-            ],
-            "taxonomy": [
-                "category:search"
-            ],
-            "allow_null": 0,
-            "allow_archives": 0,
-            "multiple": 0
         },
         {
             "key": "field_62ed72228a5d5",
@@ -340,5 +303,5 @@
     "active": true,
     "description": "Destinations - CPT",
     "show_in_rest": 0,
-    "modified": 1665076842
+    "modified": 1669841739
 }

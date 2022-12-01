@@ -6,10 +6,10 @@ jQuery(document).ready(function ($) {
     const contentModal = document.querySelector("#contentModal");
 
     const expandContent = document.querySelector("#expand-content");
-    if(expandContent){
+    if (expandContent) {
         expandContent.addEventListener('click', () => {
             contentModal.style.display = 'flex';
-            body.classList.add('no-scroll');    
+            body.classList.add('no-scroll');
         });
     }
 
@@ -24,7 +24,7 @@ jQuery(document).ready(function ($) {
         if ($(window).width() < 1000) { //mobile view    
             $('.outline-panel__content').toggle();
             $('.outline-panel__heading').toggleClass('closed');
-        } 
+        }
     }
 
 
@@ -120,12 +120,12 @@ jQuery(document).ready(function ($) {
         var count = 0;
         modalCabinCards.forEach(item => {
             item.style.display = "none";
-        
+
             if (item.getAttribute('departureId') == departureId) {
                 item.style.display = "";
                 count = count + 1;
             }
-   
+
         });
 
 
@@ -161,14 +161,14 @@ jQuery(document).ready(function ($) {
 
     // Hide Tabs
     function hideModalTabButtons(exclude) {
-        
+
         modalTabButtons.forEach(item => {
             if (item.getAttribute('tab-panel') == exclude) {
                 item.style.display = "";
             } else {
                 item.style.display = "none";
             }
-        })    
+        })
     }
 
     // Modal Panels
@@ -186,7 +186,7 @@ jQuery(document).ready(function ($) {
             }
         })
         departureModalTitle.style.display = "none";
-        if(tabId == 'dates'){
+        if (tabId == 'dates') {
             departureModalTitle.style.display = "";
         }
     }
@@ -265,6 +265,55 @@ jQuery(document).ready(function ($) {
     });
 
 
+
+    // Extras Swiper
+    new Swiper('#extras-slider', {
+        spaceBetween: 15,
+        slidesPerView: 1,
+        watchSlidesProgress: true,
+        navigation: {
+            nextEl: '.extras-slider-btn-next',
+            prevEl: '.extras-slider-btn-prev',
+        },
+        breakpoints: {
+            600: {
+                slidesPerView: 2,
+            }
+        }
+    });
+
+    // Extras Day Modal
+    const extrasModal = document.querySelector("#extrasModal");
+    const extrasModalMainContent = document.querySelector("#extrasModalMainContent");
+
+    const viewExtrasButtons = [...document.querySelectorAll('.extras-view-details')];
+    if (viewExtrasButtons) {
+        viewExtrasButtons.forEach(item => {
+            item.addEventListener('click', () => {
+
+                extrasModal.style.display = 'flex';
+                body.classList.add('no-scroll');
+
+                const section = item.getAttribute('section');
+                const modalDivSectionOffset = document.getElementById(section).offsetTop;
+                extrasModalMainContent.scrollTop = modalDivSectionOffset - 150;
+
+            });
+        })
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Related Swiper
     new Swiper('#related-slider', {
         spaceBetween: 15,
@@ -300,22 +349,18 @@ jQuery(document).ready(function ($) {
     });
 
 
-
-
-
-
     // view all button
     // -- show departures
     // -- hide all modal tab buttons
     const reviewsModal = document.querySelector("#reviewsModal");
     const readAllReviews = document.querySelector("#read-all-reviews");
-    if(readAllReviews){
+    if (readAllReviews) {
         readAllReviews.addEventListener('click', () => {
             reviewsModal.style.display = 'flex';
-            body.classList.add('no-scroll');    
+            body.classList.add('no-scroll');
         });
     }
-    
+
 
 
 });
