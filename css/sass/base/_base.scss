@@ -19,7 +19,6 @@ html {
 }
 
 body {
-    
     font-family: $font-primary;
     color: $color-grey-3;
     font-weight: 400;
@@ -60,20 +59,18 @@ body {
             }
         }
     }
-
 }
 
 body.no-scroll {
     overflow: hidden;
 }
 
-
 body.overlay {
     position: relative;
-    
+
     &::after {
         //gradient overlay
-        
+
         content: "";
         height: 100%;
         width: 100%;
@@ -89,7 +86,6 @@ body.overlay {
     }
 }
 
-
 //Parallax effect
 body .hero {
     position: fixed;
@@ -101,26 +97,23 @@ body .hero {
 
     height: 100vh;
     width: 100vw;
-  }
-  body .hero:before {
-    content: '';
+}
+body .hero:before {
+    content: "";
     height: 100%;
     width: 100%;
     height: 100vh;
     width: 100vw;
     background: rgba(44, 123, 183, 0.5);
     position: absolute;
-  }
-  
-  body .content {
+}
+
+body .content {
     position: absolute;
     top: 100vh;
     background: $color-white;
     width: 100%;
-  }
-
-
-
+}
 
 //paragraph links
 p a {
@@ -180,13 +173,48 @@ button {
     cursor: pointer;
 }
 
-
 .noselect {
     -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-         -moz-user-select: none; /* Old versions of Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-              user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome, Edge, Opera and Firefox */
-  }
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently */
+}
+
+.mapbox-popup {
+    max-width: 20rem;
+    
+    &__title {
+        color: $color-primary;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    &__description {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    &__image-area {
+        width: 20rem;
+        height: 15rem;
+        & img {
+           width: 100%;
+           height: 100%;
+           object-fit: contain;
+           border-radius: 1rem;
+        }
+    }
+}
+
+
+
+.mapboxgl-popup-content {
+    text-align: center;
+    font-family: 'Metropolis', sans-serif;
+}
+.mapboxgl-popup-close-button {
+    right: 4px;
+    top: 2px;
+}

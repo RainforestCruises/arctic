@@ -10,6 +10,19 @@
     <!-- Structured Data / Rich Snippets -->
 
     <!-- Load Head / Style Sheets -->
+
+    <style>
+        .marker {
+            background-image: url("<?php echo bloginfo('template_url') ?>/css/img/pinMarker.png");
+            background-size: cover;
+            width: 25px;
+            height: 35px;
+            cursor: pointer;
+        }
+
+    </style>
+
+
     <?php wp_head(); ?>
 </head>
 
@@ -30,7 +43,7 @@
     </header>
     <div class="nav-backdrop"></div>
 
-    
+
     <?php if (get_post_type() == 'rfc_cruises') :
         get_template_part('template-parts/nav/secondary/content', 'nav-cruise');
     endif; ?>

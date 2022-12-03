@@ -3,7 +3,8 @@ wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', 
 wp_enqueue_script('page-product', get_template_directory_uri() . '/js/page-product.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-modal-gallery', get_template_directory_uri() . '/js/page-product-modal-gallery.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-dates', get_template_directory_uri() . '/js/page-product-dates.js', array('jquery'), false, true);
-wp_enqueue_script('page-product-itinerary-days', get_template_directory_uri() . '/js/page-product-itinerary-days.js', array('jquery'), false, true);
+//wp_enqueue_script('page-product-itinerary-days', get_template_directory_uri() . '/js/page-product-itinerary-days.js', array('jquery'), false, true);
+wp_enqueue_script('page-product-itinerary-map', get_template_directory_uri() . '/js/page-product-itinerary-map.js', array('jquery'), false, true);
 
 
 $ships = get_field('ships');
@@ -16,65 +17,55 @@ $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
 $shipSizeRange = getItineraryShipSize($ships);
 
-//Destination Point Series
-$destinationPoints = [];
+// Destination Point Series
+$destinationPoints = []; 
+$coordinatePoints = [];
+
 foreach ($days as $day) {
 
   $destination = $day['destination'];
-
-  $geometry = [
-    'type' => "Point",
-    'coordinates' => [get_field('longitude', $destination), get_field('latitude', $destination)],
-  ];
-
-  $zoomPoint = [
-    'longitude' => get_field('longitude', $destination),
-    'latitude' => get_field('latitude', $destination),
-  ];
+  $destinationImage = get_field('image', $destination);
+  $destinationImageURL = $destinationImage ? wp_get_attachment_image_url($destinationImage['ID'], 'portrait-small') : "";
 
   $point  = [
-    'title' => get_field('navigation_title', $destination),
     'postid' => $destination->ID,
-    'geometry' => $geometry,
-    'zoomPoint' => $zoomPoint,
+    'title' => get_field('navigation_title', $destination),
+    'description' => get_field('description', $destination),
+    'image' => $destinationImageURL,
+    'coordinates' => [get_field('longitude', $destination), get_field('latitude', $destination)],
     'zoomLevel' => get_field('zoom_level', $destination),
   ];
-
   $destinationPoints[] = $point;
+  $coordinatePoints[] = $point['coordinates'];
 }
 
-//Destination Line Series
-$destinationLines = [];
-$lineObject = [
-  'geometry' => [
-    'type' => "LineString",
-    'coordinates' => [],
-  ]
-];
-
-foreach ($days as $day) {
-  $destination = $day['destination'];
-  $lineObject['geometry']['coordinates'][] = [get_field('longitude', $destination), get_field('latitude', $destination)];
-}
-$destinationLines[] = $lineObject;
 
 // Itinerary Object
 $itineraryObject = [
   'destinationPoints' => $destinationPoints,
-  'destinationLines' => $destinationLines,
+  'coordinatePoints' => $coordinatePoints,
   'postId' => $itinerary->ID,
 ];
 $itineraryObjects[] = $itineraryObject;
 
 $templateUrl = get_template_directory_uri();
 
+// wp_localize_script(
+//   'page-product-itinerary-days',
+//   'page_vars_product_itinerary_days',
+//   array(
+//     'itineraryObjects' =>  $itineraryObjects,
+//     'templateUrl' =>  $templateUrl
+//   )
+// );
+
+
 wp_localize_script(
-  'page-product-itinerary-days',
-  'page_vars_product_itinerary_days',
+  'page-product-itinerary-map',
+  'page_vars_product_itinerary_map',
   array(
     'itineraryObjects' =>  $itineraryObjects,
     'templateUrl' =>  $templateUrl
-
   )
 );
 
@@ -125,10 +116,6 @@ $args = array(
   ?>
 
 
-  <!-- Itinerary Days -->
-  <?php
-  get_template_part('template-parts/itinerary/content', 'itinerary-days', $args);
-  ?>
 
   <!-- Itinerary Map -->
   <?php

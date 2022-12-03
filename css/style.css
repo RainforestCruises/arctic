@@ -180,7 +180,7 @@ body .hero {
   width: 100vw; }
 
 body .hero:before {
-  content: '';
+  content: "";
   height: 100%;
   width: 100%;
   height: 100vh;
@@ -250,8 +250,33 @@ button {
   -ms-user-select: none;
   /* Internet Explorer/Edge */
   user-select: none;
-  /* Non-prefixed version, currently
-                                    supported by Chrome, Edge, Opera and Firefox */ }
+  /* Non-prefixed version, currently */ }
+
+.mapbox-popup {
+  max-width: 20rem; }
+  .mapbox-popup__title {
+    color: #1d2225;
+    font-size: 1.5rem;
+    font-weight: 700; }
+  .mapbox-popup__description {
+    font-size: 1.2rem;
+    margin-bottom: 1rem; }
+  .mapbox-popup__image-area {
+    width: 20rem;
+    height: 15rem; }
+    .mapbox-popup__image-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 1rem; }
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Metropolis', sans-serif; }
+
+.mapboxgl-popup-close-button {
+  right: 4px;
+  top: 2px; }
 
 .arctic-heading-3 {
   font-family: "Metropolis", sans-serif;

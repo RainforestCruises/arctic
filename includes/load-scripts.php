@@ -14,6 +14,7 @@ function load_scripts()
     wp_enqueue_style('odometer-css', get_template_directory_uri() . '/vendor/odometer/odometer-theme-minimal.css', array(), false, 'all');
     wp_enqueue_style('swiper-css', get_template_directory_uri() . '/vendor/swiper/swiper-bundle.min.css', array(), false, 'all');
     wp_enqueue_style('bootstrap-datepicker-css', get_template_directory_uri() . '/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css', array(), false, 'all');
+    wp_enqueue_style('mapbox-gl-css', get_template_directory_uri() . '/vendor/mapbox/mapbox-gl.css', array(), false, 'all');
 
 
 
@@ -28,6 +29,8 @@ function load_scripts()
     wp_enqueue_script('flickity-fade-js', get_template_directory_uri() . '/vendor/flickity/flickity-fade.js', array(), false, true);
     wp_enqueue_script('flickity-nav-js', get_template_directory_uri() . '/vendor/flickity/as-nav-for.js', array(), false, true);
     wp_enqueue_script('flickity-responsive', get_template_directory_uri() . '/vendor/flickity/flickityResponsive.js', array(), false, true);
+
+    wp_enqueue_script('mapbox-gl', get_template_directory_uri() . '/vendor/mapbox/mapbox-gl.js', array(), false, true);
 
 
     wp_enqueue_script('slick', get_template_directory_uri() . '/vendor/slick/slick.js', array('jquery'), false, true);

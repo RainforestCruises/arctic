@@ -95,3 +95,12 @@ endif; ?>
 
             <?php endforeach; ?>
         </div>
+
+
+
+
+
+          <!-- Itinerary Map -->
+  <?php
+  get_template_part('template-parts/itinerary/content', 'itinerary-map', $args);
+  ?>

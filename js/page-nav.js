@@ -10,7 +10,7 @@ jQuery(document).ready(function ($) {
 
         if (window.scrollY < threshHold) {
             $('.nav-secondary').removeClass('active');
-        } else { 
+        } else {
             $('.nav-secondary').addClass('active');
         }
 
@@ -38,17 +38,21 @@ jQuery(document).ready(function ($) {
                 }
             }
         };
-        if(scrolledTo < 600){
+        if (scrolledTo < 600) {
             $('.nav-secondary__content__links__link').removeClass("active");
         }
     }
 
     //Get top distance
     function getTargetTop(elem) {
-        
+
         var id = elem.attr("href");
-       
-        return $(id).offset().top;
+        var sectionElement = document.querySelector(id);
+        if (sectionElement) {
+            return sectionElement.offsetTop;
+        }
+
+
     }
 
     // On Click - Nav Links, href change position
@@ -90,7 +94,7 @@ jQuery(document).ready(function ($) {
         $('html, body').animate({ scrollTop: target }, 500);
         setTimeout(setScrollStatus, 600)
         window.location.hash = id;
-       
+
     }
 
     function setScrollStatus() {

@@ -45,8 +45,8 @@
         },
         {
             "key": "field_62f5318538a33",
-            "label": "Hero Image",
-            "name": "hero_image",
+            "label": "Image",
+            "name": "image",
             "type": "image",
             "instructions": "1920 x 1080",
             "required": 0,
@@ -139,6 +139,33 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_638a56679b389",
+            "label": "Description",
+            "name": "description",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6387c2f113254",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
         },
         {
             "key": "field_5fe125b203346",
@@ -303,5 +330,5 @@
     "active": true,
     "description": "Destinations - CPT",
     "show_in_rest": 0,
-    "modified": 1669841739
+    "modified": 1670010508
 }

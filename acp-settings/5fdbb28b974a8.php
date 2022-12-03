@@ -5,7 +5,7 @@ return array (
   'title' => 'Destinations',
   'type' => 'rfc_destinations',
   'id' => '5fdbb28b974a8',
-  'updated' => 1669841806,
+  'updated' => 1670010570,
   'columns' => 
   array (
     'title' => 
@@ -20,16 +20,6 @@ return array (
       'bulk_edit' => 'on',
       'search' => 'on',
       'name' => 'title',
-    ),
-    '62f5314e2d0e58' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Hero Image Portrait',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_5fe125b203346',
-      'export' => 'off',
-      'name' => '62f5314e2d0e58',
     ),
     '62f51c281ef9dc' => 
     array (
@@ -65,40 +55,6 @@ return array (
       'filter_label' => '',
       'name' => '62f51c4b231270',
     ),
-    '62f51c54683128' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Zoom Point Longitude',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_62ed728d8a5d9',
-      'number_format' => '',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '62f51c54683128',
-    ),
-    '62f51c5e03d70c' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Zoom Point Latitude',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_62ed727b8a5d8',
-      'number_format' => '',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '62f51c5e03d70c',
-    ),
     '62f51d17a00000' => 
     array (
       'type' => 'column-acf_field',
@@ -115,6 +71,42 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '62f51d17a00000',
+    ),
+    '638a56a3a0c49c' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Image',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_62f5318538a33',
+      'image_size' => 'cpac-custom',
+      'image_size_w' => '60',
+      'image_size_h' => '60',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '638a56a3a0c49c',
+    ),
+    '638a56b7851eb8' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Description',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_638a56679b389',
+      'excerpt_length' => '20',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '638a56b7851eb8',
     ),
     '5fe12a9d773a9' => 
     array (
