@@ -44,21 +44,28 @@ jQuery(document).ready(function ($) {
 
 
     //Panels --------------------------------------------
-    //expand/hide (move to generic??)
+    //expand/hide
     $(".outline-panel__heading").on("click", function (e) {
         e.preventDefault();
         let $this = $(this);
         $this.parent().find('.outline-panel__content').slideToggle(350);
         $this.parent().find('.outline-panel__heading').toggleClass('closed');
     });
+    $(".accordion-panel__heading").on("click", function (e) {
+        e.preventDefault();
+        let $this = $(this);
+        $this.parent().find('.accordion-panel__content').slideToggle(350);
+        $this.parent().find('.accordion-panel__heading').toggleClass('closed');
+    });
+
 
 
     const newsletterModal = document.querySelector("#newsletterModal");
     const newsletterSubscribeButton = document.querySelector("#newsletter-subscribe-button");
-    if(newsletterSubscribeButton){
+    if (newsletterSubscribeButton) {
         newsletterSubscribeButton.addEventListener('click', () => {
             newsletterModal.style.display = 'flex';
-            body.classList.add('no-scroll');    
+            body.classList.add('no-scroll');
         });
     }
 

@@ -14,7 +14,7 @@
         justify-content: space-between;
         align-items: center;
         cursor: pointer;
-        transition: all .3s;
+        transition: all 0.3s;
         &__text {
             font-size: 1.6rem;
             font-weight: 700;
@@ -46,6 +46,53 @@
     }
 
     &__content {
-        
+    }
+}
+
+//accordion panel
+.accordion-panel {
+    padding: 1rem 0;
+
+    &__heading {
+        border-bottom: 1px solid $color-grey-light-1a;
+        padding-bottom: 1.5rem;
+        font-weight: 700;
+        color: $color-primary;
+        font-size: 1.8rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        &__text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: $color-primary;
+            position: relative;
+            letter-spacing: 0;
+            margin-bottom: 0;
+            text-transform: capitalize;
+        }
+
+        & svg {
+            transform: rotate(180deg) translateY(3px);
+            height: 2rem;
+            width: 2rem;
+            color: $color-primary;
+            transition: all 0.2s;
+        }
+
+        &.closed {
+            & svg {
+                transform: rotate(0deg);
+                height: 2rem;
+                width: 2rem;
+                color: $color-primary;              
+            }
+        }
+    }
+
+    &__content {
+        padding-top: 1.5rem;
     }
 }

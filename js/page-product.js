@@ -311,9 +311,6 @@ jQuery(document).ready(function ($) {
 
 
 
-
-
-
     // Related Swiper
     new Swiper('#related-slider', {
         spaceBetween: 15,

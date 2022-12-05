@@ -184,6 +184,12 @@ button {
 
 .mapbox-popup {
     max-width: 20rem;
+
+    &__day-count {
+        color: $color-grey-1;
+        font-size: 1.3rem;
+        font-weight: 700;
+    }
     
     &__title {
         color: $color-primary;
@@ -213,8 +219,11 @@ button {
 .mapboxgl-popup-content {
     text-align: center;
     font-family: 'Metropolis', sans-serif;
+    border-radius: 1rem;
+    padding: 10px 10px 10px;
 }
 .mapboxgl-popup-close-button {
-    right: 4px;
-    top: 2px;
+    right: 6px;
+    top: 3px;
+    outline: none;
 }

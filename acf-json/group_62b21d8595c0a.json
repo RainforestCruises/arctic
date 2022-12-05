@@ -440,6 +440,69 @@
             "ui": 1
         },
         {
+            "key": "field_638e68537a5cb",
+            "label": "Latitude Start Point",
+            "name": "latitude_start_point",
+            "type": "number",
+            "instructions": "Default is -60",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": -60,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_638e687f7a5cc",
+            "label": "Longitude Start Point",
+            "name": "longitude_start_point",
+            "type": "number",
+            "instructions": "Default is -60",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": -60,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_638e68c17a5cd",
+            "label": "Zoom Level Start Point",
+            "name": "zoom_level_start_point",
+            "type": "number",
+            "instructions": "Default is 3",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 3,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
             "key": "field_62b9d1d2164f5",
             "label": "Itinerary",
             "name": "itinerary",
@@ -1083,5 +1146,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1669742316
+    "modified": 1670278030
 }

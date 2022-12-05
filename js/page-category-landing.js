@@ -122,7 +122,6 @@ jQuery(document).ready(function ($) {
         $this.parent().find('.category-faq__group__answer').slideToggle(350);
         $this.parent().find('.plus-minus-toggle').toggleClass('plus-collapsed');
         $this.parent().find('.category-faq__group__question').toggleClass('category-faq__group__question--active');
-
     });
 
 

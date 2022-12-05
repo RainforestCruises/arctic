@@ -3,7 +3,6 @@
     &__content {
         position: relative;
         @include flexPadding;
-        @include topDivider;
 
         max-width: $page-width;
         margin-top: 3rem;

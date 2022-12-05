@@ -189,6 +189,26 @@ function getEmbarkationDisplay($itinerary)
 }
 
 
+function dayCountMarkup($string, $exclude_number = false)
+{
+
+    $string = str_replace(' ', '', $string);
+    if ($exclude_number == true) {
+        if (str_contains($string, '-')) {
+            return 'Days';
+        } else {
+            return 'Day';
+        }
+    } else {
+        if (str_contains($string, '-')) {
+            return 'Days ' . $string;
+        } else {
+            return 'Day ' . $string;
+        }
+    }
+}
+
+
 // get lowest price from a list of departures
 function getItineraryShipSize($ships)
 {
