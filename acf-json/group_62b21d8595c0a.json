@@ -44,6 +44,54 @@
             "return_format": "object"
         },
         {
+            "key": "field_6384e5c17c120",
+            "label": "Route",
+            "name": "route",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_routes"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_62b4db8af13d9",
+            "label": "Transport Option",
+            "name": "transport_option",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "fly-fly": "fly-fly",
+                "fly-cruise": "fly-cruise",
+                "cruise-cruise": "cruise-cruise"
+            },
+            "default_value": "fly-fly",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_6384e58d7c11f",
             "label": "Styles",
             "name": "styles",
@@ -58,31 +106,6 @@
             },
             "post_type": [
                 "rfc_styles"
-            ],
-            "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "object"
-        },
-        {
-            "key": "field_6384e5c17c120",
-            "label": "Routes",
-            "name": "routes",
-            "type": "relationship",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "rfc_routes"
             ],
             "taxonomy": "",
             "filters": [
@@ -311,32 +334,6 @@
             ]
         },
         {
-            "key": "field_62b4db8af13d9",
-            "label": "Transport Option",
-            "name": "transport_option",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "fly-fly": "fly-fly",
-                "fly-cruise": "fly-cruise",
-                "cruise-cruise": "cruise-cruise"
-            },
-            "default_value": "fly-fly",
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "return_format": "value",
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
             "key": "field_62b21d862ebfa",
             "label": "Overview Content",
             "name": "overview_content",
@@ -503,6 +500,25 @@
             "step": ""
         },
         {
+            "key": "field_638f7f95d702c",
+            "label": "GeoJSON",
+            "name": "geojson",
+            "type": "text",
+            "instructions": "Generate geoJSON at https:\/\/geojson.io\/ use 'orange' for flight lines, and 'royalblue' for cruise lines",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_62b9d1d2164f5",
             "label": "Itinerary",
             "name": "itinerary",
@@ -522,10 +538,10 @@
             "button_label": "",
             "sub_fields": [
                 {
-                    "key": "field_62b9d1fe164f6",
-                    "label": "Image",
-                    "name": "image",
-                    "type": "image",
+                    "key": "field_62b9d243164f7",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -534,38 +550,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array",
-                    "preview_size": "medium",
-                    "library": "all",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": ""
-                },
-                {
-                    "key": "field_62f1cd6cc0dc8",
-                    "label": "Destination",
-                    "name": "destination",
-                    "type": "post_object",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "rfc_destinations"
-                    ],
-                    "taxonomy": "",
-                    "allow_null": 0,
-                    "multiple": 0,
-                    "return_format": "object",
-                    "ui": 1
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 },
                 {
                     "key": "field_62b9d2e1164f8",
@@ -587,10 +576,10 @@
                     "maxlength": ""
                 },
                 {
-                    "key": "field_62b9d243164f7",
-                    "label": "Title",
-                    "name": "title",
-                    "type": "text",
+                    "key": "field_62f1cd6cc0dc8",
+                    "label": "Destinations",
+                    "name": "destination",
+                    "type": "relationship",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -599,11 +588,17 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "post_type": [
+                        "rfc_destinations"
+                    ],
+                    "taxonomy": "",
+                    "filters": [
+                        "search"
+                    ],
+                    "elements": "",
+                    "min": "",
+                    "max": "",
+                    "return_format": "object"
                 },
                 {
                     "key": "field_62b9d357164fa",
@@ -1146,5 +1141,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1670278030
+    "modified": 1670435223
 }

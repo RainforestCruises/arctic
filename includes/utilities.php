@@ -2,11 +2,11 @@
 
 
 
-function findObjectById($id, $array)
+function findObjectById($id, $array, $key = 'Id')
 {
 
     foreach ($array as $element) {
-        if ($id == $element->Id) {
+        if ($id == $element[$key]) {
             return $element;
         }
     }

@@ -1,9 +1,9 @@
-.cruise-overview {
+.product-overview {
     @include flexBlock;
 
     &__content {
         z-index: 2;
-        position: relative;
+        position: relative; 
         display: flex;
         flex-direction: column;
         width: 100%;

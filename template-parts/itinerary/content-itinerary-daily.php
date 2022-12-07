@@ -16,7 +16,9 @@ $length_in_days = $length_in_nights + 1;
                 <?php
                 $count = 0;
                 foreach ($days as $day) :
-                    $image =  $day['image'];
+                    $image = $day['image'];
+                    $image =  $image ? $image : get_field('image', $destination); //get default image if none provided
+
                     $text = $day['text'];
                     $destination = $day['destination'];
 
@@ -26,7 +28,7 @@ $length_in_days = $length_in_nights + 1;
                         <!-- Panel Heading -->
                         <div class="accordion-panel__heading <?php echo $count == 0 ? "": "closed" ; ?>" >
                             <div class="day-list__title">
-                                <div class="day-list__title__day-indication">
+                                <div class="day-list__title__pre">
                                     <?php echo dayCountMarkup($day['day_count']); ?>
                                 </div>
                                 <div class="day-list__title__text">

@@ -8,18 +8,30 @@
     <meta name="author" content="Ryan">
 
     <!-- Structured Data / Rich Snippets -->
-
     <!-- Load Head / Style Sheets -->
 
     <style>
-        .marker {
-            background-image: url("<?php echo bloginfo('template_url') ?>/css/img/pinMarker.png");
+        .destination-marker {
+            background-image: url("<?php echo bloginfo('template_url') ?>/css/img/pin-dest.png");
             background-size: cover;
-            width: 25px;
-            height: 35px;
+            width: 20px;
+            height: 32px;
             cursor: pointer;
         }
-
+        .embarkation-marker {
+            background-image: url("<?php echo bloginfo('template_url') ?>/css/img/pinMarker-embark.png");
+            background-size: cover;
+            width: 20px;
+            height: 32px;
+            cursor: pointer;
+        }
+        .disembarkation-marker {
+            background-image: url("<?php echo bloginfo('template_url') ?>/css/img/pinMarker-disembark.png");
+            background-size: cover;
+            width: 20px;
+            height: 32px;
+            cursor: pointer;
+        }
     </style>
 
 

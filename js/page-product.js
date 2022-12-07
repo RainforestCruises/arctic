@@ -296,7 +296,7 @@ jQuery(document).ready(function ($) {
 
                 const section = item.getAttribute('section');
                 const modalDivSectionOffset = document.getElementById(section).offsetTop;
-                extrasModalMainContent.scrollTop = modalDivSectionOffset - 150;
+                extrasModalMainContent.scrollTop = modalDivSectionOffset - 120;
 
             });
         })

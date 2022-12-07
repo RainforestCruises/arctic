@@ -18,43 +18,64 @@ $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
 $shipSizeRange = getItineraryShipSize($ships);
 
+$embarkation_point = get_field('embarkation_point');
+$disembarkation_point = get_field('disembarkation_point');
+
+
 // Destination Point Series
 $destinationPoints = [];
-$coordinatePoints = [];
-
-$destinationPosts = [];
-
+$destinationList = [];
+$count = 0;
 foreach ($days as $day) {
 
-  $destination = $day['destination'];
-  $day_count = dayCountMarkup($day['day_count']);
-  $destinationImage = $day['image'];
-  $destinationImage =  $destinationImage ? $destinationImage : get_field('image', $destination); //get default image if none provided
-  $destinationImageURL = $destinationImage ? wp_get_attachment_image_url($destinationImage['ID'], 'portrait-small') : "";
+  $destinations = $day['destination']; // multiple destinations
+  
+  $locationType = '';
+  foreach($destinations as $destination) {
+    $dayDisplay = dayCountMarkup($day['day_count']);
+    $destinationImage =  get_field('image', $destination); //get default image if none provided
+    $destinationImageURL = $destinationImage ? wp_get_attachment_image_url($destinationImage['ID'], 'portrait-small') : "";
+    $description = get_field('description', $destination) ?? "";
 
-  $point  = [
-    'postid' => $destination->ID,
-    'title' => get_field('navigation_title', $destination),
-    'day' => $day_count,
-    'description' => get_field('description', $destination),
-    'image' => $destinationImageURL,
-    'coordinates' => [get_field('longitude', $destination), get_field('latitude', $destination)],
-  ];
+    if($destination == $embarkation_point){
+      $locationType = '<span>embarkation</span>';
+    }
+    if($destination == $disembarkation_point){
+      $locationType = '<span>disembarkation</span>';
+    }
 
-  // to check duplicates
-  if (!in_array($destination, $destinationPosts)) {  
-    $destinationPoints[] = $point; // only add non dulpicates
+    $point  = [
+      'index' => $count,
+      'locationType' => $locationType,
+      'postid' => $destination->ID,
+      'title' => get_the_title($destination),
+      'day' => $dayDisplay,
+      'description' => $description,
+      'image' => $destinationImageURL,
+      'coordinates' => [get_field('longitude', $destination), get_field('latitude', $destination)],
+    ];
+  
+    // to check duplicates
+    if (!in_array($destination, $destinationList)) {  
+      $destinationPoints[] = $point; // only add non dulpicates
+      $count++; //increment index
+
+    } else { 
+      $match = findObjectById($point['postid'], $destinationPoints, 'postid');
+      $matchIndex = $match['index'];
+      $destinationPoints[$matchIndex]['day'] .= ', ' . $point['day']; // append the day display to matched destination
+    }
+    
+    $destinationList[] = $destination; //full list
   }
-  $destinationPosts[] = $destination; //fulls list
 
-  $coordinatePoints[] = $point['coordinates'];
+
 }
-
 
 // Itinerary Object
 $itineraryObject = [
   'destinationPoints' => $destinationPoints,
-  'coordinatePoints' => $coordinatePoints,
+  'geojson' => json_decode(get_field('geojson')),
   'startLatitude' => get_field('latitude_start_point'),
   'startLongitude' => get_field('longitude_start_point'),
   'startZoom' => get_field('zoom_level_start_point'),

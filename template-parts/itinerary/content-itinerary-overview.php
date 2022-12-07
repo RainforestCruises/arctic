@@ -7,21 +7,21 @@ $activities = get_field('activities');
 $expand = strlen($overview_content) > 950 ? true : false;
 $overview_content_limited = substr($overview_content, 0, 950) . '...';
 ?>
-<!-- Cruise Overview -->
-<section class="cruise-overview" id="section-highlights">
+<!-- Itinerary Overview -->
+<section class="product-overview" id="section-highlights">
 
-    <div class="cruise-overview__content">
+    <div class="product-overview__content">
 
         <!-- Grid  -->
-        <div class="cruise-overview__content__grid">
+        <div class="product-overview__content__grid">
 
             <!-- Main Overview (Highlights, Transport, Text) -->
-            <div class="cruise-overview__content__grid__overview">
+            <div class="product-overview__content__grid__overview">
 
                 <!-- Highlights -->
-                <div class="cruise-overview__content__grid__overview__highlights">
+                <div class="product-overview__content__grid__overview__highlights">
                     <h3 class="title-single">Highlights</h3>
-                    <ul class="cruise-overview__content__grid__overview__highlights__list">
+                    <ul class="product-overview__content__grid__overview__highlights__list">
                         <?php if (have_rows('highlights')) : ?>
                             <?php while (have_rows('highlights')) : the_row(); ?>
                                 <li>
@@ -36,11 +36,11 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
                 </div>
 
                 <!-- Text -->
-                <div class="cruise-overview__content__grid__overview__text ">
+                <div class="product-overview__content__grid__overview__text ">
                     <?php echo $overview_content_limited; ?>
                 </div>
 
-                <div class="cruise-overview__content__grid__overview__expand">
+                <div class="product-overview__content__grid__overview__expand">
                     <?php if ($expand) : ?>
                         <button class="btn-text-icon" id="expand-content">
                             Read More
@@ -54,7 +54,7 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
 
 
             <!-- Side Section -->
-            <div class="cruise-overview__content__grid__secondary">
+            <div class="product-overview__content__grid__secondary">
 
                 <!-- Ships Panel -->
                 <div class="outline-panel">
@@ -142,7 +142,7 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
                     </div>
                 </div>
 
-               
+
             </div>
         </div>
     </div>
@@ -151,25 +151,25 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
 
 <!-- Content Modal -->
 <div class="modal" id="contentModal">
-    <div class="modal__content"">
+    <div class="modal__content">
         <div class=" modal__content__top">
-        <!-- Top Modal Content -->
-        <div class="modal__content__top__nav">
-            <div class="modal__content__top__nav__title">
-                About the <?php echo get_field('display_name'); ?>
+            <!-- Top Modal Content -->
+            <div class="modal__content__top__nav">
+                <div class="modal__content__top__nav__title">
+                    About the <?php echo get_field('display_name'); ?>
+                </div>
             </div>
+            <button class="btn-text-icon close-modal-button ">
+                Close
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
+                </svg>
+            </button>
         </div>
-        <button class="btn-text-icon close-modal-button ">
-            Close
-            <svg>
-                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
-            </svg>
-        </button>
-    </div>
 
-    <!-- Main Modal Content -->
-    <div class="modal__content__main">
-        <?php echo $overview_content; ?>
+        <!-- Main Modal Content -->
+        <div class="modal__content__main">
+            <?php echo $overview_content; ?>
+        </div>
     </div>
-</div>
 </div>

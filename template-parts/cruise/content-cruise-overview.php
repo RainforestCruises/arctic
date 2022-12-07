@@ -10,20 +10,20 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
 ?>
 
 <!-- Cruise Overview -->
-<section class="cruise-overview" id="overview">
+<section class="product-overview" id="overview">
 
-    <div class="cruise-overview__content">
+    <div class="product-overview__content">
 
         <!-- Grid  -->
-        <div class="cruise-overview__content__grid">
+        <div class="product-overview__content__grid">
 
             <!-- Main Overview (Highlights, Transport, Text) -->
-            <div class="cruise-overview__content__grid__overview">
+            <div class="product-overview__content__grid__overview">
 
                 <!-- Highlights -->
-                <div class="cruise-overview__content__grid__overview__highlights">
+                <div class="product-overview__content__grid__overview__highlights">
                     <h3 class="title-single">Highlights</h3>
-                    <ul class="cruise-overview__content__grid__overview__highlights__list">
+                    <ul class="product-overview__content__grid__overview__highlights__list">
                         <?php if (have_rows('highlights')) : ?>
                             <?php while (have_rows('highlights')) : the_row(); ?>
                                 <li>
@@ -39,11 +39,11 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
                 </div>
 
                 <!-- Text -->
-                <div class="cruise-overview__content__grid__overview__text ">
+                <div class="product-overview__content__grid__overview__text ">
                     <?php echo $overview_content_limited; ?>
                 </div>
 
-                <div class="cruise-overview__content__grid__overview__expand">
+                <div class="product-overview__content__grid__overview__expand">
                     <?php if ($expand) : ?>
                         <button class="btn-text-icon" id="expand-content">
                             Read More
@@ -57,7 +57,7 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
 
 
             <!-- Side Section -->
-            <div class="cruise-overview__content__grid__secondary">
+            <div class="product-overview__content__grid__secondary">
 
                 <!-- Specs Panel -->
                 <div class="outline-panel">
@@ -217,7 +217,7 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
                 </div>
 
                 <!-- CTA / Deckplan -->
-                <div class="cruise-overview__content__grid__secondary__cta">
+                <div class="product-overview__content__grid__secondary__cta">
 
                     <?php if ($deck_plans) : ?>
                         <button class="cta-primary cta-primary--inverse" id="deckplan-button" imageId="<?php echo $deck_plans[0]['id']; ?>">

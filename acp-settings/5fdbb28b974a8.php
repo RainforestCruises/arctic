@@ -5,7 +5,7 @@ return array (
   'title' => 'Destinations',
   'type' => 'rfc_destinations',
   'id' => '5fdbb28b974a8',
-  'updated' => 1670010570,
+  'updated' => 1670432033,
   'columns' => 
   array (
     'title' => 
@@ -24,7 +24,7 @@ return array (
     '62f51c281ef9dc' => 
     array (
       'type' => 'column-acf_field',
-      'label' => 'Longitude',
+      'label' => 'Longitude (W)',
       'width' => '',
       'width_unit' => '%',
       'field' => 'field_62ed724e8a5d7',
@@ -41,7 +41,7 @@ return array (
     '62f51c4b231270' => 
     array (
       'type' => 'column-acf_field',
-      'label' => 'Latitude',
+      'label' => 'Latitude (S)',
       'width' => '',
       'width_unit' => '%',
       'field' => 'field_62ed72318a5d6',
@@ -61,15 +61,8 @@ return array (
       'label' => 'Zoom Level',
       'width' => '',
       'width_unit' => '%',
-      'field' => 'field_62ed729a8a5da',
-      'character_limit' => '20',
+      'field' => 'field_5fe125b203346',
       'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
       'name' => '62f51d17a00000',
     ),
     '638a56a3a0c49c' => 

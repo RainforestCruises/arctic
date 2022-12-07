@@ -262,16 +262,28 @@ button {
     color: #1d2225;
     font-size: 1.5rem;
     font-weight: 700; }
+  .mapbox-popup__badge-area {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .mapbox-popup__badge-area span {
+      font-size: 1rem;
+      letter-spacing: .1rem;
+      color: #fff;
+      width: max-content;
+      padding: 0rem 1.2rem;
+      border-radius: 5rem;
+      background-color: #347fff; }
   .mapbox-popup__description {
     font-size: 1.2rem;
     margin-bottom: 1rem; }
   .mapbox-popup__image-area {
-    width: 20rem;
+    width: 100%;
     height: 15rem; }
     .mapbox-popup__image-area img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       border-radius: 1rem; }
 
 .mapboxgl-popup-content {
@@ -1916,6 +1928,8 @@ h5 {
       height: 100%;
       width: 100%;
       padding: 2rem;
+      padding-top: 0rem;
+      padding-bottom: 8rem;
       overflow-y: scroll; }
   .modal__gallery-content {
     width: 100%;
@@ -3855,6 +3869,197 @@ h5 {
   .btn-swiper-blur__prev svg {
     transform: translateX(-1px) rotate(180deg); }
 
+.product-overview {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%; }
+  .product-overview__content {
+    z-index: 2;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 128rem;
+    width: 100%;
+    padding: 0 6rem; }
+    @media only screen and (max-width: 50em) {
+      .product-overview__content {
+        padding: 0 3rem; } }
+    @media only screen and (max-width: 62.5em) {
+      .product-overview__content {
+        margin-top: 3rem; } }
+    @media only screen and (max-width: 50em) {
+      .product-overview__content {
+        margin-top: 0rem; } }
+    .product-overview__content__grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 55% 45%;
+      position: relative; }
+      @media only screen and (max-width: 50em) {
+        .product-overview__content__grid {
+          grid-template-columns: 100%; } }
+      .product-overview__content__grid__overview {
+        padding-top: 3rem;
+        padding-right: 4rem; }
+        @media only screen and (max-width: 50em) {
+          .product-overview__content__grid__overview {
+            padding-right: 0rem; } }
+        .product-overview__content__grid__overview__highlights {
+          padding-bottom: 1.5rem; }
+          @media only screen and (max-width: 50em) {
+            .product-overview__content__grid__overview__highlights .title-single {
+              display: none; } }
+          .product-overview__content__grid__overview__highlights__list {
+            list-style: none;
+            font-size: 1.6rem; }
+            .product-overview__content__grid__overview__highlights__list li {
+              display: grid;
+              grid-template-columns: min-content 1fr;
+              margin-bottom: 1.5rem; }
+              .product-overview__content__grid__overview__highlights__list li svg {
+                height: 1.2rem;
+                width: 1.2rem;
+                color: #1d2225;
+                margin-right: 2rem;
+                transform: translateY(7px); }
+        .product-overview__content__grid__overview__text {
+          padding-top: 3rem;
+          position: relative; }
+          .product-overview__content__grid__overview__text::before {
+            content: "";
+            width: 100%;
+            height: 1px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #e6e6e6; }
+        .product-overview__content__grid__overview__expand {
+          display: flex;
+          justify-content: flex-end;
+          min-height: 2rem;
+          font-weight: 700;
+          color: #1d2225; }
+      .product-overview__content__grid__secondary {
+        margin-top: 1.5rem; }
+        .product-overview__content__grid__secondary__cta {
+          display: flex;
+          justify-content: space-between;
+          align-items: center; }
+
+.ammenities {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  padding-bottom: 1rem;
+  color: #1d2225; }
+  .ammenities__item {
+    display: flex;
+    align-items: center; }
+    .ammenities__item svg {
+      height: 2.5rem;
+      width: 2.5rem;
+      color: currentColor; }
+    .ammenities__item__title-group {
+      margin-left: 1.5rem;
+      font-size: 1.4rem; }
+      .ammenities__item__title-group__title {
+        color: currentColor; }
+      .ammenities__item__title-group__sub {
+        color: #747474; }
+
+.specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  padding-bottom: 1rem; }
+  .specs__item {
+    font-size: 1.4rem; }
+    .specs__item__title {
+      color: #1d2225;
+      font-weight: 700;
+      padding-bottom: 0.5rem; }
+
+.itinerary-ships {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 1rem; }
+  .itinerary-ships__item {
+    font-size: 1.4rem;
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    gap: 2rem; }
+    .itinerary-ships__item__avatar {
+      display: flex;
+      align-items: center; }
+      .itinerary-ships__item__avatar img {
+        height: 8rem;
+        width: 8rem;
+        border-radius: 8rem; }
+    .itinerary-ships__item__title-group__title {
+      color: #1d2225;
+      font-weight: 700;
+      padding-bottom: 0.5rem; }
+      .itinerary-ships__item__title-group__title:link {
+        text-decoration: none; }
+
+.icon-circle {
+  position: relative;
+  background-color: #f8f8f8;
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  margin: 1rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; }
+  .icon-circle:hover .tooltiptext {
+    visibility: visible; }
+  .icon-circle .tooltiptext {
+    box-sizing: border-box;
+    visibility: hidden;
+    width: max-content2rem;
+    background-color: #f8f8f8;
+    border: 1px solid #c2c6c9;
+    color: #1d2225;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    /* Position the tooltip */
+    position: absolute;
+    bottom: -3.5rem;
+    z-index: 1; }
+  .icon-circle svg {
+    height: 2rem;
+    width: 2rem;
+    color: #1d2225; }
+
+.cta-link-icon {
+  display: flex;
+  justify-content: space-between;
+  color: #1d2225;
+  text-decoration: none;
+  font-size: 1.4rem;
+  white-space: no-wrap;
+  transition: all 0.2s; }
+  .cta-link-icon svg {
+    margin-left: 1rem;
+    height: 2rem;
+    width: 2rem;
+    color: currentColor; }
+  .cta-link-icon:hover {
+    color: #347fff; }
+
 .product-related__content {
   position: relative;
   padding-top: 3rem !important; }
@@ -4345,6 +4550,28 @@ h5 {
       .product-extras__content__slider .slick-slide {
         margin-right: 2rem; }
 
+.product-extras-modal-item {
+  padding: 4rem 0;
+  border-top: 1px solid #e6e6e6; }
+  .product-extras-modal-item__title-group {
+    margin-bottom: 1rem; }
+    .product-extras-modal-item__title-group__title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #1d2225; }
+    .product-extras-modal-item__title-group__sub {
+      font-size: 1.3rem; }
+  .product-extras-modal-item__image-area {
+    margin-bottom: 2rem; }
+    .product-extras-modal-item__image-area img {
+      border-radius: 1rem;
+      height: auto;
+      width: 100%;
+      max-height: 22rem;
+      object-fit: cover; }
+  .product-extras-modal-item:last-child {
+    margin-bottom: 12rem; }
+
 .itinerary-overview {
   display: flex;
   justify-content: center;
@@ -4532,7 +4759,7 @@ h5 {
             right: calc(0rem);
             z-index: 20; }
 
-.day-list__title__day-indication {
+.day-list__title__pre {
   color: #9ea0a4;
   font-size: 1.3rem; }
 
@@ -4598,204 +4825,45 @@ h5 {
       height: 50rem;
       border-radius: 1rem;
       border: 1px solid #e6e6e6;
-      background-color: #f8f8f8; }
+      background-color: #f8f8f8;
+      position: relative; }
       .itinerary-map__content__map-area__map {
+        z-index: 1;
         width: 100%;
         height: 100%;
         object-fit: cover;
         border-radius: 1rem;
         overflow: hidden; }
 
-.cruise-overview {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  width: 100%; }
-  .cruise-overview__content {
-    z-index: 2;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 128rem;
-    width: 100%;
-    padding: 0 6rem; }
-    @media only screen and (max-width: 50em) {
-      .cruise-overview__content {
-        padding: 0 3rem; } }
-    @media only screen and (max-width: 62.5em) {
-      .cruise-overview__content {
-        margin-top: 3rem; } }
-    @media only screen and (max-width: 50em) {
-      .cruise-overview__content {
-        margin-top: 0rem; } }
-    .cruise-overview__content__grid {
-      width: 100%;
-      display: grid;
-      grid-template-columns: 55% 45%;
-      position: relative; }
-      @media only screen and (max-width: 50em) {
-        .cruise-overview__content__grid {
-          grid-template-columns: 100%; } }
-      .cruise-overview__content__grid__overview {
-        padding-top: 3rem;
-        padding-right: 4rem; }
-        @media only screen and (max-width: 50em) {
-          .cruise-overview__content__grid__overview {
-            padding-right: 0rem; } }
-        .cruise-overview__content__grid__overview__highlights {
-          padding-bottom: 1.5rem; }
-          @media only screen and (max-width: 50em) {
-            .cruise-overview__content__grid__overview__highlights .title-single {
-              display: none; } }
-          .cruise-overview__content__grid__overview__highlights__list {
-            list-style: none;
-            font-size: 1.6rem; }
-            .cruise-overview__content__grid__overview__highlights__list li {
-              display: grid;
-              grid-template-columns: min-content 1fr;
-              margin-bottom: 1.5rem; }
-              .cruise-overview__content__grid__overview__highlights__list li svg {
-                height: 1.2rem;
-                width: 1.2rem;
-                color: #1d2225;
-                margin-right: 2rem;
-                transform: translateY(7px); }
-        .cruise-overview__content__grid__overview__text {
-          padding-top: 3rem;
-          position: relative; }
-          .cruise-overview__content__grid__overview__text::before {
-            content: "";
-            width: 100%;
-            height: 1px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: #e6e6e6; }
-        .cruise-overview__content__grid__overview__expand {
-          display: flex;
-          justify-content: flex-end;
-          min-height: 2rem;
-          font-weight: 700;
-          color: #1d2225; }
-      .cruise-overview__content__grid__secondary {
-        margin-top: 1.5rem; }
-        .cruise-overview__content__grid__secondary__cta {
-          display: flex;
-          justify-content: space-between;
-          align-items: center; }
-
-.ammenities {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  padding: 2rem;
-  padding-bottom: 1rem;
-  color: #1d2225; }
-  .ammenities__item {
-    display: flex;
-    align-items: center; }
-    .ammenities__item svg {
-      height: 2.5rem;
-      width: 2.5rem;
-      color: currentColor; }
-    .ammenities__item__title-group {
-      margin-left: 1.5rem;
-      font-size: 1.4rem; }
-      .ammenities__item__title-group__title {
-        color: currentColor; }
-      .ammenities__item__title-group__sub {
-        color: #747474; }
-
-.specs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  padding: 2rem;
-  padding-bottom: 1rem; }
-  .specs__item {
-    font-size: 1.4rem; }
-    .specs__item__title {
-      color: #1d2225;
-      font-weight: 700;
-      padding-bottom: 0.5rem; }
-
-.itinerary-ships {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  padding-top: 2rem;
-  padding-bottom: 1rem; }
-  .itinerary-ships__item {
-    font-size: 1.4rem;
+.map-legend {
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  background-color: #fff;
+  z-index: 10;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  width: 12rem;
+  height: min-content; }
+  .map-legend__item {
     display: grid;
-    grid-template-columns: min-content 1fr;
-    gap: 2rem; }
-    .itinerary-ships__item__avatar {
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem; }
+    .map-legend__item__marker-area {
       display: flex;
       align-items: center; }
-      .itinerary-ships__item__avatar img {
-        height: 8rem;
-        width: 8rem;
-        border-radius: 8rem; }
-    .itinerary-ships__item__title-group__title {
-      color: #1d2225;
+      .map-legend__item__marker-area__mark--fly {
+        width: 100%;
+        border: none;
+        border-top: 3px dotted orange; }
+      .map-legend__item__marker-area__mark--cruise {
+        width: 100%;
+        height: 3px;
+        background-color: royalblue; }
+    .map-legend__item__text {
       font-weight: 700;
-      padding-bottom: 0.5rem; }
-      .itinerary-ships__item__title-group__title:link {
-        text-decoration: none; }
-
-.icon-circle {
-  position: relative;
-  background-color: #f8f8f8;
-  height: 5rem;
-  width: 5rem;
-  border-radius: 50%;
-  margin: 1rem 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer; }
-  .icon-circle:hover .tooltiptext {
-    visibility: visible; }
-  .icon-circle .tooltiptext {
-    box-sizing: border-box;
-    visibility: hidden;
-    width: max-content2rem;
-    background-color: #f8f8f8;
-    border: 1px solid #c2c6c9;
-    color: #1d2225;
-    text-align: center;
-    border-radius: 6px;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    font-weight: 600;
-    /* Position the tooltip */
-    position: absolute;
-    bottom: -3.5rem;
-    z-index: 1; }
-  .icon-circle svg {
-    height: 2rem;
-    width: 2rem;
-    color: #1d2225; }
-
-.cta-link-icon {
-  display: flex;
-  justify-content: space-between;
-  color: #1d2225;
-  text-decoration: none;
-  font-size: 1.4rem;
-  white-space: no-wrap;
-  transition: all 0.2s; }
-  .cta-link-icon svg {
-    margin-left: 1rem;
-    height: 2rem;
-    width: 2rem;
-    color: currentColor; }
-  .cta-link-icon:hover {
-    color: #347fff; }
+      font-size: 1.2rem;
+      color: #1d2225; }
 
 .cruise-itineraries {
   display: flex;

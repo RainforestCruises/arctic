@@ -42,6 +42,8 @@
 
 //products (generic)
 @import "components/products/product-hero";
+@import "components/products/product-overview";
+
 @import "components/products/product-related";
 @import "components/products/product-reviews";
 @import "components/products/product-cards";
@@ -54,7 +56,6 @@
 @import "components/products/itinerary/itinerary-map";
 
 //--cruise 
-@import "components/products/cruise/cruise-overview";
 @import "components/products/cruise/cruise-itineraries";
 @import "components/products/cruise/cruise-cabins";
 @import "components/products/cruise/cruise-areas";

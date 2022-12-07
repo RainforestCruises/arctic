@@ -193,6 +193,31 @@
             "return_format": "object"
         },
         {
+            "key": "field_6390cce744f4e",
+            "label": "Wildlife",
+            "name": "wildlife",
+            "type": "relationship",
+            "instructions": "Select all that apply",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_wildlife"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
+        },
+        {
             "key": "field_62ed72228a5d5",
             "label": "Geographical",
             "name": "",
@@ -210,10 +235,10 @@
         },
         {
             "key": "field_62ed72318a5d6",
-            "label": "Latitude",
+            "label": "Latitude (S)",
             "name": "latitude",
             "type": "number",
-            "instructions": "",
+            "instructions": "Latitude is direction South \/ North (use negative values for South)",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -231,10 +256,10 @@
         },
         {
             "key": "field_62ed724e8a5d7",
-            "label": "Longitude",
+            "label": "Longitude (W)",
             "name": "longitude",
             "type": "number",
-            "instructions": "",
+            "instructions": "Latitude is direction East \/ West (use negative values for West)",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -269,5 +294,5 @@
     "active": true,
     "description": "Destinations - CPT",
     "show_in_rest": 0,
-    "modified": 1670277177
+    "modified": 1670434051
 }

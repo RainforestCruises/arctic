@@ -35,10 +35,10 @@ $extra_activities = get_field('extra_activities')
 
         <!-- Slider Area -->
         <div class="slider-block__content__slider">
-           <!-- Swiper -->
+            <!-- Swiper -->
             <div class="swiper" id="extras-slider">
                 <div class="swiper-wrapper">
-                    <?php 
+                    <?php
                     $count = 0;
                     foreach ($extra_activities as $activity) :
                         $image = $activity['image'];
@@ -66,7 +66,8 @@ $extra_activities = get_field('extra_activities')
                                 </div>
                             </div>
                         </div>
-                    <?php $count++; endforeach; ?>
+                    <?php $count++;
+                    endforeach; ?>
                 </div>
             </div>
         </div>
@@ -91,45 +92,39 @@ $extra_activities = get_field('extra_activities')
             </button>
         </div>
 
-    <!-- Main Modal Content -->
+        <!-- Main Modal Content -->
         <div class="modal__content__main" id="extrasModalMainContent">
 
-            <div class="days-modal">
-                <div class="days-modal__filters">
 
-                </div>
-                <div class="days-modal__content">
-                    <?php 
-                    $count = 0;
-                    foreach ($extra_activities as $activity) :
-                        $image = $activity['image'];
-                        $title = $activity['title'];
-                        $description = $activity['description'];
-                        $price = $activity['price'];
-                    ?>
+            <?php
+            $count = 0;
+            foreach ($extra_activities as $activity) :
+                $image = $activity['image'];
+                $title = $activity['title'];
+                $description = $activity['description'];
+                $price = $activity['price'];
+            ?>
 
-                        <div class="days-item" id="<?php echo 'extras-section-' . $count; ?>">
-                            <div class="days-item__title-group">
-                                <div class="days-item__title-group__title">
-                                    <?php echo $title; ?>
-                                </div>
-                                <div class="days-item__title-group__sub">
-                                    $<?php echo $price ?> Per Person
-                                </div>
-                            </div>
-                            <div class="days-item__image">
-                                <img <?php afloat_image_markup($image['id'], 'featured-large', array('featured-large', 'featured-medium','featured-small')); ?>>
-                            </div>
-
-                            <div class="days-item__text">
-                                <?php echo $description; ?>
-                            </div>
+                <div class="product-extras-modal-item" id="<?php echo 'extras-section-' . $count; ?>">
+                    <div class="product-extras-modal-item__title-group">
+                        <div class="product-extras-modal-item__title-group__title">
+                            <?php echo $title; ?>
                         </div>
-                    <?php $count++;
-                    endforeach; ?>
-                </div>
+                        <div class="product-extras-modal-item__title-group__sub">
+                            $<?php echo $price ?> Per Person
+                        </div>
+                    </div>
+                    <div class="product-extras-modal-item__image-area">
+                        <img <?php afloat_image_markup($image['id'], 'featured-large', array('featured-large', 'featured-medium', 'featured-small')); ?>>
+                    </div>
 
-            </div>
+                    <div class="product-extras-modal-item__text">
+                        <?php echo $description; ?>
+                    </div>
+                </div>
+            <?php $count++;
+            endforeach; ?>
+
 
         </div>
     </div>
