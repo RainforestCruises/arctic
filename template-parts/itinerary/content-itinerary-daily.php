@@ -16,11 +16,9 @@ $length_in_days = $length_in_nights + 1;
                 <?php
                 $count = 0;
                 foreach ($days as $day) :
-                    $image = $day['image'];
-                    $image =  $image ? $image : get_field('image', $destination); //get default image if none provided
-
+                    $destinations = $day['destination']; // multiple destinations
+                    $image =  get_field('image', $destinations[0]); //get default image if none provided
                     $text = $day['text'];
-                    $destination = $day['destination'];
 
                 ?>
                     <div class="accordion-panel">
@@ -59,7 +57,7 @@ $length_in_days = $length_in_nights + 1;
                                     <div class="overlay-card__content">
                                         <div class="overlay-card__content__title-section">
                                             <div class="overlay-card__content__title-section__title">
-                                                <?php echo get_the_title($destination); ?>
+                                                <?php echo get_the_title($destinations[0]); ?>
                                             </div>
                                         </div>
                                     </div>

@@ -60,16 +60,14 @@ foreach ($days as $day) {
       $destinationPoints[] = $point; // only add non dulpicates
       $count++; //increment index
 
-    } else { 
+    } else { // append the day markup
       $match = findObjectById($point['postid'], $destinationPoints, 'postid');
       $matchIndex = $match['index'];
-      $destinationPoints[$matchIndex]['day'] .= ', ' . $point['day']; // append the day display to matched destination
+      $destinationPoints[$matchIndex]['day'] .= ', ' . $point['day']; // append the day markup to matched destination
     }
     
     $destinationList[] = $destination; //full list
   }
-
-
 }
 
 // Itinerary Object
