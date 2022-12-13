@@ -304,6 +304,12 @@
     padding: 1.5rem 2rem;
     color: $color-primary;
     position: relative;
+    
+
+    @media only screen and (max-width: $bp-small) {
+        flex-shrink: 100 !important;
+        min-width: 28rem;
+    }
 
     &--horizontal {
         //above 600px
@@ -313,8 +319,6 @@
             align-items: center;
             min-height: 12rem;
 
-            & .avatar-title-group {
-            }
 
             & .information-card__section {
                 margin: 0rem;
@@ -354,6 +358,10 @@
         justify-content: space-between;
         align-items: center;
 
+        &__price-group {
+            margin-right: 2rem;
+        }
+
         &__deals {
             display: flex;
             align-items: center;
@@ -389,6 +397,7 @@
     }
 }
 
+//travel guide posts
 .block-card {
     display: grid;
     grid-template-columns: 40% 1fr;
@@ -446,34 +455,56 @@
     }
 }
 
-//Sub Components
-.avatar-title-group {
-    //make generic
-    color: currentColor;
-    font-weight: 700;
-    display: flex;
+
+// generic sub components
+.avatar {
+    font-size: 1.4rem;
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    gap: 2rem;
     align-items: center;
 
-    &__avatar {
-        display: flex;
-        align-items: center;
-        & img {
-            height: 5rem;
-            width: 5rem;
-            border-radius: 50%;
+    &--small {
+        gap: 1rem;
+
+        & .avatar__image-area img {
+            height: 6rem;
+            width: 6rem;
+        }
+
+        & .avatar__title-group__title {
+            padding-bottom: 0;
+        }
+
+        & .avatar__title-group__sub {
+            font-size: 1.1rem;
         }
     }
 
-    &__text {
-        margin-left: 1rem;
-        &__title {
-            font-size: 1.6rem;
-            line-height: 2rem;
-        }
+    &__image-area {
+        display: flex;
+        align-items: center;
+        user-select: none;
 
+        & img {
+            height: 8rem;
+            width: 8rem;
+            border-radius: 8rem;
+        }
+    }
+
+    &__title-group {
+        &__title {
+            color: $color-primary;
+            font-weight: 700;
+            padding-bottom: 0.5rem;
+            
+
+            &:link{
+                text-decoration: none;
+            }
+        }
         &__sub {
-            font-size: 1.2rem;
-            color: $color-grey-1;
         }
     }
 }

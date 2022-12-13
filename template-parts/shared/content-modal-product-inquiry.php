@@ -111,21 +111,21 @@ $ships = $args['ships'];
                         <div class="information-card information-card--horizontal info-departure-card" data-filter-date="<?php echo date("Y", $departureStartDate); ?>" data-filter-secondary="<?php echo $secondaryFilterId; ?>">
                             <!-- Title Group -->
                             <div class="information-card__section">
-                                <div class="avatar-title-group">
-                                    <div class="avatar-title-group__avatar">
+                                <div class="avatar avatar--small">
+                                    <div class="avatar__image-area">
                                         <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
-
                                     </div>
-                                    <div class="avatar-title-group__text">
-                                        <div class="avatar-title-group__text__title">
+                                    <div class="avatar__title-group">
+                                        <div class="avatar__title-group__title">
                                             <?php echo  $title; ?>
-
                                         </div>
-                                        <div class="avatar-title-group__text__sub">
+                                        <div class="avatar__title-group__sub">
                                             <?php echo $subtitleDisplay; ?>
                                         </div>
                                     </div>
                                 </div>
+
+
                             </div>
 
 
@@ -233,22 +233,27 @@ $ships = $args['ships'];
                             <div class="information-card information-card--horizontal modal-cabin-card" departureId="<?php echo $departureId; ?>">
                                 <!-- Title Group -->
                                 <div class="information-card__section">
-                                    <div class="avatar-title-group" style="max-width: 100%;">
-                                        <div class="avatar-title-group__avatar">
+
+
+                                    <div class="avatar avatar--small" style="max-width: 100%;">
+                                        <div class="avatar__image-area">
                                             <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
                                         </div>
-                                        <div class="avatar-title-group__text">
-                                            <div class="avatar-title-group__text__title">
+                                        <div class="avatar__title-group">
+                                            <div class="avatar__title-group__title">
                                                 <?php echo  $title; ?>
                                             </div>
-                                            <div class="avatar-title-group__text__sub">
+                                            <div class="avatar__title-group__sub">
                                                 <?php echo $capacity; ?>, <?php echo $beds; ?>
                                             </div>
-                                            <div class="avatar-title-group__text__sub">
+                                            <div class="avatar__title-group__sub">
                                                 <?php echo $dimensions; ?>
                                             </div>
                                         </div>
                                     </div>
+
+
+
                                 </div>
 
                                 <div class="information-card__section">

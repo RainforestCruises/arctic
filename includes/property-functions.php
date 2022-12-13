@@ -240,20 +240,27 @@ function shipSizeDisplay($pax)
 function getItineraryDestinations($itinerary)
 {
     $days = get_field('itinerary', $itinerary);
-    $embarkation_point = get_field('embarkation_point', $itinerary);
 
-    $destinations = [];
+    // $embarkationList = [];
+
+    // $embarkation_point = get_field('embarkation_point', $itinerary);
+    // $disembarkation_point = get_field('disembarkation_point', $itinerary);
+
+    $destinationList = [];
     foreach ($days as $day) {
-        if ($embarkation_point != $day['destination']) {
-            $destination = $day['destination'];
-            $destinations[] = get_the_title($destination);
+        $destinations = $day['destination'];
+        foreach ($destinations as $destination) {
+            $destinationList[] = get_the_title($destination);
         }
     }
 
+    $uniqueDestinationList = array_unique($destinationList);
+
     $display = "";
-    $destinationCount = count($destinations);
+    $destinationCount = count($uniqueDestinationList);
+
     $x = 1;
-    foreach ($destinations as $d) {
+    foreach ($uniqueDestinationList as $d) {
         $name = $d;
 
         if ($x < $destinationCount) {

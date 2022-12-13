@@ -65,19 +65,23 @@ $departures = $args['departures'];
                         <div class="information-card info-departure-card swiper-slide" data-filter-date="<?php echo date("Y", $departureStartDate); ?>" data-filter-secondary="<?php echo $itineraryPostId; ?>">
                             <!-- Title Group -->
                             <div class="information-card__section">
-                                <div class="avatar-title-group">
-                                    <div class="avatar-title-group__avatar">
-                                        <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
+
+
+                                <div class="avatar avatar--small">
+                                    <div class="avatar__image-area">
+                                    <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
                                     </div>
-                                    <div class="avatar-title-group__text">
-                                        <div class="avatar-title-group__text__title">
+                                    <div class="avatar__title-group">
+                                        <div class="avatar__title-group__title">
                                             <?php echo  $title; ?>
                                         </div>
-                                        <div class="avatar-title-group__text__sub">
-                                            <?php echo $d['LengthInNights'] + 1 . ' Days / ' . $d['LengthInNights'] . ' Nights'; ?>
+                                        <div class="avatar__title-group__sub">
+                                        <?php echo $d['LengthInNights'] + 1 . ' Days / ' . $d['LengthInNights'] . ' Nights'; ?>
                                         </div>
                                     </div>
                                 </div>
+
+
                             </div>
 
                             <!-- Specs -->

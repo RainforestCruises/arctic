@@ -14,32 +14,37 @@
 
     &__content {
         display: grid;
-        grid-template-columns: 1fr 35rem;
-        gap: 4rem;
+        margin-bottom: 3rem;
+        &__destinations {
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
 
-        @media only screen and (max-width: $bp-medium) {
-            grid-template-columns: 1fr;
+            @media only screen and (max-width: $bp-small) {
+                flex-direction: column;
+            }
+
+            & .avatar {
+                border: 1px solid $color-grey-light-1a;
+                border-radius: 1rem;
+                padding: 1rem;
+                padding-right: 2rem;
+                margin: 1rem 0;
+                margin-right: 2rem;
+
+                @media only screen and (max-width: $bp-small) {
+                    margin-right: 0;
+                }
+            }
+            
+        
         }
 
- 
         &__text {
            
         }
     
-        &__image-area {
-    
-            & img {
-                height: auto;
-                width: 100%;
-                object-fit: cover;
-                border-radius: 1rem;
-
-                @media only screen and (max-width: $bp-medium) {
-                    max-height: 33rem;
-                }
-
-            }
-        }
+        
     }
 }
 

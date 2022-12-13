@@ -4347,6 +4347,10 @@ h5 {
   padding: 1.5rem 2rem;
   color: #1d2225;
   position: relative; }
+  @media only screen and (max-width: 37.5em) {
+    .information-card {
+      flex-shrink: 100 !important;
+      min-width: 28rem; } }
   @media only screen and (min-width: 37.5em) {
     .information-card--horizontal {
       display: grid;
@@ -4375,6 +4379,8 @@ h5 {
     display: flex;
     justify-content: space-between;
     align-items: center; }
+    .information-card__bottom__price-group {
+      margin-right: 2rem; }
     .information-card__bottom__deals {
       display: flex;
       align-items: center; }
@@ -4439,26 +4445,35 @@ h5 {
       justify-content: flex-end;
       margin-top: .5rem; }
 
-.avatar-title-group {
-  color: currentColor;
-  font-weight: 700;
-  display: flex;
+.avatar {
+  font-size: 1.4rem;
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  gap: 2rem;
   align-items: center; }
-  .avatar-title-group__avatar {
+  .avatar--small {
+    gap: 1rem; }
+    .avatar--small .avatar__image-area img {
+      height: 6rem;
+      width: 6rem; }
+    .avatar--small .avatar__title-group__title {
+      padding-bottom: 0; }
+    .avatar--small .avatar__title-group__sub {
+      font-size: 1.1rem; }
+  .avatar__image-area {
     display: flex;
-    align-items: center; }
-    .avatar-title-group__avatar img {
-      height: 5rem;
-      width: 5rem;
-      border-radius: 50%; }
-  .avatar-title-group__text {
-    margin-left: 1rem; }
-    .avatar-title-group__text__title {
-      font-size: 1.6rem;
-      line-height: 2rem; }
-    .avatar-title-group__text__sub {
-      font-size: 1.2rem;
-      color: #9ea0a4; }
+    align-items: center;
+    user-select: none; }
+    .avatar__image-area img {
+      height: 8rem;
+      width: 8rem;
+      border-radius: 8rem; }
+  .avatar__title-group__title {
+    color: #1d2225;
+    font-weight: 700;
+    padding-bottom: 0.5rem; }
+    .avatar__title-group__title:link {
+      text-decoration: none; }
 
 .specs-item {
   font-size: 1.4rem;
@@ -4765,19 +4780,24 @@ h5 {
 
 .day-list__content {
   display: grid;
-  grid-template-columns: 1fr 35rem;
-  gap: 4rem; }
-  @media only screen and (max-width: 50em) {
-    .day-list__content {
-      grid-template-columns: 1fr; } }
-  .day-list__content__image-area img {
-    height: auto;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 1rem; }
-    @media only screen and (max-width: 50em) {
-      .day-list__content__image-area img {
-        max-height: 33rem; } }
+  margin-bottom: 3rem; }
+  .day-list__content__destinations {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap; }
+    @media only screen and (max-width: 37.5em) {
+      .day-list__content__destinations {
+        flex-direction: column; } }
+    .day-list__content__destinations .avatar {
+      border: 1px solid #e6e6e6;
+      border-radius: 1rem;
+      padding: 1rem;
+      padding-right: 2rem;
+      margin: 1rem 0;
+      margin-right: 2rem; }
+      @media only screen and (max-width: 37.5em) {
+        .day-list__content__destinations .avatar {
+          margin-right: 0; } }
 
 .itinerary-inclusions {
   column-count: 3;

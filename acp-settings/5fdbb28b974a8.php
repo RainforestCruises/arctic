@@ -5,7 +5,7 @@ return array (
   'title' => 'Destinations',
   'type' => 'rfc_destinations',
   'id' => '5fdbb28b974a8',
-  'updated' => 1670432033,
+  'updated' => 1670443543,
   'columns' => 
   array (
     'title' => 
@@ -20,23 +20,6 @@ return array (
       'bulk_edit' => 'on',
       'search' => 'on',
       'name' => 'title',
-    ),
-    '62f51c281ef9dc' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Longitude (W)',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_62ed724e8a5d7',
-      'number_format' => '',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '62f51c281ef9dc',
     ),
     '62f51c4b231270' => 
     array (
@@ -55,15 +38,22 @@ return array (
       'filter_label' => '',
       'name' => '62f51c4b231270',
     ),
-    '62f51d17a00000' => 
+    '62f51c281ef9dc' => 
     array (
       'type' => 'column-acf_field',
-      'label' => 'Zoom Level',
+      'label' => 'Longitude (W)',
       'width' => '',
       'width_unit' => '%',
-      'field' => 'field_5fe125b203346',
+      'field' => 'field_62ed724e8a5d7',
+      'number_format' => '',
       'export' => 'off',
-      'name' => '62f51d17a00000',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '62f51c281ef9dc',
     ),
     '638a56a3a0c49c' => 
     array (

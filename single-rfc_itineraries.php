@@ -171,7 +171,7 @@ $args = array(
 </main>
 <!-- Inquire Modal -->
 <?php
-get_template_part('template-parts/shared/content', 'shared-inquire-modal', $args);
+get_template_part('template-parts/shared/content', 'modal-product-inquiry', $args);
 ?>
 
 

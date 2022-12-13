@@ -79,16 +79,16 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
                                 $ship_image = $hero_gallery[0];
                             ?>
                                 <!-- Ship -->
-                                <div class="itinerary-ships__item">
+                                <div class="avatar">
 
-                                    <a class="itinerary-ships__item__avatar" href="<?php echo get_permalink($ship); ?>">
+                                    <a class="avatar__image-area" href="<?php echo get_permalink($ship); ?>">
                                         <img <?php afloat_image_markup($ship_image['id'], 'square-small', array('square-small')); ?>>
                                     </a>
-                                    <div class="itinerary-ships__item__title-group">
-                                        <a class="itinerary-ships__item__title-group__title" href="<?php echo get_permalink($ship); ?>">
+                                    <div class="avatar__title-group">
+                                        <a class="avatar__title-group__title" href="<?php echo get_permalink($ship); ?>">
                                             <?php echo get_the_title($ship); ?>
                                         </a>
-                                        <div class="itinerary-ships__item__title-group__text">
+                                        <div class="avatar__title-group__sub">
                                             <?php echo get_field('top_snippet', $ship); ?>
                                         </div>
                                     </div>

@@ -2,6 +2,9 @@
 $days = get_field('itinerary');
 $length_in_nights = get_field('length_in_nights');
 $length_in_days = $length_in_nights + 1;
+$embarkation_point = get_field('embarkation_point');
+$disembarkation_point = get_field('disembarkation_point');
+
 ?>
 
 <!-- Itinerary Daily -->
@@ -15,16 +18,16 @@ $length_in_days = $length_in_nights + 1;
             <div class="day-list">
                 <?php
                 $count = 0;
+                $totalDays = count($days) - 1;
                 foreach ($days as $day) :
                     $destinations = $day['destination']; // multiple destinations
-                    $image =  get_field('image', $destinations[0]); //get default image if none provided
                     $text = $day['text'];
 
                 ?>
                     <div class="accordion-panel">
 
                         <!-- Panel Heading -->
-                        <div class="accordion-panel__heading <?php echo $count == 0 ? "": "closed" ; ?>" >
+                        <div class="accordion-panel__heading <?php echo $count == 0 ? "" : "closed"; ?>">
                             <div class="day-list__title">
                                 <div class="day-list__title__pre">
                                     <?php echo dayCountMarkup($day['day_count']); ?>
@@ -39,30 +42,42 @@ $length_in_days = $length_in_nights + 1;
                         </div>
 
                         <!-- Panel Content -->
-                        <div class="accordion-panel__content day-list__content" <?php echo $count == 0 ? "": "style='display:none;'" ; ?>>
+                        <div class="accordion-panel__content day-list__content" <?php echo $count == 0 ? "" : "style='display:none;'"; ?>>
 
-                     
                             <div class="day-list__content__text">
                                 <?php echo $text; ?>
                             </div>
-                            <div class="day-list__content__image-area">
+                            <div class="day-list__content__destinations">
 
-                                <!-- Overlay Card -->
-                                <div class="overlay-card">
-                                    <div class="overlay-card__image-area">
-                                        <div class="overlay-card__image-area__item">
+                                <?php foreach ($destinations as $destination) :
+                                    $image =  get_field('image', $destination);
+                                    $title = get_the_title($destination);
+                                ?>
+                                    <div class="avatar avatar--small">
+                                        <div class="avatar__image-area">
                                             <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
                                         </div>
-                                    </div>
-                                    <div class="overlay-card__content">
-                                        <div class="overlay-card__content__title-section">
-                                            <div class="overlay-card__content__title-section__title">
-                                                <?php echo get_the_title($destinations[0]); ?>
+                                        <div class="avatar__title-group">
+                                            <div class="avatar__title-group__title">
+                                                <?php echo $title; ?>
                                             </div>
+                            
+                                            <?php if ($count == 0) : ?>
+                                                <div class="avatar__title-group__sub">
+                                                    Embarkation Point
+                                                </div>
+                                            <?php endif; ?>
+                                            <?php if ($count == $totalDays) : ?>
+                                                <div class="avatar__title-group__sub">
+                                                    Disembarkation Point
+                                                </div>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
+
+
 
                         </div>
                     </div>
