@@ -3711,10 +3711,10 @@ h5 {
             margin-left: 2.5rem; }
         .product-hero__content__main__secondary__attributes {
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-columns: repeat(3, min-content);
           padding: 2.5rem 0;
           font-size: 1.4rem;
-          column-gap: 3rem;
+          column-gap: 5rem;
           row-gap: 2rem;
           position: relative; }
           .product-hero__content__main__secondary__attributes::before {
@@ -3727,13 +3727,12 @@ h5 {
             background-color: #e6e6e6; }
           @media only screen and (max-width: 62.5em) {
             .product-hero__content__main__secondary__attributes {
-              justify-items: center; }
+              justify-items: start;
+              grid-template-columns: repeat(3, 1fr);
+              column-gap: 1rem; }
               .product-hero__content__main__secondary__attributes::before {
                 top: auto;
                 bottom: -1rem; } }
-          @media only screen and (max-width: 37.5em) {
-            .product-hero__content__main__secondary__attributes {
-              column-gap: 1rem; } }
           .product-hero__content__main__secondary__attributes__item {
             color: #1d2225;
             width: min-content;
@@ -3756,31 +3755,27 @@ h5 {
                 padding: 1.5rem; } }
             .product-hero__content__main__secondary__attributes__item__icon {
               display: flex;
-              align-items: center; }
+              padding-top: .3rem; }
               .product-hero__content__main__secondary__attributes__item__icon svg {
-                stroke: currentColor;
-                color: currentColor;
-                fill: currentColor;
-                stroke-width: 4;
-                height: 3rem;
-                width: 3rem; }
-                @media only screen and (max-width: 62.5em) {
-                  .product-hero__content__main__secondary__attributes__item__icon svg {
-                    height: 4rem;
-                    width: 4rem; } }
-                @media only screen and (max-width: 37.5em) {
-                  .product-hero__content__main__secondary__attributes__item__icon svg {
-                    height: 3rem;
-                    width: 3rem; } }
+                height: 3.2rem;
+                width: 3.2rem; }
             .product-hero__content__main__secondary__attributes__item__text {
-              font-size: 1.6rem;
+              font-size: 1.5rem;
               line-height: 2.5rem;
               font-weight: 700;
               width: max-content; }
               .product-hero__content__main__secondary__attributes__item__text .sub-attribute {
                 font-size: 1.1rem;
                 line-height: 1.6rem;
-                font-weight: 600; }
+                font-weight: 500; }
+                .product-hero__content__main__secondary__attributes__item__text .sub-attribute span {
+                  margin-left: .5rem;
+                  border-radius: 1rem;
+                  letter-spacing: .1rem;
+                  padding: .2rem .8rem;
+                  background-color: #347fff;
+                  color: #fff;
+                  font-weight: 700; }
 
 .mobile-info {
   display: none;

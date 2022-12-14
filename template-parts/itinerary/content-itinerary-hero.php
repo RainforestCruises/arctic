@@ -127,54 +127,63 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                 <!-- Attributes -->
                 <div class="product-hero__content__main__secondary__attributes">
 
-                    <!-- Itineraries -->
+                    <!-- Length -->
                     <div class="product-hero__content__main__secondary__attributes__item">
                         <div class="product-hero__content__main__secondary__attributes__item__icon">
                             <svg>
-                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-m-time"></use>
+                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-stopwatch"></use>
                             </svg>
                         </div>
                         <div class="product-hero__content__main__secondary__attributes__item__text">
                             <div class="sub-attribute">
                                 Length
                             </div>
-
                             <?php echo $length . " Days"; ?>
-
                         </div>
-
                     </div>
 
-                    <!-- Capacity -->
-                    <div class="product-hero__content__main__secondary__attributes__item">
 
-                        <div class="product-hero__content__main__secondary__attributes__item__icon">
-                            <svg>
-                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat-front"></use>
-                            </svg>
-                        </div>
-                        <div class="product-hero__content__main__secondary__attributes__item__text">
-                            <div class="sub-attribute">
-                                Ship Size
-                            </div>
-                            <?php echo $shipSizeRange . ' Guests'; ?>
-                        </div>
-
-
-                    </div>
                     <!-- Embarkation -->
+                    <?php $embarkation_is_flight = get_field('embarkation_is_flight', $itinerary); ?>
                     <div class="product-hero__content__main__secondary__attributes__item">
                         <div class="product-hero__content__main__secondary__attributes__item__icon">
                             <svg>
-                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-pin-3"></use>
+                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-<?php echo  $embarkation_is_flight ? 'plane' : 'boat'; ?>"></use>
                             </svg>
                         </div>
                         <div class="product-hero__content__main__secondary__attributes__item__text">
                             <div class="sub-attribute">
                                 Embarkation
+                                <?php echo  $embarkation_is_flight ? '<span>Fly</span>' : ''; ?>
                             </div>
-                            
-                            <?php echo getEmbarkationDisplay(get_post()); ?>
+                            <?php
+                            $embarkation_point = get_field('embarkation_point', $itinerary);
+                            echo get_the_title($embarkation_point);
+                            ?>
+                        </div>
+                    </div>
+
+                    <!-- DisEmbarkation -->
+                    <?php $disembarkation_is_flight = get_field('disembarkation_is_flight', $itinerary); ?>
+                    <div class="product-hero__content__main__secondary__attributes__item">
+                        <div class="product-hero__content__main__secondary__attributes__item__icon">
+                            <svg>
+                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-<?php echo  $disembarkation_is_flight ? 'plane' : 'boat'; ?>"></use>
+                            </svg>
+                        </div>
+                        <div class="product-hero__content__main__secondary__attributes__item__text">
+                            <div class="sub-attribute">
+                                Disembarkation
+                                <?php echo  $disembarkation_is_flight ? '<span>Fly</span>' : ''; ?>
+
+
+                            </div>
+
+                            <?php
+                            $disembarkation_point = get_field('disembarkation_point', $itinerary) ?: $embarkation_point;
+                            echo get_the_title($disembarkation_point);
+                            ?>
+
                         </div>
                     </div>
                 </div>

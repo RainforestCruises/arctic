@@ -17,6 +17,7 @@
             width: 20px;
             height: 32px;
             cursor: pointer;
+            opacity: .85 !important;
         }
         .embarkation-marker {
             background-image: url("<?php echo bloginfo('template_url') ?>/css/img/pinMarker-embark.png");

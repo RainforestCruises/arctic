@@ -66,32 +66,6 @@
             "ui": 1
         },
         {
-            "key": "field_62b4db8af13d9",
-            "label": "Transport Option",
-            "name": "transport_option",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "fly-fly": "fly-fly",
-                "fly-cruise": "fly-cruise",
-                "cruise-cruise": "cruise-cruise"
-            },
-            "default_value": "fly-fly",
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "return_format": "value",
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
             "key": "field_6384e58d7c11f",
             "label": "Styles",
             "name": "styles",
@@ -415,6 +389,25 @@
             "ui": 1
         },
         {
+            "key": "field_63990d83f7023",
+            "label": "Embarkation Is Flight",
+            "name": "embarkation_is_flight",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_631f8c08db3a3",
             "label": "Disembarkation Point",
             "name": "disembarkation_point",
@@ -437,11 +430,11 @@
             "ui": 1
         },
         {
-            "key": "field_638e68537a5cb",
-            "label": "Latitude Start Point",
-            "name": "latitude_start_point",
-            "type": "number",
-            "instructions": "Default is -60",
+            "key": "field_63990dc7f7024",
+            "label": "Disembarkation Is Flight",
+            "name": "disembarkation_is_flight",
+            "type": "true_false",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -449,74 +442,11 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": -60,
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
-        },
-        {
-            "key": "field_638e687f7a5cc",
-            "label": "Longitude Start Point",
-            "name": "longitude_start_point",
-            "type": "number",
-            "instructions": "Default is -60",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": -60,
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
-        },
-        {
-            "key": "field_638e68c17a5cd",
-            "label": "Zoom Level Start Point",
-            "name": "zoom_level_start_point",
-            "type": "number",
-            "instructions": "Default is 3",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": 3,
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
-        },
-        {
-            "key": "field_638f7f95d702c",
-            "label": "GeoJSON",
-            "name": "geojson",
-            "type": "text",
-            "instructions": "Generate geoJSON at https:\/\/geojson.io\/ use 'orange' for flight lines, and 'royalblue' for cruise lines",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         },
         {
             "key": "field_62b9d1d2164f5",
@@ -620,6 +550,88 @@
                     "delay": 0
                 }
             ]
+        },
+        {
+            "key": "field_638e68537a5cb",
+            "label": "Latitude Start Point",
+            "name": "latitude_start_point",
+            "type": "number",
+            "instructions": "Default is -60",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": -60,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_638e687f7a5cc",
+            "label": "Longitude Start Point",
+            "name": "longitude_start_point",
+            "type": "number",
+            "instructions": "Default is -60",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": -60,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_638e68c17a5cd",
+            "label": "Zoom Level Start Point",
+            "name": "zoom_level_start_point",
+            "type": "number",
+            "instructions": "Default is 3",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 3,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_638f7f95d702c",
+            "label": "GeoJSON",
+            "name": "geojson",
+            "type": "text",
+            "instructions": "Generate geoJSON at https:\/\/geojson.io\/ use 'orange' for flight lines, and 'royalblue' for cruise lines",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_63595b20f857e",
@@ -1141,5 +1153,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1670435223
+    "modified": 1670975147
 }

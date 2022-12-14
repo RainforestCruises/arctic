@@ -2,6 +2,32 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
+        <symbol id="icon-stopwatch" viewBox="0 0 32 32">
+            <title>stopwatch</title>
+            <g class="nc-icon-wrapper" stroke-width="2">
+                <polyline points="16 13 16 19 22 19" fill="none" stroke="currentColor"></polyline>
+                <circle cx="16" cy="19" r="12" fill="none" stroke="currentColor"></circle>
+                <line x1="12" y1="1" x2="20" y2="1" fill="none" stroke="currentColor"></line>
+                <line x1="16" y1="1" x2="16" y2="4" fill="none" stroke="currentColor"></line>
+                <line x1="26" y1="7" x2="28" y2="9" fill="none" stroke="currentColor"></line>
+            </g>
+        </symbol>
+        <symbol id="icon-boat" viewBox="0 0 32 32">
+            <title>boat</title>
+            <g class="nc-icon-wrapper" stroke-width="2">
+                <polyline fill="none" stroke="currentColor" points=" 8,10 8,3 13,3 13,10 "></polyline>
+                <polyline fill="none" stroke="currentColor" points="5,16 5,10 22,10 26,16 "></polyline>
+                <polyline fill="none" stroke="currentColor" points="5,24 2,16 30,16 25,24 "></polyline>
+                <path fill="none" stroke="currentColor" d="M1,25 c0,2.209,1.791,4,4,4c1.518,0,2.822-0.855,3.5-2.101C9.178,28.145,10.482,29,12,29s2.822-0.855,3.5-2.101 C16.178,28.145,17.482,29,19,29s2.822-0.855,3.5-2.101C23.178,28.145,24.482,29,26,29c2.209,0,4-1.791,4-4"></path>
+            </g>
+        </symbol>
+        <symbol id="icon-plane" viewBox="0 0 32 32">
+            <title>plane</title>
+            <g class="nc-icon-wrapper" stroke-width="2">
+                <path d="M14.011,12,9,1.978h3.394a3,3,0,0,1,2.5,1.336L20.557,12" fill="none" stroke="currentColor"></path>
+                <path d="M27.3,12H9L5.5,7h-4l2.87,9.84A3,3,0,0,0,7.25,19H14L9,29h3.394a3,3,0,0,0,2.5-1.336L20.543,19H27.5A3.5,3.5,0,0,0,31,15.312,3.633,3.633,0,0,0,27.3,12Z" fill="none" stroke="currentColor"></path>
+            </g>
+        </symbol>
         <symbol id="icon-ctrl-right" viewBox="0 0 12 12">
             <title>ctrl right</title>
             <g class="nc-icon-wrapper">

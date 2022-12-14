@@ -51,20 +51,30 @@ $hero_deals = get_field('hero_deals');
                     <div class="information-card">
                         <!-- Title Group -->
                         <div class="information-card__section">
-                            <div class="avatar-title-group">
-                                <div class="avatar-title-group__avatar">
+
+
+
+                            <div class="avatar avatar--small">
+                                <div class="avatar__image-area">
                                     <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
                                 </div>
-                                <div class="avatar-title-group__text">
-                                    <div class="avatar-title-group__text__title">
-                                        <?php echo  $title; ?>
-                                    </div>
-                                    <div class="avatar-title-group__text__sub">
-                                        Up to <span class="green-text"><?php echo $percentage_savings; ?>%</span> savings
+                                <div class="avatar__title-group">
+                                    <div class="avatar__title-group__title">
+                                        <?php echo $title; ?>
                                     </div>
 
+                                    <div class="avatar__title-group__sub">
+                                        Up to <span class="green-text"><?php echo $percentage_savings; ?>%</span> savings
+                                        </div>
                                 </div>
                             </div>
+
+
+
+
+
+
+
                         </div>
 
 
