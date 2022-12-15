@@ -21,7 +21,7 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
                 <!-- Highlights -->
                 <div class="product-overview__content__grid__overview__highlights">
                     <h3 class="title-single">Highlights</h3>
-                    <ul class="product-overview__content__grid__overview__highlights__list">
+                    <ul class="highlight-list">
                         <?php if (have_rows('highlights')) : ?>
                             <?php while (have_rows('highlights')) : the_row(); ?>
                                 <li>

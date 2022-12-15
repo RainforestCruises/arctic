@@ -46,23 +46,6 @@
                         }
                     }
 
-                    &__list {
-                        list-style: none;
-                        font-size: 1.6rem;
-                        & li {
-                            display: grid;
-                            grid-template-columns: min-content 1fr;
-                            margin-bottom: 1.5rem;
-
-                            & svg {
-                                height: 1.2rem;
-                                width: 1.2rem;
-                                color: $color-primary;
-                                margin-right: 2rem;
-                                transform: translateY(7px);
-                            }
-                        }
-                    }
                 }
 
                 &__text {

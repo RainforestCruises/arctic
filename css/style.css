@@ -252,51 +252,6 @@ button {
   user-select: none;
   /* Non-prefixed version, currently */ }
 
-.mapbox-popup {
-  max-width: 20rem; }
-  .mapbox-popup__day-count {
-    color: #9ea0a4;
-    font-size: 1.3rem;
-    font-weight: 700; }
-  .mapbox-popup__title {
-    color: #1d2225;
-    font-size: 1.5rem;
-    font-weight: 700; }
-  .mapbox-popup__badge-area {
-    display: flex;
-    justify-content: center;
-    align-items: center; }
-    .mapbox-popup__badge-area span {
-      font-size: 1rem;
-      letter-spacing: .1rem;
-      color: #fff;
-      width: max-content;
-      padding: 0rem 1.2rem;
-      border-radius: 5rem;
-      background-color: #347fff; }
-  .mapbox-popup__description {
-    font-size: 1.2rem;
-    margin-bottom: 1rem; }
-  .mapbox-popup__image-area {
-    width: 100%;
-    height: 15rem; }
-    .mapbox-popup__image-area img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 1rem; }
-
-.mapboxgl-popup-content {
-  text-align: center;
-  font-family: 'Metropolis', sans-serif;
-  border-radius: 1rem;
-  padding: 10px 10px 10px; }
-
-.mapboxgl-popup-close-button {
-  right: 6px;
-  top: 3px;
-  outline: none; }
-
 .arctic-heading-3 {
   font-family: "Metropolis", sans-serif;
   font-weight: 700;
@@ -339,6 +294,30 @@ button {
     .title-single {
       font-size: 1.8rem;
       margin-bottom: 1.5rem; } }
+
+.highlight-list {
+  list-style: none;
+  font-size: 1.6rem; }
+  .highlight-list li {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    margin-bottom: 1.5rem; }
+    .highlight-list li svg {
+      height: 1.2rem;
+      width: 1.2rem;
+      color: #1d2225;
+      margin-right: 2rem;
+      transform: translateY(7px); }
+
+.badge-fly {
+  font-size: 1.1rem;
+  border-radius: 1rem;
+  letter-spacing: .1rem;
+  padding: 0.2rem 0.8rem;
+  white-space: nowrap;
+  color: #347fff;
+  font-weight: 700;
+  border: 1px solid #347fff; }
 
 .heading-1, .heading-2, .heading-3, .heading-4, .heading-5 {
   font-family: "Metropolis", sans-serif;
@@ -1874,6 +1853,85 @@ h5 {
     box-shadow: inset 0px 0px 0px 1px #c2c6c9;
     min-width: 10rem; }
 
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Metropolis', sans-serif;
+  border-radius: 1rem;
+  padding: 10px 10px 10px; }
+
+.mapboxgl-popup-close-button {
+  right: 6px;
+  top: 3px;
+  outline: none; }
+
+.mapbox-popup {
+  max-width: 20rem; }
+  .mapbox-popup__day-count {
+    color: #9ea0a4;
+    font-size: 1.3rem;
+    font-weight: 700; }
+  .mapbox-popup__title {
+    color: #1d2225;
+    font-size: 1.5rem;
+    font-weight: 700; }
+  .mapbox-popup__badge-area {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .mapbox-popup__badge-area span {
+      font-size: 1rem;
+      letter-spacing: .1rem;
+      color: #fff;
+      width: max-content;
+      padding: 0rem 1.2rem;
+      border-radius: 5rem;
+      background-color: #347fff; }
+  .mapbox-popup__description {
+    font-size: 1.2rem;
+    margin-bottom: 1rem; }
+  .mapbox-popup__image-area {
+    width: 100%;
+    height: 15rem; }
+    .mapbox-popup__image-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1rem; }
+
+.map-legend {
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  background-color: #fff;
+  z-index: 10;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  width: 12rem;
+  height: min-content; }
+  .map-legend.right-align {
+    bottom: 5px;
+    left: auto;
+    right: 5px; }
+  .map-legend__item {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem; }
+    .map-legend__item__marker-area {
+      display: flex;
+      align-items: center; }
+      .map-legend__item__marker-area__mark--fly {
+        width: 100%;
+        border: none;
+        border-top: 3px dotted royalblue; }
+      .map-legend__item__marker-area__mark--cruise {
+        width: 100%;
+        height: 3px;
+        background-color: darkcyan; }
+    .map-legend__item__text {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #1d2225; }
+
 .modal {
   position: fixed;
   background-color: rgba(30, 30, 30, 0.5);
@@ -3405,21 +3463,21 @@ h5 {
     .grid-block__content__grid {
       width: 100%;
       display: grid;
-      grid-template-columns: repeat(3, calc(33% - 1rem));
+      grid-template-columns: 100%;
       gap: 2rem; }
-      @media only screen and (max-width: 50em) {
-        .grid-block__content__grid {
-          grid-template-columns: repeat(2, calc(50% - 1rem)); } }
-      @media only screen and (max-width: 37.5em) {
-        .grid-block__content__grid {
-          grid-template-columns: 100%;
-          gap: 4rem; } }
-      .grid-block__content__grid.grid1 {
-        grid-template-columns: 100%; }
       .grid-block__content__grid.grid2 {
         grid-template-columns: repeat(2, calc(50% - 1rem)); }
         @media only screen and (max-width: 37.5em) {
           .grid-block__content__grid.grid2 {
+            grid-template-columns: 100%;
+            gap: 4rem; } }
+      .grid-block__content__grid.grid3 {
+        grid-template-columns: repeat(3, calc(33% - 1rem)); }
+        @media only screen and (max-width: 50em) {
+          .grid-block__content__grid.grid3 {
+            grid-template-columns: repeat(2, calc(50% - 1rem)); } }
+        @media only screen and (max-width: 37.5em) {
+          .grid-block__content__grid.grid3 {
             grid-template-columns: 100%;
             gap: 4rem; } }
       .grid-block__content__grid.grid4 {
@@ -3908,19 +3966,6 @@ h5 {
           @media only screen and (max-width: 50em) {
             .product-overview__content__grid__overview__highlights .title-single {
               display: none; } }
-          .product-overview__content__grid__overview__highlights__list {
-            list-style: none;
-            font-size: 1.6rem; }
-            .product-overview__content__grid__overview__highlights__list li {
-              display: grid;
-              grid-template-columns: min-content 1fr;
-              margin-bottom: 1.5rem; }
-              .product-overview__content__grid__overview__highlights__list li svg {
-                height: 1.2rem;
-                width: 1.2rem;
-                color: #1d2225;
-                margin-right: 2rem;
-                transform: translateY(7px); }
         .product-overview__content__grid__overview__text {
           padding-top: 3rem;
           position: relative; }
@@ -4285,6 +4330,8 @@ h5 {
       margin-bottom: 0.5rem; }
       .resource-card__content__title-group__title {
         font-weight: 700; }
+        .resource-card__content__title-group__title span {
+          margin-left: .5rem; }
       .resource-card__content__title-group__sub {
         font-size: 1.4rem; }
     .resource-card__content__title-group-vertical {
@@ -4336,12 +4383,28 @@ h5 {
       bottom: 2rem;
       right: 2rem; }
 
+.tiny-card {
+  position: relative;
+  display: grid !important;
+  grid-template-columns: 1fr min-content;
+  gap: 3rem;
+  align-items: center;
+  border: 1px solid #e6e6e6;
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+  position: relative;
+  background-color: #fff; }
+  @media only screen and (max-width: 37.5em) {
+    .tiny-card {
+      gap: 1rem; } }
+
 .information-card {
   border: 1px solid #e6e6e6;
   border-radius: 1rem;
   padding: 1.5rem 2rem;
   color: #1d2225;
-  position: relative; }
+  position: relative;
+  background-color: #fff; }
   @media only screen and (max-width: 37.5em) {
     .information-card {
       flex-shrink: 100 !important;
@@ -4452,7 +4515,8 @@ h5 {
       height: 6rem;
       width: 6rem; }
     .avatar--small .avatar__title-group__title {
-      padding-bottom: 0; }
+      padding-bottom: 0;
+      line-height: 1.8rem; }
     .avatar--small .avatar__title-group__sub {
       font-size: 1.1rem; }
   .avatar__image-area {
@@ -4850,36 +4914,6 @@ h5 {
         border-radius: 1rem;
         overflow: hidden; }
 
-.map-legend {
-  padding: 1rem 2rem;
-  border-radius: 1rem;
-  background-color: #fff;
-  z-index: 10;
-  position: absolute;
-  bottom: 5px;
-  left: 5px;
-  width: 12rem;
-  height: min-content; }
-  .map-legend__item {
-    display: grid;
-    grid-template-columns: 2.5rem 1fr;
-    gap: 1rem; }
-    .map-legend__item__marker-area {
-      display: flex;
-      align-items: center; }
-      .map-legend__item__marker-area__mark--fly {
-        width: 100%;
-        border: none;
-        border-top: 3px dotted orange; }
-      .map-legend__item__marker-area__mark--cruise {
-        width: 100%;
-        height: 3px;
-        background-color: royalblue; }
-    .map-legend__item__text {
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: #1d2225; }
-
 .cruise-itineraries {
   display: flex;
   justify-content: center;
@@ -4914,7 +4948,57 @@ h5 {
           width: calc(100% - 6rem); } }
     .cruise-itineraries__content__top {
       display: grid;
-      grid-template-columns: 1fr min-content; }
+      grid-template-columns: 20rem calc(100% - 34rem) 8rem;
+      gap: 3rem;
+      width: 100%; }
+      @media only screen and (max-width: 50em) {
+        .cruise-itineraries__content__top {
+          grid-template-columns: calc(100% - 8rem) 8rem;
+          gap: 0rem;
+          margin-bottom: 1.5rem; } }
+      .cruise-itineraries__content__top__nav-area {
+        padding-top: .3rem;
+        height: min-content;
+        width: 100%; }
+        @media only screen and (max-width: 75em) {
+          .cruise-itineraries__content__top__nav-area {
+            padding-top: 0rem; } }
+        @media only screen and (max-width: 50em) {
+          .cruise-itineraries__content__top__nav-area {
+            order: 3;
+            grid-column: 1 / -1; } }
+        .cruise-itineraries__content__top__nav-area__slider {
+          position: relative; }
+          @media only screen and (max-width: 37.5em) {
+            .cruise-itineraries__content__top__nav-area__slider {
+              padding-left: 0;
+              padding-right: 0;
+              -webkit-mask-image: none;
+              mask-image: none; } }
+          .cruise-itineraries__content__top__nav-area__slider__item__button {
+            box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 3.5rem;
+            cursor: pointer;
+            position: relative;
+            background-color: #fff;
+            font-size: 1.4rem;
+            border-radius: 4rem;
+            transition: all 0.2s;
+            border: 1px solid #e6e6e6;
+            color: #1d2225;
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center; }
+            .cruise-itineraries__content__top__nav-area__slider__item__button span {
+              margin-left: 1.5rem; }
+              @media only screen and (max-width: 37.5em) {
+                .cruise-itineraries__content__top__nav-area__slider__item__button span {
+                  display: none; } }
+          .cruise-itineraries__content__top__nav-area__slider__item.swiper-slide-thumb-active button {
+            border: 1px solid #1d2225; }
       .cruise-itineraries__content__top__nav {
         position: relative;
         display: grid;
@@ -4931,85 +5015,60 @@ h5 {
       display: flex;
       justify-content: space-between;
       position: relative; }
-      @media only screen and (max-width: 37.5em) {
+      @media only screen and (max-width: 50em) {
         .cruise-itineraries__content__main {
-          height: min-content;
-          flex-direction: column; } }
-      .cruise-itineraries__content__main__nav-area {
-        height: min-content;
-        width: calc(100% - 46rem);
-        transform: translateX(-1px);
-        z-index: 10;
-        user-select: none; }
-        @media only screen and (max-width: 37.5em) {
-          .cruise-itineraries__content__main__nav-area {
-            display: none; } }
-        .cruise-itineraries__content__main__nav-area__slider {
-          position: relative;
-          padding-left: 5rem;
-          padding-right: 2rem;
-          -webkit-mask-image: linear-gradient(to right, transparent, #1e1e1e 5rem);
-          mask-image: linear-gradient(to right, transparent, #1e1e1e 5rem); }
-          @media only screen and (max-width: 37.5em) {
-            .cruise-itineraries__content__main__nav-area__slider {
-              padding-left: 0;
-              padding-right: 0;
-              -webkit-mask-image: none;
-              mask-image: none; } }
-          .cruise-itineraries__content__main__nav-area__slider__item {
-            padding: 1rem 0;
-            width: min-content !important; }
-            .cruise-itineraries__content__main__nav-area__slider__item__button {
-              box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.1);
-              width: max-content;
-              padding: 0.8rem 1.6rem;
-              cursor: pointer;
-              position: relative;
-              background-color: #fff;
-              font-size: 1.4rem;
-              border-radius: 1rem;
-              transition: all 0.2s;
-              border: 1px solid #e6e6e6;
-              color: #1d2225; }
-              .cruise-itineraries__content__main__nav-area__slider__item__button__title {
-                font-size: 1.4rem;
-                padding-bottom: .5rem; }
-              .cruise-itineraries__content__main__nav-area__slider__item__button__length {
-                font-weight: 700; }
-            .cruise-itineraries__content__main__nav-area__slider__item.swiper-slide-thumb-active button {
-              border: 1px solid #1d2225; }
+          align-items: flex-end; } }
       .cruise-itineraries__content__main__detail-area {
         width: 46rem;
         transform: translateX(-3rem) translateY(-1.5rem);
         z-index: 2; }
+        @media only screen and (max-width: 50em) {
+          .cruise-itineraries__content__main__detail-area {
+            width: 100%;
+            height: min-content;
+            padding: 0 2.5rem;
+            padding-bottom: 3.5rem;
+            transform: translateY(0) translateX(0); } }
+        @media only screen and (max-width: 50em) {
+          .cruise-itineraries__content__main__detail-area__slider {
+            width: 100%;
+            position: relative;
+            top: auto;
+            transform: translateY(0) translateX(0);
+            order: 2; } }
         .cruise-itineraries__content__main__detail-area__slider__slide {
           user-select: none;
           padding: 3rem; }
+          .cruise-itineraries__content__main__detail-area__slider__slide .tiny-card {
+            display: none !important; }
+          @media only screen and (max-width: 50em) {
+            .cruise-itineraries__content__main__detail-area__slider__slide .tiny-card {
+              display: grid !important; }
+            .cruise-itineraries__content__main__detail-area__slider__slide .resource-card {
+              display: none !important; } }
           @media only screen and (max-width: 37.5em) {
             .cruise-itineraries__content__main__detail-area__slider__slide {
               padding: 0rem;
               box-shadow: none !important;
               border: 1px solid #e6e6e6;
               border-radius: 1rem; } }
-        @media only screen and (max-width: 37.5em) {
-          .cruise-itineraries__content__main__detail-area {
-            width: 100%;
-            position: relative;
-            top: auto;
-            transform: translateY(0) translateX(0);
-            order: 2; } }
       .cruise-itineraries__content__main__map-area {
         position: absolute;
         top: 0;
         right: 0;
-        width: 80%;
-        height: 100%;
         border-radius: 1rem;
         border: 1px solid #e6e6e6;
-        background-color: #f8f8f8; }
-        @media only screen and (max-width: 37.5em) {
+        background-color: #f8f8f8;
+        width: 80%;
+        height: 100%; }
+        @media only screen and (max-width: 50em) {
           .cruise-itineraries__content__main__map-area {
-            display: none; } }
+            width: 100%; }
+            .cruise-itineraries__content__main__map-area .map-legend {
+              top: 10px;
+              bottom: auto;
+              left: 10px;
+              right: auto; } }
         .cruise-itineraries__content__main__map-area__map {
           width: 100%;
           height: 100%;
@@ -5135,6 +5194,59 @@ h5 {
 
 .departures-modal__content .information-card {
   margin-bottom: 2rem; }
+
+.cruise-map {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%; }
+  .cruise-map__content {
+    position: relative;
+    width: 100%;
+    padding: 0 6rem;
+    max-width: 128rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem; }
+    @media only screen and (max-width: 50em) {
+      .cruise-map__content {
+        padding: 0 3rem; } }
+    .cruise-map__content__top {
+      display: grid;
+      grid-template-columns: 20rem 1fr min-content; }
+      .cruise-map__content__top__slider {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-top: .3rem; }
+        .cruise-map__content__top__slider .btn-pill {
+          height: 3.5rem;
+          width: 10rem; }
+      .cruise-map__content__top__nav {
+        position: relative;
+        display: grid;
+        grid-template-columns: min-content min-content;
+        column-gap: 0.8rem; }
+        .cruise-map__content__top__nav .swiper-button-prev,
+        .cruise-map__content__top__nav .swiper-button-next {
+          position: relative !important;
+          right: auto;
+          left: auto; }
+    .cruise-map__content__map-area {
+      width: 100%;
+      height: 50rem;
+      border-radius: 1rem;
+      border: 1px solid #e6e6e6;
+      background-color: #f8f8f8;
+      position: relative; }
+      .cruise-map__content__map-area__map {
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 1rem;
+        overflow: hidden; }
 
 .category-hero {
   position: relative;

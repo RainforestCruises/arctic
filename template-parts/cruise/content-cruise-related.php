@@ -81,6 +81,7 @@ $ships = get_posts($queryArgs);
 
                     <?php foreach ($ships as $ship) :
                         $images =  get_field('hero_gallery', $ship);
+                        $image = $images[0];
                         $itineraries =  get_field('itineraries', $ship);
                         $title = get_the_title($ship);
                         $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
@@ -95,17 +96,7 @@ $ships = get_posts($queryArgs);
 
                             <!-- Images Slider -->
                             <div class="resource-card__image-area swiper related-card-image-area">
-                                <div class="swiper-wrapper">
-                                    <?php foreach ($images as $image) : ?>
-                                        <a class="resource-card__image-area__item swiper-slide" href="<?php echo get_permalink($ship) ?>">
-                                            <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
-                                        </a>
-                                    <?php endforeach; ?>
-                                </div>
-
-                                <div class="swiper-pagination"></div>
-                                <div class="swiper-button-prev swiper-button-prev--overlay"></div>
-                                <div class="swiper-button-next swiper-button-prev--overlay"></div>
+                                <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
                             </div>
 
                             <!-- Content -->

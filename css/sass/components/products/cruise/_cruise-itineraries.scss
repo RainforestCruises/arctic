@@ -13,8 +13,87 @@
 
         &__top {
             display: grid;
-            grid-template-columns: 1fr min-content;
+            grid-template-columns: 20rem calc(100% - 34rem) 8rem;
+            gap: 3rem;
+            width: 100%;
+
+            
+            @media only screen and (max-width: $bp-medium) {
+                grid-template-columns: calc(100% - 8rem) 8rem;
+                gap: 0rem;
+                margin-bottom: 1.5rem;
+            }
+
             &__title {
+
+                
+            }
+
+            &__nav-area {
+                padding-top: .3rem;
+                height: min-content;
+                width: 100%;
+
+                @media only screen and (max-width: $bp-largest) {
+                    padding-top: 0rem;
+
+                }
+
+                @media only screen and (max-width: $bp-medium) {
+                    order: 3;
+                    grid-column: 1 / -1;
+                }
+
+        
+                &__slider {
+                    position: relative;
+
+                    @media only screen and (max-width: $bp-small) {
+                        padding-left: 0;
+                        padding-right: 0;
+                        -webkit-mask-image: none;
+                        mask-image: none;
+                    }
+
+
+                    &__item {
+                        
+                        &__button {
+                            box-shadow: $shadow-short-bottom-light;
+                            width: 100%;
+                            //padding: 0.8rem 1.6rem;
+                            height: 3.5rem;
+                            cursor: pointer;
+                            position: relative;   
+                            background-color: $color-white;
+                            font-size: 1.4rem;
+                            border-radius: 4rem;
+                            transition: all 0.2s;               
+                            border: 1px solid $color-grey-light-1a;
+                            color: $color-primary;
+                            font-size: 1.4rem;
+                            font-weight: 700;
+
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            & span {
+                                margin-left: 1.5rem;
+                                @media only screen and (max-width: $bp-small) {
+                                    display: none;
+                                }
+                            }
+
+                           
+                        }
+
+                        &.swiper-slide-thumb-active {
+                            & button {
+                                border: 1px solid $color-primary;
+                            }
+                        }
+                    }
+                }
             }
 
             &__nav {
@@ -22,7 +101,6 @@
                 display: grid;
                 grid-template-columns: min-content min-content;
                 column-gap: 0.8rem;
-                //width: 10rem;
 
                 & .swiper-button-prev,
                 .swiper-button-next {
@@ -38,85 +116,56 @@
             height: 60rem;
             display: flex;
             justify-content: space-between;
-       
             position: relative;
-            @media only screen and (max-width: $bp-small) {
-                height: min-content;
-                flex-direction: column;
+   
+            @media only screen and (max-width: $bp-medium) { 
+                align-items: flex-end;
             }
 
-            &__nav-area {
-                height: min-content;
-                width: calc(100% - 46rem);
-                transform: translateX(-1px);
-                z-index: 10;
-                user-select: none;
-
-                @media only screen and (max-width: $bp-small) {
-                
-                    display: none;
-                }
-
-                &__slider {
-                    position: relative;
-                    padding-left: 5rem;
-                    padding-right: 2rem;
-                    -webkit-mask-image: linear-gradient(to right, transparent, $color-black 5rem);
-                    mask-image: linear-gradient(to right, transparent, $color-black 5rem);
-
-                    @media only screen and (max-width: $bp-small) {
-                        padding-left: 0;
-                        padding-right: 0;
-                        -webkit-mask-image: none;
-                        mask-image: none;
-                    }
-
-
-                    &__item {
-                        padding: 1rem 0;
-                        width: min-content !important;
-                        
-                        &__button {
-                            box-shadow: $shadow-short-bottom-light;
-                            width: max-content;
-                            padding: 0.8rem 1.6rem;
-                            cursor: pointer;
-                            position: relative;   
-                            background-color: $color-white;
-                            font-size: 1.4rem;
-                            border-radius: 1rem;
-                            transition: all 0.2s;               
-                            border: 1px solid $color-grey-light-1a;
-                            color: $color-primary;
-
-                            &__title {
-                                font-size: 1.4rem;
-                                padding-bottom: .5rem;
-                            }
-
-                            &__length {
-                                font-weight: 700;
-                            }
-                        }
-
-                        &.swiper-slide-thumb-active {
-                            & button {
-                                border: 1px solid $color-primary;
-                            }
-                        }
-                    }
-                }
-            }
-
+         
             &__detail-area {
                 width: 46rem;
                 transform: translateX(-3rem) translateY(-1.5rem); // for shadow
                 z-index: 2;
 
+                @media only screen and (max-width: $bp-medium) { 
+                    width: 100%;       
+                    height: min-content;
+                    padding: 0 2.5rem; 
+                    padding-bottom: 3.5rem;          
+                    transform: translateY(0) translateX(0);          
+                }
+
+
                 &__slider {
+
+                    @media only screen and (max-width: $bp-medium) {
+                        width: 100%;
+                        position: relative;
+                        top: auto;
+                        transform: translateY(0) translateX(0);
+                        order: 2;
+                    }
+
                     &__slide {
                         user-select: none;
                         padding: 3rem;
+
+                        .tiny-card{
+                            display: none !important;
+                        }
+
+                        @media only screen and (max-width: $bp-medium) {
+                            .tiny-card {
+                                display: grid !important;
+                            }
+
+                            .resource-card {
+                                display: none !important;
+                            }                    
+                        }
+
+                       
                         @media only screen and (max-width: $bp-small) {
                             padding: 0rem;
                             box-shadow: none !important;
@@ -124,31 +173,31 @@
                             border-radius: 1rem;
                         }
                     }
-                }
-
-                @media only screen and (max-width: $bp-small) {
-                    width: 100%;
-                    position: relative;
-                    top: auto;
-                    transform: translateY(0) translateX(0);
-                    order: 2;
-                }
+                }               
             }
 
             &__map-area {
                 position: absolute;
                 top: 0;
                 right: 0;
+                border-radius: 1rem;
+                border: 1px solid $color-grey-light-1a;
+                background-color: $color-grey-light-1;
 
                 width: 80%;
                 height: 100%;
 
-                @media only screen and (max-width: $bp-small) {
-                    display: none;
+                @media only screen and (max-width: $bp-medium) {
+                    width: 100%;
+
+                    & .map-legend {
+                        top: 10px;
+                        bottom: auto;
+                        left: 10px;
+                        right: auto;
+                    }
                 }
-                border-radius: 1rem;
-                border: 1px solid $color-grey-light-1a;
-                background-color: $color-grey-light-1;
+                
                 &__map {
                     width: 100%;
                     height: 100%;
@@ -156,6 +205,8 @@
                     border-radius: 1rem;
                     overflow: hidden;
                 }
+
+
 
                 & img {
                     width: 100%;

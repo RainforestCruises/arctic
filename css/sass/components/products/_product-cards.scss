@@ -212,6 +212,10 @@
             font-size: 1.8rem;
             &__title {
                 font-weight: 700;
+
+                & span {
+                    margin-left: .5rem;
+                }
             }
 
             &__sub {
@@ -297,6 +301,30 @@
     }
 }
 
+.tiny-card {
+    position: relative;
+    display: grid !important;
+    grid-template-columns: 1fr min-content;
+    gap: 3rem;
+    align-items: center;
+   
+    border: 1px solid $color-grey-light-1a;
+    border-radius: 1rem;
+
+    padding: 1.5rem 2rem;
+    position: relative;
+    background-color: $color-white;
+
+    @media only screen and (max-width: $bp-small) {
+        gap: 1rem;
+    }
+
+    
+    &__section {
+
+    }
+}
+
 // Departure / Cabin data
 .information-card {
     border: 1px solid $color-grey-light-1a;
@@ -304,7 +332,7 @@
     padding: 1.5rem 2rem;
     color: $color-primary;
     position: relative;
-    
+    background-color: $color-white;
 
     @media only screen and (max-width: $bp-small) {
         flex-shrink: 100 !important;
@@ -474,6 +502,7 @@
 
         & .avatar__title-group__title {
             padding-bottom: 0;
+            line-height: 1.8rem;
         }
 
         & .avatar__title-group__sub {

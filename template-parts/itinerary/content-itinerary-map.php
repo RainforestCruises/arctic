@@ -13,11 +13,14 @@ $destinationCount = $args['destinationCount'];
             <div class="title-group__sub">
                 There are <?php echo $destinationCount ?> main destinations visited
             </div>
-
         </div>
 
         <div class="itinerary-map__content__map-area">
+
+            <!-- Map -->
             <div class="itinerary-map__content__map-area__map" id="itinerary-map"></div>
+
+            <!-- Map Legend -->
             <div class="map-legend">
                 <!-- Item 1 -->
                 <div class="map-legend__item">
@@ -38,6 +41,7 @@ $destinationCount = $args['destinationCount'];
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
 </section>

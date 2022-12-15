@@ -8,6 +8,8 @@
         margin-top: 3rem;
         margin-bottom: 2rem;
 
+        
+
         &__map-area {
             width: 100%;
             height: 50rem;
@@ -17,9 +19,6 @@
             background-color: $color-grey-light-1;
             position: relative;
             &__map {
-                //position: absolute;
-                //top: 0;
-                //left: 0;
                 z-index: 1;
                 width: 100%;
                 height: 100%;
@@ -31,44 +30,3 @@
     }
 }
 
-.map-legend {
-    padding: 1rem 2rem;
-    border-radius: 1rem;
-    background-color: $color-white;
-    z-index: 10;
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
-    width: 12rem;
-    height: min-content;
-    &__item {
-        display: grid;
-        grid-template-columns: 2.5rem 1fr;
-        gap: 1rem;
-    
-        &__marker-area {
-            display: flex;
-            align-items: center;
-
-            &__mark {
-                &--fly {
-                    width: 100%;            
-                    border: none;
-                    border-top: 3px dotted orange;
-                }
-    
-                &--cruise {
-                    width: 100%;
-                    height: 3px;
-                    background-color: royalblue;
-                }
-            }      
-        }
-
-        &__text {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: $color-primary;
-        }
-    }
-}

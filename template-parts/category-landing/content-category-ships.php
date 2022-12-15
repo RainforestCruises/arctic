@@ -24,7 +24,7 @@ $ships_title_subtext = get_field('travel_guide_title_subtext')
         </div>
 
         <!-- Grid Area -->
-        <div class="grid-block__content__grid">
+        <div class="grid-block__content__grid grid3">
             <?php foreach ($ships as $ship) :
                 $images =  get_field('hero_gallery', $ship);
                 $itineraries =  get_field('itineraries', $ship);

@@ -48,58 +48,7 @@ $args = array(
 //Itinerary JS Array
 $itineraryObjects = [];
 foreach ($itineraries as $itinerary) {
-  $days = get_field('itinerary', $itinerary);
-
-  //Destination Point Series
-  $destinationPoints = [];
-  foreach ($days as $day) {
-
-    $destination = $day['destination'];
-
-    $geometry = [
-      'type' => "Point",
-      'coordinates' => [get_field('longitude', $destination), get_field('latitude', $destination)],
-    ];
-
-    $zoomPoint = [
-      'longitude' => get_field('longitude', $destination),
-      'latitude' => get_field('latitude', $destination),
-    ];
-
-    $point  = [
-      'title' => get_field('navigation_title', $destination),
-      'postid' => $destination->ID,
-      'geometry' => $geometry,
-      'zoomPoint' => $zoomPoint,
-      'zoomLevel' => get_field('zoom_level', $destination),
-    ];
-
-    $destinationPoints[] = $point;
-  }
-
-  //Destination Line Series
-  $destinationLines = [];
-  $lineObject = [
-    'geometry' => [
-      'type' => "LineString",
-      'coordinates' => [],
-    ]
-  ];
-
-  foreach ($days as $day) {
-    $destination = $day['destination'];
-    $lineObject['geometry']['coordinates'][] = [get_field('longitude', $destination), get_field('latitude', $destination)];
-  }
-  $destinationLines[] = $lineObject;
-
-
-  // Itinerary Object
-  $itineraryObject = [
-    'destinationPoints' => $destinationPoints,
-    'destinationLines' => $destinationLines,
-    'postId' => $itinerary->ID,
-  ];
-  $itineraryObjects[] = $itineraryObject;
+  $itineraryObjects[] = getItineraryObject($itinerary);
 }
 
 wp_localize_script(

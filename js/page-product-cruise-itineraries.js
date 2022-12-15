@@ -1,105 +1,117 @@
 jQuery(document).ready(function ($) {
-    const itineraryObjects = page_vars_cruise_itineraries.itineraryObjects;
-    let destinationPoints = itineraryObjects[0].destinationPoints;
-    let destinationLines = itineraryObjects[0].destinationLines;
+    const itineraryObject = page_vars_cruise_itineraries.itineraryObjects[0];
+    const destinationPoints = itineraryObject.destinationPoints;
+    console.log(page_vars_cruise_itineraries.itineraryObjects);
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoicmFpbmZvcmVzdGNydWlzZXNybHMiLCJhIjoiY2xiNWh2aXo5MDNiZzN2dW5hNjFpaXM3dCJ9.05yNz0iG1JXFq62DYF7SFA';
+    var map = new mapboxgl.Map({
+        container: 'cruise-itineraries-map',
+        style: 'mapbox://styles/mapbox/outdoors-v12',
+        center: [itineraryObject.startLongitude, itineraryObject.startLatitude],
+        zoom: itineraryObject.startZoom,
+        projection: 'mercator',
+        attributionControl: false
+    });
+    map.addControl(new mapboxgl.NavigationControl());
+    map.scrollZoom.disable();
+
+
+    // Destination Markers
+    var features = [];
+    destinationPoints.forEach(item => {
+        var feature = {
+            type: 'Feature',
+            geometry: {
+                type: 'Point',
+                coordinates: item['coordinates']
+            },
+            properties: {
+                day: item['day'],
+                title: item['title'],
+                description: item['description'],
+                image: item['image'],
+                locationType: item['locationType']
+            }
+        }
+        features.push(feature);
+    })
 
 
 
-    //Map
-    var root = am5.Root.new("map-01");
-    root.setThemes([am5themes_Animated.new(root), am5themes_Dark.new(root)]);
-    var chart = root.container.children.push(
-        am5map.MapChart.new(root, {
-            panX: "none",
-            panY: "none",
-            wheelY: "none",
-            projection: am5map.geoMercator(),
-            homeZoomLevel: 10,
-            homeGeoPoint: { longitude: -75, latitude: -60 }, //lat = Y, long = X
-            rotationY: 50, //80
-            rotationX: 35,
-            maxPanOut: .4,
-            minZoomLevel: 5,
-            maxZoomLevel: 15
+    // add markers to map
+    for (const feature of features) {
+        // create a HTML element for each feature
+        const el = document.createElement('div');
+        el.className = 'destination-marker';
 
+        // make a marker for each feature and add to the map
+        new mapboxgl.Marker(el)
+            .setLngLat(feature.geometry.coordinates)
+            .setPopup(
+                new mapboxgl.Popup({ offset: 25 }) // add popups
+                    .setHTML(
+                        `<div class="mapbox-popup__day-count">${feature.properties.day}</div>
+                        <div class="mapbox-popup__title">${feature.properties.title}</div>
+                        <div class="mapbox-popup__badge-area">${feature.properties.locationType}</div>
+
+                        <div class="mapbox-popup__description">${feature.properties.description}</div>
+                        <div class="mapbox-popup__image-area"><img src="${feature.properties.image}"></div>`
+                    )
+            ).addTo(map);
+    }
+
+
+
+    //Lines
+    map.on('load', () => {
+
+        if (itineraryObject.geojson == null) return false
+        const lineFeatures = itineraryObject.geojson.features;
+
+        lineFeatures.forEach((featureItem, index) => {
+            let resourceId = 'route' + index;
+
+            map.addSource(resourceId, {
+                'type': 'geojson',
+                'data': featureItem
+            });
+            map.addLayer({
+                'id': resourceId,
+                'type': 'line',
+                'source': resourceId,
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': featureItem.properties.stroke,
+                    'line-width': 4,
+                    'line-dasharray': featureItem.properties.stroke == 'royalblue' ? [1, 2] : [],
+
+                }
+            });
         })
-    );
-
-    var backgroundSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {}));
-    backgroundSeries.mapPolygons.template.setAll({
-        fill: root.interfaceColors.get("alternativeBackground"),
-        fillOpacity: 0,
-        strokeOpacity: 0
-    });
-    backgroundSeries.data.push({
-        geometry: am5map.getGeoRectangle(90, 180, -90, -180)
-    });
-    var polygonSeries = chart.series.push(
-        am5map.MapPolygonSeries.new(root, {
-            geoJSON: am5geodata_worldLow
-        })
-    );
-    polygonSeries.events.on("datavalidated", function () {
-        chart.goHome();
-    });
-    // graticule series
-    var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {}));
-    graticuleSeries.mapLines.template.setAll({
-        //stroke: root.interfaceColors.get("alternativeBackground"),
-        strokeOpacity: 0.2
     });
 
 
-    var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
-    lineSeries.mapLines.template.setAll({
-        stroke: root.interfaceColors.get("alternativeBackground"),
-        strokeOpacity: 0.3
-    });
-
-
-    var pointSeries = chart.series.push(
-        am5map.MapPointSeries.new(root, { idField: "postid" })
-    );
-
-    pointSeries.bullets.push(function () {
-        var circle = am5.Circle.new(root, {
-            radius: 6,
-            tooltipY: 0,
-            fill: am5.color(0xeeeeee),
-            stroke: root.interfaceColors.get("background"),
-            strokeWidth: 2,
-            tooltipText: "{title}",
-            cursorOverStyle: "pointer"
-        });
-
-
-        return am5.Bullet.new(root, {
-            sprite: circle
-        });
-    });
-
-    chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
-
-    pointSeries.data.setAll(destinationPoints);
-    lineSeries.data.setAll(destinationLines);
-    lineSeries.mapLines.template.setAll({
-        stroke: am5.color(0xd9a402),
-        strokeWidth: 2,
-        strokeOpacity: 0.5,
-    });
-
-    chart.appear(1000, 100);
 
 
 
     //SLIDERS
     // Itineraries Swiper
     const itinerariesSliderNav = new Swiper('#itineraries-slider-nav', {
-        slidesPerView: "auto",
-        slideToClickedSlide: true,
+        slidesPerView: 3,
         spaceBetween: 10,
         watchSlidesProgress: true,
+        breakpoints: {
 
+            1000: {
+                slidesPerView: 4,
+            }
+           
+        }
+
+        //centeredSlides: true,
     });
     
     // Itineraries Swiper
@@ -115,17 +127,15 @@ jQuery(document).ready(function ($) {
         },
     });
     itinerariesSlider.on('slideChange', function (swiper) {
-        let destinationPoints = itineraryObjects[swiper.realIndex].destinationPoints;
-        let destinationLines = itineraryObjects[swiper.realIndex].destinationLines;
+        // let destinationPoints = itineraryObjects[swiper.realIndex].destinationPoints;
+        // let destinationLines = itineraryObjects[swiper.realIndex].destinationLines;
 
 
-        pointSeries.data.setAll(destinationPoints);
-        lineSeries.data.setAll(destinationLines);
+        // pointSeries.data.setAll(destinationPoints);
+        // lineSeries.data.setAll(destinationLines);
     });
 
-    window.addEventListener('resize', function() {
-        chart.goHome();
-    });
+  
 
 
 });

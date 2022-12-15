@@ -23,14 +23,13 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
                 <!-- Highlights -->
                 <div class="product-overview__content__grid__overview__highlights">
                     <h3 class="title-single">Highlights</h3>
-                    <ul class="product-overview__content__grid__overview__highlights__list">
+                    <ul class="highlight-list">
                         <?php if (have_rows('highlights')) : ?>
                             <?php while (have_rows('highlights')) : the_row(); ?>
                                 <li>
                                     <svg>
                                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-diamonds-suits"></use>
                                     </svg>
-
                                     <?php echo get_sub_field('highlight'); ?>
                                 </li>
                             <?php endwhile; ?>

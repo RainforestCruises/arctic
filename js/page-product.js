@@ -246,23 +246,21 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    new Swiper('.cabin-card-image-area', {
-        slidesPerView: 1,
-        allowTouchMove: false,
-        watchSlidesProgress: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-            dynamicBullets: true,
-            dynamicMainBullets: 3,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        }
-
-
-    });
+    // new Swiper('.cabin-card-image-area', {
+    //     slidesPerView: 1,
+    //     allowTouchMove: false,
+    //     watchSlidesProgress: true,
+    //     pagination: {
+    //         el: '.swiper-pagination',
+    //         clickable: true,
+    //         dynamicBullets: true,
+    //         dynamicMainBullets: 3,
+    //     },
+    //     navigation: {
+    //         nextEl: '.swiper-button-next',
+    //         prevEl: '.swiper-button-prev',
+    //     }
+    // });
 
 
 
@@ -329,21 +327,7 @@ jQuery(document).ready(function ($) {
             }
         }
     });
-    new Swiper('.related-card-image-area', {
-        slidesPerView: 1,
-        allowTouchMove: false,
-        watchSlidesProgress: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-            dynamicBullets: true,
-            dynamicMainBullets: 3,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        }
-    });
+  
 
 
     // view all button

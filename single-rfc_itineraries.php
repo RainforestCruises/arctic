@@ -7,9 +7,9 @@ wp_enqueue_script('page-product-dates', get_template_directory_uri() . '/js/page
 
 wp_enqueue_script('page-product-itinerary-map', get_template_directory_uri() . '/js/page-product-itinerary-map.js', array('jquery'), false, true);
 
+$itinerary = get_post();
 
 $ships = get_field('ships');
-$itinerary = get_post();
 $productName = get_field('display_name');
 $days = get_field('itinerary');
 $departures = getDepartureList($itinerary);
@@ -22,64 +22,7 @@ $embarkation_point = get_field('embarkation_point');
 $disembarkation_point = get_field('disembarkation_point');
 
 
-// Destination Point Series
-$destinationPoints = [];
-$destinationList = [];
-$count = 0;
-foreach ($days as $day) {
-
-  $destinations = $day['destination']; // multiple destinations
-  
-  $locationType = '';
-  foreach($destinations as $destination) {
-    $dayDisplay = dayCountMarkup($day['day_count']);
-    $destinationImage =  get_field('image', $destination); //get default image if none provided
-    $destinationImageURL = $destinationImage ? wp_get_attachment_image_url($destinationImage['ID'], 'portrait-small') : "";
-    $description = get_field('description', $destination) ?? "";
-
-    if($destination == $embarkation_point){
-      $locationType = '<span>embarkation</span>';
-    }
-    if($destination == $disembarkation_point){
-      $locationType = '<span>disembarkation</span>';
-    }
-
-    $point  = [
-      'index' => $count,
-      'locationType' => $locationType,
-      'postid' => $destination->ID,
-      'title' => get_the_title($destination),
-      'day' => $dayDisplay,
-      'description' => $description,
-      'image' => $destinationImageURL,
-      'coordinates' => [get_field('longitude', $destination), get_field('latitude', $destination)],
-    ];
-  
-    // to check duplicates
-    if (!in_array($destination, $destinationList)) {  
-      $destinationPoints[] = $point; // only add non dulpicates
-      $count++; //increment index
-
-    } else { // append the day markup
-      $match = findObjectById($point['postid'], $destinationPoints, 'postid');
-      $matchIndex = $match['index'];
-      $destinationPoints[$matchIndex]['day'] .= ', ' . $point['day']; // append the day markup to matched destination
-    }
-    
-    $destinationList[] = $destination; //full list
-  }
-}
-
-// Itinerary Object
-$itineraryObject = [
-  'destinationPoints' => $destinationPoints,
-  'geojson' => json_decode(get_field('geojson')),
-  'startLatitude' => get_field('latitude_start_point'),
-  'startLongitude' => get_field('longitude_start_point'),
-  'startZoom' => get_field('zoom_level_start_point'),
-  'postId' => $itinerary->ID,
-];
-$itineraryObjects[] = $itineraryObject;
+$itineraryObjects[] = getItineraryObject($itinerary);
 
 
 wp_localize_script(

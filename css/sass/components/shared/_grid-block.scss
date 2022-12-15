@@ -20,23 +20,23 @@
         &__grid {
             width: 100%;
             display: grid;
-            grid-template-columns: repeat(3, calc(33% - 1rem));
+            grid-template-columns: 100%;
             gap: 2rem;
-
-            @media only screen and (max-width: $bp-medium) {
-                grid-template-columns: repeat(2, calc(50% - 1rem));
-            }
-            @media only screen and (max-width: $bp-small) {
-                grid-template-columns: 100%;
-                gap: 4rem;
-            }
-
-            &.grid1 {
-                grid-template-columns: 100%;
-            }
+ 
             &.grid2 { 
                 grid-template-columns: repeat(2, calc(50% - 1rem));
                 
+                @media only screen and (max-width: $bp-small) {
+                    grid-template-columns: 100%;
+                    gap: 4rem;
+                }
+            }
+
+            &.grid3 { 
+                grid-template-columns: repeat(3, calc(33% - 1rem));
+                @media only screen and (max-width: $bp-medium) {
+                    grid-template-columns: repeat(2, calc(50% - 1rem));
+                }
                 @media only screen and (max-width: $bp-small) {
                     grid-template-columns: 100%;
                     gap: 4rem;

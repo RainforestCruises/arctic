@@ -1,5 +1,7 @@
 <?php
 
+
+//DEPARTURES
 function getDepartureList($post, $specificShip = null)
 {
     $departures = [];
@@ -153,6 +155,105 @@ function getHighestDeparturePrice($departure)
 }
 
 
+//MAPS
+function getItineraryObject($itinerary)
+{
+
+    $embarkation_point = get_field('embarkation_point', $itinerary);
+    $disembarkation_point = get_field('disembarkation_point', $itinerary);
+    $days = get_field('itinerary', $itinerary);
+
+    // Destination Point Series
+    $destinationPoints = [];
+    $destinationList = [];
+    $count = 0;
+    foreach ($days as $day) {
+
+        $destinations = $day['destination']; // multiple destinations
+
+        $locationType = '';
+        foreach ($destinations as $destination) {
+            $dayDisplay = dayCountMarkup($day['day_count']);
+            $destinationImage =  get_field('image', $destination); //get default image if none provided
+            $destinationImageURL = $destinationImage ? wp_get_attachment_image_url($destinationImage['ID'], 'portrait-small') : "";
+            $description = get_field('description', $destination) ?? "";
+
+            if ($destination == $embarkation_point) {
+                $locationType = '<span>embarkation</span>';
+            }
+            if ($destination == $disembarkation_point) {
+                $locationType = '<span>disembarkation</span>';
+            }
+
+            $point  = [
+                'index' => $count,
+                'locationType' => $locationType,
+                'postid' => $destination->ID,
+                'title' => get_the_title($destination),
+                'day' => $dayDisplay,
+                'description' => $description,
+                'image' => $destinationImageURL,
+                'coordinates' => [get_field('longitude', $destination), get_field('latitude', $destination)],
+            ];
+
+            // to check duplicates
+            if (!in_array($destination, $destinationList)) {
+                $destinationPoints[] = $point; // only add non dulpicates
+                $count++; //increment index
+
+            } else { // append the day markup
+                $match = findObjectById($point['postid'], $destinationPoints, 'postid');
+                $matchIndex = $match['index'];
+                $destinationPoints[$matchIndex]['day'] .= ', ' . $point['day']; // append the day markup to matched destination
+            }
+
+            $destinationList[] = $destination; //full list
+        }
+    }
+
+    // Itinerary Object
+    $itineraryObject = [
+        'destinationPoints' => $destinationPoints,
+        'geojson' => json_decode(get_field('geojson', $itinerary)),
+        'startLatitude' => get_field('latitude_start_point', $itinerary),
+        'startLongitude' => get_field('longitude_start_point', $itinerary),
+        'startZoom' => get_field('zoom_level_start_point', $itinerary),
+        'postId' => get_the_ID($itinerary),
+    ];
+
+    return $itineraryObject;
+}
+
+
+function getFlightOption($itinerary){
+    $embarkation_is_flight = get_field('embarkation_is_flight', $itinerary);
+    $disembarkation_is_flight = get_field('disembarkation_is_flight', $itinerary);
+
+    if ($embarkation_is_flight && $disembarkation_is_flight){
+        return 'Fly / Fly';
+    } 
+
+    if ($embarkation_is_flight && !$disembarkation_is_flight){
+        return 'Fly / Sail';
+    } 
+
+    if (!$embarkation_is_flight && $disembarkation_is_flight){
+        return 'Sail / Fly';
+    } 
+
+    return false;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 // Random Code Generator
 function getRandomHex($num_bytes = 4)
@@ -179,10 +280,10 @@ function getEmbarkationDisplay($itinerary)
     $disembarkation_point = get_field('disembarkation_point', $itinerary);
 
     $display = get_the_title($embarkation_point) . ', ' . get_field('country_name_short', $embarkation_point);
-    
-    if($disembarkation_point && ($embarkation_point != $disembarkation_point)){
+
+    if ($disembarkation_point && ($embarkation_point != $disembarkation_point)) {
         $display .= ' - ' . get_the_title($disembarkation_point) . ', ' . get_field('country_name_short', $disembarkation_point);
-    } 
+    }
 
 
     return $display;

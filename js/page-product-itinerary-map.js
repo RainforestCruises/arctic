@@ -30,7 +30,6 @@ jQuery(document).ready(function ($) {
                 description: item['description'],
                 image: item['image'],
                 locationType: item['locationType']
-
             }
         }
         features.push(feature);
@@ -62,14 +61,11 @@ jQuery(document).ready(function ($) {
 
 
 
-
     //Lines
-
     map.on('load', () => {
 
         if (itineraryObject.geojson == null) return false
         const lineFeatures = itineraryObject.geojson.features;
-
 
         lineFeatures.forEach((featureItem, index) => {
             let resourceId = 'route' + index;
@@ -89,7 +85,7 @@ jQuery(document).ready(function ($) {
                 'paint': {
                     'line-color': featureItem.properties.stroke,
                     'line-width': 4,
-                    'line-dasharray': featureItem.properties.stroke == 'orange' ? [1, 2] : [],
+                    'line-dasharray': featureItem.properties.stroke == 'royalblue' ? [1, 2] : [],
 
                 }
             });

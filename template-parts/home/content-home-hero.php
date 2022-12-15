@@ -51,9 +51,6 @@ $hero_deals = get_field('hero_deals');
                     <div class="information-card">
                         <!-- Title Group -->
                         <div class="information-card__section">
-
-
-
                             <div class="avatar avatar--small">
                                 <div class="avatar__image-area">
                                     <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
@@ -68,18 +65,10 @@ $hero_deals = get_field('hero_deals');
                                         </div>
                                 </div>
                             </div>
-
-
-
-
-
-
-
                         </div>
 
 
                         <div class="information-card__bottom">
-
                             <!-- Price Group -->
                             <div class="information-card__bottom__deals">
                                 <svg>
@@ -88,7 +77,6 @@ $hero_deals = get_field('hero_deals');
                                 <span>
                                     12 Deals
                                 </span>
-
                             </div>
 
                             <!-- CTA -->
@@ -99,7 +87,6 @@ $hero_deals = get_field('hero_deals');
                                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
                                     </svg>
                                 </button>
-
                             </div>
                         </div>
                     </div>

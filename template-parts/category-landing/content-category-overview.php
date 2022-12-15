@@ -25,7 +25,7 @@ $highlights = get_field('highlights');
             <div class="category-overview__content__grid__highlights">
 
                 <h3 class="title-single">Highlights</h3>
-                <ul class="cruise-overview__content__grid__overview__highlights__list">
+                <ul class="highlight-list">
                     <?php if ($highlights) : ?>
                         <?php foreach($highlights as $h) : ?>
                             <li>

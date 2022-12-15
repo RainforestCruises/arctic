@@ -13,12 +13,12 @@ $curentYear = $args['curentYear'];
             <div class="slider-block__content__top__title">
                 <div class="title-group">
                     <div class="title-group__title">
-                    Cabins
+                        Cabins
                     </div>
                     <div class="title-group__sub">
                         There are <?php echo count($cabins); ?> cabin types available
                     </div>
-                    
+
                 </div>
             </div>
 
@@ -35,7 +35,7 @@ $curentYear = $args['curentYear'];
                     </svg>
                 </div>
             </div>
-            
+
         </div>
 
         <!-- Slider Area -->
@@ -47,14 +47,21 @@ $curentYear = $args['curentYear'];
 
                     <?php
                     $index = 0;
-                    foreach ($cabins as $cabinPost) : 
+                    foreach ($cabins as $cabinPost) :
                         $id = get_the_id($cabinPost);
                         $title =  get_field('display_name', $cabinPost);
                         $dimensions =  get_field('dimensions', $cabinPost);
+                        $description =  get_field('description', $cabinPost);
+
+                        if(strlen($description) > 230) {
+                            $description = substr($description, 0, 230) . '...';
+                        }
+
                         $is_single =  get_field('is_single', $cabinPost);
                         $capacity =  get_field('capacity', $cabinPost);
                         $beds =  get_field('beds', $cabinPost);
                         $hero_gallery = get_field('images', $cabinPost);
+                        $image = $hero_gallery[0];
                     ?>
 
                         <!-- Cabin Card -->
@@ -62,17 +69,7 @@ $curentYear = $args['curentYear'];
 
                             <!-- Images Slider -->
                             <div class="resource-card__image-area swiper cabin-card-image-area">
-                                <div class="swiper-wrapper">
-                                    <!-- Image from DF -->
-                                    <?php foreach ($hero_gallery as $image) : ?>
-                                        <div class="resource-card__image-area__item cabin-image-slide swiper-slide" imageId="<?php echo $image['id']; ?>">
-                                            <img <?php afloat_image_markup($image['id'], 'portrait-medium', array('portrait-medium', 'portrait-small')); ?>>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-                                <div class="swiper-pagination"></div>
-                                <div class="swiper-button-prev swiper-button-prev--overlay"></div>
-                                <div class="swiper-button-next swiper-button-prev--overlay"></div>
+                                <img class="cabin-image-slide" imageId="<?php echo $image['id']; ?>" <?php afloat_image_markup($image['id'], 'portrait-medium', array('portrait-medium', 'portrait-small')); ?>>
                             </div>
 
                             <!-- Content -->
@@ -83,8 +80,10 @@ $curentYear = $args['curentYear'];
                                     <div class="resource-card__content__title-group__title">
                                         <?php echo $title ?>
                                     </div>
-                                 
+
                                 </div>
+
+                    
 
                                 <!-- Specs -->
                                 <div class="resource-card__content__specs">
@@ -97,7 +96,7 @@ $curentYear = $args['curentYear'];
                                             </svg>
                                         </div>
                                         <div class="resource-card__content__specs__item__text">
-                                            <?php echo $capacity . ', ' . $beds ?> 
+                                            <?php echo $capacity . ', ' . $beds ?>
                                         </div>
                                     </div>
 
@@ -113,12 +112,12 @@ $curentYear = $args['curentYear'];
                                         </div>
                                     </div>
 
-                                    
+
 
                                 </div>
 
 
-                               
+
 
 
                             </div>
@@ -134,30 +133,3 @@ $curentYear = $args['curentYear'];
         </div>
     </div>
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
