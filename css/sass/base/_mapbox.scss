@@ -4,6 +4,9 @@
     font-family: 'Metropolis', sans-serif;
     border-radius: 1rem;
     padding: 10px 10px 10px;
+
+   
+
 }
 .mapboxgl-popup-close-button {
     right: 6px;
@@ -15,37 +18,32 @@
 .mapbox-popup {
     max-width: 20rem;
 
+    
+
+
     &__day-count {
         color: $color-grey-1;
         font-size: 1.3rem;
         font-weight: 700;
+
+       
     }
     
     &__title {
         color: $color-primary;
         font-size: 1.5rem;
         font-weight: 700;
-    }
-
-    &__badge-area {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        & span {
-            font-size: 1rem;
-            letter-spacing: .1rem;
-            color: $color-white;
-            width: max-content;
-            padding: 0rem 1.2rem;
-            border-radius: 5rem;
-            background-color: $color-supporting;
-
-        }
+     
     }
 
     &__description {
         font-size: 1.2rem;
         margin-bottom: 1rem;
+
+        @media only screen and (max-width: $bp-medium) {
+            line-height: 1.5rem !important;
+        }
+   
     }
 
     &__image-area {

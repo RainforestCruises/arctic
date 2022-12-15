@@ -161,33 +161,30 @@ function getItineraryObject($itinerary)
 
     $embarkation_point = get_field('embarkation_point', $itinerary);
     $disembarkation_point = get_field('disembarkation_point', $itinerary);
-    $days = get_field('itinerary', $itinerary);
+    $hasDifferentPorts = $disembarkation_point != null && ($disembarkation_point != $embarkation_point);
 
+    $days = get_field('itinerary', $itinerary);
     // Destination Point Series
     $destinationPoints = [];
     $destinationList = [];
     $count = 0;
+
+    //Build Destination List
     foreach ($days as $day) {
 
         $destinations = $day['destination']; // multiple destinations
 
-        $locationType = '';
         foreach ($destinations as $destination) {
             $dayDisplay = dayCountMarkup($day['day_count']);
             $destinationImage =  get_field('image', $destination); //get default image if none provided
             $destinationImageURL = $destinationImage ? wp_get_attachment_image_url($destinationImage['ID'], 'portrait-small') : "";
             $description = get_field('description', $destination) ?? "";
 
-            if ($destination == $embarkation_point) {
-                $locationType = '<span>embarkation</span>';
-            }
-            if ($destination == $disembarkation_point) {
-                $locationType = '<span>disembarkation</span>';
-            }
-
+         
             $point  = [
                 'index' => $count,
-                'locationType' => $locationType,
+                'isEmbarkation' => $destination == $embarkation_point,
+                'isDisembarkation' => $destination == $disembarkation_point,
                 'postid' => $destination->ID,
                 'title' => get_the_title($destination),
                 'day' => $dayDisplay,
@@ -211,9 +208,34 @@ function getItineraryObject($itinerary)
         }
     }
 
+    //Reformat to feature 
+    $featureList = [];
+    foreach($destinationPoints as $point){
+        $feature = [
+            'type' => 'Feature',
+            'geometry' => [
+                'type' => 'Point',
+                'coordinates' => $point['coordinates']
+            ],
+            'properties' => [
+                'day' => $point['day'],
+                'title' => $point['title'],
+                'description' => $point['description'],
+                'image' => $point['image'],
+                'isEmbarkation' => $point['isEmbarkation'],
+                'isDisembarkation' => $point['isDisembarkation']
+            ],
+        ];
+
+        $featureList[] = $feature;
+    }
+
+    
+
     // Itinerary Object
     $itineraryObject = [
-        'destinationPoints' => $destinationPoints,
+        'featureList' => $featureList,
+        'hasDifferentPorts' => $hasDifferentPorts,
         'geojson' => json_decode(get_field('geojson', $itinerary)),
         'startLatitude' => get_field('latitude_start_point', $itinerary),
         'startLongitude' => get_field('longitude_start_point', $itinerary),
@@ -225,21 +247,22 @@ function getItineraryObject($itinerary)
 }
 
 
-function getFlightOption($itinerary){
+function getFlightOption($itinerary)
+{
     $embarkation_is_flight = get_field('embarkation_is_flight', $itinerary);
     $disembarkation_is_flight = get_field('disembarkation_is_flight', $itinerary);
 
-    if ($embarkation_is_flight && $disembarkation_is_flight){
+    if ($embarkation_is_flight && $disembarkation_is_flight) {
         return 'Fly / Fly';
-    } 
+    }
 
-    if ($embarkation_is_flight && !$disembarkation_is_flight){
+    if ($embarkation_is_flight && !$disembarkation_is_flight) {
         return 'Fly / Sail';
-    } 
+    }
 
-    if (!$embarkation_is_flight && $disembarkation_is_flight){
+    if (!$embarkation_is_flight && $disembarkation_is_flight) {
         return 'Sail / Fly';
-    } 
+    }
 
     return false;
 }
@@ -279,12 +302,11 @@ function getEmbarkationDisplay($itinerary)
     $embarkation_point = get_field('embarkation_point', $itinerary);
     $disembarkation_point = get_field('disembarkation_point', $itinerary);
 
-    $display = get_the_title($embarkation_point) . ', ' . get_field('country_name_short', $embarkation_point);
+    $display = get_the_title($embarkation_point);
 
     if ($disembarkation_point && ($embarkation_point != $disembarkation_point)) {
-        $display .= ' - ' . get_the_title($disembarkation_point) . ', ' . get_field('country_name_short', $disembarkation_point);
+        $display .= ' - ' . get_the_title($disembarkation_point);
     }
-
 
     return $display;
 }
@@ -342,27 +364,30 @@ function getItineraryDestinations($itinerary)
 {
     $days = get_field('itinerary', $itinerary);
 
-    // $embarkationList = [];
 
-    // $embarkation_point = get_field('embarkation_point', $itinerary);
-    // $disembarkation_point = get_field('disembarkation_point', $itinerary);
+    $embarkation_point = get_field('embarkation_point', $itinerary);
+    $disembarkation_point = get_field('disembarkation_point', $itinerary);
 
     $destinationList = [];
+
     foreach ($days as $day) {
         $destinations = $day['destination'];
         foreach ($destinations as $destination) {
+            $is_crossing = get_field('is_crossing', $destination);
+            if ($destination == $embarkation_point || $destination == $disembarkation_point || $is_crossing) continue;
             $destinationList[] = get_the_title($destination);
         }
     }
 
     $uniqueDestinationList = array_unique($destinationList);
 
+
     $display = "";
     $destinationCount = count($uniqueDestinationList);
 
     $x = 1;
-    foreach ($uniqueDestinationList as $d) {
-        $name = $d;
+    foreach ($uniqueDestinationList as $name) {
+ 
 
         if ($x < $destinationCount) {
             $display .= $name . ", ";

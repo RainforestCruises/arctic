@@ -5,7 +5,7 @@ return array (
   'title' => 'Destinations',
   'type' => 'rfc_destinations',
   'id' => '5fdbb28b974a8',
-  'updated' => 1670443543,
+  'updated' => 1671137516,
   'columns' => 
   array (
     'title' => 
@@ -74,6 +74,39 @@ return array (
       'filter_label' => '',
       'name' => '638a56a3a0c49c',
     ),
+    '639b88b0249ba4' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Is Crossing',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_6387c2f113254',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '639b88b0249ba4',
+    ),
+    '639b88be3e76c8' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Country Name',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_633f0e42059ad',
+      'character_limit' => '20',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '639b88be3e76c8',
+    ),
     '638a56b7851eb8' => 
     array (
       'type' => 'column-acf_field',
@@ -127,39 +160,6 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '5fdbb2c07cd7a',
-    ),
-    '6387c36a73b644' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Is Port',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_6387c2f113254',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '6387c36a73b644',
-    ),
-    '6387c37bd374bc' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Country_Name_Short',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_633f0e52059ae',
-      'character_limit' => '20',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '6387c37bd374bc',
     ),
   ),
   'settings' => 

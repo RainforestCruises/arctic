@@ -35,7 +35,6 @@ wp_localize_script(
 
 
 
-
 get_header();
 ?>
 
@@ -55,7 +54,7 @@ $args = array(
   'curentYear' => $curentYear,
   'yearSelections' => $yearSelections,
   'shipSizeRange' => $shipSizeRange,
-  'destinationCount' => count($destinationPoints),
+  'destinationCount' => count($itineraryObjects[0]['featureList']),
 
 );
 

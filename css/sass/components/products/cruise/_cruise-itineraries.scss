@@ -147,9 +147,15 @@
                         order: 2;
                     }
 
+                    // & .swiper-slide:not(.swiper-slide-active){
+                    //     opacity: 0 !important;
+                    // }
+
                     &__slide {
                         user-select: none;
                         padding: 3rem;
+
+
 
                         .tiny-card{
                             display: none !important;

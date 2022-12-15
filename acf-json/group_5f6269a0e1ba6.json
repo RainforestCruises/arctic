@@ -24,16 +24,13 @@
             "name": "region",
             "type": "post_object",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "admin_column_enabled": 1,
-            "admin_column_post_types": "",
-            "admin_column_taxonomies": "",
             "post_type": [
                 "rfc_regions"
             ],
@@ -69,8 +66,8 @@
         },
         {
             "key": "field_6387c2f113254",
-            "label": "Is Port",
-            "name": "is_port",
+            "label": "Is Crossing",
+            "name": "is_crossing",
             "type": "true_false",
             "instructions": "",
             "required": 0,
@@ -294,5 +291,5 @@
     "active": true,
     "description": "Destinations - CPT",
     "show_in_rest": 0,
-    "modified": 1670434051
+    "modified": 1671137417
 }

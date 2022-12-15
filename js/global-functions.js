@@ -1,5 +1,8 @@
 jQuery(document).ready(function ($) {
 
+    function testGlobal() {
+        console.log('boom');
+    }
 
     // Generic Close Modals------------------------------
     const closeModalButtons = [...document.querySelectorAll('.close-modal-button')];

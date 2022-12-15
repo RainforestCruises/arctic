@@ -127,7 +127,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                     <div class="product-hero__content__main__secondary__attributes__item">
                         <div class="product-hero__content__main__secondary__attributes__item__icon">
                             <svg>
-                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-m-time"></use>
+                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-stopwatch"></use>
                             </svg>
                         </div>
                         <div class="product-hero__content__main__secondary__attributes__item__text">

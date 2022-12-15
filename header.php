@@ -20,14 +20,14 @@
             opacity: .85 !important;
         }
         .embarkation-marker {
-            background-image: url("<?php echo bloginfo('template_url') ?>/css/img/pinMarker-embark.png");
+            background-image: url("<?php echo bloginfo('template_url') ?>/css/img/pin-embark.png");
             background-size: cover;
             width: 20px;
             height: 32px;
             cursor: pointer;
         }
         .disembarkation-marker {
-            background-image: url("<?php echo bloginfo('template_url') ?>/css/img/pinMarker-disembark.png");
+            background-image: url("<?php echo bloginfo('template_url') ?>/css/img/pin-disembark.png");
             background-size: cover;
             width: 20px;
             height: 32px;

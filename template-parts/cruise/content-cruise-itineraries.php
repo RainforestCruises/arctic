@@ -78,8 +78,15 @@ $curentYear = date("Y");
                             $id = $itinerary->ID;
                             $hero_gallery = get_field('hero_gallery', $itinerary);
                             $hero_image = $hero_gallery[0];
+
                             $embarkation_point = get_field('embarkation_point', $itinerary);
-                            $embarkation = get_the_title($embarkation_point);
+                            $embarkation = get_the_title($embarkation_point) . ", " . get_field('country_name', $embarkation_point);
+
+                            $disembarkation_point = get_field('disembarkation_point', $itinerary);
+                            $disembarkation = get_the_title($disembarkation_point) . ", " . get_field('country_name', $disembarkation_point);
+                            $hasDifferentPorts = $disembarkation_point != null && ($disembarkation_point != $embarkation_point);
+
+
                             $days = get_field('itinerary', $itinerary);
                             $departures = getDepartureList($itinerary, get_post());
                             $lowestPrice = getLowestDepartureListPrice($departures);
@@ -176,6 +183,7 @@ $curentYear = date("Y");
                                                 </div>
                                             </div>
 
+
                                             <!-- Embark -->
                                             <div class="resource-card__content__specs__item">
                                                 <div class="resource-card__content__specs__item__icon">
@@ -188,6 +196,20 @@ $curentYear = date("Y");
                                                 </div>
                                             </div>
 
+                                            <?php if ($hasDifferentPorts) : ?>
+                                                <!-- Disembark -->
+                                                <div class="resource-card__content__specs__item">
+                                                    <div class="resource-card__content__specs__item__icon">
+                                                        <svg>
+                                                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-check-out"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="resource-card__content__specs__item__text">
+                                                        Disembarkation: <?php echo $disembarkation; ?>
+                                                    </div>
+                                                </div>
+                                            <?php endif; ?>
+
                                             <!-- Destinations -->
                                             <div class="resource-card__content__specs__item">
                                                 <div class="resource-card__content__specs__item__icon">
@@ -196,7 +218,7 @@ $curentYear = date("Y");
                                                     </svg>
                                                 </div>
                                                 <div class="resource-card__content__specs__item__text">
-                                                    <?php echo $destinations; ?>
+                                                    Sites: <?php echo $destinations; ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -234,7 +256,7 @@ $curentYear = date("Y");
 
             <!-- Map Area -->
             <div class="cruise-itineraries__content__main__map-area">
-                <div class="cruise-itineraries__content__main__map-area__map" id="cruise-itineraries-map"></div>
+                <div class="cruise-itineraries__content__main__map-area__map" id="itinerary-map"></div>
                 <!-- Map Legend -->
                 <div class="map-legend right-align">
                     <!-- Item 1 -->

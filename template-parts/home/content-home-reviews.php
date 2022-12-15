@@ -24,7 +24,7 @@ $reviews_title_subtext = get_field('reviews_title_subtext')
         </div>
 
         <!-- Grid Area -->
-        <div class="grid-block__content__grid">
+        <div class="grid-block__content__grid grid3">
             <?php foreach ($reviews as $review) :
                 $image = $review['image'];
                 $title = $review['title'];

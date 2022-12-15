@@ -553,10 +553,10 @@
         },
         {
             "key": "field_638e68537a5cb",
-            "label": "Latitude Start Point",
+            "label": "Latitude (S) Start Point",
             "name": "latitude_start_point",
             "type": "number",
-            "instructions": "Default is -60",
+            "instructions": "Range from -55 (northward) to -68 (southward)",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -564,7 +564,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": -60,
+            "default_value": -62,
             "placeholder": "",
             "prepend": "",
             "append": "",
@@ -574,10 +574,10 @@
         },
         {
             "key": "field_638e687f7a5cc",
-            "label": "Longitude Start Point",
+            "label": "Longitude (W) Start Point",
             "name": "longitude_start_point",
             "type": "number",
-            "instructions": "Default is -60",
+            "instructions": "Range from -70 (westward) to -60 (eastward)",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -585,7 +585,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": -60,
+            "default_value": -65,
             "placeholder": "",
             "prepend": "",
             "append": "",
@@ -598,7 +598,7 @@
             "label": "Zoom Level Start Point",
             "name": "zoom_level_start_point",
             "type": "number",
-            "instructions": "Default is 3",
+            "instructions": "Range from 4 (close) to 2 (far)",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -619,7 +619,7 @@
             "label": "GeoJSON",
             "name": "geojson",
             "type": "text",
-            "instructions": "Generate geoJSON at https:\/\/geojson.io\/ use 'orange' for flight lines, and 'royalblue' for cruise lines",
+            "instructions": "Generate geoJSON at https:\/\/geojson.io\/ use 'royalblue' for flight lines, and 'darkcyan' for cruise lines",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -1153,5 +1153,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1670975147
+    "modified": 1671143523
 }

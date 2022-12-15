@@ -1,79 +1,100 @@
 jQuery(document).ready(function ($) {
-    const itineraryObject = page_vars_product_itinerary_map.itineraryObjects[0];
-    const destinationPoints = itineraryObject.destinationPoints;
+    const itineraryObjects = page_vars_product_itinerary_map.itineraryObjects;
+    let markersReference = [];
+    let sourcesReference = [];
 
+    // Map 
+    const initialObject = itineraryObjects[0]; // initial object
 
     mapboxgl.accessToken = 'pk.eyJ1IjoicmFpbmZvcmVzdGNydWlzZXNybHMiLCJhIjoiY2xiNWh2aXo5MDNiZzN2dW5hNjFpaXM3dCJ9.05yNz0iG1JXFq62DYF7SFA';
     var map = new mapboxgl.Map({
         container: 'itinerary-map',
         style: 'mapbox://styles/mapbox/outdoors-v12',
-        center: [itineraryObject.startLongitude, itineraryObject.startLatitude],
-        zoom: itineraryObject.startZoom,
-        projection: 'mercator'
+        center: [initialObject.startLongitude, initialObject.startLatitude],
+        zoom: initialObject.startZoom,
+        projection: 'mercator',
+        attributionControl: false
     });
     map.addControl(new mapboxgl.NavigationControl());
     map.scrollZoom.disable();
 
-
-    // Destination Markers
-    var features = [];
-    destinationPoints.forEach(item => {
-        var feature = {
-            type: 'Feature',
-            geometry: {
-                type: 'Point',
-                coordinates: item['coordinates']
-            },
-            properties: {
-                day: item['day'],
-                title: item['title'],
-                description: item['description'],
-                image: item['image'],
-                locationType: item['locationType']
-            }
-        }
-        features.push(feature);
-    })
-
-
-
-    // add markers to map
-    for (const feature of features) {
-        // create a HTML element for each feature
-        const el = document.createElement('div');
-        el.className = 'destination-marker';
-
-        // make a marker for each feature and add to the map
-        new mapboxgl.Marker(el)
-            .setLngLat(feature.geometry.coordinates)
-            .setPopup(
-                new mapboxgl.Popup({ offset: 25 }) // add popups
-                    .setHTML(
-                        `<div class="mapbox-popup__day-count">${feature.properties.day}</div>
-                        <div class="mapbox-popup__title">${feature.properties.title}</div>
-                        <div class="mapbox-popup__badge-area">${feature.properties.locationType}</div>
-
-                        <div class="mapbox-popup__description">${feature.properties.description}</div>
-                        <div class="mapbox-popup__image-area"><img src="${feature.properties.image}"></div>`
-                    )
-            ).addTo(map);
-    }
-
-
+    //Markers
+    createMarkers(initialObject);
 
     //Lines
     map.on('load', () => {
+        createLineFeatures(initialObject);
+    });
+
+
+
+    //Map Functions
+    function createMarkers(itineraryObject) {
+
+        markersReference.forEach(item => { //remove the old ones
+            item.remove();
+        })
+
+        // -- add markers to map
+        for (const feature of itineraryObject.featureList) {
+
+            const el = document.createElement('div');
+            el.className = 'destination-marker';
+
+
+            let description = feature.properties.description;
+
+            if (!itineraryObject.hasDifferentPorts && feature.properties.isEmbarkation) {
+                description = "Embarkation / Disembarkation"
+                el.className = 'embarkation-marker';
+            }
+
+            if (itineraryObject.hasDifferentPorts && feature.properties.isEmbarkation) {
+                description = "Embarkation"
+                el.className = 'embarkation-marker';
+            }
+
+            if (itineraryObject.hasDifferentPorts && feature.properties.isDisembarkation) {
+                description = "Disembarkation"
+            }
+
+            const marker = new mapboxgl.Marker(el)
+                .setLngLat(feature.geometry.coordinates)
+                .setPopup(
+                    new mapboxgl.Popup({ offset: 25 }) // add popups
+                        .setHTML(
+                            `<div class="mapbox-popup__day-count">${feature.properties.day}</div>
+                            <div class="mapbox-popup__title">${feature.properties.title}</div>
+                            <div class="mapbox-popup__description">${description}</div>
+                            <div class="mapbox-popup__image-area"><img src="${feature.properties.image}"></div>`
+                        )
+                ).addTo(map);
+
+            markersReference.push(marker);
+        }
+    }
+
+
+    function createLineFeatures(itineraryObject) {
+
+        sourcesReference.forEach(item => { //remove the old ones
+            map.removeLayer(item)
+            map.removeSource(item);
+        })
+        sourcesReference = [];
 
         if (itineraryObject.geojson == null) return false
         const lineFeatures = itineraryObject.geojson.features;
 
         lineFeatures.forEach((featureItem, index) => {
             let resourceId = 'route' + index;
+            sourcesReference.push(resourceId);
 
             map.addSource(resourceId, {
                 'type': 'geojson',
                 'data': featureItem
             });
+
             map.addLayer({
                 'id': resourceId,
                 'type': 'line',
@@ -86,11 +107,12 @@ jQuery(document).ready(function ($) {
                     'line-color': featureItem.properties.stroke,
                     'line-width': 4,
                     'line-dasharray': featureItem.properties.stroke == 'royalblue' ? [1, 2] : [],
-
                 }
             });
         })
-    });
+    }
+
+
 
 });
 
