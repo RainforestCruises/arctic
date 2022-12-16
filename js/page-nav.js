@@ -80,7 +80,7 @@ jQuery(document).ready(function ($) {
            
 
         } else { // small screen 
-            target = target - 75;
+            target = target - 30;
           
         }
 
