@@ -19,13 +19,13 @@ jQuery(document).ready(function ($) {
 
 
     //hide outline panels on load (mobile) -- on resize fix
-    //checkOutlinePanels();
-    function checkOutlinePanels() {
-        if ($(window).width() < 1000) { //mobile view    
-            $('.outline-panel__content').toggle();
-            $('.outline-panel__heading').toggleClass('closed');
-        }
+    
+    if (window.innerWidth < 800) { //mobile view    
+        $('.outline-panel__content').toggle();
+        $('.outline-panel__heading').toggleClass('closed');
     }
+
+
 
 
     // Inquire buttons (generic)

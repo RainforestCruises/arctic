@@ -153,7 +153,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                         </div>
                         <div class="product-hero__content__main__secondary__attributes__item__text">
                             <div class="sub-attribute">
-                                Embarkation
+                                Embark
                                 <?php echo  $embarkation_is_flight ? '<span>Fly</span>' : ''; ?>
                             </div>
                             <?php
@@ -173,7 +173,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                         </div>
                         <div class="product-hero__content__main__secondary__attributes__item__text">
                             <div class="sub-attribute">
-                                Disembarkation
+                                Disembark
                                 <?php echo  $disembarkation_is_flight ? '<span>Fly</span>' : ''; ?>
 
 

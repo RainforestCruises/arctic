@@ -25,6 +25,7 @@ jQuery(document).ready(function ($) {
     //Lines
     map.on('load', () => {
         createLineFeatures(initialObject);
+        flyToCenter(initialObject);
     });
 
 
@@ -114,10 +115,18 @@ jQuery(document).ready(function ($) {
     }
 
 
+
+
     //Map Functions
     function flyToCenter(itineraryObject) {
         const coordinates = [itineraryObject.startLongitude, itineraryObject.startLatitude];
-        const zoom = itineraryObject.startZoom;
+        let zoom = itineraryObject.startZoom;
+
+        if(window.innerWidth < 600){
+            zoom = zoom - .75; // adjust for mobile
+        }
+
+
         map.flyTo({
             center: coordinates,
             zoom: zoom,

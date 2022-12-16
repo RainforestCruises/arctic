@@ -1,6 +1,5 @@
 <?php
 $itineraries = get_field('itineraries');
-$curentYear = date("Y");
 ?>
 
 <!-- Itineraries -->

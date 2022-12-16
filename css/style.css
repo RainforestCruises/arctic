@@ -3954,9 +3954,6 @@ h5 {
             padding-right: 0rem; } }
         .product-overview__content__grid__overview__highlights {
           padding-bottom: 1.5rem; }
-          @media only screen and (max-width: 50em) {
-            .product-overview__content__grid__overview__highlights .title-single {
-              display: none; } }
         .product-overview__content__grid__overview__text {
           padding-top: 3rem;
           position: relative; }
@@ -5009,6 +5006,9 @@ h5 {
       @media only screen and (max-width: 50em) {
         .cruise-itineraries__content__main {
           align-items: flex-end; } }
+      @media only screen and (max-width: 37.5em) {
+        .cruise-itineraries__content__main {
+          height: 45rem; } }
       .cruise-itineraries__content__main__detail-area {
         width: 46rem;
         transform: translateX(-3rem) translateY(-1.5rem);

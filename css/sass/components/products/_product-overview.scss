@@ -40,12 +40,6 @@
                 &__highlights {
                     padding-bottom: 1.5rem;
 
-                    @media only screen and (max-width: $bp-medium) {
-                        & .title-single {
-                            display: none;
-                        }
-                    }
-
                 }
 
                 &__text {
