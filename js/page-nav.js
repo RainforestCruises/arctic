@@ -56,7 +56,7 @@ jQuery(document).ready(function ($) {
     }
 
     // On Click - Nav Links, href change position
-    $('.nav-secondary__content__title__link, .nav-secondary__content__links__link, .product-hero__content__main__primary__nav__link, .category-hero__content__page-nav__list__item__link, #down-arrow-button').click(function (event) {
+    $('.nav-secondary__content__title-area__link, .nav-secondary__mobile-menu__list__item__link, .nav-secondary__content__links__link, .product-hero__content__main__primary__nav__link, .category-hero__content__page-nav__list__item__link, #down-arrow-button').click(function (event) {
         var id = $(this).attr('href');
         changePosition(id)
         event.preventDefault();
@@ -65,7 +65,7 @@ jQuery(document).ready(function ($) {
     // Animate Change Position
     function changePosition(id) {
         console.log(id);
-        if (id != "#top") {
+        if (id != "#section-top") {
             $('.header').addClass('preventExpand');
         }
 
@@ -102,6 +102,47 @@ jQuery(document).ready(function ($) {
     }
 
 
+    //Burger
+    //Burger Menu -- click
+    $(".nav-secondary__content-mobile").on("click", function () {
+
+        $('.nav-secondary__content-mobile').toggleClass('active');
+        $('.nav-secondary__mobile-menu').toggleClass('active');
+
+    });
+
+
+
+    //CLICK AWAY
+    const navSecondaryMobile = document.querySelector('.nav-secondary__mobile-menu')
+    const navSecondaryMobileList = document.querySelector('.nav-secondary__mobile-menu__list')
+    const navSecondaryButton = document.querySelector('.nav-secondary__content-mobile')
+
+    document.addEventListener('click', evt => {
+
+        if (window.innerWidth < 800) {
+           
+        }
+        const isMenuClick = navSecondaryMobileList.contains(evt.target);
+        const isButtonClick = navSecondaryButton.contains(evt.target);
+        const isOpen = navSecondaryMobile.classList.contains('active');
+
+        if (!isButtonClick && isOpen && !isMenuClick) {
+            navSecondaryMobile.classList.remove('active');
+            navSecondaryButton.classList.remove('active');
+        }
+
+
+    });
+
+    //resize window -- remove collapse menu over 1000
+    $(window).resize(function () {
+        if ($(window).width() > 600) {
+            $('.nav-secondary__content-mobile').removeClass('active');
+            $(".nav-secondary__mobile-menu").removeClass('active');
+
+        }
+    });
 
 
 
