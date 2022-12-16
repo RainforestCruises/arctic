@@ -72,23 +72,16 @@ jQuery(document).ready(function ($) {
 
 
         var target = $(id).offset().top;
-        var isScrollUp = $('.header').hasClass('scrollUp');
+        //var isScrollUp = $('.header').hasClass('scrollUp');
 
 
         if ($(window).width() > 1200) {
-
-            if (!isScrollUp) {
-                target = target - 140;
-            } else {
-                target = target - 80;
-            }
+            target = target - 140;
+           
 
         } else { // small screen 
-            if (!isScrollUp) {
-                target = target - 110;
-            } else {
-                target = target - 60;
-            }
+            target = target - 75;
+          
         }
 
         $('html, body').animate({ scrollTop: target }, 500);
