@@ -115,19 +115,17 @@ jQuery(document).ready(function ($) {
 
     //CLICK AWAY
     const navSecondaryMobile = document.querySelector('.nav-secondary__mobile-menu')
-    const navSecondaryMobileList = document.querySelector('.nav-secondary__mobile-menu__list')
+    //const navSecondaryMobileList = document.querySelector('.nav-secondary__mobile-menu__list')
     const navSecondaryButton = document.querySelector('.nav-secondary__content-mobile')
 
     document.addEventListener('click', evt => {
 
-        if (window.innerWidth < 800) {
-           
-        }
-        const isMenuClick = navSecondaryMobileList.contains(evt.target);
+
+        //const isMenuClick = navSecondaryMobileList.contains(evt.target);
         const isButtonClick = navSecondaryButton.contains(evt.target);
         const isOpen = navSecondaryMobile.classList.contains('active');
 
-        if (!isButtonClick && isOpen && !isMenuClick) {
+        if (!isButtonClick && isOpen) {
             navSecondaryMobile.classList.remove('active');
             navSecondaryButton.classList.remove('active');
         }
