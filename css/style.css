@@ -12341,7 +12341,8 @@ h5 {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 95; }
+    z-index: 95;
+    height: min-content; }
     @media only screen and (max-width: 50em) {
       .nav-secondary.active {
         flex-direction: column; } }
@@ -12412,15 +12413,14 @@ h5 {
       .nav-secondary__content__cta__button {
         font-size: 1.3rem; }
   .nav-secondary__content-mobile {
-    height: 100%;
     width: 100%;
     width: 100%;
     padding: 0 6rem;
     display: none;
-    grid-template-columns: 1fr min-content;
+    justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    min-height: 6rem;
+    height: 6rem;
     color: #1d2225;
     margin-top: 0.5rem; }
     @media only screen and (max-width: 50em) {
@@ -12428,7 +12428,7 @@ h5 {
         padding: 0 3rem; } }
     @media only screen and (max-width: 50em) {
       .nav-secondary__content-mobile {
-        display: grid; } }
+        display: flex; } }
     .nav-secondary__content-mobile__title {
       font-size: 1.8rem;
       padding-right: 2rem;
