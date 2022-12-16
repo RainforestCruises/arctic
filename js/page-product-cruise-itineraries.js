@@ -119,11 +119,12 @@ jQuery(document).ready(function ($) {
 
     //Map Functions
     function flyToCenter(itineraryObject) {
-        const coordinates = [itineraryObject.startLongitude, itineraryObject.startLatitude];
+        let coordinates = [itineraryObject.startLongitude, itineraryObject.startLatitude];
         let zoom = itineraryObject.startZoom;
 
         if(window.innerWidth < 600){
             zoom = zoom - .75; // adjust for mobile
+            coordinates = [itineraryObject.startLongitude, (+itineraryObject.startLatitude - 1)];
         }
 
 

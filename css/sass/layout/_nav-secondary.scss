@@ -132,12 +132,13 @@
         justify-content: space-between;
         align-items: center;
         cursor: pointer;
-        height: 6rem;
+        
         color: $color-primary;
-        background-color: $color-white;
-
+        
         @media only screen and (max-width: $bp-medium) {
             display: flex;
+            background-color: $color-white !important;
+        height: 6rem !important;
         }
 
         &__title {

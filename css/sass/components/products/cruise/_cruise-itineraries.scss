@@ -135,7 +135,7 @@
                     width: 100%;       
                     height: min-content;
                     padding: 0 2.5rem; 
-                    padding-bottom: 3.5rem;          
+                    padding-bottom: 3rem;          
                     transform: translateY(0) translateX(0);          
                 }
 
@@ -150,9 +150,6 @@
                         order: 2;
                     }
 
-                    // & .swiper-slide:not(.swiper-slide-active){
-                    //     opacity: 0 !important;
-                    // }
 
                     &__slide {
                         user-select: none;

@@ -5018,7 +5018,7 @@ h5 {
             width: 100%;
             height: min-content;
             padding: 0 2.5rem;
-            padding-bottom: 3.5rem;
+            padding-bottom: 3rem;
             transform: translateY(0) translateX(0); } }
         @media only screen and (max-width: 50em) {
           .cruise-itineraries__content__main__detail-area__slider {
@@ -12420,15 +12420,15 @@ h5 {
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    height: 6rem;
-    color: #1d2225;
-    background-color: #fff; }
+    color: #1d2225; }
     @media only screen and (max-width: 50em) {
       .nav-secondary__content-mobile {
         padding: 0 3rem; } }
     @media only screen and (max-width: 50em) {
       .nav-secondary__content-mobile {
-        display: flex; } }
+        display: flex;
+        background-color: #fff !important;
+        height: 6rem !important; } }
     .nav-secondary__content-mobile__title {
       font-size: 1.8rem;
       padding-right: 2rem;
