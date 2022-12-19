@@ -1,5 +1,7 @@
 <?php
-$category_landing_pages = get_field('category_landing_pages', 'options');
+$route_landing_pages = get_field('route_landing_pages', 'options');
+$style_landing_pages = get_field('style_landing_pages', 'options');
+
 $guides = get_field('guides', 'options');
 
 $queryArgs = array(
@@ -60,9 +62,9 @@ $alwaysActiveMainNav = checkActiveHeader();
                         Ships
                     </li>
                     <li class="nav-main__content__center__nav__list__item" navelement="guides">
-                      Guides
+                        Guides
                     </li>
-               
+
                 </ul>
 
             </nav>
@@ -71,24 +73,58 @@ $alwaysActiveMainNav = checkActiveHeader();
             <div class="nav-mega">
 
                 <!-- Cruises Panel -->
-                <div class="nav-mega__panel " panel="categorical">
-                    <div class="nav-mega__panel__categorical-grid">
-                        <?php foreach ($category_landing_pages as $page) :
-                            $hero_slider =  get_field('hero_slider', $page);
-                            $image = $hero_slider[0]['image'];
-                            $title =  get_the_title($page);
-                        ?>
-                            <a class="mega-category-item" href="<?php echo get_permalink($page); ?>">
-                                <div class="mega-category-item__title">
-                                    <?php echo $title ?>
-                                </div>
-                                <div class="mega-category-item__image-area">
-                                    <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
-                                </div>
+                <div class="nav-mega__panel" panel="categorical">
+                    <div class="nav-mega__panel__categorical">
 
+                        <!-- Routes -->
+                        <div class="nav-mega__panel__categorical__group">
+                            <div class="nav-mega__panel__categorical__group__title">
+                                Popular Routes
+                            </div>
+                            <div class="nav-mega__panel__categorical__group__items">
+                                <?php foreach ($route_landing_pages as $page) :
+                                    $hero_slider =  get_field('hero_slider', $page);
+                                    $image = $hero_slider[0]['image'];
+                                    $title =  get_the_title($page);
+                                ?>
+                                    <a class="mega-category-item" href="<?php echo get_permalink($page); ?>">
 
-                            </a>
-                        <?php endforeach; ?>
+                                        <div class="mega-category-item__image-area">
+                                            <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
+                                        </div>
+                                        <div class="mega-category-item__title">
+                                            <?php echo $title ?>
+                                        </div>
+                                    </a>
+                                <?php endforeach; ?>
+                            </div>
+
+                        </div>
+
+                        <!-- Styles -->
+                        <div class="nav-mega__panel__categorical__group">
+                            <div class="nav-mega__panel__categorical__group__title">
+                                Travel Styles
+                            </div>
+                            <div class="nav-mega__panel__categorical__group__items">
+                                <?php foreach ($style_landing_pages as $page) :
+                                    $hero_slider =  get_field('hero_slider', $page);
+                                    $image = $hero_slider[0]['image'];
+                                    $title =  get_the_title($page);
+                                ?>
+                                    <a class="mega-category-item" href="<?php echo get_permalink($page); ?>">
+
+                                        <div class="mega-category-item__image-area">
+                                            <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
+                                        </div>
+                                        <div class="mega-category-item__title">
+                                            <?php echo $title ?>
+                                        </div>
+                                    </a>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 

@@ -739,8 +739,35 @@
         },
         {
             "key": "field_62e0649c6bfb7",
-            "label": "Category Landing Pages",
-            "name": "category_landing_pages",
+            "label": "Route Landing Pages",
+            "name": "route_landing_pages",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": [
+                "category:category-landing"
+            ],
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
+        },
+        {
+            "key": "field_63a0dd7e16896",
+            "label": "Style Landing Pages",
+            "name": "style_landing_pages",
             "type": "relationship",
             "instructions": "",
             "required": 0,
@@ -1089,5 +1116,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1669138817
+    "modified": 1671486864
 }

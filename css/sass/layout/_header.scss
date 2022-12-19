@@ -22,26 +22,33 @@
         }
     }
 
+    @media only screen and (max-width: $bp-xlargest) {
+        &:not(.small-width) {
+            & .nav-mega {
+                width: calc(100% + 30rem);
+                transform: translateX(-15rem);
+            }        
+        }
+    }
 }
 
 .nav-backdrop {
-
     content: "";
     background-color: rgba($color-black, 0.5);
     //-webkit-backdrop-filter: blur(3px);
     //backdrop-filter: blur(3px);
 
     position: fixed;
-    top: 0; 
+    top: 0;
     left: 0;
     z-index: 90;
     height: 100%;
     width: 100%;
     display: none;
-   
+
     &.active {
         display: block;
-     
+
         animation: fadein 0.2s;
     }
 }

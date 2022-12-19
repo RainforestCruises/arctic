@@ -5,6 +5,8 @@
     left: 0;
     width: calc(100% + 6rem);
 
+
+
     background-color: $color-white;
     color: $color-primary;
     border-radius: 1rem;
@@ -39,11 +41,28 @@
         }
 
         // Destinations
-        &__categorical-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            row-gap: 2rem;
-            column-gap: 1rem;
+        &__categorical {
+            &__group {
+                width: 100%;
+                margin-bottom: 1.5rem;
+                &__title {
+                    font-weight: 600;
+                    font-size: 1.3rem;
+                    margin-bottom: 1.5rem;
+                    background-color: $color-grey-light-1;
+                    border-radius: 1rem;
+                    text-align: center;
+                    padding: 0.5rem;
+                    padding-top: 0.8rem;
+                }
+
+                &__items {
+                    display: grid;
+                    grid-template-columns: repeat(5, 1fr);
+                    row-gap: 2rem;
+                    column-gap: 1rem;
+                }
+            }
         }
 
         //Ships
@@ -67,6 +86,10 @@
                     grid-template-columns: repeat(4, 1fr);
                     row-gap: 2rem;
                     column-gap: 1rem;
+
+                    // @media only screen and (max-width: $bp-largest) {
+                    //     grid-template-columns: repeat(3, 1fr);
+                    // }
                 }
             }
         }
@@ -78,13 +101,12 @@
             column-gap: 3rem;
             row-gap: 2rem;
 
-          
             &__group {
                 &:first-child {
                     grid-row: 1 / span 2;
                     grid-column: 1 / span 1;
                 }
-             
+
                 &__title {
                     font-weight: 600;
                     font-size: 1.3rem;
@@ -103,32 +125,26 @@
                         transform: translateY(-50%);
                         height: 1.3rem;
                         width: 1.3rem;
-                        fill: rgba($color-primary, .5);
-
+                        fill: rgba($color-primary, 0.5);
                     }
                 }
 
                 &__items {
-                   display: grid;
-                   grid-template-columns: 1fr 1fr;
-                   
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
                 }
             }
         }
     }
 }
 
-
-
 .mega-category-item {
     &:hover {
-
         & .mega-category-item__image-area {
             border: 1px solid $color-primary;
-
         }
         & img {
-            transform: scale(1.05);
+            //transform: scale(1.05);
         }
     }
 
@@ -140,16 +156,15 @@
     }
 
     &__image-area {
-        height: 22rem;
+        height: 14rem;
         width: 100%;
         border-radius: 1rem;
         overflow: hidden;
         border: 1px solid transparent;
-
     }
 
     &__title {
-        margin-bottom: 1rem;
+        margin-top: 1rem;
         font-size: 1.4rem;
         line-height: 1.8rem;
     }
@@ -170,7 +185,7 @@
 
     &:hover {
         border: 1px solid $color-grey-light-2;
-        transition: all .2s;
+        transition: all 0.2s;
     }
 
     &__image-area {
