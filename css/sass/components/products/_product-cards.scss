@@ -491,6 +491,7 @@
     grid-template-columns: min-content 1fr;
     gap: 2rem;
     align-items: center;
+    position: relative;
 
     &--small {
         gap: 1rem;

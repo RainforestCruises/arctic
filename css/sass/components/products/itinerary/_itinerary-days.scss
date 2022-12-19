@@ -1,27 +1,32 @@
 .day-list {
-
     &__title {
-
         &__pre {
             color: $color-grey-1;
             font-size: 1.3rem;
         }
 
         &__text {
-
         }
     }
 
     &__content {
         //display: grid;
         margin-bottom: 3rem;
+
+        &__text {
+        }
+
         &__destinations {
             margin-top: 2rem;
+
             display: flex;
             flex-wrap: wrap;
+            position: relative;
 
             @media only screen and (max-width: $bp-small) {
-                flex-direction: column;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
             }
 
             & .avatar {
@@ -34,18 +39,11 @@
 
                 @media only screen and (max-width: $bp-small) {
                     margin-right: 0;
+                    margin: 0;
                 }
             }
-            
-        
-        }
 
-        &__text {
-           
+            
         }
-    
-        
     }
 }
-
-
