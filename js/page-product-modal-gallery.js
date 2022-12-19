@@ -8,12 +8,15 @@ jQuery(document).ready(function ($) {
     // Modal Gallery Slider (Main and Nav)
     const modalGalleryNav = new Swiper("#modal-gallery-nav", {
         spaceBetween: 10,
-        slidesPerView: 3,
+        slidesPerView: 4,
         freeMode: true,
         watchSlidesProgress: true,
         breakpoints: {
-            600: {
-                slidesPerView: 4,
+            800: {
+                slidesPerView: 5,
+            },
+            1000: {
+                slidesPerView: 6,
             }
         }
     });
@@ -36,7 +39,7 @@ jQuery(document).ready(function ($) {
     modalGalleryMain.on('slideChange', function (swiper) {
         counterGallery.innerHTML = (swiper.realIndex + 1) + ' / ' + (swiper.slides.length);
 
-        const slideDiv = document.querySelector('.modal__gallery-content__main__slider__item[slideIndex="' + (swiper.realIndex + 1) + '"]');
+        const slideDiv = document.querySelector('.modal__gallery__main__slider__item[slideIndex="' + (swiper.realIndex + 1) + '"]');
         const slideTitle = slideDiv.getAttribute('title');
         titleGallery.innerHTML = slideTitle;
     });
@@ -51,7 +54,7 @@ jQuery(document).ready(function ($) {
             body.classList.add('no-scroll');
 
             const imageId = item.getAttribute('imageId');
-            const slideDiv = document.querySelector('.modal__gallery-content__main__slider__item[imageId="' + imageId + '"]');
+            const slideDiv = document.querySelector('.modal__gallery__main__slider__item[imageId="' + imageId + '"]');
             const slideIndex = slideDiv.getAttribute('slideIndex');
 
             modalGalleryMain.update();
@@ -69,7 +72,7 @@ jQuery(document).ready(function ($) {
             body.classList.add('no-scroll');
 
             const imageId = item.getAttribute('imageId');
-            const slideDiv = document.querySelector('.modal__gallery-content__main__slider__item[imageId="' + imageId + '"]');
+            const slideDiv = document.querySelector('.modal__gallery__main__slider__item[imageId="' + imageId + '"]');
             const slideIndex = slideDiv.getAttribute('slideIndex');
 
             modalGalleryMain.slideTo(2, 0)
@@ -107,7 +110,7 @@ jQuery(document).ready(function ($) {
             body.classList.add('no-scroll');
 
             const imageId = item.getAttribute('imageId');
-            const slideDiv = document.querySelector('.modal__gallery-content__main__slider__item[imageId="' + imageId + '"]');
+            const slideDiv = document.querySelector('.modal__gallery__main__slider__item[imageId="' + imageId + '"]');
             const slideIndex = slideDiv.getAttribute('slideIndex');
 
             modalGalleryMain.update();

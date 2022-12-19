@@ -4,7 +4,6 @@ wp_enqueue_script('page-product', get_template_directory_uri() . '/js/page-produ
 wp_enqueue_script('page-product-modal-gallery', get_template_directory_uri() . '/js/page-product-modal-gallery.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-dates', get_template_directory_uri() . '/js/page-product-dates.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-itinerary-map', get_template_directory_uri() . '/js/page-product-itinerary-map.js', array('jquery'), false, true);
-wp_enqueue_script('page-product-itinerary-days', get_template_directory_uri() . '/js/page-product-itinerary-days.js', array('jquery'), false, true);
 
 
 $itinerary = get_post();
@@ -58,9 +57,9 @@ $args = array(
   get_template_part('template-parts/itinerary/content', 'itinerary-hero', $args);
   ?>
 
-  <!-- Modal Gallery -->
+  <!-- Modal Product Gallery (from cruise folder)-->
   <?php
-  get_template_part('template-parts/cruise/content', 'cruise-page-gallery', $args);
+  get_template_part('template-parts/cruise/content', 'product-gallery', $args);
   ?>
 
   <!-- Overview -->

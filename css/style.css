@@ -2001,7 +2001,7 @@ h5 {
       padding-top: 0rem;
       padding-bottom: 8rem;
       overflow-y: scroll; }
-  .modal__gallery-content {
+  .modal__gallery {
     width: 100%;
     height: 100%;
     max-width: 128rem;
@@ -2009,13 +2009,12 @@ h5 {
     flex-direction: column;
     color: #fff;
     align-items: center;
-    padding: 0 4rem;
-    padding-bottom: 4rem; }
+    padding: 0 4rem; }
     @media only screen and (max-width: 50em) {
-      .modal__gallery-content {
+      .modal__gallery {
         padding: 0 2rem;
-        padding-bottom: 10rem; } }
-    .modal__gallery-content__top {
+        height: min-content; } }
+    .modal__gallery__top {
       width: 100%;
       height: 8rem;
       display: flex;
@@ -2023,51 +2022,49 @@ h5 {
       justify-content: space-between;
       align-items: center;
       font-size: 1.3rem; }
-      .modal__gallery-content__top .close-modal-button {
+      .modal__gallery__top .close-modal-button {
         background-color: rgba(255, 255, 255, 0.1);
         -webkit-backdrop-filter: blur(2px);
         backdrop-filter: blur(2px); }
-        .modal__gallery-content__top .close-modal-button:hover {
+        .modal__gallery__top .close-modal-button:hover {
           background-color: rgba(255, 255, 255, 0.3); }
-    .modal__gallery-content__main {
+    .modal__gallery__main {
       height: calc(100% - 28rem);
       width: 100%;
       padding-bottom: 4rem; }
       @media only screen and (max-width: 50em) {
-        .modal__gallery-content__main {
-          padding-bottom: 1rem; } }
-      .modal__gallery-content__main__slider {
+        .modal__gallery__main {
+          padding-bottom: 2rem;
+          padding-top: 2rem;
+          height: auto; } }
+      .modal__gallery__main__slider {
         height: 100%;
         width: 100%; }
-        .modal__gallery-content__main__slider__item {
+        .modal__gallery__main__slider__item {
           height: 100%;
           width: 100%;
           display: flex;
           justify-content: center; }
-          .modal__gallery-content__main__slider__item img {
+          .modal__gallery__main__slider__item img {
             height: 100%;
             width: 100%;
-            object-fit: contain;
+            object-fit: cover;
             border-radius: 1rem;
-            overflow: hidden;
-            margin: 0 8rem; }
-            @media only screen and (max-width: 50em) {
-              .modal__gallery-content__main__slider__item img {
-                margin: 0rem; } }
-    .modal__gallery-content__nav {
-      height: 20rem;
+            overflow: hidden; }
+    .modal__gallery__nav {
+      height: 14rem;
       width: 100%; }
       @media only screen and (max-width: 50em) {
-        .modal__gallery-content__nav {
-          height: 10rem; } }
-      .modal__gallery-content__nav__slider {
+        .modal__gallery__nav {
+          height: 8rem; } }
+      .modal__gallery__nav__slider {
         height: 100%;
         width: 100%; }
-        .modal__gallery-content__nav__slider__item {
+        .modal__gallery__nav__slider__item {
           height: 100%;
           width: 100%;
           cursor: pointer; }
-          .modal__gallery-content__nav__slider__item img {
+          .modal__gallery__nav__slider__item img {
             height: 100%;
             width: 100%;
             object-fit: cover;
@@ -4417,7 +4414,7 @@ h5 {
   @media only screen and (max-width: 37.5em) {
     .information-card {
       flex-shrink: 100 !important;
-      min-width: 28rem; } }
+      min-width: 26rem; } }
   @media only screen and (min-width: 37.5em) {
     .information-card--horizontal {
       display: grid;

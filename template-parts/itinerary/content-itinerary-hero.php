@@ -6,8 +6,6 @@ $length = get_field('length_in_nights') + 1;
 $lowestPrice = $args['lowestPrice'];
 $shipSizeRange = $args['shipSizeRange'];
 
-
-
 $images = get_field('hero_gallery');
 $desktopImages = array_slice($images, 1); //for gallery desktop slider
 
@@ -62,10 +60,9 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                 </div>
             <?php endforeach; ?>
         </div>
-        <div class="swiper-button-prev product-hero__bg-slider__button-prev"></div>
-        <div class="swiper-button-next product-hero__bg-slider__button-next"></div>
+        <div class="swiper-pagination"></div>
         <div class="product-hero__bg-slider__count">
-            <?php echo '1 / ' . (count($images) + 1) ?>
+            <?php echo '1 / ' . (count($images)) ?>
         </div>
     </div>
 
@@ -216,7 +213,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
 
     <!-- Inquire CTA Button -->
     <div class="mobile-info__cta">
-        <button class="cta-primary inquire-cta">
+        <button class="cta-primary generic-inquire-cta">
             Inquire
             <svg>
                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>

@@ -78,9 +78,9 @@ wp_localize_script(
   ?>
 
 
-  <!-- Modal Gallery -->
+  <!-- Modal Product Gallery -->
   <?php
-  get_template_part('template-parts/cruise/content', 'cruise-page-gallery', $args);
+  get_template_part('template-parts/cruise/content', 'product-gallery', $args);
   ?>
 
   <!-- Overview -->

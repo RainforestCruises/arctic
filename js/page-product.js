@@ -125,11 +125,9 @@ jQuery(document).ready(function ($) {
                 item.style.display = "";
                 count = count + 1;
             }
-
         });
-
-
     }
+
 
     // view all button
     // -- show departures
@@ -161,7 +159,6 @@ jQuery(document).ready(function ($) {
 
     // Hide Tabs
     function hideModalTabButtons(exclude) {
-
         modalTabButtons.forEach(item => {
             if (item.getAttribute('tab-panel') == exclude) {
                 item.style.display = "";
@@ -170,6 +167,7 @@ jQuery(document).ready(function ($) {
             }
         })
     }
+
 
     // Modal Panels
     const modalTabPanels = [...document.querySelectorAll('.modal-tab-panel')];
@@ -193,8 +191,6 @@ jQuery(document).ready(function ($) {
 
 
 
-
-
     // Sliders -------------------
     // hero desktop slider
     const heroDesktopSlider = new Swiper('#hero-desktop-slider', {
@@ -213,17 +209,19 @@ jQuery(document).ready(function ($) {
     });
     // hero mobile slider
     const heroMobileSlider = new Swiper('#hero-mobile-slider', {
-        loop: true,
+        loop: false,
         draggable: true,
         slidesPerView: 1,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        }
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            dynamicBullets: true,
+            dynamicMainBullets: 3,
+        },
     });
     const counter = document.querySelector('.product-hero__bg-slider__count');
     heroMobileSlider.on('slideChange', function (swiper) {
-        counter.innerHTML = (swiper.realIndex + 1) + ' / ' + (swiper.slides.length - 2);
+        counter.innerHTML = (swiper.realIndex + 1) + ' / ' + (swiper.slides.length);
     });
 
 
@@ -246,23 +244,6 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    // new Swiper('.cabin-card-image-area', {
-    //     slidesPerView: 1,
-    //     allowTouchMove: false,
-    //     watchSlidesProgress: true,
-    //     pagination: {
-    //         el: '.swiper-pagination',
-    //         clickable: true,
-    //         dynamicBullets: true,
-    //         dynamicMainBullets: 3,
-    //     },
-    //     navigation: {
-    //         nextEl: '.swiper-button-next',
-    //         prevEl: '.swiper-button-prev',
-    //     }
-    // });
-
-
 
     // Extras Swiper
     new Swiper('#extras-slider', {
@@ -280,7 +261,7 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    // Extras Day Modal
+    // Extras Modal
     const extrasModal = document.querySelector("#extrasModal");
     const extrasModalMainContent = document.querySelector("#extrasModalMainContent");
 
@@ -288,10 +269,8 @@ jQuery(document).ready(function ($) {
     if (viewExtrasButtons) {
         viewExtrasButtons.forEach(item => {
             item.addEventListener('click', () => {
-
                 extrasModal.style.display = 'flex';
                 body.classList.add('no-scroll');
-
                 const section = item.getAttribute('section');
                 const modalDivSectionOffset = document.getElementById(section).offsetTop;
                 extrasModalMainContent.scrollTop = modalDivSectionOffset - 120;
