@@ -164,6 +164,7 @@ function getItineraryObject($itinerary)
     $hasDifferentPorts = $disembarkation_point != null && ($disembarkation_point != $embarkation_point);
 
     $days = get_field('itinerary', $itinerary);
+
     // Destination Point Series
     $destinationPoints = [];
     $destinationList = [];
@@ -178,7 +179,6 @@ function getItineraryObject($itinerary)
             $dayDisplay = dayCountMarkup($day['day_count']);
             $destinationImage =  get_field('image', $destination); //get default image if none provided
             $destinationImageURL = $destinationImage ? wp_get_attachment_image_url($destinationImage['ID'], 'portrait-small') : "";
-            $description = get_field('description', $destination) ?? "";
 
          
             $point  = [
@@ -188,7 +188,6 @@ function getItineraryObject($itinerary)
                 'postid' => $destination->ID,
                 'title' => get_the_title($destination),
                 'day' => $dayDisplay,
-                'description' => $description,
                 'image' => $destinationImageURL,
                 'coordinates' => [get_field('longitude', $destination), get_field('latitude', $destination)],
             ];
@@ -220,7 +219,6 @@ function getItineraryObject($itinerary)
             'properties' => [
                 'day' => $point['day'],
                 'title' => $point['title'],
-                'description' => $point['description'],
                 'image' => $point['image'],
                 'isEmbarkation' => $point['isEmbarkation'],
                 'isDisembarkation' => $point['isDisembarkation']

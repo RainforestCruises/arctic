@@ -42,10 +42,10 @@ jQuery(document).ready(function ($) {
             el.className = 'destination-marker';
 
 
-            let description = feature.properties.description;
+            let description = "";
 
             if (!itineraryObject.hasDifferentPorts && feature.properties.isEmbarkation) {
-                description = "Embarkation / Disembarkation"
+                description = "Embarkation & Disembarkation"
                 el.className = 'embarkation-marker';
             }
 
@@ -63,10 +63,12 @@ jQuery(document).ready(function ($) {
                 .setPopup(
                     new mapboxgl.Popup({ offset: 25 }) // add popups
                         .setHTML(
-                            `<div class="mapbox-popup__day-count">${feature.properties.day}</div>
-                            <div class="mapbox-popup__title">${feature.properties.title}</div>
-                            <div class="mapbox-popup__description">${description}</div>
-                            <div class="mapbox-popup__image-area"><img src="${feature.properties.image}"></div>`
+                            `<div class="mapboxgl-popup-content__title-area">
+                            <div class="mapboxgl-popup-content__title-area__day-count">${feature.properties.day}</div>
+                            <div class="mapboxgl-popup-content__title-area__title">${feature.properties.title}</div>
+                            <div class="mapboxgl-popup-content__title-area__description">${description}</div>
+                            </div>
+                            <div class="mapboxgl-popup-content__image-area"><img src="${feature.properties.image}"></div>`
                         )
                 ).addTo(map);
 

@@ -72,7 +72,6 @@ jQuery(document).ready(function ($) {
 
 
         var target = $(id).offset().top;
-        //var isScrollUp = $('.header').hasClass('scrollUp');
 
 
         if ($(window).width() > 1200) {
@@ -80,7 +79,7 @@ jQuery(document).ready(function ($) {
            
 
         } else { // small screen 
-            target = target - 30;
+            target = target - 25;
           
         }
 

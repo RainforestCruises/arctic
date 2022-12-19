@@ -1855,39 +1855,60 @@ h5 {
 
 .mapboxgl-popup-content {
   text-align: center;
-  font-family: 'Metropolis', sans-serif;
+  font-family: "Metropolis", sans-serif;
   border-radius: 1rem;
-  padding: 10px 10px 10px; }
+  padding: 10px 10px 10px;
+  max-width: 25rem; }
+  @media only screen and (max-width: 50em) {
+    .mapboxgl-popup-content {
+      display: grid;
+      grid-template-columns: min-content 1fr;
+      align-items: center;
+      gap: 1.5rem; } }
+  .mapboxgl-popup-content__title-area {
+    text-align: center; }
+    @media only screen and (max-width: 50em) {
+      .mapboxgl-popup-content__title-area {
+        text-align: left;
+        margin-right: 1rem; } }
+    .mapboxgl-popup-content__title-area__day-count {
+      color: #9ea0a4;
+      font-size: 1.3rem;
+      font-weight: 700;
+      line-height: 1.8rem; }
+    .mapboxgl-popup-content__title-area__title {
+      color: #1d2225;
+      font-size: 1.5rem;
+      line-height: 2rem;
+      font-weight: 700; }
+    .mapboxgl-popup-content__title-area__description {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      line-height: 1.5rem; }
+  .mapboxgl-popup-content__image-area {
+    width: 100%;
+    height: 15rem; }
+    .mapboxgl-popup-content__image-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1rem; }
+    @media only screen and (max-width: 50em) {
+      .mapboxgl-popup-content__image-area {
+        order: -1;
+        width: min-content;
+        height: min-content;
+        display: flex;
+        align-items: center; }
+        .mapboxgl-popup-content__image-area img {
+          width: 6rem !important;
+          height: 6rem !important;
+          border-radius: 50% !important; } }
 
 .mapboxgl-popup-close-button {
   right: 6px;
   top: 3px;
   outline: none; }
-
-.mapbox-popup {
-  max-width: 20rem; }
-  .mapbox-popup__day-count {
-    color: #9ea0a4;
-    font-size: 1.3rem;
-    font-weight: 700; }
-  .mapbox-popup__title {
-    color: #1d2225;
-    font-size: 1.5rem;
-    font-weight: 700; }
-  .mapbox-popup__description {
-    font-size: 1.2rem;
-    margin-bottom: 1rem; }
-    @media only screen and (max-width: 50em) {
-      .mapbox-popup__description {
-        line-height: 1.5rem !important; } }
-  .mapbox-popup__image-area {
-    width: 100%;
-    height: 15rem; }
-    .mapbox-popup__image-area img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 1rem; }
 
 .map-legend {
   padding: 1rem 2rem;
@@ -1897,7 +1918,7 @@ h5 {
   position: absolute;
   bottom: 5px;
   left: 5px;
-  width: 12rem;
+  width: 11rem;
   height: min-content; }
   .map-legend.right-align {
     bottom: 5px;
@@ -4826,7 +4847,6 @@ h5 {
   font-size: 1.3rem; }
 
 .day-list__content {
-  display: grid;
   margin-bottom: 3rem; }
   .day-list__content__destinations {
     margin-top: 2rem;
@@ -4889,11 +4909,14 @@ h5 {
         padding: 0 3rem; } }
     .itinerary-map__content__map-area {
       width: 100%;
-      height: 50rem;
+      height: 60rem;
       border-radius: 1rem;
       border: 1px solid #e6e6e6;
       background-color: #f8f8f8;
       position: relative; }
+      @media only screen and (max-width: 37.5em) {
+        .itinerary-map__content__map-area {
+          height: 48rem; } }
       .itinerary-map__content__map-area__map {
         z-index: 1;
         width: 100%;
@@ -12445,7 +12468,7 @@ h5 {
     .nav-secondary__content-mobile.active {
       border-bottom: 1px solid #e6e6e6; }
       .nav-secondary__content-mobile.active svg {
-        transform: rotate(-90deg); }
+        transform: rotate(-270deg); }
   .nav-secondary__mobile-menu {
     display: none;
     opacity: 0;
