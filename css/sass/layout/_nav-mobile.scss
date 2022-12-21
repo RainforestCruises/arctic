@@ -30,8 +30,8 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        //overflow-x: hidden;
-        padding-bottom: 12rem;
+        overflow: hidden;
+        //padding-bottom: 12rem;
 
         z-index: 20;
         transform: translateX(0%);
@@ -45,8 +45,7 @@
         &--top {
             animation-name: navMobileAnimation;
             animation-duration: 0.3s;
-            animation-timing-function: ease-out;
-            
+            animation-timing-function: ease-out;         
         }
 
         &--sub {
@@ -59,24 +58,43 @@
             }
         }
 
-        &__heading {
-            padding: 1.5rem 3rem;
-            color: $color-primary;
-            font-size: 1.8rem;
-            font-weight: 700;
-            //border-top: 1px solid $color-grey-light-1a;
-            //background-color: $color-grey-light-1;
+        &__static {
+            height: min-content;
 
+            &__heading {
+                padding: 1.5rem 3rem;
+                color: $color-primary;
+                font-size: 1.8rem;
+                font-weight: 700;
+            }
+
+            &__brand {
+                padding: 1.5rem 3rem;
+                padding-bottom: .5rem;
+                & img {
+                    height: 4rem;
+                    width: auto;
+                }
+            }
         }
 
-        &__group-title {
-            padding: .75rem 3rem;
-            color: $color-primary;
-            font-size: 1.5rem;
-            font-weight: 700;
-            border-top: 1px solid $color-grey-light-1a;
-            background-color: $color-grey-light-1;
+        &__main {
+            height: 100%;
+            overflow-y: scroll;
+
+            &__group-title {
+                padding: .75rem 3rem;
+                color: $color-primary;
+                font-size: 1.5rem;
+                font-weight: 700;
+                border-top: 1px solid $color-grey-light-1a;
+                background-color: $color-grey-light-1;
+            }
         }
+
+        
+
+        
 
       
     }

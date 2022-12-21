@@ -153,21 +153,19 @@ body {
 body.no-scroll {
   overflow: hidden; }
 
-body.overlay {
-  position: relative; }
-  body.overlay::after {
-    content: "";
-    height: 100%;
-    width: 100%;
-    background-image: linear-gradient(to left, rgba(30, 30, 30, 0.7), rgba(30, 30, 30, 0.7));
-    opacity: 1;
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 200;
-    animation: fadein 0.3s;
-    animation-fill-mode: both; }
+body.overlay::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(to left, rgba(30, 30, 30, 0.7), rgba(30, 30, 30, 0.7));
+  opacity: 1;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  animation: fadein 0.3s;
+  animation-fill-mode: both; }
 
 body .hero {
   position: fixed;
@@ -12178,7 +12176,7 @@ h5 {
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding-bottom: 12rem;
+    overflow: hidden;
     z-index: 20;
     transform: translateX(0%);
     transition: all 0.4s;
@@ -12195,18 +12193,29 @@ h5 {
       grid-template-rows: min-content; }
       .nav-mobile__content-panel--sub.slide-center {
         transform: translateX(0%); }
-    .nav-mobile__content-panel__heading {
-      padding: 1.5rem 3rem;
-      color: #1d2225;
-      font-size: 1.8rem;
-      font-weight: 700; }
-    .nav-mobile__content-panel__group-title {
-      padding: .75rem 3rem;
-      color: #1d2225;
-      font-size: 1.5rem;
-      font-weight: 700;
-      border-top: 1px solid #e6e6e6;
-      background-color: #f8f8f8; }
+    .nav-mobile__content-panel__static {
+      height: min-content; }
+      .nav-mobile__content-panel__static__heading {
+        padding: 1.5rem 3rem;
+        color: #1d2225;
+        font-size: 1.8rem;
+        font-weight: 700; }
+      .nav-mobile__content-panel__static__brand {
+        padding: 1.5rem 3rem;
+        padding-bottom: .5rem; }
+        .nav-mobile__content-panel__static__brand img {
+          height: 4rem;
+          width: auto; }
+    .nav-mobile__content-panel__main {
+      height: 100%;
+      overflow-y: scroll; }
+      .nav-mobile__content-panel__main__group-title {
+        padding: .75rem 3rem;
+        color: #1d2225;
+        font-size: 1.5rem;
+        font-weight: 700;
+        border-top: 1px solid #e6e6e6;
+        background-color: #f8f8f8; }
 
 .nav-button {
   display: grid;

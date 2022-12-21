@@ -234,11 +234,9 @@ jQuery(document).ready(function ($) {
       var isBackButton = $(item).hasClass('nav-back');
       var isPhoneButton = $(item).hasClass('phone');
 
-
       if (isBackButton) {
         $(topPanel).removeClass('slide-out-left');
-
-        $(item).parent().removeClass('slide-center');
+        $(item).parent().parent().removeClass('slide-center');
       } else if (isPhoneButton) {
         //do nothing
       } else {
