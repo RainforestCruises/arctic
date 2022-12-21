@@ -16,9 +16,7 @@ jQuery(document).ready(function ($) {
   let fixedHeader = headerDiv.classList.contains('fixed');
 
 
-  //not used
-  const burgerButton = document.querySelector('#burger-menu');
-  const navMobile = document.querySelector('.nav-mobile');
+
 
 
   //apply header styles on scroll if fixed header
@@ -189,65 +187,86 @@ jQuery(document).ready(function ($) {
 
 
 
-  //OLD -------------------
+
+  //MOBILE MENU -----------------------------------------
+  //variables
+  const burgerButton = document.querySelector('#burger-menu');
+  const navMobile = document.querySelector('.nav-mobile');
+  //const headerMain = document.querySelector('.header__main');
+
+  //Burger-- open
+  burgerButton.addEventListener('click', evt => {
+    navMobile.classList.add('nav-mobile--active');
+    document.body.classList.add('lock-scroll');
+    bodyDiv.classList.add('overlay');
+
+  });
 
 
 
-  //Scroll to Top on Reload
-  if (history.scrollRestoration) {
-    history.scrollRestoration = 'manual';
-  } else {
-    window.onbeforeunload = function () {
-      window.scrollTo(0, 0);
-    }
+  function closeMobile() {
+    bodyDiv.classList.remove('overlay');
+    navMobile.classList.remove('nav-mobile--active');
+    document.body.classList.remove('lock-scroll');
+
+    $('.nav-mobile__content-panel').removeClass('slide-out-left');
+    $('.nav-mobile__content-panel').removeClass('slide-center');
+
+    // if (window.scrollY == 0) {
+    //   if (opaqueNavAlways == false) {
+    //     headerMain.classList.remove('active');
+    //   }
+    // }
   }
 
 
-  //Page Nav-- Hover
-  $('#template-nav').hover(
-    function () { },
-    function () {
-      if ($(".burger-menu").hasClass('burger-menu--active') != true) {
-        $('.nav-mega').removeClass('active');
+
+
+  //Mobile Menu
+  const mobileButtons = [...document.querySelectorAll('.nav-button')];
+  mobileButtons.forEach(item => {
+    item.addEventListener('click', () => {
+      let menuLink = item.getAttribute('menuLinkTo');
+
+      var topPanel = document.querySelector('.nav-mobile__content-panel--top');
+      var subPanel = document.querySelector('[menuid="' + menuLink + '"]');
+
+      var isBackButton = $(item).hasClass('nav-back');
+      var isPhoneButton = $(item).hasClass('phone');
+
+
+      if (isBackButton) {
+        $(topPanel).removeClass('slide-out-left');
+
+        $(item).parent().removeClass('slide-center');
+      } else if (isPhoneButton) {
+        //do nothing
+      } else {
+
+        if (!item.classList.contains("mobile-link")) {
+          topPanel.classList.add('slide-out-left');
+          $(subPanel).addClass('slide-center');
+        } else {
+          closeMobile();
+        }
+
       }
+    });
+  })
+
+
+  //Click Away -- close modal
+  document.addEventListener('click', evt => {
+    const isMobileMenu = navMobile.contains(evt.target);
+    const isBurgerOpen = burgerButton.contains(evt.target);
+    let navActive = navMobile.classList.contains('nav-mobile--active');
+
+    if (!isBurgerOpen && navActive && !isMobileMenu) {
+      closeMobile();
     }
-  );
-
-  //Newsletter
-  $('.close-button').on('click', () => {
-    $('.popup').removeClass('active');
-    body.classList.remove('no-scroll');
-  });
-
-  $('#newsletterButton').on('click', () => {
-    $('.popup').addClass('active');
-    body.classList.add('no-scroll');
-  });
-
-  $('.form-general').on('submit', function () {
-    $('.contact__wrapper__intro__title').text('Thank You');
-    $('.contact__wrapper__intro__introtext').hide();
   });
 
 
-
-  // //TEMPLATE SPECIFIC EXTRAS -----------------------------------------------------------------
-  // //SERP
-  // const searchFilterBar = document.getElementById('search-filter-bar'); //for search template
-
-  // //Resize Window - Close menus
-  // $(window).resize(function () {
-
-  //   if ($(window).width() > 1000) {
-  //     navMobile.classList.remove('nav-mobile--active');
-  //     bodyDiv.classList.remove('overlay');
-  //   }
-  //   if ($(window).width() <= 1000) {
-  //     navMega.classList.remove('active');
-  //     megaMenuOverlay.classList.remove('active');
-
-  //   }
-  // });
 
 });
 

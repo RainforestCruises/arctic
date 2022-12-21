@@ -238,17 +238,14 @@ $alwaysActiveMainNav = checkActiveHeader();
                     <div class="nav-mega__panel__guides">
 
                         <?php foreach ($guides as $g) :
-                            $guide_group = $g['guide_group'];
-                            $guide_group_icon = $g['guide_group_icon'];
+                            $group = $g['group'];
                             $items = $g['items'];
                         ?>
 
                             <!-- Group -->
                             <div class="nav-mega__panel__guides__group">
                                 <div class="nav-mega__panel__guides__group__title">
-                                    <?php echo $guide_group_icon ?>
-                                    <?php echo $guide_group ?>
-
+                                    <?php echo $group ?>
                                 </div>
 
                                 <!-- Items -->

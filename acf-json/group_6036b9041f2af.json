@@ -738,37 +738,10 @@
             "endpoint": 0
         },
         {
-            "key": "field_62e0649c6bfb7",
-            "label": "Route Landing Pages",
-            "name": "route_landing_pages",
-            "type": "relationship",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "page"
-            ],
-            "taxonomy": [
-                "category:category-landing"
-            ],
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "object"
-        },
-        {
             "key": "field_63a0dd7e16896",
-            "label": "Style Landing Pages",
-            "name": "style_landing_pages",
-            "type": "relationship",
+            "label": "Landing Pages",
+            "name": "landing_pages",
+            "type": "repeater",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -777,25 +750,65 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "page"
-            ],
-            "taxonomy": [
-                "category:category-landing"
-            ],
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "object"
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_63a1e6f6f0d0c",
+                    "label": "Group",
+                    "name": "group",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_63a1e6fef0d0d",
+                    "label": "Items",
+                    "name": "items",
+                    "type": "relationship",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "page"
+                    ],
+                    "taxonomy": [
+                        "category:category-landing"
+                    ],
+                    "filters": [
+                        "search"
+                    ],
+                    "elements": "",
+                    "min": "",
+                    "max": "",
+                    "return_format": "object"
+                }
+            ]
         },
         {
             "key": "field_62e064ba6bfb8",
             "label": "Ships",
             "name": "ships",
-            "type": "relationship",
+            "type": "repeater",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -804,17 +817,57 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "rfc_cruises"
-            ],
-            "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "object"
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_63a1e67bf0d0a",
+                    "label": "Group",
+                    "name": "group",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_63a1e6b0f0d0b",
+                    "label": "Items",
+                    "name": "items",
+                    "type": "relationship",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "rfc_cruises"
+                    ],
+                    "taxonomy": "",
+                    "filters": [
+                        "search"
+                    ],
+                    "elements": "",
+                    "min": "",
+                    "max": "",
+                    "return_format": "object"
+                }
+            ]
         },
         {
             "key": "field_62e064e76bfb9",
@@ -837,29 +890,10 @@
             "sub_fields": [
                 {
                     "key": "field_62e94ba6c2d4b",
-                    "label": "Guide Group",
-                    "name": "guide_group",
+                    "label": "Group",
+                    "name": "group",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
-                {
-                    "key": "field_637d068b85961",
-                    "label": "Guide Group Icon",
-                    "name": "guide_group_icon",
-                    "type": "text",
-                    "instructions": "insert svg",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -1116,5 +1150,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1671486864
+    "modified": 1671555064
 }

@@ -48,6 +48,7 @@
         <input type="hidden" name="formDestination" id="formDestination" value="">
     </form>
 
+    <?php get_template_part('template-parts/nav/content', 'nav-mobile'); ?>
 
     <!-- Header (Main Nav) -->
     <?php $headerClasses = renderHeaderClasses(); ?>

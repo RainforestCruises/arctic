@@ -3,7 +3,7 @@
     justify-items: center;
 
     height: 100vh;
-    width: 28rem;
+    width: 30rem;
 
     position: fixed;
     z-index: 9999999;
@@ -20,133 +20,38 @@
             animation-delay: 0.2s;
         }
 
-        & .mobile-language-switch {
-            animation: fadein 0.2s both;
-            animation-delay: 0.25s;
-            position: absolute;
-            bottom: 16rem;
-            right: 2rem;
-            display: flex;
-            align-items: center;
-            font-size: 1.5rem;
-            color: $color-gold;
-            z-index: 9999999;
-
-            & svg {
-                transform: translateY(-2px);
-                stroke-width: 4;
-                height: 2.5rem;
-                width: 2.5rem;
-                color: currentColor;
-                padding-right: 0.2rem;
-            }
-            &__trp {
-                & .trp-language-switcher {
-                    cursor: pointer;
-                    color: currentColor;
-
-                    & > div {
-                        border: 1px solid transparent;
-                        background-color: transparent;
-                        background-image: none;
-                        width: min-content !important;
-                        padding: 0.3rem;
-                        & > a {
-                            //width: 3rem;
-                            display: inline-block;
-                            color: currentColor;
-                            text-decoration: none;
-                            padding: 0.3rem 0.6rem;
-
-                            &:hover,
-                            :active {
-                                background-color: transparent;
-                                color: $color-white;
-                            }
-                        }
-
-                        & a.trp-ls-shortcode-disabled-language {
-                            cursor: pointer;
-                        }
-                    }
-
-                    &:hover {
-                        & > div {
-                            border: 1px solid $color-grey-3;
-                            background-color: transparent;
-                        }
-                    }
-                }
-            }
-        }
+    
     }
 
     &__content-panel {
         grid-column: 1 / -1;
         grid-row: 1 / span 1;
-        background-color: $color-primary-dark;
+        background-color: $color-white;
         width: 100%;
         display: flex;
         flex-direction: column;
-        overflow-x: hidden;
+        //overflow-x: hidden;
+        padding-bottom: 12rem;
 
         z-index: 20;
         transform: translateX(0%);
         transition: all 0.4s;
-
-        padding-top: 4rem;
         position: relative;
 
         &.slide-out-left {
             transform: translateX(-100%);
         }
 
-        & .search-button {
-            margin-right: 0;
-            margin-top: 2rem;
-            color: $color-supporting-light-2;
-        }
-
         &--top {
             animation-name: navMobileAnimation;
             animation-duration: 0.3s;
             animation-timing-function: ease-out;
-            & a {
-                animation-name: navMobileAnimation;
-                animation-duration: 0.4s;
-                animation-timing-function: ease-out;
-                animation-fill-mode: both;
-            }
-
-            & a:nth-child(1) {
-                animation-delay: 0s;
-            }
-            & a:nth-child(2) {
-                animation-delay: 0.05s;
-            }
-            & a:nth-child(3) {
-                animation-delay: 0.1s;
-            }
-            & a:nth-child(4) {
-                animation-delay: 0.15s;
-            }
-            & a:nth-child(5) {
-                animation-delay: 0.2s;
-            }
-
-            & a:nth-child(6) {
-                animation-delay: 0.25s;
-            }
-
-            & a:nth-child(7) {
-                animation-delay: 0.3s;
-            }
+            
         }
 
         &--sub {
             z-index: 21;
             transform: translateX(100%);
-
             grid-template-rows: min-content;
 
             &.slide-center {
@@ -154,91 +59,91 @@
             }
         }
 
-        & a {
-            //button
-            color: $color-gold;
+        &__heading {
+            padding: 1.5rem 3rem;
+            color: $color-primary;
+            font-size: 1.8rem;
+            font-weight: 700;
+            //border-top: 1px solid $color-grey-light-1a;
+            //background-color: $color-grey-light-1;
 
+        }
+
+        &__group-title {
+            padding: .75rem 3rem;
+            color: $color-primary;
             font-size: 1.5rem;
-            letter-spacing: 0.2rem;
+            font-weight: 700;
+            border-top: 1px solid $color-grey-light-1a;
+            background-color: $color-grey-light-1;
+        }
 
-            font-weight: 600;
-            background-color: transparent;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            text-transform: uppercase;
-            outline: none;
-            position: relative;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
+      
+    }
+}
 
-            padding: 1.5rem 2rem;
-            padding-right: 5rem;
-            text-align: right;
 
-            &.divider {
-                padding-top: 6rem;
-                &::after {
-                    content: "";
-                    position: absolute;
-                    height: 1px;
-                    width: 12rem;
-                    background-color: $color-grey-3;
-                    top: 2rem;
-                    right: 5rem;
-                }
-            }
 
-            &:last-child {
-                margin-bottom: 14rem;
-            }
+//COMPONENTS
 
-            & svg {
-                height: 2.5rem;
-                width: 2.5rem;
-                fill: $color-grey-1;
-                position: absolute;
-                top: 50%;
-                right: 1rem;
+.nav-button {
+    display: grid;
+    grid-template-columns: min-content 1fr min-content;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 1.5rem 3rem;
 
-                transform: translateY(-55%);
-            }
+    color: $color-primary;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    position: relative;
 
-            &.back-link {
-                text-align: start;
-                margin-bottom: 3rem;
-                justify-content: flex-end;
-                & svg {
-                    position: relative;
+    border-top: 1px solid $color-grey-light-1a;
 
-                    margin-right: 1rem;
-                }
+    & svg {
+        height: 2.4rem;
+        width: 2.4rem;
+        fill: $color-grey-1;
+    }
 
-                &::after {
-                    content: "";
-                    position: absolute;
-                    height: 1px;
-                    width: 12rem;
-                    background-color: $color-grey-3;
-                    bottom: -1rem;
-                    right: 5rem;
-                }
-            }
+    &__icon {
+        display: flex;
+        align-items: center;
+        & svg {
+            color: rgba($color-primary, .8)
+        }
 
-            &--forward {
-                & svg {
-                    right: 3rem;
+        & img {
+            height: 5rem;
+            width: 5rem;
+            border-radius: 50%;
+        };
+    }
 
-                    @media only screen and (max-width: $bp-xsmall) {
-                        right: 1.5rem;
-                    }
-                }
+    
+
+    &.nav-back {
+        padding: .75rem 3rem;
+        background-color: $color-primary;
+        color: $color-grey-light-1a;
+    }
+
+    &.nav-forward {
+        & svg {
+            right: 3rem;
+
+            @media only screen and (max-width: $bp-xsmall) {
+                right: 1.5rem;
             }
         }
     }
 }
-
 
 
 //ANIMATIONS
