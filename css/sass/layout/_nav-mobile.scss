@@ -13,15 +13,9 @@
 
     &--active {
         display: grid;
-        //position: relative;
-
-        & .burger-button {
-            animation: fadein 0.3s both;
-            animation-delay: 0.2s;
-        }
+    }
 
     
-    }
 
     &__content-panel {
         grid-column: 1 / -1;
@@ -60,6 +54,11 @@
 
         &__static {
             height: min-content;
+            display: grid;
+            grid-template-columns: 1fr min-content;
+            column-gap: 1.5rem;
+            align-items: center;
+            
 
             &__heading {
                 padding: 1.5rem 3rem;
@@ -81,6 +80,7 @@
         &__main {
             height: 100%;
             overflow-y: scroll;
+            padding-bottom: 12rem; //for browser clearance
 
             &__group-title {
                 padding: .75rem 3rem;
@@ -91,25 +91,19 @@
                 background-color: $color-grey-light-1;
             }
         }
-
-        
-
-        
-
-      
     }
 }
 
 
 
 //COMPONENTS
-
 .nav-button {
     display: grid;
     grid-template-columns: min-content 1fr min-content;
     gap: 1.5rem;
     align-items: center;
     padding: 1.5rem 3rem;
+    
 
     color: $color-primary;
     font-size: 1.5rem;
@@ -150,6 +144,7 @@
         padding: .75rem 3rem;
         background-color: $color-primary;
         color: $color-grey-light-1a;
+        grid-column: 1 / -1;
     }
 
     &.nav-forward {
@@ -163,6 +158,23 @@
     }
 }
 
+.nav-close-button {
+    cursor: pointer;
+    color: $color-grey-light-2;
+    //border: 1px solid currentColor;
+    border-radius: 50%;
+    margin-right: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    width: 3rem;
+    & svg {
+        height: 2rem;
+        width: 2rem;       
+        color: currentColor;
+    }     
+}
 
 //ANIMATIONS
 @keyframes navMobileAnimation {

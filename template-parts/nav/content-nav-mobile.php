@@ -16,6 +16,11 @@ $logo = get_field('logo_main', 'options');
             <div class="nav-mobile__content-panel__static__brand">
                 <img src="<?php echo $logo['url']; ?>" alt="<?php echo get_bloginfo('name') ?>" />
             </div>
+            <div class="nav-close-button">
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
+                </svg>
+            </div>
         </div>
         <div class="nav-mobile__content-panel__main">
             <a class="nav-button nav-forward" menuLinkTo="menu-cruises">
@@ -99,9 +104,6 @@ $logo = get_field('logo_main', 'options');
 
             </a>
         </div>
-
-
-
     </div>
 
 
@@ -110,6 +112,11 @@ $logo = get_field('logo_main', 'options');
         <div class="nav-mobile__content-panel__static">
             <div class="nav-mobile__content-panel__static__heading">
                 Cruises
+            </div>
+            <div class="nav-close-button">
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
+                </svg>
             </div>
             <a class="nav-button nav-back" menuLinkTo="top">
                 <svg>
@@ -156,6 +163,11 @@ $logo = get_field('logo_main', 'options');
             <div class="nav-mobile__content-panel__static__heading">
                 Ships
             </div>
+            <div class="nav-close-button">
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
+                </svg>
+            </div>
             <a class="nav-button nav-back" menuLinkTo="top">
                 <svg>
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-ic_chevron_left_36px"></use>
@@ -200,6 +212,11 @@ $logo = get_field('logo_main', 'options');
         <div class="nav-mobile__content-panel__static">
             <div class="nav-mobile__content-panel__static__heading">
                 Guides
+            </div>
+            <div class="nav-close-button">
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
+                </svg>
             </div>
             <a class="nav-button nav-back" menuLinkTo="top">
                 <svg>

@@ -12166,9 +12166,6 @@ h5 {
   overflow-x: hidden; }
   .nav-mobile--active {
     display: grid; }
-    .nav-mobile--active .burger-button {
-      animation: fadein 0.3s both;
-      animation-delay: 0.2s; }
   .nav-mobile__content-panel {
     grid-column: 1 / -1;
     grid-row: 1 / span 1;
@@ -12194,7 +12191,11 @@ h5 {
       .nav-mobile__content-panel--sub.slide-center {
         transform: translateX(0%); }
     .nav-mobile__content-panel__static {
-      height: min-content; }
+      height: min-content;
+      display: grid;
+      grid-template-columns: 1fr min-content;
+      column-gap: 1.5rem;
+      align-items: center; }
       .nav-mobile__content-panel__static__heading {
         padding: 1.5rem 3rem;
         color: #1d2225;
@@ -12208,7 +12209,8 @@ h5 {
           width: auto; }
     .nav-mobile__content-panel__main {
       height: 100%;
-      overflow-y: scroll; }
+      overflow-y: scroll;
+      padding-bottom: 12rem; }
       .nav-mobile__content-panel__main__group-title {
         padding: .75rem 3rem;
         color: #1d2225;
@@ -12249,12 +12251,28 @@ h5 {
   .nav-button.nav-back {
     padding: .75rem 3rem;
     background-color: #1d2225;
-    color: #e6e6e6; }
+    color: #e6e6e6;
+    grid-column: 1 / -1; }
   .nav-button.nav-forward svg {
     right: 3rem; }
     @media only screen and (max-width: 25em) {
       .nav-button.nav-forward svg {
         right: 1.5rem; } }
+
+.nav-close-button {
+  cursor: pointer;
+  color: #c2c6c9;
+  border-radius: 50%;
+  margin-right: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  width: 3rem; }
+  .nav-close-button svg {
+    height: 2rem;
+    width: 2rem;
+    color: currentColor; }
 
 @keyframes navMobileAnimation {
   from {

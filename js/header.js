@@ -192,16 +192,22 @@ jQuery(document).ready(function ($) {
   //variables
   const burgerButton = document.querySelector('#burger-menu');
   const navMobile = document.querySelector('.nav-mobile');
-  //const headerMain = document.querySelector('.header__main');
+  const navCloseButtons = [...document.querySelectorAll('.nav-close-button')];
+
+
 
   //Burger-- open
   burgerButton.addEventListener('click', evt => {
     navMobile.classList.add('nav-mobile--active');
     document.body.classList.add('lock-scroll');
     bodyDiv.classList.add('overlay');
-
   });
 
+  navCloseButtons.forEach(item => {
+    item.addEventListener('click', () => {
+      closeMobile();
+    });
+  })
 
 
   function closeMobile() {
@@ -211,12 +217,6 @@ jQuery(document).ready(function ($) {
 
     $('.nav-mobile__content-panel').removeClass('slide-out-left');
     $('.nav-mobile__content-panel').removeClass('slide-center');
-
-    // if (window.scrollY == 0) {
-    //   if (opaqueNavAlways == false) {
-    //     headerMain.classList.remove('active');
-    //   }
-    // }
   }
 
 
