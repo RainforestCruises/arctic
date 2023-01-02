@@ -1922,6 +1922,11 @@ h5 {
     bottom: 5px;
     left: auto;
     right: 5px; }
+  .map-legend__sample {
+    text-align: center;
+    color: #d9a402;
+    font-weight: 600;
+    font-size: 1.3rem; }
   .map-legend__item {
     display: grid;
     grid-template-columns: 2.5rem 1fr;
@@ -4941,6 +4946,21 @@ h5 {
   align-items: center;
   position: relative;
   width: 100%; }
+  .cruise-itineraries.home-variant .cruise-itineraries__content {
+    max-width: 160rem; }
+  .cruise-itineraries.home-variant .cruise-itineraries__content__main {
+    height: 70rem; }
+    @media only screen and (max-width: 37.5em) {
+      .cruise-itineraries.home-variant .cruise-itineraries__content__main {
+        height: 42rem; } }
+  .cruise-itineraries.home-variant .cruise-itineraries__content__main__detail-area {
+    width: 55rem; }
+    @media only screen and (max-width: 62.5em) {
+      .cruise-itineraries.home-variant .cruise-itineraries__content__main__detail-area {
+        width: 46rem; } }
+    @media only screen and (max-width: 50em) {
+      .cruise-itineraries.home-variant .cruise-itineraries__content__main__detail-area {
+        width: 100%; } }
   .cruise-itineraries__content {
     position: relative;
     display: flex;

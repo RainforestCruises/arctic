@@ -2,15 +2,26 @@
 /*Template Name: Home*/
 
 wp_enqueue_script('page-home', get_template_directory_uri() . '/js/page-home.js', array('jquery'), false, true);
+wp_enqueue_script('page-product-cruise-itineraries', get_template_directory_uri() . '/js/page-product-cruise-itineraries.js', array('jquery'), false, true);
 
-$templateUrl = get_template_directory_uri();
+
+$routes = get_field('routes');
+//Itinerary JS Array
+$itineraryObjects = [];
+foreach ($routes as $route) {
+    $sample_itinerary = get_field('sample_itinerary', $route);
+    $itineraryObjects[] = getItineraryObject($sample_itinerary);
+}
+
+
 wp_localize_script(
     'page-home',
     'page_vars',
     array(
-        'templateUrl' =>  $templateUrl
+        'itineraryObjects' =>  $itineraryObjects,
     )
 );
+
 
 get_header();
 
@@ -33,6 +44,11 @@ get_header();
     <!-- Itineraries  -->
     <?php
     get_template_part('template-parts/home/content', 'home-itineraries');
+    ?>
+
+    <!-- Routes  -->
+    <?php
+    get_template_part('template-parts/home/content', 'home-routes');
     ?>
 
     <!-- Styles  -->

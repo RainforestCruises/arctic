@@ -92,6 +92,13 @@
         right: 5px;
     }
 
+    &__sample {
+        text-align: center;
+        color: $color-gold;
+        font-weight: 600;
+        font-size: 1.3rem;
+    }
+
     &__item {
         display: grid;
         grid-template-columns: 2.5rem 1fr;

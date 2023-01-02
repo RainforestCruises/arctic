@@ -185,7 +185,7 @@ function comma_separate_list($arr, $limit = 0)
             break;
         }
 
-        $fieldText = get_field('navigation_title', $a);
+        $fieldText = get_the_title($a);
         if ($count != 0) {
             $display .= ", " . $fieldText;
         } else {

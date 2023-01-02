@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
 
-    const itineraryObjects = page_vars_cruise_itineraries.itineraryObjects;
+    const itineraryObjects = page_vars.itineraryObjects;
     let markersReference = [];
     let sourcesReference = [];
 

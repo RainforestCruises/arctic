@@ -1,6 +1,29 @@
 .cruise-itineraries {
     @include flexBlock;
 
+    //routes
+    &.home-variant {
+        & .cruise-itineraries__content {
+            max-width: $page-width-full;
+        }
+        & .cruise-itineraries__content__main {
+            height: 70rem;
+            @media only screen and (max-width: $bp-small) { 
+                height: 42rem;
+            }
+        }
+
+        & .cruise-itineraries__content__main__detail-area {
+            width: 55rem;
+            @media only screen and (max-width: $bp-large) { 
+                width: 46rem;
+            }
+            @media only screen and (max-width: $bp-medium) { 
+                width: 100%;           
+            }
+        }
+    }
+
     &__content {
         position: relative;
         display: flex;
