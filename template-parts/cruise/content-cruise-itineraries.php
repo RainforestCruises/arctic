@@ -168,7 +168,7 @@ $itineraries = get_field('itineraries');
                                         </div>
 
                                         <!-- Specs -->
-                                        <div class="resource-card__content__specs bottom-margin">
+                                        <div class="resource-card__content__specs divider">
 
                                             <!-- Length -->
                                             <div class="resource-card__content__specs__item">
@@ -222,25 +222,28 @@ $itineraries = get_field('itineraries');
                                             </div>
                                         </div>
 
-                                        <!-- Price Group -->
-                                        <div class="resource-card__content__price-group">
-                                            <div class="resource-card__content__price-group__amount">
-                                                <?php echo "$ " . number_format($lowestPrice, 0);  ?>
+                                        <div class="resource-card__content__bottom">
+                                            <!-- Price Group -->
+                                            <div class="resource-card__content__bottom__price-group">
+                                                <div class="resource-card__content__bottom__price-group__amount">
+                                                    <?php echo "$ " . number_format($lowestPrice, 0);  ?>
+                                                </div>
+                                                <div class="resource-card__content__bottom__price-group__text">
+                                                    Per Person
+                                                </div>
                                             </div>
-                                            <div class="resource-card__content__price-group__text">
-                                                Per Person
+
+                                            <!-- CTA -->
+                                            <div class="resource-card__content__bottom__cta">
+                                                <a class="cta-square-icon" href="<?php echo $link; ?>">
+                                                    Explore
+                                                    <svg>
+                                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                                                    </svg>
+                                                </a>
                                             </div>
                                         </div>
 
-                                        <!-- CTA -->
-                                        <div class="resource-card__content__cta">
-                                            <a class="cta-square-icon" href="<?php echo $link; ?>">
-                                                Explore
-                                                <svg>
-                                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                                                </svg>
-                                            </a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

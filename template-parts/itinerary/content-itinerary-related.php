@@ -150,29 +150,24 @@ $itineraries = get_posts($queryArgs);
                                 </div>
 
                                 <!-- Price Group -->
-                                <div class="resource-card__content__price-group">
-                                    <div class="resource-card__content__price-group__amount">
-                                        <?php echo "$ " . number_format($lowestPrice, 0);  ?>
-                                    </div>
-                                    <div class="resource-card__content__price-group__text">
-                                        Per Person
+                                <div class="resource-card__content__bottom">
+                                    <div class="resource-card__content__bottom__price-group">
+                                        <div class="resource-card__content__bottom__price-group__amount">
+                                            <?php echo "$ " . number_format($lowestPrice, 0);  ?>
+                                        </div>
+                                        <div class="resource-card__content__bottom__price-group__text">
+                                            Per Person
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
 
 
                     <?php endforeach; ?>
-
-
-
-
-
                 </div>
             </div>
-
-
-
         </div>
     </div>
 </section>

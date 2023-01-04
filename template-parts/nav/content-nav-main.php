@@ -3,28 +3,6 @@ $landing_pages = get_field('landing_pages', 'options');
 $ships = get_field('ships', 'options');
 $guides = get_field('guides', 'options');
 
-// $queryArgs = array(
-//     'post_type' => 'rfc_cruises',
-//     'posts_per_page' => -1,
-//     'meta_key' => 'search_rank',
-//     'orderby' => 'meta_value_num',
-//     'order' => 'DESC',
-// );
-// $ships = get_posts($queryArgs);
-
-// $small = [];
-// $medium = [];
-// $large = [];
-// foreach ($ships as $s) {
-//     $capacity = get_field('vessel_capacity', $s);
-//     if ($capacity <= 80) {
-//         $small[] = $s;
-//     } else if ($capacity <= 150 && $capacity > 80) {
-//         $medium[] = $s;
-//     } else {
-//         $large[] = $s;
-//     }
-// }
 
 $alwaysActiveMainNav = checkActiveHeader();
 ?>
@@ -87,7 +65,7 @@ $alwaysActiveMainNav = checkActiveHeader();
                                         $hero_slider =  get_field('hero_slider', $item); // first slide image
                                         $hero_image = $hero_slider[0]['image'];
                                     ?>
-                                        <a class="mega-category-item" href="<?php echo get_permalink($page); ?>">
+                                        <a class="mega-category-item" href="<?php echo $url; ?>">
                                             <div class="mega-category-item__image-area">
                                                 <img <?php afloat_image_markup($hero_image['id'], 'square-small', array('square-small')); ?>>
                                             </div>
