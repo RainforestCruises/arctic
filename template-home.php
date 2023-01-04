@@ -41,15 +41,16 @@ get_header();
     get_template_part('template-parts/home/content', 'home-cruises');
     ?>
 
+    <!-- Routes  -->
+    <?php
+    get_template_part('template-parts/home/content', 'home-routes');
+    ?>
+    
     <!-- Itineraries  -->
     <?php
     get_template_part('template-parts/home/content', 'home-itineraries');
     ?>
 
-    <!-- Routes  -->
-    <?php
-    get_template_part('template-parts/home/content', 'home-routes');
-    ?>
 
     <!-- Styles  -->
     <?php

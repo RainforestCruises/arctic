@@ -70,6 +70,34 @@
                     gap: 4rem;
                 }
             }
+
+            &.grid-3x4 {
+                grid-template-columns: repeat(12, 1fr);
+
+                & .resource-card:nth-child(-n+3) {
+                    grid-column: span 4;
+                }
+     
+                & .resource-card:nth-child(n+4) {
+                    grid-column: span 3;
+                }
+    
+
+                @media only screen and (max-width: $bp-large) {               
+                    & .resource-card:nth-child(-n+4) {
+                        grid-column: span 6;
+                    }        
+                    & .resource-card:nth-child(n+5) {
+                        grid-column: span 4;
+                    }
+                }
+
+                @media only screen and (max-width: $bp-small) {               
+                    & .resource-card {
+                        grid-column: span 12 !important;
+                    }                   
+                }
+            }
         }
 
         &__cta {

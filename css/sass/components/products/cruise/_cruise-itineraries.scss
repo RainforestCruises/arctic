@@ -22,6 +22,13 @@
                 width: 100%;           
             }
         }
+
+        & .cruise-itineraries__content__top {
+            grid-template-columns: 26rem calc(100% - 40rem) 8rem;
+            @media only screen and (max-width: $bp-medium) {
+                grid-template-columns: calc(100% - 8rem) 8rem;
+            }
+        }
     }
 
     &__content {
@@ -39,7 +46,7 @@
             grid-template-columns: 20rem calc(100% - 34rem) 8rem;
             gap: 3rem;
             width: 100%;
-
+            margin-bottom: 1rem;
             
             @media only screen and (max-width: $bp-medium) {
                 grid-template-columns: calc(100% - 8rem) 8rem;

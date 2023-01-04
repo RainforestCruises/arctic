@@ -46,6 +46,27 @@
             "mime_types": ""
         },
         {
+            "key": "field_63b5e0970e027",
+            "label": "Minutes to Read",
+            "name": "minutes_to_read",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 5,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
             "key": "field_60abf5ae5dfe3",
             "label": "Breadcrumbs",
             "name": "breadcrumbs",
@@ -242,5 +263,5 @@
     "active": true,
     "description": "Travel Guide - CPT",
     "show_in_rest": 0,
-    "modified": 1668619986
+    "modified": 1672863927
 }

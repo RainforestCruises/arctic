@@ -5,7 +5,7 @@ return array (
   'title' => 'Travel Guides',
   'type' => 'rfc_travel_guides',
   'id' => '5feced60af61d',
-  'updated' => 1669137957,
+  'updated' => 1672863964,
   'columns' => 
   array (
     'title' => 
@@ -73,6 +73,23 @@ return array (
       'filter_label' => '',
       'name' => '60708eb0970a3c',
     ),
+    '63b5e0cc8d4fe0' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Minutes to Read',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_63b5e0970e027',
+      'number_format' => '',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '63b5e0cc8d4fe0',
+    ),
     '5feced9f1658c' => 
     array (
       'type' => 'column-acf_field',
@@ -99,6 +116,12 @@ return array (
       'width' => '',
       'width_unit' => '%',
       'field' => 'field_60abf5ae5dfe3',
+      'repeater_display' => 'subfield',
+      'sub_field' => 'field_63751ebcde5b8',
+      'character_limit' => '20',
+      'before' => '',
+      'after' => '',
+      'separator' => 'comma',
       'export' => 'off',
       'name' => '60708ec7a45a1c',
     ),

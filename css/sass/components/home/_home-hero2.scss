@@ -63,15 +63,16 @@
                 min-height: 20rem;
             }
             @media only screen and (max-width: $bp-small) {
-
                 text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
 
             &__title {
                 font-size: 5.5rem;
                 font-weight: 400;
                 display: flex;
-                align-self: end;
                 line-height: 5.5rem;
                 position: relative;
                 align-items: flex-end;
@@ -82,6 +83,7 @@
                     line-height: 4.5rem;
                     font-weight: 600;
                 }
+      
             }
 
             &__snippet {
@@ -94,6 +96,14 @@
                     letter-spacing: 0rem;
                     font-size: 1.6rem;
                 }
+            }
+            &__video {
+                margin: 2rem 0;
+                margin-bottom: 3.5rem;
+          
+                height: 9rem;
+                width: 9rem;
+                position: relative;
             }
         }
 
@@ -112,14 +122,13 @@
 
             @media only screen and (max-width: $bp-large) {
                 height: auto;
-                margin-bottom: 3rem;        
+                margin-bottom: 3rem;
             }
             @media only screen and (max-width: $bp-small) {
-                width: 100%;    
+                width: 100%;
                 transform: translateX(0rem);
-                margin-bottom: 0rem;  
+                margin-bottom: 0rem;
             }
-   
 
             &__items {
                 display: grid;
@@ -137,7 +146,7 @@
 
                 & .information-card {
                     background-color: $color-white;
-                    border: 1px solid rgba($color-primary, .2);
+                    border: 1px solid rgba($color-primary, 0.2);
                     box-shadow: $shadow-medium-short;
                     height: min-content;
                 }
@@ -151,14 +160,46 @@
                     font-weight: 700;
                     margin-right: 2rem;
                     & button {
-                        opacity: .5;
+                        opacity: 0.5;
                     }
                 }
             }
-
-
-            
         }
     }
 }
 
+.video-cta {
+    position: absolute;
+    transform: translateY(-50%) translateX(-50%);
+    top: 50%;
+    left: 50%;
+
+    width: 9rem;
+    height: 9rem;
+    border-radius: 50%;
+    transition: all 0.2s;
+  
+
+    background-color: rgba($color-white, 0.1);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    border: 2px solid rgba($color-white, 0.3);
+    z-index: 4;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        transform: translateY(-50%) translateX(-50%) scale(.95);
+        background-color: rgba($color-white, 0.2);
+        border: 2px solid rgba($color-white, 0.5);
+    }
+
+    & svg {
+        height: 2rem;
+        width: 2rem;
+        z-index: 5;
+        color: $color-white;
+    }
+}

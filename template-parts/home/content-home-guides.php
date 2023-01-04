@@ -23,35 +23,33 @@ $guides_title_subtext = get_field('guides_title_subtext')
         </div>
 
         <!-- Grid Area -->
-        <div class="grid-block__content__grid grid2">
+        <div class="grid-block__content__grid grid-3x4">
             <?php
             $count = 0;
             foreach ($guides as $guide) :
                 $image = get_field('featured_image', $guide);
+                $minutes_to_read = get_field('minutes_to_read', $guide);
+
                 $title = get_the_title($guide);
                 $text = get_the_excerpt($guide);
+                $lastUpdate = get_the_modified_time( 'F jS, Y', $guide);
 
             ?>
-                <div class="block-card">
-                    <a class="block-card__image-area" href="<?php echo get_permalink($guide) ?>">
+                <div class="resource-card">
+                    <a class="resource-card__image-area" href="<?php echo get_permalink($guide) ?>">
                         <img <?php afloat_image_markup($image['id'], 'portrait-large', array('portrait-large')); ?>>
                     </a>
-                    <div class="block-card__text-area">
-                        <a class="block-card__text-area__title" href="<?php echo get_permalink($guide) ?>">
+                    <div class="resource-card__content">
+                        <a class="resource-card__content__title" href="<?php echo get_permalink($guide) ?>">
                             <?php echo $title; ?>
                         </a>
-                        <div class="block-card__text-area__text">
-                            <?php echo $text; ?>
+                        <div class="resource-card__content__description">
+                            <?php echo $lastUpdate; ?>
                         </div>
-                        <div class="block-card__text-area__cta">
-                            <a class="btn-text-icon" href="<?php echo get_permalink($guide) ?>">
-                                Read More
-                                <svg>
-                                    <use xlink:href="http://localhost/arcticwp/wp-content/themes/arctic/css/img/sprite.svg#icon-chevron-right"></use>
-                                </svg>
-                            </a>
-                        </div>
+                      
                     </div>
+             
+
                 </div>
 
             <?php $count++;

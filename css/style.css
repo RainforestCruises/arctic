@@ -274,10 +274,11 @@ button {
       font-size: 1.8rem; } }
 
 .title-group__sub {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 400;
   color: #747474;
-  padding-bottom: 1rem; }
+  padding-bottom: 1rem;
+  padding-top: .3rem; }
   .title-group__sub p {
     padding-top: 1rem;
     padding-bottom: 2rem; }
@@ -3516,6 +3517,20 @@ h5 {
           .grid-block__content__grid.grid5 {
             grid-template-columns: 100%;
             gap: 4rem; } }
+      .grid-block__content__grid.grid-3x4 {
+        grid-template-columns: repeat(12, 1fr); }
+        .grid-block__content__grid.grid-3x4 .resource-card:nth-child(-n+3) {
+          grid-column: span 4; }
+        .grid-block__content__grid.grid-3x4 .resource-card:nth-child(n+4) {
+          grid-column: span 3; }
+        @media only screen and (max-width: 62.5em) {
+          .grid-block__content__grid.grid-3x4 .resource-card:nth-child(-n+4) {
+            grid-column: span 6; }
+          .grid-block__content__grid.grid-3x4 .resource-card:nth-child(n+5) {
+            grid-column: span 4; } }
+        @media only screen and (max-width: 37.5em) {
+          .grid-block__content__grid.grid-3x4 .resource-card {
+            grid-column: span 12 !important; } }
     .grid-block__content__cta {
       display: flex;
       justify-content: center;
@@ -4280,6 +4295,8 @@ h5 {
   flex-direction: column; }
   .resource-card.small .resource-card__image-area {
     height: 22rem !important; }
+  .resource-card.medium .resource-card__image-area {
+    height: 28rem !important; }
   .resource-card.large .resource-card__image-area {
     height: 44rem !important; }
   .resource-card.shadow .resource-card__image-area {
@@ -4295,7 +4312,7 @@ h5 {
       border-bottom-right-radius: 0; }
     .resource-card.encapsulated .resource-card__content {
       background-color: white;
-      padding: 2rem;
+      padding: 1.5rem 2rem;
       border-bottom-left-radius: 1rem;
       border-bottom-right-radius: 1rem; }
   .resource-card .swiper-button-next,
@@ -4320,7 +4337,7 @@ h5 {
     overflow: hidden; }
     @media only screen and (max-width: 37.5em) {
       .resource-card__image-area {
-        height: 24rem; } }
+        height: 28rem; } }
     .resource-card__image-area img {
       width: 100%;
       height: 100%;
@@ -4362,8 +4379,10 @@ h5 {
         font-size: 1.4rem; }
     .resource-card__content__specs {
       margin-bottom: 0.5rem; }
-      .resource-card__content__specs.bottom-margin {
-        margin-bottom: 1.5rem; }
+      .resource-card__content__specs.divider {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid #e6e6e6; }
       .resource-card__content__specs__item {
         font-size: 1.4rem;
         display: grid;
@@ -4385,21 +4404,21 @@ h5 {
         margin-bottom: 1.5rem;
         padding-bottom: 1.5rem;
         border-bottom: 1px solid #e6e6e6; }
-    .resource-card__content__price-group {
-      color: currentColor;
-      font-size: 1.6rem;
+    .resource-card__content__bottom {
       display: flex;
-      align-items: flex-end; }
-      .resource-card__content__price-group__amount {
-        font-weight: 700;
-        margin-right: 0.5rem; }
-      .resource-card__content__price-group__text {
-        font-size: 1.4rem;
-        padding-bottom: 1px; }
-    .resource-card__content__cta {
-      position: absolute;
-      bottom: 2rem;
-      right: 2rem; }
+      justify-content: space-between;
+      align-items: center; }
+      .resource-card__content__bottom__price-group {
+        color: currentColor;
+        font-size: 1.6rem;
+        display: flex;
+        align-items: flex-end; }
+        .resource-card__content__bottom__price-group__amount {
+          font-weight: 700;
+          margin-right: 0.5rem; }
+        .resource-card__content__bottom__price-group__text {
+          font-size: 1.4rem;
+          padding-bottom: 1px; }
 
 .tiny-card {
   position: relative;
@@ -4961,6 +4980,11 @@ h5 {
     @media only screen and (max-width: 50em) {
       .cruise-itineraries.home-variant .cruise-itineraries__content__main__detail-area {
         width: 100%; } }
+  .cruise-itineraries.home-variant .cruise-itineraries__content__top {
+    grid-template-columns: 26rem calc(100% - 40rem) 8rem; }
+    @media only screen and (max-width: 50em) {
+      .cruise-itineraries.home-variant .cruise-itineraries__content__top {
+        grid-template-columns: calc(100% - 8rem) 8rem; } }
   .cruise-itineraries__content {
     position: relative;
     display: flex;
@@ -4990,7 +5014,8 @@ h5 {
       display: grid;
       grid-template-columns: 20rem calc(100% - 34rem) 8rem;
       gap: 3rem;
-      width: 100%; }
+      width: 100%;
+      margin-bottom: 1rem; }
       @media only screen and (max-width: 50em) {
         .cruise-itineraries__content__top {
           grid-template-columns: calc(100% - 8rem) 8rem;
@@ -8647,12 +8672,14 @@ h5 {
           min-height: 20rem; } }
       @media only screen and (max-width: 37.5em) {
         .home-hero2__content__primary {
-          text-align: center; } }
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center; } }
       .home-hero2__content__primary__title {
         font-size: 5.5rem;
         font-weight: 400;
         display: flex;
-        align-self: end;
         line-height: 5.5rem;
         position: relative;
         align-items: flex-end;
@@ -8671,6 +8698,12 @@ h5 {
             font-weight: 400;
             letter-spacing: 0rem;
             font-size: 1.6rem; } }
+      .home-hero2__content__primary__video {
+        margin: 2rem 0;
+        margin-bottom: 3.5rem;
+        height: 9rem;
+        width: 9rem;
+        position: relative; }
     .home-hero2__content__secondary {
       height: 28rem;
       color: #1d2225;
@@ -8718,7 +8751,34 @@ h5 {
           font-weight: 700;
           margin-right: 2rem; }
           .home-hero2__content__secondary__items__see-more button {
-            opacity: .5; }
+            opacity: 0.5; }
+
+.video-cta {
+  position: absolute;
+  transform: translateY(-50%) translateX(-50%);
+  top: 50%;
+  left: 50%;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  transition: all 0.2s;
+  background-color: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .video-cta:hover {
+    transform: translateY(-50%) translateX(-50%) scale(0.95);
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5); }
+  .video-cta svg {
+    height: 2rem;
+    width: 2rem;
+    z-index: 5;
+    color: #fff; }
 
 .home-newest {
   display: flex;

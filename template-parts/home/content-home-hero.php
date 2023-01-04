@@ -29,6 +29,13 @@ $hero_deals = get_field('hero_deals');
             <div class="home-hero2__content__primary__snippet">
                 <?php echo $hero_subtitle; ?>
             </div>
+            <div class="home-hero2__content__primary__video">
+                <button class="video-cta">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-button-play"></use>
+                    </svg>
+                </button>
+            </div>
         </div>
 
         <div class="home-hero2__content__secondary">
@@ -62,7 +69,7 @@ $hero_deals = get_field('hero_deals');
 
                                     <div class="avatar__title-group__sub">
                                         Up to <span class="green-text"><?php echo $percentage_savings; ?>%</span> savings
-                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

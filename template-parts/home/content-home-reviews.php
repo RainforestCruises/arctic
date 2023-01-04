@@ -12,13 +12,9 @@ $reviews_title_subtext = get_field('reviews_title_subtext')
         <div class="grid-block__content__top">
 
             <!-- Title -->
-            <div class="title-group">
-                <div class="title-group__title">
-                    Reviews From Our Travelers
-                </div>
-                <div class="title-group__sub">
-                    <?php echo $reviews_title_subtext; ?>
-                </div>
+            <div class="title-single">
+            Reviews From Our Travelers
+             
             </div>
 
         </div>

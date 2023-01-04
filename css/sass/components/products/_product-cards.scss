@@ -123,6 +123,12 @@
             height: 22rem !important;
         }
     }
+    &.medium {
+        & .resource-card__image-area {
+            height: 28rem !important;
+        }
+    }
+
     &.large {
         & .resource-card__image-area {
             height: 44rem !important;
@@ -150,7 +156,7 @@
 
         & .resource-card__content {
             background-color: rgba($color-white, 1);
-            padding: 2rem;
+            padding: 1.5rem 2rem;
             border-bottom-left-radius: 1rem;
             border-bottom-right-radius: 1rem;
         }
@@ -185,7 +191,7 @@
         overflow: hidden;
 
         @media only screen and (max-width: $bp-small) {
-            height: 24rem;
+            height: 28rem;
         }
 
         & img {
@@ -253,8 +259,10 @@
         &__specs {
             margin-bottom: 0.5rem;
 
-            &.bottom-margin {
+            &.divider {
                 margin-bottom: 1.5rem;
+                padding-bottom: 1.5rem;
+                border-bottom: 1px solid $color-grey-light-1a;
             }
 
             &__item {
@@ -290,26 +298,31 @@
             }
         }
 
-        &__price-group {
-            color: currentColor;
-            font-size: 1.6rem;
+        &__bottom {
             display: flex;
-            align-items: flex-end;
-            &__amount {
-                font-weight: 700;
-                margin-right: 0.5rem;
+            justify-content: space-between;
+            align-items: center;
+            &__price-group {
+                color: currentColor;
+                font-size: 1.6rem;
+                display: flex;
+                align-items: flex-end;
+                &__amount {
+                    font-weight: 700;
+                    margin-right: 0.5rem;
+                }
+                &__text {
+                    font-size: 1.4rem;
+                    padding-bottom: 1px;
+                }
             }
-            &__text {
-                font-size: 1.4rem;
-                padding-bottom: 1px;
+    
+            &__cta {
+                
             }
         }
 
-        &__cta {
-            position: absolute;
-            bottom: 2rem;
-            right: 2rem;
-        }
+       
     }
 }
 

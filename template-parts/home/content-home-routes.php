@@ -14,10 +14,10 @@ $routes = get_field('routes');
             <div class="cruise-itineraries__content__top__title">
                 <div class="title-group">
                     <div class="title-group__title">
-                        Routes
+                        Sailing Routes
                     </div>
                     <div class="title-group__sub">
-                        There are <?php echo count($routes); ?> main sailing routes
+                        There are <?php echo count($routes); ?> main Antarctica sailing routes
                     </div>
                 </div>
             </div>
@@ -105,6 +105,9 @@ $routes = get_field('routes');
                                                 <div class="avatar__title-group__title">
                                                     <?php echo $title; ?>
                                                 </div>
+                                                <div class="avatar__title-group__sub">
+                                                Avg Length:  <?php echo $length; ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -124,7 +127,7 @@ $routes = get_field('routes');
 
 
                                 <!-- Desktop -->
-                                <div class="resource-card small encapsulated ">
+                                <div class="resource-card medium encapsulated ">
                                     <!-- Images Slider -->
                                     <div class="resource-card__image-area">
                                         <img <?php afloat_image_markup($image['id'], 'landscape-small', array('landscape-small', 'portrait-small')); ?>>
@@ -138,7 +141,6 @@ $routes = get_field('routes');
                                             <div class="resource-card__content__title-group__title">
                                                 <?php echo $title; ?>
                                             </div>
-
                                         </div>
 
                                         <!-- Description -->
@@ -147,7 +149,7 @@ $routes = get_field('routes');
                                         </div>
 
                                         <!-- Specs -->
-                                        <div class="resource-card__content__specs bottom-margin">
+                                        <div class="resource-card__content__specs divider">
 
                                             <!-- Length -->
                                             <div class="resource-card__content__specs__item">
@@ -189,24 +191,27 @@ $routes = get_field('routes');
                                         </div>
 
                                         <!-- Price Group -->
-                                        <div class="resource-card__content__price-group">
-                                            <div class="resource-card__content__price-group__amount">
-                                                <?php echo "$" . number_format($price_low, 0) . " - " . "$" . number_format($price_high, 0) ?>
+                                        <div class="resource-card__content__bottom">
+                                            <div class="resource-card__content__bottom__price-group">
+                                                <div class="resource-card__content__bottom__price-group__amount">
+                                                    <?php echo "$" . number_format($price_low, 0) . " - " . "$" . number_format($price_high, 0) ?>
+                                                </div>
+                                                <div class="resource-card__content__bottom__price-group__text">
+                                                    Per Person
+                                                </div>
                                             </div>
-                                            <div class="resource-card__content__price-group__text">
-                                                Per Person
+
+                                            <!-- CTA -->
+                                            <div class="resource-card__content__bottom__cta">
+                                                <a class="cta-square-icon" href="<?php echo $landing_page; ?>">
+                                                    Explore
+                                                    <svg>
+                                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                                                    </svg>
+                                                </a>
                                             </div>
                                         </div>
 
-                                        <!-- CTA -->
-                                        <div class="resource-card__content__cta">
-                                            <a class="cta-square-icon" href="<?php echo $landing_page; ?>">
-                                                Explore
-                                                <svg>
-                                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                                                </svg>
-                                            </a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
