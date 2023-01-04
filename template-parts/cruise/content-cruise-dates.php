@@ -69,14 +69,14 @@ $departures = $args['departures'];
 
                                 <div class="avatar avatar--small">
                                     <div class="avatar__image-area">
-                                    <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
+                                        <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
                                     </div>
                                     <div class="avatar__title-group">
                                         <div class="avatar__title-group__title">
                                             <?php echo  $title; ?>
                                         </div>
                                         <div class="avatar__title-group__sub">
-                                        <?php echo $d['LengthInNights'] + 1 . ' Days / ' . $d['LengthInNights'] . ' Nights'; ?>
+                                            <?php echo $d['LengthInNights'] + 1 . ' Days / ' . $d['LengthInNights'] . ' Nights'; ?>
                                         </div>
                                     </div>
                                 </div>
