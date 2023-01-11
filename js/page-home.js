@@ -28,7 +28,7 @@ jQuery(document).ready(function ($) {
 
     new Swiper('#itineraries-best-slider', {
         spaceBetween: 15,
-        slidesPerView: 1,
+        slidesPerView: 1.2,
         watchSlidesProgress: true,
         navigation: {
             nextEl: '.itineraries-best-slider-btn-next',
@@ -49,7 +49,7 @@ jQuery(document).ready(function ($) {
 
     new Swiper('#styles-slider', {
         spaceBetween: 15,
-        slidesPerView: 1,
+        slidesPerView: 1.2,
         watchSlidesProgress: true,
         navigation: {
             nextEl: '.styles-slider-btn-next',

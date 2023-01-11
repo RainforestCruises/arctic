@@ -1,5 +1,7 @@
 <?php
 $routes = get_field('routes');
+$routes_title_subtext = get_field('routes_title_subtext');
+
 ?>
 
 <!-- Itineraries -->
@@ -14,10 +16,10 @@ $routes = get_field('routes');
             <div class="cruise-itineraries__content__top__title">
                 <div class="title-group">
                     <div class="title-group__title">
-                        Sailing Routes
+                        Antarctica Cruise Routes
                     </div>
                     <div class="title-group__sub">
-                        There are <?php echo count($routes); ?> main Antarctica sailing routes
+                        <?php echo $routes_title_subtext; ?>
                     </div>
                 </div>
             </div>
@@ -106,7 +108,7 @@ $routes = get_field('routes');
                                                     <?php echo $title; ?>
                                                 </div>
                                                 <div class="avatar__title-group__sub">
-                                                Avg Length:  <?php echo $length; ?>
+                                                    Avg Length: <?php echo $length; ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -152,39 +154,39 @@ $routes = get_field('routes');
                                         <div class="resource-card__content__specs divider">
 
                                             <!-- Length -->
-                                            <div class="resource-card__content__specs__item">
-                                                <div class="resource-card__content__specs__item__icon">
+                                            <div class="specs-item">
+                                                <div class="specs-item__icon">
                                                     <svg>
                                                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-time-clock"></use>
                                                     </svg>
                                                 </div>
-                                                <div class="resource-card__content__specs__item__text">
+                                                <div class="specs-item__text">
                                                     Avg Length: <?php echo $length; ?>
                                                 </div>
                                             </div>
 
 
                                             <!-- Embark -->
-                                            <div class="resource-card__content__specs__item">
-                                                <div class="resource-card__content__specs__item__icon">
+                                            <div class="specs-item">
+                                                <div class="specs-item__icon">
                                                     <svg>
                                                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-check-in"></use>
                                                     </svg>
                                                 </div>
-                                                <div class="resource-card__content__specs__item__text">
+                                                <div class="specs-item__text">
                                                     Embarkation Ports: <?php echo $portsDisplay; ?>
                                                 </div>
                                             </div>
 
 
                                             <!-- Destinations -->
-                                            <div class="resource-card__content__specs__item">
-                                                <div class="resource-card__content__specs__item__icon">
+                                            <div class="specs-item">
+                                                <div class="specs-item__icon">
                                                     <svg>
                                                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-pin-e"></use>
                                                     </svg>
                                                 </div>
-                                                <div class="resource-card__content__specs__item__text">
+                                                <div class="specs-item__text">
                                                     Sites: <?php echo $destinations; ?>
                                                 </div>
                                             </div>

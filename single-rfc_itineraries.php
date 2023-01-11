@@ -12,7 +12,9 @@ $ships = get_field('ships');
 $productName = get_field('display_name');
 $days = get_field('itinerary');
 $departures = getDepartureList($itinerary);
-$lowestPrice = getLowestDepartureListPrice($departures);
+$lowestOverallPrice = getLowestDepartureListPrice($departures);
+$bestOverallDiscount = getBestDepartureListDiscount($departures);
+
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
 $shipSizeRange = getItineraryShipSize($ships);
@@ -38,7 +40,8 @@ get_header();
 $args = array(
   'ships' => $ships,
   'productName' => $productName,
-  'lowestPrice' => $lowestPrice,
+  'lowestOverallPrice' => $lowestOverallPrice,
+  'bestOverallDiscount' => $bestOverallDiscount,
   'days' => $days,
   'departures' => $departures,
   'curentYear' => $curentYear,

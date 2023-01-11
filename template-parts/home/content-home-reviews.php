@@ -13,8 +13,7 @@ $reviews_title_subtext = get_field('reviews_title_subtext')
 
             <!-- Title -->
             <div class="title-single">
-            Reviews From Our Travelers
-             
+                Antarctica Cruises’ Reviews
             </div>
 
         </div>

@@ -14,7 +14,7 @@ $styles_title_subtext = get_field('styles_title_subtext')
             <!-- Title -->
             <div class="title-group">
                 <div class="title-group__title">
-                    Travel Styles
+                    Antarctica Cruise Themes
                 </div>
                 <div class="title-group__sub">
                     <?php echo $styles_title_subtext; ?>

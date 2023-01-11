@@ -14,7 +14,7 @@ $guides_title_subtext = get_field('guides_title_subtext')
             <!-- Title -->
             <div class="title-group">
                 <div class="title-group__title">
-                    Helpful Exploration Guides
+                Antarctica Expedition Cruise Guide
                 </div>
                 <div class="title-group__sub">
                     <?php echo $guides_title_subtext; ?>

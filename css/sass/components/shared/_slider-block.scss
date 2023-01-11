@@ -1,7 +1,7 @@
 .slider-block {
     @include flexBlock;
     position: relative;
-
+    overflow-x: hidden;
     &.narrow {
         & .slider-block__content {
             max-width: $page-width;         
@@ -41,6 +41,10 @@
                 position: relative;
                 width: 8.5rem;
 
+                @media only screen and (max-width: $bp-small) {
+                   display: none;
+                }
+
                 & .swiper-button-prev {
                     position: absolute !important;
                     margin-top: 0 !important;
@@ -63,6 +67,14 @@
 
         &__slider {
             width: 100%;
+
+            @media only screen and (max-width: $bp-small) {
+                & .swiper {
+                    overflow: visible;
+                }
+             }
+
+            
 
             &__no-results {
                 display: none;

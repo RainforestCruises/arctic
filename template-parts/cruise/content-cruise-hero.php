@@ -3,8 +3,9 @@
 $title = get_the_title();
 $snippet = get_field('top_snippet');
 $itineraries = $args['itineraries'];
+$lowestOverallPrice = $args['lowestOverallPrice'];
+$bestOverallDiscount = $args['bestOverallDiscount'];
 $itineraryCount = count($itineraries);
-
 $images = get_field('hero_gallery');
 $desktopImages = array_slice($images, 1); //for gallery desktop slider
 
@@ -102,9 +103,17 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                             </div>
                         </div>
                         <div class="product-hero__content__main__secondary__info__starting-price__amount">
-                            <?php echo "$" . number_format($args['lowestPrice'], 0); ?>
-                            <span class="u-small-text">USD</span>
+                            <div class="product-hero__content__main__secondary__info__starting-price__amount__text">
+                                <?php echo "$" . number_format($lowestOverallPrice, 0); ?>
+                                <span class="u-small-text">USD</span>
+                            </div>
+                            <?php if ($bestOverallDiscount) : ?>
+                                <div class="product-hero__content__main__secondary__info__starting-price__amount__discount">
+                                    Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
+                                </div>
+                            <?php endif; ?>    
                         </div>
+
                     </div>
 
                     <!-- Inquire CTA Button -->
@@ -187,8 +196,13 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
             </div>
         </div>
         <div class="mobile-info__starting-price__amount">
-            <?php echo "$" . number_format($args['lowestPrice'], 0); ?>
+            <?php echo "$" . number_format($lowestOverallPrice, 0); ?>
             <span class="u-small-text">USD</span>
+            <?php if ($bestOverallDiscount) : ?>
+                <div class="mobile-info__starting-price__amount__discount">
+                    Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
+                </div>
+            <?php endif; ?>
         </div>
 
     </div>

@@ -81,6 +81,7 @@ $itineraries = get_posts($queryArgs);
 
                     <?php foreach ($itineraries as $itinerary) :
                         $images =  get_field('hero_gallery', $itinerary);
+                        $image = $images[0];
                         $itineraries =  get_field('itineraries', $itinerary);
                         $title = get_field('display_name', $itinerary);
                         $days = get_field('itinerary', $itinerary);
@@ -101,17 +102,7 @@ $itineraries = get_posts($queryArgs);
 
                             <!-- Images Slider -->
                             <div class="resource-card__image-area swiper related-card-image-area">
-                                <div class="swiper-wrapper">
-                                    <?php foreach ($images as $image) : ?>
-                                        <a class="resource-card__image-area__item swiper-slide" href="<?php echo get_permalink($itinerary) ?>">
-                                            <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
-                                        </a>
-                                    <?php endforeach; ?>
-                                </div>
-
-                                <div class="swiper-pagination"></div>
-                                <div class="swiper-button-prev swiper-button-prev--overlay"></div>
-                                <div class="swiper-button-next swiper-button-prev--overlay"></div>
+                                <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
                             </div>
 
                             <!-- Content -->
@@ -126,24 +117,24 @@ $itineraries = get_posts($queryArgs);
                                 <div class="resource-card__content__specs">
 
                                     <!-- Itinerary -->
-                                    <div class="resource-card__content__specs__item">
-                                        <div class="resource-card__content__specs__item__icon">
+                                    <div class="specs-item">
+                                        <div class="specs-item__icon">
                                             <svg>
                                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-time-clock"></use>
                                             </svg>
                                         </div>
-                                        <div class="resource-card__content__specs__item__text">
+                                        <div class="specs-item__text">
                                             Length: <?php echo $length; ?>
                                         </div>
                                     </div>
                                     <!-- Ships -->
-                                    <div class="resource-card__content__specs__item">
-                                        <div class="resource-card__content__specs__item__icon">
+                                    <div class="specs-item">
+                                        <div class="specs-item__icon">
                                             <svg>
                                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat"></use>
                                             </svg>
                                         </div>
-                                        <div class="resource-card__content__specs__item__text">
+                                        <div class="specs-item__text">
                                             Ships: <?php echo $shipsDisplay; ?>
                                         </div>
                                     </div>

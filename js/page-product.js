@@ -228,8 +228,9 @@ jQuery(document).ready(function ($) {
     // Cabins Swiper
     new Swiper('#cabins-slider', {
         spaceBetween: 15,
-        slidesPerView: 1,
+        slidesPerView: 1.2,
         watchSlidesProgress: true,
+        slideToClickedSlide: true,
         navigation: {
             nextEl: '.cabins-slider-btn-next',
             prevEl: '.cabins-slider-btn-prev',
@@ -248,8 +249,9 @@ jQuery(document).ready(function ($) {
     // Extras Swiper
     new Swiper('#extras-slider', {
         spaceBetween: 15,
-        slidesPerView: 1,
+        slidesPerView: 1.2,
         watchSlidesProgress: true,
+        slideToClickedSlide: true,
         navigation: {
             nextEl: '.extras-slider-btn-next',
             prevEl: '.extras-slider-btn-prev',
@@ -291,7 +293,7 @@ jQuery(document).ready(function ($) {
     // Related Swiper
     new Swiper('#related-slider', {
         spaceBetween: 15,
-        slidesPerView: 1,
+        slidesPerView: 1.2,
         watchSlidesProgress: true,
         navigation: {
             nextEl: '.related-slider-btn-next',

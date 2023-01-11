@@ -1,7 +1,7 @@
 <?php
 
 
-//DEPARTURES
+// DEPARTURE LIST -----------------------------------------------
 function getDepartureList($post, $specificShip = null)
 {
     $departures = [];
@@ -33,6 +33,7 @@ function getDepartureList($post, $specificShip = null)
                             'ItineraryPost' => $i,
                             'LowestPrice' => getLowestDeparturePrice($d),
                             'HighestPrice' => getHighestDeparturePrice($d),
+                            'BestDiscount' => getBestDepartureDiscount($d),
                             'LengthInNights' => $itineraryLength,
                         ];
                         $departures[] = $departure;
@@ -68,6 +69,7 @@ function getDepartureList($post, $specificShip = null)
                         'ItineraryPost' => $post,
                         'LowestPrice' => getLowestDeparturePrice($d),
                         'HighestPrice' => getHighestDeparturePrice($d),
+                        'BestDiscount' => getBestDepartureDiscount($d),
                         'LengthInNights' => $itineraryLength,
                     ];
                     $departures[] = $departure;
@@ -83,6 +85,7 @@ function getDepartureList($post, $specificShip = null)
     return $departures;
 }
 
+// OVERALL
 // get lowest price from a list of departures
 function getLowestDepartureListPrice($departures)
 {
@@ -112,8 +115,22 @@ function getHighestDepartureListPrice($departures)
     $price = max($priceArray); //lowest price, not sold out
     return $price;
 }
+// get best discount from a list of departures
+function getBestDepartureListDiscount($departures)
+{
+    $bestDiscount = 0;
+    $bestDiscountArray = [];
+    foreach ($departures as $d) {
+        $bestDiscount = $d['BestDiscount'];
+        if ($bestDiscount > 0) {
+            $bestDiscountArray[] = $bestDiscount;
+        }
+    }
+    $bestDiscount = max($bestDiscountArray); //lowest price, not sold out
+    return $bestDiscount;
+}
 
-
+// PER DEPARTURE
 // get lowest cabin price (not sold out) from a single departure
 function getLowestDeparturePrice($departure)
 {
@@ -152,6 +169,30 @@ function getHighestDeparturePrice($departure)
 
     $price = max($priceArray); //highest price, not sold out
     return $price;
+}
+
+function getBestDepartureDiscount($departure)
+{
+    $bestDiscount = 0;
+    $cabin_prices = $departure['cabin_prices'];
+    if (!$cabin_prices) {
+        return $bestDiscount;
+    }
+
+    $percentageArray = [];
+    foreach ($cabin_prices as $c) {
+        $difference = 0;
+        $percentage = 0;
+        if ($c['sold_out'] != true && $c['discounted_price'] != "") {
+            $difference = $c['price'] - $c['discounted_price'];
+            $percentage = ceil(($difference / $c['price']) * 100);
+
+            $percentageArray[] = $percentage;
+        }
+    }
+
+    $bestDiscount = max($percentageArray); //lowest price, not sold out
+    return $bestDiscount;
 }
 
 

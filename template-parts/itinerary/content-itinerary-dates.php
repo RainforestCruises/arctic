@@ -5,6 +5,7 @@ $currentYear = date('Y');
 $yearSelections = $args['yearSelections'];
 $ships = $args['ships'];
 $departures = $args['departures'];
+console_log($departures);
 
 ?>
 
@@ -67,6 +68,8 @@ $departures = $args['departures'];
                         $image = $hero_gallery[0];
                         $embarkationPost = get_field('embarkation_point', $itineraryPost);
                         $embarkationName = get_the_title($embarkationPost) . ', ' . get_field('country_name', $embarkationPost);
+                        $bestDiscount = $d['BestDiscount'];
+
                     ?>
 
                         <div class="information-card info-departure-card swiper-slide" data-filter-date="<?php echo date("Y", $departureStartDate); ?>" data-filter-secondary="<?php echo $shipId; ?>">
@@ -129,6 +132,11 @@ $departures = $args['departures'];
                                         <div class="specs-item__text__main">
                                             <?php echo "$ " . number_format($d['LowestPrice'], 0);  ?> - <?php echo "$ " . number_format($d['HighestPrice'], 0);  ?>
                                         </div>
+                                        <?php if ($bestDiscount) : ?>
+                                            <div class="specs-item__text__sub">
+                                                Up to <span class="green-text"><?php echo $bestDiscount; ?>%</span> savings
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
 

@@ -318,6 +318,12 @@
                                 color: $color-primary;
                             }
 
+                            &__discount {
+                                font-size: 1.2rem;
+                                font-weight: 400;
+                                transform: translateY(-1rem);
+                            }
+
                             @media only screen and (max-width: $bp-small) {
                                 padding-left: 0rem;
                             }
@@ -497,6 +503,12 @@
             & span {
                 transform: translateX(-1rem);
                 color: $color-primary;
+            }
+
+            &__discount {
+                font-size: 1.2rem;
+                font-weight: 400;
+                transform: translateY(-1rem);
             }
         }
 

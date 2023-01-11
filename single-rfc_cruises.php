@@ -16,11 +16,10 @@ $ship = get_post();
 $productName = get_the_title();
 $itineraries = get_field('itineraries');
 $departures = getDepartureList($ship);
-$lowestPrice = getLowestDepartureListPrice($departures);
-
+$lowestOverallPrice = getLowestDepartureListPrice($departures);
+$bestOverallDiscount = getBestDepartureListDiscount($departures);
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
-
 
 //cabin posts
 $args = array(
@@ -37,7 +36,8 @@ $cabins = get_posts($args);
 
 $args = array(
   'productName' => $productName,
-  'lowestPrice' => $lowestPrice,
+  'lowestOverallPrice' => $lowestOverallPrice,
+  'bestOverallDiscount' => $bestOverallDiscount,
   'itineraries' => $itineraries,
   'departures' => $departures,
   'curentYear' => $curentYear,

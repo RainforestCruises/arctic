@@ -128,6 +128,33 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_63bedd4ae1ed3",
+            "label": "Is Sharable",
+            "name": "is_sharable",
+            "type": "true_false",
+            "instructions": "Indicate that the cabin can be shared",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6369315086c32",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_636551accb56e",
             "label": "Capacity",
             "name": "capacity",
@@ -205,5 +232,5 @@
     "active": true,
     "description": "Cabins CPT",
     "show_in_rest": 0,
-    "modified": 1668444641
+    "modified": 1673452943
 }

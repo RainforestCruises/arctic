@@ -97,6 +97,8 @@ $ships = $args['ships'];
                         $embarkationName = get_the_title($embarkationPost) . ', ' . get_field('country_name', $embarkationPost);
                         $secondaryFilterId = $itineraryPostId;
                         $subtitleDisplay = $d['LengthInNights'] + 1 . ' Days / ' . $d['LengthInNights'] . ' Nights';
+                        $bestDiscount = $d['BestDiscount'];
+
                         if (get_post_type() == 'rfc_itineraries') {
                             $ship = $d['Ship'];
                             $shipId = $d['ShipId'];
@@ -169,6 +171,11 @@ $ships = $args['ships'];
                                             <div class="specs-item__text__main">
                                                 <?php echo "$ " . number_format($d['LowestPrice'], 0);  ?> - <?php echo "$ " . number_format($d['HighestPrice'], 0);  ?>
                                             </div>
+                                            <?php if ($bestDiscount) : ?>
+                                                <div class="specs-item__text__sub">
+                                                    Up to <span class="green-text"><?php echo $bestDiscount; ?>%</span> savings
+                                                </div>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 </div>
@@ -219,6 +226,7 @@ $ships = $args['ships'];
                             $title =  get_field('display_name', $cabinPost);
                             $dimensions =  get_field('dimensions', $cabinPost);
                             $is_single =  get_field('is_single', $cabinPost);
+                            $is_sharable =  get_field('is_sharable', $cabinPost);
                             $capacity =  get_field('capacity', $cabinPost);
                             $beds =  get_field('beds', $cabinPost);
                             $hero_gallery = get_field('images', $cabinPost);
@@ -246,7 +254,12 @@ $ships = $args['ships'];
                                             <div class="avatar__title-group__sub">
                                                 <?php echo $capacity; ?>, <?php echo $beds; ?>
                                             </div>
-                                            <div class="avatar__title-group__sub">
+                                            <?php if ($is_sharable) : ?>
+                                                <div class="avatar__title-group__sub" style="font-style: italic;">
+                                                    Option to Share
+                                                </div>
+                                            <?php endif; ?>
+                                            <div class="avatar__title-group__sub" >
                                                 <?php echo $dimensions; ?>
                                             </div>
                                         </div>
@@ -260,7 +273,7 @@ $ships = $args['ships'];
                                     <!-- Price Group -->
                                     <div class="price-display-group">
                                         <div class="price-display-group__text">
-                                            <?php echo !$is_single ? 'Double' : 'Single'; ?>
+                                            <?php echo !$is_single ? 'Full Occupancy Price' : 'Single Price'; ?>
                                         </div>
                                         <div class="price-display-group__amount">
                                             <div class="price-display-group__amount__main <?php echo ($hasDiscount ? 'discounted' : '') ?>">
@@ -289,10 +302,6 @@ $ships = $args['ships'];
                                 </div>
 
                                 <div class="information-card__bottom">
-
-
-
-
 
                                     <!-- CTA -->
                                     <div class="information-card__bottom__cta">

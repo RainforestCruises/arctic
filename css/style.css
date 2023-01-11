@@ -266,12 +266,9 @@ button {
 
 .title-group__title {
   font-size: 2.2rem;
-  line-height: 2.2rem;
+  line-height: 2.6rem;
   font-weight: 700;
   color: #1d2225; }
-  @media only screen and (max-width: 37.5em) {
-    .title-group__title {
-      font-size: 1.8rem; } }
 
 .title-group__sub {
   font-size: 1.3rem;
@@ -281,7 +278,7 @@ button {
   padding-top: .3rem; }
   .title-group__sub p {
     padding-top: 1rem;
-    padding-bottom: 2rem; }
+    padding-bottom: 1rem; }
 
 .title-single {
   font-family: "Metropolis", sans-serif;
@@ -289,10 +286,6 @@ button {
   color: #1d2225;
   font-size: 2.2rem;
   margin-bottom: 2rem; }
-  @media only screen and (max-width: 37.5em) {
-    .title-single {
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem; } }
 
 .highlight-list {
   list-style: none;
@@ -636,10 +629,10 @@ p {
     color: #1d2225; }
 
 .green-text {
-  color: #00a84b; }
+  color: #00a84b !important; }
 
 .blue-text {
-  color: #4d8eff; }
+  color: #4d8eff !important; }
 
 .badge-solid {
   color: #fff;
@@ -3781,6 +3774,10 @@ h5 {
               .product-hero__content__main__secondary__info__starting-price__amount span {
                 transform: translateX(-1rem);
                 color: #1d2225; }
+              .product-hero__content__main__secondary__info__starting-price__amount__discount {
+                font-size: 1.2rem;
+                font-weight: 400;
+                transform: translateY(-1rem); }
               @media only screen and (max-width: 37.5em) {
                 .product-hero__content__main__secondary__info__starting-price__amount {
                   padding-left: 0rem; } }
@@ -3911,6 +3908,10 @@ h5 {
       .mobile-info__starting-price__amount span {
         transform: translateX(-1rem);
         color: #1d2225; }
+      .mobile-info__starting-price__amount__discount {
+        font-size: 1.2rem;
+        font-weight: 400;
+        transform: translateY(-1rem); }
     .mobile-info__starting-price__description {
       position: absolute;
       bottom: -1rem;
@@ -4334,7 +4335,7 @@ h5 {
     width: 100%;
     height: 33rem;
     border-radius: 1rem;
-    overflow: hidden; }
+    overflow: hidden !important; }
     @media only screen and (max-width: 37.5em) {
       .resource-card__image-area {
         height: 28rem; } }
@@ -4383,19 +4384,8 @@ h5 {
         margin-bottom: 1.5rem;
         padding-bottom: 1.5rem;
         border-bottom: 1px solid #e6e6e6; }
-      .resource-card__content__specs__item {
-        font-size: 1.4rem;
-        display: grid;
-        grid-template-columns: min-content 1fr;
-        color: #1d2225; }
-        .resource-card__content__specs__item__icon {
-          margin-right: 1rem; }
-          .resource-card__content__specs__item__icon svg {
-            height: 1.6rem;
-            width: 1.6rem;
-            fill: currentColor;
-            color: currentColor;
-            transform: translateY(1px); }
+      .resource-card__content__specs .specs-item {
+        margin-bottom: 0 !important; }
     .resource-card__content__description {
       margin-bottom: 0.5rem;
       font-size: 1.4rem;
@@ -4442,10 +4432,6 @@ h5 {
   color: #1d2225;
   position: relative;
   background-color: #fff; }
-  @media only screen and (max-width: 37.5em) {
-    .information-card {
-      flex-shrink: 100 !important;
-      min-width: 24rem; } }
   @media only screen and (min-width: 37.5em) {
     .information-card--horizontal {
       display: grid;
@@ -4597,8 +4583,8 @@ h5 {
 .price-display-group {
   width: min-content; }
   .price-display-group__text {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.3rem;
+    white-space: nowrap;
     line-height: 2rem;
     color: #1d2225; }
   .price-display-group__amount {
@@ -4972,6 +4958,17 @@ h5 {
     @media only screen and (max-width: 37.5em) {
       .cruise-itineraries.home-variant .cruise-itineraries__content__main {
         height: 42rem; } }
+  .cruise-itineraries.home-variant .cruise-itineraries__content__top__title {
+    grid-column: 1 /-1; }
+  .cruise-itineraries.home-variant .cruise-itineraries__content__top__nav-area {
+    grid-column: 1 / span 2;
+    transform: translateY(-1.2rem); }
+    @media only screen and (max-width: 50em) {
+      .cruise-itineraries.home-variant .cruise-itineraries__content__top__nav-area {
+        transform: translateY(0); } }
+  @media only screen and (max-width: 50em) {
+    .cruise-itineraries.home-variant .cruise-itineraries__content__top__nav {
+      display: none; } }
   .cruise-itineraries.home-variant .cruise-itineraries__content__main__detail-area {
     width: 55rem; }
     @media only screen and (max-width: 62.5em) {
@@ -5022,7 +5019,7 @@ h5 {
           gap: 0rem;
           margin-bottom: 1.5rem; } }
       .cruise-itineraries__content__top__nav-area {
-        padding-top: .3rem;
+        padding-top: 1rem;
         height: min-content;
         width: 100%; }
         @media only screen and (max-width: 75em) {
@@ -5169,7 +5166,7 @@ h5 {
 .cabins-modal__filters {
   display: flex;
   align-items: center;
-  transform: translateY(-2rem);
+  margin-bottom: 1rem;
   font-size: 1.6rem;
   font-weight: 700;
   color: #347fff; }
@@ -11411,7 +11408,8 @@ h5 {
   align-items: center;
   position: relative;
   width: 100%;
-  position: relative; }
+  position: relative;
+  overflow-x: hidden; }
   .slider-block.narrow .slider-block__content {
     max-width: 128rem; }
   .slider-block.inverse {
@@ -11437,6 +11435,9 @@ h5 {
       .slider-block__content__top__nav {
         position: relative;
         width: 8.5rem; }
+        @media only screen and (max-width: 37.5em) {
+          .slider-block__content__top__nav {
+            display: none; } }
         .slider-block__content__top__nav .swiper-button-prev {
           position: absolute !important;
           margin-top: 0 !important;
@@ -11453,6 +11454,9 @@ h5 {
           top: auto; }
     .slider-block__content__slider {
       width: 100%; }
+      @media only screen and (max-width: 37.5em) {
+        .slider-block__content__slider .swiper {
+          overflow: visible; } }
       .slider-block__content__slider__no-results {
         display: none;
         width: 100%;
@@ -12469,7 +12473,8 @@ h5 {
         background-color: #fff !important;
         height: 6rem !important; } }
     .nav-secondary__content-mobile__title {
-      font-size: 1.8rem;
+      font-size: 2.2rem;
+      line-height: 2.6rem;
       padding-right: 2rem;
       font-weight: 700;
       min-height: 6rem;

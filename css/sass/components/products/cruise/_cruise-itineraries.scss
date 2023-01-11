@@ -8,18 +8,34 @@
         }
         & .cruise-itineraries__content__main {
             height: 70rem;
-            @media only screen and (max-width: $bp-small) { 
+            @media only screen and (max-width: $bp-small) {
                 height: 42rem;
+            }
+        }
+
+        & .cruise-itineraries__content__top__title {
+            grid-column: 1 /-1;
+        }
+        & .cruise-itineraries__content__top__nav-area {
+            grid-column: 1 / span 2;
+            transform: translateY(-1.2rem);
+            @media only screen and (max-width: $bp-medium) {
+                transform: translateY(0);
+            }
+        }
+        & .cruise-itineraries__content__top__nav {
+            @media only screen and (max-width: $bp-medium) {
+                display: none;
             }
         }
 
         & .cruise-itineraries__content__main__detail-area {
             width: 55rem;
-            @media only screen and (max-width: $bp-large) { 
+            @media only screen and (max-width: $bp-large) {
                 width: 46rem;
             }
-            @media only screen and (max-width: $bp-medium) { 
-                width: 100%;           
+            @media only screen and (max-width: $bp-medium) {
+                width: 100%;
             }
         }
 
@@ -39,7 +55,6 @@
         @include topDivider;
         margin-top: 3rem;
         max-width: $page-width;
-       
 
         &__top {
             display: grid;
@@ -47,7 +62,7 @@
             gap: 3rem;
             width: 100%;
             margin-bottom: 1rem;
-            
+
             @media only screen and (max-width: $bp-medium) {
                 grid-template-columns: calc(100% - 8rem) 8rem;
                 gap: 0rem;
@@ -55,12 +70,10 @@
             }
 
             &__title {
-
-                
             }
 
             &__nav-area {
-                padding-top: .3rem;
+                padding-top: 1rem;
                 height: min-content;
                 width: 100%;
 
@@ -74,7 +87,6 @@
                     grid-column: 1 / -1;
                 }
 
-        
                 &__slider {
                     position: relative;
 
@@ -85,20 +97,18 @@
                         mask-image: none;
                     }
 
-
                     &__item {
-                        
                         &__button {
                             box-shadow: $shadow-short-bottom-light;
                             width: 100%;
                             //padding: 0.8rem 1.6rem;
                             height: 3.5rem;
                             cursor: pointer;
-                            position: relative;   
+                            position: relative;
                             background-color: $color-white;
                             font-size: 1.4rem;
                             border-radius: 4rem;
-                            transition: all 0.2s;               
+                            transition: all 0.2s;
                             border: 1px solid $color-grey-light-1a;
                             color: $color-primary;
                             font-size: 1.4rem;
@@ -113,8 +123,6 @@
                                     display: none;
                                 }
                             }
-
-                           
                         }
 
                         &.swiper-slide-thumb-active {
@@ -147,31 +155,28 @@
             display: flex;
             justify-content: space-between;
             position: relative;
-   
-            @media only screen and (max-width: $bp-medium) { 
+
+            @media only screen and (max-width: $bp-medium) {
                 align-items: flex-end;
             }
-            @media only screen and (max-width: $bp-small) { 
+            @media only screen and (max-width: $bp-small) {
                 height: 42rem;
             }
 
-         
             &__detail-area {
                 width: 46rem;
                 transform: translateX(-3rem) translateY(-1.5rem); // for shadow
                 z-index: 2;
 
-                @media only screen and (max-width: $bp-medium) { 
-                    width: 100%;       
+                @media only screen and (max-width: $bp-medium) {
+                    width: 100%;
                     height: min-content;
-                    padding: 0 2.5rem; 
-                    padding-bottom: 3rem;          
-                    transform: translateY(0) translateX(0);          
+                    padding: 0 2.5rem;
+                    padding-bottom: 3rem;
+                    transform: translateY(0) translateX(0);
                 }
 
-
                 &__slider {
-
                     @media only screen and (max-width: $bp-medium) {
                         width: 100%;
                         position: relative;
@@ -180,14 +185,11 @@
                         order: 2;
                     }
 
-
                     &__slide {
                         user-select: none;
                         padding: 3rem;
 
-
-
-                        .tiny-card{
+                        .tiny-card {
                             display: none !important;
                         }
 
@@ -198,10 +200,9 @@
 
                             .resource-card {
                                 display: none !important;
-                            }                    
+                            }
                         }
 
-                       
                         @media only screen and (max-width: $bp-small) {
                             padding: 0rem;
                             box-shadow: none !important;
@@ -209,7 +210,7 @@
                             border-radius: 1rem;
                         }
                     }
-                }               
+                }
             }
 
             &__map-area {
@@ -233,7 +234,7 @@
                         right: auto;
                     }
                 }
-                
+
                 &__map {
                     width: 100%;
                     height: 100%;
@@ -241,8 +242,6 @@
                     border-radius: 1rem;
                     overflow: hidden;
                 }
-
-
 
                 & img {
                     width: 100%;

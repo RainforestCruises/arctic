@@ -53,7 +53,7 @@ $curentYear = $args['curentYear'];
                         $dimensions =  get_field('dimensions', $cabinPost);
                         $description =  get_field('description', $cabinPost);
 
-                        if(strlen($description) > 230) {
+                        if (strlen($description) > 230) {
                             $description = substr($description, 0, 230) . '...';
                         }
 
@@ -80,37 +80,39 @@ $curentYear = $args['curentYear'];
                                     <div class="resource-card__content__title-group__title">
                                         <?php echo $title ?>
                                     </div>
-
                                 </div>
 
-                    
+
 
                                 <!-- Specs -->
                                 <div class="resource-card__content__specs">
 
-                                    <!-- Guests -->
-                                    <div class="resource-card__content__specs__item">
-                                        <div class="resource-card__content__specs__item__icon">
+                                    <div class="specs-item">
+                                        <div class="specs-item__icon">
                                             <svg>
                                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-profile"></use>
                                             </svg>
                                         </div>
-                                        <div class="resource-card__content__specs__item__text">
-                                            <?php echo $capacity . ', ' . $beds ?>
+                                        <div class="specs-item__text">
+                                            <div class="specs-item__text__main">
+                                                <?php echo $capacity . ', ' . $beds ?>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <!-- Size -->
-                                    <div class="resource-card__content__specs__item">
-                                        <div class="resource-card__content__specs__item__icon">
+                                    <div class="specs-item">
+                                        <div class="specs-item__icon">
                                             <svg>
-                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-zoom-square"></use>
+                                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-zoom-square"></use>
                                             </svg>
                                         </div>
-                                        <div class="resource-card__content__specs__item__text">
+                                        <div class="specs-item__text">
+                                            <div class="specs-item__text__main">
                                             <?php echo $dimensions; ?>
+                                            </div>
                                         </div>
                                     </div>
+
 
 
 

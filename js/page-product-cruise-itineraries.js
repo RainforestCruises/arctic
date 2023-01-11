@@ -144,6 +144,7 @@ jQuery(document).ready(function ($) {
         slidesPerView: 3,
         spaceBetween: 10,
         watchSlidesProgress: true,
+        slideToClickedSlide: true,
         breakpoints: {
             1000: {
                 slidesPerView: 4,
