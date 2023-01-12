@@ -4,19 +4,18 @@ $badges = get_field('badges');
 
 ?>
 
-<div class="about-partners">
+<section class="about-partners" id="section-partners">
     <div class="about-partners__content">
         <h2 class="about-partners__content__title">
-            Our Partners 
+            Our Partners
         </h2>
         <div class="about-partners__content__snippet">
             <?php echo get_field('partners_snippet'); ?>
-
         </div>
     </div>
-</div>
+</section>
 
-<div class="about-corporate">
+<section class="about-corporate" id="section-corporate">
     <div class="about-corporate__grey">
         <div class="about-corporate__grey__content">
             <div class="about-corporate__grey__content__corporate-info">
@@ -37,9 +36,7 @@ $badges = get_field('badges');
             </div>
             <div class="about-corporate__grey__content__badge-area">
                 <?php foreach ($badges as $badge) : ?>
-
-                    <img <?php afloat_image_markup($badge['id'], 'square-small'); ?> >
-
+                    <img <?php afloat_image_markup($badge['id'], 'square-small'); ?>>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -48,8 +45,7 @@ $badges = get_field('badges');
 
     <div class="about-corporate__image-area">
         <?php $background_image = get_field('background_image'); ?>
-        <img <?php afloat_image_markup($background_image['id'], 'full-hero-small'); ?> >
+        <img <?php afloat_image_markup($background_image['id'], 'full-hero-small'); ?>>
 
     </div>
-
-</div>
+</section>

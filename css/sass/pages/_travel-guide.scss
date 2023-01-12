@@ -1,6 +1,7 @@
 .guide-hero {
     @include flexBlock;
-    margin-top: 12rem;
+    @include pageTopPadding;
+
     &__content {
         z-index: 2;
         position: relative;
@@ -8,7 +9,7 @@
         flex-direction: column;
         align-items: center;
         width: 100%;
-        max-width: $page-width;
+        max-width: $page-width-full;
         @include flexPadding;
 
         &__category {
@@ -38,6 +39,7 @@
         }
 
         &__image {
+           
             & img {
                 object-fit: cover;
                 height: 100%;

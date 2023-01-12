@@ -85,7 +85,7 @@ $relatedGuidePosts = get_posts($queryArgs);
       <!-- Image -->
       <div class="guide-hero__content__image">
         <?php if ($image) : ?>
-          <img <?php afloat_image_markup($image['ID'], 'featured-largest', array('featured-largest', 'featured-large')); ?>>
+          <img <?php afloat_image_markup($image['ID'], 'landscape-medium', array('landscape-medium', 'landscape-small')); ?>>
         <?php endif; ?>
       </div>
     </div>
@@ -164,7 +164,10 @@ $relatedGuidePosts = get_posts($queryArgs);
     </div>
   </section>
 
-
+    <!-- Newsletter  -->
+    <?php
+    get_template_part('template-parts/shared/content', 'shared-newsletter');
+    ?>
 
 
 </main>

@@ -4,7 +4,7 @@ $partners_image = get_field('partners_image');
 $continents = get_field('continents');
 
 ?>
-<div class="about-partners">
+<section class="about-partners" id="section-partners">
     <div class="about-partners__content">
         <div class="about-partners__content__title">
             <h2>Local Community School Projects</h2>
@@ -30,4 +30,4 @@ $continents = get_field('continents');
             </div>
         <?php endforeach; ?>
     </div>
-</div>
+</section>

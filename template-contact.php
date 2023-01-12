@@ -31,28 +31,28 @@ $primary_contact_form_id = get_field('primary_contact_form_id', 'options');
     </div>
 
     <!-- Contact Form / Wrapper -->
-    <div class="contact u-margin-bottom-big">
-        <div class="contact__wrapper">
-            <div class="contact__wrapper__intro">
+    <div class="contact-section">
+        <div class="contact-section__wrapper">
+            <div class="contact-section__wrapper__intro">
 
-                <div class="contact__wrapper__intro__icon">
+                <div class="contact-section__wrapper__intro__icon">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-headset"></use>
                     </svg>
                 </div>
-                <h2 class="contact__wrapper__intro__title">
+                <h2 class="contact-section__wrapper__intro__title">
                     Give us a Call
                 </h2>
-                <div class="contact__wrapper__intro__subtitle">
+                <div class="contact-section__wrapper__intro__subtitle">
                     Speak with our trip specialists to book your next experience.
                 </div>
-                <div class="contact__wrapper__intro__phone">
+                <div class="contact-section__wrapper__intro__phone">
                     +1 888-215-3555
                 </div>
             </div>
 
             <!-- Form -->
-            <div class="contact__wrapper__form">
+            <div class="contact-section__wrapper__form">
             <?php 
             
                 //Check if WpForms is active
@@ -69,11 +69,11 @@ $primary_contact_form_id = get_field('primary_contact_form_id', 'options');
 
 </section>
 
-<div class="destination-testimonials">
+<section class="sliding-testimonials">
     <h2 class="contact-page__testimonial-title">
         What Our Customers are Saying About Us
     </h2>
-    <div class="destination-testimonials__slider" id="testimonials-slider">
+    <div class="sliding-testimonials__slider" id="testimonials-slider">
         <?php
         $testimonials = get_field('testimonials', 'options');
         
@@ -85,17 +85,17 @@ $primary_contact_form_id = get_field('primary_contact_form_id', 'options');
         ?>
                 <!-- Slide -->
                 <!-- Testimonial -->
-                <div class="destination-testimonial">
-                    <div class="destination-testimonial__content">
-                        <div class="destination-testimonial__content__snippet">
+                <div class="sliding-testimonial">
+                    <div class="sliding-testimonial__content">
+                        <div class="sliding-testimonial__content__snippet">
                             <?php echo $t ?>
                         </div>
-                        <div class="destination-testimonial__content__person">
+                        <div class="sliding-testimonial__content__person">
                             - <?php echo $t_person ?>
                         </div>
                     </div>
 
-                    <div class="destination-testimonial__image-area ">
+                    <div class="sliding-testimonial__image-area ">
                         <img <?php afloat_image_markup($t_image['id'], 'vertical-medium'); ?>>
                     </div>
                 </div>
@@ -105,7 +105,7 @@ $primary_contact_form_id = get_field('primary_contact_form_id', 'options');
 
         endif; ?>
     </div>
-</div>
+</section>
 
 
 <?php get_footer(); ?>

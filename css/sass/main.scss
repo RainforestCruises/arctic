@@ -26,8 +26,6 @@
 @import "pages/travel-guide";
 @import "pages/travel-guide-landing";
 @import "pages/experience";
-@import "pages/contact";
-@import "pages/about";
 @import "pages/generic";
 @import "pages/test";
 @import "pages/404";
@@ -35,16 +33,17 @@
 @import "pages/reviews";
 
 
+//shared
 @import "components/shared/popper";
 @import "components/shared/grid-block";
-
+@import "components/shared/slider-block";
+@import "components/shared/form-general";
 
 
 
 //products (generic)
 @import "components/products/product-hero";
 @import "components/products/product-overview";
-
 @import "components/products/product-related";
 @import "components/products/product-reviews";
 @import "components/products/product-cards";
@@ -72,6 +71,8 @@
 
 
 
+//contact
+@import "components/contact/contact-page";
 
 
 
@@ -93,7 +94,6 @@
 @import "components/destination/destination-secondary";
 @import "components/destination/destination-accommodations";
 @import "components/destination/destination-guides";
-@import "components/destination/destination-testimonials";
 @import "components/destination/destination-faq";
 
 //deals
@@ -129,11 +129,12 @@
 @import "components/about/about-corporate";
 
 //shared
+
+
+
 @import "components/shared/cards";
 @import "components/shared/loading-spinner";
 @import "components/shared/newsletter";
-@import "components/shared/contact";
-@import "components/shared/slider-block";
 @import "components/shared/inquire-form";
 @import "components/shared/outline-panel";
 @import "components/shared/bootstrap-datepicker";

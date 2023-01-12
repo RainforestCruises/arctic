@@ -1,12 +1,10 @@
 <?php
 $guides = get_field('guides');
 $guides_title_subtext = get_field('guides_title_subtext')
-
 ?>
 
-
 <section class="grid-block" id="section-newsletter">
-    <div class="grid-block__content block-top-divider">
+    <div class="grid-block__content">
 
         <!-- Grid Area -->
         <div class="grid-block__content__grid grid1">
@@ -18,11 +16,11 @@ $guides_title_subtext = get_field('guides_title_subtext')
                     <?php echo get_field('newsletter_snippet', 'options'); ?>
                 </div>
                 <div class="newsletter__email">
-                    <button class="newsletter__email__button" id="newsletter-subscribe-button">
-                        Enter your email
-                        <svg>
-                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-arrow-right"></use>
-                        </svg>
+                    <a class="cta-primary cta-primary--inverse" href="<?php echo get_home_url(); ?>/contact">
+                        Send us a Message
+                    </a>
+                    <button class="cta-primary" id="newsletter-subscribe-button">
+                        Sign up for our Newsletter
                     </button>
                 </div>
             </div>

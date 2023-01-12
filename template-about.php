@@ -8,9 +8,9 @@ wp_localize_script(
     'page-about',
     'page_vars',
     array(
-      'templateUrl' =>  $templateUrl
+        'templateUrl' =>  $templateUrl
     )
-  );
+);
 ?>
 
 <?php
@@ -18,44 +18,31 @@ get_header();
 
 ?>
 
-<!-- About Page Container -->
-<main class="about-page">
 
-
+<main class="main-content">
 
     <!-- Mission -->
-    <section class="about-page__section-mission" id="mission">
-        <?php
-        get_template_part('template-parts/about/content', 'about-mission');
-        ?>
-    </section>
-
+    <?php
+    get_template_part('template-parts/about/content', 'about-mission');
+    ?>
     <!-- Difference -->
-    <section class="about-page__section-difference" id="differece">
-        <?php
-        get_template_part('template-parts/about/content', 'about-difference');
-        ?>
-    </section>
-
+    <?php
+    get_template_part('template-parts/about/content', 'about-difference');
+    ?>
     <!-- Team -->
-    <section class="about-page__section-team" id="team">
-        <?php
-        get_template_part('template-parts/about/content', 'about-team');
-        ?>
-    </section>
+    <?php
+    get_template_part('template-parts/about/content', 'about-team');
+    ?>
 
 
-    <!-- Corporate -->
-    <section class="about-page__section-corporate" id="corporate">
-        <?php
-        $isResponsibleTravel = get_field('is_responsible_travel');
-        if (!$isResponsibleTravel) :
-            get_template_part('template-parts/about/content', 'about-corporate');
-        else :
-            get_template_part('template-parts/about/content', 'about-responsible-travel');
-        endif; ?>
-  
-    </section>
+    <!-- Corporate / Partners-->
+    <?php
+    $isResponsibleTravel = get_field('is_responsible_travel');
+    if (!$isResponsibleTravel) :
+        get_template_part('template-parts/about/content', 'about-corporate');
+    else :
+        get_template_part('template-parts/about/content', 'about-responsible-travel');
+    endif; ?>
 
 
 </main>
@@ -64,4 +51,3 @@ get_header();
 
 
 <?php get_footer(); ?>
-

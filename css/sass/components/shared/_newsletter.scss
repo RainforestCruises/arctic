@@ -1,7 +1,8 @@
 .newsletter {
     text-align: center;
     color: $color-primary;
-    margin: 6rem 0;
+    margin-top: 6rem;
+    margin-bottom: 12rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,51 +32,19 @@
         }
     }
     &__email {
-        width: 50%;
-        display: flex;
-        justify-content: center;
+        width: 100%;
+        max-width: 60rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        
+        @media only screen and (max-width: $bp-small) {
+            grid-template-columns: 1fr ;
+        }
 
-        &__button {
-            font-size: 1.5rem;
-            height: 5rem;
-            width: 28rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: $color-white;
-
-            border: 1px solid $color-primary;
-            border-radius: 1rem;
-            letter-spacing: 0.1rem;
-            font-family: $font-primary;
-            padding: 0 2.5rem;
-            text-align: center;
-            
-            cursor: pointer;
-            transition: all .2s;
-            
-            &:hover {
-                color: $color-grey-3;
-                & svg {
-                    opacity: 1;
-                    transform: translateX(1.5rem);
-                }
-            }
-            & svg {
-                transition: all .2s;
-                transform: translateX(0);
-                opacity: 0;
-                height: 2rem;
-                width: 2rem;
-                color: $color-primary;
-
-                @media only screen and (max-width: $bp-medium) {
-                    opacity: 1;
-                    transform: translateX(1.5rem);
-                }
-
-            }
-
+        & a,
+        & button {
+            display: block;
         }
 
     }
