@@ -81,24 +81,24 @@ $itineraries_title_subtext = get_field('travel_guide_title_subtext')
                                 <div class="resource-card__content__specs">
 
                                     <!-- Itinerary -->
-                                    <div class="resource-card__content__specs__item">
-                                        <div class="resource-card__content__specs__item__icon">
+                                    <div class="specs-item">
+                                        <div class="specs-item__icon">
                                             <svg>
                                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-time-clock"></use>
                                             </svg>
                                         </div>
-                                        <div class="resource-card__content__specs__item__text">
+                                        <div class="specs-item__text">
                                             Length: <?php echo $length; ?>
                                         </div>
                                     </div>
                                     <!-- Ships -->
-                                    <div class="resource-card__content__specs__item">
-                                        <div class="resource-card__content__specs__item__icon">
+                                    <div class="specs-item">
+                                        <div class="specs-item__icon">
                                             <svg>
                                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat"></use>
                                             </svg>
                                         </div>
-                                        <div class="resource-card__content__specs__item__text">
+                                        <div class="specs-item__text">
                                             Ships: <?php echo $shipsDisplay; ?>
                                         </div>
                                     </div>
