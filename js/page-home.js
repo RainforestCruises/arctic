@@ -1,8 +1,5 @@
 jQuery(document).ready(function ($) {
 
-
-
-
     new Swiper('.ship-card-image-area', {
         slidesPerView: 1,
         watchSlidesProgress: true,
@@ -67,6 +64,25 @@ jQuery(document).ready(function ($) {
             },
             1200: {
                 slidesPerView: 5,
+            }
+        }
+    });
+
+
+    new Swiper('#experiences-slider', {
+        spaceBetween: 30,
+        slidesPerView: 1,
+        watchSlidesProgress: true,
+        navigation: {
+            nextEl: '.experiences-slider-btn-next',
+            prevEl: '.experiences-slider-btn-prev',
+        },
+        breakpoints: {
+            600: {
+                slidesPerView: 2,
+            },
+            800: {
+                slidesPerView: 3,
             }
         }
     });

@@ -9,21 +9,13 @@
     }
 
     &.inverse {
-        background-color: $color-black;
+        background-color: $color-primary;
         
-        & .slider-block__content {
-            transform: translateY(-12rem);
-            
-        }
         & .title-single {
             color: $color-white !important;
         }
     }
 
-    &.topfade {
-        background-color: transparent;
-        background-image:  linear-gradient(to top, rgba($color-black, 1) 70%, transparent)
-    }
 
     &__content {
         @include flexPadding;
@@ -34,6 +26,25 @@
         &__top {
             display: grid;
             grid-template-columns: 1fr min-content;
+            position: relative;
+
+            &.title-divider {
+                margin-bottom: 3.5rem;
+                &::after {
+                    content: "";
+                    width: 100%;
+                    height: 1px;
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: $color-white;
+                    opacity: .2;
+                }
+            }
+
+
+
             &__title {
             }
 

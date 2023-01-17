@@ -1,0 +1,129 @@
+.home-quote {
+    @include flexBlock;
+    position: relative;
+    background-color: $color-primary;
+    margin-top: 8rem;
+
+    &__content {
+        @include flexPadding;
+        max-width: $page-width-full;
+        margin-top: 3rem;
+        z-index: 5;
+    }
+}
+
+.quote-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12rem;
+
+    @media only screen and (max-width: $bp-large) {
+        gap: 6rem;
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+        grid-template-columns: 1fr;
+    }
+
+    &__text-area {
+        &__title {
+            font-size: 3.2rem;
+            font-weight: 700;
+            padding: 3rem 0;
+            color: $color-white;
+            @media only screen and (max-width: $bp-small) {
+                font-size: 2.2rem;
+            }
+        }
+
+        &__text {
+            padding: 3rem 0;
+            padding-left: 6rem;
+            color: $color-grey-light-2;
+            font-size: 1.8rem;
+            line-height: 3rem;
+            font-style: italic;
+            position: relative;
+            z-index: 10;
+
+            & svg {
+                transform: rotate(180deg);
+                fill: $color-white;
+                position: absolute;
+                z-index: 9;
+                opacity: 0.2;
+                top: 0;
+                left: 0;
+                height: 8rem;
+                width: 8rem;
+            }
+
+            @media only screen and (max-width: $bp-small) {
+                padding-left: 3rem;      
+                padding-top: 1.5rem;
+                & svg {
+
+                    height: 4rem;
+                    width: 4rem;
+                }
+          
+            }
+        }
+    }
+
+    &__image-area {
+        @media only screen and (max-width: $bp-medium) {
+            display: none;
+        }
+
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(12, 1fr);
+        margin: 3rem 0;
+        &__primary {
+            grid-row: 1 / span 11;
+            grid-column: 3 / span 10;
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            border-radius: 1rem;
+            box-shadow: $shadow-medium;
+
+            @media only screen and (max-width: $bp-large) {
+                grid-row: 1 / span 12;
+                grid-column: 1 / span 12;
+            }
+        }
+
+        &__secondary {
+            grid-row: 6 / span 7;
+            grid-column: 1 / span 4;
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            border-radius: 1rem;
+            z-index: 20;
+            box-shadow: $shadow-medium;
+            @media only screen and (max-width: $bp-large) {
+                display: none;
+            }
+        }
+    }
+}
+
+.experience-item {
+    border-radius: 1rem;
+
+    &__title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: $color-white;
+    }
+
+    &__text {
+        color: $color-grey-light-2;
+    }
+    margin-bottom: 6rem;
+}

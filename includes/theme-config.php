@@ -72,6 +72,8 @@ function afloat_images_sizes()
 
     add_image_size('square-medium', 500, 500, true); //??
     add_image_size('square-small', 325, 325, true); //??
+    add_image_size('square-thumb', 100, 100, true); //??
+
 }
 
 add_filter('image_size_names_choose', 'afloat_images_sizes_add');

@@ -6,7 +6,7 @@ $reviews_title_subtext = get_field('reviews_title_subtext')
 
 
 <section class="grid-block" id="section-reviews">
-    <div class="grid-block__content  block-top-divider">
+    <div class="grid-block__content">
 
         <!-- Top - Title/Nav -->
         <div class="grid-block__content__top">

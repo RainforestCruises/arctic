@@ -45,16 +45,26 @@ get_header();
     <?php
     get_template_part('template-parts/home/content', 'home-routes');
     ?>
-    
+
     <!-- Itineraries  -->
     <?php
     get_template_part('template-parts/home/content', 'home-itineraries');
     ?>
 
-
     <!-- Styles  -->
     <?php
     get_template_part('template-parts/home/content', 'home-styles');
+    ?>
+
+    <!-- Quote  -->
+    <?php
+    get_template_part('template-parts/home/content', 'home-quote');
+    ?>
+
+
+    <!-- Experiences  -->
+    <?php
+    get_template_part('template-parts/home/content', 'home-experiences');
     ?>
 
     <!-- Reviews  -->

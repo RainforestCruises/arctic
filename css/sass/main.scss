@@ -38,6 +38,7 @@
 @import "components/shared/grid-block";
 @import "components/shared/slider-block";
 @import "components/shared/form-general";
+@import "components/shared/cards";
 
 
 
@@ -46,7 +47,6 @@
 @import "components/products/product-overview";
 @import "components/products/product-related";
 @import "components/products/product-reviews";
-@import "components/products/product-cards";
 @import "components/products/product-extras";
 
 //--itinerary 
@@ -109,6 +109,7 @@
 @import "components/home/home-newest";
 @import "components/home/home-destinations";
 @import "components/home/home-map";
+@import "components/home/home-quote";
 
 
 @import "components/home/home-intro";
@@ -132,7 +133,6 @@
 
 
 
-@import "components/shared/cards";
 @import "components/shared/loading-spinner";
 @import "components/shared/newsletter";
 @import "components/shared/inquire-form";
