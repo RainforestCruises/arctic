@@ -9442,6 +9442,9 @@ h5 {
   .experience-item__text {
     color: #c2c6c9; }
 
+#experiences-slider {
+  margin-bottom: 4rem; }
+
 .home-intro {
   margin-top: 12rem;
   margin-bottom: 6rem;

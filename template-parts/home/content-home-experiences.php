@@ -4,7 +4,7 @@ $experiences = get_field('experiences');
 ?>
 
 
-<section class="slider-block inverse" id="section-experiences" style="margin-bottom: 3rem;">
+<section class="slider-block inverse" id="section-experiences" style="margin-bottom: 4rem;">
     <div class="slider-block__content">
         <div class="slider-block__content__top title-divider">
             <!-- Title -->
@@ -54,6 +54,8 @@ $experiences = get_field('experiences');
 
                     <?php endforeach; ?>
                 </div>
+                <div class="swiper-pagination"></div>
+
             </div>
         </div>
     </div>

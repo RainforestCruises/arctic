@@ -73,13 +73,19 @@ jQuery(document).ready(function ($) {
         spaceBetween: 30,
         slidesPerView: 1,
         watchSlidesProgress: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            dynamicBullets: true,
+            dynamicMainBullets: 3,
+        },
         navigation: {
             nextEl: '.experiences-slider-btn-next',
             prevEl: '.experiences-slider-btn-prev',
         },
         breakpoints: {
             600: {
-                slidesPerView: 2,
+                slidesPerView: 2
             },
             800: {
                 slidesPerView: 3,
