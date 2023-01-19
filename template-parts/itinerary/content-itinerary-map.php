@@ -18,7 +18,7 @@ $destinationCount = $args['destinationCount'];
         <div class="itinerary-map__content__map-area">
 
             <!-- Map -->
-            <div class="itinerary-map__content__map-area__map" id="itinerary-map"></div>
+            <div class="full-component" id="itinerary-map"></div>
 
             <!-- Map Legend -->
             <div class="map-legend">

@@ -482,6 +482,25 @@
             "maxlength": ""
         },
         {
+            "key": "field_63c827caead0a",
+            "label": "Stabilizers",
+            "name": "stabilizers",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_63597262588a9",
             "label": "Itineraries",
             "name": "",
@@ -742,5 +761,5 @@
     "active": true,
     "description": "Cruise - CPT",
     "show_in_rest": 0,
-    "modified": 1668445924
+    "modified": 1674061822
 }

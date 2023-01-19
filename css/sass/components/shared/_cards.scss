@@ -1,4 +1,57 @@
 // CARDS ------------------------------------------------
+
+//text card (reviews faq)
+.text-card {
+    margin-bottom: 2rem;
+
+    &.encapsulated {
+        padding: 2rem;
+        border-radius: 1rem;
+        border: 1px solid $color-grey-light-1a;
+    }
+
+    &__avatar {
+        display: flex;
+        align-items: center;
+        
+        & img {
+            height: 6rem;
+            width: 6rem;
+            border-radius: 6rem;
+            margin-right: 1.5rem;
+        }
+
+        &__title-group {
+            &__title {
+                color: $color-primary;
+                font-size: 1.8rem;
+                font-weight: 700;
+            }
+            &__sub {
+                color: $color-grey-3;
+                font-size: 1.4rem;
+            }
+        }
+    }
+
+    &__title-single {
+        color: $color-primary;
+        font-size: 1.8rem;
+        line-height: 2.2rem;
+        font-weight: 700;
+    }
+
+    &__text {
+        margin-top: 1.5rem;
+        font-size: 1.6rem;
+    }
+
+    &__expand {
+        margin-top: .8rem;
+    }
+}
+
+
 // image card with text on top
 .overlay-card {
     height: 33rem;
@@ -117,6 +170,8 @@
     color: $color-primary;
     display: flex !important;
     flex-direction: column;
+
+
 
     // Variants
     &.small {
@@ -274,7 +329,7 @@
         &__description {
             margin-bottom: 0.5rem;
             font-size: 1.4rem;
-            color: $color-grey-3;
+            //color: $color-grey-3;
 
             &.divider {
                 margin-bottom: 1.5rem;
@@ -657,7 +712,7 @@
         }
 
         & .avatar__title-group__sub {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
     }
 
@@ -677,8 +732,8 @@
         &__title {
             color: $color-primary;
             font-weight: 700;
-            padding-bottom: 0.5rem;
-
+            padding-bottom: 0.8rem;
+            font-size: 1.6rem;
             &:link {
                 text-decoration: none;
             }

@@ -145,9 +145,17 @@
   outline: none;
   white-space: nowrap;
   text-decoration: none;
-
+  display: flex;
+  align-items: center;
   &:hover {
     color: $color-supporting;
+  }
+
+  & svg {
+    margin-left: .5rem;
+    height: 1.8rem;
+    width: 1.8rem;
+    fill: currentColor;
   }
 }
 

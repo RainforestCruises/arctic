@@ -84,7 +84,6 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                     <a href="#section-map" class="product-hero__content__main__primary__nav__link">Map</a>
                     <a href="#section-dates" class="product-hero__content__main__primary__nav__link">Dates</a>
                     <a href="#section-extras" class="product-hero__content__main__primary__nav__link">Extras</a>
-
                 </div>
             </div>
 

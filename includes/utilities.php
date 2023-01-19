@@ -172,6 +172,12 @@ function afloat_responsive_image_lazy($image_id, $image_size, $sizes_array)
 
 
 //FORMATTING -----------------------
+function removePtags($text){
+    $formatted_text = str_replace(['<p>', '</p>'], '', $text);
+
+    return $formatted_text;
+
+}
 function comma_separate_list($arr, $limit = 0)
 {
     $count = 0;

@@ -1,6 +1,6 @@
 <?php
 $itineraries = get_field('itineraries');
-$itineraries_title_subtext = get_field('travel_guide_title_subtext')
+$itineraries_title_subtext = get_field('itineraries_title_subtext')
 
 ?>
 

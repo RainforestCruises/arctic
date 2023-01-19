@@ -284,12 +284,6 @@ jQuery(document).ready(function ($) {
 
 
 
-
-
-
-
-
-
     // Related Swiper
     new Swiper('#related-slider', {
         spaceBetween: 15,
@@ -311,18 +305,20 @@ jQuery(document).ready(function ($) {
   
 
 
-    // view all button
-    // -- show departures
-    // -- hide all modal tab buttons
     const reviewsModal = document.querySelector("#reviewsModal");
-    const readAllReviews = document.querySelector("#read-all-reviews");
+    const reviewsModalMainContent = document.querySelector("#reviewsModalMainContent");
+
+    const readAllReviews = [...document.querySelectorAll('.read-all-reviews')];
     if (readAllReviews) {
-        readAllReviews.addEventListener('click', () => {
-            reviewsModal.style.display = 'flex';
-            body.classList.add('no-scroll');
-        });
+        readAllReviews.forEach(item => {
+            item.addEventListener('click', () => {
+                reviewsModal.style.display = 'flex';
+                body.classList.add('no-scroll');
+                const section = item.getAttribute('section');
+                const modalDivSectionOffset = document.getElementById(section).offsetTop;
+                reviewsModalMainContent.scrollTop = modalDivSectionOffset - 120;
+            });
+        })
     }
-
-
 
 });

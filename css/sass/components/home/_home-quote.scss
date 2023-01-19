@@ -1,3 +1,5 @@
+
+
 .home-quote {
     @include flexBlock;
     position: relative;
@@ -12,6 +14,7 @@
     }
 }
 
+//make generic
 .quote-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -59,14 +62,12 @@
             }
 
             @media only screen and (max-width: $bp-small) {
-                padding-left: 3rem;      
+                padding-left: 3rem;
                 padding-top: 1.5rem;
                 & svg {
-
                     height: 4rem;
                     width: 4rem;
                 }
-          
             }
         }
     }
@@ -112,22 +113,17 @@
     }
 }
 
-.experience-item {
-    border-radius: 1rem;
-    margin-bottom: 6rem;
-    &__title {
-        font-size: 2.2rem;
-        font-weight: 700;
-        margin-bottom: 2rem;
-        color: $color-white;
-    }
-
-    &__text {
-        color: $color-grey-light-2;
-    }
-    
-}
 
 #experiences-slider {
     margin-bottom: 4rem;
+
+    & .resource-card {
+        color: $color-grey-light-2;
+        margin-bottom: 6rem;
+    }
+    & .resource-card__content__title-group__title {
+        color: $color-white;
+        margin: 1.5rem 0;
+        font-size: 2.2rem;
+    }
 }

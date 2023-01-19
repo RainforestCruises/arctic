@@ -82,8 +82,6 @@ $curentYear = $args['curentYear'];
                                     </div>
                                 </div>
 
-
-
                                 <!-- Specs -->
                                 <div class="resource-card__content__specs">
 

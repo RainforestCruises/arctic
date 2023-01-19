@@ -44,7 +44,7 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
 
                 <div class="product-overview__content__grid__overview__expand">
                     <?php if ($expand) : ?>
-                        <button class="btn-text-icon" id="expand-content">
+                        <button class="btn-text-plain" id="expand-content">
                             Read More
                             <svg>
                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
@@ -167,6 +167,15 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
                                 </div>
                             </div>
 
+                            <!-- Stabilizers -->
+                            <div class="specs__item">
+                                <div class="specs__item__title">
+                                    Stabilizers
+                                </div>
+                                <div class="specs__item__text">
+                                    <?php echo get_field('stabilizers') ?>
+                                </div>
+                            </div>
 
 
                         </div>
@@ -239,13 +248,13 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
 
 <!-- Content Modal -->
 <div class="modal" id="contentModal">
-    <div class="modal__content"">
+    <div class="modal__content">
         <div class=" modal__content__top">
-        <!-- Top Modal Content -->
+            <!-- Top Modal Content -->
             <div class="modal__content__top__nav">
                 <div class="modal__content__top__nav__title">
-                About the <?php echo $productName; ?>
-                </div>          
+                    About the <?php echo $productName; ?>
+                </div>
             </div>
             <button class="btn-text-icon close-modal-button ">
                 Close

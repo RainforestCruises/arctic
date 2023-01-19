@@ -25,25 +25,41 @@ $reviews_title_subtext = get_field('reviews_title_subtext')
                 $title = $review['title'];
                 $date = $review['date'];
                 $text = $review['text'];
+
+
+                $expand = strlen($text) > 230 ? true : false;
+                $text_limited = substr($text, 0, 230) . ($expand ? '...': '');
             ?>
 
 
-                <div class="review-item">
-                    <div class="review-item__profile">
+                <div class="text-card">
+                    <div class="text-card__avatar">
                         <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
-                        <div class="review-item__profile__title-group">
-                            <div class="review-item__profile__title-group__title">
+                        <div class="text-card__avatar__title-group">
+                            <div class="text-card__avatar__title-group__title">
                                 <?php echo $title; ?>
                             </div>
-                            <div class="review-item__profile__title-group__date">
+                            <div class="text-card__avatar__title-group__sub">
                                 <?php echo $date; ?>
                             </div>
                         </div>
                     </div>
 
-                    <div class="review-item__text">
-                        <?php echo $text; ?>
+                    <div class="text-card__text">
+                        <?php echo $text_limited; ?>
                     </div>
+
+                    <?php if ($expand) : ?>
+                        <div class="text-card__expand">
+                            <button class="btn-text-plain" id="expand-content">
+                                Read More
+                                <svg>
+                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    <?php endif; ?>
+
                 </div>
 
 

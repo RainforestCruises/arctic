@@ -1,132 +1,10 @@
 {
     "key": "group_63729d95f04fd",
-    "title": "Category Landing Page",
+    "title": "Landing Page",
     "fields": [
         {
-            "key": "field_63729d9614e75",
-            "label": "General",
-            "name": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_63729d96238c8",
-            "label": "Hero Slider",
-            "name": "hero_slider",
-            "type": "repeater",
-            "instructions": "1920 x 1080",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": 0,
-            "max": 0,
-            "layout": "block",
-            "button_label": "",
-            "sub_fields": [
-                {
-                    "key": "field_63729d96bbc55",
-                    "label": "Image",
-                    "name": "image",
-                    "type": "image",
-                    "instructions": "1080 x 1920 image",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "preview_size": "medium",
-                    "library": "all",
-                    "min_width": 1920,
-                    "min_height": 1080,
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": ""
-                },
-                {
-                    "key": "field_63729d96bf997",
-                    "label": "Title",
-                    "name": "title",
-                    "type": "text",
-                    "instructions": "Title above the caption",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
-                {
-                    "key": "field_63729d96c3690",
-                    "label": "Caption",
-                    "name": "caption",
-                    "type": "textarea",
-                    "instructions": "Short blurb about the content",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": "",
-                    "new_lines": ""
-                },
-                {
-                    "key": "field_63729d96c73c7",
-                    "label": "Link",
-                    "name": "link",
-                    "type": "page_link",
-                    "instructions": "Link to search page - Destination + Location (first slide just Destination)",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "page"
-                    ],
-                    "taxonomy": [
-                        "category:search"
-                    ],
-                    "allow_null": 1,
-                    "allow_archives": 0,
-                    "multiple": 0
-                }
-            ]
-        },
-        {
             "key": "field_63729d96274e2",
-            "label": "Intro",
+            "label": "Hero",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -141,9 +19,9 @@
             "endpoint": 0
         },
         {
-            "key": "field_63729d962aef5",
-            "label": "Intro Title",
-            "name": "intro_title",
+            "key": "field_63c9b617b0b83",
+            "label": "Hero Title",
+            "name": "hero_title",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -153,22 +31,6 @@
                 "class": "",
                 "id": ""
             },
-            "admin_column_enabled": 0,
-            "admin_column_post_types": [
-                "post",
-                "page",
-                "rfc_cruises",
-                "rfc_tours",
-                "rfc_lodges",
-                "rfc_locations",
-                "rfc_destinations",
-                "rfc_countries"
-            ],
-            "admin_column_taxonomies": [
-                "category",
-                "post_tag",
-                "link_category"
-            ],
             "default_value": "",
             "placeholder": "",
             "prepend": "",
@@ -176,10 +38,10 @@
             "maxlength": ""
         },
         {
-            "key": "field_63729d962e935",
-            "label": "Intro Text",
-            "name": "intro_text",
-            "type": "wysiwyg",
+            "key": "field_63c9b63cb0b84",
+            "label": "Hero Subtitle",
+            "name": "hero_subtitle",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -189,10 +51,37 @@
                 "id": ""
             },
             "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 0,
-            "delay": 0
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_63c983a24bc3d",
+            "label": "Hero Images",
+            "name": "hero_images",
+            "type": "gallery",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "insert": "append",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
         },
         {
             "key": "field_63729d96322f0",
@@ -235,27 +124,11 @@
             ]
         },
         {
-            "key": "field_63729d9662391",
-            "label": "Content",
-            "name": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_6373ed609797f",
-            "label": "Ships Title Subtext",
-            "name": "ships_title_subtext",
+            "key": "field_63729d962e935",
+            "label": "Intro Text",
+            "name": "intro_text",
             "type": "wysiwyg",
-            "instructions": "Snippet under the title",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -270,10 +143,10 @@
             "delay": 0
         },
         {
-            "key": "field_63729d966d75e",
-            "label": "Ships",
-            "name": "ships",
-            "type": "relationship",
+            "key": "field_63729d9662391",
+            "label": "Itineraries",
+            "name": "",
+            "type": "tab",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -282,17 +155,8 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "rfc_cruises"
-            ],
-            "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "object"
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_6373ed7d97980",
@@ -339,8 +203,8 @@
             "return_format": "object"
         },
         {
-            "key": "field_63729d9674c57",
-            "label": "Travel Guide",
+            "key": "field_63c9b75db0b89",
+            "label": "Topics",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -355,123 +219,13 @@
             "endpoint": 0
         },
         {
-            "key": "field_63729d9678702",
-            "label": "Travel Guide Title Subtext",
-            "name": "travel_guide_title_subtext",
-            "type": "wysiwyg",
-            "instructions": "Snippet under the title",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 0,
-            "delay": 0
-        },
-        {
-            "key": "field_63729d967c191",
-            "label": "Travel Guide Posts",
-            "name": "travel_guide_posts",
-            "type": "relationship",
-            "instructions": "Select 6 travel guides to highlight. Order as needed",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "rfc_travel_guides"
-            ],
-            "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "object"
-        },
-        {
-            "key": "field_63729d967fc45",
-            "label": "View All Guide Link",
-            "name": "view_all_guide_link",
-            "type": "page_link",
-            "instructions": "Link to travel guide",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "page"
-            ],
-            "taxonomy": [
-                "category:travel-guide"
-            ],
-            "allow_null": 0,
-            "allow_archives": 0,
-            "multiple": 0
-        },
-        {
-            "key": "field_63729d96835cb",
-            "label": "Testimonials",
-            "name": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_63729d9687175",
-            "label": "Show Testimonials",
-            "name": "show_testimonials",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_63729d968af69",
-            "label": "Testimonials",
-            "name": "testimonials",
+            "key": "field_63c9b7b5b0b8a",
+            "label": "Topics",
+            "name": "topics",
             "type": "repeater",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_63729d9687175",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -484,47 +238,10 @@
             "button_label": "",
             "sub_fields": [
                 {
-                    "key": "field_63729d97ca75e",
-                    "label": "Person",
-                    "name": "person",
-                    "type": "text",
-                    "instructions": "First and Last Name",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "admin_column_enabled": 0,
-                    "admin_column_post_types": [
-                        "post",
-                        "page",
-                        "rfc_cruises",
-                        "rfc_tours",
-                        "rfc_lodges",
-                        "rfc_destinations",
-                        "rfc_locations",
-                        "rfc_regions",
-                        "rfc_countries",
-                        "rfc_experiences"
-                    ],
-                    "admin_column_taxonomies": [
-                        "category",
-                        "post_tag",
-                        "link_category"
-                    ],
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
-                {
-                    "key": "field_63729d97ce41d",
-                    "label": "Testimonial",
-                    "name": "testimonial",
-                    "type": "textarea",
+                    "key": "field_63c9b7c7b0b8b",
+                    "label": "Image",
+                    "name": "image",
+                    "type": "image",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -533,31 +250,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "admin_column_enabled": 0,
-                    "admin_column_post_types": "",
-                    "admin_column_taxonomies": "",
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": 6,
-                    "new_lines": ""
-                },
-                {
-                    "key": "field_63729d97d20e1",
-                    "label": "Image",
-                    "name": "image",
-                    "type": "image",
-                    "instructions": "Vertical image (450 x 600)",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "admin_column_enabled": 0,
-                    "admin_column_post_types": "",
-                    "admin_column_taxonomies": "",
                     "return_format": "array",
                     "preview_size": "medium",
                     "library": "all",
@@ -568,11 +260,49 @@
                     "max_height": "",
                     "max_size": "",
                     "mime_types": ""
+                },
+                {
+                    "key": "field_63c9b7d2b0b8c",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_63c9b7dbb0b8d",
+                    "label": "Text",
+                    "name": "text",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 0,
+                    "delay": 0
                 }
             ]
         },
         {
-            "key": "field_63729d968ec60",
+            "key": "field_63c9b738b0b88",
             "label": "FAQ",
             "name": "",
             "type": "tab",
@@ -663,6 +393,126 @@
                     "delay": 0
                 }
             ]
+        },
+        {
+            "key": "field_63c9b71eb0b86",
+            "label": "Ships",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_6373ed609797f",
+            "label": "Ships Title Subtext",
+            "name": "ships_title_subtext",
+            "type": "wysiwyg",
+            "instructions": "Snippet under the title",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_63729d966d75e",
+            "label": "Ships",
+            "name": "ships",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_cruises"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
+        },
+        {
+            "key": "field_63c9b72db0b87",
+            "label": "Travel Guides",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_63729d9678702",
+            "label": "Travel Guide Title Subtext",
+            "name": "travel_guide_title_subtext",
+            "type": "wysiwyg",
+            "instructions": "Snippet under the title",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_63729d967c191",
+            "label": "Travel Guide",
+            "name": "travel_guides",
+            "type": "relationship",
+            "instructions": "Select 7 travel guides. Order as needed",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_travel_guides"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
         }
     ],
     "location": [
@@ -670,7 +520,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "template-category-landing.php"
+                "value": "template-landing.php"
             }
         ]
     ],
@@ -683,7 +533,7 @@
         "the_content"
     ],
     "active": true,
-    "description": "Category Landning - Page",
+    "description": "Landing - Page",
     "show_in_rest": 0,
-    "modified": 1668543405
+    "modified": 1674165260
 }

@@ -5,7 +5,7 @@ return array (
   'title' => 'Amenities',
   'type' => 'rfc_amenities',
   'id' => '62cdcbfae7799',
-  'updated' => 1657654266,
+  'updated' => 1674061974,
   'columns' => 
   array (
     'title' => 
@@ -37,22 +37,6 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '62cdcbd0cd0e58',
-    ),
-    'date' => 
-    array (
-      'type' => 'date',
-      'label' => 'Date',
-      'width' => '',
-      'width_unit' => '%',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'off',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'filter_format' => '',
-      'name' => 'date',
     ),
   ),
   'settings' => 

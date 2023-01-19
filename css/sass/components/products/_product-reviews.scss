@@ -1,7 +1,6 @@
 .product-reviews {
-
     @include flexBlock;
-    
+
     &__content {
         display: flex;
         flex-direction: column;
@@ -10,79 +9,42 @@
         margin-top: 3rem;
         max-width: $page-width;
 
-
         &__grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem 8rem;
-          
+
             margin-bottom: 3rem;
             max-width: 90%;
 
             @media only screen and (max-width: $bp-medium) {
                 max-width: 100%;
                 grid-template-columns: 1fr;
-              }
+            }
         }
 
         &__cta {
-           
         }
     }
 }
 
-.review-item {
-    margin-bottom: 2rem;
-    &__profile {
-        display: flex;
-        align-items: center;
-        margin-bottom: 2rem;
-        & img {
-            height: 6rem;
-            width: 6rem;
-            border-radius: 6rem;
-            margin-right: 1.5rem;
-        }
-
-        &__title-group {
-            &__title{
-                color: $color-primary;
-                font-size: 1.8rem;
-                font-weight: 700;
-            }
-            &__date{
-                color: $color-grey-3;
-                font-size: 1.4rem;
-                
-            }
-           
-        }
-        
-    }
-    &__text {
-        font-size: 1.6rem;
-    }
-
-}
 
 
 .reviews-modal {
-    &__filters {     
+    &__filters {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        transform: translateY(-2rem);     
+        transform: translateY(-2rem);
     }
     &__content {
-        & .review-item{
+        & .text-card {
             margin-bottom: 8rem;
-            &:not(:last-of-type){
+            &:not(:last-of-type) {
                 margin-bottom: 3rem;
                 padding-bottom: 3rem;
                 border-bottom: 1px solid $color-grey-light-1a;
             }
-          
-        
         }
     }
 }

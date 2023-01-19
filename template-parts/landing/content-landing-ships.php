@@ -1,6 +1,6 @@
 <?php
 $ships = get_field('ships');
-$ships_title_subtext = get_field('travel_guide_title_subtext')
+$ships_title_subtext = get_field('ships_title_subtext')
 
 ?>
 

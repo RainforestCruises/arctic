@@ -40,15 +40,27 @@ $experiences = get_field('experiences');
                     ?>
 
                         <!-- Card -->
-                        <div class="experience-item swiper-slide">
+                        <div class="resource-card small swiper-slide">
 
-                            <div class="experience-item__title">
-                                <?php echo $title ?>
-                            </div>
-                            <div class="experience-item__text">
-                                <?php echo $description ?>
+                            <!-- Images Slider -->
+                            <div class="resource-card__image-area">
+                                <img <?php afloat_image_markup($image['id'], 'portrait-medium', array('portrait-medium', 'portrait-small')); ?>>
                             </div>
 
+                            <!-- Content -->
+                            <div class="resource-card__content">
+
+                                <!-- Title -->
+                                <div class="resource-card__content__title-group">
+                                    <div class="resource-card__content__title-group__title">
+                                        <?php echo $title ?>
+                                    </div>
+                                </div>
+
+                                <div class="resource-card__content__description">
+                                    <?php echo $description ?>
+                                </div>
+                            </div>
                         </div>
                         <!-- End Card -->
 

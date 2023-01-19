@@ -5,7 +5,7 @@ return array (
   'title' => 'Activities',
   'type' => 'rfc_activities',
   'id' => '5fe1211e43e30',
-  'updated' => 1660171495,
+  'updated' => 1674061947,
   'columns' => 
   array (
     'title' => 
@@ -21,16 +21,14 @@ return array (
       'search' => 'on',
       'name' => 'title',
     ),
-    '62f1a2578624dc' => 
+    '63c8286ca31270' => 
     array (
       'type' => 'column-acf_field',
-      'label' => 'Hero Image Portrait',
+      'label' => 'Icon',
       'width' => '',
       'width_unit' => '%',
-      'field' => 'field_62f1a21c85337',
-      'image_size' => 'cpac-custom',
-      'image_size_w' => '60',
-      'image_size_h' => '60',
+      'field' => 'field_6384e2ac1959a',
+      'character_limit' => '20',
       'export' => 'off',
       'sort' => 'on',
       'edit' => 'on',
@@ -38,7 +36,7 @@ return array (
       'search' => 'on',
       'filter' => 'off',
       'filter_label' => '',
-      'name' => '62f1a2578624dc',
+      'name' => '63c8286ca31270',
     ),
   ),
   'settings' => 

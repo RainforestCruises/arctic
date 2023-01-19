@@ -1,10 +1,12 @@
 <?php
-$guides = get_field('guides');
-$firstGuides = array_slice($guides, 0, 7);
-$guides_title_subtext = get_field('guides_title_subtext')
+$travel_guides = get_field('travel_guides');
+$firstGuides = array_slice($travel_guides, 0, 7);
+$travel_guide_title_subtext = get_field('travel_guide_title_subtext');
+
 ?>
 
-<section class="grid-block" id="section-guides">
+
+<section class="grid-block" id="section-guide">
     <div class="grid-block__content block-top-divider block-bottom-divider">
 
         <!-- Top - Title/Nav -->
@@ -15,7 +17,7 @@ $guides_title_subtext = get_field('guides_title_subtext')
                 Antarctica Expedition Cruise Guide
                 </div>
                 <div class="title-group__sub">
-                    <?php echo $guides_title_subtext; ?>
+                    <?php echo $travel_guide_title_subtext; ?>
                 </div>
             </div>
         </div>

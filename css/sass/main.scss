@@ -63,11 +63,12 @@
 @import "components/products/cruise/cruise-map";
 
 
-//category
-@import "components/category/category-hero";
-@import "components/category/category-overview";
-@import "components/category/category-guides";
-@import "components/category/category-faq";
+//landing
+@import "components/landing/landing-hero";
+
+@import "components/landing/landing-overview";
+@import "components/landing/landing-guides";
+@import "components/landing/landing-topics";
 
 
 
@@ -114,7 +115,6 @@
 
 @import "components/home/home-intro";
 @import "components/home/home-featured";
-@import "components/home/home-testimonials";
 @import "components/home/home-full-search";
 
 
