@@ -19,28 +19,6 @@
             "endpoint": 0
         },
         {
-            "key": "field_5f93476ae89d3",
-            "label": "Static Lowest Price",
-            "name": "static_price",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": "",
-            "readonly": 1
-        },
-        {
             "key": "field_5f6b863fe1d13",
             "label": "Hero Gallery",
             "name": "hero_gallery",
@@ -243,6 +221,22 @@
                     "maxlength": ""
                 }
             ]
+        },
+        {
+            "key": "field_63cab838e16af",
+            "label": "Deck Plans",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_5f6d1c43f3d45",
@@ -542,89 +536,6 @@
             "return_format": "object"
         },
         {
-            "key": "field_5f9708afcab59",
-            "label": "Technical Info",
-            "name": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_60aeb050fa54f",
-            "label": "Search Rank",
-            "name": "search_rank",
-            "type": "number",
-            "instructions": "Weight given to search priority, from 1-1000. A higher number will appear first in search results. A product with a weight of 1 will appear last. Score average products: ~500 range, products to appear first: 700+ range, products to rank last: sub 300 range.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": 1,
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": 1,
-            "max": 1000,
-            "step": ""
-        },
-        {
-            "key": "field_618c23e9ce2d2",
-            "label": "Show Notification",
-            "name": "show_notification",
-            "type": "true_false",
-            "instructions": "Check to display a notification message on page load",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_618c241dce2d3",
-            "label": "Notification Message",
-            "name": "notification_message",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_618c23e9ce2d2",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 0,
-            "delay": 0
-        },
-        {
             "key": "field_62d59112d9b25",
             "label": "Reviews",
             "name": "",
@@ -741,6 +652,89 @@
                     "new_lines": ""
                 }
             ]
+        },
+        {
+            "key": "field_5f9708afcab59",
+            "label": "Technical Info",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_60aeb050fa54f",
+            "label": "Search Rank",
+            "name": "search_rank",
+            "type": "number",
+            "instructions": "Weight given to search priority, from 1-1000. A higher number will appear first in search results. A product with a weight of 1 will appear last. Score average products: ~500 range, products to appear first: 700+ range, products to rank last: sub 300 range.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 1,
+            "max": 1000,
+            "step": ""
+        },
+        {
+            "key": "field_618c23e9ce2d2",
+            "label": "Show Notification",
+            "name": "show_notification",
+            "type": "true_false",
+            "instructions": "Check to display a notification message on page load",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_618c241dce2d3",
+            "label": "Notification Message",
+            "name": "notification_message",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_618c23e9ce2d2",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
         }
     ],
     "location": [
@@ -761,5 +755,5 @@
     "active": true,
     "description": "Cruise - CPT",
     "show_in_rest": 0,
-    "modified": 1674061822
+    "modified": 1674229915
 }

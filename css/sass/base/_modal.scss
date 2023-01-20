@@ -88,6 +88,31 @@
             height: min-content;
         }
 
+        &.deckplan-images {
+
+            & .modal__gallery__main {
+                height: calc(100% - 8rem);
+                @media only screen and (max-width: $bp-medium) {
+                    height: 80vh;
+                }
+            }
+
+            & .modal__gallery__main__slider__item {
+                height: 100%;
+                width: auto;
+
+                & img {
+                    height: 100%;
+                    width: auto;
+                    object-fit: contain;
+                    border-radius: 1rem;
+                    overflow: hidden;         
+                }
+            }
+
+
+        }
+
         &__top {
             width: 100%;
             height: 8rem;
@@ -114,7 +139,7 @@
             @media only screen and (max-width: $bp-medium) {
                 padding-bottom: 2rem;
                 padding-top: 2rem;
-                height: auto;
+                height: auto; //or 65vh ?
             }
 
             &__slider {
@@ -131,9 +156,7 @@
                         width: 100%;
                         object-fit: cover;
                         border-radius: 1rem;
-                        overflow: hidden;
-                        
-                      
+                        overflow: hidden;         
                     }
                 }
             }

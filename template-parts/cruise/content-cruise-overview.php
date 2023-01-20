@@ -1,8 +1,8 @@
 <?php
 $productName = $args['productName'];
-$deck_plans = get_field('deck_plans');
 $amenities = get_field('amenities');
 $overview_content = get_field('overview_content');
+$deck_plans = get_field('deck_plans');
 
 $expand = strlen($overview_content) > 950 ? true : false;
 $overview_content_limited = substr($overview_content, 0, 950) . '...';
@@ -228,17 +228,11 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
                 <div class="product-overview__content__grid__secondary__cta">
 
                     <?php if ($deck_plans) : ?>
-                        <button class="cta-primary cta-primary--inverse" id="deckplan-button" imageId="<?php echo $deck_plans[0]['id']; ?>">
+                        <button class="cta-primary cta-primary--inverse" id="deckplan-button">
                             View Deckplans
                         </button>
                     <?php endif; ?>
 
-                    <a class="cta-link-icon" href="#">
-                        Flexible booking terms
-                        <svg>
-                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-shield"></use>
-                        </svg>
-                    </a>
                 </div>
             </div>
         </div>

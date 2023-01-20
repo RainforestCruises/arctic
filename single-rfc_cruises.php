@@ -3,6 +3,8 @@ wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', 
 wp_enqueue_script('page-product', get_template_directory_uri() . '/js/page-product.js', array('jquery'), false, true);
 
 wp_enqueue_script('page-product-modal-gallery', get_template_directory_uri() . '/js/page-product-modal-gallery.js', array('jquery'), false, true);
+wp_enqueue_script('page-product-modal-deckplans', get_template_directory_uri() . '/js/page-product-modal-deckplans.js', array('jquery'), false, true);
+
 wp_enqueue_script('page-product-dates', get_template_directory_uri() . '/js/page-product-dates.js', array('jquery'), false, true);
 
 wp_enqueue_script('page-product-cruise-itineraries', get_template_directory_uri() . '/js/page-product-cruise-itineraries.js', array('jquery'), false, true);
@@ -87,6 +89,11 @@ wp_localize_script(
   <?php
   get_template_part('template-parts/cruise/content', 'cruise-overview', $args);
   ?>
+
+  <!-- Modal Deckplan Gallery
+    <?php
+    get_template_part('template-parts/cruise/content', 'cruise-deckplan-gallery', $args);
+    ?> -->
 
   <!-- Cabins -->
   <?php

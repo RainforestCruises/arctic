@@ -2014,6 +2014,20 @@ h5 {
       .modal__gallery {
         padding: 0 2rem;
         height: min-content; } }
+    .modal__gallery.deckplan-images .modal__gallery__main {
+      height: calc(100% - 8rem); }
+      @media only screen and (max-width: 50em) {
+        .modal__gallery.deckplan-images .modal__gallery__main {
+          height: 80vh; } }
+    .modal__gallery.deckplan-images .modal__gallery__main__slider__item {
+      height: 100%;
+      width: auto; }
+      .modal__gallery.deckplan-images .modal__gallery__main__slider__item img {
+        height: 100%;
+        width: auto;
+        object-fit: contain;
+        border-radius: 1rem;
+        overflow: hidden; }
     .modal__gallery__top {
       width: 100%;
       height: 8rem;
@@ -4170,7 +4184,7 @@ h5 {
       .product-hero__bg-image {
         display: none; } }
     .product-hero__bg-image img {
-      height: calc(100% - 20rem);
+      height: calc(100% - 22rem);
       width: 100%;
       object-fit: cover;
       z-index: 1; }
@@ -4179,7 +4193,7 @@ h5 {
       content: "";
       top: 0;
       left: 0;
-      height: calc(100% - 20rem);
+      height: calc(100% - 22rem);
       width: 100%;
       background-image: linear-gradient(to bottom, rgba(30, 30, 30, 0.3), transparent 20%), linear-gradient(to bottom, rgba(30, 30, 30, 0.1), rgba(30, 30, 30, 0.1)), linear-gradient(to top, rgba(30, 30, 30, 0.8), rgba(30, 30, 30, 0.1) 50%);
       z-index: 2; }
@@ -4339,7 +4353,7 @@ h5 {
               content: "";
               width: 100%; }
       .product-hero__content__main__secondary {
-        height: 20rem;
+        height: 22rem;
         color: #1d2225; }
         @media only screen and (max-width: 62.5em) {
           .product-hero__content__main__secondary {

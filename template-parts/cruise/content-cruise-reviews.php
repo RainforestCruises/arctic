@@ -2,6 +2,7 @@
 
 $reviews = get_field('reviews');
 $firstReviews = array_slice($reviews, 0, 4);
+$displayLimit = 250;
 
 ?>
 <section class="grid-block narrow" id="section-reviews">
@@ -25,8 +26,8 @@ $firstReviews = array_slice($reviews, 0, 4);
                 $date = $r['date'];
                 $text = $r['text'];
 
-                $expand = strlen($text) > 230 ? true : false;
-                $text_limited = substr($text, 0, 230) . ($expand ? '...' : '');
+                $expand = strlen($text) > $displayLimit ? true : false;
+                $text_limited = substr($text, 0, $displayLimit) . ($expand ? '...' : '');
             ?>
 
                 <div class="text-card">
