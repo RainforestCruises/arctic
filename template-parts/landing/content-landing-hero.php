@@ -7,7 +7,7 @@ $hero_subtitle = get_field('hero_subtitle');
 ?>
 
 <!-- Hero section -->
-<section class="landing-hero" id="section-hero">
+<section class="landing-hero" id="section-top">
 
     <!-- Desktop BG Image -->
     <div class="landing-hero__bg-image">
@@ -36,8 +36,9 @@ $hero_subtitle = get_field('hero_subtitle');
             <a href="#section-itineraries" class="landing-nav__content__links__link">Itineraries</a>
             <a href="#section-about" class="landing-nav__content__links__link">About</a>
             <a href="#section-faq" class="landing-nav__content__links__link">FAQ</a>
-            <a href="#section-faq" class="landing-nav__content__links__link">Reviews</a>
             <a href="#section-ships" class="landing-nav__content__links__link">Ships</a>
+            <a href="#section-guide" class="landing-nav__content__links__link">Travel Guide</a>
+
         </div>
         <div class="landing-nav__content__cta">
             <button class="cta-primary generic-inquire-cta">

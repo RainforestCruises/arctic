@@ -62,7 +62,7 @@ $intro_text_limited = substr($intro_text, 0, 950) . '...';
             <!-- Side Section -->
             <div class="landing-overview__content__grid__secondary">
 
-            <div class="quote-grid__image-area">
+                <div class="quote-grid__image-area">
                     <img class="quote-grid__image-area__primary" <?php afloat_image_markup($hero_images[1]['id'], 'portrait-medium', array('portrait-medium', 'portrait-small')); ?>>
                     <img class="quote-grid__image-area__secondary" <?php afloat_image_markup($hero_images[2]['id'], 'vertical-small', array('vertical-small')); ?>>
                 </div>

@@ -5,7 +5,7 @@ $displayLimit = 250;
 ?>
 
 
-<section class="grid-block" id="section-faqs">
+<section class="grid-block" id="section-faq">
     <div class="grid-block__content block-top-divider">
         <div class="grid-block__content__top">
             <!-- Title -->

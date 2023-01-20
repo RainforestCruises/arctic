@@ -43,18 +43,22 @@ $title = get_the_title();
             </a>
         </div>
         <div class="nav-secondary__content__links">
-            <a href="#section-ships" class="nav-secondary__content__links__link">
-                Ships
-            </a>
             <a href="#section-itineraries" class="nav-secondary__content__links__link">
                 Itineraries
             </a>
-            <a href="#section-guide" class="nav-secondary__content__links__link">
-                Travel Guide
+            <a href="#section-about" class="nav-secondary__content__links__link">
+                About
             </a>
             <a href="#section-faq" class="nav-secondary__content__links__link">
                 FAQ
             </a>
+            <a href="#section-ships" class="nav-secondary__content__links__link">
+                Ships
+            </a>
+            <a href="#section-guide" class="nav-secondary__content__links__link">
+                Travel Guide
+            </a>
+         
         </div>
         <div class="nav-secondary__content__cta product-template">
             <button class="nav-secondary__content__cta__button btn-pill btn-pill--dark generic-inquire-cta">

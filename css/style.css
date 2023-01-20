@@ -3655,7 +3655,7 @@ h5 {
     margin-top: 1.5rem;
     font-size: 1.6rem; }
   .text-card__expand {
-    margin-top: .8rem; }
+    margin-top: 0.8rem; }
 
 .overlay-card {
   height: 33rem;
@@ -4043,8 +4043,15 @@ h5 {
   grid-template-columns: 2fr 2fr;
   gap: 6rem;
   position: relative; }
+  @media only screen and (max-width: 62.5em) {
+    .full-card {
+      grid-template-columns: 1fr;
+      gap: 3rem; } }
   .full-card.reverse .full-card__image-area {
     order: 0; }
+    @media only screen and (max-width: 62.5em) {
+      .full-card.reverse .full-card__image-area {
+        order: 2; } }
   .full-card__image-area {
     position: relative;
     width: 100%;
@@ -4054,7 +4061,14 @@ h5 {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 1rem; }
+      border-radius: 1rem;
+      max-height: 40rem; }
+      @media only screen and (max-width: 62.5em) {
+        .full-card__image-area img {
+          max-height: 33rem; } }
+      @media only screen and (max-width: 37.5em) {
+        .full-card__image-area img {
+          max-height: 28rem; } }
   .full-card__content {
     display: flex;
     flex-direction: column;
@@ -5526,6 +5540,13 @@ h5 {
   height: 65rem;
   width: 100%;
   position: relative; }
+  @media only screen and (max-width: 62.5em) {
+    .landing-hero {
+      margin-top: 7rem;
+      height: 50rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .landing-hero {
+      height: 35rem; } }
   .landing-hero__bg-image {
     position: absolute;
     height: 100%;
@@ -5555,6 +5576,10 @@ h5 {
     @media only screen and (max-width: 50em) {
       .landing-hero__content {
         padding: 0 3rem; } }
+    @media only screen and (max-width: 62.5em) {
+      .landing-hero__content {
+        padding-top: 2rem;
+        padding-bottom: 2rem; } }
     .landing-hero__content__title-group__title {
       font-size: 5rem;
       font-weight: 400;
@@ -5584,6 +5609,9 @@ h5 {
   background-color: #f8f8f8;
   color: #1d2225;
   border-bottom: 1px solid #e6e6e6; }
+  @media only screen and (max-width: 62.5em) {
+    .landing-nav {
+      display: none; } }
   .landing-nav__content {
     max-width: 160rem;
     width: 100%;
@@ -5634,7 +5662,7 @@ h5 {
       grid-template-columns: 1fr 1fr;
       gap: 8rem;
       position: relative; }
-      @media only screen and (max-width: 50em) {
+      @media only screen and (max-width: 62.5em) {
         .landing-overview__content__grid {
           grid-template-columns: 1fr; } }
       .landing-overview__content__grid__overview__highlights {
@@ -5664,6 +5692,9 @@ h5 {
           display: flex;
           justify-content: space-between;
           align-items: center; }
+        @media only screen and (max-width: 62.5em) {
+          .landing-overview__content__grid__secondary {
+            display: none; } }
 
 .landing-guides {
   display: grid;

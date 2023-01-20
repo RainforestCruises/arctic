@@ -16,7 +16,9 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 8rem;
-            @media only screen and (max-width: $bp-medium) {
+
+            
+            @media only screen and (max-width: $bp-large) {
                 grid-template-columns: 1fr;
             }
 
@@ -52,10 +54,8 @@
             }
 
             &__secondary {
+          
                 margin-top: 1.5rem;
-
-                //view deckplans / terms
-
                 &__media {
                     height: 50rem;
                 }
@@ -63,6 +63,10 @@
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
+                }
+
+                @media only screen and (max-width: $bp-large) {
+                    display: none;
                 }
             }
         }
