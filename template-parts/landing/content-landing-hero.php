@@ -34,7 +34,7 @@ $hero_subtitle = get_field('hero_subtitle');
     <div class="landing-nav__content">
         <div class="landing-nav__content__links">
             <a href="#section-itineraries" class="landing-nav__content__links__link">Itineraries</a>
-            <a href="#section-expect" class="landing-nav__content__links__link">What to Expect</a>
+            <a href="#section-about" class="landing-nav__content__links__link">About</a>
             <a href="#section-faq" class="landing-nav__content__links__link">FAQ</a>
             <a href="#section-faq" class="landing-nav__content__links__link">Reviews</a>
             <a href="#section-ships" class="landing-nav__content__links__link">Ships</a>

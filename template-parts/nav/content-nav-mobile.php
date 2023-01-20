@@ -137,16 +137,15 @@ $logo = get_field('logo_main', 'options');
                 </div>
                 <?php foreach ($items as $item) :
                     $url = get_permalink($item);
-                    $title = get_the_title($item);
-                    $hero_slider =  get_field('hero_slider', $item); // first slide image
-                    $hero_image = $hero_slider[0]['image'];
+                    $hero_title = get_field('hero_title', $item);
+                    $hero_images =  get_field('hero_images', $item);
                 ?>
                     <a href="<?php echo $url; ?>" class="nav-button mobile-link">
                         <div class="nav-button__icon">
-                            <img <?php afloat_image_markup($hero_image['id'], 'square-small', array('square-small')); ?>>
+                            <img <?php afloat_image_markup($hero_images[0]['id'], 'square-small', array('square-small')); ?>>
                         </div>
                         <div class="nav-button__text">
-                            <?php echo $title; ?>
+                            <?php echo $hero_title; ?>
                         </div>
                     </a>
 

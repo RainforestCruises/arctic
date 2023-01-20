@@ -4040,36 +4040,32 @@ h5 {
 
 .full-card {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 2fr;
   gap: 6rem;
   position: relative; }
+  .full-card.reverse .full-card__image-area {
+    order: 0; }
   .full-card__image-area {
     position: relative;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 55rem;
-    margin-bottom: 3rem;
-    border-radius: 1rem;
-    overflow: hidden !important; }
+    height: 100%;
+    order: 2; }
     .full-card__image-area img {
       width: 100%;
       height: 100%;
-      object-fit: cover; }
+      object-fit: cover;
+      border-radius: 1rem; }
   .full-card__content {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding: 3rem 6rem;
-    padding-bottom: 6rem;
     height: min-content;
     background-color: #fff;
     border-radius: 1rem;
-    z-index: 5;
-    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2); }
+    z-index: 5; }
     .full-card__content__title {
-      font-size: 3rem;
+      font-size: 2.2rem;
+      line-height: 2.6rem;
       font-weight: 700;
       color: #1d2225;
       margin-bottom: 2rem; }

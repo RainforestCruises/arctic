@@ -61,16 +61,15 @@ $alwaysActiveMainNav = checkActiveHeader();
                                 <div class="nav-mega__panel__grid__group__items">
                                     <?php foreach ($items as $item) :
                                         $url = get_permalink($item);
-                                        $title = get_the_title($item);
-                                        $hero_slider =  get_field('hero_slider', $item); // first slide image
-                                        $hero_image = $hero_slider[0]['image'];
+                                        $hero_title = get_field('hero_title', $item);
+                                        $hero_images =  get_field('hero_images', $item);
                                     ?>
                                         <a class="mega-category-item" href="<?php echo $url; ?>">
                                             <div class="mega-category-item__image-area">
-                                                <img <?php afloat_image_markup($hero_image['id'], 'square-small', array('square-small')); ?>>
+                                                <img <?php afloat_image_markup($hero_images[0]['id'], 'square-small', array('square-small')); ?>>
                                             </div>
                                             <div class="mega-category-item__title">
-                                                <?php echo $title ?>
+                                                <?php echo $hero_title ?>
                                             </div>
                                         </a>
                                     <?php endforeach; ?>
@@ -90,7 +89,6 @@ $alwaysActiveMainNav = checkActiveHeader();
                             <div class="nav-mega__panel__grid__group">
                                 <div class="nav-mega__panel__grid__group__title">
                                     <?php echo $group_title; ?>
-
                                 </div>
                                 <div class="nav-mega__panel__grid__group__items items-grid-4">
                                     <?php foreach ($items as $item) :
