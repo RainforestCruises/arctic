@@ -1,28 +1,72 @@
 <?php
-$guides = get_field('guides');
-$guides_title_subtext = get_field('guides_title_subtext')
+$newsletter_form_id = get_field('newsletter_form_id', 'options');
+$footer_cta_title = get_field('footer_cta_title', 'options');
+$footer_cta_subtext = get_field('footer_cta_subtext', 'options');
+$footer_cta_steps = get_field('footer_cta_steps', 'options');
+$phone_number = get_field('phone_number', 'options');
+$footerClasses = renderFooterClasses();
+
 ?>
 
-<section class="grid-block" id="section-newsletter">
+<section class="grid-block <?php echo $footerClasses; ?>" id="section-newsletter">
     <div class="grid-block__content">
 
         <!-- Grid Area -->
         <div class="grid-block__content__grid grid1">
-            <div class="newsletter">
-                <h2 class="newsletter__title">
-                    <?php echo get_field('newsletter_title', 'options'); ?>
-                </h2>
-                <div class="newsletter__text">
-                    <?php echo get_field('newsletter_snippet', 'options'); ?>
+            <div class="footer-cta">
+
+                <!-- Title Area -->
+                <div class="footer-cta__title-group">
+                    <div class="footer-cta__title-group__title">
+                        <?php echo $footer_cta_title; ?>
+                    </div>
+                    <div class="footer-cta__title-group__sub">
+                        <?php echo $footer_cta_subtext; ?>
+                    </div>
                 </div>
-                <div class="newsletter__email">
-                    <a class="cta-primary cta-primary--inverse" href="<?php echo get_home_url(); ?>/contact">
-                        Send us a Message
-                    </a>
-                    <button class="cta-primary" id="newsletter-subscribe-button">
-                        Sign up for our Newsletter
-                    </button>
+
+                <div class="footer-cta__steps">
+                    <?php foreach ($footer_cta_steps as $step) :
+                        $icon = $step['icon'];
+                        $title = $step['title'];
+                        $text = $step['text'];
+                    ?>
+                        <div class="footer-cta__steps__item">
+                            <div class="footer-cta__steps__item__icon-area">
+                                <?php echo $icon; ?>
+                            </div>
+                            <div class="footer-cta__steps__item__title">
+                                <?php echo $title; ?>
+                            </div>
+                            <div class="footer-cta__steps__item__text">
+                                <?php echo $text; ?>
+                            </div>
+
+
+                        </div>
+
+                    <?php endforeach; ?>
                 </div>
+
+
+
+                <div class="footer-cta__closing">
+
+
+                    <div class="footer-cta__closing__buttons">
+                        <a class="cta-primary cta-primary--inverse" href="<?php echo get_home_url(); ?>/contact">
+                            Start Your Adventure Today
+                        </a>
+              
+                    </div>
+
+                    <div class="footer-cta__closing__phone">
+                        Or give us a call at: <?php echo $phone_number; ?>
+                    </div>
+
+                </div>
+
+
             </div>
         </div>
 

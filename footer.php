@@ -8,7 +8,6 @@ $footerClasses = renderFooterClasses();
 
 <!-- Footer -->
 <footer class="footer <?php echo $footerClasses; ?>">
-
     <div class="footer__content">
         <div class="footer__content__main">
             <?php foreach ($footer_menus as $menu) :

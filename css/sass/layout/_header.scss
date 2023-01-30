@@ -11,7 +11,7 @@
         position: fixed;
     }
 
-    &.small-width {
+    &.narrow {
         & .nav-main__content {
             max-width: $page-width;
         }
@@ -23,7 +23,7 @@
     }
 
     @media only screen and (max-width: $bp-xlargest) {
-        &:not(.small-width) {
+        &:not(.narrow) {
             & .nav-mega {
                 width: calc(100% + 30rem);
                 transform: translateX(-15rem);

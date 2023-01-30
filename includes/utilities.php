@@ -496,12 +496,12 @@ function renderHeaderClasses()
         $classes .= ' fixed ';
     }
 
-    //small width
+    //narrow
     if ($postTypeName == 'rfc_cruises' || $postTypeName == 'rfc_itineraries' || $postTypeName == 'rfc_travel_guides' ) {
-        $classes .= ' small-width ';
+        $classes .= ' narrow ';
     }
     if ($templateName == 'template-about.php' || $templateName == 'template-generic.php') {
-        $classes .= ' small-width ';
+        $classes .= ' narrow ';
     }
 
     return $classes;
