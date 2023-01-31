@@ -1,38 +1,63 @@
 <?php
-$footer_menus = get_field('footer_menus', 'options');
+$footer_links = get_field('footer_links', 'options');
+$logo_main = get_field('logo_main', 'options');
+$phone_number = get_field('phone_number', 'options');
+$phone_number_numeric = get_field('phone_number_numeric', 'options');
+
 $privacy_link = get_field('privacy_link', 'options');
 $terms_link = get_field('terms_link', 'options');
-$footerClasses = renderFooterClasses(); 
+
+$newsletter_form_id = get_field('newsletter_form_id', 'options');
+$footerClasses = renderFooterClasses();
 ?>
+
 
 
 <!-- Footer -->
 <footer class="footer <?php echo $footerClasses; ?>">
     <div class="footer__content">
         <div class="footer__content__main">
-            <?php foreach ($footer_menus as $menu) :
-                $header = $menu['header'];
-                $items = $menu['items'];
-            ?>
 
-                <div class="footer-menu">
-                    <div class="footer-menu__header">
-                        <?php echo $menu['header']; ?>
-                    </div>
-                    <ul class="footer-menu__list">
-                        <?php foreach ($items as $item) :
-                            $link_name = $item['link_name'];
-                            $link = $item['link'];
-                        ?>
-                            <li class="footer-menu__list__item">
-                                <a href="<?php echo $link ?>"><?php echo $link_name; ?></a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
+            <div class="footer__content__main__newsletter">
+                <div class="footer__content__main__newsletter__brand">
+                    <img src="<?php echo $logo_main['url']; ?>" class="nav-main__content__left__logo-area__logo-main" alt="<?php echo get_bloginfo('name') ?>" />
                 </div>
+                <div class="footer__content__main__newsletter__subtext">
+                    Get expert advice, travel news, and more straight to your inbox
+                </div>
+                <div class="footer__content__main__newsletter__cta">
+                    <button class="cta-primary" id="newsletter-subscribe-button">Sign Up for Our Newsletter</button>
+                </div>
+            </div>
 
+            <div class="footer__content__main__contact">
+                <div class="footer__content__main__contact__title">
+                    Sales & Reservations
+                </div>
+                <ul class="footer__content__main__contact__text">
+                    <li> <a href="tel:<?php echo $phone_number_numeric; ?>">
+                            <?php echo $phone_number; ?>
+                        </a></li>
+                    <li>Email: <a href="mailto:cruise@antarcticacruises.com">cruise@antarcticacruises.com</a></li>
+                </ul>
 
-            <?php endforeach; ?>
+                <div class="footer__content__main__contact__title">
+                    Antarctica Cruises
+                </div>
+                <ul class="footer__content__main__contact__text">
+                    <li>1680 Michigan Avenue, Suite 700</li>
+                    <li>Miami Beach, FL 33139</li>
+                </ul>
+            </div>
+
+            <ul class="footer__content__main__links">
+                <?php foreach ($footer_links as $item) : ?>
+                    <li>
+                        <a href="<?php echo get_permalink($item); ?>"> <?php echo get_the_title($item) ?></a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+
         </div>
         <div class="footer__content__bottom">
             <div class="footer__content__bottom__legal">
@@ -88,6 +113,51 @@ $footerClasses = renderFooterClasses();
 
 
 </footer>
+
+
+<!-- Newsletter Modal -->
+<div class="modal" id="newsletterModal">
+
+    <div class="modal__content">
+        <div class="modal__content__top">
+            <div class="modal__content__top__nav">
+
+            </div>
+            <button class="btn-text-icon close-modal-button ">
+                Close
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
+                </svg>
+            </button>
+        </div>
+        <div class="modal__content__main">
+            <div class="inquire-form">
+                <div class="inquire-form__intro">
+                    <div class="inquire-form__intro__title">
+                        Join Our Newsletter
+                    </div>
+
+                    <div class="inquire-form__intro__subtext">
+                        Please fill in the form beneath and you’ll be added to our newsletter.
+                    </div>
+                </div>
+
+                <div class="inquire-form__form">
+                    <?php
+                    //Check if WpForms is active
+                    if (is_plugin_active('wpforms/wpforms.php')) {
+                        wpforms_display($newsletter_form_id);
+                    } else {
+                        echo 'Forms Plugin Missing';
+                    }
+                    ?>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- End Newsletter Modal -->
 <?php wp_footer(); ?>
 
 </body>

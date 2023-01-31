@@ -932,6 +932,27 @@
                     "step": ""
                 },
                 {
+                    "key": "field_63d9743c6228f",
+                    "label": "Price Range High",
+                    "name": "price_range_high",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": "",
+                    "max": "",
+                    "step": ""
+                },
+                {
                     "key": "field_6384e4e957dbe",
                     "label": "Standard Activity",
                     "name": "standard_activity",
@@ -1153,5 +1174,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1671143523
+    "modified": 1675195474
 }

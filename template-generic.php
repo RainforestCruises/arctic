@@ -56,6 +56,12 @@ $toc_content = get_field('toc_content');
 
     </section>
 
+    
+  <!-- Footer CTA  -->
+  <?php
+  get_template_part('template-parts/shared/content', 'shared-footer-cta');
+  ?>
+
 </main>
 
 

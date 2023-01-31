@@ -1,13 +1,13 @@
 <?php
 $travel_guides = get_field('travel_guides');
-$firstGuides = array_slice($travel_guides, 0, 7);
+$firstGuides = array_slice($travel_guides, 0, 5);
 $travel_guide_title_subtext = get_field('travel_guide_title_subtext');
 
 ?>
 
-
+<!-- Travel Guides -->
 <section class="grid-block" id="section-guide">
-    <div class="grid-block__content block-top-divider block-bottom-divider">
+    <div class="grid-block__content block-top-divider">
 
         <!-- Top - Title/Nav -->
         <div class="grid-block__content__top">
@@ -23,7 +23,7 @@ $travel_guide_title_subtext = get_field('travel_guide_title_subtext');
         </div>
 
         <!-- Grid Area -->
-        <div class="grid-block__content__grid grid-3x4">
+        <div class="grid-block__content__grid grid-2x3">
             <?php
             $count = 0;
             foreach ($firstGuides as $guide) :

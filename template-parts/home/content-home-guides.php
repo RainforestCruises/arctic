@@ -5,7 +5,7 @@ $guides_title_subtext = get_field('guides_title_subtext')
 ?>
 
 <section class="grid-block" id="section-guides">
-    <div class="grid-block__content block-top-divider block-bottom-divider">
+    <div class="grid-block__content block-top-divider">
 
         <!-- Top - Title/Nav -->
         <div class="grid-block__content__top">

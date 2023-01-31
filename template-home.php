@@ -77,9 +77,10 @@ get_header();
     get_template_part('template-parts/home/content', 'home-guides');
     ?>
 
-    <!-- Newsletter  -->
+
+    <!-- Footer CTA  -->
     <?php
-    get_template_part('template-parts/shared/content', 'shared-newsletter');
+    get_template_part('template-parts/shared/content', 'shared-footer-cta');
     ?>
 
 </main>

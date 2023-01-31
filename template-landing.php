@@ -48,6 +48,10 @@ get_header();
     ?>
 
 
+  <!-- Footer CTA  -->
+  <?php
+  get_template_part('template-parts/shared/content', 'shared-footer-cta');
+  ?>
 
 
 </main>

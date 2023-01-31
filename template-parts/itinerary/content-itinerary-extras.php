@@ -45,6 +45,10 @@ $extra_activities = get_field('extra_activities')
                         $title = $activity['title'];
                         $description = $activity['description'];
                         $price = $activity['price'];
+                        $price_range_high = $activity['price_range_high'];
+                        if ($price_range_high != null) {
+                            $price_range_high = " - $" . $price_range_high;
+                        }
                     ?>
                         <div class="overlay-card swiper-slide">
                             <div class="overlay-card__image-area">
@@ -53,7 +57,7 @@ $extra_activities = get_field('extra_activities')
                             <div class="overlay-card__content">
                                 <div class="overlay-card__content__title-section">
                                     <div class="overlay-card__content__title-section__sub">
-                                        $<?php echo $price ?> Per Person
+                                        $<?php echo $price . $price_range_high; ?> Per Person
                                     </div>
                                     <div class="overlay-card__content__title-section__title">
                                         <?php echo $title ?>
@@ -103,6 +107,11 @@ $extra_activities = get_field('extra_activities')
                 $title = $activity['title'];
                 $description = $activity['description'];
                 $price = $activity['price'];
+                $price_range_high = $activity['price_range_high'];
+                if ($price_range_high != null) {
+                    $price_range_high = " - $" . $price_range_high;
+                }
+
             ?>
 
                 <div class="product-extras-modal-item" id="<?php echo 'extras-section-' . $count; ?>">
@@ -111,7 +120,7 @@ $extra_activities = get_field('extra_activities')
                             <?php echo $title; ?>
                         </div>
                         <div class="product-extras-modal-item__title-group__sub">
-                            $<?php echo $price ?> Per Person
+                            $<?php echo $price . $price_range_high; ?> Per Person
                         </div>
                     </div>
                     <div class="product-extras-modal-item__image-area">

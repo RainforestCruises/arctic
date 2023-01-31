@@ -164,10 +164,11 @@ $relatedGuidePosts = get_posts($queryArgs);
     </div>
   </section>
 
-    <!-- Newsletter  -->
-    <?php
-    get_template_part('template-parts/shared/content', 'shared-newsletter');
-    ?>
+
+  <!-- Footer CTA  -->
+  <?php
+  get_template_part('template-parts/shared/content', 'shared-footer-cta');
+  ?>
 
 
 </main>

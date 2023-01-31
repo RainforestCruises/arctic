@@ -120,6 +120,11 @@ wp_localize_script(
   get_template_part('template-parts/cruise/content', 'cruise-related', $args);
   ?>
 
+  <!-- Footer CTA  -->
+  <?php
+  get_template_part('template-parts/shared/content', 'shared-footer-cta');
+  ?>
+
 
 </main>
 

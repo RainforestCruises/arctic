@@ -71,6 +71,26 @@
                 }
             }
 
+            &.grid-2x3 {
+                grid-template-columns: repeat(12, 1fr);
+
+                & .resource-card:nth-child(-n+2) {
+                    grid-column: span 6;
+                }
+     
+                & .resource-card:nth-child(n+3) {
+                    grid-column: span 4;
+                }
+    
+
+                @media only screen and (max-width: $bp-medium) {               
+                    & .resource-card {
+                        grid-column: span 12 !important;
+                    }                   
+                }
+            }
+
+
             &.grid-3x4 {
                 grid-template-columns: repeat(12, 1fr);
 
