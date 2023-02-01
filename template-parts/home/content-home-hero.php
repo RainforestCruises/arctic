@@ -7,29 +7,29 @@ $category_landing_pages = get_field('category_landing_pages', 'options');
 $hero_deals = get_field('hero_deals');
 
 
-//wp_enqueue_script('page-home-hero', get_template_directory_uri() . '/js/page-home-hero2.js', array(), false, true);
+//wp_enqueue_script('page-home-hero', get_template_directory_uri() . '/js/page-home-hero.js', array(), false, true);
 
 
 ?>
 
-<section class="home-hero2" id="section-top">
+<section class="home-hero" id="section-top">
 
-    <div class="home-hero2__bg-image">
+    <div class="home-hero__bg-image">
         <img <?php afloat_image_markup($hero_featured_image['id'], 'full-hero-large', array('full-hero-large', 'full-hero-medium', 'full-hero-small', 'full-hero-xsmall'), false); ?>>
     </div>
 
 
     <!-- Hero Content -->
-    <div class="home-hero2__content">
+    <div class="home-hero__content">
 
-        <div class="home-hero2__content__primary">
-            <div class="home-hero2__content__primary__title">
+        <div class="home-hero__content__primary">
+            <div class="home-hero__content__primary__title">
                 <?php echo $hero_title ?>
             </div>
-            <div class="home-hero2__content__primary__snippet">
+            <div class="home-hero__content__primary__snippet">
                 <?php echo $hero_subtitle; ?>
             </div>
-            <div class="home-hero2__content__primary__video">
+            <div class="home-hero__content__primary__video">
                 <button class="video-cta">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-button-play"></use>
@@ -38,13 +38,13 @@ $hero_deals = get_field('hero_deals');
             </div>
         </div>
 
-        <div class="home-hero2__content__secondary">
+        <div class="home-hero__content__secondary">
 
             <div class="title-single">
                 Great Deals on Upcoming Departures
             </div>
 
-            <div class="home-hero2__content__secondary__items">
+            <div class="home-hero__content__secondary__items">
                 <?php foreach ($hero_deals as $deal) :
                     $featured_image = get_field('featured_image', $deal);
                     $navigation_title = get_field('navigation_title', $deal);
@@ -99,7 +99,7 @@ $hero_deals = get_field('hero_deals');
                     </div>
 
                 <?php endforeach; ?>
-                <div class="home-hero2__content__secondary__items__see-more">
+                <div class="home-hero__content__secondary__items__see-more">
                     See All 27 Deals
                     <button class="btn-icon">
                         <svg>

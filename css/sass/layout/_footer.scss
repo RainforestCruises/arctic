@@ -155,11 +155,10 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 3rem;
-            margin-top: 6rem;
-            margin-bottom: 4rem;
+            margin: 4rem 0;
+         
             @media only screen and (max-width: $bp-medium) {
                 grid-template-columns: 1fr 1fr;
-                margin-top: 4rem;
                 row-gap: 6rem;
             }
 

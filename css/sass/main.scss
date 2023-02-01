@@ -13,19 +13,12 @@
 @import "base/tabs";
 @import "base/selection-controls";
 
-//page layout
-@import "pages/global";
-
+//page 
 @import "pages/home";
-@import "pages/product";
-@import "pages/itinerary"; //empty
-@import "pages/cruise"; //empty
 
 @import "pages/search";
-@import "pages/destination";
 @import "pages/travel-guide";
 @import "pages/travel-guide-landing";
-@import "pages/experience";
 @import "pages/generic";
 @import "pages/test";
 @import "pages/404";
@@ -40,7 +33,11 @@
 @import "components/shared/form-general";
 @import "components/shared/cards";
 
-
+@import "components/shared/loading-spinner";
+@import "components/shared/newsletter";
+@import "components/shared/inquire-form";
+@import "components/shared/outline-panel";
+@import "components/shared/bootstrap-datepicker";
 
 //products (generic)
 @import "components/products/product-hero";
@@ -65,7 +62,6 @@
 
 //landing
 @import "components/landing/landing-hero";
-
 @import "components/landing/landing-overview";
 @import "components/landing/landing-guides";
 @import "components/landing/landing-topics";
@@ -74,6 +70,19 @@
 
 //contact
 @import "components/contact/contact-page";
+
+
+//home
+@import "components/home/home-hero";
+@import "components/home/home-guides";
+@import "components/home/home-newest";
+@import "components/home/home-destinations";
+@import "components/home/home-map";
+@import "components/home/home-quote";
+
+@import "components/home/home-intro";
+@import "components/home/home-featured";
+@import "components/home/home-full-search";
 
 
 
@@ -102,42 +111,15 @@
 @import "components/deals/deals-featured";
 @import "components/deals/deals-destinations";
 
-//home
-@import "components/home/home-hero";
-@import "components/home/home-hero2";
-@import "components/home/home-guides";
-
-@import "components/home/home-newest";
-@import "components/home/home-destinations";
-@import "components/home/home-map";
-@import "components/home/home-quote";
 
 
-@import "components/home/home-intro";
-@import "components/home/home-featured";
-@import "components/home/home-full-search";
 
-
-//experience
-@import "components/experience/experience-hero";
-@import "components/experience/experience-region";
-@import "components/experience/experience-intro";
 
 //about
 @import "components/about/about-mission";
 @import "components/about/about-difference";
 @import "components/about/about-team";
 @import "components/about/about-corporate";
-
-//shared
-
-
-
-@import "components/shared/loading-spinner";
-@import "components/shared/newsletter";
-@import "components/shared/inquire-form";
-@import "components/shared/outline-panel";
-@import "components/shared/bootstrap-datepicker";
 
 
 

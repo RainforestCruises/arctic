@@ -1,300 +1,205 @@
 .home-hero {
+    position: relative;
     display: flex;
     width: 100%;
     height: 100vh;
+    position: relative;
     flex-direction: column;
     align-items: center;
-    min-height: 80rem;
-    position: relative;
-
-    // &:after {
-    //     //gradient overlay
-    //     content: "";
-    //     height: 6rem;
-    //     width: 100%;
-    //     //background-image:  linear-gradient(to top, rgba($color-red, 1), transparent);
-
-    //     position: absolute;
-    //     bottom: 0;
-    //     left: 0;
-    //     z-index: 20;
-
-
-    // }
-
+    z-index: 1;
 
     @media only screen and (max-width: $bp-large) {
-        min-height: 60rem;
-        //padding-bottom: 12rem;
+        height: auto;
+        margin-top: 7rem;
     }
 
-    & #back-cta {
-        position: absolute;
-        bottom: 6rem;
-        right: 6rem;
-
-        z-index: 50;
-        display: none;
-        &.active {
-            display: flex;
-        }
-
-        @media only screen and (max-width: $bp-large) {
-            transform: translateX(50%);
-            right: 50%;
-            bottom: 12rem;
-        }
-    }
-
-    //Background Image Slider
-    &__bg {
+    // desktop hero
+    &__bg-image {
+        height: 100%;
+        width: 100%;
+        z-index: -1;
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 0;
-        width: 100%;
-        height: 100%;
-        &__slide {
-            width: 100%;
+        & img {
             height: 100%;
-
-            & img {
-                background-position: center center;
-                background-repeat: no-repeat;
-                object-fit: cover;
-
-                height: 100%;
-                width: 100%;
-                z-index: 0;
-            }
-
-            &:after {
-                //gradient overlay
-                content: "";
-                height: 100%;
-                width: 100%;
-                background-image: linear-gradient(to left, rgba($color-black, 0.9) 10%, transparent),
-                    linear-gradient(to right, rgba($color-black, 0.1) 5%, transparent),
-                    linear-gradient(to top, rgba($color-black, 0.1), rgba($color-black, 0.1)),
-                    linear-gradient(to top, rgba($color-black, 1), transparent 60%);
-
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: 2;
-
-                @media only screen and (max-width: $bp-large) {
-                    background-image: linear-gradient(to top, rgba($color-black, 0.9) 10%, transparent),
-                        linear-gradient(to top, rgba($color-black, 0.1), rgba($color-black, 0.1)),
-                        linear-gradient(to top, rgba($color-black, 1), transparent 60%);
-                }
-            }
+            width: 100%;
+            object-fit: cover;
+            object-position: bottom;
+            z-index: 1;
+        }
+        &::after {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient(to bottom, rgba($color-black, 0.3), transparent 20%),
+                linear-gradient(to top, rgba($color-grey-light-1, 1), transparent 20%);
+            z-index: 2;
         }
     }
 
-    //Hero Content
     &__content {
         z-index: 5;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         height: 100%;
-
-        width: 100%;
         max-width: $page-width-full;
 
-        position: relative;
+        margin-top: 18rem;
+        @include flexPadding;
 
-        &__info-text {
-            position: absolute;
-            bottom: 6rem;
-            right: 7rem;
-            color: rgba($color-white, 0.5);
-            font-size: 1.1rem;
-            z-index: 55;
-            animation: fadein 0.3s both;
-            animation-timing-function: ease-out;
-            animation-delay: 0.5s;
-
-            @media only screen and (max-width: $bp-large) {
-                display: none;
-            }
+        @media only screen and (max-width: $bp-large) {
+            margin-top: 0rem;
         }
 
-        &__map {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            z-index: 8;
-            width: calc(50vw + 20rem);
-            transform: translateX(-20rem);
-            height: 100%;
-            mask-image: linear-gradient(to right, transparent, rgba($color-black, 1) 40%);
-            -webkit-mask-image: linear-gradient(to right, transparent, rgba($color-black, 1) 40%);
+        &__primary {
+            color: $color-white;
             @media only screen and (max-width: $bp-large) {
-                width: 100%;
-                z-index: 2;
-                mask-image: none;
-                -webkit-mask-image: none;
-                transform: translateX(0);
-                left: auto;
+                margin-top: 6rem;
+                min-height: 20rem;
             }
-        }
+            @media only screen and (max-width: $bp-small) {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
 
-        //Main Slider
-        &__main-slider {
-            position: absolute;
-            left: 0;
-            top: 28vh;
-            width: 100%;
-            max-width: 50%;
-            z-index: 9;
-            @include flexPadding;
+            &__title {
+                font-size: 5.5rem;
+                font-weight: 400;
+                display: flex;
+                line-height: 5.5rem;
+                position: relative;
+                align-items: flex-end;
+                margin-bottom: 1rem;
 
-            &.destination {
                 @media only screen and (max-width: $bp-large) {
-                    top: 16rem;
+                    font-size: 4rem;
+                    line-height: 4.5rem;
+                    font-weight: 600;
+                }
+      
+            }
+
+            &__snippet {
+                font-size: 1.6rem;
+                font-weight: 300;
+                display: block;
+
+                @media only screen and (max-width: $bp-large) {
+                    font-weight: 400;
+                    letter-spacing: 0rem;
+                    font-size: 1.6rem;
                 }
             }
-
-            @media only screen and (max-width: $bp-large) {
-                max-width: 100%;
-                padding: 0;
-                &.hide {
-                    display: none;
-                }
+            &__video {
+                margin: 2rem 0;
+                margin-bottom: 3.5rem;
+          
+                height: 9rem;
+                width: 9rem;
+                position: relative;
             }
         }
-    }
-}
 
-//Main Slider Slide
-.main-slider-slide {
-    display: flex;
-    flex-direction: column;
-    color: $color-white;
-    position: relative;
-    margin-bottom: 5rem;
-    width: 100%;
-    opacity: 0;
-
-    @media only screen and (max-width: $bp-large) {
-        align-items: center;
-        text-align: center;
-    }
-
-    &__primary {
-        @media only screen and (max-width: $bp-large) {
-            padding: 0 3rem;
-        }
-
-        &__subtitle {
-            font-size: 1.4rem;
-            line-height: 1.4rem;
-            font-weight: 400;
-            letter-spacing: 0.2rem;
-            text-transform: uppercase;
-            margin-left: 5rem;
+        &__secondary {
+            height: 28rem;
+            color: $color-primary;
+            display: flex;
+            flex-direction: column;
+            width: max-content;
+            background-color: rgba($color-white, 0.2);
+            -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
+            padding: 2rem;
+            border-radius: 1rem;
+            transform: translateX(-2rem);
 
             @media only screen and (max-width: $bp-large) {
-                margin-left: 0rem;
+                height: auto;
+                margin-bottom: 3rem;
             }
             @media only screen and (max-width: $bp-small) {
-                font-size: 1.2rem;
-                line-height: 1.2rem;
-            }
-        }
-
-        &__title {
-            font-size: 9rem;
-            line-height: 9rem;
-            font-family: $font-secondary;
-            margin-bottom: 1.5rem;
-
-            @media only screen and (max-width: $bp-small) {
-                font-size: 6rem;
-                line-height: 6rem;
-            }
-        }
-        &__snippet {
-            font-size: 1.6rem;
-            margin-left: 2rem;
-            height: 35rem;
-            @media only screen and (max-width: $bp-large) {
-                margin-left: 0rem;
-            }
-        }
-    }
-
-    &__explore-cta {
-        display: none;
-        justify-content: center;
-
-        @media only screen and (max-width: $bp-large) {
-            display: flex;
-        }
-    }
-
-    &__region-nav {
-        margin-top: 6rem;
-        display: none;
-        justify-content: space-between;
-        font-weight: 700;
-        font-size: 2rem;
-    }
-
-    //Tabs and Panels
-    &__secondary {
-        width: 100%;
-        &__tabs {
-            display: flex;
-            margin-left: 2rem;
-            margin-bottom: 1.5rem;
-
-            @media only screen and (max-width: $bp-large) {
-                justify-content: center;
-                margin-left: 0rem;
-            }
-
-            &__button:not(:last-child) {
-                margin-right: 1.5rem;
-            }
-        }
-
-        &__panels {
-            font-size: 1.6rem;
-            width: 100%;
-            height: 35rem;
-            position: relative;
-            &__panel {
-                display: none;
                 width: 100%;
+                transform: translateX(0rem);
+                margin-bottom: 0rem;
+            }
 
-                &.panel-text {
-                    display: none;
-                    padding-left: 2rem;
+            &__items {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr max-content;
+                gap: 4rem;
 
-                    @media only screen and (max-width: $bp-large) {
-                        padding-left: 0rem;
-                        padding: 0 3rem;
-                    }
+                @media only screen and (max-width: $bp-large) {
+                    grid-template-columns: 1fr 1fr;
+                    gap: 2rem;
+                }
+                @media only screen and (max-width: $bp-small) {
+                    grid-template-columns: 1fr;
+                    gap: 2rem;
                 }
 
-                &.panel-series {
-                    margin-top: 2rem;
+                & .information-card {
+                    background-color: $color-white;
+                    border: 1px solid rgba($color-primary, 0.2);
+                    box-shadow: $shadow-medium-short;
+                    height: min-content;
                 }
 
-                &.active {
-                    &.panel-text {
-                        display: block;
+                &__see-more {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.2rem;
+                    font-weight: 700;
+                    margin-right: 2rem;
+                    & button {
+                        opacity: 0.5;
                     }
-
-                    &.panel-series {
-                        display: block;
-                    }
-
-                    animation: fadein 0.3s both;
-                    animation-timing-function: ease-out;
                 }
             }
         }
     }
 }
 
+.video-cta {
+    position: absolute;
+    transform: translateY(-50%) translateX(-50%);
+    top: 50%;
+    left: 50%;
+
+    width: 9rem;
+    height: 9rem;
+    border-radius: 50%;
+    transition: all 0.2s;
+  
+
+    background-color: rgba($color-white, 0.1);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    border: 2px solid rgba($color-white, 0.3);
+    z-index: 4;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        transform: translateY(-50%) translateX(-50%) scale(.95);
+        background-color: rgba($color-white, 0.2);
+        border: 2px solid rgba($color-white, 0.5);
+    }
+
+    & svg {
+        height: 2rem;
+        width: 2rem;
+        z-index: 5;
+        color: $color-white;
+    }
+}

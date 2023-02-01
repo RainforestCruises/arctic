@@ -12,7 +12,7 @@ $ships_title_subtext = get_field('ships_title_subtext')
         <div class="grid-block__content__top">
 
             <!-- Title -->
-            <div class="title-group">
+            <div class="title-single">
                 <div class="title-group__title">
                 Antarctica Cruise Ships
                 </div>

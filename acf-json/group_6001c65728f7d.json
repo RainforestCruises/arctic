@@ -182,7 +182,7 @@
         },
         {
             "key": "field_62f1c961a4a02",
-            "label": "Content",
+            "label": "Ships",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -241,6 +241,22 @@
             "return_format": "object"
         },
         {
+            "key": "field_63da8ab6ad9e3",
+            "label": "Routes",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_6384e93cc26ea",
             "label": "Routes Title Subtext",
             "name": "routes_title_subtext",
@@ -283,6 +299,22 @@
             "min": "",
             "max": "",
             "return_format": "object"
+        },
+        {
+            "key": "field_63da8ac3ad9e4",
+            "label": "Itineraries",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_637e885127a74",
@@ -329,6 +361,22 @@
             "return_format": "object"
         },
         {
+            "key": "field_63da8ad0ad9e5",
+            "label": "Styles",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_6384e8f9c26e7",
             "label": "Styles Title Subtext",
             "name": "styles_title_subtext",
@@ -371,6 +419,22 @@
             "min": "",
             "max": "",
             "return_format": "object"
+        },
+        {
+            "key": "field_63da8adcad9e6",
+            "label": "Quote & Experiences",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_63c6d75d7092a",
@@ -559,6 +623,22 @@
             "delay": 0
         },
         {
+            "key": "field_63da8b1bad9e7",
+            "label": "Reviews",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_6385040c4df26",
             "label": "Reviews",
             "name": "reviews",
@@ -661,6 +741,22 @@
             ]
         },
         {
+            "key": "field_63da8b3dad9e8",
+            "label": "Guides",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_6384e966c26ed",
             "label": "Guides Title Subtext",
             "name": "guides_title_subtext",
@@ -723,5 +819,5 @@
     "active": true,
     "description": "Home Page",
     "show_in_rest": 0,
-    "modified": 1673975736
+    "modified": 1675266892
 }
