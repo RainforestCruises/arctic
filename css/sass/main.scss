@@ -74,14 +74,8 @@
 
 //home
 @import "components/home/home-hero";
-@import "components/home/home-guides";
-@import "components/home/home-newest";
-@import "components/home/home-destinations";
 @import "components/home/home-map";
 @import "components/home/home-quote";
-
-@import "components/home/home-intro";
-@import "components/home/home-featured";
 @import "components/home/home-full-search";
 
 
@@ -98,13 +92,6 @@
 @import "components/search/search-result";
 @import "components/search/search-checkbox";
 
-//destination
-@import "components/destination/destination-hero";
-@import "components/destination/destination-main";
-@import "components/destination/destination-secondary";
-@import "components/destination/destination-accommodations";
-@import "components/destination/destination-guides";
-@import "components/destination/destination-faq";
 
 //deals
 @import "components/deals/deals-hero";

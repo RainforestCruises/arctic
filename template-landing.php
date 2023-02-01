@@ -12,40 +12,45 @@ get_header();
 
 <main class="main-content">
 
-    <!-- Hero -->
-    <?php
-    get_template_part('template-parts/landing/content', 'landing-hero', $args);
-    ?>
+  <!-- Hero -->
+  <?php
+  get_template_part('template-parts/landing/content', 'landing-hero', $args);
+  ?>
 
-    <!-- Overview / Highlights -->
-    <?php
-    get_template_part('template-parts/landing/content', 'landing-overview', $args);
-    ?>
+  <!-- Overview / Highlights -->
+  <?php
+  get_template_part('template-parts/landing/content', 'landing-overview', $args);
+  ?>
 
-    <!-- Itineraries  -->
-    <?php
-    get_template_part('template-parts/landing/content', 'landing-itineraries', $args);
-    ?>
+  <!-- Itineraries  -->
+  <?php
+  get_template_part('template-parts/landing/content', 'landing-itineraries', $args);
+  ?>
 
-    <!-- Topics  -->
-    <?php
-    get_template_part('template-parts/landing/content', 'landing-topics', $args);
-    ?>
+  <!-- Topics  -->
+  <?php
+  get_template_part('template-parts/landing/content', 'landing-topics', $args);
+  ?>
 
-    <!-- Faq  -->
-    <?php
-    get_template_part('template-parts/landing/content', 'landing-faq', $args);
-    ?>
+  <!-- map  -->
+  <?php
+  get_template_part('template-parts/landing/content', 'landing-map', $args);
+  ?>
 
-    <!-- Ships -->
-    <?php
-    get_template_part('template-parts/landing/content', 'landing-ships', $args);
-    ?>
+  <!-- Faq  -->
+  <?php
+  get_template_part('template-parts/landing/content', 'landing-faq', $args);
+  ?>
 
-    <!-- Guides  -->
-    <?php
-    get_template_part('template-parts/landing/content', 'landing-guides', $args);
-    ?>
+  <!-- Ships -->
+  <?php
+  get_template_part('template-parts/landing/content', 'landing-ships', $args);
+  ?>
+
+  <!-- Guides  -->
+  <?php
+  get_template_part('template-parts/landing/content', 'landing-guides', $args);
+  ?>
 
 
   <!-- Footer CTA  -->

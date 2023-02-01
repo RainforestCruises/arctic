@@ -316,11 +316,11 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            max-width: 80rem;
             position: relative;
             padding: 3rem 10rem;
             text-align: center;
             align-items: center;
+            border-top: 1px solid $color-grey-light-1a;
 
             @media only screen and (max-width: $bp-medium) {
                 padding: 3rem 0rem;
@@ -331,27 +331,8 @@
                 line-height: 2rem;
             }
 
-            &::before {
-                content: "";
-                position: absolute;
-                height: 1px;
-                width: 100%;
-                background-color: $color-grey-light-1a;
-                top: 0;
-                left: 50%;
-                transform: translateX(-50%);
-            }
 
-            &::after {
-                content: "";
-                position: absolute;
-                height: 1px;
-                width: 100%;
-                background-color: $color-grey-light-1a;
-                bottom: 0;
-                left: 50%;
-                transform: translateX(-50%);
-            }
+
             &__header {
                 font-size: 1.6rem;
                 color: $color-primary;

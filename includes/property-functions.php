@@ -286,6 +286,81 @@ function getItineraryObject($itinerary)
 }
 
 
+//destination list
+function getItineraryObjectFromDestinations($destinations, $startLatitude, $startLongitude, $startZoomPoint)
+{
+
+    // Destination Point Series
+    $destinationPoints = [];
+
+    foreach ($destinations as $destination) {
+        $destinationImage =  get_field('image', $destination); //get default image if none provided
+        $destinationImageURL = $destinationImage ? wp_get_attachment_image_url($destinationImage['ID'], 'portrait-small') : "";
+
+     
+        $point  = [
+            'index' => 0,
+            'isEmbarkation' => false,
+            'isDisembarkation' => false,
+            'postid' => $destination->ID,
+            'title' => get_the_title($destination),
+            'day' => null,
+            'image' => $destinationImageURL,
+            'coordinates' => [get_field('longitude', $destination), get_field('latitude', $destination)],
+        ];
+
+        $destinationPoints[] = $point; // only add non dulpicates
+    }
+
+    //Reformat to feature 
+    $featureList = [];
+    foreach($destinationPoints as $point){
+        $feature = [
+            'type' => 'Feature',
+            'geometry' => [
+                'type' => 'Point',
+                'coordinates' => $point['coordinates']
+            ],
+            'properties' => [
+                'day' => $point['day'],
+                'title' => $point['title'],
+                'image' => $point['image'],
+                'isEmbarkation' => $point['isEmbarkation'],
+                'isDisembarkation' => $point['isDisembarkation']
+            ],
+        ];
+
+        $featureList[] = $feature;
+    }
+
+    
+
+    // Itinerary Object
+    $itineraryObject = [
+        'featureList' => $featureList,
+        'hasDifferentPorts' => false,
+        'geojson' => null,
+        'startLatitude' => $startLatitude,
+        'startLongitude' => $startLongitude,
+        'startZoom' => $startZoomPoint,
+        'postId' => null,
+    ];
+
+    return $itineraryObject;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 function getFlightOption($itinerary)
 {
     $embarkation_is_flight = get_field('embarkation_is_flight', $itinerary);

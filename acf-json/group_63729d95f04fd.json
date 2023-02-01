@@ -513,6 +513,180 @@
             "min": "",
             "max": "",
             "return_format": "object"
+        },
+        {
+            "key": "field_63da9cb879958",
+            "label": "Map",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_63da9cd179959",
+            "label": "Show Map",
+            "name": "show_map",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_63da9e3af979f",
+            "label": "Map Title Subtext",
+            "name": "map_title_subtext",
+            "type": "wysiwyg",
+            "instructions": "Snippet under the title",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_63da9cd179959",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_63da9ce67995a",
+            "label": "Latitude (S) Start Point",
+            "name": "latitude_start_point",
+            "type": "number",
+            "instructions": "Range from -55 (northward) to -68 (southward)",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_63da9cd179959",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": -62,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_63da9d457995b",
+            "label": "Longitude (W) Start Point",
+            "name": "longitude_start_point",
+            "type": "number",
+            "instructions": "Range from -70 (westward) to -60 (eastward)",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_63da9cd179959",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": -65,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_63da9d747995c",
+            "label": "Zoom Level Start Point",
+            "name": "zoom_level_start_point",
+            "type": "number",
+            "instructions": "Range from 4 (close) to 2 (far)",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_63da9cd179959",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 3,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_63da9d947995d",
+            "label": "Destinations",
+            "name": "destinations",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_destinations"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
         }
     ],
     "location": [
@@ -535,5 +709,5 @@
     "active": true,
     "description": "Landing - Page",
     "show_in_rest": 0,
-    "modified": 1674165260
+    "modified": 1675271785
 }

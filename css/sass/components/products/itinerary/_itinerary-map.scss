@@ -1,5 +1,11 @@
 .itinerary-map {
     @include flexBlock;
+
+    &.landing-variant {
+        & .itinerary-map__content {
+            max-width: $page-width-full;
+        }
+    }
     &__content {
         position: relative;
         @include flexPadding;
