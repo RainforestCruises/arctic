@@ -496,8 +496,9 @@
     width: 42rem; //to fix isotope overlapping
 
     @media only screen and (max-width: $bp-small) {
-        margin-bottom: 3rem;
-        width: 85%; //to fix isotope overlapping
+        margin: 0rem;
+        margin-bottom: 5rem;
+        width: 100%; //to fix isotope overlapping
     }
 
     display: flex;
@@ -512,9 +513,6 @@
         }
 
         & img {
-            border-top-left-radius: 0.4rem;
-            border-top-right-radius: 0.4rem;
-
             object-fit: cover;
             height: 100%;
             width: 100%;

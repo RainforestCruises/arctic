@@ -1,69 +1,7 @@
 {
     "key": "group_5ff8cf0c95b1b",
-    "title": "Travel Guide Landing Page",
+    "title": "Travel Guide Top Level",
     "fields": [
-        {
-            "key": "field_60dc9e5f16988",
-            "label": "Breadcrumbs",
-            "name": "breadcrumbs",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": 0,
-            "max": 0,
-            "layout": "table",
-            "button_label": "",
-            "sub_fields": [
-                {
-                    "key": "field_63753ca50f455",
-                    "label": "Page Link",
-                    "name": "page_link",
-                    "type": "post_object",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "page"
-                    ],
-                    "taxonomy": "",
-                    "allow_null": 0,
-                    "multiple": 0,
-                    "return_format": "object",
-                    "ui": 1
-                },
-                {
-                    "key": "field_63753cb80f456",
-                    "label": "Display Text",
-                    "name": "display_text",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                }
-            ]
-        },
         {
             "key": "field_5ff8cf492b797",
             "label": "Intro Snippet",
@@ -82,31 +20,6 @@
             "toolbar": "full",
             "media_upload": 0,
             "delay": 0
-        },
-        {
-            "key": "field_63753cda0f457",
-            "label": "Travel Guide Posts",
-            "name": "travel_guide_posts",
-            "type": "relationship",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "rfc_travel_guides"
-            ],
-            "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "object"
         }
     ],
     "location": [
@@ -114,7 +27,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "template-travel-guide-landing.php"
+                "value": "template-guides-toplevel.php"
             }
         ]
     ],
@@ -125,7 +38,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Travel Guide Landing - Page",
+    "description": "Travel Guide Top Level - Page",
     "show_in_rest": 0,
-    "modified": 1668627848
+    "modified": 1675349204
 }

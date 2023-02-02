@@ -92,14 +92,8 @@ $relatedGuidePosts = get_posts($queryArgs);
                     endforeach;
                     ?>
 
-
-
-
-
                 </div>
             </div>
-
-
 
         </div>
     </div>

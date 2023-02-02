@@ -1,73 +1,18 @@
 <?php
-/*Template Name: Travel Guide Landing*/
-wp_enqueue_script('page-travel-guide-landing', get_template_directory_uri() . '/js/page-travel-guide-landing.js', array('jquery'), false, true);
-get_header();
+$queryArgs = array(
+    'post_type' => 'rfc_travel_guides',
+    'posts_per_page' => 50,
+);
 
-$intro_snippet = get_field('intro_snippet');
-$pageTitle = get_the_title();
-
-$categories = get_posts(array(
-    'post_type' => 'rfc_guide_categories',
-    'posts_per_page' => -1,
-    'orderby' => 'title',
-    'order' => 'ASC',
-));
-
-$breadcrumbs  = get_field('breadcrumbs');
-$posts = get_field('travel_guide_posts'); //Stage I posts
+$posts = get_posts($queryArgs);
 ?>
 
-<main class="travel-guide-landing-page">
-
-    <!-- Content -->
-    <section class="travel-guide-landing-page__content">
-        <!-- Breadcrumb -->
-        <ol class="travel-guide-landing-page__breadcrumb">
-            <li>
-                <a href="<?php echo home_url() ?>">Home</a>
-            </li>
-            <?php foreach ($breadcrumbs as $b) :
-                $page = $b['page_link'];
-                $display_text = $b['display_text'];
-            ?>
-                <li>
-                    <a href=" <?php echo get_permalink($page); ?>"><?php echo $display_text; ?></a>
-                </li>
-            <?php endforeach; ?>
-
-            <li>
-                Guide
-            </li>
-        </ol>
-        <h1 class="travel-guide-landing-page__content__title">
-            <?php echo $pageTitle ?>
-        </h1>
-
-        <div class="travel-guide-landing-page__content__subtext">
-            <?php echo $intro_snippet ?>
-        </div>
-
-        <div class="travel-guide-landing-page__content__search-area">
-            <input type="text" placeholder="Search Guide..." id="quicksearch">
-        </div>
-        <div class="travel-guide-landing-page__content__categories filters-button-group">
-            <button data-filter="*" class="filter-button filter-button-all selected">
-                All
-            </button>
-            <?php foreach ($categories as $c) : ?>
-                <button data-filter="<?php echo '.' . $c->post_name ?>" class="filter-button">
-                    <?php echo get_the_title($c) ?>
-                </button>
-            <?php endforeach; ?>
-
-        </div>
-
-        <div class="travel-guide-landing-page__content__results" id="results">
+<section class="guides-toplevel-main">
+    <div class="guides-toplevel-main__content">
+        <div class="guides-toplevel-main__content__results" id="results">
 
             <?php
-
             if ($posts) :
-
                 foreach ($posts as $p) :
                     $featured_image = get_field('featured_image', $p);
                     $imageID = '';
@@ -130,26 +75,11 @@ $posts = get_field('travel_guide_posts'); //Stage I posts
             endif;
             ?>
         </div>
-        <div class="travel-guide-landing-page__content__no-results" id="no-results-message">
+        <div class="guides-toplevel-main__content__no-results" id="no-results-message">
             No travel guides available. Please select another category.
         </div>
-    </section>
-
-    <div class="svg-divider">
-        <svg>
-            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-compass-2"></use>
-        </svg>
     </div>
 
-    <!-- Newsletter -->
-    <section class="experience-page__section-newsletter">
-        <?php
-        get_template_part('template-parts/content', 'shared-newsletter');
-        ?>
-    </section>
-
-</main>
 
 
-
-<?php get_footer(); ?>
+</section>

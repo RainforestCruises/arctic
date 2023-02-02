@@ -1,7 +1,8 @@
 <?php
 $guides = get_field('guides');
 $firstGuides = array_slice($guides, 0, 7);
-$guides_title_subtext = get_field('guides_title_subtext')
+$guides_title_subtext = get_field('guides_title_subtext');
+$top_level_guides_page = get_field('top_level_guides_page', 'options');
 ?>
 
 <section class="grid-block" id="section-guides">
@@ -52,7 +53,7 @@ $guides_title_subtext = get_field('guides_title_subtext')
 
         </div>
         <div class="grid-block__content__cta">
-            <a class="cta-primary cta-primary--inverse" id="all-guides-link" href="#">
+            <a class="cta-primary cta-primary--inverse" id="all-guides-link" href="<?php echo $top_level_guides_page; ?>">
                 Read All Guides
             </a>
         </div>

@@ -65,6 +65,29 @@
             "multiple": 0
         },
         {
+            "key": "field_63dbc220fe8eb",
+            "label": "Top Level Guides Page",
+            "name": "top_level_guides_page",
+            "type": "page_link",
+            "instructions": "Select the page link for all guides",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": [
+                "category:top-level"
+            ],
+            "allow_null": 0,
+            "allow_archives": 0,
+            "multiple": 0
+        },
+        {
             "key": "field_6036b9f46b524",
             "label": "Phone Number",
             "name": "phone_number",
@@ -345,79 +368,6 @@
                     "mime_types": ""
                 }
             ]
-        },
-        {
-            "key": "field_6088366d8473f",
-            "label": "Product",
-            "name": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_6088367d84740",
-            "label": "Charter Note",
-            "name": "charter_note",
-            "type": "textarea",
-            "instructions": "General charter disclaimer text",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": ""
-        },
-        {
-            "key": "field_60bfe77130b1d",
-            "label": "Lodge Note",
-            "name": "lodge_note",
-            "type": "textarea",
-            "instructions": "General lodge disclaimer text",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": ""
-        },
-        {
-            "key": "field_628e42ae7f161",
-            "label": "Rolling Departures Note",
-            "name": "rolling_departures_note",
-            "type": "textarea",
-            "instructions": "Text for cruises with ongoing departures",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": ""
         },
         {
             "key": "field_608836b384741",
@@ -1127,5 +1077,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1675177921
+    "modified": 1675346662
 }

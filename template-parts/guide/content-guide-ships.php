@@ -1,37 +1,12 @@
 <?php
-$queryArgs = array(
-    'post_type' => 'rfc_cruises',
-    'posts_per_page' => -1,
-    'post__not_in' => array($post->ID),
-    'meta_key' => 'search_rank',
-    'orderby' => 'meta_value_num',
-    'order' => 'DESC',
-);
 
-//build meta query criteria
-$queryArgsDestination = array();
-$queryArgsDestination['relation'] = 'OR';
-
-$destinations = get_field('destinations');
-if ($destinations) {
-    foreach ($destinations as $d) {
-        if (get_field('is_country', $d) == true) {
-            $queryArgsDestination[] = array(
-                'key'     => 'destinations',
-                'value'   => serialize(strval($d->ID)),
-                'compare' => 'LIKE'
-            );
-        }
-    }
-    $queryArgs['meta_query'][] = $queryArgsDestination;
-}
-
-$ships = get_posts($queryArgs);
+$ships = get_field('ships');
+$ships_subtext = get_field('ships_subtext');
 
 ?>
 
 
-<section class="slider-block narrow ">
+<section class="slider-block narrow">
     <div class="slider-block__content block-top-divider">
 
         <!-- Top - Title/Nav -->
@@ -40,22 +15,22 @@ $ships = get_posts($queryArgs);
             <!-- Title -->
             <div class="slider-block__content__top__title">
                 <div class="title-group__title">
-                    Related Cruises
+                    Antarctica Cruise Ships
                 </div>
                 <div class="title-group__sub">
-                    Explore from <?php echo count($ships) ?> ships sailing the Antarctic
+                    <?php echo $ships_subtext; ?> 
                 </div>
             </div>
 
             <!-- Nav Buttons -->
             <div class="slider-block__content__top__nav">
 
-                <div class="swiper-button-prev swiper-button-prev--white-border related-slider-btn-prev">
+                <div class="swiper-button-prev swiper-button-prev--white-border ships-slider-btn-prev">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-left"></use>
                     </svg>
                 </div>
-                <div class="swiper-button-next swiper-button-next--white-border related-slider-btn-next">
+                <div class="swiper-button-next swiper-button-next--white-border ships-slider-btn-next">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
                     </svg>
@@ -68,7 +43,7 @@ $ships = get_posts($queryArgs);
         <div class="slider-block__content__slider">
 
             <!-- Swiper -->
-            <div class="swiper" id="related-slider">
+            <div class="swiper" id="ships-slider">
                 <div class="swiper-wrapper">
 
 
@@ -81,7 +56,6 @@ $ships = get_posts($queryArgs);
                         $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . 'Luxury';
                         $departures = getDepartureList($ship);
                         $lowestPrice = getLowestDepartureListPrice($departures);
-
                     ?>
 
                         <!-- Cabin Card -->

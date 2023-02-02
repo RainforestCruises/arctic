@@ -17,8 +17,6 @@
 @import "pages/home";
 
 @import "pages/search";
-@import "pages/travel-guide";
-@import "pages/travel-guide-landing";
 @import "pages/generic";
 @import "pages/test";
 @import "pages/404";
@@ -66,7 +64,13 @@
 @import "components/landing/landing-guides";
 @import "components/landing/landing-topics";
 
+//guide (single)
+@import "components/guides/guide-hero";
+@import "components/guides/guide-main";
 
+//guides toplevel
+@import "components/guides-toplevel/guides-toplevel-hero";
+@import "components/guides-toplevel/guides-toplevel-main";
 
 //contact
 @import "components/contact/contact-page";

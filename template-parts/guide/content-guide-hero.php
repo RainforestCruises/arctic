@@ -1,4 +1,5 @@
   <?php
+$top_level_guides_page = get_field('top_level_guides_page', 'options');
 
     $image  = get_field('featured_image');
     $categories  = get_field('categories');
@@ -8,10 +9,6 @@
         $firstCategoryPost = $categories[0];
         $displayCategory = get_the_title($firstCategoryPost);
     }
-
-    //breadcrumbs
-    $breadcrumbs  = get_field('breadcrumbs');
-
 
     ?>
 
@@ -25,16 +22,8 @@
               <li>
                   <a href="<?php echo home_url() ?>">Home</a>
               </li>
-              <?php foreach ($breadcrumbs as $b) :
-                    $page = $b['page_link'];
-                    $display_text = $b['display_text'];
-                ?>
-                  <li>
-                      <a href=" <?php echo get_permalink($page); ?>"><?php echo $display_text; ?></a>
-                  </li>
-              <?php endforeach; ?>
               <li>
-                  <?php echo get_field('navigation_title'); ?>
+                  <a href="<?php echo $top_level_guides_page; ?>">All Guides</a>
               </li>
           </ol>
           <!-- Title -->

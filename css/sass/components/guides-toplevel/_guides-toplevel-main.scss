@@ -1,0 +1,23 @@
+.guides-toplevel-main {
+    @include flexBlock;
+    &__content {
+        width: 100%;
+        max-width: $page-width-full;
+        @include flexPadding;
+        display: flex;
+        justify-content: center;
+        &__results {
+            position: relative;
+            width: 100%;
+            margin: 2rem 0rem;
+        }
+
+        &__no-results {
+            display: none;
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 10rem;
+        }
+    }
+
+}
