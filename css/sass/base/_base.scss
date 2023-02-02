@@ -43,6 +43,14 @@ body {
             }
         }
 
+        
+        & .progress-container {
+            top: 32px;
+            @media only screen and (max-width: 800px) {
+                top: 46px;
+            }
+        }
+
         & .nav-secondary {
             top: 32px;
             @media only screen and (max-width: 800px) {

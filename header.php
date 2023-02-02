@@ -19,6 +19,7 @@
             cursor: pointer;
             opacity: .85 !important;
         }
+
         .embarkation-marker {
             background-image: url("<?php echo bloginfo('template_url') ?>/css/img/pin-embark.png");
             background-size: cover;
@@ -26,6 +27,7 @@
             height: 32px;
             cursor: pointer;
         }
+
         .disembarkation-marker {
             background-image: url("<?php echo bloginfo('template_url') ?>/css/img/pin-disembark.png");
             background-size: cover;
@@ -53,6 +55,11 @@
     <!-- Header (Main Nav) -->
     <?php $headerClasses = renderHeaderClasses(); ?>
     <header class="header <?php echo $headerClasses; ?>" id="header">
+        <?php if (get_post_type() == 'rfc_travel_guides') : ?>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        <?php endif; ?>
         <?php get_template_part('template-parts/nav/content', 'nav-main'); ?>
     </header>
     <div class="nav-backdrop"></div>

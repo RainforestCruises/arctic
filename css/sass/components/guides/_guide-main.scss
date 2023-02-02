@@ -1,4 +1,3 @@
-
 .guide-main {
     @include flexBlock;
 
@@ -12,18 +11,21 @@
         &__copy {
             display: flex;
             flex-direction: column;
+            align-items: center;
             margin-bottom: 2rem;
             hyphens: auto;
             & p:not(.wp-caption-text):first-of-type {
-                font-size: 2.5rem;
-                text-align: center;
+                max-width: 80rem;
+                font-size: 2rem;
+                color: $color-primary;
+                //text-align: center;
                 position: relative;
-                line-height: 3.2rem;
+                line-height: 2.8rem;
                 &::after {
                     content: "";
                     position: absolute;
                     height: 1px;
-                    width: 60%;
+                    width: 100%;
                     background-color: $color-grey-light-1a;
                     bottom: 0;
                     left: 50%;
@@ -41,16 +43,30 @@
                 }
             }
 
+            p:first-child:first-letter {
+                font-size: 300%;
+                border: 1px solid #d4d5d7;
+                padding: 0 1.5rem;
+                padding-top: 5px;
+                display: inline-block;
+                top: 5px;
+                float: left;
+                line-height: 1;
+                margin-right: 1.5rem;
+                margin-top: .6rem;
+                font-weight: 300;
+            }
+
             & p:not(:first-child) {
                 max-width: 80rem;
-                align-self: center;
+                //align-self: center;
                 font-size: 1.6rem;
             }
 
             & ul,
             ol {
                 max-width: 80rem;
-                align-self: center;
+                //align-self: center;
                 font-size: 1.6rem;
                 width: 100%;
                 padding-left: 3rem;
@@ -72,7 +88,7 @@
             h3,
             h4,
             h5 {
-                align-self: center;
+                //align-self: center;
                 display: block;
                 width: 100%;
                 max-width: 80rem;
@@ -100,7 +116,7 @@
             }
 
             & hr {
-                align-self: center;
+                //align-self: center;
                 display: block;
                 width: 100%;
                 max-width: 80rem;
@@ -222,8 +238,6 @@
                 line-height: 2rem;
             }
 
-
-
             &__header {
                 font-size: 1.6rem;
                 color: $color-primary;
@@ -264,7 +278,6 @@
         }
     }
 }
-
 
 //Components ----------------
 .disclaimer-box {
@@ -329,7 +342,7 @@
             &:hover {
                 & svg {
                     transform: translateX(0.2rem) translateY(-0.1rem);
-                } 
+                }
             }
             & svg {
                 margin-left: 0.5rem;

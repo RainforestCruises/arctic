@@ -1,5 +1,5 @@
   <?php
-$top_level_guides_page = get_field('top_level_guides_page', 'options');
+    $top_level_guides_page = get_field('top_level_guides_page', 'options');
 
     $image  = get_field('featured_image');
     $categories  = get_field('categories');

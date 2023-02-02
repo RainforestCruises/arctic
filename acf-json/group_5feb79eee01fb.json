@@ -38,6 +38,25 @@
             "maxlength": ""
         },
         {
+            "key": "field_63dc0d9dc570a",
+            "label": "Intro Snippet",
+            "name": "intro_snippet",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
             "key": "field_5feb942a2e7b1",
             "label": "Featured Image",
             "name": "featured_image",
@@ -81,68 +100,6 @@
             "min": "",
             "max": "",
             "step": ""
-        },
-        {
-            "key": "field_60abf5ae5dfe3",
-            "label": "Breadcrumbs",
-            "name": "breadcrumbs",
-            "type": "repeater",
-            "instructions": "Breadcrumb Links",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": 0,
-            "max": 0,
-            "layout": "table",
-            "button_label": "",
-            "sub_fields": [
-                {
-                    "key": "field_63751e7ede5b7",
-                    "label": "Page Link",
-                    "name": "page_link",
-                    "type": "post_object",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "page"
-                    ],
-                    "taxonomy": "",
-                    "allow_null": 0,
-                    "multiple": 0,
-                    "return_format": "object",
-                    "ui": 1
-                },
-                {
-                    "key": "field_63751ebcde5b8",
-                    "label": "Display Text",
-                    "name": "display_text",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                }
-            ]
         },
         {
             "key": "field_5ff8c322b2dd0",
@@ -378,5 +335,5 @@
     "active": true,
     "description": "Travel Guide - CPT",
     "show_in_rest": 0,
-    "modified": 1675287300
+    "modified": 1675365830
 }

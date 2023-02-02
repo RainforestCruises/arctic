@@ -9,12 +9,12 @@ $show_itineraries = get_field('show_itineraries');
 ?>
 
 
-<!-- Travel Guide Single -->
+<!-- Guide (Single) -->
 <main>
 
   <!-- Hero -->
   <?php
-  get_template_part('template-parts/guide/content', 'guide-hero', $args);
+  get_template_part('template-parts/guide/content', 'guide-hero2', $args);
   ?>
 
   <!-- Main Section -->

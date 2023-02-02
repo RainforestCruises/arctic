@@ -2,7 +2,7 @@
 $travel_guides = get_field('travel_guides');
 $firstGuides = array_slice($travel_guides, 0, 5);
 $travel_guide_title_subtext = get_field('travel_guide_title_subtext');
-
+$top_level_guides_page = get_field('top_level_guides_page', 'options')
 ?>
 
 <!-- Travel Guides -->
@@ -54,7 +54,7 @@ $travel_guide_title_subtext = get_field('travel_guide_title_subtext');
 
         </div>
         <div class="grid-block__content__cta">
-            <a class="cta-primary cta-primary--inverse" id="all-guides-link" href="#">
+            <a class="cta-primary cta-primary--inverse" id="all-guides-link" href="<?php echo $top_level_guides_page; ?>">
                 Read All Guides
             </a>
         </div>

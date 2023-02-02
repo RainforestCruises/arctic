@@ -1,0 +1,56 @@
+<?php
+$top_level_guides_page = get_field('top_level_guides_page', 'options');
+$minutes_to_read  = get_field('minutes_to_read');
+$updated = get_the_modified_date('F jS, Y');
+
+$image  = get_field('featured_image');
+$categories  = get_field('categories');
+$displayCategory = "";
+
+if ($categories) {
+    $firstCategoryPost = $categories[0];
+    $displayCategory = get_the_title($firstCategoryPost);
+}
+
+?>
+
+
+
+<!-- Hero Section -->
+<section class="guide-hero2">
+
+    <div class="guide-hero2__content">
+
+        <div class="guide-hero2__content__title-area">
+            <div class="guide-hero2__content__title-area__category">
+                <?php echo $displayCategory ?>
+
+            </div>
+            <div class="guide-hero2__content__title-area__title">
+                <?php echo get_field('navigation_title'); ?>
+
+            </div>
+            <div class="guide-hero2__content__title-area__sub">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum molestiae nihil quidem nam minus, dolorum, quam mollitia vel rem recusandae
+            </div>
+            <div class="guide-hero2__content__title-area__stats">
+                <div>
+                    <?php echo $updated; ?>
+                </div>
+                <div>
+                    &#8226;
+                </div>
+                <div>
+                    <?php echo $minutes_to_read; ?> min read
+                </div>
+            </div>
+
+        </div>
+
+        <div class="guide-hero2__content__image-area">
+            <img <?php afloat_image_markup($image['ID'], 'landscape-medium', array('landscape-medium', 'landscape-small')); ?>>
+
+        </div>
+
+    </div>
+</section>
