@@ -5262,99 +5262,6 @@ h5 {
     .guide-hero {
       padding-top: 10rem; } }
   .guide-hero__content {
-    z-index: 2;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 160rem;
-    width: 100%;
-    padding: 0 6rem; }
-    @media only screen and (max-width: 50em) {
-      .guide-hero__content {
-        padding: 0 3rem; } }
-    .guide-hero__content__category {
-      font-size: 1.6rem;
-      letter-spacing: 0.2rem;
-      text-transform: uppercase;
-      color: #d9a402;
-      text-align: center;
-      font-weight: 500;
-      margin-bottom: 3rem; }
-    .guide-hero__content__title {
-      font-size: 5rem;
-      line-height: 5.8rem;
-      color: #1d2225;
-      font-weight: 500;
-      letter-spacing: 0.2rem;
-      text-align: center;
-      margin-bottom: 1rem; }
-      @media only screen and (max-width: 37.5em) {
-        .guide-hero__content__title {
-          font-size: 3.5rem;
-          line-height: 4rem;
-          margin-bottom: 1rem; } }
-    .guide-hero__content__image {
-      margin-bottom: 3rem; }
-      .guide-hero__content__image img {
-        object-fit: cover;
-        height: 100%;
-        width: 100%;
-        box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2);
-        border-radius: 1rem; }
-    .guide-hero__content__breadcrumb {
-      margin-bottom: 2rem;
-      font-size: 1.2rem;
-      letter-spacing: 0.1rem;
-      justify-self: flex-start;
-      font-weight: 400;
-      justify-content: center;
-      display: flex;
-      position: relative;
-      list-style: none;
-      height: max-content;
-      width: 100%;
-      max-width: max-content;
-      flex-wrap: wrap;
-      color: #347fff; }
-      .guide-hero__content__breadcrumb li {
-        display: inline-block;
-        width: max-content; }
-        .guide-hero__content__breadcrumb li:not(:last-child):after {
-          content: " / ";
-          padding-left: 1px;
-          padding-right: 4px; }
-        .guide-hero__content__breadcrumb li a {
-          position: relative;
-          text-decoration: none;
-          color: currentColor; }
-          .guide-hero__content__breadcrumb li a::after {
-            content: "";
-            position: absolute;
-            bottom: -0.3rem;
-            left: 0;
-            width: 97%;
-            height: 1px;
-            background-color: currentColor;
-            transition: all 0.2s;
-            opacity: 0; }
-          .guide-hero__content__breadcrumb li a:hover::after {
-            color: currentColor;
-            opacity: 1; }
-
-.guide-hero2 {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  padding-top: 14rem; }
-  @media only screen and (max-width: 37.5em) {
-    .guide-hero2 {
-      padding-top: 10rem; } }
-  .guide-hero2__content {
     width: 100%;
     max-width: 128rem;
     width: 100%;
@@ -5364,39 +5271,39 @@ h5 {
     flex-direction: column;
     align-items: center; }
     @media only screen and (max-width: 50em) {
-      .guide-hero2__content {
+      .guide-hero__content {
         padding: 0 3rem; } }
-    .guide-hero2__content__title-area {
+    .guide-hero__content__title-area {
       max-width: 80rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
       text-align: center; }
-      .guide-hero2__content__title-area__category {
+      .guide-hero__content__title-area__category {
         font-size: 1.8rem;
         font-weight: 600;
         color: #d9a402;
         margin-bottom: 3rem; }
-      .guide-hero2__content__title-area__title {
+      .guide-hero__content__title-area__title {
         font-size: 5rem;
         line-height: 5.5rem;
         font-weight: 700;
         color: #1d2225;
         margin-bottom: 2rem; }
-      .guide-hero2__content__title-area__sub {
+      .guide-hero__content__title-area__sub {
         font-size: 1.8rem;
         color: #1d2225; }
-      .guide-hero2__content__title-area__stats {
+      .guide-hero__content__title-area__stats {
         justify-content: center;
         margin-top: 2rem;
         display: grid;
         grid-template-columns: max-content max-content max-content;
         gap: 1rem;
         font-size: 1.3rem; }
-    .guide-hero2__content__image-area {
+    .guide-hero__content__image-area {
       margin-top: 3rem;
       margin-bottom: 2rem; }
-      .guide-hero2__content__image-area img {
+      .guide-hero__content__image-area img {
         height: 100%;
         width: 100%;
         object-fit: cover;

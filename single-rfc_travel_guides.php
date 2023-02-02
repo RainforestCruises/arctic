@@ -5,7 +5,6 @@ wp_enqueue_script('page-guide', get_template_directory_uri() . '/js/page-guide.j
 $show_ships = get_field('show_ships');
 $show_itineraries = get_field('show_itineraries');
 
-
 ?>
 
 
@@ -14,7 +13,7 @@ $show_itineraries = get_field('show_itineraries');
 
   <!-- Hero -->
   <?php
-  get_template_part('template-parts/guide/content', 'guide-hero2', $args);
+  get_template_part('template-parts/guide/content', 'guide-hero', $args);
   ?>
 
   <!-- Main Section -->
@@ -28,18 +27,14 @@ $show_itineraries = get_field('show_itineraries');
   ?>
 
   <!-- Ships -->
-  <?php
-  if ($show_ships) :
+  <?php if ($show_ships) :
     get_template_part('template-parts/guide/content', 'guide-ships', $args);
-  endif;
-  ?>
+  endif; ?>
 
   <!-- Itineraries -->
-  <?php
-  if ($show_itineraries) :
+  <?php if ($show_itineraries) :
     get_template_part('template-parts/guide/content', 'guide-itineraries', $args);
-  endif;
-  ?>
+  endif; ?>
 
   <!-- Footer CTA  -->
   <?php
@@ -51,5 +46,4 @@ $show_itineraries = get_field('show_itineraries');
 
 
 
-<!-- #site-wrapper end-->
 <?php get_footer() ?>

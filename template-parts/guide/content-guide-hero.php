@@ -1,44 +1,56 @@
-  <?php
-    $top_level_guides_page = get_field('top_level_guides_page', 'options');
+<?php
+$top_level_guides_page = get_field('top_level_guides_page', 'options');
+$minutes_to_read  = get_field('minutes_to_read');
+$updated = get_the_modified_date('F jS, Y');
 
-    $image  = get_field('featured_image');
-    $categories  = get_field('categories');
-    $displayCategory = "";
+$image  = get_field('featured_image');
+$intro_snippet  = get_field('intro_snippet');
 
-    if ($categories) {
-        $firstCategoryPost = $categories[0];
-        $displayCategory = get_the_title($firstCategoryPost);
-    }
+$categories  = get_field('categories');
+$displayCategory = "";
 
-    ?>
+if ($categories) {
+    $firstCategoryPost = $categories[0];
+    $displayCategory = get_the_title($firstCategoryPost);
+}
+
+?>
 
 
 
-  <!-- Hero Section -->
-  <section class="guide-hero">
-      <div class="guide-hero__content">
-          <!-- Breadcrumb -->
-          <ol class="guide-hero__content__breadcrumb">
-              <li>
-                  <a href="<?php echo home_url() ?>">Home</a>
-              </li>
-              <li>
-                  <a href="<?php echo $top_level_guides_page; ?>">All Guides</a>
-              </li>
-          </ol>
-          <!-- Title -->
-          <h1 class="guide-hero__content__title">
-              <?php echo get_field('navigation_title'); ?>
-          </h1>
-          <!-- Category -->
-          <div class="guide-hero__content__category">
-              <?php echo $displayCategory ?>
-          </div>
-          <!-- Image -->
-          <div class="guide-hero__content__image">
-              <?php if ($image) : ?>
-                  <img <?php afloat_image_markup($image['ID'], 'landscape-medium', array('landscape-medium', 'landscape-small')); ?>>
-              <?php endif; ?>
-          </div>
-      </div>
-  </section>
+<!-- Hero Section -->
+<section class="guide-hero">
+
+    <div class="guide-hero__content">
+
+        <div class="guide-hero__content__title-area">
+            <div class="guide-hero__content__title-area__category">
+                <?php echo $displayCategory ?>
+            </div>
+            <div class="guide-hero__content__title-area__title">
+                <?php echo get_field('navigation_title'); ?>
+            </div>
+            <div class="guide-hero__content__title-area__sub">
+                <?php echo get_field('intro_snippet'); ?>
+            </div>
+            <div class="guide-hero__content__title-area__stats">
+                <div>
+                    <?php echo $updated; ?>
+                </div>
+                <div>
+                    &#8226;
+                </div>
+                <div>
+                    <?php echo $minutes_to_read; ?> min read
+                </div>
+            </div>
+
+        </div>
+
+        <div class="guide-hero__content__image-area">
+            <img <?php afloat_image_markup($image['ID'], 'landscape-medium', array('landscape-medium', 'landscape-small')); ?>>
+
+        </div>
+
+    </div>
+</section>
