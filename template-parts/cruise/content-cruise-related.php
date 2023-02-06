@@ -90,6 +90,13 @@ $ships = get_posts($queryArgs);
                         <!-- Cabin Card -->
                         <div class="resource-card swiper-slide">
 
+                            <!-- Tag -->
+                            <?php if ($bestOverallDiscount) : ?>
+                                <div class="resource-card__tag">
+                                    Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
+                                </div>
+                            <?php endif; ?>
+                            
                             <!-- Images Slider -->
                             <a class="resource-card__image-area swiper related-card-image-area" href="<?php echo get_permalink($ship) ?>">
                                 <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
@@ -142,11 +149,6 @@ $ships = get_posts($queryArgs);
                                         </div>
                                     </div>
                                 </div>
-                                <?php if ($bestOverallDiscount) : ?>
-                                    <div class="resource-card__content__discount">
-                                        Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
-                                    </div>
-                                <?php endif; ?>
 
 
                             </div>

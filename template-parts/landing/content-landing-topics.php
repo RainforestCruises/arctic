@@ -15,7 +15,7 @@ $topics = get_field('topics');
                 <div class="full-card <?php echo ($count % 2 != 0) ? "reverse" : ""; ?>">
 
                     <div class="full-card__image-area">
-                        <img <?php afloat_image_markup($topic['image']['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
+                        <img <?php afloat_image_markup($topic['image']['id'], 'landscape-medium', array('landscape-medium', 'landscape-small')); ?>>
 
                     </div>
 

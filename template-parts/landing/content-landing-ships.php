@@ -40,12 +40,19 @@ $ships_title_subtext = get_field('ships_title_subtext')
                 <!-- Cabin Card -->
                 <div class="resource-card">
 
+                    <!-- Tag -->
+                    <?php if ($bestOverallDiscount) : ?>
+                        <div class="resource-card__tag">
+                            Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
+                        </div>
+                    <?php endif; ?>
+
                     <!-- Images Slider -->
                     <div class="resource-card__image-area swiper ship-card-image-area">
                         <div class="swiper-wrapper">
                             <?php foreach ($images as $image) : ?>
                                 <a class="resource-card__image-area__item swiper-slide" href="<?php echo get_permalink($ship) ?>">
-                                    <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
+                                    <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
                                 </a>
                             <?php endforeach; ?>
                         </div>
@@ -102,11 +109,6 @@ $ships_title_subtext = get_field('ships_title_subtext')
                                 </div>
                             </div>
                         </div>
-                        <?php if ($bestOverallDiscount) : ?>
-                            <div class="resource-card__content__discount">
-                                Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
-                            </div>
-                        <?php endif; ?>
 
                     </div>
                 </div>

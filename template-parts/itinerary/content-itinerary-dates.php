@@ -77,7 +77,7 @@ console_log($departures);
                             <div class="information-card__section">
                                 <div class="avatar avatar--small">
                                     <div class="avatar__image-area">
-                                        <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
+                                        <img <?php afloat_image_markup($image['id'], 'square-thumb', array('square-thumb')); ?>>
                                     </div>
                                     <div class="avatar__title-group">
                                         <div class="avatar__title-group__title">

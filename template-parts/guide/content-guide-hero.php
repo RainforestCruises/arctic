@@ -48,8 +48,7 @@ if ($categories) {
         </div>
 
         <div class="guide-hero__content__image-area">
-            <img <?php afloat_image_markup($image['ID'], 'landscape-medium', array('landscape-medium', 'landscape-small')); ?>>
-
+            <img <?php afloat_image_markup($image['ID'], 'landscape-large', array('landscape-large', 'landscape-medium', 'landscape-small')); ?>>
         </div>
 
     </div>

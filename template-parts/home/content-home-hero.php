@@ -15,7 +15,7 @@ $hero_deals = get_field('hero_deals');
 <section class="home-hero" id="section-top">
 
     <div class="home-hero__bg-image">
-        <img <?php afloat_image_markup($hero_featured_image['id'], 'full-hero-large', array('full-hero-large', 'full-hero-medium', 'full-hero-small', 'full-hero-xsmall'), false); ?>>
+        <img <?php afloat_image_markup($hero_featured_image['id'], 'landscape-full', array('landscape-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small'), false); ?>>
     </div>
 
 
@@ -60,7 +60,7 @@ $hero_deals = get_field('hero_deals');
                         <div class="information-card__section">
                             <div class="avatar avatar--small">
                                 <div class="avatar__image-area">
-                                    <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
+                                    <img <?php afloat_image_markup($image['id'], 'square-thumb', array('square-thumb')); ?>>
                                 </div>
                                 <div class="avatar__title-group">
                                     <div class="avatar__title-group__title">

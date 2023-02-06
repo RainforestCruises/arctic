@@ -106,6 +106,9 @@
             border-radius: 1rem;
             z-index: 20;
             box-shadow: $shadow-medium;
+            @media only screen and (max-width: $bp-largest) {
+                grid-column: 1 / span 6;
+            }
             @media only screen and (max-width: $bp-large) {
                 display: none;
             }

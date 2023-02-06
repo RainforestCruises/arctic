@@ -32,7 +32,7 @@ $displayLimit = 250;
 
                 <div class="text-card">
                     <div class="text-card__avatar">
-                        <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
+                        <img <?php afloat_image_markup($image['id'], 'square-thumb', array('square-thumb')); ?>>
                         <div class="text-card__avatar__title-group">
                             <div class="text-card__avatar__title-group__title">
                                 <?php echo $title; ?>
@@ -110,7 +110,7 @@ $displayLimit = 250;
 
                         <div class="text-card" id="reviews-section-<?php echo $count; ?>">
                             <div class="text-card__avatar">
-                                <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
+                                <img <?php afloat_image_markup($image['id'], 'square-thumb', array('square-thumb')); ?>>
                                 <div class="text-card__avatar__title-group">
                                     <div class="text-card__avatar__title-group__title">
                                         <?php echo $title; ?>

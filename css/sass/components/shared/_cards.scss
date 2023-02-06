@@ -170,6 +170,18 @@
     display: flex !important;
     flex-direction: column;
 
+    &__tag {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        width: max-content;
+        padding: .5rem 1rem;
+        background-color: $color-white;
+        color: $color-primary;
+        border-radius: 2rem;
+        z-index: 10;
+    }
+
     // Variants
     &.small {
         & .resource-card__image-area {
@@ -257,16 +269,17 @@
             width: 100%;
             height: 100%;
         }
+
+
     }
-
-
 
     &__content {
         padding: 1rem 0rem;
         color: currentColor;
+
+        
         &__title {
-            font-weight: 700;
-            color: currentColor;
+            font-weight: 700;       
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
@@ -274,17 +287,28 @@
             &:link,
             &:visited {
                 text-decoration: none;
+                color: currentColor;
             }
         }
 
         &__title-group {
-            color: currentColor;
             display: grid;
             grid-template-columns: 1fr max-content;
             align-items: center;
             font-size: 1.8rem;
+            line-height: 2.3rem;
+            color: currentColor;
+
+            &:link,
+            &:visited {
+                text-decoration: none;
+                color: currentColor;
+            }
+
+
             &__title {
                 font-weight: 700;
+
 
                 & span {
                     margin-left: 0.5rem;
@@ -351,19 +375,17 @@
                     margin-right: 0.5rem;
                 }
                 &__text {
-                    font-size: 1.4rem;    
+                    font-size: 1.4rem;
                 }
-               
             }
 
             &__cta {
             }
         }
-        &__discount {
-            transform: translateY(-.2rem);
-            font-size: 1.2rem;
-            //padding-left: 1.5rem;
-        }
+        // &__discount {
+        //     transform: translateY(-0.2rem);
+        //     font-size: 1.2rem;
+        // }
     }
 }
 

@@ -16,7 +16,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
 <section class="product-hero" id="section-top">
     <!-- Desktop BG Image -->
     <div class="product-hero__bg-image">
-        <img <?php afloat_image_markup($images[0]['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium', 'portrait-small')); ?>>
+        <img <?php afloat_image_markup($images[0]['id'], 'wide-large', array('wide-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small')); ?>>
     </div>
 
     <!-- Desktop Gallery -->
@@ -57,7 +57,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
             <!-- Gallery Images -->
             <?php foreach ($images as $image) : ?>
                 <div class="product-hero__bg-slider__slide swiper-slide" imageId="<?php echo $image['id']; ?>">
-                    <img <?php afloat_image_markup($image['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
+                    <img <?php afloat_image_markup($images[0]['id'], 'wide-large', array('wide-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small')); ?>>
                 </div>
             <?php endforeach; ?>
         </div>

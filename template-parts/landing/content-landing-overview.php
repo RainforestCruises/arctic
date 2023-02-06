@@ -64,7 +64,7 @@ $intro_text_limited = substr($intro_text, 0, 950) . '...';
 
                 <div class="quote-grid__image-area">
                     <img class="quote-grid__image-area__primary" <?php afloat_image_markup($hero_images[1]['id'], 'portrait-medium', array('portrait-medium', 'portrait-small')); ?>>
-                    <img class="quote-grid__image-area__secondary" <?php afloat_image_markup($hero_images[2]['id'], 'vertical-small', array('vertical-small')); ?>>
+                    <img class="quote-grid__image-area__secondary" <?php afloat_image_markup($hero_images[2]['id'], 'portrait-small', array('portrait-small')); ?>>
                 </div>
 
             </div>

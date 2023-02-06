@@ -51,12 +51,6 @@ $curentYear = $args['curentYear'];
                         $id = get_the_id($cabinPost);
                         $title =  get_field('display_name', $cabinPost);
                         $dimensions =  get_field('dimensions', $cabinPost);
-                        $description =  get_field('description', $cabinPost);
-
-                        if (strlen($description) > 230) {
-                            $description = substr($description, 0, 230) . '...';
-                        }
-
                         $is_single =  get_field('is_single', $cabinPost);
                         $capacity =  get_field('capacity', $cabinPost);
                         $beds =  get_field('beds', $cabinPost);
@@ -69,7 +63,7 @@ $curentYear = $args['curentYear'];
 
                             <!-- Images Slider -->
                             <div class="resource-card__image-area swiper cabin-card-image-area">
-                                <img class="cabin-image-slide" imageId="<?php echo $image['id']; ?>" <?php afloat_image_markup($image['id'], 'portrait-medium', array('portrait-medium', 'portrait-small')); ?>>
+                                <img class="cabin-image-slide" imageId="<?php echo $image['id']; ?>" <?php afloat_image_markup($image['id'], 'portrait-small', array('portrait-small')); ?>>
                             </div>
 
                             <!-- Content -->
@@ -111,15 +105,7 @@ $curentYear = $args['curentYear'];
                                         </div>
                                     </div>
 
-
-
-
                                 </div>
-
-
-
-
-
                             </div>
                         </div>
                         <!-- End Cabin Card -->

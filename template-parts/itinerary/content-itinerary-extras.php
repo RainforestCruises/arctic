@@ -52,7 +52,7 @@ $extra_activities = get_field('extra_activities')
                     ?>
                         <div class="overlay-card swiper-slide">
                             <div class="overlay-card__image-area">
-                                <img <?php afloat_image_markup($image['id'], 'wide-slider-medium'); ?>>
+                                <img <?php afloat_image_markup($image['id'], 'landscape-small', array('landscape-small', 'portrait-small')); ?>>
                             </div>
                             <div class="overlay-card__content">
                                 <div class="overlay-card__content__title-section">
@@ -124,7 +124,7 @@ $extra_activities = get_field('extra_activities')
                         </div>
                     </div>
                     <div class="product-extras-modal-item__image-area">
-                        <img <?php afloat_image_markup($image['id'], 'featured-large', array('featured-large', 'featured-medium', 'featured-small')); ?>>
+                        <img <?php afloat_image_markup($image['id'], 'landscape-small', array('landscape-small', 'portrait-small')); ?>>
                     </div>
 
                     <div class="product-extras-modal-item__text">

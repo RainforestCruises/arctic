@@ -36,7 +36,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
             ?>
                 <div class="resource-card">
                     <a class="resource-card__image-area" href="<?php echo get_permalink($guide) ?>">
-                        <img <?php afloat_image_markup($image['id'], 'portrait-large', array('portrait-large')); ?>>
+                        <img <?php afloat_image_markup($image['id'], 'portrait-small', array('portrait-small')); ?>>
                     </a>
                     <div class="resource-card__content">
                         <a class="resource-card__content__title" href="<?php echo get_permalink($guide) ?>">

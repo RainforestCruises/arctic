@@ -11,7 +11,7 @@ $hero_subtitle = get_field('hero_subtitle');
 
     <!-- Desktop BG Image -->
     <div class="landing-hero__bg-image">
-        <img <?php afloat_image_markup($hero_images[0]['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
+        <img <?php afloat_image_markup($hero_images[0]['id'], 'wide-large', array('wide-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small')); ?>>
     </div>
 
     <div class="landing-hero__content">

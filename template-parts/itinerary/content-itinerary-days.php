@@ -55,7 +55,7 @@ $disembarkation_point = get_field('disembarkation_point');
                                 ?>
                                     <div class="avatar avatar--small">
                                         <div class="avatar__image-area">
-                                            <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
+                                            <img <?php afloat_image_markup($image['id'], 'square-thumb'); ?>>
                                         </div>
                                         <div class="avatar__title-group">
                                             <div class="avatar__title-group__title">

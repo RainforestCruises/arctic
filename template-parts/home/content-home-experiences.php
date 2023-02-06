@@ -44,7 +44,7 @@ $experiences = get_field('experiences');
 
                             <!-- Images Slider -->
                             <div class="resource-card__image-area">
-                                <img <?php afloat_image_markup($image['id'], 'portrait-medium', array('portrait-medium', 'portrait-small')); ?>>
+                                <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
                             </div>
 
                             <!-- Content -->

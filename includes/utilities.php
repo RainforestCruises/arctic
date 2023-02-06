@@ -30,56 +30,43 @@ function console_log($data)
 //CLD 3.0
 function afloat_image_markup($image_id, $image_size, $sizes_array = [])
 {
-
-
-    if ($image_id != '') {
-        //options - generate_custom_image_markup
-        $customEnabled = true; //easier way to control image markup .. set to false to test CLS v3 (must change hero sliders - home/destination - flickity sliders lazy loading)
-
-        if ($customEnabled == false) {
-            //CLOUDINARY v3 --
-            //specify h/w, generare src only, add class='size-imagesize'
-            $image_src = wp_get_attachment_image_url($image_id, $image_size);
-            $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
-            $image_attributes = wp_get_attachment_image_src($image_id, $image_size);
-            echo 'height="' . $image_attributes[2] . '" width="' . $image_attributes[1] . '" src="' . $image_src . '" alt="' . $image_alt . '" class="size-' . $image_size . '"';
-        } else {
-            //Cloudinary v2.6 (and everything else)
-            //omit h/w, generate src and srcset
-
-            // set the default src image size
-            $image_src = wp_get_attachment_image_url($image_id, $image_size);
-            $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
-
-
-            $image_srcset = '';
-            $max_width = 0;
-            foreach ($sizes_array as $s) {
-                $image_attributes = wp_get_attachment_image_src($image_id, $s);
-                $image_srcset = $image_srcset . $image_attributes[0] . ' ' . $image_attributes[1] . 'w,';
-
-                if ($image_attributes[1] > $max_width) {
-                    $max_width = $image_attributes[1];
-                }
-            }
-
-            echo 'src="' . $image_src . '" srcset="' . $image_srcset . '" sizes="(max-width: ' . $max_width . 'px) 100vw, ' . $max_width . 'px" alt="' . $image_alt . '"';
-
-        }
-    } else {
-        'no-image-id';
+    if ($image_id == '') {
+        return 'no-image-id';
     }
+
+    $image_src = wp_get_attachment_image_url($image_id, $image_size);
+    $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
+    $image_srcset = '';
+    
+    $max_width = 0;
+    foreach ($sizes_array as $s) {
+        $image_attributes = wp_get_attachment_image_src($image_id, $s);
+        $image_srcset = $image_srcset . $image_attributes[0] . ' ' . $image_attributes[1] . 'w,';
+
+        if ($image_attributes[1] > $max_width) {
+            $max_width = $image_attributes[1];
+        }
+    }
+
+    echo 'src="' . $image_src . '" srcset="' . $image_srcset . '" sizes="(max-width: ' . $max_width . 'px) 100vw, ' . $max_width . 'px" alt="' . $image_alt . '"';
+
+    // //CLOUDINARY v3 --
+    // //specify h/w, generare src only, add class='size-imagesize'
+    // $image_src = wp_get_attachment_image_url($image_id, $image_size);
+    // $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
+    // $image_attributes = wp_get_attachment_image_src($image_id, $image_size);
+    // echo 'height="' . $image_attributes[2] . '" width="' . $image_attributes[1] . '" src="' . $image_src . '" alt="' . $image_alt . '" class="size-' . $image_size . '"';
 }
 
 
 
 
 //FORMATTING -----------------------
-function removePtags($text){
+function removePtags($text)
+{
     $formatted_text = str_replace(['<p>', '</p>'], '', $text);
 
     return $formatted_text;
-
 }
 function comma_separate_list($arr, $limit = 0)
 {
@@ -400,7 +387,7 @@ function renderHeaderClasses()
     }
 
     //narrow
-    if ($postTypeName == 'rfc_cruises' || $postTypeName == 'rfc_itineraries' || $postTypeName == 'rfc_travel_guides' ) {
+    if ($postTypeName == 'rfc_cruises' || $postTypeName == 'rfc_itineraries' || $postTypeName == 'rfc_travel_guides') {
         $classes .= ' narrow ';
     }
     if ($templateName == 'template-about.php' || $templateName == 'template-generic.php') {

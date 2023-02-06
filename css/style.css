@@ -3032,6 +3032,16 @@ h5 {
   color: #1d2225;
   display: flex !important;
   flex-direction: column; }
+  .resource-card__tag {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: max-content;
+    padding: .5rem 1rem;
+    background-color: #fff;
+    color: #1d2225;
+    border-radius: 2rem;
+    z-index: 10; }
   .resource-card.small .resource-card__image-area {
     height: 22rem !important; }
   .resource-card.medium .resource-card__image-area {
@@ -3089,19 +3099,23 @@ h5 {
     color: currentColor; }
     .resource-card__content__title {
       font-weight: 700;
-      color: currentColor;
       font-size: 1.8rem;
       font-weight: 700;
       margin-bottom: 0.5rem; }
       .resource-card__content__title:link, .resource-card__content__title:visited {
-        text-decoration: none; }
+        text-decoration: none;
+        color: currentColor; }
     .resource-card__content__title-group {
-      color: currentColor;
       display: grid;
       grid-template-columns: 1fr max-content;
       align-items: center;
       font-size: 1.8rem;
+      line-height: 2.3rem;
+      color: currentColor;
       margin-bottom: 0.5rem; }
+      .resource-card__content__title-group:link, .resource-card__content__title-group:visited {
+        text-decoration: none;
+        color: currentColor; }
       .resource-card__content__title-group__title {
         font-weight: 700; }
         .resource-card__content__title-group__title span {
@@ -3145,9 +3159,6 @@ h5 {
           margin-right: 0.5rem; }
         .resource-card__content__bottom__price-group__text {
           font-size: 1.4rem; }
-    .resource-card__content__discount {
-      transform: translateY(-0.2rem);
-      font-size: 1.2rem; }
 
 .tiny-card {
   position: relative;
@@ -6274,6 +6285,9 @@ h5 {
       border-radius: 1rem;
       z-index: 20;
       box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2); }
+      @media only screen and (max-width: 75em) {
+        .quote-grid__image-area__secondary {
+          grid-column: 1 / span 6; } }
       @media only screen and (max-width: 62.5em) {
         .quote-grid__image-area__secondary {
           display: none; } }

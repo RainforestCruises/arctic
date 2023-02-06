@@ -82,7 +82,7 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
                                 <div class="avatar">
 
                                     <a class="avatar__image-area" href="<?php echo get_permalink($ship); ?>">
-                                        <img <?php afloat_image_markup($ship_image['id'], 'square-small', array('square-small')); ?>>
+                                        <img <?php afloat_image_markup($ship_image['id'], 'square-thumb', array('square-thumb')); ?>>
                                     </a>
                                     <div class="avatar__title-group">
                                         <a class="avatar__title-group__title" href="<?php echo get_permalink($ship); ?>">

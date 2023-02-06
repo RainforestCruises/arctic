@@ -1,10 +1,7 @@
 <?php
-
 $ships = get_field('ships');
 $ships_subtext = get_field('ships_subtext');
-
 ?>
-
 
 <section class="slider-block narrow">
     <div class="slider-block__content block-top-divider">
@@ -46,7 +43,6 @@ $ships_subtext = get_field('ships_subtext');
             <div class="swiper" id="ships-slider">
                 <div class="swiper-wrapper">
 
-
                     <?php foreach ($ships as $ship) :
                         $images =  get_field('hero_gallery', $ship);
                         $image = $images[0];
@@ -60,13 +56,20 @@ $ships_subtext = get_field('ships_subtext');
                         $bestOverallDiscount = getBestDepartureListDiscount($departures);
                     ?>
 
-                        <!-- Cabin Card -->
+                        <!-- Card -->
                         <div class="resource-card swiper-slide">
 
+                            <!-- Tag -->
+                            <?php if ($bestOverallDiscount) : ?>
+                                <div class="resource-card__tag">
+                                    Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
+                                </div>
+                            <?php endif; ?>
+
                             <!-- Images Slider -->
-                            <div class="resource-card__image-area swiper related-card-image-area">
-                                <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
-                            </div>
+                            <a class="resource-card__image-area swiper related-card-image-area"  href="<?php echo get_permalink($ship) ?>">
+                                <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
+                            </a>
 
                             <!-- Content -->
                             <div class="resource-card__content">
@@ -115,26 +118,14 @@ $ships_subtext = get_field('ships_subtext');
                                         </div>
                                     </div>
                                 </div>
-                                <?php if ($bestOverallDiscount) : ?>
-                                    <div class="resource-card__content__discount">
-                                        Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
-                                    </div>
-                                <?php endif; ?>
 
                             </div>
                         </div>
 
-
                     <?php endforeach; ?>
-
-
-
-
 
                 </div>
             </div>
-
-
 
         </div>
     </div>

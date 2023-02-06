@@ -101,7 +101,7 @@ $routes_title_subtext = get_field('routes_title_subtext');
                                     <div class="tiny-card__section">
                                         <div class="avatar avatar--small">
                                             <div class="avatar__image-area">
-                                                <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
+                                                <img <?php afloat_image_markup($image['id'], 'portrait-small', array('portrait-small')); ?>>
                                             </div>
                                             <div class="avatar__title-group">
                                                 <div class="avatar__title-group__title">

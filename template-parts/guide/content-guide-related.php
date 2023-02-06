@@ -56,34 +56,26 @@ $relatedGuidePosts = get_posts($queryArgs);
                         <!-- Card -->
                         <div class="resource-card small swiper-slide">
 
-                            <!-- Images Slider -->
+                            <!-- Image -->
                             <a class="resource-card__image-area" href="<?php echo get_permalink($relatedPost); ?>">
-                                <img <?php afloat_image_markup($imageId, 'portrait-medium', array('portrait-medium', 'portrait-small')); ?>>
+                                <img <?php afloat_image_markup($imageId, 'portrait-small', array('portrait-small')); ?>>
                             </a>
 
                             <!-- Content -->
                             <div class="resource-card__content">
 
                                 <!-- Title -->
-                                <div class="resource-card__content__title-group">
+                                <a class="resource-card__content__title-group"  href="<?php echo get_permalink($relatedPost); ?>" >
                                     <div class="resource-card__content__title-group__title">
                                         <?php echo get_the_title($relatedPost); ?>
                                     </div>
-                                </div>
+                                </a>
 
+                                <!-- Description -->
                                 <div class="resource-card__content__description">
                                     <?php echo get_the_excerpt($relatedPost); ?>
                                 </div>
-                                <div class="resource-card__content__bottom">
-                                    <div class="resource-card__content__bottom__cta">
-                                        <a class="cta-square-icon " href="<?php echo get_permalink($relatedPost); ?>">
-                                            Read More
-                                            <svg>
-                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-arrow-right"></use>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                         <!-- End Card -->

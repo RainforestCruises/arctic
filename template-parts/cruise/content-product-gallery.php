@@ -31,19 +31,19 @@ $cabins = $args['cabins'];
                     $count = 1; // Main
                     foreach ($hero_gallery_images as $image) : ?>
                         <div class="modal__gallery__main__slider__item swiper-slide" slideIndex="<?php echo $count; ?>" imageId="<?php echo $image['id']; ?>" title="<?php echo $image['title']; ?>">
-                            <img <?php afloat_image_markup($image['id'], 'landscape-medium', array('landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
+                            <img <?php afloat_image_markup($image['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-medium', 'portrait-small')); ?>>
                         </div>
                     <?php $count++;
                     endforeach; ?>
 
-                    <?php // Cabins (DF)
+                    <?php // Cabins 
                     foreach ($cabins as $cabin) :
                         $images = get_field('images', $cabin);
                         $display_name = get_field('display_name', $cabin);
                         foreach ($images as $image) :
                     ?>
                             <div class="modal__gallery__main__slider__item swiper-slide" slideIndex="<?php echo $count; ?>" imageId="<?php echo $image['id']; ?>" title="<?php echo $display_name; ?>">
-                                <img <?php afloat_image_markup($image['id'], 'landscape-medium', array('landscape-medium', 'portrait-large', 'portrait-medium')); ?>>
+                                <img <?php afloat_image_markup($image['id'], 'landscape-large', array('landscape-large', 'landscape-medium', 'portrait-medium', 'portrait-small')); ?>>
                             </div>
                     <?php $count++;
                         endforeach;
@@ -63,7 +63,7 @@ $cabins = $args['cabins'];
                     <?php // Main 
                     foreach ($hero_gallery_images as $image) : ?>
                         <div class="modal__gallery__nav__slider__item swiper-slide">
-                            <img <?php afloat_image_markup($image['id'], 'landscape-small', array('landscape-small')); ?>>
+                            <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
                         </div>
                     <?php endforeach; ?>
 
@@ -73,13 +73,13 @@ $cabins = $args['cabins'];
                         foreach ($images as $image) :
                     ?>
                             <div class="modal__gallery__nav__slider__item swiper-slide">
-                                <img <?php afloat_image_markup($image['id'], 'landscape-small', array('landscape-small')); ?>>
+                                <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
                             </div>
                     <?php
                         endforeach;
                     endforeach; ?>
 
-            
+
                 </div>
 
             </div>

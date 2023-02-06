@@ -26,52 +26,19 @@ add_action('after_setup_theme', 'afloat_images_sizes');
 function afloat_images_sizes()
 {
 
-    // //hero
-    // add_image_size('full-hero-large', 1920, 1080, true);
-    // add_image_size('full-hero-medium', 1200, 1080, true);
-    // add_image_size('full-hero-small', 800, 1080, true);
-    // add_image_size('full-hero-xsmall', 500, 800, true);
+    add_image_size('wide-full', 1920, 720, true);
 
-    // //landscape
-    // add_image_size('wide-slider-medium', 700, 380, true);
-    // add_image_size('wide-slider-small', 500, 380, true);
-
-    // //portrait
-    // add_image_size('vertical-large', 500, 700, true);
-    // add_image_size('vertical-medium', 400, 600, true);
-    // add_image_size('vertical-small', 360, 480, true);
-
-    // //bg
-    // add_image_size('bg-portrait', 800, 1000, false);
-
-    // //pills
-    // add_image_size('pill-large', 1100, 350, true);
-    // add_image_size('pill-small', 550, 175, true);
-
-    // //featured
-    // add_image_size('featured-largest', 1120, 732, true);
-    // add_image_size('featured-large', 650, 425, true);
-    // add_image_size('featured-medium', 500, 350, true);
-    // add_image_size('featured-small', 400, 260, true);
-    // add_image_size('featured-square', 600, 500, true);
-
-
-
-    //NEW
-    add_image_size('landscape-large', 1920, 1080, true);
-    add_image_size('landscape-medium', 1280, 720, true);
+    add_image_size('landscape-full', 1920, 1080, true); 
+    add_image_size('landscape-large', 1280, 720, true); 
+    add_image_size('landscape-medium', 960, 540, true);
     add_image_size('landscape-small', 640, 360, true);
-    add_image_size('landscape-thumb', 320, 180, true);
 
     add_image_size('portrait-large', 960, 720, true);
     add_image_size('portrait-medium', 640, 480, true);
     add_image_size('portrait-small', 440, 330, true);
-    add_image_size('portrait-thumb', 240, 180, true);
 
-
-    add_image_size('square-medium', 500, 500, true); //??
-    add_image_size('square-small', 325, 325, true); //??
-    add_image_size('square-thumb', 100, 100, true); //??
+    add_image_size('square-small', 325, 325, true); 
+    add_image_size('square-thumb', 100, 100, true); 
 
 }
 
@@ -80,7 +47,7 @@ function afloat_images_sizes_add($sizes)
 {
 
     $addsizes = array(
-        "featured-largest" => 'Featured Largest',
+        "landscape-large" => 'Featured Largest',
     );
 
     $newsizes = array_merge($sizes, $addsizes);

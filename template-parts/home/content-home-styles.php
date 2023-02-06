@@ -50,7 +50,7 @@ $styles_title_subtext = get_field('styles_title_subtext')
                         <div class="overlay-card swiper-slide">
                             <div class="overlay-card__image-area">
                                 <div class="overlay-card__image-area__item">
-                                    <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
+                                    <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
                                 </div>
                             </div>
                             <a class="overlay-card__content" href="<?php echo get_permalink($travel_guide) ?>">

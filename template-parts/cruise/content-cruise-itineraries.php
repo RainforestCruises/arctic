@@ -110,26 +110,22 @@ $itineraries = get_field('itineraries');
                                     <div class="tiny-card__section">
                                         <div class="avatar avatar--small">
                                             <div class="avatar__image-area">
-                                                <img <?php afloat_image_markup($hero_image['id'], 'square-small', array('square-small')); ?>>
+                                                <img <?php afloat_image_markup($hero_image['id'], 'square-thumb', array('square-thumb')); ?>>
                                             </div>
                                             <div class="avatar__title-group">
                                                 <div class="avatar__title-group__title">
                                                     <?php echo $title; ?>
                                                     <?php echo $flightOption ? '<span class="badge-fly">' . $flightOption . '</span>' : ''; ?>
-
                                                 </div>
 
                                                 <div class="avatar__title-group__sub">
                                                     <?php echo $length; ?>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
 
-
                                     <div class="tiny-card__section">
-
                                         <!-- CTA -->
                                         <a class="cta-square-icon" href="<?php echo $link; ?>">
                                             Explore
@@ -145,7 +141,7 @@ $itineraries = get_field('itineraries');
                                 <div class="resource-card small encapsulated ">
                                     <!-- Images Slider -->
                                     <div class="resource-card__image-area">
-                                        <img <?php afloat_image_markup($hero_image['id'], 'landscape-small', array('landscape-small', 'portrait-small')); ?>>
+                                        <img <?php afloat_image_markup($hero_image['id'], 'portrait-small', array('portrait-small')); ?>>
                                     </div>
 
                                     <!-- Content -->
@@ -199,10 +195,8 @@ $itineraries = get_field('itineraries');
                                                 </div>
                                             </div>
 
-                                            <?php if ($hasDifferentPorts) : ?>
-                                                <!-- Disembark -->
-
-
+                                            <!-- Disembark -->
+                                            <?php if ($hasDifferentPorts) : ?>                                            
                                                 <div class="specs-item">
                                                     <div class="specs-item__icon">
                                                         <svg>

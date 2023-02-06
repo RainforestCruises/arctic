@@ -73,10 +73,17 @@ $itineraries_subtext = get_field('itineraries_subtext');
                         <!-- Itinerary Card -->
                         <div class="resource-card swiper-slide">
 
+                            <!-- Tag -->
+                            <?php if ($bestOverallDiscount) : ?>
+                                <div class="resource-card__tag">
+                                    Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
+                                </div>
+                            <?php endif; ?>
+
                             <!-- Images Slider -->
-                            <div class="resource-card__image-area swiper itineraries-card-image-area">
-                                <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
-                            </div>
+                            <a class="resource-card__image-area swiper itineraries-card-image-area"  href="<?php echo get_permalink($itinerary) ?>">
+                                <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
+                            </a>
 
                             <!-- Content -->
                             <div class="resource-card__content">
@@ -124,15 +131,9 @@ $itineraries_subtext = get_field('itineraries_subtext');
                                         </div>
                                     </div>
                                 </div>
-                                <?php if ($bestOverallDiscount) : ?>
-                                    <div class="resource-card__content__discount">
-                                        Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
-                                    </div>
-                                <?php endif; ?>
 
                             </div>
                         </div>
-
 
                     <?php endforeach; ?>
                 </div>
