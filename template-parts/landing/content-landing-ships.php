@@ -32,7 +32,9 @@ $ships_title_subtext = get_field('ships_title_subtext')
                 $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
                 $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . 'Luxury';
                 $departures = getDepartureList($ship);
-                $lowestPrice = getLowestDepartureListPrice($departures)
+                $lowestPrice = getLowestDepartureListPrice($departures);
+                $highestPrice = getHighestDepartureListPrice($departures);
+                $bestOverallDiscount = getBestDepartureListDiscount($departures);
             ?>
 
                 <!-- Cabin Card -->
@@ -93,13 +95,18 @@ $ships_title_subtext = get_field('ships_title_subtext')
                             <!-- Price Group -->
                             <div class="resource-card__content__bottom__price-group">
                                 <div class="resource-card__content__bottom__price-group__amount">
-                                    <?php echo "$ " . number_format($lowestPrice, 0);  ?>
+                                    <?php echo "$ " . number_format($lowestPrice, 0);  ?> - <?php echo "$ " . number_format($highestPrice, 0); ?>
                                 </div>
                                 <div class="resource-card__content__bottom__price-group__text">
                                     Per Person
                                 </div>
                             </div>
                         </div>
+                        <?php if ($bestOverallDiscount) : ?>
+                            <div class="resource-card__content__discount">
+                                Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
+                            </div>
+                        <?php endif; ?>
 
                     </div>
                 </div>

@@ -17,7 +17,7 @@ $itineraries_subtext = get_field('itineraries_subtext');
             <!-- Title -->
             <div class="slider-block__content__top__title">
                 <div class="title-group__title">
-                 Related Itineraries
+                    Related Itineraries
                 </div>
                 <div class="title-group__sub">
                     <?php echo $itineraries_subtext; ?>
@@ -64,6 +64,8 @@ $itineraries_subtext = get_field('itineraries_subtext');
                         $guestsDisplay = get_field('vessel_capacity', $itinerary) . ' Guests, ' . 'Luxury';
                         $departures = getDepartureList($itinerary);
                         $lowestPrice = getLowestDepartureListPrice($departures);
+                        $highestPrice = getHighestDepartureListPrice($departures);
+                        $bestOverallDiscount = getBestDepartureListDiscount($departures);
 
                     ?>
 
@@ -114,13 +116,18 @@ $itineraries_subtext = get_field('itineraries_subtext');
                                 <div class="resource-card__content__bottom">
                                     <div class="resource-card__content__bottom__price-group">
                                         <div class="resource-card__content__bottom__price-group__amount">
-                                            <?php echo "$ " . number_format($lowestPrice, 0);  ?>
+                                            <?php echo "$ " . number_format($lowestPrice, 0);  ?> - <?php echo "$ " . number_format($highestPrice, 0); ?>
                                         </div>
                                         <div class="resource-card__content__bottom__price-group__text">
                                             Per Person
                                         </div>
                                     </div>
                                 </div>
+                                <?php if ($bestOverallDiscount) : ?>
+                                    <div class="resource-card__content__discount">
+                                        Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
+                                    </div>
+                                <?php endif; ?>
 
                             </div>
                         </div>

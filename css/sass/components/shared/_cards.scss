@@ -351,13 +351,18 @@
                     margin-right: 0.5rem;
                 }
                 &__text {
-                    font-size: 1.4rem;
-                    padding-bottom: 1px;
+                    font-size: 1.4rem;    
                 }
+               
             }
 
             &__cta {
             }
+        }
+        &__discount {
+            transform: translateY(-.2rem);
+            font-size: 1.2rem;
+            //padding-left: 1.5rem;
         }
     }
 }

@@ -14,7 +14,7 @@ $itineraries_title_subtext = get_field('itineraries_title_subtext')
             <!-- Title -->
             <div class="title-group">
                 <div class="title-group__title">
-                Best-Selling Antarctica Cruise Itineraries 
+                    Best-Selling Antarctica Cruise Itineraries
                 </div>
                 <div class="title-group__sub">
                     <?php echo $itineraries_title_subtext; ?>
@@ -59,6 +59,8 @@ $itineraries_title_subtext = get_field('itineraries_title_subtext')
                         $guestsDisplay = get_field('vessel_capacity', $itinerary) . ' Guests, ' . 'Luxury';
                         $departures = getDepartureList($itinerary);
                         $lowestPrice = getLowestDepartureListPrice($departures);
+                        $highestPrice = getHighestDepartureListPrice($departures);
+                        $bestOverallDiscount = getBestDepartureListDiscount($departures);
                     ?>
 
                         <!-- Itinerary Card -->
@@ -110,13 +112,18 @@ $itineraries_title_subtext = get_field('itineraries_title_subtext')
                                     <!-- Price Group -->
                                     <div class="resource-card__content__bottom__price-group">
                                         <div class="resource-card__content__bottom__price-group__amount">
-                                            <?php echo "$ " . number_format($lowestPrice, 0);  ?>
+                                            <?php echo "$ " . number_format($lowestPrice, 0);  ?> - <?php echo "$ " . number_format($highestPrice, 0); ?>
                                         </div>
                                         <div class="resource-card__content__bottom__price-group__text">
                                             Per Person
                                         </div>
                                     </div>
                                 </div>
+                                <?php if ($bestOverallDiscount) : ?>
+                                    <div class="resource-card__content__discount">
+                                        Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
+                                    </div>
+                                <?php endif; ?>
 
                             </div>
                         </div>

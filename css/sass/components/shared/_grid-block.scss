@@ -22,17 +22,17 @@
             display: grid;
             grid-template-columns: 100%;
             gap: 2rem;
- 
-            &.grid2 { 
+
+            &.grid2 {
                 grid-template-columns: repeat(2, calc(50% - 1rem));
-                
+
                 @media only screen and (max-width: $bp-small) {
                     grid-template-columns: 100%;
                     gap: 4rem;
                 }
             }
 
-            &.grid3 { 
+            &.grid3 {
                 grid-template-columns: repeat(3, calc(33% - 1rem));
                 @media only screen and (max-width: $bp-medium) {
                     grid-template-columns: repeat(2, calc(50% - 1rem));
@@ -74,48 +74,50 @@
             &.grid-2x3 {
                 grid-template-columns: repeat(12, 1fr);
 
-                & .resource-card:nth-child(-n+2) {
+                & .resource-card:nth-child(-n + 2) {
                     grid-column: span 6;
+                    & .resource-card__image-area {
+                        @media only screen and (min-width: $bp-large) {
+                            height: 44rem;
+                        }                 
+                    }
                 }
-     
-                & .resource-card:nth-child(n+3) {
+
+                & .resource-card:nth-child(n + 3) {
                     grid-column: span 4;
                 }
-    
 
-                @media only screen and (max-width: $bp-medium) {               
+                @media only screen and (max-width: $bp-medium) {
                     & .resource-card {
                         grid-column: span 12 !important;
-                    }                   
+                    }
                 }
             }
-
 
             &.grid-3x4 {
                 grid-template-columns: repeat(12, 1fr);
 
-                & .resource-card:nth-child(-n+3) {
+                & .resource-card:nth-child(-n + 3) {
                     grid-column: span 4;
                 }
-     
-                & .resource-card:nth-child(n+4) {
+
+                & .resource-card:nth-child(n + 4) {
                     grid-column: span 3;
                 }
-    
 
-                @media only screen and (max-width: $bp-large) {               
-                    & .resource-card:nth-child(-n+4) {
+                @media only screen and (max-width: $bp-large) {
+                    & .resource-card:nth-child(-n + 4) {
                         grid-column: span 6;
-                    }        
-                    & .resource-card:nth-child(n+5) {
+                    }
+                    & .resource-card:nth-child(n + 5) {
                         grid-column: span 4;
                     }
                 }
 
-                @media only screen and (max-width: $bp-small) {               
+                @media only screen and (max-width: $bp-small) {
                     & .resource-card {
                         grid-column: span 12 !important;
-                    }                   
+                    }
                 }
             }
         }

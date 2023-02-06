@@ -85,6 +85,7 @@ $itineraries = get_posts($queryArgs);
                         $itineraries =  get_field('itineraries', $itinerary);
                         $title = get_field('display_name', $itinerary);
                         $days = get_field('itinerary', $itinerary);
+                        $length_in_nights = get_field('length_in_nights', $itinerary);
                         $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
                         $embarkation_point = get_field('embarkation_point', $itinerary);
                         $embarkation = get_the_title($embarkation_point);
@@ -94,7 +95,8 @@ $itineraries = get_posts($queryArgs);
                         $guestsDisplay = get_field('vessel_capacity', $itinerary) . ' Guests, ' . 'Luxury';
                         $departures = getDepartureList($itinerary);
                         $lowestPrice = getLowestDepartureListPrice($departures);
-
+                        $highestPrice = getHighestDepartureListPrice($departures);
+                        $bestOverallDiscount = getBestDepartureListDiscount($departures);
                     ?>
 
                         <!-- Itinerary Card -->
@@ -144,17 +146,20 @@ $itineraries = get_posts($queryArgs);
                                 <div class="resource-card__content__bottom">
                                     <div class="resource-card__content__bottom__price-group">
                                         <div class="resource-card__content__bottom__price-group__amount">
-                                            <?php echo "$ " . number_format($lowestPrice, 0);  ?>
+                                            <?php echo "$ " . number_format($lowestPrice, 0);  ?> - <?php echo "$ " . number_format($highestPrice, 0); ?>
                                         </div>
                                         <div class="resource-card__content__bottom__price-group__text">
                                             Per Person
                                         </div>
                                     </div>
                                 </div>
-
+                                <?php if ($bestOverallDiscount) : ?>
+                                    <div class="resource-card__content__discount">
+                                        Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         </div>
-
 
                     <?php endforeach; ?>
                 </div>

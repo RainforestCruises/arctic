@@ -2753,23 +2753,26 @@ h5 {
             gap: 4rem; } }
       .grid-block__content__grid.grid-2x3 {
         grid-template-columns: repeat(12, 1fr); }
-        .grid-block__content__grid.grid-2x3 .resource-card:nth-child(-n+2) {
+        .grid-block__content__grid.grid-2x3 .resource-card:nth-child(-n + 2) {
           grid-column: span 6; }
-        .grid-block__content__grid.grid-2x3 .resource-card:nth-child(n+3) {
+          @media only screen and (min-width: 62.5em) {
+            .grid-block__content__grid.grid-2x3 .resource-card:nth-child(-n + 2) .resource-card__image-area {
+              height: 44rem; } }
+        .grid-block__content__grid.grid-2x3 .resource-card:nth-child(n + 3) {
           grid-column: span 4; }
         @media only screen and (max-width: 50em) {
           .grid-block__content__grid.grid-2x3 .resource-card {
             grid-column: span 12 !important; } }
       .grid-block__content__grid.grid-3x4 {
         grid-template-columns: repeat(12, 1fr); }
-        .grid-block__content__grid.grid-3x4 .resource-card:nth-child(-n+3) {
+        .grid-block__content__grid.grid-3x4 .resource-card:nth-child(-n + 3) {
           grid-column: span 4; }
-        .grid-block__content__grid.grid-3x4 .resource-card:nth-child(n+4) {
+        .grid-block__content__grid.grid-3x4 .resource-card:nth-child(n + 4) {
           grid-column: span 3; }
         @media only screen and (max-width: 62.5em) {
-          .grid-block__content__grid.grid-3x4 .resource-card:nth-child(-n+4) {
+          .grid-block__content__grid.grid-3x4 .resource-card:nth-child(-n + 4) {
             grid-column: span 6; }
-          .grid-block__content__grid.grid-3x4 .resource-card:nth-child(n+5) {
+          .grid-block__content__grid.grid-3x4 .resource-card:nth-child(n + 5) {
             grid-column: span 4; } }
         @media only screen and (max-width: 37.5em) {
           .grid-block__content__grid.grid-3x4 .resource-card {
@@ -3141,8 +3144,10 @@ h5 {
           font-weight: 700;
           margin-right: 0.5rem; }
         .resource-card__content__bottom__price-group__text {
-          font-size: 1.4rem;
-          padding-bottom: 1px; }
+          font-size: 1.4rem; }
+    .resource-card__content__discount {
+      transform: translateY(-0.2rem);
+      font-size: 1.2rem; }
 
 .tiny-card {
   position: relative;
