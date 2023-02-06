@@ -89,7 +89,10 @@ $itineraries = get_field('itineraries');
                             $days = get_field('itinerary', $itinerary);
                             $departures = getDepartureList($itinerary, get_post());
                             $lowestPrice = getLowestDepartureListPrice($departures);
-                            $destinations = getItineraryDestinations($itinerary); //build list of unique, with embarkations removed
+                            $highestPrice = getHighestDepartureListPrice($departures);
+                            $bestOverallDiscount = getBestDepartureListDiscount($departures);
+
+                            $destinations = getItineraryDestinations($itinerary); //build list of unique destinations within an itinerary, with embarkations removed
 
                             $title = get_field('display_name', $itinerary);
                             $length_in_nights = get_field('length_in_nights', $itinerary);
@@ -139,6 +142,14 @@ $itineraries = get_field('itineraries');
 
                                 <!-- Desktop -->
                                 <div class="resource-card small encapsulated ">
+
+                                    <!-- Tag -->
+                                    <?php if ($bestOverallDiscount) : ?>
+                                        <div class="resource-card__tag">
+                                            Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
+                                        </div>
+                                    <?php endif; ?>
+
                                     <!-- Images Slider -->
                                     <div class="resource-card__image-area">
                                         <img <?php afloat_image_markup($hero_image['id'], 'portrait-small', array('portrait-small')); ?>>
@@ -196,7 +207,7 @@ $itineraries = get_field('itineraries');
                                             </div>
 
                                             <!-- Disembark -->
-                                            <?php if ($hasDifferentPorts) : ?>                                            
+                                            <?php if ($hasDifferentPorts) : ?>
                                                 <div class="specs-item">
                                                     <div class="specs-item__icon">
                                                         <svg>
@@ -230,7 +241,7 @@ $itineraries = get_field('itineraries');
                                             <!-- Price Group -->
                                             <div class="resource-card__content__bottom__price-group">
                                                 <div class="resource-card__content__bottom__price-group__amount">
-                                                    <?php echo "$ " . number_format($lowestPrice, 0);  ?>
+                                                    <?php echo "$ " . number_format($lowestPrice, 0);  ?> - <?php echo "$ " . number_format($highestPrice, 0);  ?>
                                                 </div>
                                                 <div class="resource-card__content__bottom__price-group__text">
                                                     Per Person

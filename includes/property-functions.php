@@ -474,6 +474,7 @@ function shipSizeDisplay($pax)
     return $displayText;
 }
 
+//build list of unique destinations within an itinerary, with embarkations removed
 function getItineraryDestinations($itinerary)
 {
     $days = get_field('itinerary', $itinerary);
