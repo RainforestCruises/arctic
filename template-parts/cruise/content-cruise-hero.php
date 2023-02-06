@@ -15,7 +15,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
 <section class="product-hero" id="section-top">
     <!-- Desktop BG Image (first image in main) -->
     <div class="product-hero__bg-image">
-        <img <?php afloat_image_markup($images[0]['id'], 'wide-large', array('wide-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small')); ?>>
+        <img <?php afloat_image_markup($images[0]['id'], 'landscape-full', array('landscape-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small')); ?>>
     </div>
 
     <!-- Desktop Gallery -->
