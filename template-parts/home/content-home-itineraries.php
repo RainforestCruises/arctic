@@ -50,6 +50,7 @@ $itineraries_title_subtext = get_field('itineraries_title_subtext')
                         $itineraries =  get_field('itineraries', $itinerary);
                         $title = get_field('display_name', $itinerary);
                         $days = get_field('itinerary', $itinerary);
+                        $length_in_nights = get_field('length_in_nights', $itinerary);
                         $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
                         $embarkation_point = get_field('embarkation_point', $itinerary);
                         $embarkation = get_the_title($embarkation_point);

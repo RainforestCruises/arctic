@@ -28,7 +28,7 @@ function console_log($data)
 
 //IMAGES ------------------------
 //CLD 3.0
-function afloat_image_markup($image_id, $image_size, $sizes_array = [], $flickity = false)
+function afloat_image_markup($image_id, $image_size, $sizes_array = [])
 {
 
 
@@ -63,112 +63,15 @@ function afloat_image_markup($image_id, $image_size, $sizes_array = [], $flickit
                 }
             }
 
-            if ($flickity == false) {
-                echo 'src="' . $image_src . '" srcset="' . $image_srcset . '" sizes="(max-width: ' . $max_width . 'px) 100vw, ' . $max_width . 'px" alt="' . $image_alt . '"';
-            } else {
-                //special markup for flickity slider with lazy loading
-                echo ' data-flickity-lazyload-src="' . $image_src . '" data-flickity-lazyload-srcset="' . $image_srcset . '" sizes="(max-width: ' . $max_width . 'px) 100vw, ' . $max_width . 'px" alt="' . $image_alt . '"';
-            }
+            echo 'src="' . $image_src . '" srcset="' . $image_srcset . '" sizes="(max-width: ' . $max_width . 'px) 100vw, ' . $max_width . 'px" alt="' . $image_alt . '"';
+
         }
     } else {
         'no-image-id';
     }
 }
 
-//For images from DF (Cruises / Lodges) - Cabins, D2D, Maps, apply cloudinary custom transformation for format/quality/crop
-function afloat_dfcloud_image($image_url, $image_height = null, $image_width = null)
-{
 
-    //check for res.cloudinary.com
-    if (strpos($image_url, 'res.cloudinary.com') == false) {
-        return $image_url;
-    }
-
-    $string = $image_url;
-    $prefix = "/image/upload/";
-    $first = substr($string, 0, strpos($string, '/image/upload/') + strlen($prefix));
-
-    $transformationString = 'f_auto,q_auto/c_fill,g_auto/';
-    if ($image_width && $image_height) {
-
-        $transformationString = 'f_auto,q_auto/c_fill,g_auto' .  ',h_' . $image_width . ',w_' . $image_height . '/';
-    }
-
-    $index = strpos($string, $prefix) + strlen($prefix);
-    $second = substr($string, $index);
-
-    $new_url = $first . $transformationString . $second;
-
-
-    return $new_url;
-}
-
-//Images - DEPRECATED
-function afloat_responsive_image($image_id, $image_size, $sizes_array, $slickLazy = false)
-{
-
-    // check the image ID is not blank
-    if ($image_id != '') {
-
-        // set the default src image size
-        $image_src = wp_get_attachment_image_url($image_id, $image_size);
-        $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
-
-
-        $image_srcset = '';
-        $max_width = 0;
-        foreach ($sizes_array as $s) {
-            $image_attributes = wp_get_attachment_image_src($image_id, $s);
-            $image_srcset = $image_srcset . $image_attributes[0] . ' ' . $image_attributes[1] . 'w,';
-
-            if ($image_attributes[1] > $max_width) {
-                $max_width = $image_attributes[1];
-            }
-        }
-
-        // generate the markup for the responsive image
-
-        if ($slickLazy == true) {
-            echo 'data-lazy="' . $image_src . '"  alt="' . $image_alt . '"';
-        } else {
-            echo 'loading="lazy" src="' . $image_src . '" srcset="' . $image_srcset . '" sizes="(max-width: ' . $max_width . 'px) 100vw, ' . $max_width . 'px" alt="' . $image_alt . '"';
-            //echo 'src="' . $image_src . '" alt="' . $image_alt . '"';
-
-        }
-    }
-}
-
-
-//Images - lazy loading for flickity - DEPRECATED
-function afloat_responsive_image_lazy($image_id, $image_size, $sizes_array)
-{
-
-    // check the image ID is not blank
-    if ($image_id != '') {
-
-        // set the default src image size
-        $image_src = wp_get_attachment_image_url($image_id, $image_size);
-        $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
-
-        $image_srcset = '';
-        $max_width = 0;
-        foreach ($sizes_array as $s) {
-            $image_attributes = wp_get_attachment_image_src($image_id, $s);
-            $image_srcset = $image_srcset . $image_attributes[0] . ' ' . $image_attributes[1] . 'w,';
-
-            if ($image_attributes[1] > $max_width) {
-                $max_width = $image_attributes[1];
-            }
-        }
-
-        // generate the markup for the responsive image
-        echo ' data-flickity-lazyload-src="' . $image_src . '" data-flickity-lazyload-srcset="' . $image_srcset . '" sizes="(max-width: ' . $max_width . 'px) 100vw, ' . $max_width . 'px" alt="' . $image_alt . '"';
-        //echo ' src="' . $image_src . '"  alt="' . $image_alt . '"';
-
-    } else {
-        echo 'no-image-id';
-    }
-}
 
 
 //FORMATTING -----------------------
