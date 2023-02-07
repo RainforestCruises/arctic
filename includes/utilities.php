@@ -48,7 +48,12 @@ function afloat_image_markup($image_id, $image_size, $sizes_array = [])
         }
     }
 
-    echo 'src="' . $image_src . '" srcset="' . $image_srcset . '" sizes="(max-width: ' . $max_width . 'px) 100vw, ' . $max_width . 'px" alt="' . $image_alt . '"';
+    if(!$sizes_array) {
+        echo 'src="' . $image_src . '" alt="' . $image_alt . '"';
+    } else {
+        echo 'src="' . $image_src . '" srcset="' . $image_srcset . '" sizes="(max-width: ' . $max_width . 'px) 100vw, ' . $max_width . 'px" alt="' . $image_alt . '"';
+    }
+
 
     // //CLOUDINARY v3 --
     // //specify h/w, generare src only, add class='size-imagesize'
