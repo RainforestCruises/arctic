@@ -1,6 +1,7 @@
 <?php
 $itineraries = get_field('itineraries');
-$itineraries_title_subtext = get_field('itineraries_title_subtext')
+$itineraries_title = get_field('itineraries_title');
+$itineraries_title_subtext = get_field('itineraries_title_subtext');
 
 ?>
 
@@ -14,7 +15,7 @@ $itineraries_title_subtext = get_field('itineraries_title_subtext')
             <!-- Title -->
             <div class="title-group">
                 <div class="title-group__title">
-                    Best-Selling Antarctica Cruise Itineraries
+                    <?php echo $itineraries_title; ?>
                 </div>
                 <div class="title-group__sub">
                     <?php echo $itineraries_title_subtext; ?>

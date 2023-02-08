@@ -197,6 +197,25 @@
             "endpoint": 0
         },
         {
+            "key": "field_63e3c034ef135",
+            "label": "Ships Title",
+            "name": "ships_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_637e883d27a73",
             "label": "Ships Title Subtext",
             "name": "ships_title_subtext",
@@ -255,6 +274,25 @@
             },
             "placement": "top",
             "endpoint": 0
+        },
+        {
+            "key": "field_63e3c044ef136",
+            "label": "Routes Title",
+            "name": "routes_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_6384e93cc26ea",
@@ -317,6 +355,25 @@
             "endpoint": 0
         },
         {
+            "key": "field_63e3c058ef137",
+            "label": "Itineraries Title",
+            "name": "itineraries_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_637e885127a74",
             "label": "Itineraries Title Subtext",
             "name": "itineraries_title_subtext",
@@ -375,6 +432,25 @@
             },
             "placement": "top",
             "endpoint": 0
+        },
+        {
+            "key": "field_63e3c068ef138",
+            "label": "Styles Title",
+            "name": "styles_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_6384e8f9c26e7",
@@ -639,6 +715,25 @@
             "endpoint": 0
         },
         {
+            "key": "field_63e3c080ef139",
+            "label": "Reviews Title",
+            "name": "reviews_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_6385040c4df26",
             "label": "Reviews",
             "name": "reviews",
@@ -757,6 +852,25 @@
             "endpoint": 0
         },
         {
+            "key": "field_63e3c094ef13a",
+            "label": "Guides Title",
+            "name": "guides_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_6384e966c26ed",
             "label": "Guides Title Subtext",
             "name": "guides_title_subtext",
@@ -822,5 +936,5 @@
     "active": true,
     "description": "Home Page",
     "show_in_rest": 0,
-    "modified": 1675723657
+    "modified": 1675870393
 }

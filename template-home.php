@@ -38,7 +38,7 @@ get_header();
 
     <!-- Cruises  -->
     <?php
-    get_template_part('template-parts/home/content', 'home-cruises');
+    get_template_part('template-parts/home/content', 'home-ships');
     ?>
 
     <!-- Routes  -->

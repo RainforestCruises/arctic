@@ -1,5 +1,6 @@
 <?php
 $routes = get_field('routes');
+$routes_title = get_field('routes_title');
 $routes_title_subtext = get_field('routes_title_subtext');
 
 ?>
@@ -16,7 +17,7 @@ $routes_title_subtext = get_field('routes_title_subtext');
             <div class="cruise-itineraries__content__top__title">
                 <div class="title-group">
                     <div class="title-group__title">
-                        Antarctica Cruise Routes
+                        <?php echo $routes_title; ?>
                     </div>
                     <div class="title-group__sub">
                         <?php echo $routes_title_subtext; ?>

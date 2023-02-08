@@ -1,6 +1,7 @@
 <?php
 $guides = get_field('guides');
 $firstGuides = array_slice($guides, 0, 7);
+$guides_title = get_field('guides_title');
 $guides_title_subtext = get_field('guides_title_subtext');
 $top_level_guides_page = get_field('top_level_guides_page', 'options');
 ?>
@@ -13,7 +14,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
             <!-- Title -->
             <div class="title-group">
                 <div class="title-group__title">
-                Antarctica Expedition Cruise Guide
+                    <?php echo $guides_title; ?>
                 </div>
                 <div class="title-group__sub">
                     <?php echo $guides_title_subtext; ?>
@@ -31,8 +32,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
 
                 $title = get_the_title($guide);
                 $text = get_the_excerpt($guide);
-                $lastUpdate = get_the_modified_time( 'F jS, Y', $guide);
-
+                $lastUpdate = get_the_modified_time('F jS, Y', $guide);
             ?>
                 <div class="resource-card">
                     <a class="resource-card__image-area" href="<?php echo get_permalink($guide) ?>">
@@ -44,12 +44,11 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
                         </a>
                         <div class="resource-card__content__description">
                             <?php echo $lastUpdate; ?>
-                        </div>              
-                    </div>        
+                        </div>
+                    </div>
                 </div>
 
-            <?php $count++;
-            endforeach; ?>
+            <?php $count++; endforeach; ?>
 
         </div>
         <div class="grid-block__content__cta">

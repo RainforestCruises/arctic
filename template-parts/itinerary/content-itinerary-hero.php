@@ -54,12 +54,16 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
     <!-- Mobile Slider BG -->
     <div class="product-hero__bg-slider swiper" id="hero-mobile-slider">
         <div class="swiper-wrapper">
+
             <!-- Gallery Images -->
-            <?php foreach ($images as $image) : ?>
-                <div class="product-hero__bg-slider__slide swiper-slide" imageId="<?php echo $image['id']; ?>">
-                    <img <?php afloat_image_markup($images[0]['id'], 'wide-large', array('wide-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small')); ?>>
+            <?php 
+            $count = 0;
+            foreach ($images as $image) : ?>
+                <div class="product-hero__bg-slider__slide swiper-slide " imageId="<?php echo $image['id']; ?>">
+                    <img <?php afloat_image_markup($image['id'], 'landscape-full', array('landscape-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small')); ?> class="<?php echo $count == 0 ? "product-initial-slide" : ""; ?>" >
                 </div>
-            <?php endforeach; ?>
+            <?php $count++; endforeach; ?>
+
         </div>
         <div class="swiper-pagination"></div>
         <div class="product-hero__bg-slider__count">

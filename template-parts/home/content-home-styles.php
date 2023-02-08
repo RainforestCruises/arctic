@@ -1,6 +1,7 @@
 <?php
 $styles = get_field('styles');
-$styles_title_subtext = get_field('styles_title_subtext')
+$styles_title = get_field('styles_title');
+$styles_title_subtext = get_field('styles_title_subtext');
 
 ?>
 
@@ -14,7 +15,7 @@ $styles_title_subtext = get_field('styles_title_subtext')
             <!-- Title -->
             <div class="title-group">
                 <div class="title-group__title">
-                    Antarctica Cruise Themes
+                    <?php echo $styles_title; ?>
                 </div>
                 <div class="title-group__sub">
                     <?php echo $styles_title_subtext; ?>

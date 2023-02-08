@@ -1,6 +1,6 @@
 <?php
 $reviews = get_field('reviews');
-$reviews_title_subtext = get_field('reviews_title_subtext')
+$reviews_title = get_field('reviews_title');
 
 ?>
 
@@ -13,7 +13,7 @@ $reviews_title_subtext = get_field('reviews_title_subtext')
 
             <!-- Title -->
             <div class="title-single">
-                Antarctica Cruises’ Reviews
+                <?php echo $reviews_title; ?>
             </div>
 
         </div>
@@ -25,7 +25,6 @@ $reviews_title_subtext = get_field('reviews_title_subtext')
                 $title = $review['title'];
                 $date = $review['date'];
                 $text = $review['text'];
-
 
                 $expand = strlen($text) > 230 ? true : false;
                 $text_limited = substr($text, 0, 230) . ($expand ? '...': '');
