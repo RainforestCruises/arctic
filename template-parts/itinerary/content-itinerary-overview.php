@@ -119,7 +119,7 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
 
                     <!-- Panel Content -->
                     <div class="outline-panel__content">
-                        <div class="overview__content__grid__secondary__items">
+                        <div class="product-overview__content__grid__secondary__items">
                             <?php foreach ($firstActivities as $a) :
                                 $activity_post = $a['standard_activity'];
                                 $icon = get_field('icon', $activity_post);
