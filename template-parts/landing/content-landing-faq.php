@@ -89,7 +89,7 @@ $displayLimit = 250;
                 $answer = $faq['answer'];
             ?>
 
-                <div class="text-card" id="<?php echo 'faq-section-' . $count; ?>">
+                <div class="text-card modal-section" id="<?php echo 'faq-section-' . $count; ?>">
 
                     <div class="text-card__title-single">
                         <?php echo $question; ?>

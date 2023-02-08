@@ -1,11 +1,18 @@
 <?php
 $productName = $args['productName'];
 $amenities = get_field('amenities');
+
+$max_items = 6;
+$firstAmenities = array_slice($amenities, 0, $max_items);
+$expandItems = count($amenities) > $max_items ? true : false;
+
 $overview_content = get_field('overview_content');
 $deck_plans = get_field('deck_plans');
 
-$expand = strlen($overview_content) > 950 ? true : false;
-$overview_content_limited = substr($overview_content, 0, 950) . '...';
+$max_length = 1350;
+$expandOverview = strlen($overview_content) > $max_length ? true : false;
+$overview_content_limited = substr($overview_content, 0, $max_length) . '...';
+
 
 ?>
 
@@ -43,7 +50,7 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
                 </div>
 
                 <div class="product-overview__content__grid__overview__expand">
-                    <?php if ($expand) : ?>
+                    <?php if ($expandOverview) : ?>
                         <button class="btn-text-plain" id="expand-content">
                             Read More
                             <svg>
@@ -184,6 +191,7 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
 
                 <!-- Amenities Panel -->
                 <div class="outline-panel">
+
                     <!-- Panel Heading -->
                     <div class="outline-panel__heading">
                         <h5 class="outline-panel__heading__text">
@@ -193,25 +201,26 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
                             <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-down"></use>
                         </svg>
                     </div>
+
                     <!-- Panel Content -->
                     <div class="outline-panel__content">
-                        <div class="ammenities">
-                            <?php foreach ($amenities as $a) :
+                        <div class="product-overview__content__grid__secondary__items">
+                            <?php foreach ($firstAmenities as $a) :
                                 $amenity_post = $a['standard_amenity'];
                                 $icon = get_field('icon', $amenity_post);
                                 $title = $a['title_override'] == "" ? get_the_title($amenity_post) : $a['title_override'];
                                 $subtitle = $a['subtitle'];
                             ?>
 
-                                <div class="ammenities__item">
+                                <div class="icon-item">
                                     <?php echo $icon ?>
 
-                                    <div class="ammenities__item__title-group">
-                                        <div class="ammenities__item__title-group__title">
+                                    <div class="icon-item__title-group">
+                                        <div class="icon-item__title-group__title">
                                             <?php echo $title ?>
                                         </div>
                                         <?php if ($subtitle != "") : ?>
-                                            <div class="ammenities__item__title-group__sub">
+                                            <div class="icon-item__title-group__sub">
                                                 <?php echo $subtitle ?>
                                             </div>
                                         <?php endif; ?>
@@ -219,6 +228,16 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
                                 </div>
 
                             <?php endforeach; ?>
+                        </div>
+                        <div class="outline-panel__content__expand">
+                            <?php if ($expandItems) : ?>
+                                <button class="btn-text-plain" id="expand-items">
+                                    View All <?php echo count($amenities); ?> Amenities
+                                    <svg>
+                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                                    </svg>
+                                </button>
+                            <?php endif; ?>
                         </div>
 
                     </div>
@@ -261,6 +280,53 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
         <!-- Main Modal Content -->
         <div class="modal__content__main">
             <?php echo $overview_content; ?>
+        </div>
+    </div>
+</div>
+
+
+<!-- Items Modal -->
+<div class="modal" id="itemsModal">
+    <div class="modal__content">
+        <div class=" modal__content__top">
+            <!-- Top Modal Content -->
+            <div class="modal__content__top__nav">
+                <div class="modal__content__top__nav__title">
+                    <?php echo $productName; ?> Amenities
+                </div>
+            </div>
+            <button class="btn-text-icon close-modal-button ">
+                Close
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Main Modal Content -->
+        <div class="modal__content__main">
+            <?php foreach ($amenities as $a) :
+                $amenity_post = $a['standard_amenity'];
+                $icon = get_field('icon', $amenity_post);
+                $title = $a['title_override'] == "" ? get_the_title($amenity_post) : $a['title_override'];
+                $subtitle = $a['subtitle'];
+            ?>
+
+                <div class="icon-item icon-item--full">
+                    <?php echo $icon ?>
+
+                    <div class="icon-item__title-group">
+                        <div class="icon-item__title-group__title">
+                            <?php echo $title ?>
+                        </div>
+                        <?php if ($subtitle != "") : ?>
+                            <div class="icon-item__title-group__sub">
+                                <?php echo $subtitle ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>

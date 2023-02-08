@@ -1,19 +1,52 @@
-.arctic-heading-3 {
-    font-family: $font-primary;
-    font-weight: 700;
-    color: $color-primary;
+h2 {
     font-size: 2.2rem;
-    margin-bottom: 2rem;
-}
-
-.arctic-heading-4 {
-    font-family: $font-primary;
+    line-height: 2.6rem;
     font-weight: 700;
     color: $color-primary;
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
+h3 {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    font-weight: 700;
+    color: $color-primary;
+    margin-bottom: 1.5rem;
+}
+
+ul,
+ol {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-left: 2rem;
+    margin-bottom: 3rem;
+
+    & li {
+        margin-bottom: 1rem;
+    }
+}
+
+p {
+    font-size: 1.6rem;
+    &:not(:last-child) {
+        margin-bottom: 3rem;
+    }
+
+    & a {
+        &:link,
+        &:visited {
+            color: $color-supporting;
+            transition: all 0.2s;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        &:hover {
+            color: $color-supporting-light;
+        }
+    }
+}
 
 .title-group {
     &__title {
@@ -21,22 +54,20 @@
         line-height: 2.6rem;
         font-weight: 700;
         color: $color-primary;
+        margin-bottom: 0;
     }
 
     &__sub {
         font-size: 1.3rem;
         font-weight: 400;
-        color: $color-grey-3;
         padding-bottom: 1rem;
-        padding-top: .3rem;
+        padding-top: 0.3rem;
 
         & p {
             padding-top: 1rem;
             padding-bottom: 1rem;
-           
         }
     }
-   
 }
 
 .title-single {
@@ -44,15 +75,8 @@
     font-weight: 700;
     color: $color-primary;
     font-size: 2.2rem;
-
     margin-bottom: 2rem;
-
-    // @media only screen and (max-width: $bp-small) {
-    //     font-size: 1.8rem;
-    //     margin-bottom: 1.5rem;
-    // }
 }
-
 
 .highlight-list {
     list-style: none;
@@ -75,754 +99,17 @@
 .badge-fly {
     font-size: 1.1rem;
     border-radius: 1rem;
-    letter-spacing: .1rem;
+    letter-spacing: 0.1rem;
     padding: 0.2rem 0.8rem;
     white-space: nowrap;
-    //background-color: #347fff;
-    color: #347fff;
+    color: $color-supporting;
     font-weight: 700;
-    border: 1px solid #347fff;
+    border: 1px solid $color-supporting;
 }
-
-
-
-
-//Old -----------------
-
-
-
-%heading {
-    font-family: $font-primary;
-    font-weight: 400;
-}
-
-.heading-1 {
-    @extend %heading;
-
-    font-size: 2.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.4rem;
-    font-weight: 300;
-}
-
-.heading-2 {
-    @extend %heading;
-    font-size: 3rem;
-    //font-style: italic;
-    color: $color-primary;
-    margin-bottom: 2rem;
-
-    &--light {
-        color: $color-grey-1;
-    }
-
-    &--dark {
-        color: $color-grey-2;
-    }
-}
-
-.heading-3 {
-    @extend %heading;
-    margin-bottom: 2rem;
-    letter-spacing: 0.2rem;
-    font-weight: 600;
-    font-size: 2rem;
-    line-height: 2.7rem;
-
-    color: $color-primary;
-    display: inline-block;
-
-    @media only screen and (max-width: $bp-small) {
-        font-size: 1.6rem;
-        line-height: 2.2rem;
-    }
-
-    &--underline {
-        &::after {
-            content: "";
-            height: 2px;
-            width: 50%;
-            display: block;
-            background-color: $color-grey-light-2;
-            margin: 1.2rem 0;
-            margin-top: 0.7rem;
-            z-index: 9;
-        }
-    }
-
-    &--underline-white {
-        &::after {
-            content: "";
-            height: 1px;
-            width: 8rem;
-
-            display: block;
-            background-color: $color-white;
-            margin: 1.5rem 0;
-            z-index: 9;
-        }
-    }
-}
-
-.heading-4 {
-    @extend %heading;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.4rem;
-    font-weight: 700;
-    color: $color-primary;
-}
-
-.heading-5 {
-    @extend %heading;
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: $color-grey-1;
-    letter-spacing: 0.2rem;
-}
-
-//Margins
-.mb-sm {
-    margin-bottom: 2rem;
-}
-
-.mb-md {
-    margin-bottom: 3rem;
-}
-
-.mb-lg {
-    margin-bottom: 4rem;
-}
-
-.mb-hg {
-    margin-bottom: 8rem;
-}
-
-//Paragraph
-p {
-    font-size: 1.6rem;
-    &:not(:last-child) {
-        margin-bottom: 3rem;
-    }
-}
-
-.attention-box {
-    text-align: center;
-    margin: 4rem;
-    padding: 4rem 6rem;
-    font-family: $font-secondary;
-    border: 1px solid $color-grey-light-1a;
-    letter-spacing: 0.15rem;
-    font-size: 1.4rem;
-
-    ul {
-        margin: 0 5rem;
-    }
-    li {
-        text-align: start;
-        font-family: $font-primary;
-        font-size: 1.2rem;
-        padding: 1rem;
-    }
-
-    @media only screen and (max-width: $bp-medium) {
-        padding: 2rem 3rem;
-        margin: 2rem;
-    }
-    @media only screen and (max-width: $bp-small) {
-        padding: 1rem 1.5rem;
-        margin: 1rem;
-    }
-}
-
-.page-divider {
-    grid-column: center-start / center-end;
-    width: 100%;
-    max-width: $page-width;
-    display: flex;
-    flex-direction: row;
-
-    color: $color-primary;
-    font-family: $font-secondary;
-    font-size: 4rem;
-    line-height: 4.5rem;
-    letter-spacing: 0.2rem;
-    font-weight: 500;
-    text-align: center;
-    margin-bottom: 1rem;
-    text-transform: capitalize;
-
-    &--padding {
-        padding: 0 6rem;
-        @media only screen and (max-width: $bp-small) {
-            padding: 0 3rem;
-        }
-    }
-
-    &::before {
-        content: "";
-        flex: 1 1;
-        border-bottom: 1px solid currentColor;
-        margin: auto;
-
-        margin-right: 2rem;
-        transform: translateY(4px);
-
-        @media only screen and (max-width: $bp-medium) {
-            transform: translateY(2px);
-
-            margin-right: 1.5rem;
-        }
-    }
-    &::after {
-        content: "";
-        flex: 1 1;
-        border-bottom: 1px solid currentColor;
-        margin: auto;
-
-        margin-left: 2rem;
-        transform: translateY(4px);
-        @media only screen and (max-width: $bp-medium) {
-            transform: translateY(2px);
-            margin-left: 1.5rem;
-        }
-    }
-
-    @media only screen and (max-width: $bp-medium) {
-        font-size: 3.5rem;
-        line-height: 4rem;
-        letter-spacing: 0.2rem;
-    }
-}
-
-.svg-divider {
-    height: 9rem;
-    width: 30rem;
-
-    grid-column: 1 / -1;
-
-    display: grid;
-    grid-template-columns: 1fr min-content 1fr;
-
-    position: relative;
-    margin: 0rem auto;
-    align-content: center;
-    column-gap: 2rem;
-
-    color: $color-primary;
-    @media only screen and (max-width: $bp-small) {
-        height: 6rem;
-    }
-
-    & svg {
-        height: 5rem;
-        width: 5rem;
-        stroke-width: 2;
-        color: currentColor;
-        grid-column: 2 / span 1;
-
-        @media only screen and (max-width: $bp-small) {
-            height: 3rem;
-            width: 3rem;
-        }
-    }
-
-    &::after {
-        content: "";
-        grid-column: 3 / span 1;
-        height: 2px;
-        width: 50%;
-        background-color: currentColor;
-        z-index: 12;
-        align-self: center;
-        justify-self: start;
-    }
-    &::before {
-        content: "";
-        grid-column: 1 / span 1;
-        height: 2px;
-        width: 50%;
-        background-color: currentColor;
-        z-index: 12;
-        align-self: center;
-        justify-self: end;
-    }
-}
-
-.sub-divider {
-    grid-column: center-start / center-end;
-    text-align: center;
-
-    display: flex;
-    flex-direction: row;
-
-    font-size: 3rem;
-    line-height: 3.8rem;
-    text-transform: uppercase;
-    color: $color-primary;
-    letter-spacing: 0.3rem;
-    font-weight: 600;
-    z-index: 10;
-
-    &::before {
-        content: "";
-        flex: 1 1;
-        border-bottom: 1px solid currentColor;
-        margin: auto;
-
-        margin-right: 2rem;
-        @media only screen and (max-width: $bp-medium) {
-            margin-right: 1.5rem;
-        }
-    }
-    &::after {
-        content: "";
-        flex: 1 1;
-        border-bottom: 1px solid currentColor;
-        margin: auto;
-
-        margin-left: 2rem;
-
-        @media only screen and (max-width: $bp-small) {
-            margin-left: 1.5rem;
-        }
-    }
-
-    @media only screen and (max-width: $bp-small) {
-        font-size: 2rem;
-        line-height: 2.7rem;
-    }
-
-    //Old
-    // grid-column: center-start / center-end;
-    // text-align: center;
-    // margin: 4rem 0;
-    // margin-bottom: 2rem;
-
-    // display: grid;
-    // grid-template-columns: minmax(6rem, 1fr) minmax(min-content, max-content) minmax(6rem, 1fr); //FIX THIS
-    // align-items: center;
-    // column-gap: 2.5rem;
-
-    // font-size: 3rem;
-    // text-transform: uppercase;
-    // color: $color-primary;
-    // letter-spacing: 0.3rem;
-    // font-weight: 600;
-    // z-index: 10;
-
-    // @media only screen and (max-width: $bp-medium) {
-    //     font-size: 2rem;
-    // }
-
-    // //lines on both sides effect
-    // &::before {
-    //     content: "";
-    //     height: 1px;
-    //     display: block;
-    //     background-color: currentColor;
-    // }
-
-    // &::after {
-    //     content: "";
-    //     height: 1px;
-    //     display: block;
-    //     background-color: currentColor;
-    // }
-}
-
-.xsub-divider {
-    text-align: center;
-    justify-content: center;
-    display: flex;
-
-    font-size: 2rem;
-    line-height: 2.8rem;
-    text-transform: uppercase;
-    color: $color-grey-light-1a;
-    letter-spacing: 0.3rem;
-    font-weight: 600;
-    z-index: 10;
-
-    padding: 0 6rem;
-    @media only screen and (max-width: $bp-small) {
-        padding: 0 3rem;
-    }
-
-    &--dark {
-        color: $color-primary;
-    }
-}
-
-.sub-divider-text {
-    grid-column: center-start / center-end;
-    text-align: center;
-    font-size: 1.6rem;
-    margin-bottom: 4rem;
-    max-width: $page-width;
-
-    //side padding
-    padding: 0 6rem;
-    @media only screen and (max-width: $bp-small) {
-        padding: 0 3rem;
-    }
-}
-
-.list-svg {
-    list-style: none;
-    li {
-        display: grid;
-        grid-template-columns: 2rem 1fr;
-
-        svg {
-            transform: translateY(3px);
-            height: 1.5rem;
-            width: 1.5rem;
-            fill: $color-primary;
-        }
-
-        span {
-            //margin-left: 1rem;
-            font-size: 1.4rem;
-        }
-    }
-
-    &--large {
-
-        & li {
-            svg {
-                transform: translateY(2px);
-                height: 1.8rem;
-                width: 1.8rem;
-                fill: $color-primary;
-            }
-            & span {
-                font-size: 1.6rem;
-            }
-        }
-    }
-}
-
-.link-social {
-    svg {
-        margin-top: 2px;
-        height: 1.8rem;
-        width: 1.8rem;
-        fill: $color-grey-light-2;
-        transition: all 0.2s;
-        &:hover {
-            fill: $color-white;
-        }
-    }
-}
-
-//Icon Outline Button
-.badge {
-    color: $color-grey-light-2;
-    background-color: transparent;
-    padding: 1rem 2rem;
-    border: none;
-    margin: 0.5rem;
-    letter-spacing: 0.1rem;
-    outline: none;
-    font-size: 1.5rem;
-    font-weight: 400;
-    position: relative;
-    display: inline-block;
-
-    &::after {
-        content: "";
-        transition: all 0.15s;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-        height: 100%;
-        width: 100%;
-        border-radius: 2.5rem;
-        border: 1px solid currentColor;
-    }
-
-    &--small {
-        padding: 0.75rem 1rem;
-        font-size: 1.2rem;
-    }
-
-    &--dark {
-        color: $color-primary;
-    }
-}
-
 
 .green-text {
     color: $color-green !important;
 }
 .blue-text {
     color: $color-supporting-light !important;
-}
-
-//Solid Badge
-.badge-solid {
-    color: $color-white;
-    background-color: $color-primary;
-    padding: 0.8rem 1.6rem;
-
-    margin-left: 1rem;
-
-    font-size: 1.4rem;
-    font-weight: 600;
-    display: inline;
-
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
-    border-radius: 8rem;
-    position: relative;
-
-    &--red {
-        background-color: $color-red;
-    }
-    &--green {
-        background-color: $color-green;
-    }
-
-    &--green-outline {
-        background-color: $color-white;
-        color: $color-green;
-        border: 2px solid $color-green;
-    }
-
-    &--blue {
-        background-color: $color-supporting-light;
-    }
-
-    &--white {
-        background-color: $color-white;
-        color: $color-primary;
-        font-weight: 700;
-    }
-
-    &--small {
-        font-size: 1.1rem;
-        padding: 0.6rem 1.2rem;
-    }
-}
-
-.drop-cap-1 {
-    p:first-child:first-letter {
-        font-size: 400%;
-        border: 1px solid #d4d5d7;
-        padding: 0 2rem;
-        padding-top: 5px;
-        display: inline-block;
-        top: 2px;
-        float: left;
-        line-height: 1;
-        margin-right: 1rem;
-        font-weight: 300;
-    }
-}
-
-.drop-cap-1a {
-    p:not(.wp-caption-text):nth-child(2):first-letter {
-        font-size: 400%;
-        border: 1px solid #d4d5d7;
-        padding: 0 2rem;
-        padding-top: 5px;
-        display: inline-block;
-        top: 2px;
-        float: left;
-        line-height: 1;
-        margin-right: 1rem;
-        font-weight: 300;
-    }
-}
-
-.drop-cap-2 {
-    p:first-child:first-letter {
-        font-weight: 400;
-        font-size: 5em;
-        float: left;
-        line-height: 0.5;
-        margin-top: -0.08em;
-        margin-left: -0.02em;
-        margin-right: 0.05em;
-    }
-}
-
-.drop-cap-3 {
-    p:first-child:first-letter {
-        font-weight: 400;
-        font-size: 5em;
-        float: left;
-        line-height: 0.6;
-        margin-top: 0.1em;
-        margin-left: -0.02em;
-        margin-right: 0.07em;
-        margin-bottom: -0.07em;
-    }
-}
-
-.star-gold {
-    fill: $color-gold;
-}
-
-.star-grey {
-    fill: $color-grey-light-2;
-}
-
-.warning-text {
-    color: $color-red;
-}
-
-//fallback styles
-// h3 {
-//     color: $color-primary;
-//     font-size: 2rem;
-//     display: block;
-//     letter-spacing: 0.1rem;
-//     margin-bottom: 0.5rem;
-// }
-
-h4 {
-    color: $color-primary;
-    font-size: 1.8rem;
-    display: block;
-    letter-spacing: 0.1rem;
-    margin-bottom: 0.5rem;
-}
-
-h5 {
-    color: $color-primary;
-    font-size: 1.8rem;
-    display: block;
-    letter-spacing: 0.1rem;
-    margin-bottom: 0.5rem;
-}
-
-.experience-icon {
-    color: $color-grey-light-2;
-    background-color: transparent;
-    padding: 1.5rem;
-    border: none;
-
-    letter-spacing: 0.1rem;
-    outline: none;
-    font-size: 1.5rem;
-    font-weight: 400;
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 0.5rem;
-    cursor: pointer;
-
-    &:hover .tooltiptext {
-        visibility: visible;
-    }
-
-    & .tooltiptext {
-        box-sizing: border-box;
-        visibility: hidden;
-        width: max-content + 2rem;
-        background-color: $color-grey-light-1;
-        border: 1px solid $color-grey-light-2;
-        color: $color-primary;
-        text-align: center;
-        border-radius: 6px;
-        padding: .5rem 1rem;
-        font-size: 1rem;
-        font-weight: 600;
-        /* Position the tooltip */
-        position: absolute;
-        bottom: -3.5rem;
-        z-index: 1;
-    }
-
-    & svg {
-        height: 2rem;
-        width: 2rem;
-        color: $color-primary;
-        fill: $color-primary;
-        stroke: $color-primary;
-        stroke-width: 6;
-    }
-
-    &::after {
-        content: "";
-        transition: all 0.15s;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-        height: 100%;
-        width: 100%;
-        border-radius: 50%;
-        border: 1px solid currentColor;
-    }
-}
-
-
-.extras-icon {
-    color: $color-grey-light-2;
-    background-color: $color-white;
-    padding: 1.2rem;
-    border: none;
-
-    letter-spacing: 0.1rem;
-    outline: none;
-    font-size: 1.5rem;
-    font-weight: 400;
-    position: relative;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0.5rem;
-    cursor: pointer;
-
-    &:hover .tooltiptext {
-        visibility: visible;
-    }
-
-    & .tooltiptext {
-        box-sizing: border-box;
-        visibility: hidden;
-        width: max-content + 2rem;
-        background-color: $color-grey-light-1;
-        border: 1px solid $color-grey-light-2;
-        color: $color-primary;
-        text-align: center;
-        border-radius: 6px;
-        padding: .5rem 1rem;
-        font-size: 1rem;
-        font-weight: 600;
-        /* Position the tooltip */
-        position: absolute;
-        bottom: -3.5rem;
-        z-index: 1;
-    }
-
-    & svg {
-        height: 2rem;
-        width: 2rem;
-        color: $color-primary;
-        fill: $color-primary;
-        stroke: $color-primary;
-        stroke-width: 6;
-    }
-
-    &::after {
-        content: "";
-        transition: all 0.15s;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-        height: 100%;
-        width: 100%;
-        border-radius: 50%;
-        border: 2px solid currentColor;
-    }
 }

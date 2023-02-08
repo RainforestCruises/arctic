@@ -27,7 +27,7 @@
 
         //change links to dark colors
         &__nav {
-            &__list {
+            &__list {         
                 &__item {
                     color: currentColor;
                     position: relative;
@@ -208,6 +208,7 @@
                     list-style: none;
                     height: 100%;
                     align-items: center;
+                    margin-bottom: 0;
 
                     &__item {
                         color: currentColor;
@@ -217,10 +218,11 @@
                         cursor: pointer;
                         transition: all 0.2s;
                         width: calc(max-content + 1rem);
-
+                        font-size: 1.3rem;
                         text-decoration: none;
                         padding: 0 1.5rem;
                         position: relative;
+                        margin-bottom: 0;
                         &:hover {
                             color: $color-supporting-light;
                             font-weight: 700;

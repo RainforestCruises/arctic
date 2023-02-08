@@ -69,10 +69,18 @@
             &__secondary {
                 margin-top: 1.5rem;
 
+                &__items {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 1.5rem 3rem;
+                    padding: 2rem;
+                    padding-bottom: 1rem;
+                }
+
                 //view deckplans / terms
                 &__cta {
                     display: flex;
-                    justify-content: space-between;
+                    justify-content: flex-end;
                     align-items: center;
                 }
             }
@@ -81,35 +89,63 @@
 }
 
 //COMPONENTS
-.ammenities {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    padding: 2rem;
-    padding-bottom: 1rem;
+.icon-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
     color: $color-primary;
-    &__item {
-        display: flex;
-        align-items: center;
+    position: relative;
+    
+    & svg {
+        height: 2.5rem;
+        width: 2.5rem;
+        color: currentColor;
+    }
 
+    &__title-group {
+        margin-left: 1.5rem;
+
+        &__title {
+            color: currentColor;
+        }
+        &__sub {
+            font-size: 1.2rem;
+            color: $color-grey-3;
+        }
+    }
+
+    &--full {
+        font-size: 1.6rem;
+        
         & svg {
-            height: 2.5rem;
-            width: 2.5rem;
+            margin-left: 2rem;
+            margin-right: 3rem;
+            height: 3.5rem;
+            width: 3.5rem;
             color: currentColor;
         }
 
-        &__title-group {
-            margin-left: 1.5rem;
+        & .icon-item__title-group__sub {
             font-size: 1.4rem;
-            &__title {
-                color: currentColor;
-            }
-            &__sub {
-                color: $color-grey-3;
-            }
         }
+
+        &:first-child {
+            margin-top: 2rem;
+        }
+
+        &:not(:last-child){
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid $color-grey-light-1a;
+        }
+
+
     }
 }
+
+
+
+
 //specs
 .specs {
     display: grid;

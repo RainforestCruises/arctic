@@ -321,4 +321,15 @@ jQuery(document).ready(function ($) {
         })
     }
 
+    // Items Modal
+    const itemsModal = document.querySelector("#itemsModal");
+    const expandItems = document.querySelector("#expand-items");
+
+    if (expandItems) {
+        expandItems.addEventListener('click', () => {
+            itemsModal.style.display = 'flex';
+            body.classList.add('no-scroll');
+        });
+    }
+
 });

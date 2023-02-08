@@ -56,7 +56,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
             <!-- Gallery Images -->
             <?php foreach ($images as $image) : ?>
                 <div class="product-hero__bg-slider__slide swiper-slide" imageId="<?php echo $image['id']; ?>">
-                    <img <?php afloat_image_markup($image['id'], 'landscape-full', array('landscape-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small')); ?> class="<?php echo $count == 0 ? "product-initial-slide" : ""; ?>">
+                    <img <?php afloat_image_markup($image['id'], 'landscape-full', array('landscape-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small')); ?> class="<?php echo $count == 0 ? "optimole-initial" : ""; ?>">
                 </div>
             <?php endforeach; ?>
         </div>

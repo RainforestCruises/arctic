@@ -31,7 +31,7 @@ $reviews_title = get_field('reviews_title');
             ?>
 
 
-                <div class="text-card">
+                <div class="text-card ">
                     <div class="text-card__avatar">
                         <img <?php afloat_image_markup($image['id'], 'square-thumb', array('square-thumb')); ?>>
                         <div class="text-card__avatar__title-group">

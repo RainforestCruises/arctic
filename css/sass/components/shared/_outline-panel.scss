@@ -46,7 +46,14 @@
     }
 
     &__content {
+        &__expand {
+            margin-top: 1.5rem;
+            margin-left: 2rem;
+            display: flex;
+            //justify-content: flex-end;
+        }
     }
+
 }
 
 //accordion panel

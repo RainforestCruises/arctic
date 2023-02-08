@@ -34,20 +34,22 @@ $footerClasses = renderFooterClasses();
                 <div class="footer__content__main__contact__title">
                     Sales & Reservations
                 </div>
-                <ul class="footer__content__main__contact__text">
-                    <li> <a href="tel:<?php echo $phone_number_numeric; ?>">
+                <div class="footer__content__main__contact__text">
+                    <div> 
+                        <a href="tel:<?php echo $phone_number_numeric; ?>">
                             <?php echo $phone_number; ?>
-                        </a></li>
-                    <li>Email: <a href="mailto:cruise@antarcticacruises.com">cruise@antarcticacruises.com</a></li>
-                </ul>
+                        </a>
+                    </div>
+                    <div>Email: <a href="mailto:cruise@antarcticacruises.com">cruise@antarcticacruises.com</a></div>
+                </div>
 
                 <div class="footer__content__main__contact__title">
                     Antarctica Cruises
                 </div>
-                <ul class="footer__content__main__contact__text">
-                    <li>1680 Michigan Avenue, Suite 700</li>
-                    <li>Miami Beach, FL 33139</li>
-                </ul>
+                <div class="footer__content__main__contact__text">
+                    <div>1680 Michigan Avenue, Suite 700</div>
+                    <div>Miami Beach, FL 33139</div>
+                </div>
             </div>
 
             <ul class="footer__content__main__links">

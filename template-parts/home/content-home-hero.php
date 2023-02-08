@@ -15,7 +15,7 @@ $hero_deals = get_field('hero_deals');
 <section class="home-hero" id="section-top">
 
     <div class="home-hero__bg-image">
-        <img <?php afloat_image_markup($hero_featured_image['id'], 'landscape-full', array('landscape-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small'), false); ?>>
+        <img <?php afloat_image_markup($hero_featured_image['id'], 'landscape-full', array('landscape-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small'), false); ?> class="optimole-initial">
     </div>
 
 
