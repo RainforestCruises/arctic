@@ -1411,6 +1411,9 @@ p {
   .modal--gallery {
     background-color: rgba(30, 30, 30, 0.95);
     padding: 0; }
+  .modal--video {
+    background-color: rgba(30, 30, 30, 0.95);
+    padding: 0; }
   @media only screen and (max-width: 50em) {
     .modal {
       padding: 0rem; } }
@@ -1472,10 +1475,13 @@ p {
     flex-direction: column;
     color: #fff;
     align-items: center;
-    padding: 0 4rem; }
+    width: 100%;
+    padding: 0 6rem; }
     @media only screen and (max-width: 50em) {
       .modal__gallery {
-        padding: 0 2rem;
+        padding: 0 3rem; } }
+    @media only screen and (max-width: 50em) {
+      .modal__gallery {
         height: min-content; } }
     .modal__gallery.deckplan-images .modal__gallery__main {
       height: calc(100% - 8rem); }
@@ -1546,6 +1552,38 @@ p {
             width: 100%;
             object-fit: cover;
             border-radius: 1rem; }
+  .modal__video {
+    width: 100%;
+    padding: 0 6rem;
+    width: 100%;
+    height: min-content;
+    max-width: 160rem;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    align-items: center; }
+    @media only screen and (max-width: 50em) {
+      .modal__video {
+        padding: 0 3rem; } }
+    .modal__video__top {
+      width: 100%;
+      height: 8rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.3rem; }
+      .modal__video__top .close-modal-button {
+        background-color: rgba(255, 255, 255, 0.1);
+        -webkit-backdrop-filter: blur(2px);
+        backdrop-filter: blur(2px); }
+        .modal__video__top .close-modal-button:hover {
+          background-color: rgba(255, 255, 255, 0.3); }
+    .modal__video__main {
+      width: 90%; }
+      @media only screen and (max-width: 50em) {
+        .modal__video__main {
+          width: 100%; } }
 
 .tab-content {
   display: none; }
@@ -5402,40 +5440,37 @@ p {
             margin-bottom: 2rem; } }
     .home-hero2__content__secondary {
       position: relative;
-      height: 24rem;
-      padding-bottom: 5rem;
-      padding-top: 2rem;
-      display: flex;
-      justify-content: flex-end; }
+      width: 100%;
+      padding-bottom: 3rem;
+      padding-top: 4rem;
+      display: grid;
+      gap: 6rem;
+      grid-template-columns: 1fr min-content;
+      grid-template-rows: min-content; }
       @media only screen and (max-width: 50em) {
         .home-hero2__content__secondary {
-          display: none; } }
+          grid-template-columns: 1fr; } }
+      @media only screen and (max-width: 50em) {
+        .home-hero2__content__secondary__item-area {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 2rem; } }
+      .home-hero2__content__secondary__video-area {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end; }
+        @media only screen and (max-width: 50em) {
+          .home-hero2__content__secondary__video-area {
+            display: none; } }
 
 .video-card {
-  position: absolute;
   height: 34rem;
   width: 68rem;
-  bottom: 0rem;
-  right: 0rem;
-  transform: translateY(-3rem); }
+  cursor: pointer; }
   @media only screen and (max-width: 62.5em) {
     .video-card {
       height: 26rem;
       width: 54rem; } }
-  @media only screen and (max-width: 50em) {
-    .video-card {
-      display: none; } }
-  .video-card::after {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-image: linear-gradient(to bottom, rgba(30, 30, 30, 0), rgba(30, 30, 30, 0));
-    z-index: 2;
-    border-radius: 2rem;
-    pointer-events: none; }
   .video-card__video {
     border-radius: 2rem;
     height: 100%;
@@ -5455,14 +5490,10 @@ p {
   display: flex;
   align-items: center;
   background-color: transparent;
-  height: 10rem;
+  height: 7rem;
   width: max-content; }
-  @media only screen and (max-width: 50em) {
-    .video-play-button {
-      flex-direction: column;
-      justify-content: center; } }
   .video-play-button:hover .video-play-button__icon-area__inner {
-    transition: transform .2s;
+    transition: transform 0.2s;
     transform: scale(0.95); }
   .video-play-button__icon-area {
     margin-right: 1rem;

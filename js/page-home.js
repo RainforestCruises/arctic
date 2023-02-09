@@ -1,7 +1,6 @@
 jQuery(document).ready(function ($) {
 
 
-
     // hero video card
     let heroVideoCard = document.querySelector(".video-card__video")
     heroVideoCard.addEventListener("mouseover", function (e) {
@@ -10,6 +9,41 @@ jQuery(document).ready(function ($) {
     heroVideoCard.addEventListener("mouseout", function (e) {
         heroVideoCard.pause();
     })
+
+    var iframe = document.getElementById('modal-video-iframe');
+    const vimeoPlayer = new Vimeo.Player(iframe);
+
+
+    // video modal
+    const videoModal = document.querySelector("#videoModal");
+    const videoPlayButton = document.querySelector(".video-play-button");
+
+
+    // -- open / play
+    videoPlayButton.addEventListener('click', () => {
+        videoModal.style.display = 'flex';
+        body.classList.add('no-scroll');
+
+        vimeoPlayer.play();
+    });
+
+    heroVideoCard.addEventListener('click', () => {
+        videoModal.style.display = 'flex';
+        body.classList.add('no-scroll');
+        vimeoPlayer.play();
+    });
+
+    // -- stop playing 
+    const stopVideoSections = [...document.querySelectorAll('.stop-video')];
+    stopVideoSections.forEach(section => {
+        section.addEventListener('click', () => {
+            vimeoPlayer.pause();
+        });
+    })
+
+
+
+
 
     // SLIDERS -------------------------------------------------------
     // each ship's image area

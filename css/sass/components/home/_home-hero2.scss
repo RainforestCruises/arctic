@@ -105,47 +105,48 @@
 
         &__secondary {
             position: relative;
-            height: 24rem;
-            padding-bottom: 5rem;
-            padding-top: 2rem;
-            display: flex;
-            justify-content: flex-end;
+            width: 100%;
+            padding-bottom: 3rem;
+            padding-top: 4rem;
+            display: grid;
+            gap: 6rem;
+            grid-template-columns: 1fr min-content;
+            grid-template-rows: min-content;
 
             @media only screen and (max-width: $bp-medium) {
-                display: none;
+                grid-template-columns: 1fr;
+            }
+
+            &__item-area {
+                @media only screen and (max-width: $bp-medium) {
+                    display: flex;
+                    justify-content: center;
+                    margin-bottom: 2rem;
+                }
+            }
+            &__video-area {
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-end;
+                @media only screen and (max-width: $bp-medium) {
+                    display: none;
+                }
             }
         }
     }
 }
 
+// COMPONENTS
 .video-card {
-    position: absolute;
     height: 34rem;
     width: 68rem;
-    bottom: 0rem;
-    right: 0rem;
-    transform: translateY(-3rem);
+    cursor: pointer;
 
     @media only screen and (max-width: $bp-large) {
         height: 26rem;
         width: 54rem;
     }
-    @media only screen and (max-width: $bp-medium) {
-        display: none;
-    }
 
-    &::after {
-        position: absolute;
-        content: "";
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background-image: linear-gradient(to bottom, rgba($color-black, 0), rgba($color-black, 0));
-        z-index: 2;
-        border-radius: 2rem;
-        pointer-events: none;
-    }
     &__video {
         border-radius: 2rem;
         height: 100%;
@@ -168,20 +169,13 @@
     display: flex;
     align-items: center;
     background-color: transparent;
-
-    @media only screen and (max-width: $bp-medium) {
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    height: 10rem;
+    height: 7rem;
     width: max-content;
 
     &:hover {
-
         & .video-play-button__icon-area__inner {
-            transition: transform .2s;
-            transform: scale(.95);
+            transition: transform 0.2s;
+            transform: scale(0.95);
         }
     }
 
@@ -201,8 +195,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        
-
 
         &__inner {
             border-radius: 50%;
@@ -237,17 +229,16 @@
     }
 }
 
-
 @keyframes pulse {
-	20% {
-		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
-	}
+    20% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
 
-	40% {
-		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
-	}
+    40% {
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
 
-	100% {
-		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-	}
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
 }
