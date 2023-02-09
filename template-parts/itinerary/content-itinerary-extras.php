@@ -50,7 +50,7 @@ $extra_activities = get_field('extra_activities')
                             $price_range_high = " - $" . $price_range_high;
                         }
                     ?>
-                        <div class="overlay-card swiper-slide">
+                        <div class="overlay-card swiper-slide extras-view-details" section="extras-section-<?php echo $count; ?>">
                             <div class="overlay-card__image-area">
                                 <img <?php afloat_image_markup($image['id'], 'landscape-small', array('landscape-small', 'portrait-small')); ?>>
                             </div>
@@ -64,7 +64,7 @@ $extra_activities = get_field('extra_activities')
                                     </div>
                                 </div>
                                 <div class="overlay-card__content__cta">
-                                    <button class="cta-primary cta-primary--white extras-view-details" section="extras-section-<?php echo $count; ?>">
+                                    <button class="cta-primary cta-primary--white">
                                         View Details
                                     </button>
                                 </div>
@@ -81,8 +81,9 @@ $extra_activities = get_field('extra_activities')
 
 <div class="modal" id="extrasModal">
     <div class="modal__content">
+
+        <!-- Top Modal Content -->
         <div class="modal__content__top">
-            <!-- Top Modal Content -->
             <div class="modal__content__top__nav">
                 <div class="modal__content__top__nav__title">
                     Extra Activities
@@ -99,7 +100,6 @@ $extra_activities = get_field('extra_activities')
         <!-- Main Modal Content -->
         <div class="modal__content__main" id="extrasModalMainContent">
 
-
             <?php
             $count = 0;
             foreach ($extra_activities as $activity) :
@@ -111,7 +111,6 @@ $extra_activities = get_field('extra_activities')
                 if ($price_range_high != null) {
                     $price_range_high = " - $" . $price_range_high;
                 }
-
             ?>
 
                 <div class="product-extras-modal-item" id="<?php echo 'extras-section-' . $count; ?>">

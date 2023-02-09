@@ -110,9 +110,9 @@ $itineraries = get_posts($queryArgs);
                             <?php endif; ?>
 
                             <!-- Images Slider -->
-                            <div class="resource-card__image-area swiper related-card-image-area">
+                            <a class="resource-card__image-area swiper related-card-image-area" href="<?php echo get_permalink($itinerary) ?>">
                                 <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
-                            </div>
+                            </a>
 
                             <!-- Content -->
                             <div class="resource-card__content">

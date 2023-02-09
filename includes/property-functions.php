@@ -269,8 +269,6 @@ function getItineraryObject($itinerary)
         $featureList[] = $feature;
     }
 
-    
-
     // Itinerary Object
     $itineraryObject = [
         'featureList' => $featureList,
@@ -296,7 +294,6 @@ function getItineraryObjectFromDestinations($destinations, $startLatitude, $star
     foreach ($destinations as $destination) {
         $destinationImage =  get_field('image', $destination); //get default image if none provided
         $destinationImageURL = $destinationImage ? wp_get_attachment_image_url($destinationImage['ID'], 'portrait-small') : "";
-
      
         $point  = [
             'index' => 0,
@@ -333,8 +330,6 @@ function getItineraryObjectFromDestinations($destinations, $startLatitude, $star
         $featureList[] = $feature;
     }
 
-    
-
     // Itinerary Object
     $itineraryObject = [
         'featureList' => $featureList,
@@ -348,15 +343,6 @@ function getItineraryObjectFromDestinations($destinations, $startLatitude, $star
 
     return $itineraryObject;
 }
-
-
-
-
-
-
-
-
-
 
 
 

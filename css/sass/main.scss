@@ -15,7 +15,6 @@
 
 //page 
 @import "pages/home";
-
 @import "pages/search";
 @import "pages/generic";
 @import "pages/test";
@@ -30,7 +29,7 @@
 @import "components/shared/slider-block";
 @import "components/shared/form-general";
 @import "components/shared/cards";
-
+@import "components/shared/burger";
 @import "components/shared/loading-spinner";
 @import "components/shared/newsletter";
 @import "components/shared/inquire-form";
@@ -72,11 +71,9 @@
 @import "components/guides-toplevel/guides-toplevel-hero";
 @import "components/guides-toplevel/guides-toplevel-main";
 
-//contact
-@import "components/contact/contact-page";
-
 
 //home
+@import "components/home/home-hero2";
 @import "components/home/home-hero";
 @import "components/home/home-map";
 @import "components/home/home-quote";
@@ -84,8 +81,28 @@
 
 
 
+// layout / navigation
+@import "layout/header";
+@import "layout/footer";
+
+@import "layout/nav-main";
+@import "layout/nav-mega";
+@import "layout/nav-mobile";
+@import "layout/nav-secondary";
+@import "layout/nav-search";
 
 
+
+
+
+//contact
+@import "components/contact/contact-page";
+
+//about
+@import "components/about/about-mission";
+@import "components/about/about-difference";
+@import "components/about/about-team";
+@import "components/about/about-corporate";
 
 //search
 @import "components/search/search-intro";
@@ -102,25 +119,3 @@
 @import "components/deals/deals-featured";
 @import "components/deals/deals-destinations";
 
-
-
-
-
-//about
-@import "components/about/about-mission";
-@import "components/about/about-difference";
-@import "components/about/about-team";
-@import "components/about/about-corporate";
-
-
-
-//header / footer
-@import "layout/header";
-@import "layout/footer";
-
-@import "layout/nav-main";
-@import "layout/nav-mega";
-@import "layout/nav-mobile";
-@import "layout/nav-secondary";
-@import "layout/burger";
-@import "layout/nav-search";

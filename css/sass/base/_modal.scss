@@ -67,7 +67,20 @@
             padding: 2rem;
             padding-top: 0rem;
             padding-bottom: 8rem;
-            overflow-y: scroll;         
+            overflow-y: scroll;
+            
+            ul,
+            ol {
+                font-size: 1.6rem;
+                font-weight: 400;
+                line-height: 1.6;
+                margin-left: 2rem;
+                margin-bottom: 3rem;
+        
+                & li {
+                    margin-bottom: 1rem;
+                }
+            }
 
             & .modal-section:last-of-type {
                 margin-bottom: 30rem;

@@ -1,5 +1,18 @@
 jQuery(document).ready(function ($) {
 
+
+
+    // hero video card
+    let heroVideoCard = document.querySelector(".video-card__video")
+    heroVideoCard.addEventListener("mouseover", function (e) {
+        heroVideoCard.play();
+    })
+    heroVideoCard.addEventListener("mouseout", function (e) {
+        heroVideoCard.pause();
+    })
+
+    // SLIDERS -------------------------------------------------------
+    // each ship's image area
     new Swiper('.ship-card-image-area', {
         slidesPerView: 1,
         watchSlidesProgress: true,
@@ -23,6 +36,7 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    // best selling itineraries slider
     new Swiper('#itineraries-best-slider', {
         spaceBetween: 15,
         slidesPerView: 1.2,
@@ -44,6 +58,7 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    // themes slider
     new Swiper('#styles-slider', {
         spaceBetween: 15,
         slidesPerView: 1.2,
