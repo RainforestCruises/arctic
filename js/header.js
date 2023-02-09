@@ -30,7 +30,6 @@ jQuery(document).ready(function ($) {
 
   function applyNavStyle() {
     let megaActive = navMega.classList.contains('active');
-    let mainActive = navMain.classList.contains('active');
 
     //reduce size (height)
     if (window.scrollY == 0) {
@@ -264,7 +263,7 @@ jQuery(document).ready(function ($) {
     }
   });
 
-
+  applyNavStyle();
 
 });
 

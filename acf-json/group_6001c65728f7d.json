@@ -43,6 +43,44 @@
             "mime_types": ""
         },
         {
+            "key": "field_63e5490972380",
+            "label": "Hero Video Card",
+            "name": "hero_video_card",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_63e5495772381",
+            "label": "Vimeo Link",
+            "name": "vimeo_link",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_637e7d04f1151",
             "label": "Hero Title",
             "name": "hero_title",
@@ -82,8 +120,8 @@
         },
         {
             "key": "field_637f9ce9530eb",
-            "label": "Hero Deals",
-            "name": "hero_deals",
+            "label": "Hero Items",
+            "name": "hero_items",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -119,49 +157,10 @@
                     "maxlength": ""
                 },
                 {
-                    "key": "field_637fbbbe776ab",
-                    "label": "Page Link",
-                    "name": "page_link",
-                    "type": "link",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array"
-                },
-                {
-                    "key": "field_637fbc01776ac",
-                    "label": "Image",
-                    "name": "image",
-                    "type": "image",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "preview_size": "medium",
-                    "library": "all",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": ""
-                },
-                {
-                    "key": "field_637fbc5c776ad",
-                    "label": "Percentage Savings",
-                    "name": "percentage_savings",
-                    "type": "number",
+                    "key": "field_63e53c6463da5",
+                    "label": "Anchor Link",
+                    "name": "anchor_link",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -174,9 +173,26 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "min": "",
-                    "max": "",
-                    "step": ""
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_63e53c8463da6",
+                    "label": "Icon",
+                    "name": "icon",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         },
@@ -936,5 +952,5 @@
     "active": true,
     "description": "Home Page",
     "show_in_rest": 0,
-    "modified": 1675870393
+    "modified": 1675970924
 }

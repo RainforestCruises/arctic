@@ -1,5 +1,32 @@
 jQuery(document).ready(function ($) {
 
+     // On Click - Nav Links, href change position
+     $('.hero-item').click(function (event) {
+        var id = $(this).attr('href');
+        changePosition(id)
+        event.preventDefault();
+    })
+
+    // Animate Change Position
+    function changePosition(id) {
+
+        var target = $(id).offset().top;
+
+        if ($(window).width() > 1200) { //large screen
+            target = target - 50;
+        } else { // small screen 
+            target = target - 25;        
+        }
+
+        if (id == "#section-ships") {
+            target = target - 15;
+        }
+
+        $('html, body').animate({ scrollTop: target }, 500);
+        window.location.hash = id;
+
+    }
+
 
     // hero video card
     let heroVideoCard = document.querySelector(".video-card__video")

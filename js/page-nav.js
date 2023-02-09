@@ -64,9 +64,9 @@ jQuery(document).ready(function ($) {
 
     // Animate Change Position
     function changePosition(id) {
-        if (id != "#section-top") {
-            $('.header').addClass('preventExpand');
-        }
+        // if (id != "#section-top") {
+        //     $('.header').addClass('preventExpand');
+        // }
 
         var target = $(id).offset().top;
 
@@ -82,9 +82,9 @@ jQuery(document).ready(function ($) {
 
     }
 
-    function setScrollStatus() {
-        $('.header').removeClass('preventExpand');
-    }
+    // function setScrollStatus() {
+    //     $('.header').removeClass('preventExpand');
+    // }
 
     //Burger
     //Burger Menu -- click

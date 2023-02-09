@@ -33,7 +33,7 @@ get_header();
 
     <!-- Hero -->
     <?php
-    get_template_part('template-parts/home/content', 'home-hero2');
+    get_template_part('template-parts/home/content', 'home-hero');
     ?>
 
     <!-- Cruises  -->
