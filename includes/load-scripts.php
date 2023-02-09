@@ -51,6 +51,9 @@ function load_scripts()
     wp_enqueue_script('bootstrap-datepicker', get_template_directory_uri() . '/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js', array(), false, true);
     wp_enqueue_script('popper', get_template_directory_uri() . '/vendor/popperjs/popper.min.js', array(), false, true);
 
+    //https://player.vimeo.com/api/player.js
+    wp_enqueue_script('vimeo', 'https://player.vimeo.com/api/player.js', array(), false, true);
+
 
 
     wp_enqueue_script('utility', get_template_directory_uri() . '/js/utilities.js', array('jquery'), false, true);
