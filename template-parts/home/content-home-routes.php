@@ -197,7 +197,7 @@ $routes_title_subtext = get_field('routes_title_subtext');
                                         <div class="resource-card__content__bottom">
                                             <div class="resource-card__content__bottom__price-group">
                                                 <div class="resource-card__content__bottom__price-group__amount">
-                                                    <?php echo "$" . number_format($price_low, 0) . " - " . "$" . number_format($price_high, 0) ?>
+                                                    <?php priceFormat($price_low);  ?> - <?php priceFormat($price_high); ?>
                                                 </div>
                                                 <div class="resource-card__content__bottom__price-group__text">
                                                     Per Person

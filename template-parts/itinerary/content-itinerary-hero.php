@@ -56,13 +56,14 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
         <div class="swiper-wrapper">
 
             <!-- Gallery Images -->
-            <?php 
+            <?php
             $count = 0;
             foreach ($images as $image) : ?>
                 <div class="product-hero__bg-slider__slide swiper-slide " imageId="<?php echo $image['id']; ?>">
-                    <img <?php afloat_image_markup($image['id'], 'landscape-full', array('landscape-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small')); ?> class="<?php echo $count == 0 ? "optimole-initial" : ""; ?>" >
+                    <img <?php afloat_image_markup($image['id'], 'landscape-full', array('landscape-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small')); ?> class="<?php echo $count == 0 ? "optimole-initial" : ""; ?>">
                 </div>
-            <?php $count++; endforeach; ?>
+            <?php $count++;
+            endforeach; ?>
 
         </div>
         <div class="swiper-pagination"></div>
@@ -109,8 +110,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                         </div>
                         <div class="product-hero__content__main__secondary__info__starting-price__amount">
                             <div class="product-hero__content__main__secondary__info__starting-price__amount__text">
-                                <?php echo "$" . number_format($lowestOverallPrice, 0); ?>
-                                <span class="u-small-text">USD</span>
+                                <?php priceFormat($lowestOverallPrice); ?>
                             </div>
                             <?php if ($bestOverallDiscount) : ?>
                                 <div class="product-hero__content__main__secondary__info__starting-price__amount__discount">
@@ -217,8 +217,8 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
         </div>
         <div class="mobile-info__starting-price__amount">
             <div class="mobile-info__starting-price__amount__text">
-                <?php echo "$" . number_format($lowestOverallPrice, 0); ?>
-                <span class="u-small-text">USD</span>
+                <?php priceFormat($lowestOverallPrice); ?>
+             
             </div>
 
 

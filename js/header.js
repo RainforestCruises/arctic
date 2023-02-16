@@ -9,14 +9,11 @@ jQuery(document).ready(function ($) {
   const navMain = document.querySelector('.nav-main');
   const navMega = document.querySelector('.nav-mega');
   const navBackdrop = document.querySelector('.nav-backdrop');
-
+  const navMainLinks = [...document.querySelectorAll('.nav-main__content__center__nav__list__item')];
 
   //Set Header Style
   let opaqueNavAlways = header_vars.alwaysActiveHeader;
   let fixedHeader = headerDiv.classList.contains('fixed');
-
-
-
 
 
   //apply header styles on scroll if fixed header
@@ -72,13 +69,7 @@ jQuery(document).ready(function ($) {
     function () { //hover-over
       console.log('hover');
       navMain.classList.add('active');
-      // if (window.innerWidth > 1000) {
-      //   navBackdrop.classList.add('active');
-      // }
-
-
     },
-
     function () { //hover-out
       var megaActive = navMega.classList.contains('active');
       var scrolledDown = (window.scrollY > 300) ? true : false;
@@ -104,7 +95,9 @@ jQuery(document).ready(function ($) {
       navMain.classList.add('mega-active');
       navBackdrop.classList.add('active');
 
-      $('.nav-main__content__center__nav__list__item').removeClass('active');
+      navMainLinks.forEach(link => {
+        link.classList.remove('active');
+      })
       this.classList.add('active');
 
 
@@ -120,7 +113,6 @@ jQuery(document).ready(function ($) {
       var megaActive = navMega.classList.contains('active');
       if (window.scrollY == 0 && !opaqueNavAlways && !megaActive) {
         navMain.classList.remove('active');
-
       }
 
       if (!megaActive) {
@@ -142,7 +134,9 @@ jQuery(document).ready(function ($) {
       navMega.classList.remove('active');
       navMain.classList.remove('mega-active');
 
-      $('.nav-main__content__center__nav__list__item').removeClass('active');
+      navMainLinks.forEach(link => {
+        link.classList.remove('active');
+      })
 
       var mainActive = navMain.classList.contains('active');
 
@@ -163,7 +157,9 @@ jQuery(document).ready(function ($) {
     function () {//on hover over
       navMega.classList.remove('active');
       navMain.classList.remove('mega-active');
-      $('.nav-main__content__center__nav__list__item').removeClass('active');
+      navMainLinks.forEach(link => {
+        link.classList.remove('active');
+      })
     },
   )
 
@@ -174,7 +170,9 @@ jQuery(document).ready(function ($) {
     navMain.classList.remove('mega-active');
     navBackdrop.classList.remove('active');
 
-    $('.nav-main__content__center__nav__list__item').removeClass('active');
+    navMainLinks.forEach(link => {
+      link.classList.remove('active');
+    })
 
     if (window.scrollY == 0 && !opaqueNavAlways) {
       navMain.classList.remove('active');

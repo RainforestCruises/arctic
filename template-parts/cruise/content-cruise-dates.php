@@ -124,7 +124,7 @@ $departures = $args['departures'];
                                     </div>
                                     <div class="specs-item__text">
                                         <div class="specs-item__text__main">
-                                            <?php echo "$ " . number_format($d['LowestPrice'], 0);  ?> - <?php echo "$ " . number_format($d['HighestPrice'], 0);  ?>
+                                            <?php  priceFormat($d['LowestPrice']);  ?> - <?php priceFormat($d['HighestPrice']);  ?>
                                         </div>
                                         <?php if ($bestDiscount) : ?>
                                             <div class="specs-item__text__sub">

@@ -250,6 +250,13 @@
       border: 1px solid $color-primary;
     }
   }
+
+  &.active {
+    border: 1px solid $color-primary;
+  }
+  & .subtext {
+    color: $color-grey-3;
+  }
 }
 
 //Arctic -- Text Button (itinerary explore)

@@ -8,6 +8,15 @@
                 <path d="M11.741,5.562l-10-5.5a.5.5,0,0,0-.5.008A.5.5,0,0,0,1,.5v11a.5.5,0,0,0,.246.43A.491.491,0,0,0,1.5,12a.5.5,0,0,0,.241-.062l10-5.5a.5.5,0,0,0,0-.876Z" fill="currentColor" stroke="none"></path>
             </g>
         </symbol>
+        <symbol id="icon-globe" viewBox="0 0 24 24">
+            <title>globe</title>
+            <g class="nc-icon-wrapper" stroke-width="2">
+                <line fill="none" stroke="currentColor" x1="12" y1="1" x2="12" y2="23"></line>
+                <line fill="none" stroke="currentColor" x1="1" y1="12" x2="23" y2="12"></line>
+                <ellipse fill="none" stroke="currentColor" cx="12" cy="12" rx="5.5" ry="11"></ellipse>
+                <circle fill="none" stroke="currentColor" cx="12" cy="12" r="11"></circle>
+            </g>
+        </symbol>
         <symbol id="icon-phone-24" viewBox="0 0 24 24">
             <title>phone</title>
             <g class="nc-icon-wrapper" stroke-width="2">

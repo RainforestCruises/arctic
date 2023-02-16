@@ -102,16 +102,17 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                                 Per Person
                             </div>
                         </div>
+
                         <div class="product-hero__content__main__secondary__info__starting-price__amount">
                             <div class="product-hero__content__main__secondary__info__starting-price__amount__text">
-                                <?php echo "$" . number_format($lowestOverallPrice, 0); ?>
-                                <span class="u-small-text">USD</span>
+                                <?php priceFormat($lowestOverallPrice); ?>         
                             </div>
                             <?php if ($bestOverallDiscount) : ?>
                                 <div class="product-hero__content__main__secondary__info__starting-price__amount__discount">
                                     Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
                                 </div>
                             <?php endif; ?>
+
                         </div>
 
                     </div>
@@ -196,8 +197,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
             </div>
         </div>
         <div class="mobile-info__starting-price__amount">
-            <?php echo "$" . number_format($lowestOverallPrice, 0); ?>
-            <span class="u-small-text">USD</span>
+            <?php priceFormat($lowestOverallPrice); ?>
             <?php if ($bestOverallDiscount) : ?>
                 <div class="mobile-info__starting-price__amount__discount">
                     Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings

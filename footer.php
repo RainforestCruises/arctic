@@ -19,9 +19,9 @@ $footerClasses = renderFooterClasses();
         <div class="footer__content__main">
 
             <div class="footer__content__main__newsletter">
-                <div class="footer__content__main__newsletter__brand">
+                <a class="footer__content__main__newsletter__brand" href="<?php echo get_home_url(); ?>">
                     <img src="<?php echo $logo_main['url']; ?>" class="nav-main__content__left__logo-area__logo-main" alt="<?php echo get_bloginfo('name') ?>" />
-                </div>
+                </a>
                 <div class="footer__content__main__newsletter__subtext">
                     Get expert advice, travel news, and more straight to your inbox
                 </div>

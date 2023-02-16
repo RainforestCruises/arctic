@@ -520,6 +520,10 @@ p {
     .cta-square-icon--inverse:hover {
       background-color: #fff;
       border: 1px solid #1d2225; }
+  .cta-square-icon.active {
+    border: 1px solid #1d2225; }
+  .cta-square-icon .subtext {
+    color: #747474; }
 
 .cta-text-icon {
   background-color: transparent;
@@ -6208,11 +6212,6 @@ p {
           color: currentColor; }
         .nav-main .nav-main__content__right__contact-link:hover {
           color: #4d8eff; }
-        .nav-main .nav-main__content__right__language .trp-language-switcher {
-          cursor: pointer;
-          color: currentColor; }
-          .nav-main .nav-main__content__right__language .trp-language-switcher > div > a {
-            color: #1d2225; }
       .nav-main .burger-button::after {
         background-color: rgba(29, 34, 37, 0.3); }
       .nav-main .burger-button__bar {
@@ -6241,11 +6240,6 @@ p {
         color: currentColor; }
       .nav-main.active .nav-main__content__right__contact-link:hover {
         color: #4d8eff; }
-      .nav-main.active .nav-main__content__right__language .trp-language-switcher {
-        cursor: pointer;
-        color: currentColor; }
-        .nav-main.active .nav-main__content__right__language .trp-language-switcher > div > a {
-          color: #1d2225; }
     .nav-main.active .burger-button::after {
       background-color: rgba(29, 34, 37, 0.3); }
     .nav-main.active .burger-button__bar {
@@ -6387,7 +6381,7 @@ p {
             display: none; } }
         .nav-main__content__right__contact-link span {
           margin-left: 1rem; }
-      .nav-main__content__right__phone-desktop {
+      .nav-main__content__right__hover-item {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -6398,156 +6392,19 @@ p {
         position: relative;
         cursor: pointer; }
         @media only screen and (max-width: 62.5em) {
-          .nav-main__content__right__phone-desktop {
+          .nav-main__content__right__hover-item {
             display: none; } }
-        .nav-main__content__right__phone-desktop svg {
+        .nav-main__content__right__hover-item svg {
           transform: translateY(-1px);
           stroke-width: 5;
           height: 1.6rem;
           width: 1.6rem;
           color: currentColor; }
           @media only screen and (max-width: 37.5em) {
-            .nav-main__content__right__phone-desktop svg {
+            .nav-main__content__right__hover-item svg {
               stroke-width: 2; } }
-        .nav-main__content__right__phone-desktop:hover .phone-popover {
-          visibility: visible; }
-        .nav-main__content__right__phone-desktop .phone-popover {
-          width: max-content;
-          visibility: hidden;
-          position: absolute;
-          top: 5rem;
-          left: 80%;
-          transform: translateX(-80%);
-          background-color: #fff;
-          border: 1px solid #e6e6e6;
-          border-radius: 0.4rem;
-          font-size: 1.4rem;
-          color: #1d2225;
-          text-transform: none;
-          letter-spacing: 0; }
-          .nav-main__content__right__phone-desktop .phone-popover__container {
-            position: relative; }
-            .nav-main__content__right__phone-desktop .phone-popover__container__arrow {
-              height: 16px;
-              width: 16px;
-              background-color: #fff;
-              position: absolute;
-              right: 18%;
-              /* Border */
-              border-left: 1px solid #e6e6e6;
-              border-top: 1px solid #e6e6e6;
-              transform: translate(-50%, -50%) rotate(45deg); }
-            .nav-main__content__right__phone-desktop .phone-popover__container__content {
-              display: flex;
-              flex-direction: column;
-              padding: 1.5rem 3rem;
-              align-items: center; }
-              .nav-main__content__right__phone-desktop .phone-popover__container__content__header {
-                font-size: 1.2rem;
-                text-transform: uppercase;
-                letter-spacing: 0.2rem;
-                color: #9ea0a4;
-                border-bottom: 1px solid #e6e6e6;
-                margin-bottom: 0.4rem;
-                padding-bottom: 0.2rem; }
-              .nav-main__content__right__phone-desktop .phone-popover__container__content__number {
-                font-size: 2rem;
-                font-weight: 700; }
-      .nav-main__content__right__language {
-        padding-left: 1.5rem;
-        display: flex;
-        align-items: center; }
-        @media only screen and (max-width: 62.5em) {
-          .nav-main__content__right__language {
-            display: none; } }
-        .nav-main__content__right__language svg {
-          transform: translateY(-1px);
-          stroke-width: 4;
-          height: 2rem;
-          width: 2rem;
-          color: currentColor; }
-        .nav-main__content__right__language .trp-language-switcher {
-          cursor: pointer;
-          color: #fff;
-          transition: color 0.2s; }
-          .nav-main__content__right__language .trp-language-switcher > div {
-            border: 1px solid transparent;
-            background-color: transparent;
-            background-image: none;
-            width: min-content !important;
-            padding: 0.3rem; }
-            .nav-main__content__right__language .trp-language-switcher > div > a {
-              transition: color 0.2s;
-              display: inline-block;
-              color: #fff;
-              text-decoration: none;
-              padding: 0.3rem 0.6rem; }
-            .nav-main__content__right__language .trp-language-switcher > div a.trp-ls-shortcode-disabled-language {
-              cursor: pointer; }
-          .nav-main__content__right__language .trp-language-switcher:hover > div {
-            border: 1px solid #e6e6e6;
-            background-color: #fff; }
-      .nav-main__content__right__phone-mobile {
-        display: none;
-        color: currentColor;
-        cursor: pointer;
-        position: relative;
-        z-index: 900; }
-        @media only screen and (max-width: 37.5em) {
-          .nav-main__content__right__phone-mobile {
-            display: flex;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            width: 9rem; } }
-        .nav-main__content__right__phone-mobile svg {
-          stroke-width: 3;
-          height: 2.5rem;
-          width: 2.5rem;
-          color: currentColor; }
-        .nav-main__content__right__phone-mobile__expand {
-          display: none;
-          position: absolute;
-          z-index: 800 !important;
-          bottom: 0;
-          left: 50%;
-          transform: translateY(100%) translateX(-50%);
-          height: min-content;
-          width: 25rem;
-          background-color: #fff;
-          border: 1px solid #c2c6c9;
-          padding: 3rem;
-          text-align: center;
-          font-size: 2rem;
-          color: #1d2225;
-          opacity: 0; }
-          .nav-main__content__right__phone-mobile__expand.active {
-            display: flex;
-            flex-direction: column;
-            animation: fadein 0.3s both;
-            animation-timing-function: ease-out;
-            opacity: 1; }
-          .nav-main__content__right__phone-mobile__expand__title {
-            font-size: 1.6rem;
-            margin-bottom: 1.5rem; }
-          .nav-main__content__right__phone-mobile__expand__cta {
-            background-color: #1d2225; }
-            .nav-main__content__right__phone-mobile__expand__cta:link, .nav-main__content__right__phone-mobile__expand__cta:visited {
-              color: #fff;
-              border: none;
-              border-radius: 4rem;
-              font-size: 1.6rem;
-              font-weight: 600;
-              text-transform: uppercase;
-              letter-spacing: 0.3rem;
-              padding: 1.5rem 3rem;
-              cursor: pointer;
-              transition: all 0.2s;
-              outline: none;
-              white-space: nowrap; }
-            .nav-main__content__right__phone-mobile__expand__cta:hover {
-              background-color: #347fff; }
+        .nav-main__content__right__hover-item:hover .hover-item-popover {
+          display: flex; }
   .nav-main__overlay {
     position: absolute;
     top: 100%;
@@ -6556,6 +6413,73 @@ p {
     height: 100vh;
     background-image: linear-gradient(to left, rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.5));
     z-index: -1; }
+
+.hover-item-popover {
+  width: 34rem;
+  display: none;
+  position: absolute;
+  top: 5rem;
+  left: 100%;
+  transform: translateX(-100%);
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 0.4rem; }
+  .hover-item-popover.phone {
+    width: max-content; }
+  .hover-item-popover__container {
+    position: relative;
+    padding: 2rem;
+    width: 100%; }
+    .hover-item-popover__container__arrow {
+      height: 16px;
+      width: 16px;
+      background-color: #fff;
+      position: absolute;
+      right: 7px;
+      top: 0;
+      border-left: 1px solid #e6e6e6;
+      border-top: 1px solid #e6e6e6;
+      transform: translate(-50%, -50%) rotate(45deg); }
+    .hover-item-popover__container__content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      align-items: center;
+      width: 100%; }
+      .hover-item-popover__container__content:not(:last-of-type) {
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #e6e6e6; }
+      .hover-item-popover__container__content__header {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #1d2225; }
+        .hover-item-popover__container__content__header__sub {
+          font-size: 1.2rem;
+          font-weight: 400; }
+      .hover-item-popover__container__content__buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem; }
+        .hover-item-popover__container__content__buttons a {
+          display: inline;
+          text-align: center; }
+      .hover-item-popover__container__content__phone {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #1d2225;
+        text-align: center; }
+        .hover-item-popover__container__content__phone__subtitle {
+          color: #747474;
+          font-weight: 400;
+          font-size: 1.2rem;
+          margin-bottom: 1rem;
+          padding-bottom: 1rem;
+          border-bottom: 1px solid #e6e6e6; }
+        .hover-item-popover__container__content__phone__number {
+          font-size: 2rem;
+          font-weight: 700;
+          color: #1d2225; }
 
 .nav-mega {
   position: absolute;

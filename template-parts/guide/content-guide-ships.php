@@ -111,7 +111,7 @@ $ships_subtext = get_field('ships_subtext');
                                 <div class="resource-card__content__bottom">
                                     <div class="resource-card__content__bottom__price-group">
                                         <div class="resource-card__content__bottom__price-group__amount">
-                                            <?php echo "$ " . number_format($lowestPrice, 0);  ?> - <?php echo "$ " . number_format($highestPrice, 0); ?>
+                                            <?php echo priceFormat($lowestPrice);  ?> - <?php echo priceFormat($highestPrice); ?>
                                         </div>
                                         <div class="resource-card__content__bottom__price-group__text">
                                             Per Person

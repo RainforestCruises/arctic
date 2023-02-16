@@ -701,7 +701,7 @@
                         "id": ""
                     },
                     "display_format": "F j, Y",
-                    "return_format": "F j, Y",
+                    "return_format": "Y-m-d",
                     "first_day": 1
                 },
                 {
@@ -1193,5 +1193,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1675346860
+    "modified": 1676568449
 }

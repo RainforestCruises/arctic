@@ -27,7 +27,6 @@ function console_log($data)
 
 
 //IMAGES ------------------------
-//CLD 3.0
 function afloat_image_markup($image_id, $image_size, $sizes_array = [])
 {
     if ($image_id == '') {
@@ -101,15 +100,24 @@ function comma_separate_list($arr, $limit = 0)
 
 function priceFormat($price)
 {
-
     $display = "";
-    if ($price > 0) {
-        $display = "$" .  number_format($price, 0);
-    } else {
-        $display = "N/A";
+    if (is_plugin_active('currency-switcher/index.php')) {
+        $display = do_shortcode('[wpcs_price value=' . $price . ']');
+        if ($price > 0) {
+            $display = do_shortcode('[wpcs_price value=' . $price . ']');
+        } else {
+            $display = "N/A";
+        }
+    }
+    else {
+        if ($price > 0) {
+            $display = "$" .  number_format($price, 0);
+        } else {
+            $display = "N/A";
+        }
     }
 
-    return $display;
+    echo $display;
 }
 
 //Breadcrumbs - json-ld

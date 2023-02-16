@@ -169,7 +169,7 @@ $ships = $args['ships'];
                                         </div>
                                         <div class="specs-item__text">
                                             <div class="specs-item__text__main">
-                                                <?php echo "$ " . number_format($d['LowestPrice'], 0);  ?> - <?php echo "$ " . number_format($d['HighestPrice'], 0);  ?>
+                                                <?php priceFormat($d['LowestPrice']);  ?> - <?php priceFormat($d['HighestPrice']);  ?>
                                             </div>
                                             <?php if ($bestDiscount) : ?>
                                                 <div class="specs-item__text__sub">
@@ -277,11 +277,11 @@ $ships = $args['ships'];
                                         </div>
                                         <div class="price-display-group__amount">
                                             <div class="price-display-group__amount__main <?php echo ($hasDiscount ? 'discounted' : '') ?>">
-                                                <?php echo "$" . number_format($price, 0);  ?>
+                                                <?php priceFormat($price);  ?>
                                             </div>
                                             <?php if ($hasDiscount) : ?>
                                                 <div class="price-display-group__amount__discount">
-                                                    <?php echo "$" . number_format($discounted_price, 0);  ?>
+                                                    <?php priceFormat($discounted_price);  ?>
                                                 </div>
                                             <?php endif; ?>
                                         </div>

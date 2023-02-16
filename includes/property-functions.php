@@ -6,15 +6,18 @@ function getDepartureList($post, $specificShip = null)
 {
     $departures = [];
     if (get_post_type($post) == 'rfc_cruises') {
+       
         $itineraryPosts = get_field('itineraries', $post);
+        
         foreach ($itineraryPosts as $i) { //each itinerary
 
             $itineraryLength = get_field('length_in_nights', $i);
             $itineraryDepartures = get_field('departures', $i);
 
             foreach ($itineraryDepartures as $d) {   // each departure   
-
+                
                 $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
+
                 if ($isCurrent) {
                     $id = $i->ID . "-" . getRandomHex();
                     $returnDate = date('Y-m-d', strtotime($d['date'] . ' + ' . $itineraryLength . ' days'));
