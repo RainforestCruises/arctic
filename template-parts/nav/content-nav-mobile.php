@@ -1,4 +1,35 @@
 <?php
+global $wp;
+$current_url = home_url(add_query_arg(array(), $wp->request));
+$show_translate_nav = get_field('show_translate_nav', 'options');
+
+// currency
+if (is_plugin_active('currency-switcher/index.php')) {
+    global $WPCS;
+    $currencies = $WPCS->get_currencies();
+    $current_currency = $WPCS->current_currency;
+    $current_symbol = "$";
+    foreach ($currencies as $item) :
+        $isCurrent = $item['name'] == $current_currency;
+        if ($isCurrent) {
+            $current_symbol = $item['symbol'];
+        }
+    endforeach;
+}
+
+// language
+if (is_plugin_active('translatepress-multilingual/index.php') && $show_translate_nav == true) {
+    $languages = trp_custom_language_switcher();
+    $current_language = get_locale();
+    $current_language_name = "English";
+    foreach ($languages as $item) :
+        $isCurrent = $item['language_code'] == $current_language;
+        if ($isCurrent) {
+            $current_language_name = $item['language_name'];
+        }
+    endforeach;
+}
+
 $landing_pages = get_field('landing_pages', 'options');
 $ships = get_field('ships', 'options');
 $guides = get_field('guides', 'options');
@@ -101,7 +132,24 @@ $logo = get_field('logo_main', 'options');
                 <div class="nav-button__text">
                     <?php echo get_field('phone_number', 'options'); ?>
                 </div>
+            </a>
+            <a class="nav-button mobile-link localization-open-button">
+                <div class="nav-button__icon">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-globe"></use>
+                    </svg>
+                </div>
+                <div class="nav-button__text">
+                    <?php if (is_plugin_active('translatepress-multilingual/index.php') && $show_translate_nav == true) : ?>
+                        <span style="margin-right: 1.5rem;">
+                            <?php echo $current_language_name; ?>
+                        </span>
+                    <?php endif; ?>
 
+                    <?php if (is_plugin_active('currency-switcher/index.php')) :
+                        echo $current_symbol . " " . $current_currency;
+                    endif; ?>
+                </div>
             </a>
         </div>
     </div>

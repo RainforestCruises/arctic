@@ -3,8 +3,8 @@ $cabins = $args['cabins'];
 $curentYear = $args['curentYear'];
 ?>
 
-<section class="slider-block narrow cruise-cabins" id="section-cabins">
-    <div class="slider-block__content cruise-cabins__content">
+<section class="slider-block narrow" id="section-cabins">
+    <div class="slider-block__content block-top-divider">
 
         <!-- Top - Title/Nav -->
         <div class="slider-block__content__top">
@@ -63,7 +63,7 @@ $curentYear = $args['curentYear'];
 
                             <!-- Images Slider -->
                             <div class="resource-card__image-area swiper cabin-card-image-area">
-                                <img class="cabin-image-slide" imageId="<?php echo $image['id']; ?>" <?php afloat_image_markup($image['id'], 'portrait-small', array('portrait-small')); ?>>
+                                <img class="cabin-image-slide" style="cursor: pointer" imageId="<?php echo $image['id']; ?>" <?php afloat_image_markup($image['id'], 'portrait-small', array('portrait-small')); ?>>
                             </div>
 
                             <!-- Content -->
@@ -95,12 +95,12 @@ $curentYear = $args['curentYear'];
                                     <div class="specs-item">
                                         <div class="specs-item__icon">
                                             <svg>
-                                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-zoom-square"></use>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-zoom-square"></use>
                                             </svg>
                                         </div>
                                         <div class="specs-item__text">
                                             <div class="specs-item__text__main">
-                                            <?php echo $dimensions; ?>
+                                                <?php echo $dimensions; ?>
                                             </div>
                                         </div>
                                     </div>

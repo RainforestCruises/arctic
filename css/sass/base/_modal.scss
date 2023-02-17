@@ -3,7 +3,7 @@
     position: fixed;
     background-color: rgba($color-black, 0.5);
     top: 0;
-    left: 0; 
+    left: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
@@ -12,6 +12,16 @@
     padding: 4rem;
     animation: fadein 0.2s;
     display: none;
+
+    &--minimal {
+        @media only screen and (min-width: $bp-medium) {
+            align-items: center;
+
+            & .modal__content {
+                height: min-content;
+            }
+        }
+    }
 
     &--gallery {
         background-color: rgba($color-black, 0.95);
@@ -53,6 +63,7 @@
             justify-content: space-between;
             align-items: center;
             min-height: 7rem;
+            border-bottom: 1px solid $color-grey-light-1a;
             &__nav {
                 display: flex;
                 &__title {
@@ -70,10 +81,10 @@
             height: 100%;
             width: 100%;
             padding: 2rem;
-            padding-top: 0rem;
+            padding-top: 2rem;
             padding-bottom: 8rem;
             overflow-y: scroll;
-            
+
             ul,
             ol {
                 font-size: 1.6rem;
@@ -81,7 +92,7 @@
                 line-height: 1.6;
                 margin-left: 2rem;
                 margin-bottom: 3rem;
-        
+
                 & li {
                     margin-bottom: 1rem;
                 }
@@ -104,13 +115,12 @@
         align-items: center;
 
         @include flexPadding;
-       
+
         @media only screen and (max-width: $bp-medium) {
             height: min-content;
         }
 
         &.deckplan-images {
-
             & .modal__gallery__main {
                 height: calc(100% - 8rem);
                 @media only screen and (max-width: $bp-medium) {
@@ -127,11 +137,9 @@
                     width: auto;
                     object-fit: contain;
                     border-radius: 1rem;
-                    overflow: hidden;         
+                    overflow: hidden;
                 }
             }
-
-
         }
 
         &__top {
@@ -177,7 +185,7 @@
                         width: 100%;
                         object-fit: cover;
                         border-radius: 1rem;
-                        overflow: hidden;         
+                        overflow: hidden;
                     }
                 }
             }
@@ -220,7 +228,7 @@
         flex-direction: column;
         color: $color-white;
         align-items: center;
-        
+
         &__top {
             width: 100%;
             height: 8rem;
@@ -240,12 +248,11 @@
             }
         }
 
-        &__main {   
+        &__main {
             width: 90%;
             @media only screen and (max-width: $bp-medium) {
                 width: 100%;
             }
         }
-
     }
 }

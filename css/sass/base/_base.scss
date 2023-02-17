@@ -71,6 +71,25 @@ body.no-scroll {
     overflow: hidden;
 }
 
+body.overlay {
+    position: relative;
+    
+    &::after {        
+        content: "";
+        height: 100%;
+        width: 100%;
+        background-image: linear-gradient(to left, rgba($color-black, 0.7), rgba($color-black, 0.7));
+        opacity: 1;
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 200;
+        animation: fadein 0.3s;
+        animation-fill-mode: both;
+    }
+}
+
 
 
 //telephone number styling removed

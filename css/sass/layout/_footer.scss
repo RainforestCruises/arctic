@@ -276,6 +276,14 @@
                     margin-top: 2rem;
                 }
 
+                &__localization {
+                    display: flex;
+
+                    & button {
+                        margin-right: 2rem;
+                    }
+                }
+
                 &__social {
                     display: flex;
                     align-items: center;

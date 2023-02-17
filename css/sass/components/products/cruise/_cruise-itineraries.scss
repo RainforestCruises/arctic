@@ -1,5 +1,8 @@
+// cruise itinerary map
+// home variant with routes
 .cruise-itineraries {
     @include flexBlock;
+    overflow: hidden;
 
     //routes
     &.home-variant {
@@ -95,8 +98,12 @@
                         padding-right: 0;
                         -webkit-mask-image: none;
                         mask-image: none;
-                    }
 
+                        &.swiper {
+                            overflow: visible;
+                        }
+                    }
+             
                     &__item {
                         &__button {
                             box-shadow: $shadow-short-bottom-light;

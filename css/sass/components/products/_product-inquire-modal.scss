@@ -1,25 +1,28 @@
-.cruise-cabins {
-    &__content{
-        @include topDivider;
-
-        & .cabin-image-slide {
-            cursor: pointer;
+.departures-modal {
+    &__filters {   
+        display: flex;
+        justify-content: space-between;
+        align-items: center;     
+    }
+    &__content {
+        margin-top: 1.5rem;
+        & .information-card {
+            margin-bottom: 2rem;
         }
     }
 }
 
-//move to product
 .cabins-modal {
-
     &__filters {
         display: flex;
         align-items: center;
-        margin-bottom: 1rem;
+        
         font-size: 1.6rem;
         font-weight: 700;
         color: $color-supporting;
     }
     &__content {
+        margin-top: 1.5rem;
         & .information-card {
             margin-bottom: 2rem;
         }

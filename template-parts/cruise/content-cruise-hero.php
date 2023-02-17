@@ -2,6 +2,7 @@
 
 $title = get_the_title();
 $snippet = get_field('top_snippet');
+$service_level = get_field('service_level');
 $itineraries = $args['itineraries'];
 $lowestOverallPrice = $args['lowestOverallPrice'];
 $bestOverallDiscount = $args['bestOverallDiscount'];
@@ -173,7 +174,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                             <div class="sub-attribute">
                                 Service Level
                             </div>
-                            Luxury
+                            <?php echo get_the_title($service_level); ?>
                         </div>
                     </div>
                 </div>

@@ -7,7 +7,7 @@ $departures = $args['departures'];
 ?>
 
 <section class="slider-block narrow cruise-dates" id="section-dates">
-    <div class="slider-block__content cruise-dates__content">
+    <div class="slider-block__content block-top-divider">
 
         <!-- Top - Title/Nav -->
         <div class="slider-block__content__top">

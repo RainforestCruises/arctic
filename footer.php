@@ -1,4 +1,36 @@
 <?php
+global $wp;
+$current_url = home_url(add_query_arg(array(), $wp->request));
+$show_translate_nav = get_field('show_translate_nav', 'options');
+
+// currency
+if (is_plugin_active('currency-switcher/index.php')) {
+    global $WPCS;
+    $currencies = $WPCS->get_currencies();
+    $current_currency = $WPCS->current_currency;
+    $current_symbol = "$";
+    foreach ($currencies as $item) :
+        $isCurrent = $item['name'] == $current_currency;
+        if ($isCurrent) {
+            $current_symbol = $item['symbol'];
+        }
+    endforeach;
+}
+
+// language
+if (is_plugin_active('translatepress-multilingual/index.php') && $show_translate_nav == true) {
+    $languages = trp_custom_language_switcher();
+    $current_language = get_locale();
+    $current_language_name = "English";
+    foreach ($languages as $item) :
+        $isCurrent = $item['language_code'] == $current_language;
+        if ($isCurrent) {
+            $current_language_name = $item['language_name'];
+        }
+    endforeach;
+}
+
+
 $footer_links = get_field('footer_links', 'options');
 $logo_main = get_field('logo_main', 'options');
 $phone_number = get_field('phone_number', 'options');
@@ -35,7 +67,7 @@ $footerClasses = renderFooterClasses();
                     Sales & Reservations
                 </div>
                 <div class="footer__content__main__contact__text">
-                    <div> 
+                    <div>
                         <a href="tel:<?php echo $phone_number_numeric; ?>">
                             <?php echo $phone_number; ?>
                         </a>
@@ -74,8 +106,24 @@ $footerClasses = renderFooterClasses();
                 </div>
             </div>
             <div class="footer__content__bottom__access">
-                <div class="footer__content__bottom__access__language">
-                    English
+                <div class="footer__content__bottom__access__localization">
+
+                    <button class="btn-text-plain btn-text-plain--icon-left localization-open-button">
+                        <svg>
+                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-globe"></use>
+                        </svg>             
+                        <?php if (is_plugin_active('translatepress-multilingual/index.php') && $show_translate_nav == true) : ?>
+                            <span  style="margin-right: 1rem;">
+                                <?php echo $current_language_name; ?>
+                            </span>
+                        <?php endif; ?>
+
+                        <?php if (is_plugin_active('currency-switcher/index.php')) :
+                            echo $current_symbol . " " . $current_currency;
+                        endif; ?>
+                    </button>
+
+
                 </div>
                 <div class="footer__content__bottom__access__social">
                     <a href="<?php echo get_field('facebook_link', 'options'); ?>" class="footer__content__bottom__access__social__link">
@@ -117,8 +165,73 @@ $footerClasses = renderFooterClasses();
 </footer>
 
 
+<!-- Localization Modal -->
+<div class="modal modal--minimal" id="localizationModal">
+
+    <div class="modal__content">
+        <div class="modal__content__top">
+            <div class="modal__content__top__nav">
+                <div class="modal__content__top__nav__title">
+                    Change Locale Settings
+                </div>
+            </div>
+            <button class="btn-text-icon close-modal-button ">
+                Close
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
+                </svg>
+            </button>
+        </div>
+        <div class="modal__content__main">
+
+            <!-- Currency -->
+            <?php if (is_plugin_active('currency-switcher/index.php')) : ?>
+                <div class="hover-item-popover__container__content">
+                    <div class="hover-item-popover__container__content__header">
+                        Choose Currency
+                    </div>
+                    <div class="hover-item-popover__container__content__buttons">
+                        <?php foreach ($currencies as $item) :
+                            $isCurrent = $item['name'] == $current_currency;
+                        ?>
+                            <a class="cta-square-icon cta-square-icon--inverse <?php echo $isCurrent ? "active" : ""; ?>" href="<?php echo $current_url . "?currency=" . $item['name'] ?>">
+                                <div>
+                                    <?php echo $item['description']; ?>
+                                </div>
+                                <div class="subtext">
+                                    <?php echo $item['name'] ?> &#8212; <?php echo $item['symbol']; ?>
+                                </div>
+
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <!-- Language -->
+            <?php if (is_plugin_active('translatepress-multilingual/index.php') && $show_translate_nav == true) : ?>
+                <div class="hover-item-popover__container__content">
+                    <div class="hover-item-popover__container__content__header">
+                        Choose Language
+                    </div>
+                    <div class="hover-item-popover__container__content__buttons" data-no-translation>
+                        <?php foreach ($languages as $item) :
+                            $isCurrent = $item['language_code'] == $current_language;
+                        ?>
+                            <a class="cta-square-icon cta-square-icon--inverse <?php echo $isCurrent ? "active" : ""; ?>" href="<?php echo $item['current_page_url'] ?>">
+                                <?php echo $item['language_name'] ?>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+        </div>
+    </div>
+</div>
+
+
 <!-- Newsletter Modal -->
-<div class="modal" id="newsletterModal">
+<div class="modal modal--minimal" id="newsletterModal">
 
     <div class="modal__content">
         <div class="modal__content__top">

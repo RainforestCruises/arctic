@@ -139,7 +139,7 @@
 .btn-text-plain {
   background-color: transparent;
   color: $color-primary;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   //padding: 0.5rem 1rem;
   transition: all 0.2s;
   outline: none;
@@ -147,6 +147,8 @@
   text-decoration: none;
   display: flex;
   align-items: center;
+
+
   &:hover {
     color: $color-supporting;
   }
@@ -157,6 +159,14 @@
     width: 1.8rem;
     fill: currentColor;
   }
+
+  &--icon-left {
+    & svg {
+      margin-left: 0rem;
+      margin-right: 1rem;
+    }
+  }
+
 }
 
 //Arctic -- Main button

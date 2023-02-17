@@ -1,7 +1,6 @@
 <?php 
 
 
-
 // Custom Post Type - Deals
 function create_post_type_rfc_deals()
 {
@@ -153,8 +152,6 @@ function create_post_type_rfc_cabins()
 add_action('init', 'create_post_type_rfc_cabins');
 
 
-
-
 // Custom Post Type - Wildlife
 function create_post_type_rfc_wildlife()
 {
@@ -295,6 +292,27 @@ function create_post_type_rfc_routes()
     );
 }
 add_action('init', 'create_post_type_rfc_routes');
+
+// Custom Post Type - Service Levels
+function create_post_type_rfc_levels()
+{
+    register_post_type(
+        'rfc_levels',
+        array(
+            'labels' => array(
+                'name' => __('Levels'),
+                'singular_name' => __('Level'),
+            ),
+            'public' => true,
+            'rewrite' => array('slug' => 'level'),
+            'supports' => array(
+                'title',
+            )
+
+        )
+    );
+}
+add_action('init', 'create_post_type_rfc_levels');
 
 
 

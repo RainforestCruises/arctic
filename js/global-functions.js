@@ -61,7 +61,7 @@ jQuery(document).ready(function ($) {
 
 
 
-
+    // newsletter modal
     const newsletterModal = document.querySelector("#newsletterModal");
     const newsletterSubscribeButton = document.querySelector("#newsletter-subscribe-button");
     if (newsletterSubscribeButton) {
@@ -71,6 +71,15 @@ jQuery(document).ready(function ($) {
         });
     }
 
-
+    const localizationModal = document.querySelector("#localizationModal");
+    const localizationOpenButtons = [...document.querySelectorAll(".localization-open-button")];
+    if (localizationOpenButtons) {
+        localizationOpenButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                localizationModal.style.display = 'flex';
+                body.classList.add('no-scroll');
+            });
+        })     
+    }
 
 });

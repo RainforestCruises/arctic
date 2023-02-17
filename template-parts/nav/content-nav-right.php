@@ -24,7 +24,6 @@
        <svg>
            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-ic_mail_outline_24px"></use>
        </svg>
-
    </a>
    <!-- Contact Phone -->
    <div class="nav-main__content__right__hover-item divider-left">
