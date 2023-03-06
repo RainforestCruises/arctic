@@ -5325,7 +5325,7 @@ p {
           height: min-content;
           width: min-content;
           display: grid;
-          grid-template-columns: repeat(4, min-content);
+          grid-template-columns: repeat(3, 1fr);
           gap: 2rem;
           margin-top: 4rem; }
           @media only screen and (max-width: 37.5em) {
@@ -5348,7 +5348,7 @@ p {
   transition: all .2s;
   display: grid;
   padding: 1.5rem 2rem;
-  grid-template-columns: 8rem;
+  grid-template-columns: max-content max-content;
   gap: 1.5rem;
   align-items: center;
   box-shadow: 0 0rem 3rem rgba(0, 0, 0, 0.2); }
@@ -5365,8 +5365,8 @@ p {
     align-items: center;
     justify-content: center; }
     .hero-item__icon-area svg {
-      height: 3.6rem;
-      width: 3.6rem;
+      height: 3rem;
+      width: 3rem;
       color: #1d2225; }
   .hero-item__title-group {
     display: flex;
@@ -5557,6 +5557,13 @@ p {
         .quote-grid__text-area__text svg {
           height: 4rem;
           width: 4rem; } }
+  .quote-grid__text-area .avatar {
+    margin-bottom: 3rem;
+    margin-right: 2rem;
+    width: max-content;
+    float: right; }
+  .quote-grid__text-area .avatar__title-group__title {
+    color: #fff !important; }
   .quote-grid__image-area {
     position: relative;
     display: grid;
@@ -5926,8 +5933,8 @@ p {
     .footer__content__main {
       width: 100%;
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 3rem;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 6rem;
       margin: 4rem 0; }
       @media only screen and (max-width: 50em) {
         .footer__content__main {

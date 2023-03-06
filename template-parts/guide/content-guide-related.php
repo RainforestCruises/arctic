@@ -20,7 +20,7 @@ $relatedGuidePosts = get_posts($queryArgs);
             <!-- Title -->
             <div class="slider-block__content__top__title">
                 <div class="title-single">
-                    You May Also Be Intereted In
+                    You May Also Be Interested In
                 </div>
             </div>
 

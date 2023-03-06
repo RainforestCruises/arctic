@@ -45,6 +45,7 @@ $styles_title_subtext = get_field('styles_title_subtext');
 
                     <?php foreach ($styles as $style) :
                         $image =  get_field('image', $style);
+                        $landing_page =  get_field('landing_page', $style);
                         $title = get_the_title($style);
                     ?>
                         <!-- Overlay Card -->
@@ -54,7 +55,7 @@ $styles_title_subtext = get_field('styles_title_subtext');
                                     <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
                                 </div>
                             </div>
-                            <a class="overlay-card__content" href="<?php echo get_permalink($travel_guide) ?>">
+                            <a class="overlay-card__content" href="<?php echo $landing_page; ?>">
                                 <div class="overlay-card__content__title-section">
                                     <div class="overlay-card__content__title-section__title">
                                         <?php echo $title; ?>

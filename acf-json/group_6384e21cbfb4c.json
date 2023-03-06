@@ -25,6 +25,29 @@
             "max_height": "",
             "max_size": "",
             "mime_types": ""
+        },
+        {
+            "key": "field_64061839ad6d3",
+            "label": "Landing Page",
+            "name": "landing_page",
+            "type": "page_link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": [
+                "category:category-landing"
+            ],
+            "allow_null": 0,
+            "allow_archives": 0,
+            "multiple": 0
         }
     ],
     "location": [
@@ -45,5 +68,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1669653136
+    "modified": 1678121053
 }

@@ -52,14 +52,6 @@ function afloat_image_markup($image_id, $image_size, $sizes_array = [])
     } else {
         echo 'src="' . $image_src . '" srcset="' . $image_srcset . '" sizes="(max-width: ' . $max_width . 'px) 100vw, ' . $max_width . 'px" alt="' . $image_alt . '"';
     }
-
-
-    // //CLOUDINARY v3 --
-    // //specify h/w, generare src only, add class='size-imagesize'
-    // $image_src = wp_get_attachment_image_url($image_id, $image_size);
-    // $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
-    // $image_attributes = wp_get_attachment_image_src($image_id, $image_size);
-    // echo 'height="' . $image_attributes[2] . '" width="' . $image_attributes[1] . '" src="' . $image_src . '" alt="' . $image_alt . '" class="size-' . $image_size . '"';
 }
 
 

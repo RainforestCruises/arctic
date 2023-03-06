@@ -6,10 +6,7 @@ wp_enqueue_script('page-product-modal-deckplans', get_template_directory_uri() .
 wp_enqueue_script('page-product-dates', get_template_directory_uri() . '/js/page-product-dates.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-cruise-itineraries', get_template_directory_uri() . '/js/page-product-cruise-itineraries.js', array('jquery'), false, true);
 
-
 get_header();
-
-
 
 $ship = get_post();
 $productName = get_the_title();
@@ -33,7 +30,6 @@ $args['meta_query'][] = array(
 $cabins = get_posts($args);
 
 
-
 $args = array(
   'productName' => $productName,
   'lowestOverallPrice' => $lowestOverallPrice,
@@ -45,13 +41,11 @@ $args = array(
   'cabins' => $cabins,
 );
 
-
 //Itinerary JS Array
 $itineraryObjects = [];
 foreach ($itineraries as $itinerary) {
   $itineraryObjects[] = getItineraryObject($itinerary);
 }
-
 
 wp_localize_script(
   'page-product-cruise-itineraries',
@@ -60,11 +54,6 @@ wp_localize_script(
     'itineraryObjects' =>  $itineraryObjects,
   )
 );
-
-
-
-
-
 
 ?>
 
@@ -75,7 +64,6 @@ wp_localize_script(
   <?php
   get_template_part('template-parts/cruise/content', 'cruise-hero', $args);
   ?>
-
 
   <!-- Modal Product Gallery -->
   <?php
@@ -88,9 +76,9 @@ wp_localize_script(
   ?>
 
   <!-- Modal Deckplan Gallery
-    <?php
-    get_template_part('template-parts/cruise/content', 'cruise-deckplan-gallery', $args);
-    ?> -->
+  <?php
+  get_template_part('template-parts/cruise/content', 'cruise-deckplan-gallery', $args);
+  ?> -->
 
   <!-- Cabins -->
   <?php
@@ -132,8 +120,4 @@ get_template_part('template-parts/shared/content', 'modal-product-inquiry', $arg
 ?>
 
 
-
-
-
-<!-- #site-wrapper end-->
 <?php get_footer() ?>

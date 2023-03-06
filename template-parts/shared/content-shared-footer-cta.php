@@ -48,7 +48,7 @@ $footerClasses = renderFooterClasses();
                 <div class="footer-cta__closing">
                     <div class="footer-cta__closing__buttons">
                         <a class="cta-primary cta-primary--inverse" href="<?php echo get_home_url(); ?>/contact">
-                            Start Your Adventure Today
+                        Start Your Adventure Today
                         </a>      
                     </div>
                 </div>

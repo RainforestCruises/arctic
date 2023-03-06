@@ -35,9 +35,11 @@ $footer_links = get_field('footer_links', 'options');
 $logo_main = get_field('logo_main', 'options');
 $phone_number = get_field('phone_number', 'options');
 $phone_number_numeric = get_field('phone_number_numeric', 'options');
+$email = get_field('email', 'options');
 
 $privacy_link = get_field('privacy_link', 'options');
 $terms_link = get_field('terms_link', 'options');
+$newsletter_text = get_field('newsletter_text', 'options');
 
 $newsletter_form_id = get_field('newsletter_form_id', 'options');
 $footerClasses = renderFooterClasses();
@@ -55,10 +57,11 @@ $footerClasses = renderFooterClasses();
                     <img src="<?php echo $logo_main['url']; ?>" class="nav-main__content__left__logo-area__logo-main" alt="<?php echo get_bloginfo('name') ?>" />
                 </a>
                 <div class="footer__content__main__newsletter__subtext">
-                    Get expert advice, travel news, and more straight to your inbox
+                <?php echo $newsletter_text; ?>
+            
                 </div>
                 <div class="footer__content__main__newsletter__cta">
-                    <button class="cta-primary" id="newsletter-subscribe-button">Sign Up for Our Newsletter</button>
+                    <button class="cta-primary" id="newsletter-subscribe-button">Join Our Newsletter</button>
                 </div>
             </div>
 
@@ -72,7 +75,7 @@ $footerClasses = renderFooterClasses();
                             <?php echo $phone_number; ?>
                         </a>
                     </div>
-                    <div>Email: <a href="mailto:cruise@antarcticacruises.com">cruise@antarcticacruises.com</a></div>
+                    <div>Email: <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></div>
                 </div>
 
                 <div class="footer__content__main__contact__title">

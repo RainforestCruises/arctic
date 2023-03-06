@@ -5,7 +5,6 @@ wp_enqueue_script('page-product-modal-gallery', get_template_directory_uri() . '
 wp_enqueue_script('page-product-dates', get_template_directory_uri() . '/js/page-product-dates.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-itinerary-map', get_template_directory_uri() . '/js/page-product-itinerary-map.js', array('jquery'), false, true);
 
-
 $itinerary = get_post();
 
 $ships = get_field('ships');
@@ -31,10 +30,6 @@ wp_localize_script(
 );
 
 get_header();
-?>
-
-<?php
-
 
 
 $args = array(
@@ -70,7 +65,6 @@ $args = array(
   get_template_part('template-parts/itinerary/content', 'itinerary-overview', $args);
   ?>
 
-
   <!-- Day to Day -->
   <?php
   get_template_part('template-parts/itinerary/content', 'itinerary-days', $args);
@@ -100,19 +94,17 @@ $args = array(
   <?php
   get_template_part('template-parts/itinerary/content', 'itinerary-related', $args);
   ?>
-
   
   <!-- Footer CTA  -->
   <?php
   get_template_part('template-parts/shared/content', 'shared-footer-cta');
   ?>
 
-
 </main>
+
 <!-- Inquire Modal -->
 <?php
 get_template_part('template-parts/shared/content', 'modal-product-inquiry', $args);
 ?>
-
 
 <?php get_footer() ?>
