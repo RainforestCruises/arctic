@@ -551,7 +551,7 @@
             "key": "field_63c6d7717092b",
             "label": "Quote Text",
             "name": "quote_text",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -561,10 +561,10 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": ""
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_63c6d7827092c",
@@ -957,5 +957,5 @@
     "active": true,
     "description": "Home Page",
     "show_in_rest": 0,
-    "modified": 1678120005
+    "modified": 1678375474
 }

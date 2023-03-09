@@ -22,11 +22,10 @@
                 font-size: 1.8rem;
                 font-weight: 600;
                 color: $color-gold;
-                margin-bottom: 3rem;
+                margin-bottom: 1rem;
 
                 @media only screen and (max-width: $bp-small) {
                     font-size: 1.4rem;
-                    margin-bottom: 1.5rem;
                 }
             }
             &__title {
@@ -34,12 +33,11 @@
                 line-height: 5.5rem;
                 font-weight: 700;
                 color: $color-primary;
-                margin-bottom: 2rem;
+                margin-bottom: 1rem;
 
                 @media only screen and (max-width: $bp-small) {
                     font-size: 3rem;
                     line-height: 3.5rem;
-                    margin-bottom: 1rem;
                 }
             }
             &__sub {
@@ -49,7 +47,6 @@
 
             &__stats {
                 justify-content: center;
-                margin-top: 2rem;
                 display: grid;
                 grid-template-columns: max-content max-content max-content;
                 gap: 1rem;

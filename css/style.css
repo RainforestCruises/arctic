@@ -4749,28 +4749,25 @@ p {
         font-size: 1.8rem;
         font-weight: 600;
         color: #d9a402;
-        margin-bottom: 3rem; }
+        margin-bottom: 1rem; }
         @media only screen and (max-width: 37.5em) {
           .guide-hero__content__title-area__category {
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem; } }
+            font-size: 1.4rem; } }
       .guide-hero__content__title-area__title {
         font-size: 5rem;
         line-height: 5.5rem;
         font-weight: 700;
         color: #1d2225;
-        margin-bottom: 2rem; }
+        margin-bottom: 1rem; }
         @media only screen and (max-width: 37.5em) {
           .guide-hero__content__title-area__title {
             font-size: 3rem;
-            line-height: 3.5rem;
-            margin-bottom: 1rem; } }
+            line-height: 3.5rem; } }
       .guide-hero__content__title-area__sub {
         font-size: 1.8rem;
         color: #1d2225; }
       .guide-hero__content__title-area__stats {
         justify-content: center;
-        margin-top: 2rem;
         display: grid;
         grid-template-columns: max-content max-content max-content;
         gap: 1rem;

@@ -21,11 +21,6 @@ $show_itineraries = get_field('show_itineraries');
   get_template_part('template-parts/guide/content', 'guide-main', $args);
   ?>
 
-  <!-- Related Guides -->
-  <?php
-  get_template_part('template-parts/guide/content', 'guide-related', $args);
-  ?>
-
   <!-- Ships -->
   <?php if ($show_ships) :
     get_template_part('template-parts/guide/content', 'guide-ships', $args);
@@ -36,6 +31,14 @@ $show_itineraries = get_field('show_itineraries');
     get_template_part('template-parts/guide/content', 'guide-itineraries', $args);
   endif; ?>
 
+  <!-- Related Guides -->
+  <?php
+  get_template_part('template-parts/guide/content', 'guide-related', $args);
+  ?>
+  <!-- Disclaimer  -->
+  <?php
+  get_template_part('template-parts/guide/content', 'guide-disclaimer', $args);
+  ?>
   <!-- Footer CTA  -->
   <?php
   get_template_part('template-parts/shared/content', 'shared-footer-cta');

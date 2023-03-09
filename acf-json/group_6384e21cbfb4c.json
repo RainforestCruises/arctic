@@ -43,7 +43,9 @@
                 "page"
             ],
             "taxonomy": [
-                "category:category-landing"
+                "category:category-landing",
+                "category:themes",
+                "category:routes"
             ],
             "allow_null": 0,
             "allow_archives": 0,
@@ -68,5 +70,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678121053
+    "modified": 1678206208
 }

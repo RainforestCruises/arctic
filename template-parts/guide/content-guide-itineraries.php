@@ -16,11 +16,8 @@ $itineraries_subtext = get_field('itineraries_subtext');
 
             <!-- Title -->
             <div class="slider-block__content__top__title">
-                <div class="title-group__title">
-                    Related Itineraries
-                </div>
-                <div class="title-group__sub">
-                    <?php echo $itineraries_subtext; ?>
+                <div class="title-single">
+                    Antarctica Itineraries
                 </div>
             </div>
 

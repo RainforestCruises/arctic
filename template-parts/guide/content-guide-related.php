@@ -54,7 +54,7 @@ $relatedGuidePosts = get_posts($queryArgs);
                     ?>
 
                         <!-- Card -->
-                        <div class="resource-card small swiper-slide">
+                        <div class="resource-card swiper-slide">
 
                             <!-- Image -->
                             <a class="resource-card__image-area" href="<?php echo get_permalink($relatedPost); ?>">

@@ -30,9 +30,7 @@ if ($categories) {
             <div class="guide-hero__content__title-area__title">
                 <?php echo get_field('navigation_title'); ?>
             </div>
-            <div class="guide-hero__content__title-area__sub">
-                <?php echo get_field('intro_snippet'); ?>
-            </div>
+
             <div class="guide-hero__content__title-area__stats">
                 <div>
                     <?php echo $updated; ?>

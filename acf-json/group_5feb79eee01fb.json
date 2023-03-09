@@ -38,25 +38,6 @@
             "maxlength": ""
         },
         {
-            "key": "field_63dc0d9dc570a",
-            "label": "Intro Snippet",
-            "name": "intro_snippet",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 0,
-            "delay": 0
-        },
-        {
             "key": "field_5feb942a2e7b1",
             "label": "Featured Image",
             "name": "featured_image",
@@ -162,33 +143,6 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_63dad3e8d4650",
-            "label": "Ships Subtext",
-            "name": "ships_subtext",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_63dad3fad4651",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 0,
-            "delay": 0
-        },
-        {
             "key": "field_63dad3a8d464f",
             "label": "Ships",
             "name": "ships",
@@ -257,33 +211,6 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_63dad490d4655",
-            "label": "Itineraries Subtext",
-            "name": "itineraries_subtext",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_63dad469d4654",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 0,
-            "delay": 0
-        },
-        {
             "key": "field_63dad4add4656",
             "label": "Itineraries",
             "name": "itineraries",
@@ -335,5 +262,5 @@
     "active": true,
     "description": "Travel Guide - CPT",
     "show_in_rest": 0,
-    "modified": 1675365830
+    "modified": 1678376952
 }

@@ -11,12 +11,10 @@ $ships_subtext = get_field('ships_subtext');
 
             <!-- Title -->
             <div class="slider-block__content__top__title">
-                <div class="title-group__title">
+                <div class="title-single">
                     Antarctica Cruise Ships
                 </div>
-                <div class="title-group__sub">
-                    <?php echo $ships_subtext; ?>
-                </div>
+   
             </div>
 
             <!-- Nav Buttons -->
