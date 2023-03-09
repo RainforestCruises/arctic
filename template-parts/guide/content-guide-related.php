@@ -52,7 +52,7 @@ $relatedGuidePosts = get_posts($queryArgs);
                         $imageId = $post_featured_image['id'];
 
                     ?>
-
+ 
                         <!-- Card -->
                         <div class="resource-card swiper-slide">
 
