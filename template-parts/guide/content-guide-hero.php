@@ -14,6 +14,10 @@ if ($categories) {
     $displayCategory = get_the_title($firstCategoryPost);
 }
 
+
+$table_of_contents  = get_field('table_of_contents');
+
+
 ?>
 
 
@@ -48,6 +52,20 @@ if ($categories) {
         <div class="guide-hero__content__image-area">
             <img <?php afloat_image_markup($image['ID'], 'landscape-large', array('landscape-large', 'landscape-medium', 'landscape-small')); ?>>
         </div>
+        <?php if ($table_of_contents) : ?>
+            <div class="guide-hero__content__toc">
+                <div class="guide-hero__content__toc__header">
+                    In This Article:
+                </div>
+                <ol>
+                    <?php foreach ($table_of_contents as $item) : ?>
+                        <li>
+                            <a href="#<?php echo $item['anchor'] ?>" class="toc-link"><?php echo $item['title'] ?></a>
+                        </li>
 
+                    <?php endforeach; ?>
+                </ol>
+            </div>
+        <?php endif; ?>
     </div>
 </section>

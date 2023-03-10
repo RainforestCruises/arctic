@@ -1,23 +1,19 @@
 <?php
-
 $itineraries = get_field('itineraries');
-$itineraries_subtext = get_field('itineraries_subtext');
-
+$itineraries_title = get_field('itineraries_title');
 ?>
 
 
-
-
 <section class="slider-block narrow ">
-    <div class="slider-block__content block-top-divider">
+    <div class="slider-block__content">
 
         <!-- Top - Title/Nav -->
         <div class="slider-block__content__top">
 
             <!-- Title -->
             <div class="slider-block__content__top__title">
-                <div class="title-single">
-                    Antarctica Itineraries
+                <div class="title-single" style="height:3rem;">
+                    <?php echo $itineraries_title; ?>
                 </div>
             </div>
 
@@ -78,7 +74,7 @@ $itineraries_subtext = get_field('itineraries_subtext');
                             <?php endif; ?>
 
                             <!-- Images Slider -->
-                            <a class="resource-card__image-area swiper itineraries-card-image-area"  href="<?php echo get_permalink($itinerary) ?>">
+                            <a class="resource-card__image-area swiper itineraries-card-image-area" href="<?php echo get_permalink($itinerary) ?>">
                                 <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
                             </a>
 
