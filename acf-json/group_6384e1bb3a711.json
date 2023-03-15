@@ -122,7 +122,9 @@
                 "page"
             ],
             "taxonomy": [
-                "category:category-landing"
+                "category:category-landing",
+                "category:routes",
+                "category:themes"
             ],
             "allow_null": 0,
             "allow_archives": 0,
@@ -236,5 +238,5 @@
     "active": true,
     "description": "Routes CPT",
     "show_in_rest": 0,
-    "modified": 1672693844
+    "modified": 1678916979
 }

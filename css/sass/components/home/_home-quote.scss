@@ -90,6 +90,7 @@
         grid-template-columns: repeat(12, 1fr);
         grid-template-rows: repeat(12, 1fr);
         margin: 3rem 0;
+        max-height: 50rem;
         &__primary {
             grid-row: 1 / span 11;
             grid-column: 3 / span 10;

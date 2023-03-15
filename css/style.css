@@ -4782,7 +4782,8 @@ p {
         font-size: 1.3rem; }
     .guide-hero__content__image-area {
       margin-top: 3rem;
-      margin-bottom: 2rem; }
+      margin-bottom: 2rem;
+      width: 100%; }
       .guide-hero__content__image-area img {
         height: 100%;
         width: 100%;
@@ -5682,7 +5683,8 @@ p {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(12, 1fr);
-    margin: 3rem 0; }
+    margin: 3rem 0;
+    max-height: 50rem; }
     @media only screen and (max-width: 50em) {
       .quote-grid__image-area {
         display: none; } }
