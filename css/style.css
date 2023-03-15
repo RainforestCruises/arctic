@@ -4792,23 +4792,97 @@ p {
       width: 100%;
       max-width: 80rem;
       padding-bottom: 3rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       border-bottom: 1px solid #e6e6e6; }
       .guide-hero__content__toc__header {
-        font-size: 2.2rem;
-        color: #1d2225;
-        font-weight: 700;
-        margin-bottom: 1rem; }
-      .guide-hero__content__toc ol {
-        margin-left: 2rem;
         font-size: 1.8rem;
         color: #1d2225;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #e6e6e6; }
+      .guide-hero__content__toc ul {
+        margin-left: 2rem;
+        font-size: 1.4rem;
+        color: #1d2225;
         font-weight: 600; }
-        .guide-hero__content__toc ol a {
+        .guide-hero__content__toc ul a {
           color: #1d2225;
           text-decoration: none; }
-          .guide-hero__content__toc ol a:hover {
+          .guide-hero__content__toc ul a:hover {
             color: #347fff; }
+
+.guide-menu-area {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  pointer-events: none;
+  position: fixed;
+  bottom: 0rem;
+  left: 0rem;
+  z-index: 50;
+  display: none; }
+  .guide-menu-area.active {
+    display: flex;
+    animation: fadein 0.4s; }
+  .guide-menu-area__content {
+    width: 100%;
+    padding: 0 6rem;
+    max-width: 128rem;
+    padding-bottom: 2rem !important; }
+    @media only screen and (max-width: 50em) {
+      .guide-menu-area__content {
+        padding: 0 3rem; } }
+
+.guide-menu {
+  position: relative;
+  pointer-events: all; }
+  .guide-menu__button {
+    color: #1d2225;
+    font-size: 1.4rem;
+    background-color: #fff;
+    font-weight: 600;
+    border-radius: 4rem;
+    padding: 1rem 2.5rem;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    border: 1px solid #1d2225;
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    position: relative; }
+    .guide-menu__button svg {
+      color: currentColor;
+      height: 2rem;
+      width: 2rem;
+      margin-right: 1.5rem; }
+    .guide-menu__button:hover {
+      transition: all .2s;
+      background-color: #e6e6e6; }
+  .guide-menu__menu {
+    display: none;
+    background-color: #fff;
+    padding: 2rem 3rem;
+    border: 1px solid #1d2225;
+    border-radius: 1rem; }
+    .guide-menu__menu.active {
+      display: flex;
+      position: absolute;
+      left: 0;
+      bottom: calc(-100% + 9.5rem); }
+    .guide-menu__menu ul {
+      margin-left: 2rem;
+      font-size: 1.4rem;
+      color: #1d2225;
+      font-weight: 600; }
+      .guide-menu__menu ul a {
+        color: #1d2225;
+        text-decoration: none; }
+        .guide-menu__menu ul a:hover {
+          color: #347fff; }
 
 .guide-main {
   display: flex;
@@ -5087,6 +5161,19 @@ p {
   margin-bottom: 2rem;
   color: #9ea0a4;
   transform: translateY(-2rem); }
+
+#ez-toc-container {
+  margin-bottom: 4rem;
+  padding: 1.5rem 3rem;
+  padding-bottom: 3rem; }
+
+.ez-toc-title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e6e6e6; }
 
 .guides-toplevel-hero {
   display: flex;

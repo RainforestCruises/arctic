@@ -70,6 +70,46 @@ jQuery(document).ready(function ($) {
     };
 
 
+
+    // Guide Menu 
+    // button click
+    $(".guide-menu__button").on("click", function () {
+        $('.guide-menu__menu').toggleClass('active');
+    });
+
+
+    // click away, close menu
+    const navGuideMenu = document.querySelector('.guide-menu__menu');
+    const navGuideButton = document.querySelector('.guide-menu__button');
+
+    document.addEventListener('click', evt => {
+
+        const isButtonClick = navGuideButton.contains(evt.target);
+        const isOpen = navGuideMenu.classList.contains('active');
+
+        if (!isButtonClick && isOpen) {
+            navGuideMenu.classList.remove('active');
+        }
+    });
+
+
+    
+    //On Scroll Listener
+    window.onscroll = function () { scrollCheck() };
+    function scrollCheck() {
+        var threshHold = 620
+        if ($(window).width() > 1000) {
+            threshHold = 1200;
+        }
+        if (window.scrollY < threshHold) {
+            $('.guide-menu-area').removeClass('active');
+        } else {
+            $('.guide-menu-area').addClass('active');
+        }
+
+    }
+
+
 });
 
 

@@ -1,10 +1,14 @@
 <?php
 get_header();
 wp_enqueue_script('page-guide', get_template_directory_uri() . '/js/page-guide.js', array('jquery'), false, true);
+
 wp_enqueue_script('page-toc', get_template_directory_uri() . '/js/page-toc.js', array('jquery'), false, true);
 
 $show_ships = get_field('show_ships');
 $show_itineraries = get_field('show_itineraries');
+
+
+
 
 ?>
 

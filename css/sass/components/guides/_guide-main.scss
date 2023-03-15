@@ -357,3 +357,17 @@
     color: $color-grey-1;
     transform: translateY(-2rem);
 }
+
+#ez-toc-container {
+    margin-bottom: 4rem;
+    padding: 1.5rem 3rem;
+    padding-bottom: 3rem;
+}
+.ez-toc-title-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $color-grey-light-1a;
+}

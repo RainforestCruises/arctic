@@ -15,8 +15,9 @@ if ($categories) {
 }
 
 
-$table_of_contents  = get_field('table_of_contents');
-
+$query = get_post(get_the_ID());
+$content = apply_filters('the_content', $query->post_content);
+$toc = generateIndex($content)['index'];
 
 ?>
 
@@ -52,20 +53,33 @@ $table_of_contents  = get_field('table_of_contents');
         <div class="guide-hero__content__image-area">
             <img <?php afloat_image_markup($image['ID'], 'landscape-large', array('landscape-large', 'landscape-medium', 'landscape-small')); ?>>
         </div>
-        <?php if ($table_of_contents) : ?>
-            <div class="guide-hero__content__toc">
-                <div class="guide-hero__content__toc__header">
-                    In This Article:
-                </div>
-                <ol>
-                    <?php foreach ($table_of_contents as $item) : ?>
-                        <li>
-                            <a href="#<?php echo $item['anchor'] ?>" class="toc-link"><?php echo $item['title'] ?></a>
-                        </li>
 
-                    <?php endforeach; ?>
-                </ol>
+        <div class="guide-hero__content__toc">
+            <div class="guide-hero__content__toc__header">
+                Jump to Section
             </div>
-        <?php endif; ?>
+            <?php echo $toc; ?>
+        </div>
+
     </div>
+</section>
+
+<section class="guide-menu-area">
+    <div class="guide-menu-area__content">
+
+        <div class="guide-menu">
+            <div class="guide-menu__button">
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-plus"></use>
+                </svg>
+             Sections
+            </div>
+            <div class="guide-menu__menu">
+                <?php echo $toc; ?>
+            </div>
+
+        </div>
+
+    </div>
+
 </section>

@@ -64,9 +64,6 @@ jQuery(document).ready(function ($) {
 
     // Animate Change Position
     function changePosition(id) {
-        // if (id != "#section-top") {
-        //     $('.header').addClass('preventExpand');
-        // }
 
         var target = $(id).offset().top;
 
@@ -79,12 +76,8 @@ jQuery(document).ready(function ($) {
         $('html, body').animate({ scrollTop: target }, 500);
         setTimeout(setScrollStatus, 600)
         window.location.hash = id;
-
     }
 
-    // function setScrollStatus() {
-    //     $('.header').removeClass('preventExpand');
-    // }
 
     //Burger
     //Burger Menu -- click

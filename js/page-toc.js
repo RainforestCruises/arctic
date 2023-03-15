@@ -12,7 +12,9 @@ jQuery(document).ready(function ($) {
     // Animate Change Position
     function changePosition(id) {
 
-        var target = $(id).offset().top;
+      
+        id = id.replace('#','');
+        var target = $("[name='" +id +"']").offset().top;
 
         if ($(window).width() > 1200) {
             target = target - 160;

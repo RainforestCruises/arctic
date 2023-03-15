@@ -73,7 +73,9 @@
                         "page"
                     ],
                     "taxonomy": [
-                        "category:category-landing"
+                        "category:category-landing",
+                        "category:themes",
+                        "category:routes"
                     ],
                     "filters": [
                         "search"
@@ -1069,5 +1071,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678119696
+    "modified": 1678721070
 }
