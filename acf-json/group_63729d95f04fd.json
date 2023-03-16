@@ -159,6 +159,25 @@
             "endpoint": 0
         },
         {
+            "key": "field_641344ca73ef1",
+            "label": "Itineraries Title",
+            "name": "itineraries_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_6373ed7d97980",
             "label": "Itineraries Title Subtext",
             "name": "itineraries_title_subtext",
@@ -318,13 +337,67 @@
             "endpoint": 0
         },
         {
+            "key": "field_6413454e73ef6",
+            "label": "Show FAQ",
+            "name": "show_faq",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_641344f973ef2",
+            "label": "FAQ Title",
+            "name": "faq_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6413454e73ef6",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_63729d96928f7",
             "label": "FAQs",
             "name": "faqs",
             "type": "repeater",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6413454e73ef6",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -411,6 +484,25 @@
             "endpoint": 0
         },
         {
+            "key": "field_6413450d73ef3",
+            "label": "Ships Title",
+            "name": "ships_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_6373ed609797f",
             "label": "Ships Title Subtext",
             "name": "ships_title_subtext",
@@ -469,6 +561,25 @@
             },
             "placement": "top",
             "endpoint": 0
+        },
+        {
+            "key": "field_6413452173ef4",
+            "label": "Travel Guide Title",
+            "name": "travel_guide_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_63729d9678702",
@@ -548,6 +659,25 @@
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
+        },
+        {
+            "key": "field_6413453b73ef5",
+            "label": "Map Title",
+            "name": "map_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_63da9e3af979f",
@@ -709,5 +839,5 @@
     "active": true,
     "description": "Landing - Page",
     "show_in_rest": 0,
-    "modified": 1675271785
+    "modified": 1678985211
 }

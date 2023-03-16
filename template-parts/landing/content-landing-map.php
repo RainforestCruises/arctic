@@ -6,15 +6,16 @@ $latitude_start_point = get_field('latitude_start_point');
 $longitude_start_point = get_field('longitude_start_point');
 $zoom_level_start_point = get_field('zoom_level_start_point');
 $map_title_subtext = get_field('map_title_subtext');
+$map_title = get_field('map_title');
 
 $itineraryObjects[] = getItineraryObjectFromDestinations($destinations, $latitude_start_point, $longitude_start_point, $zoom_level_start_point);
 
 wp_localize_script(
-  'page-product-itinerary-map',
-  'page_vars_product_itinerary_map',
-  array(
-    'itineraryObjects' =>  $itineraryObjects,
-  )
+    'page-product-itinerary-map',
+    'page_vars_product_itinerary_map',
+    array(
+        'itineraryObjects' =>  $itineraryObjects,
+    )
 );
 ?>
 <section class="itinerary-map landing-variant" id="section-map">
@@ -22,7 +23,7 @@ wp_localize_script(
 
         <div class="title-group">
             <div class="title-group__title">
-                Destinations
+                <?php echo $map_title ?>
             </div>
             <div class="title-group__sub">
                 <?php echo $map_title_subtext ?>
@@ -34,7 +35,7 @@ wp_localize_script(
             <!-- Map -->
             <div class="full-component" id="itinerary-map"></div>
 
-            
+
         </div>
     </div>
 </section>

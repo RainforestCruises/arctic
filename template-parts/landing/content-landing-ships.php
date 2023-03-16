@@ -1,6 +1,7 @@
 <?php
 $ships = get_field('ships');
-$ships_title_subtext = get_field('ships_title_subtext')
+$ships_title_subtext = get_field('ships_title_subtext');
+$ships_title = get_field('ships_title');
 
 ?>
 
@@ -14,7 +15,7 @@ $ships_title_subtext = get_field('ships_title_subtext')
             <!-- Title -->
             <div class="title-group">
                 <div class="title-group__title">
-                    Ships
+                    <?php echo $ships_title; ?>
                 </div>
                 <div class="title-group__sub">
                     <?php echo $ships_title_subtext; ?>

@@ -2,6 +2,7 @@
 $hero_images = get_field('hero_images');
 $hero_title = get_field('hero_title');
 $hero_subtitle = get_field('hero_subtitle');
+$show_faq = get_field('show_faq');
 
 
 ?>
@@ -35,7 +36,9 @@ $hero_subtitle = get_field('hero_subtitle');
         <div class="landing-nav__content__links">
             <a href="#section-itineraries" class="landing-nav__content__links__link">Itineraries</a>
             <a href="#section-about" class="landing-nav__content__links__link">About</a>
-            <a href="#section-faq" class="landing-nav__content__links__link">FAQ</a>
+            <?php if ($show_faq) : ?>
+                <a href="#section-faq" class="landing-nav__content__links__link">FAQ</a>
+            <?php endif; ?>
             <a href="#section-ships" class="landing-nav__content__links__link">Ships</a>
             <a href="#section-guide" class="landing-nav__content__links__link">Travel Guide</a>
 

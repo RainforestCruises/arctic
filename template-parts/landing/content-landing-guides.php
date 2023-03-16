@@ -1,6 +1,7 @@
 <?php
 $travel_guides = get_field('travel_guides');
 $firstGuides = array_slice($travel_guides, 0, 5);
+$travel_guide_title = get_field('travel_guide_title');
 $travel_guide_title_subtext = get_field('travel_guide_title_subtext');
 $top_level_guides_page = get_field('top_level_guides_page', 'options')
 ?>
@@ -14,7 +15,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options')
             <!-- Title -->
             <div class="title-group">
                 <div class="title-group__title">
-                Antarctica Expedition Cruise Guide
+                    <?php echo $travel_guide_title; ?>
                 </div>
                 <div class="title-group__sub">
                     <?php echo $travel_guide_title_subtext; ?>
@@ -32,7 +33,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options')
 
                 $title = get_the_title($guide);
                 $text = get_the_excerpt($guide);
-                $lastUpdate = get_the_modified_time( 'F jS, Y', $guide);
+                $lastUpdate = get_the_modified_time('F jS, Y', $guide);
 
             ?>
                 <div class="resource-card">
@@ -45,8 +46,8 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options')
                         </a>
                         <div class="resource-card__content__description">
                             <?php echo $lastUpdate; ?>
-                        </div>              
-                    </div>        
+                        </div>
+                    </div>
                 </div>
 
             <?php $count++;

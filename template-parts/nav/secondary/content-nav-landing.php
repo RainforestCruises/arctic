@@ -1,5 +1,7 @@
 <?php
 $title = get_the_title();
+$show_faq = get_field('show_faq');
+
 ?>
 
 
@@ -22,16 +24,19 @@ $title = get_the_title();
             <a href="#section-about" class="nav-secondary__content__links__link">
                 About
             </a>
-            <a href="#section-faq" class="nav-secondary__content__links__link">
-                FAQ
-            </a>
+            <?php if ($show_faq) : ?>
+                <a href="#section-faq" class="nav-secondary__content__links__link">
+                    FAQ
+                </a>
+            <?php endif; ?>
+
             <a href="#section-ships" class="nav-secondary__content__links__link">
                 Ships
             </a>
             <a href="#section-guide" class="nav-secondary__content__links__link">
                 Travel Guide
             </a>
-         
+
         </div>
         <div class="nav-secondary__content__cta product-template">
             <button class="nav-secondary__content__cta__button btn-pill btn-pill--dark generic-inquire-cta">
@@ -64,9 +69,12 @@ $title = get_the_title();
             <li class="nav-secondary__mobile-menu__list__item">
                 <a class="nav-secondary__mobile-menu__list__item__link" href="#section-guide">Travel Guide</a>
             </li>
-            <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#section-faq">FAQ</a>
-            </li>
+            <?php if ($show_faq) : ?>
+                <li class="nav-secondary__mobile-menu__list__item">
+                    <a class="nav-secondary__mobile-menu__list__item__link" href="#section-faq">FAQ</a>
+                </li>
+            <?php endif; ?>
+
             <li class="nav-secondary__mobile-menu__list__item">
                 <a class="nav-secondary__mobile-menu__list__item__link cta-link generic-inquire-cta">
                     Inquire
