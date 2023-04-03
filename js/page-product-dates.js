@@ -9,6 +9,8 @@ jQuery(document).ready(function ($) {
     let itineraryValues = [];
     const itineraryFilterSearchButton = document.querySelector('#itinerary-filter-search-button');
     const itineraryFilterClearButton = document.querySelector('#itinerary-filter-clear-button');
+    const viewDiscountedButton = document.querySelector('#view-discounted-button');
+
 
     // popper instance
     const itineraryPopper = Popper.createPopper(itineraryFilterButton, itineraryFilterTooltip, {
@@ -56,7 +58,6 @@ jQuery(document).ready(function ($) {
         if (itineraryValuesInitialState.length == 0) {
             itineraryFilterButton.classList.remove('active');
         }
-
     }
 
     // checkboxes
@@ -93,7 +94,11 @@ jQuery(document).ready(function ($) {
     });
 
 
-
+    // discoutned button
+    viewDiscountedButton.addEventListener('click', () => {
+        viewDiscountedButton.classList.toggle('active');
+        filterSlides();
+    });
 
 
 
@@ -191,11 +196,6 @@ jQuery(document).ready(function ($) {
 
 
 
-
-
-
-
-
     // Dates Swiper ---------------------------------------------------
     const datesSliderNoResults = document.querySelector('#dates-slider-no-results');
     const clearFilters = [...document.querySelectorAll('.clear-departure-filters')];
@@ -206,6 +206,7 @@ jQuery(document).ready(function ($) {
             dateValuesInitialState = []; //set initial values
             itineraryValues = [];
             itineraryValuesInitialState = [];
+            viewDiscountedButton.classList.remove('active')
             dateCheckboxes.forEach(item => {
                 item.checked = false;
             })
@@ -217,7 +218,7 @@ jQuery(document).ready(function ($) {
             filterSlides();
         });
     })
-    
+
 
 
 
@@ -244,16 +245,27 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    
-    
+
+
     const departureCards = [...document.querySelectorAll('.info-departure-card')];
 
     function filterSlides() {
         var count = 0;
-        departureCards.forEach(item => {
-            item.style.display = "none";
+        departureCards.forEach(item => { 
+            item.style.display = "none";  //loop each departure card, set all to display none
             var matchDate = false;
             var matchItinerary = false;
+            var matchDiscount = false;
+
+
+            //check discount
+            if (!viewDiscountedButton.classList.contains('active')) {
+                matchDiscount = true;
+            } else {
+                if (item.getAttribute('data-filter-discount') == true) {
+                    matchDiscount = true;
+                }
+            }
 
             //check date
             if (dateValuesInitialState.length == 0) {
@@ -277,7 +289,7 @@ jQuery(document).ready(function ($) {
                 })
             }
 
-            if (matchDate && matchItinerary) {
+            if (matchDate && matchItinerary && matchDiscount) {
                 item.style.display = "";
                 count = count + 1;
             }
@@ -297,7 +309,7 @@ jQuery(document).ready(function ($) {
             datesSliderNoResults.style.display = "flex";
         }
 
-        if (dateValuesInitialState.length == 0 && itineraryValuesInitialState.length == 0){
+        if (dateValuesInitialState.length == 0 && itineraryValuesInitialState.length == 0 && !viewDiscountedButton.classList.contains('active')) {
             clearFilters.forEach(item => {
                 item.style.display = 'none';
             })

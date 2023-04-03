@@ -60,14 +60,15 @@ $departures = $args['departures'];
                         $embarkationPost = get_field('embarkation_point', $itineraryPost);
                         $embarkationName = get_the_title($embarkationPost) . ', ' . get_field('country_name', $embarkationPost);
                         $bestDiscount = $d['BestDiscount'];
+
                     ?>
 
-                        <div class="information-card info-departure-card swiper-slide" data-filter-date="<?php echo date("Y", $departureStartDate); ?>" data-filter-secondary="<?php echo $itineraryPostId; ?>">
+                        <div class="information-card info-departure-card swiper-slide" data-filter-date="<?php echo date("Y", $departureStartDate); ?>" data-filter-secondary="<?php echo $itineraryPostId; ?>" data-filter-discount=<?php echo ($bestDiscount) ? true : false ?>>
                             <!-- Title Group -->
                             <div class="information-card__section">
 
 
-                                <div class="avatar avatar--small">
+                                <a class="avatar avatar--small" href="<?php echo get_permalink($itineraryPost); ?>" target="_blank">
                                     <div class="avatar__image-area">
                                         <img <?php afloat_image_markup($image['id'], 'square-thumb', array('square-thumb')); ?>>
                                     </div>
@@ -79,7 +80,7 @@ $departures = $args['departures'];
                                             <?php echo $d['LengthInNights'] + 1 . ' Days / ' . $d['LengthInNights'] . ' Nights'; ?>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
 
 
                             </div>
@@ -126,13 +127,25 @@ $departures = $args['departures'];
                                         <div class="specs-item__text__main">
                                             <?php priceFormat($d['LowestPrice']);  ?> - <?php priceFormat($d['HighestPrice']);  ?>
                                         </div>
-                                        <?php if ($bestDiscount) : ?>
-                                            <div class="specs-item__text__sub">
-                                                Up to <span class="green-text"><?php echo $bestDiscount; ?>%</span> savings
-                                            </div>
-                                        <?php endif; ?>
+                        
                                     </div>
                                 </div>
+                                <!-- Discount -->
+                                <?php if ($bestDiscount) : ?>
+                                    <div class="specs-item">
+                                        <div class="specs-item__icon">
+                                            <svg>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-star-empty"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="specs-item__text">
+                                            <div class="specs-item__text__main">
+                                                Up to <span class="green-text"><?php echo $bestDiscount; ?>%</span> savings
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+
                             </div>
 
                             <div class="information-card__bottom">
@@ -167,7 +180,7 @@ $departures = $args['departures'];
             <div class="slider-block__content__filters__left" id="date-filter-group">
 
                 <!-- Dates Filter -->
-                <button class="btn-pill" data-filter="all" id="date-filter-button">
+                <button class="btn-pill" id="date-filter-button">
                     Dates
                 </button>
                 <div class="popper-tooltip" id="date-filter-tooltip" role="tooltip">
@@ -196,7 +209,7 @@ $departures = $args['departures'];
                 </div>
 
                 <!-- Itinerary Filter -->
-                <button class="btn-pill cruise-dates-departure-filter" data-filter="all" id="itinerary-filter-button">
+                <button class="btn-pill cruise-dates-departure-filter" id="itinerary-filter-button">
                     Itineraries
                 </button>
                 <div class="popper-tooltip" id="itinerary-filter-tooltip" role="tooltip">
@@ -236,10 +249,10 @@ $departures = $args['departures'];
 
             <!-- View All -->
             <div class="slider-block__content__filters__right">
-                <button class="btn-pill cruise-dates-departure-filter" data-filter="all" id="view-all-dates-button">
+                <button class="btn-pill cruise-dates-departure-filter" id="view-discounted-button">
                     Discounted
                 </button>
-                <button class="btn-pill cruise-dates-departure-filter" data-filter="all" id="view-all-dates-button">
+                <button class="btn-pill cruise-dates-departure-filter" id="view-all-dates-button">
                     View All
                 </button>
             </div>

@@ -750,6 +750,8 @@
     gap: 2rem;
     align-items: center;
     position: relative;
+  
+    text-decoration: none !important;
 
     &--small {
         gap: 1rem;
@@ -785,13 +787,15 @@
         &__title {
             color: $color-primary;
             font-weight: 700;
-            padding-bottom: 0.8rem;
+            //padding-bottom: 0.8rem;
             font-size: 1.6rem;
+            line-height: 2rem;
             &:link {
                 text-decoration: none;
             }
         }
         &__sub {
+            color: $color-grey-3;
         }
     }
 }

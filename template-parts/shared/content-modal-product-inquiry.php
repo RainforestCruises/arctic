@@ -110,10 +110,10 @@ $ships = $args['ships'];
                         $image = $hero_gallery[0];
                     ?>
 
-                        <div class="information-card information-card--horizontal info-departure-card" data-filter-date="<?php echo date("Y", $departureStartDate); ?>" data-filter-secondary="<?php echo $secondaryFilterId; ?>">
+                        <div class="information-card information-card--horizontal info-departure-card" data-filter-date="<?php echo date("Y", $departureStartDate); ?>" data-filter-secondary="<?php echo $secondaryFilterId; ?>" data-filter-discount=<?php echo ($bestDiscount) ? true : false ?>>
                             <!-- Title Group -->
                             <div class="information-card__section">
-                                <div class="avatar avatar--small">
+                                <div class="avatar ">
                                     <div class="avatar__image-area">
                                         <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
                                     </div>
@@ -243,7 +243,7 @@ $ships = $args['ships'];
                                 <div class="information-card__section">
 
 
-                                    <div class="avatar avatar--small" style="max-width: 100%;">
+                                    <div class="avatar " style="max-width: 100%;">
                                         <div class="avatar__image-area">
                                             <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
                                         </div>

@@ -2970,7 +2970,8 @@ p {
   grid-template-columns: min-content 1fr;
   gap: 2rem;
   align-items: center;
-  position: relative; }
+  position: relative;
+  text-decoration: none !important; }
   .avatar--small {
     gap: 1rem; }
     .avatar--small .avatar__image-area img {
@@ -2992,10 +2993,12 @@ p {
   .avatar__title-group__title {
     color: #1d2225;
     font-weight: 700;
-    padding-bottom: 0.8rem;
-    font-size: 1.6rem; }
+    font-size: 1.6rem;
+    line-height: 2rem; }
     .avatar__title-group__title:link {
       text-decoration: none; }
+  .avatar__title-group__sub {
+    color: #747474; }
 
 .specs-item {
   font-size: 1.4rem;
