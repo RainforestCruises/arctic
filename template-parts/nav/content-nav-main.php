@@ -2,7 +2,7 @@
 $landing_pages = get_field('landing_pages', 'options');
 $ships = get_field('ships', 'options');
 $guides = get_field('guides', 'options');
-
+$top_level_guides_page = get_field('top_level_guides_page', 'options');
 
 $alwaysActiveMainNav = checkActiveHeader();
 ?>
@@ -96,7 +96,7 @@ $alwaysActiveMainNav = checkActiveHeader();
                                         $title = get_the_title($item);
                                         $hero_gallery = get_field('hero_gallery', $item);
                                         $ship_image = $hero_gallery[0];
-                                        $itineraries = get_field('itineraries', $ship);
+                                        $itineraries = get_field('itineraries', $item);
                                         $itineraryDisplay = count($itineraries) . ' Itineraries, ' . itineraryRange($itineraries, "-") . " Days";
                                         $guestsDisplay = get_field('vessel_capacity', $item) . ' Guests';
                                     ?>
@@ -162,6 +162,14 @@ $alwaysActiveMainNav = checkActiveHeader();
                             </div>
                         <?php endforeach; ?>
 
+                    </div>
+                    <div class="nav-mega__panel__cta">
+                        <a class="btn-pill icon-right" href="<?php echo $top_level_guides_page; ?>">
+                            View All Guides
+                            <svg>
+                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                            </svg>
+                        </a>
                     </div>
                 </div>
 

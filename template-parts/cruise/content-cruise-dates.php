@@ -124,7 +124,7 @@ $departures = $args['departures'];
                                     </div>
                                     <div class="specs-item__text">
                                         <div class="specs-item__text__main">
-                                            <?php  priceFormat($d['LowestPrice']);  ?> - <?php priceFormat($d['HighestPrice']);  ?>
+                                            <?php priceFormat($d['LowestPrice']);  ?> - <?php priceFormat($d['HighestPrice']);  ?>
                                         </div>
                                         <?php if ($bestDiscount) : ?>
                                             <div class="specs-item__text__sub">
@@ -230,10 +230,15 @@ $departures = $args['departures'];
 
                 <button class="btn-pill clear-departure-filters" style="display: none;">Clear Filters</button>
 
+
+
             </div>
 
             <!-- View All -->
             <div class="slider-block__content__filters__right">
+                <button class="btn-pill cruise-dates-departure-filter" data-filter="all" id="view-all-dates-button">
+                    Discounted
+                </button>
                 <button class="btn-pill cruise-dates-departure-filter" data-filter="all" id="view-all-dates-button">
                     View All
                 </button>

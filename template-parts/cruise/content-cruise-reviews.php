@@ -8,17 +8,13 @@ $displayLimit = 250;
 <section class="grid-block narrow" id="section-reviews">
     <div class="grid-block__content block-top-divider">
 
-        <div class="title-group">
-            <div class="title-group__title">
-                Recent Reviews
-            </div>
-            <div class="title-group__sub">
-                4.97 (765 reviews)
-            </div>
+        <div class="title-single">
+            Recent Reviews
+
         </div>
 
         <div class="grid-block__content__grid grid2">
-            <?php 
+            <?php
             $count = 0;
             foreach ($firstReviews as $r) :
                 $image = $r['image'];
@@ -32,7 +28,12 @@ $displayLimit = 250;
 
                 <div class="text-card">
                     <div class="text-card__avatar">
-                        <img <?php afloat_image_markup($image['id'], 'square-thumb', array('square-thumb')); ?>>
+                        <div class="text-card__avatar__image-area" style="background-color: <?php echo generateBgColor(); ?>;">
+                            <?php echo generateInitials($title); ?>
+                            <?php if ($image) : ?>
+                                <img <?php afloat_image_markup($image['id'], 'square-thumb', array('square-thumb')); ?>>
+                            <?php endif; ?>
+                        </div>
                         <div class="text-card__avatar__title-group">
                             <div class="text-card__avatar__title-group__title">
                                 <?php echo $title; ?>
@@ -58,7 +59,8 @@ $displayLimit = 250;
                         </div>
                     <?php endif; ?>
                 </div>
-            <?php $count++; endforeach; ?>
+            <?php $count++;
+            endforeach; ?>
         </div>
 
         <!-- CTA -->
@@ -99,7 +101,7 @@ $displayLimit = 250;
 
                 </div>
                 <div class="reviews-modal__content">
-                    <?php 
+                    <?php
                     $count = 0;
                     foreach ($reviews as $r) :
                         $image = $r['image'];
@@ -110,7 +112,12 @@ $displayLimit = 250;
 
                         <div class="text-card" id="reviews-section-<?php echo $count; ?>">
                             <div class="text-card__avatar">
-                                <img <?php afloat_image_markup($image['id'], 'square-thumb', array('square-thumb')); ?>>
+                                <div class="text-card__avatar__image-area" style="background-color: <?php echo generateBgColor(); ?>;">
+                                    <?php echo generateInitials($title); ?>
+                                    <?php if ($image) : ?>
+                                        <img <?php afloat_image_markup($image['id'], 'square-thumb', array('square-thumb')); ?>>
+                                    <?php endif; ?>
+                                </div>
                                 <div class="text-card__avatar__title-group">
                                     <div class="text-card__avatar__title-group__title">
                                         <?php echo $title; ?>
@@ -125,7 +132,8 @@ $displayLimit = 250;
                                 <?php echo $text; ?>
                             </div>
                         </div>
-                    <?php $count++; endforeach; ?>
+                    <?php $count++;
+                    endforeach; ?>
                 </div>
 
             </div>

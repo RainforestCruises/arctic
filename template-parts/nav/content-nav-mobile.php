@@ -34,6 +34,7 @@ $landing_pages = get_field('landing_pages', 'options');
 $ships = get_field('ships', 'options');
 $guides = get_field('guides', 'options');
 $logo = get_field('logo_main', 'options');
+$top_level_guides_page = get_field('top_level_guides_page', 'options');
 
 ?>
 
@@ -200,8 +201,6 @@ $logo = get_field('logo_main', 'options');
                 <?php endforeach; ?>
             <?php endforeach; ?>
         </div>
-
-
     </div>
 
     <!-- Menu Ships -->
@@ -298,6 +297,19 @@ $logo = get_field('logo_main', 'options');
                     </a>
                 <?php endforeach; ?>
             <?php endforeach; ?>
+            <a class="nav-button view-all"  href="<?php echo $top_level_guides_page; ?>">
+                <div class="nav-button__icon">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-read-24"></use>
+                    </svg>
+                </div>
+                <div class="nav-button__text">
+                    View All
+                </div>
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-ic_chevron_right_36px"></use>
+                </svg>
+            </a>
         </div>
     </div>
 

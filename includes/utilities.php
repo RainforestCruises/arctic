@@ -56,7 +56,6 @@ function afloat_image_markup($image_id, $image_size, $sizes_array = [])
 
 
 
-
 //FORMATTING -----------------------
 function removePtags($text)
 {
@@ -360,7 +359,6 @@ function structuredDataFaq()
 
 
 
-
 function checkActiveHeader()
 {
     $alwaysActiveHeader = false;
@@ -419,7 +417,7 @@ function renderFooterClasses()
     return $classes;
 }
 
-
+// Table Of Contents Generator
 function generateIndex($html) {
     preg_match_all('/<h([1-6])*[^>]*>(.*?)<\/h[1-6]>/',$html,$matches);
 
@@ -445,4 +443,30 @@ function generateIndex($html) {
     $index .= "</ul>";
 
     return ["html" => $html, "index" => $index];
+}
+
+//Generate Initials 
+function generateInitials($name) {
+    $words = explode(' ', $name);
+
+    if (count($words) >= 2) {
+        return mb_strtoupper(
+                mb_substr($words[0], 0, 1, 'UTF-8') . 
+                mb_substr(end($words), 0, 1, 'UTF-8'), 
+            'UTF-8');
+    } else {
+        preg_match_all('#([A-Z]+)#', $name, $capitals);
+        if (count($capitals[1]) >= 2) {
+            return mb_substr(implode('', $capitals[1]), 0, 2, 'UTF-8');
+        }
+        return mb_strtoupper(mb_substr($name, 0, 2, 'UTF-8'), 'UTF-8');
+    }
+}
+
+//Random Background Color
+function generateBgColor() {
+    $background_colors = array('#60568f', '#708765', '#164852', '#919169', '#798fb3', '#7d6a5f', '#608071', '#537875', '#455d73', '#734d6e');
+    $rand_background = $background_colors[array_rand($background_colors)];
+
+    return $rand_background;
 }

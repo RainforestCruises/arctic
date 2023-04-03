@@ -57,19 +57,11 @@ $checkbox-selected: $color-primary; // Primary colour
   
   // Hover
   & + label:hover{
-    //color: $color-supporting-light;
-
-    &:before{
-
-      
-      box-shadow: inset 0 0 0 1px $color-primary;
-      
-    }
-    
+    &:before{   
+      box-shadow: inset 0 0 0 1px $color-primary;    
+    }  
   }
 
-
-  
   // Focus
   & + label:focus{
     outline: none;

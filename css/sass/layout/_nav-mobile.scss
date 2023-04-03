@@ -114,10 +114,22 @@
 
     border-top: 1px solid $color-grey-light-1a;
 
+
+
     & svg {
         height: 2.4rem;
         width: 2.4rem;
         fill: $color-grey-1;
+    }
+
+    &.view-all {
+        padding-top: 2.5rem;
+        font-weight: 700;
+        // & .nav-button__icon {
+        //     padding-left: 1.3rem;
+        //     padding-right: 1.3rem;
+        //     padding-top: 1rem;
+        // }
     }
 
     &__icon {
@@ -153,6 +165,8 @@
         }
     }
 }
+
+
 
 .nav-close-button {
     cursor: pointer;

@@ -438,7 +438,7 @@
   background-color: $color-white;
   font-family: $font-primary;
   font-size: 1.4rem;
-
+  height: min-content;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -447,7 +447,7 @@
   transition: all 0.2s;
   color: $color-primary;
   border: 1px solid $color-grey-light-1a;
-
+  white-space: nowrap;
   & svg {
     height: 1.3rem;
     width: 1.3rem;
@@ -456,6 +456,13 @@
     stroke: currentColor;
     fill: currentColor;
     stroke: 1;
+  }
+
+  &.icon-right {
+    svg {
+      margin-left: 0.5rem;
+      margin-right: 0;
+    }
   }
 
   &.active {

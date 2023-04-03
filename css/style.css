@@ -668,13 +668,15 @@ p {
   background-color: #fff;
   font-family: "Metropolis", sans-serif;
   font-size: 1.4rem;
+  height: min-content;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 4rem;
   transition: all 0.2s;
   color: #1d2225;
-  border: 1px solid #e6e6e6; }
+  border: 1px solid #e6e6e6;
+  white-space: nowrap; }
   .btn-pill svg {
     height: 1.3rem;
     width: 1.3rem;
@@ -683,6 +685,9 @@ p {
     stroke: currentColor;
     fill: currentColor;
     stroke: 1; }
+  .btn-pill.icon-right svg {
+    margin-left: 0.5rem;
+    margin-right: 0; }
   .btn-pill.active {
     background-color: #e6e6e6;
     border: 1px solid #1d2225; }
@@ -2394,14 +2399,24 @@ p {
         .slider-block__content__slider__no-results button {
           margin-top: 2rem; }
     .slider-block__content__filters {
-      margin-top: 3rem;
+      margin-top: 2rem;
       width: 100%;
       display: flex;
       justify-content: space-between; }
       .slider-block__content__filters__left {
-        display: flex; }
+        display: flex;
+        flex-wrap: wrap; }
         .slider-block__content__filters__left button {
+          margin-top: 1rem;
           margin-right: 1rem; }
+      .slider-block__content__filters__right {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-items: flex-start; }
+        .slider-block__content__filters__right button {
+          margin-top: 1rem;
+          margin-left: 1rem; }
 
 .form-general {
   color: #1d2225;
@@ -2468,11 +2483,26 @@ p {
   .text-card__avatar {
     display: flex;
     align-items: center; }
-    .text-card__avatar img {
+    .text-card__avatar__image-area {
       height: 6rem;
       width: 6rem;
       border-radius: 6rem;
-      margin-right: 1.5rem; }
+      margin-right: 1.5rem;
+      background-color: rgba(29, 34, 37, 0.7);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      letter-spacing: 0.2rem;
+      z-index: 2;
+      position: relative; }
+      .text-card__avatar__image-area img {
+        position: absolute;
+        z-index: 10;
+        height: 6rem;
+        width: 6rem;
+        border-radius: 6rem; }
     .text-card__avatar__title-group__title {
       color: #1d2225;
       font-size: 1.8rem;
@@ -2574,7 +2604,7 @@ p {
     top: 1.5rem;
     right: 1.5rem;
     width: max-content;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     background-color: #fff;
     color: #1d2225;
     border-radius: 2rem;
@@ -2724,7 +2754,7 @@ p {
   @media only screen and (min-width: 37.5em) {
     .information-card--horizontal {
       display: grid;
-      grid-template-columns: 1fr 20rem 14rem;
+      grid-template-columns: 1fr 22rem 14rem;
       column-gap: 2rem;
       align-items: center;
       min-height: 12rem; }
@@ -2777,13 +2807,13 @@ p {
         margin-top: 0.3rem; }
 
 .guide-item {
-  margin: 3rem;
+  margin: 1.5rem;
   margin-bottom: 6rem;
   box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2);
   background-color: #fff;
   border-radius: 1rem;
   overflow: hidden;
-  width: 42rem;
+  width: 36rem;
   display: flex;
   flex-direction: column; }
   @media only screen and (max-width: 37.5em) {
@@ -2792,7 +2822,7 @@ p {
       margin-bottom: 5rem;
       width: 100%; } }
   .guide-item__image-area {
-    height: 35rem;
+    height: 30rem;
     position: relative; }
     @media only screen and (max-width: 37.5em) {
       .guide-item__image-area {
@@ -2985,7 +3015,7 @@ p {
   .specs-item__text__main {
     line-height: 2rem; }
   .specs-item__text__sub {
-    font-size: 1rem;
+    font-size: 1.3rem;
     color: #747474; }
 
 .price-display-group {
@@ -6517,6 +6547,10 @@ p {
         .nav-mega__panel__grid__group__items.items-grid-2 {
           grid-template-columns: repeat(2, 1fr);
           row-gap: 0rem; }
+    .nav-mega__panel__cta {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end; }
 
 .mega-category-item:hover .mega-category-item__image-area {
   border: 1px solid #1d2225; }
@@ -6657,6 +6691,9 @@ p {
     height: 2.4rem;
     width: 2.4rem;
     fill: #9ea0a4; }
+  .nav-button.view-all {
+    padding-top: 2.5rem;
+    font-weight: 700; }
   .nav-button__icon {
     display: flex;
     align-items: center; }

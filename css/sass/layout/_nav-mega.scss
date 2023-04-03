@@ -78,6 +78,12 @@
                 }
             }
         }
+
+        &__cta {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
     }
 }
 

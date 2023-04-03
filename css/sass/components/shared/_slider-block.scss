@@ -103,20 +103,30 @@
         }
 
         &__filters {
-            margin-top: 3rem;
+            margin-top: 2rem;
             width: 100%;
             display: flex;
             justify-content: space-between;
 
             &__left {
                 display: flex;
+                flex-wrap: wrap;
                 & button {
+                    margin-top: 1rem;
                     margin-right: 1rem;
                 }
             }
 
             &__right {
-               
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                align-items: flex-start;
+                & button {
+                    margin-top: 1rem;
+                    margin-left: 1rem;
+
+                }
             }
 
             

@@ -16,7 +16,8 @@ wp_localize_script(
 <?php
 get_header();
 $primary_contact_form_id = get_field('primary_contact_form_id', 'options');
-
+$phone_number = get_field('phone_number', 'options');
+$phone_number_numeric = get_field('phone_number_numeric', 'options');
 ?>
 
 <!-- Contact Page Container -->
@@ -47,7 +48,9 @@ $primary_contact_form_id = get_field('primary_contact_form_id', 'options');
                     Speak with our trip specialists to book your next experience.
                 </div>
                 <div class="contact-section__wrapper__intro__phone">
-                    +1 888-215-3555
+                <a href="tel:<?php echo $phone_number_numeric; ?>">
+                            <?php echo $phone_number; ?>
+                        </a>
                 </div>
             </div>
 

@@ -27,13 +27,18 @@ $reviews_title = get_field('reviews_title');
                 $text = $review['text'];
 
                 $expand = strlen($text) > 230 ? true : false;
-                $text_limited = substr($text, 0, 230) . ($expand ? '...': '');
+                $text_limited = substr($text, 0, 230) . ($expand ? '...' : '');
             ?>
 
 
                 <div class="text-card ">
                     <div class="text-card__avatar">
-                        <img <?php afloat_image_markup($image['id'], 'square-thumb', array('square-thumb')); ?>>
+                        <div class="text-card__avatar__image-area" style="background-color: <?php echo generateBgColor(); ?>;">
+                            <?php echo generateInitials($title); ?>
+                            <?php if ($image) : ?>
+                                <img <?php afloat_image_markup($image['id'], 'square-thumb', array('square-thumb')); ?>>
+                            <?php endif; ?>
+                        </div>
                         <div class="text-card__avatar__title-group">
                             <div class="text-card__avatar__title-group__title">
                                 <?php echo $title; ?>
