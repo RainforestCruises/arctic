@@ -5,6 +5,7 @@ jQuery(document).ready(function ($) {
     // On Click - Nav Links, href change position
     $('.toc-link').click(function (event) {
         var id = $(this).attr('href');
+        console.log(id);
         changePosition(id)
         event.preventDefault();
     })

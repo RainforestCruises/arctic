@@ -57,18 +57,6 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    progressBarScroll();
-    function progressBarScroll() {
-        let winScroll = document.body.scrollTop || document.documentElement.scrollTop,
-            height = document.documentElement.scrollHeight - document.documentElement.clientHeight,
-            scrolled = (winScroll / height) * 100;
-        document.getElementById("progressBar").style.width = scrolled + "%";
-    }
-
-    window.onscroll = function () {
-        progressBarScroll();
-    };
-
 
 
     // Guide Menu 
@@ -93,7 +81,7 @@ jQuery(document).ready(function ($) {
     });
 
 
-    
+
     //On Scroll Listener
     window.onscroll = function () { scrollCheck() };
     function scrollCheck() {
@@ -106,8 +94,18 @@ jQuery(document).ready(function ($) {
         } else {
             $('.guide-menu-area').addClass('active');
         }
-
+        progressBarScroll();
     }
+
+    progressBarScroll();
+    function progressBarScroll() {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop,
+            height = document.documentElement.scrollHeight - document.documentElement.clientHeight - 500,
+            scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+        console.log('ccc');
+    }
+
 
 
 });

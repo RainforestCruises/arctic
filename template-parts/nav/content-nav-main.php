@@ -90,7 +90,7 @@ $alwaysActiveMainNav = checkActiveHeader();
                                 <div class="nav-mega__panel__grid__group__title">
                                     <?php echo $group_title; ?>
                                 </div>
-                                <div class="nav-mega__panel__grid__group__items items-grid-4">
+                                <div class="nav-mega__panel__grid__group__items items-grid-5">
                                     <?php foreach ($items as $item) :
                                         $url = get_permalink($item);
                                         $title = get_the_title($item);

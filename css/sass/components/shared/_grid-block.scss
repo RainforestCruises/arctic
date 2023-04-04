@@ -23,6 +23,15 @@
             grid-template-columns: 100%;
             gap: 2rem;
 
+            &.expand-content {
+                display: none;
+                &.expand {
+                    display: grid;
+                    animation: fadein 0.3s;
+
+                }
+            }
+
             &.grid2 {
                 grid-template-columns: repeat(2, calc(50% - 1rem));
 

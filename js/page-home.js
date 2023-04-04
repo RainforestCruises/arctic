@@ -69,6 +69,23 @@ jQuery(document).ready(function ($) {
     })
 
 
+    // view all ships
+    const allShipsButton = document.querySelector("#all-ships-button");
+    const expandedShips = document.querySelector("#expanded-ships");
+
+
+    // -- open / play
+    allShipsButton.addEventListener('click', () => {
+        if(expandedShips.classList.contains('expand')){
+            expandedShips.classList.remove('expand')
+            allShipsButton.innerHTML = "View All Ships"
+        } else {
+            expandedShips.classList.add('expand')
+            allShipsButton.innerHTML = "Show Less"
+
+        }
+
+    });
 
 
 
@@ -97,7 +114,7 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    // best selling itineraries slider
+    // itineraries slider
     new Swiper('#itineraries-best-slider', {
         spaceBetween: 15,
         slidesPerView: 1.2,
@@ -144,7 +161,7 @@ jQuery(document).ready(function ($) {
         }
     });
 
-
+    // experiences slider
     new Swiper('#experiences-slider', {
         spaceBetween: 30,
         slidesPerView: 1,

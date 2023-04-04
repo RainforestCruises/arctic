@@ -133,7 +133,7 @@ $departures = $args['departures'];
                                 <!-- Discount -->
                                 <?php if ($bestDiscount) : ?>
                                     <div class="specs-item">
-                                        <div class="specs-item__icon">
+                                        <div class="specs-item__icon green-text">
                                             <svg>
                                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-star-empty"></use>
                                             </svg>
@@ -240,7 +240,9 @@ $departures = $args['departures'];
                     </div>
                     <div id="arrow" data-popper-arrow></div>
                 </div>
-
+                <button class="btn-pill cruise-dates-departure-filter" id="view-discounted-button">
+                    Discounted
+                </button>
                 <button class="btn-pill clear-departure-filters" style="display: none;">Clear Filters</button>
 
 
@@ -249,9 +251,7 @@ $departures = $args['departures'];
 
             <!-- View All -->
             <div class="slider-block__content__filters__right">
-                <button class="btn-pill cruise-dates-departure-filter" id="view-discounted-button">
-                    Discounted
-                </button>
+
                 <button class="btn-pill cruise-dates-departure-filter" id="view-all-dates-button">
                     View All
                 </button>

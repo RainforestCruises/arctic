@@ -9,7 +9,7 @@
     font-size: 13px;
     border-radius: 4px;
     display: none;
-    box-shadow: $shadow-medium;
+    box-shadow: $shadow-medium-around;
 
     &[data-show] {
         display: block;
@@ -52,16 +52,13 @@
         }
      
     }
-    // &[data-popper-placement^="left"] > #arrow  {
-    //     right: -4px;
-    // }
-    // &[data-popper-placement^="right"] > #arrow  {
-    //     left: -4px;
-    // }
+
 
     &__selection {
 
         &__list {
+            max-height: 24rem;
+            overflow-y:auto;
             padding: 1rem;
             padding-right: 2rem;
             list-style: none;

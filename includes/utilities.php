@@ -429,7 +429,7 @@ function generateIndex($html) {
         $curr = $matches[1][$i];
         $text = strip_tags($matches[2][$i]);
         $slug = strtolower(str_replace("--","-",preg_replace('/[^\da-z]/i', '-', $text)));
-        $anchor = '<a name="'.$slug.'" class="toc-link">'.$text.'</a>';
+        $anchor = '<div name="'.$slug.'" class="toc-link">'.$text.'</div>';
         $html = str_replace($text,$anchor,$html);
 
         $prev <= $curr ?: $index .= str_repeat('</ul>',($prev - $curr));

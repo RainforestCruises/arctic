@@ -54,9 +54,9 @@ console_log($departures);
                     <?php foreach ($departures as $d) :
                         $departureId = $d['ID'];
                         $ship = $d['Ship'];
-                        
+
                         $shipId = $ship->ID;
-                       
+
                         $itineraryPost = $d['ItineraryPost'];
                         $itineraryPostId = $d['ItineraryPostId'];
                         $departureStartDate = strtotime($d['DepartureDate']);
@@ -132,12 +132,12 @@ console_log($departures);
                                         <div class="specs-item__text__main">
                                             <?php priceFormat($d['LowestPrice']);  ?> - <?php priceFormat($d['HighestPrice']);  ?>
                                         </div>
-                                  
+
                                     </div>
                                 </div>
 
-                                 <!-- Discount -->
-                                 <?php if ($bestDiscount) : ?>
+                                <!-- Discount -->
+                                <?php if ($bestDiscount) : ?>
                                     <div class="specs-item">
                                         <div class="specs-item__icon">
                                             <svg>
@@ -158,7 +158,7 @@ console_log($departures);
 
                                 <!-- Price Group -->
                                 <div class="information-card__bottom__price-group">
-                  
+
 
                                     <button class="cta-square-icon cta-square-icon--inverse departure-price-group-button" departureId="<?php echo $departureId; ?>" year="<?php echo date("Y", $departureStartDate); ?>" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itinerary="<?php echo $itineraryPostId; ?>" itineraryTitle="<?php echo $title; ?>">
                                         View Prices
@@ -248,16 +248,15 @@ console_log($departures);
                     </div>
                     <div id="arrow" data-popper-arrow></div>
                 </div>
-
+                <button class="btn-pill cruise-dates-departure-filter" id="view-discounted-button">
+                    Discounted
+                </button>
                 <button class="btn-pill clear-departure-filters" style="display: none;">Clear Filters</button>
 
             </div>
 
             <!-- View All -->
             <div class="slider-block__content__filters__right">
-            <button class="btn-pill cruise-dates-departure-filter"  id="view-discounted-button">
-                    Discounted
-                </button>
                 <button class="btn-pill cruise-dates-departure-filter" data-filter="all" id="view-all-dates-button">
                     View All
                 </button>

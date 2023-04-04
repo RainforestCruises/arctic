@@ -17,16 +17,16 @@
         }
 
         & .nav-mega {
-            width: calc(100% + 30rem);
-            transform: translateX(-15rem);
+            width: calc(100% + 36rem);
+            transform: translateX(-16rem);
         }
     }
 
     @media only screen and (max-width: $bp-xlargest) {
         &:not(.narrow) {
             & .nav-mega {
-                width: calc(100% + 30rem);
-                transform: translateX(-15rem);
+                width: calc(100% + 36rem);
+                transform: translateX(-16rem);
             }        
         }
     }
