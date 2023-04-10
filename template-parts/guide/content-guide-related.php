@@ -1,10 +1,27 @@
 <?php
 
+//related posts
 $queryArgs = array(
     'post_type' => 'rfc_travel_guides',
     'posts_per_page' => 9,
     'post__not_in' => array($post->ID)
 );
+
+$queryArgsCategories = array();
+$queryArgsCategories['relation'] = 'OR';
+$categories = get_field('categories');
+if ($categories) {
+  foreach ($categories as $c) {
+    $queryArgsCategories[] = array(
+      'key'     => 'categories',
+      'value'   =>  '"' . $c->ID . '"',
+      'compare' => 'LIKE'
+    );
+  }
+};
+
+$queryArgs['meta_query'][] = $queryArgsCategories; // match any category
+
 
 $relatedGuidePosts = get_posts($queryArgs);
 ?>

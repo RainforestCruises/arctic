@@ -9,7 +9,7 @@ $expandItems = count($amenities) > $max_items ? true : false;
 $overview_content = get_field('overview_content');
 $deck_plans = get_field('deck_plans');
 
-$max_length = 1350;
+$max_length = 1500;
 $expandOverview = strlen($overview_content) > $max_length ? true : false;
 $overview_content_limited = substr($overview_content, 0, $max_length) . '...';
 
@@ -104,6 +104,38 @@ $overview_content_limited = substr($overview_content, 0, $max_length) . '...';
                                 </div>
                             </div>
 
+                            <!-- Guest to Crew Ratio -->
+                            <div class="specs__item">
+                                <div class="specs__item__title">
+                                    Guest to Crew Ratio
+                                </div>
+                                <div class="specs__item__text">
+                                    <?php echo get_field('guest_to_crew_ratio') ?>
+                                </div>
+                            </div>
+
+                            <!-- Number of Decks -->
+                            <div class="specs__item">
+                                <div class="specs__item__title">
+                                    Number of Decks
+                                </div>
+                                <div class="specs__item__text">
+                                    <?php echo get_field('number_of_decks') ?>
+                                </div>
+                            </div>
+
+                            <!-- Number of Cabins -->
+                            <div class="specs__item">
+                                <div class="specs__item__title">
+                                    Number of Cabins
+                                </div>
+                                <div class="specs__item__text">
+                                    <?php echo count($args['cabins']) ?>
+                                </div>
+                            </div>
+
+                            
+
                             <!-- Zodiacs -->
                             <div class="specs__item">
                                 <div class="specs__item__title">
@@ -184,6 +216,7 @@ $overview_content_limited = substr($overview_content, 0, $max_length) . '...';
                                 </div>
                             </div>
 
+                            
 
                         </div>
                     </div>

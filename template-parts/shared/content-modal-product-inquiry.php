@@ -221,8 +221,9 @@ $ships = $args['ships'];
                     <?php foreach ($departures  as $d) :
                         $departureId = $d['ID'];
                         $cabins = $d['Cabins'];
-                        foreach ($cabins as $cabin) :
+                        foreach ($cabins as $cabin) :      
                             $cabinPost = $cabin['cabin'];
+                            $cabinId = $cabinPost->ID;
                             $title =  get_field('display_name', $cabinPost);
                             $dimensions =  get_field('dimensions', $cabinPost);
                             $is_single =  get_field('is_single', $cabinPost);
@@ -244,7 +245,7 @@ $ships = $args['ships'];
 
 
                                     <div class="avatar " style="max-width: 100%;">
-                                        <div class="avatar__image-area">
+                                        <div class="avatar__image-area cabin-avatar-image" cabinId="<?php echo $cabinId; ?>" style="cursor: pointer">
                                             <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
                                         </div>
                                         <div class="avatar__title-group">

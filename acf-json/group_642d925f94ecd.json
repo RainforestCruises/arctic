@@ -1,0 +1,44 @@
+{
+    "key": "group_642d925f94ecd",
+    "title": "Cabin Amenities Post",
+    "fields": [
+        {
+            "key": "field_642d925faf2a2",
+            "label": "Icon",
+            "name": "icon",
+            "type": "text",
+            "instructions": "Paste in SVG code",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "rfc_cabin_amenities"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Cabin Amenities - CPT",
+    "show_in_rest": 0,
+    "modified": 1680708220
+}

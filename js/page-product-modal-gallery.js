@@ -84,29 +84,4 @@ jQuery(document).ready(function ($) {
     })
 
 
-
-    // Cabin Images - Click event listeners
-    const cabinGalleryImages = [...document.querySelectorAll('.cabin-image-slide')];
-    cabinGalleryImages.forEach(item => {
-        item.addEventListener('click', () => {
-            pageGalleryModal.style.display = 'flex';
-            body.classList.add('no-scroll');
-
-            const imageId = item.getAttribute('imageId');
-            const slideDiv = document.querySelector('.modal__gallery__main__slider__item[imageId="' + imageId + '"]');
-            const slideIndex = slideDiv.getAttribute('slideIndex');
-
-            modalGalleryMain.update();
-            modalGalleryMain.slideTo(slideIndex - 1, 0);
-            modalGalleryNav.slideTo(slideIndex - 1, 0);
-
-        });
-    })
-
-
-
-
-
-
-
 });

@@ -1441,11 +1441,14 @@ p {
   width: 100%;
   height: 100%;
   overflow: auto;
-  z-index: 999999;
+  z-index: 999;
   justify-content: center;
   padding: 4rem;
   animation: fadein 0.2s;
   display: none; }
+  .modal.modal-second-level {
+    background-color: rgba(30, 30, 30, 0);
+    z-index: 9999; }
   @media only screen and (min-width: 50em) {
     .modal--minimal {
       align-items: center; }
@@ -2763,7 +2766,7 @@ p {
   @media only screen and (min-width: 37.5em) {
     .information-card--horizontal {
       display: grid;
-      grid-template-columns: 1fr 22rem 14rem;
+      grid-template-columns: 1fr 24rem 12rem;
       column-gap: 2rem;
       align-items: center;
       min-height: 12rem; }
@@ -4570,6 +4573,31 @@ p {
           height: 100%;
           object-fit: cover; }
 
+.cruise-cabins-modal-item {
+  padding-bottom: 4rem; }
+  .cruise-cabins-modal-item__image-area {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    margin-bottom: 2rem; }
+    .cruise-cabins-modal-item__image-area img {
+      border-radius: 1rem;
+      height: auto;
+      width: 100%;
+      object-fit: cover; }
+  .cruise-cabins-modal-item__specification {
+    font-size: 1.6rem; }
+    .cruise-cabins-modal-item__specification span {
+      font-weight: 700;
+      color: #1d2225; }
+  .cruise-cabins-modal-item__features {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem 3rem;
+    margin-bottom: 1.5rem; }
+  .cruise-cabins-modal-item__description {
+    font-size: 1.6rem; }
+
 .landing-hero {
   display: flex;
   justify-content: center;
@@ -4948,7 +4976,6 @@ p {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-bottom: 2rem;
       hyphens: auto; }
       .guide-main__content__copy p:not(.wp-caption-text):first-of-type {
         max-width: 80rem;
@@ -6090,8 +6117,8 @@ p {
     .footer__content__main {
       width: 100%;
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 6rem;
+      grid-template-columns: 46rem 26rem 1fr;
+      gap: 4rem;
       margin: 4rem 0; }
       @media only screen and (max-width: 50em) {
         .footer__content__main {

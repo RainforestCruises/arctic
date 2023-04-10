@@ -90,6 +90,31 @@
             "new_lines": ""
         },
         {
+            "key": "field_642d94519f7d8",
+            "label": "Amenities",
+            "name": "amenities",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_cabin_amenities"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
+        },
+        {
             "key": "field_63596b4442a4c",
             "label": "Dimensions",
             "name": "dimensions",
@@ -232,5 +257,5 @@
     "active": true,
     "description": "Cabins CPT",
     "show_in_rest": 0,
-    "modified": 1673452943
+    "modified": 1680708736
 }

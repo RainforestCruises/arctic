@@ -4,7 +4,12 @@ jQuery(document).ready(function ($) {
     const closeModalButtons = [...document.querySelectorAll('.close-modal-button')];
     closeModalButtons.forEach(button => {
         button.addEventListener('click', () => {
-            closeModals();
+            if ($(button).parent().parent().parent().hasClass('modal-second-level')) {
+                closeSecondModals();
+            } else {
+                closeModals();
+            }
+            
         });
     })
 
@@ -12,7 +17,11 @@ jQuery(document).ready(function ($) {
     window.onclick = function (event) {
         allModals.forEach(modal => {
             if (event.target == modal) {
-                closeModals();
+                if(modal.classList.contains('modal-second-level')){
+                    closeSecondModals();
+                } else {
+                    closeModals();
+                }           
             }
         })
     }
@@ -22,6 +31,14 @@ jQuery(document).ready(function ($) {
             modal.style.display = 'none';
         })
         body.classList.remove('no-scroll');
+    };
+
+    function closeSecondModals() {
+        let allSecondModals = [...document.querySelectorAll('.modal-second-level')];
+        allSecondModals.forEach(modal => {
+            modal.style.display = 'none';
+            modal.classList.remove('modal-second-level')
+        })
     };
 
 
@@ -42,6 +59,14 @@ jQuery(document).ready(function ($) {
 
 
 
+
+
+
+
+
+
+
+
     //Panels --------------------------------------------
     //expand/hide
     $(".outline-panel__heading").on("click", function (e) {
@@ -56,8 +81,8 @@ jQuery(document).ready(function ($) {
         let $this = $(this);
         $this.parent().find('.accordion-panel__content').slideToggle(350);
         $this.parent().find('.accordion-panel__heading').toggleClass('closed');
-      });
-    
+    });
+
 
 
 
@@ -79,7 +104,7 @@ jQuery(document).ready(function ($) {
                 localizationModal.style.display = 'flex';
                 body.classList.add('no-scroll');
             });
-        })     
+        })
     }
 
 });

@@ -441,7 +441,7 @@
         //above 600px
         @media only screen and (min-width: $bp-small) {
             display: grid;
-            grid-template-columns: 1fr 22rem 14rem;
+            grid-template-columns: 1fr 24rem 12rem;
             column-gap: 2rem;
             align-items: center;
             min-height: 12rem;

@@ -4,9 +4,9 @@ wp_enqueue_script('page-product', get_template_directory_uri() . '/js/page-produ
 wp_enqueue_script('page-product-modal-gallery', get_template_directory_uri() . '/js/page-product-modal-gallery.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-dates', get_template_directory_uri() . '/js/page-product-dates.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-itinerary-map', get_template_directory_uri() . '/js/page-product-itinerary-map.js', array('jquery'), false, true);
+wp_enqueue_script('page-product-cabins', get_template_directory_uri() . '/js/page-product-cabins.js', array('jquery'), false, true);
 
 $itinerary = get_post();
-
 $ships = get_field('ships');
 $productName = get_field('display_name');
 $days = get_field('itinerary');
@@ -31,9 +31,33 @@ wp_localize_script(
 
 get_header();
 
+// cabin posts (for all ships)
+$args = array(
+  'posts_per_page' => -1,
+  'post_type' => 'rfc_cabins',
+);
+
+$queryArgsShips = array();
+$queryArgsShips['relation'] = 'OR';
+$ships = get_field('ships');
+if ($ships) {
+  foreach ($ships as $s) {
+    $queryArgsShips[] = array(
+      'key'     => 'ship',
+      'value'   =>  $s->ID,
+      'compare' => 'EQUALS'
+    );
+  }
+};
+
+$args['meta_query'][] = $queryArgsShips; // match any category
+$cabins = get_posts($args);
+
 
 $args = array(
   'ships' => $ships,
+  'cabins' => $cabins,
+
   'productName' => $productName,
   'lowestOverallPrice' => $lowestOverallPrice,
   'bestOverallDiscount' => $bestOverallDiscount,
@@ -80,6 +104,11 @@ $args = array(
   get_template_part('template-parts/itinerary/content', 'itinerary-dates', $args);
   ?>
 
+  <!-- Cabins -->
+  <?php
+  get_template_part('template-parts/itinerary/content', 'itinerary-cabins-modal', $args);
+  ?>
+
   <!-- Extras -->
   <?php
   get_template_part('template-parts/itinerary/content', 'itinerary-extras', $args);
@@ -94,7 +123,7 @@ $args = array(
   <?php
   get_template_part('template-parts/itinerary/content', 'itinerary-related', $args);
   ?>
-  
+
   <!-- Footer CTA  -->
   <?php
   get_template_part('template-parts/shared/content', 'shared-footer-cta');

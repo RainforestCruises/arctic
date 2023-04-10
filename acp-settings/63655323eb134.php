@@ -5,7 +5,7 @@ return array (
   'title' => 'Cabins',
   'type' => 'rfc_cabins',
   'id' => '63655323eb134',
-  'updated' => 1673452987,
+  'updated' => 1680709662,
   'columns' => 
   array (
     'title' => 
@@ -89,6 +89,25 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '6365536523d70c',
+    ),
+    '642d98015b22d0' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Amenities',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_642d94519f7d8',
+      'post_property_display' => 'title',
+      'post_link_to' => 'edit_post',
+      'number_of_items' => '10',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '642d98015b22d0',
     ),
     '6365532596c8b4' => 
     array (

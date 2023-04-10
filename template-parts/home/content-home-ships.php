@@ -41,7 +41,7 @@ $ships_title_subtext = get_field('ships_title_subtext');
                 $highestPrice = getHighestDepartureListPrice($departures);
                 $bestOverallDiscount = getBestDepartureListDiscount($departures);
             ?>
-                <!-- Cabin Card -->
+                <!-- Ship Card -->
                 <div class="resource-card">
 
                     <!-- Images Slider -->
@@ -137,7 +137,7 @@ $ships_title_subtext = get_field('ships_title_subtext');
                 $bestOverallDiscount = getBestDepartureListDiscount($departures);
             ?>
 
-                <!-- Cabin Card -->
+                <!-- Ship Card -->
                 <div class="resource-card">
 
                     <!-- Images Slider -->

@@ -1,0 +1,37 @@
+.cruise-cabins-modal-item {
+    padding-bottom: 4rem;
+
+    &__image-area {
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+        & img {
+            border-radius: 1rem;
+            height: auto;
+            width: 100%;
+            object-fit: cover;
+        }
+        margin-bottom: 2rem;
+    }
+
+    &__specification {
+        font-size: 1.6rem;
+        & span {
+            font-weight: 700;
+            color: $color-primary;
+        }
+
+       
+    }
+
+    &__features {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1.5rem 3rem;
+        margin-bottom: 1.5rem
+    }
+
+    &__description {
+        font-size: 1.6rem;
+    }
+}

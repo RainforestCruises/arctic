@@ -5,6 +5,7 @@ wp_enqueue_script('page-product-modal-gallery', get_template_directory_uri() . '
 wp_enqueue_script('page-product-modal-deckplans', get_template_directory_uri() . '/js/page-product-modal-deckplans.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-dates', get_template_directory_uri() . '/js/page-product-dates.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-cruise-itineraries', get_template_directory_uri() . '/js/page-product-cruise-itineraries.js', array('jquery'), false, true);
+wp_enqueue_script('page-product-cabins', get_template_directory_uri() . '/js/page-product-cabins.js', array('jquery'), false, true);
 
 get_header();
 

@@ -222,9 +222,47 @@
             "step": ""
         },
         {
+            "key": "field_64345a99e14a1",
+            "label": "Number of Decks",
+            "name": "number_of_decks",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_62c86f98514c3",
             "label": "Crew",
             "name": "crew",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_64345ac2e14a2",
+            "label": "Guest to Crew Ratio",
+            "name": "guest_to_crew_ratio",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -793,5 +831,5 @@
     "active": true,
     "description": "Cruise - CPT",
     "show_in_rest": 0,
-    "modified": 1676654085
+    "modified": 1681152890
 }

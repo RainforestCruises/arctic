@@ -455,9 +455,9 @@ function getItineraryShipSize($ships)
 function shipSizeDisplay($pax)
 {
     $displayText = "Small Size";
-    if ($pax > 150) {
+    if ($pax > 200) {
         $displayText = "Large Size";
-    } else if ($pax >= 80) {
+    } else if ($pax >= 120) {
         $displayText = "Medium Size";
     }
     return $displayText;

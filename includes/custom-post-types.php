@@ -192,6 +192,26 @@ function create_post_type_rfc_amenities()
 }
 add_action('init', 'create_post_type_rfc_amenities');
 
+// Custom Post Type - Cabin Amenities
+function create_post_type_rfc_cabin_amenities()
+{
+    register_post_type(
+        'rfc_cabin_amenities',
+        array(
+            'labels' => array(
+                'name' => __('Cabin Amenities'),
+                'singular_name' => __('Cabin Amenity'),
+            ),
+            'public' => true,
+            'rewrite' => array('slug' => 'cabin_amenities'),
+            'supports' => array(
+                'title',
+            )
+        )
+    );
+}
+add_action('init', 'create_post_type_rfc_cabin_amenities');
+
 // Custom Post Type - Activities
 function create_post_type_rfc_activities()
 {
