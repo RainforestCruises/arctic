@@ -148,6 +148,10 @@
             min-height: 6rem;
             display: flex;
             align-items: center;
+            @media only screen and (max-width: $bp-small) {
+                font-size: 1.8rem;
+                line-height: 2.2rem;
+            }
         }
 
         &__icon {

@@ -6,7 +6,7 @@ $length = get_field('length_in_nights') + 1;
 $lowestOverallPrice = $args['lowestOverallPrice'];
 $bestOverallDiscount = $args['bestOverallDiscount'];
 $shipSizeRange = $args['shipSizeRange'];
-
+$deals = $args['deals'];
 $images = get_field('hero_gallery');
 $desktopImages = array_slice($images, 1); //for gallery desktop slider
 
@@ -16,7 +16,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
 <section class="product-hero" id="section-top">
     <!-- Desktop BG Image -->
     <div class="product-hero__bg-image">
-        <img <?php afloat_image_markup($images[0]['id'], 'landscape-full', array('landscape-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small')); ?>>
+        <img <?php afloat_image_markup($images[0]['id'], 'landscape-full', array('landscape-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small')); ?> class="optimole-initial">
     </div>
 
     <!-- Desktop Gallery -->
@@ -77,6 +77,13 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
         <div class="product-hero__content__main">
             <!-- Primary (Title + Description) -->
             <div class="product-hero__content__main__primary">
+                <?php if ($deals) : ?>
+                    <div class="product-hero__content__main__primary__deal-area">
+                        <a class="specs-deal product-hero-deal-badge" href="#section-deals">
+                            <?php getDealsDisplay($deals); ?>
+                        </a>
+                    </div>
+                <?php endif; ?>
                 <div class="product-hero__content__main__primary__title">
                     <?php echo $title ?>
                 </div>
@@ -218,7 +225,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
         <div class="mobile-info__starting-price__amount">
             <div class="mobile-info__starting-price__amount__text">
                 <?php priceFormat($lowestOverallPrice); ?>
-             
+
             </div>
 
 

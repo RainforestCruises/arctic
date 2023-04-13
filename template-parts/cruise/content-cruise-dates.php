@@ -60,7 +60,7 @@ $departures = $args['departures'];
                         $embarkationPost = get_field('embarkation_point', $itineraryPost);
                         $embarkationName = get_the_title($embarkationPost) . ', ' . get_field('country_name', $embarkationPost);
                         $bestDiscount = $d['BestDiscount'];
-
+                        $deals = $d['Deals'];
                     ?>
 
                         <div class="information-card info-departure-card swiper-slide" data-filter-date="<?php echo date("Y", $departureStartDate); ?>" data-filter-secondary="<?php echo $itineraryPostId; ?>" data-filter-discount=<?php echo ($bestDiscount) ? true : false ?>>
@@ -127,24 +127,23 @@ $departures = $args['departures'];
                                         <div class="specs-item__text__main">
                                             <?php priceFormat($d['LowestPrice']);  ?> - <?php priceFormat($d['HighestPrice']);  ?>
                                         </div>
-                        
-                                    </div>
-                                </div>
-                                <!-- Discount -->
-                                <?php if ($bestDiscount) : ?>
-                                    <div class="specs-item">
-                                        <div class="specs-item__icon green-text">
-                                            <svg>
-                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-star-empty"></use>
-                                            </svg>
-                                        </div>
-                                        <div class="specs-item__text">
-                                            <div class="specs-item__text__main">
+                                        <?php if ($bestDiscount) : ?>
+                                            <div class="specs-item__text__sub">
                                                 Up to <span class="green-text"><?php echo $bestDiscount; ?>%</span> savings
                                             </div>
-                                        </div>
+                                        <?php endif; ?>
                                     </div>
-                                <?php endif; ?>
+                                </div>
+                                <!-- Deals -->
+                                <?php if ($deals) :
+                                    foreach ($deals as $deal) :
+                                        $dealId = $deal->ID;
+                                ?>
+                                        <div class="specs-deal deal-cta" dealId="<?php echo $dealId ?>">
+                                            <?php echo get_field('short_title', $deal) ?>
+                                        </div>
+                                <?php endforeach;
+                                endif; ?>
 
                             </div>
 

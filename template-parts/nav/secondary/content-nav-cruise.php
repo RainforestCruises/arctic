@@ -1,5 +1,8 @@
 <?php
 $title = get_the_title();
+$ship = get_post();
+$departures = getDepartureList($ship);
+$deals = getDepartureListDeals($departures);
 ?>
 <!-- Cruise Nav -->
 <nav class="nav-secondary small-width">
@@ -54,7 +57,11 @@ $title = get_the_title();
                 <a class="nav-secondary__mobile-menu__list__item__link" href="#section-itineraries">Itineraries</a>
             </li>
             <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#section-dates">Dates</a>
+                <a class="nav-secondary__mobile-menu__list__item__link" href="#section-dates">Dates
+                    <?php if ($deals) : ?>
+                        <span class="specs-deal" style="margin-left: 2rem;"><?php getDealsDisplay($deals); ?></span>
+                    <?php endif; ?>
+                </a>
             </li>
             <li class="nav-secondary__mobile-menu__list__item">
                 <a class="nav-secondary__mobile-menu__list__item__link" href="#section-reviews">Reviews</a>

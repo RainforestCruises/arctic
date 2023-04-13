@@ -742,6 +742,79 @@
     }
 }
 
+.deal-card {
+    border: 1px solid $color-grey-light-1a;
+    border-radius: 1rem;
+    overflow: hidden;
+    color: $color-primary;
+    position: relative;
+    background-color: $color-white;
+
+    &__section {
+        padding: 1.5rem 2rem;
+        padding-bottom: 0rem;
+    }
+
+    &__description {
+        margin: 1.5rem 2rem;
+        margin-bottom: 0rem;
+        padding-top: 1rem;
+        border-top: 1px solid $color-grey-light-1a;
+    }
+
+
+    &__urgency {
+        margin-top: 1rem;
+        background-color: rgba($color-green, 0.2);
+        padding: 1.5rem 2rem;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: $color-primary;
+        display: grid;
+        grid-template-columns: min-content 1fr max-content;
+        align-items: center;
+        gap: 1.5rem;
+        &__icon {
+            height: 3rem;
+            width: 3rem;
+            color: currentColor;
+        }
+        &__text {
+
+        }
+
+        &__cta {
+            
+        }
+        
+    }
+}
+
+.deal-card-inline {
+    border: 1px solid $color-grey-light-1a;
+    border-radius: 1rem;
+    color: $color-primary;
+    position: relative;
+    background-color: rgba($color-green, .2);
+    padding: 1rem 2rem;
+    padding-right: 3.5rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 8rem;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    &__title {
+
+    }
+
+    &__cta {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
 // COMPONENTS ------------------------------------------------
 .avatar {
     font-size: 1.4rem;
@@ -800,6 +873,23 @@
     }
 }
 
+.specs-deal {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: $color-primary;
+    background-color: rgba($color-green, .2);
+    border-radius: 2rem;
+    width: max-content;
+    padding: .5rem 2rem;
+    cursor: pointer;
+    display: flex;
+    text-decoration: none !important;
+    
+    &:not(:last-child) {
+        margin-bottom: 0.5rem;
+    }
+}
+
 .specs-item {
     font-size: 1.4rem;
     display: grid;
@@ -824,8 +914,8 @@
             line-height: 2rem;
         }
         &__sub {
-            font-size: 1.3rem;
-            color: $color-grey-3;
+            font-size: 1.2rem;
+            margin-left: 2px;
         }
     }
 }

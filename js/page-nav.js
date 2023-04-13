@@ -56,7 +56,7 @@ jQuery(document).ready(function ($) {
     }
 
     // On Click - Nav Links, href change position
-    $('.nav-secondary__content__title-area__link, .nav-secondary__mobile-menu__list__item__link, .nav-secondary__content__links__link, .product-hero__content__main__primary__nav__link, .landing-nav__content__links__link, #down-arrow-button').click(function (event) {
+    $('.product-hero-deal-badge,  .nav-secondary__content__title-area__link, .nav-secondary__mobile-menu__list__item__link, .nav-secondary__content__links__link, .product-hero__content__main__primary__nav__link, .landing-nav__content__links__link, #down-arrow-button').click(function (event) {
         var id = $(this).attr('href');
         changePosition(id)
         event.preventDefault();
@@ -74,7 +74,6 @@ jQuery(document).ready(function ($) {
         }
 
         $('html, body').animate({ scrollTop: target }, 500);
-        setTimeout(setScrollStatus, 600)
         window.location.hash = id;
     }
 

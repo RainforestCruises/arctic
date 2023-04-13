@@ -9,6 +9,7 @@ $bestOverallDiscount = $args['bestOverallDiscount'];
 $itineraryCount = count($itineraries);
 $images = get_field('hero_gallery');
 $desktopImages = array_slice($images, 1); //for gallery desktop slider
+$deals = $args['deals'];
 
 ?>
 
@@ -16,7 +17,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
 <section class="product-hero" id="section-top">
     <!-- Desktop BG Image (first image in main) -->
     <div class="product-hero__bg-image">
-        <img <?php afloat_image_markup($images[0]['id'], 'landscape-full', array('landscape-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small')); ?>>
+        <img <?php afloat_image_markup($images[0]['id'], 'landscape-full', array('landscape-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small')); ?> class="optimole-initial">
     </div>
 
     <!-- Desktop Gallery -->
@@ -73,6 +74,13 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
         <div class="product-hero__content__main">
             <!-- Primary (Title + Description + Nav) -->
             <div class="product-hero__content__main__primary">
+                <?php if ($deals) : ?>
+                    <div class="product-hero__content__main__primary__deal-area">
+                        <a class="specs-deal product-hero-deal-badge" href="#section-deals">
+                            <?php getDealsDisplay($deals); ?>
+                        </a>
+                    </div>
+                <?php endif; ?>
                 <div class="product-hero__content__main__primary__title">
                     <?php echo $title ?>
                 </div>
@@ -106,7 +114,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
 
                         <div class="product-hero__content__main__secondary__info__starting-price__amount">
                             <div class="product-hero__content__main__secondary__info__starting-price__amount__text">
-                                <?php priceFormat($lowestOverallPrice); ?>         
+                                <?php priceFormat($lowestOverallPrice); ?>
                             </div>
                             <?php if ($bestOverallDiscount) : ?>
                                 <div class="product-hero__content__main__secondary__info__starting-price__amount__discount">

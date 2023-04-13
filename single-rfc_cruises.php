@@ -15,6 +15,8 @@ $itineraries = get_field('itineraries');
 $departures = getDepartureList($ship);
 $lowestOverallPrice = getLowestDepartureListPrice($departures);
 $bestOverallDiscount = getBestDepartureListDiscount($departures);
+$deals = getDepartureListDeals($departures);
+
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
 
@@ -37,6 +39,7 @@ $args = array(
   'bestOverallDiscount' => $bestOverallDiscount,
   'itineraries' => $itineraries,
   'departures' => $departures,
+  'deals' => $deals,
   'curentYear' => $curentYear,
   'yearSelections' => $yearSelections,
   'cabins' => $cabins,
@@ -86,6 +89,11 @@ wp_localize_script(
   get_template_part('template-parts/cruise/content', 'cruise-cabins', $args);
   ?>
 
+  <!-- Cabins Modal-->
+  <?php
+  get_template_part('template-parts/product/content', 'product-cabins-modal', $args);
+  ?>
+
   <!-- itineraries -->
   <?php
   get_template_part('template-parts/cruise/content', 'cruise-itineraries', $args);
@@ -95,7 +103,12 @@ wp_localize_script(
   <?php
   get_template_part('template-parts/cruise/content', 'cruise-dates', $args);
   ?>
-
+  <!-- Deals -->
+  <?php
+  if ($deals) :
+    get_template_part('template-parts/product/content', 'product-deals', $args);
+  endif;
+  ?>
   <!-- Reviews -->
   <?php
   get_template_part('template-parts/cruise/content', 'cruise-reviews', $args);
@@ -117,7 +130,7 @@ wp_localize_script(
 
 <!-- Inquire Modal -->
 <?php
-get_template_part('template-parts/shared/content', 'modal-product-inquiry', $args);
+get_template_part('template-parts/product/content', 'modal-product-inquiry', $args);
 ?>
 
 

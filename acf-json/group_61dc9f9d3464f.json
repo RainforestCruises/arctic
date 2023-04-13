@@ -57,6 +57,25 @@
             "maxlength": ""
         },
         {
+            "key": "field_6435757d240b9",
+            "label": "Short Title",
+            "name": "short_title",
+            "type": "text",
+            "instructions": "Title to display in popovers",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_61dca7348a395",
             "label": "Description",
             "name": "description",
@@ -74,6 +93,30 @@
             "toolbar": "full",
             "media_upload": 0,
             "delay": 0
+        },
+        {
+            "key": "field_61dc9f9d56faa",
+            "label": "Featured Image",
+            "name": "featured_image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 1120,
+            "min_height": 650,
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
         },
         {
             "key": "field_61e9e50cbfa39",
@@ -97,106 +140,11 @@
             "step": ""
         },
         {
-            "key": "field_61dc9f9d56faa",
-            "label": "Featured Image",
-            "name": "featured_image",
-            "type": "image",
-            "instructions": "1120 x 650 min",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "preview_size": "medium",
-            "library": "all",
-            "min_width": 1120,
-            "min_height": 650,
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
-        },
-        {
-            "key": "field_61e9e71eea6b1",
-            "label": "Categorization",
-            "name": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_61e05f01ebdd5",
-            "label": "Applicable To",
-            "name": "applicable_to",
-            "type": "radio",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "travelProducts": "Travel Products",
-                "broadCategory": "Broad Category"
-            },
-            "allow_null": 0,
-            "other_choice": 0,
-            "default_value": "",
-            "layout": "vertical",
-            "return_format": "value",
-            "save_other_choice": 0
-        },
-        {
-            "key": "field_61e05fceebdd7",
-            "label": "SERP Link",
-            "name": "serp_link",
-            "type": "page_link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_61e05f01ebdd5",
-                        "operator": "==",
-                        "value": "broadCategory"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "page"
-            ],
-            "taxonomy": [
-                "category:search"
-            ],
-            "allow_null": 0,
-            "allow_archives": 0,
-            "multiple": 0
-        },
-        {
             "key": "field_61dca09f34c1b",
             "label": "Is Exclusive",
             "name": "is_exclusive",
             "type": "true_false",
-            "instructions": "Check if this is only offered by Rainforest Cruises",
+            "instructions": "Check if this is only offered by Antarctica Cruises",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -209,50 +157,6 @@
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
-        },
-        {
-            "key": "field_61fc30c9ca2e1",
-            "label": "Is Selected Dates Only",
-            "name": "is_selected_dates_only",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_61dc9f9d62140",
-            "label": "Regions",
-            "name": "regions",
-            "type": "relationship",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "rfc_regions"
-            ],
-            "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "object"
         },
         {
             "key": "field_61dc9f9d6d5d7",
@@ -280,11 +184,11 @@
             "return_format": "object"
         },
         {
-            "key": "field_61dca01434c1a",
-            "label": "Cruises",
-            "name": "cruises",
-            "type": "relationship",
-            "instructions": "Select Cruises that this promo applies to",
+            "key": "field_64357485240b5",
+            "label": "Expiration Dates",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -292,17 +196,135 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "rfc_cruises"
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_64357469240b4",
+            "label": "Has Expiry Date",
+            "name": "has_expiry_date",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_6435752d240b8",
+            "label": "Expiry Date",
+            "name": "expiry_date",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64357469240b4",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
             ],
-            "taxonomy": "",
-            "filters": [
-                "search"
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "F j, Y",
+            "return_format": "Y-m-d",
+            "first_day": 1
+        },
+        {
+            "key": "field_643713dc9710c",
+            "label": "Terms and Conditions",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_643713ea9710d",
+            "label": "Show Terms",
+            "name": "show_terms",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_643713f89710e",
+            "label": "Terms and Conditions",
+            "name": "terms_and_conditions",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_643713ea9710d",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
             ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "object"
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_643714079710f",
+                    "label": "Condition",
+                    "name": "condition",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -323,5 +345,5 @@
     "active": true,
     "description": "Deal - CPT",
     "show_in_rest": 0,
-    "modified": 1669307458
+    "modified": 1681333875
 }

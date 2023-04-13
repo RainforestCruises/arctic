@@ -1,6 +1,5 @@
 <?php
 $cabins = $args['cabins'];
-$curentYear = $args['curentYear'];
 ?>
 
 <div class="modal" id="cabinModal">
@@ -22,14 +21,12 @@ $curentYear = $args['curentYear'];
 
         <!-- Main Modal Content -->
         <div class="modal__content__main">
-
             <?php
             foreach ($cabins as $c) :
                 $id = $c->ID;
                 $title =  get_field('display_name', $c);
                 $dimensions =  get_field('dimensions', $c);
                 $description =  get_field('description', $c);
-
                 $is_single =  get_field('is_single', $c);
                 $capacity =  get_field('capacity', $c);
                 $amenities =  get_field('amenities', $c);
@@ -37,7 +34,6 @@ $curentYear = $args['curentYear'];
                 $images = get_field('images', $c);
                 $image = $hero_gallery[0];
             ?>
-
                 <div class="cruise-cabins-modal-item" cabinId="<?php echo $id; ?>">
                     <div class="cruise-cabins-modal-item__image-area">
                         <div class="swiper-wrapper">
@@ -82,7 +78,6 @@ $curentYear = $args['curentYear'];
                         <?php endforeach;
                         endif; ?>
                     </div>
-
                     <h3>
                         Description
                     </h3>
@@ -90,9 +85,7 @@ $curentYear = $args['curentYear'];
                         <?php echo $description; ?>
                     </div>
                 </div>
-
             <?php endforeach; ?>
-
         </div>
     </div>
 </div>

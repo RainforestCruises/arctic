@@ -1,21 +1,20 @@
 <?php
 
-
-// DEPARTURE LIST -----------------------------------------------
+// DEPARTURE LIST ----------------------------------------------------------------------------------------------
 function getDepartureList($post, $specificShip = null)
 {
     $departures = [];
     if (get_post_type($post) == 'rfc_cruises') {
-       
+
         $itineraryPosts = get_field('itineraries', $post);
-        
+
         foreach ($itineraryPosts as $i) { //each itinerary
 
             $itineraryLength = get_field('length_in_nights', $i);
             $itineraryDepartures = get_field('departures', $i);
 
             foreach ($itineraryDepartures as $d) {   // each departure   
-                
+
                 $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
 
                 if ($isCurrent) {
@@ -38,6 +37,7 @@ function getDepartureList($post, $specificShip = null)
                             'HighestPrice' => getHighestDeparturePrice($d),
                             'BestDiscount' => getBestDepartureDiscount($d),
                             'LengthInNights' => $itineraryLength,
+                            'Deals' => $d['deals'],
                         ];
                         $departures[] = $departure;
                     }
@@ -74,6 +74,7 @@ function getDepartureList($post, $specificShip = null)
                         'HighestPrice' => getHighestDeparturePrice($d),
                         'BestDiscount' => getBestDepartureDiscount($d),
                         'LengthInNights' => $itineraryLength,
+                        'Deals' => $d['deals'],
                     ];
                     $departures[] = $departure;
                 }
@@ -198,11 +199,45 @@ function getBestDepartureDiscount($departure)
     return $bestDiscount;
 }
 
+// DEALS ----------------------------------------------------------------------------------------------
+// get a list of unique deals from a list of departures
+function getDepartureListDeals($departures)
+{
+    $uniqueDealsArray = [];
+    foreach ($departures as $d) {
+        $deals = $d['Deals'];
+        foreach ($deals as $deal) {
+            if (!in_array($deal, $uniqueDealsArray)) {
+                $uniqueDealsArray[] = $deal; // only add non dulpicates
+            }
+        }
+    }
+    return $uniqueDealsArray;
+}
+function getDealsDisplay($deals)
+{
+    $displayText = '';
+    if ($deals) {
+        if ($deals == 1) {
+            $displayText = '1 Deal Available';
+        } else {
+            $displayText =  count($deals) . ' Deals Available';
+        }
+    }
+    echo $displayText;
+}
+function getDaysUntilExpiry($expiry_date)
+{
+    $now = time();
+    $datediff = strtotime($expiry_date) - $now;
+    $daysUntilExpiry = round($datediff / (60 * 60 * 24));
+    return $daysUntilExpiry;
+}
 
-//MAPS
+
+// MAPS ----------------------------------------------------------------------------------------------
 function getItineraryObject($itinerary)
 {
-
     $embarkation_point = get_field('embarkation_point', $itinerary);
     $disembarkation_point = get_field('disembarkation_point', $itinerary);
     $hasDifferentPorts = $disembarkation_point != null && ($disembarkation_point != $embarkation_point);
@@ -224,7 +259,7 @@ function getItineraryObject($itinerary)
             $destinationImage =  get_field('image', $destination); //get default image if none provided
             $destinationImageURL = $destinationImage ? wp_get_attachment_image_url($destinationImage['ID'], 'portrait-small') : "";
 
-         
+
             $point  = [
                 'index' => $count,
                 'isEmbarkation' => $destination == $embarkation_point,
@@ -253,7 +288,7 @@ function getItineraryObject($itinerary)
 
     //Reformat to feature 
     $featureList = [];
-    foreach($destinationPoints as $point){
+    foreach ($destinationPoints as $point) {
         $feature = [
             'type' => 'Feature',
             'geometry' => [
@@ -287,7 +322,7 @@ function getItineraryObject($itinerary)
 }
 
 
-//destination list
+// destination list
 function getItineraryObjectFromDestinations($destinations, $startLatitude, $startLongitude, $startZoomPoint)
 {
 
@@ -297,7 +332,7 @@ function getItineraryObjectFromDestinations($destinations, $startLatitude, $star
     foreach ($destinations as $destination) {
         $destinationImage =  get_field('image', $destination); //get default image if none provided
         $destinationImageURL = $destinationImage ? wp_get_attachment_image_url($destinationImage['ID'], 'portrait-small') : "";
-     
+
         $point  = [
             'index' => 0,
             'isEmbarkation' => false,
@@ -314,7 +349,7 @@ function getItineraryObjectFromDestinations($destinations, $startLatitude, $star
 
     //Reformat to feature 
     $featureList = [];
-    foreach($destinationPoints as $point){
+    foreach ($destinationPoints as $point) {
         $feature = [
             'type' => 'Feature',
             'geometry' => [
@@ -348,8 +383,6 @@ function getItineraryObjectFromDestinations($destinations, $startLatitude, $star
 }
 
 
-
-
 function getFlightOption($itinerary)
 {
     $embarkation_is_flight = get_field('embarkation_is_flight', $itinerary);
@@ -371,16 +404,7 @@ function getFlightOption($itinerary)
 }
 
 
-
-
-
-
-
-
-
-
-
-
+// GENERIC ----------------------------------------------------------------------------------------------
 // Random Code Generator
 function getRandomHex($num_bytes = 4)
 {
@@ -388,7 +412,7 @@ function getRandomHex($num_bytes = 4)
 }
 
 
-// generate array of years (generic)
+// generate array of years 
 function createYearSelection($current, $yearsCount)
 {
     $years = [];
@@ -400,6 +424,7 @@ function createYearSelection($current, $yearsCount)
     return $years;
 }
 
+// embarkation / disembarkation display
 function getEmbarkationDisplay($itinerary)
 {
     $embarkation_point = get_field('embarkation_point', $itinerary);
@@ -417,7 +442,6 @@ function getEmbarkationDisplay($itinerary)
 
 function dayCountMarkup($string, $exclude_number = false)
 {
-
     $string = str_replace(' ', '', $string);
     if ($exclude_number == true) {
         if (str_contains($string, '-')) {
@@ -435,7 +459,6 @@ function dayCountMarkup($string, $exclude_number = false)
 }
 
 
-// get lowest price from a list of departures
 function getItineraryShipSize($ships)
 {
     $display = "";
@@ -463,15 +486,13 @@ function shipSizeDisplay($pax)
     return $displayText;
 }
 
-//build list of unique destinations within an itinerary, with embarkations removed
+// build list of unique destinations within an itinerary, with embarkations removed
 function getItineraryDestinations($itinerary)
 {
     $days = get_field('itinerary', $itinerary);
 
-
     $embarkation_point = get_field('embarkation_point', $itinerary);
     $disembarkation_point = get_field('disembarkation_point', $itinerary);
-
     $destinationList = [];
 
     foreach ($days as $day) {
@@ -485,14 +506,11 @@ function getItineraryDestinations($itinerary)
 
     $uniqueDestinationList = array_unique($destinationList);
 
-
     $display = "";
     $destinationCount = count($uniqueDestinationList);
 
     $x = 1;
     foreach ($uniqueDestinationList as $name) {
- 
-
         if ($x < $destinationCount) {
             $display .= $name . ", ";
         } else {
@@ -500,7 +518,6 @@ function getItineraryDestinations($itinerary)
         }
         $x++;
     }
-
     return $display;
 }
 
@@ -521,7 +538,6 @@ function getItineraryShips($itinerary)
         }
         $x++;
     }
-
     return $display;
 }
 
@@ -554,348 +570,6 @@ function itineraryRange($itineraries, $separator, $onlyMin = false)
         $returnString = "N/A";
     }
 
-
-
-
-
-
     return $returnString;
 }
 
-function countriesInDestinations($destinations, $separator)
-{
-
-    $count = 0;
-    if ($destinations) {
-        foreach ($destinations as $r) {
-            if ($r) {
-                $isCountry = get_field('is_country', $r);
-                if ($isCountry == true) {
-                    $title = get_the_title($r);
-                    if ($count != 0) {
-                        echo " $separator " . $title;
-                    } else {
-                        echo $title;
-                    }
-                    $count++;
-                }
-            }
-        }
-    }
-}
-
-function productType($property)
-{
-    $postType = get_post_type($property);
-
-    if ($postType == 'rfc_tours') {
-        echo 'Tour Package';
-    } else if ($postType == 'rfc_lodges') {
-        echo 'Lodge';
-    } else if ($postType == 'rfc_cruises') {
-
-        $cruiseType = get_field('cruise_type', $property);
-        if ($cruiseType == 'river') {
-            echo 'River Cruise';
-        } else {
-            echo 'Costal Cruise';
-        }
-    }
-}
-
-
-//Cruises available functions --> return number for the rectangular blocks on destination pages
-//NOTE: this WILL include cruises with no departure dates... SERPs will not include cruises with no departure dates, itineraries, etc. So the number may differ.
-//Location
-function cruises_available_location($location)
-{
-
-    $postCriteria = array(
-        'posts_per_page' => -1,
-        'post_type' => 'rfc_cruises',
-        'meta_query' => array(
-
-            array(
-                'key' => 'locations', // name of custom field
-                'value' => '"' . $location->ID . '"',
-                'compare' => 'LIKE'
-            )
-        )
-    );
-
-
-    $count = 0;
-    $cruisePosts = get_posts($postCriteria);
-
-    //filter out charter only
-    foreach ($cruisePosts as $c) {
-        $charterOnly = get_field('charter_only', $c);
-        if ($charterOnly == false) {
-            $count++;
-        }
-    }
-
-    return $count;
-}
-
-//Experience
-function cruises_available_experience($destination, $experience)
-{
-
-    $postCriteria = array(
-        'posts_per_page' => -1,
-        'post_type' => 'rfc_cruises',
-        'meta_query' => array(
-            'relation' => 'AND',
-            array(
-                'key' => 'destinations', // name of custom field
-                'value' => '"' . $destination->ID . '"',
-                'compare' => 'LIKE'
-            ),
-            array(
-                'key' => 'experiences', // name of custom field
-                'value' => '"' . $experience->ID . '"',
-                'compare' => 'LIKE'
-            )
-        )
-    );
-
-
-    $cruisePosts = get_posts($postCriteria);
-    $count = count($cruisePosts);
-
-    // //filter out charter only
-    // foreach ($cruisePosts as $c) {
-    //     $charterOnly = get_field('charter_only', $c);
-    //     if ($charterOnly == false) {
-
-    //         $count++;
-    //     }
-    // }
-
-
-    return $count;
-}
-
-//Charter
-function cruises_available_charter($destination)
-{
-    $count = 0;
-    $postCriteria = array(
-        'posts_per_page' => -1,
-        'post_type' => 'rfc_cruises',
-        'meta_query' => array(
-            'relation' => 'AND',
-            array(
-                'key' => 'destinations', // name of custom field
-                'value' => '"' . $destination->ID . '"',
-                'compare' => 'LIKE'
-            ),
-            array(
-                'key' => 'charter_available', // name of custom field
-                'value' => true,
-                'compare' => 'LIKE'
-            )
-        )
-    );
-    $cruisesPosts = get_posts($postCriteria);
-    $count = count($cruisesPosts);
-
-    return $count;
-}
-
-//Cruises available region (experience templates)
-function cruises_available_region($region, $experience, $isCharter, $isLodge = false)
-{
-
-    //DESTINATIONS
-    $destinationCriteria = array(
-        'posts_per_page' => -1,
-        'post_type' => 'rfc_destinations',
-        "meta_key" => "region",
-        "meta_value" => $region->ID
-    );
-    $destinations = get_posts($destinationCriteria);
-
-    //get destination IDs
-    $destinationIds = [];
-    foreach ($destinations as $d) {
-        $destinationIds[] = $d->ID;
-    }
-
-    //build meta query criteria
-    $queryargs = array();
-    $queryargs['relation'] = 'OR';
-    foreach ($destinationIds as $d) {
-        $queryargs[] = array(
-            'key'     => 'destinations',
-            'value'   => serialize(strval($d)),
-            'compare' => 'LIKE'
-        );
-    }
-
-
-    $count = 0;
-
-    if ($isCharter == false) {
-        if ($isLodge == false) {
-            $postCriteria = array(
-                'posts_per_page' => -1,
-                'post_type' => 'rfc_cruises',
-                'meta_query' => array(
-                    'relation' => 'AND',
-                    $queryargs,
-                    array(
-                        'key' => 'experiences', // name of custom field
-                        'value' => '"' . $experience->ID . '"',
-                        'compare' => 'LIKE'
-                    )
-                )
-            );
-        } else {
-            $postCriteria = array(
-                'posts_per_page' => -1,
-                'post_type' => 'rfc_lodges',
-                'meta_query' => array(
-                    'relation' => 'AND',
-                    $queryargs,
-                    array(
-                        'key' => 'experiences', // name of custom field
-                        'value' => '"' . $experience->ID . '"',
-                        'compare' => 'LIKE'
-                    )
-                )
-            );
-        }
-    } else {
-        $postCriteria = array(
-            'posts_per_page' => -1,
-            'post_type' => 'rfc_cruises',
-            'meta_query' => array(
-                'relation' => 'AND',
-                $queryargs,
-                array(
-                    'key' => 'charter_available', // name of custom field
-                    'value' => true,
-                    'compare' => 'LIKE'
-                )
-            )
-        );
-    }
-
-    $cruisesPosts = get_posts($postCriteria);
-    $count = count($cruisesPosts);
-    return $count;
-}
-
-
-
-//Deprecated
-function check_if_promo($cruise_data, $startDate, $endDate, $lengthMin, $lengthMax)
-{
-    //filter itineraries if selection
-    $itineraries = $cruise_data['Itineraries'];
-    $filteredItineraries = [];
-
-    foreach ($itineraries as $itinerary) {
-        if ($itinerary['LengthInDays'] >= $lengthMin && $itinerary['LengthInDays'] <= $lengthMax) {
-            $filteredItineraries[] = $itinerary;
-        }
-    }
-
-    $hasPromo = false;
-    foreach ($filteredItineraries as $itinerary) {
-
-        $departures = $itinerary['Departures'];
-        foreach ($departures as $departure) {
-            $dateString = strtotime($departure['DepartureDate']);
-            if ($dateString >= $startDate && $dateString <= $endDate) {
-                if ($departure['HasPromo'] == true) {
-                    $hasPromo = true;
-                }
-            }
-        }
-    }
-    return $hasPromo;
-}
-
-//Works for cruise / lodge / tour
-function listDealsForProduct($post, $charterView = false)
-{
-
-    //Deals
-    $dealArgs = array(
-        'post_type' => 'rfc_deals',
-        'posts_per_page' => -1,
-        'meta_key' => 'value_rating',
-        'orderby' => 'meta_value_num',
-        'order' => 'DESC',
-    );
-    $dealArgs['meta_query'][] = array(
-        'key'     => 'products',
-        'value'   => '"' . $post->ID . '"',
-        'compare' => 'LIKE'
-    );
-    $dealArgs['meta_query'][] = array(
-        'key'     => 'is_active',
-        'value'   => true,
-        'compare' => '='
-    );
-
-    //Filter for charter deals
-    if ($charterView == true) {
-        $dealArgs['meta_query'][] = array(
-            'key'     => 'is_charter_deal',
-            'value'   => '1'
-        );
-    } else {
-        $dealArgs['meta_query'][] = array(
-            'key'     => 'is_charter_deal',
-            'value'     => '0',
-
-        );
-    }
-
-
-    $dealPosts = get_posts($dealArgs);
-    return $dealPosts;
-}
-
-
-
-//Count of Deals available in region or destination
-function deals_available($regionOrDestinationPost)
-{
-
-
-    $dealArgs = array(
-        'post_type' => 'rfc_deals',
-        'posts_per_page' => -1,
-    );
-
-    $dealArgs['meta_query'][] = array(
-        'key'     => 'is_active',
-        'value'   => true,
-        'compare' => '='
-    );
-
-
-    $postType = get_post_type($regionOrDestinationPost);
-    if ($postType == 'rfc_regions') {
-        $dealArgs['meta_query'][] = array(
-            'key'     => 'regions',
-            'value'   => '"' . $regionOrDestinationPost->ID . '"',
-            'compare' => 'LIKE'
-        );
-    } else {
-        $dealArgs['meta_query'][] = array(
-            'key'     => 'destinations',
-            'value'   => '"' . $regionOrDestinationPost->ID . '"',
-            'compare' => 'LIKE'
-        );
-    }
-
-    $dealPosts = get_posts($dealArgs);
-    $count = count($dealPosts);
-    return $count;
-}

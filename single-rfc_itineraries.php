@@ -13,6 +13,7 @@ $days = get_field('itinerary');
 $departures = getDepartureList($itinerary);
 $lowestOverallPrice = getLowestDepartureListPrice($departures);
 $bestOverallDiscount = getBestDepartureListDiscount($departures);
+$deals = getDepartureListDeals($departures);
 
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
@@ -57,12 +58,12 @@ $cabins = get_posts($args);
 $args = array(
   'ships' => $ships,
   'cabins' => $cabins,
-
   'productName' => $productName,
   'lowestOverallPrice' => $lowestOverallPrice,
   'bestOverallDiscount' => $bestOverallDiscount,
   'days' => $days,
   'departures' => $departures,
+  'deals' => $deals,
   'curentYear' => $curentYear,
   'yearSelections' => $yearSelections,
   'shipSizeRange' => $shipSizeRange,
@@ -104,9 +105,17 @@ $args = array(
   get_template_part('template-parts/itinerary/content', 'itinerary-dates', $args);
   ?>
 
-  <!-- Cabins -->
+  <!-- Deals -->
   <?php
-  get_template_part('template-parts/itinerary/content', 'itinerary-cabins-modal', $args);
+  if ($deals) :
+    get_template_part('template-parts/product/content', 'product-deals', $args);
+  endif;
+  ?>
+
+
+  <!-- Cabins Modal-->
+  <?php
+  get_template_part('template-parts/product/content', 'product-cabins-modal', $args);
   ?>
 
   <!-- Extras -->
@@ -133,7 +142,7 @@ $args = array(
 
 <!-- Inquire Modal -->
 <?php
-get_template_part('template-parts/shared/content', 'modal-product-inquiry', $args);
+get_template_part('template-parts/product/content', 'modal-product-inquiry', $args);
 ?>
 
 <?php get_footer() ?>

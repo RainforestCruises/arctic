@@ -7,12 +7,8 @@ $yearSelections = $args['yearSelections'];
 $itineraryDataList = $args['itineraryDataList'];
 $itineraryPosts = $args['itineraryPosts'];
 $ships = $args['ships'];
-
 ?>
 
-<!-- Scroll user to top of modal content -->
-<!-- Include titles always -->
-<!-- Fix break when no deckplan button -->
 
 <div class="modal" id="inquireModal">
     <div class="modal__content">
@@ -98,6 +94,7 @@ $ships = $args['ships'];
                         $secondaryFilterId = $itineraryPostId;
                         $subtitleDisplay = $d['LengthInNights'] + 1 . ' Days / ' . $d['LengthInNights'] . ' Nights';
                         $bestDiscount = $d['BestDiscount'];
+                        $deals = $d['Deals'];
 
                         if (get_post_type() == 'rfc_itineraries') {
                             $ship = $d['Ship'];
@@ -105,7 +102,8 @@ $ships = $args['ships'];
                             $secondaryFilterId = $shipId;
                             $title = get_the_title($ship);
                             $hero_gallery = get_field('hero_gallery', $ship);
-                            $subtitleDisplay = get_field('vessel_capacity', $ship) . ' Guests';
+                            $service_level = get_field('service_level', $ship);
+                            $subtitleDisplay = get_the_title($service_level) . ", " . get_field('vessel_capacity', $ship) . ' Guests';
                         }
                         $image = $hero_gallery[0];
                     ?>
@@ -126,8 +124,6 @@ $ships = $args['ships'];
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
 
 
@@ -178,9 +174,18 @@ $ships = $args['ships'];
                                             <?php endif; ?>
                                         </div>
                                     </div>
+                                    <!-- Deals -->
+                                    <?php if ($deals) :
+                                        foreach ($deals as $deal) :
+                                            $dealId = $deal->ID;
+                                    ?>
+                                            <div class="specs-deal modal-deal-card" dealId="<?php echo $dealId ?>">
+                                                <?php echo get_field('short_title', $deal) ?>
+                                            </div>
+                                    <?php endforeach;
+                                    endif; ?>
                                 </div>
                             </div>
-
 
                             <div class="information-card__bottom">
                                 <!-- Price Group -->
@@ -188,7 +193,6 @@ $ships = $args['ships'];
                                     <button class="cta-square-icon cta-square-icon--inverse departure-price-group-button" departureId="<?php echo $departureId; ?>" year="<?php echo date("Y", $departureStartDate); ?>" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itineraryTitle="<?php echo $title; ?>">
                                         View Prices
                                     </button>
-
                                 </div>
 
                                 <!-- CTA -->
@@ -201,10 +205,7 @@ $ships = $args['ships'];
                                     </button>
                                 </div>
 
-
                             </div>
-
-
                         </div>
 
                     <?php endforeach; ?>
@@ -221,7 +222,36 @@ $ships = $args['ships'];
                     <?php foreach ($departures  as $d) :
                         $departureId = $d['ID'];
                         $cabins = $d['Cabins'];
-                        foreach ($cabins as $cabin) :      
+                        $deals = $d['Deals']; ?>
+
+                        <!-- Deals -->
+                        <?php if ($deals) :
+                            foreach ($deals as $deal) :
+                                $dealImage = get_field('featured_image', $deal);
+                                $dealTitle = get_field('navigation_title', $deal);
+                                $dealId = $deal->ID;
+                        ?>
+                                <div class="deal-card-inline modal-deal-card" departureId="<?php echo $departureId; ?>" dealId="<?php echo $dealId ?>">
+                                    <div class="deal-card-inline__title">
+                                        <?php echo $dealTitle; ?>
+                                    </div>
+
+                                    <div class="deal-card-inline__cta">
+                                        <!-- CTA -->
+                                        <button class="btn-text-plain">
+                                            Details
+                                            <svg>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                        <?php endforeach;
+                        endif; ?>
+                        <!-- End Deals -->
+
+                        <!-- Cabins -->
+                        <?php foreach ($cabins as $cabin) :
                             $cabinPost = $cabin['cabin'];
                             $cabinId = $cabinPost->ID;
                             $title =  get_field('display_name', $cabinPost);
@@ -236,13 +266,11 @@ $ships = $args['ships'];
                             $hasDiscount = $cabin['discounted_price'] ? true : false;
                             $discounted_price = $cabin['discounted_price'];
                             $sold_out = $cabin['sold_out'];
-                    ?>
-
+                        ?>
 
                             <div class="information-card information-card--horizontal modal-cabin-card" departureId="<?php echo $departureId; ?>">
                                 <!-- Title Group -->
                                 <div class="information-card__section">
-
 
                                     <div class="avatar " style="max-width: 100%;">
                                         <div class="avatar__image-area cabin-avatar-image" cabinId="<?php echo $cabinId; ?>" style="cursor: pointer">
@@ -260,7 +288,7 @@ $ships = $args['ships'];
                                                     Option to Share
                                                 </div>
                                             <?php endif; ?>
-                                            <div class="avatar__title-group__sub" >
+                                            <div class="avatar__title-group__sub">
                                                 <?php echo $dimensions; ?>
                                             </div>
                                         </div>
@@ -319,8 +347,6 @@ $ships = $args['ships'];
 
 
                             </div>
-
-
 
                     <?php endforeach;
                     endforeach;

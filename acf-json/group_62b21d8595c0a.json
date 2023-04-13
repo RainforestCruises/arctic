@@ -743,6 +743,31 @@
                     "ui": 1
                 },
                 {
+                    "key": "field_643586ec915d3",
+                    "label": "Deals",
+                    "name": "deals",
+                    "type": "relationship",
+                    "instructions": "Select all deals that apply to this departure",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "rfc_deals"
+                    ],
+                    "taxonomy": "",
+                    "filters": [
+                        "search"
+                    ],
+                    "elements": "",
+                    "min": "",
+                    "max": "",
+                    "return_format": "object"
+                },
+                {
                     "key": "field_63595bf18bb37",
                     "label": "Cabin Prices",
                     "name": "cabin_prices",
@@ -1209,5 +1234,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1678380359
+    "modified": 1681229630
 }

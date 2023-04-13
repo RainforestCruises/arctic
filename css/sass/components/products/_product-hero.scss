@@ -178,6 +178,15 @@
                     margin-top: 2rem;
                     color: $color-primary;
                 }
+                &__deal-area {
+                    padding-bottom: 1rem;
+                    & .specs-deal {
+                        @media only screen and (min-width: $bp-large) {
+                            background-color: rgba($color-green, 1);
+                        }
+                        
+                    }
+                }
 
                 &__title {
                     font-size: 5rem;
@@ -573,5 +582,9 @@
         }
     }
 
+
+}
+
+.deal-badge {
 
 }

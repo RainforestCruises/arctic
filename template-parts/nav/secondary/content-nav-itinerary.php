@@ -1,5 +1,8 @@
 <?php
 $title = get_field('display_name');
+$itinerary = get_post();
+$departures = getDepartureList($itinerary);
+$deals = getDepartureListDeals($departures);
 ?>
 
 <!-- Itinerary Nav -->
@@ -61,7 +64,11 @@ $title = get_field('display_name');
                 <a class="nav-secondary__mobile-menu__list__item__link" href="#section-map">Map</a>
             </li>
             <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#section-dates">Dates</a>
+                <a class="nav-secondary__mobile-menu__list__item__link" href="#section-dates">Dates
+                    <?php if ($deals) : ?>
+                        <span class="specs-deal" style="margin-left: 2rem;"><?php getDealsDisplay($deals); ?></span>
+                    <?php endif; ?>
+                </a>
             </li>
             <li class="nav-secondary__mobile-menu__list__item">
                 <a class="nav-secondary__mobile-menu__list__item__link" href="#section-extras">Extras</a>

@@ -19,7 +19,7 @@ jQuery(document).ready(function ($) {
 
 
     //hide outline panels on load (mobile) -- on resize fix
-    
+
     if (window.innerWidth < 800) { //mobile view    
         $('.outline-panel__content').toggle();
         $('.outline-panel__heading').toggleClass('closed');
@@ -113,6 +113,7 @@ jQuery(document).ready(function ($) {
 
     // Filter Cabins
     // -- display the departure date
+    const modalDealCards = [...document.querySelectorAll('.modal-deal-card ')];
     const modalCabinCards = [...document.querySelectorAll('.modal-cabin-card ')];
     const cabinDepartureSubtitle = document.querySelector("#cabin-departure-subtitle");
     function filterCabins(departureId, display) {
@@ -124,6 +125,16 @@ jQuery(document).ready(function ($) {
             if (item.getAttribute('departureId') == departureId) {
                 item.style.display = "";
                 count = count + 1;
+            }
+        });
+
+        modalDealCards.forEach(item => {
+            item.style.display = "none";
+            if (item.getAttribute('departureId') == departureId) {
+                item.style.display = "";
+            }
+            if (item.classList.contains('specs-deal')) { // omit hiding the ones in full date list
+                item.style.display = "";
             }
         });
     }
@@ -282,6 +293,22 @@ jQuery(document).ready(function ($) {
     }
 
 
+    // Deals Swiper
+    new Swiper('#deals-slider', {
+        spaceBetween: 15,
+        slidesPerView: 1,
+        watchSlidesProgress: true,
+        slideToClickedSlide: true,
+        navigation: {
+            nextEl: '.deals-slider-btn-next',
+            prevEl: '.deals-slider-btn-prev',
+        },
+        breakpoints: {
+            600: {
+                slidesPerView: 2,
+            }
+        }
+    });
 
 
     // Related Swiper
@@ -302,7 +329,7 @@ jQuery(document).ready(function ($) {
             }
         }
     });
-  
+
 
 
     const reviewsModal = document.querySelector("#reviewsModal");
@@ -330,6 +357,53 @@ jQuery(document).ready(function ($) {
             itemsModal.style.display = 'flex';
             body.classList.add('no-scroll');
         });
+    }
+
+
+
+
+
+
+
+
+
+    // deals - click event listeners
+    const dealsModal = document.getElementById("dealsModal");
+    const dealCtaButtons = [...document.querySelectorAll('.deal-cta')];
+
+    dealCtaButtons.forEach(item => {
+        item.addEventListener('click', () => {
+            dealsModal.style.display = 'flex';
+            body.classList.add('no-scroll');
+
+            const filterId = item.getAttribute('dealId');
+            filterDeals(filterId);
+        });
+    })
+
+    // deal modal cta buttons
+    modalDealCards.forEach(item => {
+        item.addEventListener('click', () => {
+            dealsModal.style.display = 'flex';
+            dealsModal.classList.add('modal-second-level');
+
+            const filterId = item.getAttribute('dealId');
+            filterDeals(filterId);
+        });
+    })
+
+
+
+    const dealModalSections = [...document.querySelectorAll('.product-deals-modal-item')];
+
+    function filterDeals(filterId) {
+        dealModalSections.forEach(item => {
+            item.style.display = "none";  //loop each departure card, set all to display none
+            if (filterId == item.getAttribute('dealId')) {
+                item.style.display = "";
+            }
+        });
+
     }
 
 });
