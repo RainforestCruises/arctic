@@ -949,6 +949,10 @@
 
         &__discount {
         }
+
+        &__sold-out {
+            color: $color-red;
+        }
     }
 
     &__sub {

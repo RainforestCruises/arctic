@@ -218,7 +218,7 @@ function getDealsDisplay($deals)
 {
     $displayText = '';
     if ($deals) {
-        if ($deals == 1) {
+        if (count($deals) == 1) {
             $displayText = '1 Deal Available';
         } else {
             $displayText =  count($deals) . ' Deals Available';

@@ -305,20 +305,28 @@ $ships = $args['ships'];
                                             <?php echo !$is_single ? 'Full Occupancy Price' : 'Single Price'; ?>
                                         </div>
                                         <div class="price-display-group__amount">
-                                            <div class="price-display-group__amount__main <?php echo ($hasDiscount ? 'discounted' : '') ?>">
+                                            <div class="price-display-group__amount__main <?php echo (($hasDiscount || $sold_out) ? 'discounted' : '') ?>">
                                                 <?php priceFormat($price);  ?>
                                             </div>
-                                            <?php if ($hasDiscount) : ?>
+
+                                            <?php if ($hasDiscount && !$sold_out) : ?>
                                                 <div class="price-display-group__amount__discount">
                                                     <?php priceFormat($discounted_price);  ?>
                                                 </div>
                                             <?php endif; ?>
+
+                                            <?php if ($sold_out) : ?>
+                                                <div class="price-display-group__amount__sold-out">
+                                                    Sold Out
+                                                </div>
+                                            <?php endif; ?>
+
                                         </div>
                                         <div class="price-display-group__sub">
                                             <div class="price-display-group__sub__main">
                                                 Per Person
                                             </div>
-                                            <?php if ($hasDiscount) :
+                                            <?php if ($hasDiscount && !$sold_out) :
                                                 $difference = $price - $discounted_price;
                                                 $percentage = ceil(($difference / $price) * 100);
                                             ?>
@@ -334,7 +342,7 @@ $ships = $args['ships'];
 
                                     <!-- CTA -->
                                     <div class="information-card__bottom__cta">
-                                        <button class="cta-square-icon cabin-inquire-cta" cabinTitle="<?php echo $title; ?>">
+                                        <button class="cta-square-icon cabin-inquire-cta" cabinTitle="<?php echo $title; ?>" <?php echo ($sold_out) ? "disabled" : "" ?>>
                                             Inquire
                                             <svg>
                                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>

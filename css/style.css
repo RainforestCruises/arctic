@@ -536,6 +536,11 @@ p {
   align-items: center; }
   .cta-square-icon:hover {
     background-color: #347fff; }
+  .cta-square-icon:disabled {
+    cursor: default;
+    background-color: #c2c6c9; }
+    .cta-square-icon:disabled:hover {
+      background-color: #c2c6c9; }
   .cta-square-icon svg {
     height: 1.4rem;
     width: 1.4rem;
@@ -3116,6 +3121,8 @@ p {
       .price-display-group__amount__main.discounted {
         text-decoration: line-through;
         color: #9ea0a4; }
+    .price-display-group__amount__sold-out {
+      color: #de5c52; }
   .price-display-group__sub {
     font-size: 1rem;
     line-height: 1.5rem;
