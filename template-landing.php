@@ -63,7 +63,7 @@ get_header();
 
 <!-- Inquire Modal -->
 <?php
-get_template_part('template-parts/shared/content', 'modal-inquiry', $args);
+get_template_part('template-parts/shared/content', 'shared-basic-inquiry-modal', $args);
 ?>
 
 

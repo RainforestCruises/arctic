@@ -142,7 +142,7 @@ $args = array(
 
 <!-- Inquire Modal -->
 <?php
-get_template_part('template-parts/product/content', 'modal-product-inquiry', $args);
+get_template_part('template-parts/product/content', 'product-inquiry-modal', $args);
 ?>
 
 <?php get_footer() ?>

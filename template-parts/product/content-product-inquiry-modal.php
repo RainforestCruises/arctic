@@ -350,10 +350,7 @@ $ships = $args['ships'];
                                         </button>
                                     </div>
 
-
                                 </div>
-
-
                             </div>
 
                     <?php endforeach;
