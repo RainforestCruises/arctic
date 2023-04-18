@@ -47,7 +47,7 @@ function afloat_image_markup($image_id, $image_size, $sizes_array = [])
         }
     }
     echo 'src="' . $image_src . '" alt="' . $image_alt . '"';
-
+ 
     // if(!$sizes_array) {
     //     echo 'src="' . $image_src . '" alt="' . $image_alt . '"';
     // } else {
