@@ -104,7 +104,7 @@ $itineraries_title = get_field('itineraries_title');
                                     <div class="specs-item">
                                         <div class="specs-item__icon">
                                             <svg>
-                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat"></use>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat-16"></use>
                                             </svg>
                                         </div>
                                         <div class="specs-item__text">

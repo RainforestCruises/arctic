@@ -189,7 +189,7 @@
                 <circle cx="8" cy="6" r="2.5" fill="none"></circle>
             </g>
         </symbol>
-        <symbol id="icon-boat" viewBox="0 0 16 16">
+        <symbol id="icon-boat-16" viewBox="0 0 16 16">
             <title>boat</title>
             <g class="nc-icon-wrapper">
                 <polygon fill="currentColor" points="10,3 6,3 6,1 4,1 4,3 2,3 2,7 12,7 " stroke="none"></polygon>

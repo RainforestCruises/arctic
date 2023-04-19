@@ -160,9 +160,9 @@
         },
         {
             "key": "field_61dc9f9d6d5d7",
-            "label": "Categories",
-            "name": "categories",
-            "type": "relationship",
+            "label": "Category",
+            "name": "category",
+            "type": "post_object",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -175,13 +175,10 @@
                 "rfc_deal_categories"
             ],
             "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "object"
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
         },
         {
             "key": "field_64357485240b5",
@@ -260,25 +257,6 @@
             "endpoint": 0
         },
         {
-            "key": "field_643713ea9710d",
-            "label": "Show Terms",
-            "name": "show_terms",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
             "key": "field_643713f89710e",
             "label": "Terms and Conditions",
             "name": "terms_and_conditions",
@@ -345,5 +323,5 @@
     "active": true,
     "description": "Deal - CPT",
     "show_in_rest": 0,
-    "modified": 1681333875
+    "modified": 1681917007
 }

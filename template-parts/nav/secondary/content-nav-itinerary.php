@@ -2,7 +2,7 @@
 $title = get_field('display_name');
 $itinerary = get_post();
 $departures = getDepartureList($itinerary);
-$deals = getDepartureListDeals($departures);
+$deals = getDealsFromDepartureList($departures);
 ?>
 
 <!-- Itinerary Nav -->

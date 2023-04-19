@@ -1,0 +1,50 @@
+.deal-main {
+    @include flexBlock;
+    margin-top: 4rem;
+    &__content {
+        z-index: 2;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%; 
+        max-width: $page-width-full;
+        @include flexPadding;
+
+       
+        &__grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8rem;
+
+            
+            @media only screen and (max-width: $bp-large) {
+                grid-template-columns: 1fr;
+            }
+
+            position: relative;
+
+            &__terms {
+        
+             
+            }
+
+            &__ships {
+          
+                margin-top: 1.5rem;
+                &__media {
+                    height: 50rem;
+                }
+                &__cta {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                @media only screen and (max-width: $bp-large) {
+                    display: none;
+                }
+            }
+        }
+    }
+}

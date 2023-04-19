@@ -74,9 +74,9 @@ $subtitleDisplay = count($deals) == 1 ? "There is 1 deal available on select dep
                                 <div class="deal-card__urgency__text">
                                     <?php if ($has_expiry_date) :
                                         echo 'Offer expires in ' . getDaysUntilExpiry($expiry_date) . ' days';
-                                     else :
+                                    else :
                                         echo 'Limited time offer';
-                                     endif; ?>
+                                    endif; ?>
                                 </div>
                                 <div class="deal-card__urgency__cta">
                                     <button class="cta-square-icon deal-cta" dealId="<?php echo $id ?>">
@@ -125,7 +125,6 @@ $subtitleDisplay = count($deals) == 1 ? "There is 1 deal available on select dep
                 $image = get_field('featured_image', $deal);
                 $title = get_field('navigation_title', $deal);
                 $description = get_field('description', $deal);
-                $show_terms = get_field('show_terms', $deal);
                 $terms_and_conditions = get_field('terms_and_conditions', $deal);
                 $has_expiry_date = get_field('has_expiry_date', $deal);
                 $expiry_date =  get_field('expiry_date', $deal);
@@ -147,12 +146,12 @@ $subtitleDisplay = count($deals) == 1 ? "There is 1 deal available on select dep
                     <div class="product-deals-modal-item__description">
                         <?php echo $description; ?>
                     </div>
-                    <?php if ($show_terms) : ?>
+                    <?php if ($terms_and_conditions) : ?>
                         <h4>Terms & Conditions</h4>
                         <ul class="highlight-list">
                             <?php foreach ($terms_and_conditions as $term) : ?>
                                 <li>
-                                    <span style="margin-right: 1rem;">&#8212;</span>
+                                    <span>&#8212;</span>
                                     <?php echo $term['condition'] ?>
                                 </li>
                             <?php endforeach; ?>
@@ -169,9 +168,14 @@ $subtitleDisplay = count($deals) == 1 ? "There is 1 deal available on select dep
                                     <?php echo getDaysUntilExpiry($expiry_date) ?> Days Remaining
                                 </div>
                             </div>
-
                         </div>
                     <?php endif; ?>
+                    <a class="cta-square-icon" href="<?php echo get_permalink($deal) ?>" target="_blank" style="width: min-content; margin-top: 1rem; align-self: flex-end;">
+                        View Deal Page
+                        <svg>
+                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                        </svg>
+                    </a>
 
                 </div>
             <?php endforeach; ?>

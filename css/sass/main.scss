@@ -13,7 +13,7 @@
 @import "base/tabs";
 @import "base/selection-controls";
 
-//page 
+// page 
 @import "pages/home";
 @import "pages/search";
 @import "pages/generic";
@@ -23,7 +23,7 @@
 @import "pages/reviews";
 
 
-//shared
+// shared
 @import "components/shared/popper";
 @import "components/shared/grid-block";
 @import "components/shared/slider-block";
@@ -36,7 +36,7 @@
 @import "components/shared/outline-panel";
 @import "components/shared/bootstrap-datepicker";
 
-//products (generic)
+// products (generic)
 @import "components/products/product-hero";
 @import "components/products/product-overview";
 @import "components/products/product-related";
@@ -56,34 +56,39 @@
 @import "components/products/cruise/cruise-itineraries";
 @import "components/products/cruise/cruise-cabins";
 
+// home
+@import "components/home/home-hero";
+@import "components/home/home-map";
+@import "components/home/home-quote";
+@import "components/home/home-full-search";
 
-//landing
+// landing
 @import "components/landing/landing-hero";
 @import "components/landing/landing-overview";
 @import "components/landing/landing-guides";
 @import "components/landing/landing-topics";
 
-//guide (single)
+// guide (single)
 @import "components/guides/guide-hero";
 @import "components/guides/guide-main";
 
-//guides toplevel
+// guides toplevel
 @import "components/guides-toplevel/guides-toplevel-hero";
 @import "components/guides-toplevel/guides-toplevel-main";
 
 
-//deal (single)
+// deal (single)
 @import "components/deal/deal-hero";
 @import "components/deal/deal-intro";
 @import "components/deal/deal-main";
 
+// deals toplevel
+@import "components/deals-toplevel/deals-toplevel-category";
+@import "components/deals-toplevel/deals-toplevel-hero";
 
 
-//home
-@import "components/home/home-hero";
-@import "components/home/home-map";
-@import "components/home/home-quote";
-@import "components/home/home-full-search";
+
+
 
 
 
@@ -119,9 +124,4 @@
 @import "components/search/search-result";
 @import "components/search/search-checkbox";
 
-
-//deals
-@import "components/deals/deals-hero";
-@import "components/deals/deals-featured";
-@import "components/deals/deals-destinations";
 

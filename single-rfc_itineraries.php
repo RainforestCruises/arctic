@@ -13,7 +13,7 @@ $days = get_field('itinerary');
 $departures = getDepartureList($itinerary);
 $lowestOverallPrice = getLowestDepartureListPrice($departures);
 $bestOverallDiscount = getBestDepartureListDiscount($departures);
-$deals = getDepartureListDeals($departures);
+$deals = getDealsFromDepartureList($departures);
 
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);

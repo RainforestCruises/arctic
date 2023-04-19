@@ -15,7 +15,7 @@ $itineraries = get_field('itineraries');
 $departures = getDepartureList($ship);
 $lowestOverallPrice = getLowestDepartureListPrice($departures);
 $bestOverallDiscount = getBestDepartureListDiscount($departures);
-$deals = getDepartureListDeals($departures);
+$deals = getDealsFromDepartureList($departures);
 
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);

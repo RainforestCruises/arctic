@@ -1,48 +1,48 @@
-.deals-page {
-    padding-top: 12rem;
+// .deals-page {
+//     padding-top: 12rem;
 
-    &__section-hero {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
+//     &__section-hero {
+//         display: flex;
+//         align-items: center;
+//         flex-direction: column;
+//     }
 
-    &__section-featured {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        margin-top: 6rem;
-        padding-top: 3rem;
-        position: relative;
+//     &__section-featured {
+//         display: flex;
+//         align-items: center;
+//         flex-direction: column;
+//         margin-top: 6rem;
+//         padding-top: 3rem;
+//         position: relative;
 
-        &::before {
-            content: "";
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            background-image: linear-gradient(to top, rgba($color-white, 0.8), rgba($color-white, 0.8)),
-                url(img/bg/topo-1.png);
-            opacity: 0.35;
-            top: 0;
-            left: 0;
-            z-index: -3;
-        }
-    }
+//         &::before {
+//             content: "";
+//             position: absolute;
+//             height: 100%;
+//             width: 100%;
+//             background-image: linear-gradient(to top, rgba($color-white, 0.8), rgba($color-white, 0.8)),
+//                 url(img/bg/topo-1.png);
+//             opacity: 0.35;
+//             top: 0;
+//             left: 0;
+//             z-index: -3;
+//         }
+//     }
 
-    &__section-destinations {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        margin-top: 6rem;
+//     &__section-destinations {
+//         display: flex;
+//         align-items: center;
+//         flex-direction: column;
+//         margin-top: 6rem;
         
-        position: relative;
+//         position: relative;
 
 
 
         
-    }
+//     }
 
-}
+// }
 
 
 

@@ -199,41 +199,6 @@ function getBestDepartureDiscount($departure)
     return $bestDiscount;
 }
 
-// DEALS ----------------------------------------------------------------------------------------------
-// get a list of unique deals from a list of departures
-function getDepartureListDeals($departures)
-{
-    $uniqueDealsArray = [];
-    foreach ($departures as $d) {
-        $deals = $d['Deals'];
-        foreach ($deals as $deal) {
-            if (!in_array($deal, $uniqueDealsArray)) {
-                $uniqueDealsArray[] = $deal; // only add non dulpicates
-            }
-        }
-    }
-    return $uniqueDealsArray;
-}
-function getDealsDisplay($deals)
-{
-    $displayText = '';
-    if ($deals) {
-        if (count($deals) == 1) {
-            $displayText = '1 Deal Available';
-        } else {
-            $displayText =  count($deals) . ' Deals Available';
-        }
-    }
-    echo $displayText;
-}
-function getDaysUntilExpiry($expiry_date)
-{
-    $now = time();
-    $datediff = strtotime($expiry_date) - $now;
-    $daysUntilExpiry = round($datediff / (60 * 60 * 24));
-    return $daysUntilExpiry;
-}
-
 
 // MAPS ----------------------------------------------------------------------------------------------
 function getItineraryObject($itinerary)
@@ -572,4 +537,3 @@ function itineraryRange($itineraries, $separator, $onlyMin = false)
 
     return $returnString;
 }
-

@@ -416,6 +416,7 @@
     padding: 1.5rem 2rem;
     position: relative;
     background-color: $color-white;
+    text-decoration: none !important;
 
     @media only screen and (max-width: $bp-small) {
         gap: 1rem;
@@ -860,7 +861,6 @@
         &__title {
             color: $color-primary;
             font-weight: 700;
-            //padding-bottom: 0.8rem;
             font-size: 1.6rem;
             line-height: 2rem;
             &:link {
@@ -969,4 +969,13 @@
             color: $color-green;
         }
     }
+}
+
+
+.date-chip {
+    border: 1px solid $color-primary;
+    padding: .4rem .7rem;
+    border-radius: .5rem;
+    font-size: 1.2rem;
+    margin-right: .5rem;
 }

@@ -38,7 +38,7 @@ function afloat_images_sizes()
     add_image_size('portrait-small', 440, 330, true);
 
     add_image_size('square-small', 325, 325, true); 
-    add_image_size('square-thumb', 200, 200, true); 
+    add_image_size('square-thumb', 100, 100, true); 
 
 }
 

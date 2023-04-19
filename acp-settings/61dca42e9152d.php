@@ -5,7 +5,7 @@ return array (
   'title' => 'Deals',
   'type' => 'rfc_deals',
   'id' => '61dca42e9152d',
-  'updated' => 1681226225,
+  'updated' => 1681917060,
   'columns' => 
   array (
     'title' => 
@@ -55,6 +55,24 @@ return array (
       'filter_label' => '',
       'name' => '643579a8feb850',
     ),
+    '6440045f381064' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Category',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_61dc9f9d6d5d7',
+      'post_property_display' => 'title',
+      'post_link_to' => 'edit_post',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '6440045f381064',
+    ),
     '643579931be76c' => 
     array (
       'type' => 'column-acf_field',
@@ -91,25 +109,6 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '61dca405c8f5c4',
-    ),
-    '61dca50672b020' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Categories',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_61dc9f9d6d5d7',
-      'post_property_display' => 'title',
-      'post_link_to' => 'edit_post',
-      'number_of_items' => '10',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '61dca50672b020',
     ),
     '61dca3e7d020c4' => 
     array (

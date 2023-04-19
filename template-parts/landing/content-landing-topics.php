@@ -6,7 +6,6 @@ $topics = get_field('topics');
 
 
 <section class="grid-block" id="section-about">
-
     <?php $count = 1;
     foreach ($topics as $topic) : ?>
         <div class="grid-block__content block-top-divider">

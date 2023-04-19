@@ -140,7 +140,7 @@ $itineraries = get_posts($queryArgs);
                                     <div class="specs-item">
                                         <div class="specs-item__icon">
                                             <svg>
-                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat"></use>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat-16"></use>
                                             </svg>
                                         </div>
                                         <div class="specs-item__text">

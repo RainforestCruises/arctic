@@ -2,7 +2,7 @@
 $title = get_the_title();
 $ship = get_post();
 $departures = getDepartureList($ship);
-$deals = getDepartureListDeals($departures);
+$deals = getDealsFromDepartureList($departures);
 ?>
 <!-- Cruise Nav -->
 <nav class="nav-secondary small-width">

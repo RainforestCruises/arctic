@@ -88,14 +88,19 @@ p {
         display: grid;
         grid-template-columns: min-content 1fr;
         margin-bottom: 1.5rem;
-
+        gap: 2rem;
         & svg {
             height: 1.2rem;
             width: 1.2rem;
             color: $color-primary;
-            margin-right: 2rem;
             transform: translateY(7px);
         }
+
+        & span {
+            font-weight: 700;
+            color: $color-primary;
+        }
+
     }
 }
 

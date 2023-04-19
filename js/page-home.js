@@ -127,10 +127,10 @@ jQuery(document).ready(function ($) {
             600: {
                 slidesPerView: 2,
             },
-            800: {
+            1000: {
                 slidesPerView: 3,
             },
-            1000: {
+            1300: {
                 slidesPerView: 4,
             }
         }
@@ -155,7 +155,7 @@ jQuery(document).ready(function ($) {
             1000: {
                 slidesPerView: 4,
             },
-            1200: {
+            1300: {
                 slidesPerView: 5,
             }
         }
