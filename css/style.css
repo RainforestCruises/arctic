@@ -393,6 +393,10 @@ p {
   .swiper-button-prev--overlay.swiper-button-disabled {
     opacity: 0 !important;
     pointer-events: all; }
+  @media only screen and (max-width: 600px) {
+    .swiper-button-next--overlay,
+    .swiper-button-prev--overlay {
+      display: none !important; } }
   .swiper-button-next--white-border,
   .swiper-button-prev--white-border {
     box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.1);
@@ -482,7 +486,7 @@ p {
   .btn-text-plain:hover {
     color: #347fff; }
   .btn-text-plain svg {
-    margin-left: .5rem;
+    margin-left: 0.5rem;
     height: 1.8rem;
     width: 1.8rem;
     fill: currentColor; }
@@ -4166,15 +4170,11 @@ p {
   .cabins-modal__content .information-card {
     margin-bottom: 2rem; }
 
-.product-deals-modal-item__title-group {
+.product-deals-modal-item__title {
   margin-bottom: 1rem;
-  color: #1d2225; }
-  .product-deals-modal-item__title-group__title {
-    font-size: 2.2rem;
-    font-weight: 700; }
-  .product-deals-modal-item__title-group__sub {
-    font-size: 1.3rem;
-    font-weight: 600; }
+  color: #1d2225;
+  font-size: 2.2rem;
+  font-weight: 700; }
 
 .product-deals-modal-item__image-area {
   margin-bottom: 2rem; }
@@ -4188,8 +4188,21 @@ p {
 .product-deals-modal-item__description {
   margin-bottom: 2rem; }
 
-.product-deals-modal-item__urgency {
+.product-deals-modal-item__cta {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem; }
+  @media only screen and (max-width: 37.5em) {
+    .product-deals-modal-item__cta {
+      grid-template-columns: 1fr; } }
+  .product-deals-modal-item__cta__button-area {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; }
+
+.urgent-deal {
   width: max-content;
+  width: 100%;
   padding: 1.5rem 4rem;
   padding-left: 2.5rem;
   border-radius: 1rem;
@@ -4202,12 +4215,12 @@ p {
   font-weight: 600;
   color: #1d2225; }
   @media only screen and (max-width: 37.5em) {
-    .product-deals-modal-item__urgency {
+    .urgent-deal {
       width: 100%; } }
-  .product-deals-modal-item__urgency__icon {
+  .urgent-deal__icon {
     height: 3rem;
     width: 3rem; }
-  .product-deals-modal-item__urgency__title__sub {
+  .urgent-deal__title__sub {
     font-size: 1.2rem; }
 
 .itinerary-overview {
@@ -4617,7 +4630,7 @@ p {
           align-items: flex-end; } }
       @media only screen and (max-width: 37.5em) {
         .cruise-itineraries__content__main {
-          height: 42rem; } }
+          height: 48rem; } }
       .cruise-itineraries__content__main__detail-area {
         width: 46rem;
         transform: translateX(-3rem) translateY(-1.5rem);
@@ -4651,7 +4664,11 @@ p {
               padding: 0rem;
               box-shadow: none !important;
               border: 1px solid #e6e6e6;
-              border-radius: 1rem; } }
+              border-radius: 1rem; }
+              .cruise-itineraries__content__main__detail-area__slider__slide .avatar {
+                grid-template-columns: 1fr; }
+              .cruise-itineraries__content__main__detail-area__slider__slide .avatar__image-area {
+                display: none; } }
       .cruise-itineraries__content__main__map-area {
         position: absolute;
         top: 0;

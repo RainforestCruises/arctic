@@ -103,15 +103,9 @@ jQuery(document).ready(function ($) {
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
-            enabled: false
+            enabled: true
         },
-        breakpoints: {
-            600: {
-                navigation: {
-                    enabled: true,
-                }
-            }
-        }
+
     });
 
     // itineraries slider

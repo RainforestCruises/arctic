@@ -167,7 +167,7 @@
                 align-items: flex-end;
             }
             @media only screen and (max-width: $bp-small) {
-                height: 42rem;
+                height: 48rem;
             }
 
             &__detail-area {
@@ -204,6 +204,7 @@
                             .tiny-card {
                                 display: grid !important;
                             }
+                            
 
                             .resource-card {
                                 display: none !important;
@@ -215,6 +216,13 @@
                             box-shadow: none !important;
                             border: 1px solid $color-grey-light-1a;
                             border-radius: 1rem;
+
+                            .avatar {
+                                grid-template-columns: 1fr;
+                            }
+                            .avatar__image-area {
+                                display: none;
+                            }
                         }
                     }
                 }

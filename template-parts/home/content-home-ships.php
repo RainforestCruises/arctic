@@ -152,7 +152,7 @@ $ships_title_subtext = get_field('ships_title_subtext');
 
                         <div class="swiper-pagination"></div>
                         <div class="swiper-button-prev swiper-button-prev--overlay"></div>
-                        <div class="swiper-button-next swiper-button-prev--overlay"></div>
+                        <div class="swiper-button-next swiper-button-next--overlay"></div>
                     </div>
 
                     <!-- Content -->

@@ -131,13 +131,8 @@ $subtitleDisplay = count($deals) == 1 ? "There is 1 deal available on select dep
             ?>
 
                 <div class="product-deals-modal-item" dealId="<?php echo $id; ?>">
-                    <div class="product-deals-modal-item__title-group">
-                        <div class="product-deals-modal-item__title-group__title">
-                            <?php echo $title; ?>
-                        </div>
-                        <div class="product-deals-modal-item__title-group__sub">
-
-                        </div>
+                    <div class="product-deals-modal-item__title">
+                        <?php echo $title; ?>
                     </div>
                     <div class="product-deals-modal-item__image-area">
                         <img <?php afloat_image_markup($image['id'], 'landscape-small', array('landscape-small', 'portrait-small')); ?>>
@@ -157,25 +152,33 @@ $subtitleDisplay = count($deals) == 1 ? "There is 1 deal available on select dep
                             <?php endforeach; ?>
                         </ul>
                     <?php endif; ?>
-                    <?php if ($has_expiry_date) : ?>
-                        <div class="product-deals-modal-item__urgency">
-                            <svg class="product-deals-modal-item__urgency__icon">
-                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-stopwatch"></use>
-                            </svg>
-                            <div class="product-deals-modal-item__urgency__title">
-                                Offer Valid Until <?php echo date("F j, Y", strtotime($expiry_date)); ?>
-                                <div class="product-deals-modal-item__urgency__title__sub">
-                                    <?php echo getDaysUntilExpiry($expiry_date) ?> Days Remaining
+                    <div class="product-deals-modal-item__cta">
+                        <div class="product-deals-modal-item__cta__urgency-area">
+                            <?php if ($has_expiry_date) : ?>
+                                <div class="urgent-deal">
+                                    <svg class="urgent-deal__icon">
+                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-stopwatch"></use>
+                                    </svg>
+                                    <div class="urgent-deal__title">
+                                        Offer Valid Until <?php echo date("F j, Y", strtotime($expiry_date)); ?>
+                                        <div class="urgent-deal__title__sub">
+                                            <?php echo getDaysUntilExpiry($expiry_date) ?> Days Remaining
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php endif; ?>
                         </div>
-                    <?php endif; ?>
-                    <a class="cta-square-icon" href="<?php echo get_permalink($deal) ?>" target="_blank" style="width: min-content; margin-top: 1rem; align-self: flex-end;">
-                        View Deal Page
-                        <svg>
-                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                        </svg>
-                    </a>
+                        <div class="product-deals-modal-item__cta__button-area">
+                            <a class="cta-square-icon" href="<?php echo get_permalink($deal) ?>" target="_blank" >
+                                View Deal Page
+                                <svg>
+                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+
 
                 </div>
             <?php endforeach; ?>

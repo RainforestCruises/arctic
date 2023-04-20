@@ -35,7 +35,6 @@ jQuery(document).ready(function ($) {
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
-            enabled: false
         },
         pagination: {
             el: '.swiper-pagination',
@@ -43,13 +42,7 @@ jQuery(document).ready(function ($) {
             dynamicBullets: true,
             dynamicMainBullets: 3,
         },
-        breakpoints: {
-            600: {
-                navigation: {
-                    enabled: true,
-                }
-            }
-        }
+       
     });
 
 

@@ -1,18 +1,9 @@
-
 .product-deals-modal-item {
-
-    &__title-group {
+    &__title {
         margin-bottom: 1rem;
         color: $color-primary;
-        &__title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            
-        }
-        &__sub {
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
+        font-size: 2.2rem;
+        font-weight: 700;
     }
 
     &__image-area {
@@ -30,36 +21,49 @@
         margin-bottom: 2rem;
     }
 
-    &__urgency {
-        width: max-content;
-        @media only screen and (max-width: $bp-small) {
-            width: 100%;
-        }
-    
-        padding: 1.5rem 4rem;
-        padding-left: 2.5rem;
-        border-radius: 1rem;
-        background-color: rgba($color-green, .1);
+    &__cta {
         display: grid;
-        grid-template-columns: min-content 1fr;
-        align-items: center;
-        gap: 2rem;
-        font-size: 1.6rem;
-        font-weight: 600;
-        color: $color-primary;
-        &__icon {
-            height: 3rem;
-            width: 3rem;
-
+        grid-template-columns: 2fr 1fr;
+        gap: 3rem;
+        @media only screen and (max-width: $bp-small) {
+            grid-template-columns: 1fr;
         }
+        
 
-        &__title {
-
-            &__sub {
-                font-size: 1.2rem;
-            }
-        }
+        &__button-area {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }   
     }
-
 }
 
+
+.urgent-deal {
+    width: max-content;
+    @media only screen and (max-width: $bp-small) {
+        width: 100%;
+    }
+    width: 100%;
+    padding: 1.5rem 4rem;
+    padding-left: 2.5rem;
+    border-radius: 1rem;
+    background-color: rgba($color-green, 0.1);
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    align-items: center;
+    gap: 2rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: $color-primary;
+    &__icon {
+        height: 3rem;
+        width: 3rem;
+    }
+
+    &__title {
+        &__sub {
+            font-size: 1.2rem;
+        }
+    }
+}

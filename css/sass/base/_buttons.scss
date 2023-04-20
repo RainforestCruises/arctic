@@ -31,10 +31,13 @@
   }
 
   &--overlay {
-    //remove
     &.swiper-button-disabled {
       opacity: 0 !important;
       pointer-events: all;
+    }
+
+    @media only screen and (max-width: 600px) {
+      display: none !important;
     }
   }
 
@@ -123,7 +126,6 @@
   white-space: nowrap;
   text-decoration: none;
 
-
   & svg {
     height: 1.8rem;
     width: 1.8rem;
@@ -148,13 +150,12 @@
   display: flex;
   align-items: center;
 
-
   &:hover {
     color: $color-supporting;
   }
 
   & svg {
-    margin-left: .5rem;
+    margin-left: 0.5rem;
     height: 1.8rem;
     width: 1.8rem;
     fill: currentColor;
@@ -166,7 +167,6 @@
       margin-right: 1rem;
     }
   }
-
 }
 
 //Arctic -- Main button
