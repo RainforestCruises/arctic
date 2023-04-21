@@ -61,24 +61,21 @@ $show_faq = get_field('show_faq');
     <nav class="nav-secondary__mobile-menu">
         <ul class="nav-secondary__mobile-menu__list">
             <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#section-ships">Ships</a>
-            </li>
-            <li class="nav-secondary__mobile-menu__list__item">
                 <a class="nav-secondary__mobile-menu__list__item__link" href="#section-itineraries">Itineraries</a>
             </li>
             <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#section-guide">Travel Guide</a>
+                <a class="nav-secondary__mobile-menu__list__item__link" href="#section-about">About</a>
             </li>
             <?php if ($show_faq) : ?>
                 <li class="nav-secondary__mobile-menu__list__item">
                     <a class="nav-secondary__mobile-menu__list__item__link" href="#section-faq">FAQ</a>
                 </li>
             <?php endif; ?>
-
             <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link cta-link generic-inquire-cta">
-                    Inquire
-                </a>
+                <a class="nav-secondary__mobile-menu__list__item__link" href="#section-ships">Ships</a>
+            </li>
+            <li class="nav-secondary__mobile-menu__list__item">
+                <a class="nav-secondary__mobile-menu__list__item__link" href="#section-guide">Travel Guide</a>
             </li>
         </ul>
     </nav>

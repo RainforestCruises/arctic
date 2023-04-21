@@ -56,7 +56,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
         </div>
         <div class="nav-mobile__content-panel__main">
             <a class="nav-button nav-forward" menuLinkTo="menu-cruises">
-                <div class="nav-button__icon">
+                <div class="nav-button__svg-icon">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-compass-24"></use>
                     </svg>
@@ -69,7 +69,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
                 </svg>
             </a>
             <a class="nav-button nav-forward" menuLinkTo="menu-ships">
-                <div class="nav-button__icon">
+                <div class="nav-button__svg-icon">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat-24"></use>
                     </svg>
@@ -82,7 +82,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
                 </svg>
             </a>
             <a class="nav-button nav-forward" menuLinkTo="menu-guides">
-                <div class="nav-button__icon">
+                <div class="nav-button__svg-icon">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-read-24"></use>
                     </svg>
@@ -95,7 +95,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
                 </svg>
             </a>
             <a class="nav-button mobile-link" href="<?php echo get_home_url(); ?>/deals">
-                <div class="nav-button__icon">
+                <div class="nav-button__svg-icon">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-discount-24"></use>
                     </svg>
@@ -105,7 +105,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
                 </div>
             </a>
             <a class="nav-button mobile-link" href="<?php echo get_home_url(); ?>/about">
-                <div class="nav-button__icon">
+                <div class="nav-button__svg-icon">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-c-question-24"></use>
                     </svg>
@@ -115,7 +115,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
                 </div>
             </a>
             <a class="nav-button mobile-link" href="<?php echo get_home_url(); ?>/contact">
-                <div class="nav-button__icon">
+                <div class="nav-button__svg-icon">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send-24"></use>
                     </svg>
@@ -125,7 +125,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
                 </div>
             </a>
             <a class="nav-button mobile-link phone" href="tel:<?php echo get_field('phone_number_numeric', 'options'); ?>">
-                <div class="nav-button__icon">
+                <div class="nav-button__svg-icon">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-phone-24"></use>
                     </svg>
@@ -135,7 +135,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
                 </div>
             </a>
             <a class="nav-button mobile-link localization-open-button">
-                <div class="nav-button__icon">
+                <div class="nav-button__svg-icon">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-globe"></use>
                     </svg>
@@ -190,7 +190,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
                     $hero_images =  get_field('hero_images', $item);
                 ?>
                     <a href="<?php echo $url; ?>" class="nav-button mobile-link">
-                        <div class="nav-button__icon">
+                        <div class="nav-button__img-icon">
                             <img <?php afloat_image_markup($hero_images[0]['id'], 'square-small', array('square-small')); ?>>
                         </div>
                         <div class="nav-button__text">
@@ -239,7 +239,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
                 ?>
 
                     <a href="<?php echo $url; ?>" class="nav-button mobile-link">
-                        <div class="nav-button__icon">
+                        <div class="nav-button__img-icon">
                             <img <?php afloat_image_markup($ship_image['id'], 'square-small', array('square-small')); ?>>
                         </div>
                         <div class="nav-button__text">
@@ -288,7 +288,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
                     $featured_image = get_field('featured_image', $guide_post)
                 ?>
                     <a href="<?php echo $url; ?>" class="nav-button mobile-link">
-                        <div class="nav-button__icon">
+                        <div class="nav-button__img-icon">
                             <img <?php afloat_image_markup($featured_image['id'], 'square-small', array('square-small')); ?>>
                         </div>
                         <div class="nav-button__text">
@@ -298,7 +298,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
                 <?php endforeach; ?>
             <?php endforeach; ?>
             <a class="nav-button view-all"  href="<?php echo $top_level_guides_page; ?>">
-                <div class="nav-button__icon">
+                <div class="nav-button__svg-icon">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-read-24"></use>
                     </svg>

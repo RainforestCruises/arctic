@@ -36,7 +36,7 @@
         &--top {
             animation-name: navMobileAnimation;
             animation-duration: 0.3s;
-            animation-timing-function: ease-out;         
+            animation-timing-function: ease-out;
         }
 
         &--sub {
@@ -55,7 +55,6 @@
             grid-template-columns: 1fr min-content;
             column-gap: 1.5rem;
             align-items: center;
-            
 
             &__heading {
                 padding: 1.5rem 3rem;
@@ -66,7 +65,7 @@
 
             &__brand {
                 padding: 1.5rem 3rem;
-                padding-bottom: .5rem;
+                padding-bottom: 0.5rem;
                 & img {
                     height: 4rem;
                     width: auto;
@@ -80,7 +79,7 @@
             padding-bottom: 12rem; //for browser clearance
 
             &__group-title {
-                padding: .75rem 3rem;
+                padding: 0.75rem 3rem;
                 color: $color-primary;
                 font-size: 1.5rem;
                 font-weight: 700;
@@ -91,8 +90,6 @@
     }
 }
 
-
-
 //COMPONENTS
 .nav-button {
     display: grid;
@@ -100,11 +97,11 @@
     gap: 1.5rem;
     align-items: center;
     padding: 1.5rem 3rem;
-    
+
     color: $color-primary;
     font-size: 1.5rem;
     line-height: 2rem;
-    
+
     background-color: transparent;
     text-decoration: none;
     border: none;
@@ -113,8 +110,6 @@
     position: relative;
 
     border-top: 1px solid $color-grey-light-1a;
-
-
 
     & svg {
         height: 2.4rem;
@@ -132,24 +127,30 @@
         // }
     }
 
-    &__icon {
+    &__img-icon {
+        display: flex;
+        align-items: center;
+        height: 5rem;
+        width: 5rem;
+        & img {
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+        }
+    }
+
+    &__svg-icon {
         display: flex;
         align-items: center;
         & svg {
-            color: rgba($color-primary, .8)
+            color: rgba($color-primary, 0.8);
         }
 
-        & img {
-            height: 5rem;
-            width: 5rem;
-            border-radius: 50%;
-        };
+
     }
 
-    
-
     &.nav-back {
-        padding: .75rem 3rem;
+        padding: 0.75rem 3rem;
         background-color: $color-primary;
         color: $color-grey-light-1a;
         grid-column: 1 / -1;
@@ -166,8 +167,6 @@
     }
 }
 
-
-
 .nav-close-button {
     cursor: pointer;
     color: $color-grey-light-2;
@@ -181,9 +180,9 @@
     width: 3rem;
     & svg {
         height: 2rem;
-        width: 2rem;       
+        width: 2rem;
         color: currentColor;
-    }     
+    }
 }
 
 //ANIMATIONS
@@ -197,4 +196,3 @@
         opacity: 1;
     }
 }
-

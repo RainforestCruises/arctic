@@ -1,6 +1,6 @@
 <?php
 
-// DEPARTURE LIST ----------------------------------------------------------------------------------------------
+// DEPARTURES ----------------------------------------------------------------------------------------------
 function getDepartureList($post, $specificShip = null)
 {
     $departures = [];
@@ -89,7 +89,7 @@ function getDepartureList($post, $specificShip = null)
     return $departures;
 }
 
-// OVERALL
+// LIST
 // get lowest price from a list of departures
 function getLowestDepartureListPrice($departures)
 {
@@ -134,7 +134,7 @@ function getBestDepartureListDiscount($departures)
     return $bestDiscount;
 }
 
-// PER DEPARTURE
+// SINGLE
 // get lowest cabin price (not sold out) from a single departure
 function getLowestDeparturePrice($departure)
 {
@@ -175,6 +175,7 @@ function getHighestDeparturePrice($departure)
     return $price;
 }
 
+// get highest discount percentage form a single departures
 function getBestDepartureDiscount($departure)
 {
     $bestDiscount = 0;
@@ -200,154 +201,22 @@ function getBestDepartureDiscount($departure)
 }
 
 
-// MAPS ----------------------------------------------------------------------------------------------
-function getItineraryObject($itinerary)
-{
-    $embarkation_point = get_field('embarkation_point', $itinerary);
-    $disembarkation_point = get_field('disembarkation_point', $itinerary);
-    $hasDifferentPorts = $disembarkation_point != null && ($disembarkation_point != $embarkation_point);
-
-    $days = get_field('itinerary', $itinerary);
-
-    // Destination Point Series
-    $destinationPoints = [];
-    $destinationList = [];
-    $count = 0;
-
-    //Build Destination List
-    foreach ($days as $day) {
-
-        $destinations = $day['destination']; // multiple destinations
-
-        foreach ($destinations as $destination) {
-            $dayDisplay = dayCountMarkup($day['day_count']);
-            $destinationImage =  get_field('image', $destination); //get default image if none provided
-            $destinationImageURL = $destinationImage ? wp_get_attachment_image_url($destinationImage['ID'], 'portrait-small') : "";
 
 
-            $point  = [
-                'index' => $count,
-                'isEmbarkation' => $destination == $embarkation_point,
-                'isDisembarkation' => $destination == $disembarkation_point,
-                'postid' => $destination->ID,
-                'title' => get_the_title($destination),
-                'day' => $dayDisplay,
-                'image' => $destinationImageURL,
-                'coordinates' => [get_field('longitude', $destination), get_field('latitude', $destination)],
-            ];
+// ITINERARY ----------------------------------------------------------
+function getLowestPriceFromListOfItineraries($itineraries){
 
-            // to check duplicates
-            if (!in_array($destination, $destinationList)) {
-                $destinationPoints[] = $point; // only add non dulpicates
-                $count++; //increment index
-
-            } else { // append the day markup
-                $match = findObjectById($point['postid'], $destinationPoints, 'postid');
-                $matchIndex = $match['index'];
-                $destinationPoints[$matchIndex]['day'] .= ', ' . $point['day']; // append the day markup to matched destination
-            }
-
-            $destinationList[] = $destination; //full list
-        }
+    $priceList = [];
+    foreach($itineraries as $itinerary){
+        $departures = getDepartureList($itinerary);
+        $priceList[] = getLowestDepartureListPrice($departures);
     }
 
-    //Reformat to feature 
-    $featureList = [];
-    foreach ($destinationPoints as $point) {
-        $feature = [
-            'type' => 'Feature',
-            'geometry' => [
-                'type' => 'Point',
-                'coordinates' => $point['coordinates']
-            ],
-            'properties' => [
-                'day' => $point['day'],
-                'title' => $point['title'],
-                'image' => $point['image'],
-                'isEmbarkation' => $point['isEmbarkation'],
-                'isDisembarkation' => $point['isDisembarkation']
-            ],
-        ];
-
-        $featureList[] = $feature;
-    }
-
-    // Itinerary Object
-    $itineraryObject = [
-        'featureList' => $featureList,
-        'hasDifferentPorts' => $hasDifferentPorts,
-        'geojson' => json_decode(get_field('geojson', $itinerary)),
-        'startLatitude' => get_field('latitude_start_point', $itinerary),
-        'startLongitude' => get_field('longitude_start_point', $itinerary),
-        'startZoom' => get_field('zoom_level_start_point', $itinerary),
-        'postId' => get_the_ID($itinerary),
-    ];
-
-    return $itineraryObject;
+    $lowestPrice = min($priceList);
+    return($lowestPrice);
 }
 
-
-// destination list
-function getItineraryObjectFromDestinations($destinations, $startLatitude, $startLongitude, $startZoomPoint)
-{
-
-    // Destination Point Series
-    $destinationPoints = [];
-
-    foreach ($destinations as $destination) {
-        $destinationImage =  get_field('image', $destination); //get default image if none provided
-        $destinationImageURL = $destinationImage ? wp_get_attachment_image_url($destinationImage['ID'], 'portrait-small') : "";
-
-        $point  = [
-            'index' => 0,
-            'isEmbarkation' => false,
-            'isDisembarkation' => false,
-            'postid' => $destination->ID,
-            'title' => get_the_title($destination),
-            'day' => null,
-            'image' => $destinationImageURL,
-            'coordinates' => [get_field('longitude', $destination), get_field('latitude', $destination)],
-        ];
-
-        $destinationPoints[] = $point; // only add non dulpicates
-    }
-
-    //Reformat to feature 
-    $featureList = [];
-    foreach ($destinationPoints as $point) {
-        $feature = [
-            'type' => 'Feature',
-            'geometry' => [
-                'type' => 'Point',
-                'coordinates' => $point['coordinates']
-            ],
-            'properties' => [
-                'day' => $point['day'],
-                'title' => $point['title'],
-                'image' => $point['image'],
-                'isEmbarkation' => $point['isEmbarkation'],
-                'isDisembarkation' => $point['isDisembarkation']
-            ],
-        ];
-
-        $featureList[] = $feature;
-    }
-
-    // Itinerary Object
-    $itineraryObject = [
-        'featureList' => $featureList,
-        'hasDifferentPorts' => false,
-        'geojson' => null,
-        'startLatitude' => $startLatitude,
-        'startLongitude' => $startLongitude,
-        'startZoom' => $startZoomPoint,
-        'postId' => null,
-    ];
-
-    return $itineraryObject;
-}
-
-
+// fly / sail display
 function getFlightOption($itinerary)
 {
     $embarkation_is_flight = get_field('embarkation_is_flight', $itinerary);
@@ -367,28 +236,6 @@ function getFlightOption($itinerary)
 
     return false;
 }
-
-
-// GENERIC ----------------------------------------------------------------------------------------------
-// Random Code Generator
-function getRandomHex($num_bytes = 4)
-{
-    return bin2hex(openssl_random_pseudo_bytes($num_bytes));
-}
-
-
-// generate array of years 
-function createYearSelection($current, $yearsCount)
-{
-    $years = [];
-    $count = 0;
-    while ($count < $yearsCount) {
-        $years[] = $current + $count;
-        $count++;
-    }
-    return $years;
-}
-
 // embarkation / disembarkation display
 function getEmbarkationDisplay($itinerary)
 {
@@ -404,26 +251,7 @@ function getEmbarkationDisplay($itinerary)
     return $display;
 }
 
-
-function dayCountMarkup($string, $exclude_number = false)
-{
-    $string = str_replace(' ', '', $string);
-    if ($exclude_number == true) {
-        if (str_contains($string, '-')) {
-            return 'Days';
-        } else {
-            return 'Day';
-        }
-    } else {
-        if (str_contains($string, '-')) {
-            return 'Days ' . $string;
-        } else {
-            return 'Day ' . $string;
-        }
-    }
-}
-
-
+// get display of passenger count range
 function getItineraryShipSize($ships)
 {
     $display = "";
@@ -437,18 +265,6 @@ function getItineraryShipSize($ships)
     $display = $low . "-" . $high;
 
     return $display;
-}
-
-
-function shipSizeDisplay($pax)
-{
-    $displayText = "Small Size";
-    if ($pax > 200) {
-        $displayText = "Large Size";
-    } else if ($pax >= 120) {
-        $displayText = "Medium Size";
-    }
-    return $displayText;
 }
 
 // build list of unique destinations within an itinerary, with embarkations removed
@@ -486,6 +302,7 @@ function getItineraryDestinations($itinerary)
     return $display;
 }
 
+// get display of ships sailing the itinerary
 function getItineraryShips($itinerary)
 {
     $ships = get_field('ships', $itinerary);
@@ -506,8 +323,7 @@ function getItineraryShips($itinerary)
     return $display;
 }
 
-
-//Range (From x Days to x Days)
+// range (From x Days to x Days)
 function itineraryRange($itineraries, $separator, $onlyMin = false)
 {
     $returnString = "";
@@ -536,4 +352,18 @@ function itineraryRange($itineraries, $separator, $onlyMin = false)
     }
 
     return $returnString;
+}
+
+
+//SHIPS ------------------------------------------------------
+// get display of ship size classification
+function shipSizeDisplay($pax)
+{
+    $displayText = "Small Size";
+    if ($pax > 200) {
+        $displayText = "Large Size";
+    } else if ($pax >= 120) {
+        $displayText = "Medium Size";
+    }
+    return $displayText;
 }

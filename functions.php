@@ -5,6 +5,7 @@ require_once(__DIR__ . '/includes/theme-config.php');
 require_once(__DIR__ . '/includes/menu-config.php');
 require_once(__DIR__ . '/includes/header-footer-functions.php');
 require_once(__DIR__ . '/includes/deal-functions.php');
+require_once(__DIR__ . '/includes/map-functions.php');
 
 require_once(__DIR__ . '/includes/post-meta-scripts.php');
 require_once(__DIR__ . '/includes/utilities.php');

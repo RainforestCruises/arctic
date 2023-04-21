@@ -5379,7 +5379,7 @@ p {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 60rem; }
+      width: 50rem; }
       .landing-nav__content__links__link:link, .landing-nav__content__links__link:visited {
         color: currentColor;
         font-size: 1.6rem;
@@ -5387,6 +5387,63 @@ p {
         text-decoration: none; }
       .landing-nav__content__links__link:hover {
         color: #347fff; }
+    .landing-nav__content__info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; }
+      .landing-nav__content__info__starting-price {
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin-right: 3rem; }
+        @media only screen and (max-width: 37.5em) {
+          .landing-nav__content__info__starting-price {
+            flex-direction: column;
+            align-items: flex-start; } }
+        .landing-nav__content__info__starting-price__title-area {
+          color: #1d2225;
+          text-align: right;
+          padding-right: 1.3rem;
+          border-right: 1px solid #c2c6c9;
+          display: flex;
+          flex-direction: column; }
+          @media only screen and (max-width: 37.5em) {
+            .landing-nav__content__info__starting-price__title-area {
+              border-right: none;
+              padding-right: 0rem;
+              text-align: left; } }
+          .landing-nav__content__info__starting-price__title-area__subtext {
+            font-size: 1.2rem;
+            color: #919598;
+            font-weight: 400; }
+          .landing-nav__content__info__starting-price__title-area__text {
+            font-size: 1.6rem;
+            line-height: 1.6rem;
+            font-weight: 700; }
+        .landing-nav__content__info__starting-price__amount {
+          color: #1d2225;
+          padding-left: 1.3rem;
+          font-size: 3rem;
+          font-weight: 500; }
+          .landing-nav__content__info__starting-price__amount span {
+            transform: translateX(-1rem);
+            color: #1d2225; }
+          .landing-nav__content__info__starting-price__amount__discount {
+            font-size: 1.2rem;
+            font-weight: 400;
+            transform: translateY(-1rem); }
+          @media only screen and (max-width: 37.5em) {
+            .landing-nav__content__info__starting-price__amount {
+              padding-left: 0rem; } }
+        .landing-nav__content__info__starting-price__description {
+          position: absolute;
+          bottom: -1rem;
+          left: 0;
+          font-size: 1.1rem;
+          letter-spacing: 0.1rem;
+          text-align: start;
+          white-space: nowrap; }
 
 .landing-overview {
   display: flex;
@@ -7114,7 +7171,7 @@ p {
         font-weight: 700; }
       .nav-mobile__content-panel__static__brand {
         padding: 1.5rem 3rem;
-        padding-bottom: .5rem; }
+        padding-bottom: 0.5rem; }
         .nav-mobile__content-panel__static__brand img {
           height: 4rem;
           width: auto; }
@@ -7123,7 +7180,7 @@ p {
       overflow-y: scroll;
       padding-bottom: 12rem; }
       .nav-mobile__content-panel__main__group-title {
-        padding: .75rem 3rem;
+        padding: 0.75rem 3rem;
         color: #1d2225;
         font-size: 1.5rem;
         font-weight: 700;
@@ -7153,17 +7210,22 @@ p {
   .nav-button.view-all {
     padding-top: 2.5rem;
     font-weight: 700; }
-  .nav-button__icon {
+  .nav-button__img-icon {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    width: 5rem; }
+    .nav-button__img-icon img {
+      height: 100%;
+      width: 100%;
+      border-radius: 50%; }
+  .nav-button__svg-icon {
     display: flex;
     align-items: center; }
-    .nav-button__icon svg {
+    .nav-button__svg-icon svg {
       color: rgba(29, 34, 37, 0.8); }
-    .nav-button__icon img {
-      height: 5rem;
-      width: 5rem;
-      border-radius: 50%; }
   .nav-button.nav-back {
-    padding: .75rem 3rem;
+    padding: 0.75rem 3rem;
     background-color: #1d2225;
     color: #e6e6e6;
     grid-column: 1 / -1; }

@@ -2,6 +2,8 @@
 $itineraries = get_field('itineraries');
 $itineraries_title_subtext = get_field('itineraries_title_subtext');
 $itineraries_title = get_field('itineraries_title');
+$lowestPrice = getLowestPriceFromListOfItineraries($itineraries);
+console_log($lowestPrice);
 ?>
 
 

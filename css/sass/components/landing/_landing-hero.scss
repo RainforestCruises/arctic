@@ -1,4 +1,4 @@
-.landing-hero { 
+.landing-hero {
     @include flexBlock;
     height: 65rem;
     width: 100%;
@@ -17,19 +17,18 @@
         position: absolute;
         height: 100%;
         width: 100%;
-        z-index: -1; 
+        z-index: -1;
         & img {
-            height: 100%;            
+            height: 100%;
             width: 100%;
             object-fit: cover;
-         
         }
-        &::after { 
+        &::after {
             position: absolute;
             content: "";
             top: 0;
             left: 0;
-            height: 100%;            
+            height: 100%;
             width: 100%;
             background-image: linear-gradient(to bottom, rgba($color-black, 0.3), transparent 20%),
                 linear-gradient(to bottom, rgba($color-black, 0.1), rgba($color-black, 0.1)),
@@ -40,7 +39,7 @@
 
     &__content {
         max-width: $page-width-full;
-        @include flexPadding; 
+        @include flexPadding;
         padding-top: 12rem;
         padding-bottom: 2rem;
         display: flex;
@@ -52,7 +51,6 @@
         }
 
         &__title-group {
-
             &__title {
                 font-size: 5rem;
                 font-weight: 400;
@@ -63,7 +61,7 @@
                 position: relative;
                 align-items: flex-end;
                 margin-bottom: 1rem;
-    
+
                 @media only screen and (max-width: $bp-large) {
                     font-size: 4rem;
                     line-height: 4.5rem;
@@ -75,9 +73,6 @@
                 font-size: 1.6rem;
             }
         }
-
-     
-       
     }
 }
 
@@ -104,27 +99,101 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 60rem;
+            width: 50rem;
             &__link {
-
                 &:link,
                 &:visited {
                     color: currentColor;
                     font-size: 1.6rem;
                     font-weight: 500;
                     text-decoration: none;
-
                 }
 
                 &:hover {
                     color: $color-supporting;
                 }
-               
             }
         }
 
-        &__cta {
+        &__info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            &__starting-price {
+                display: flex;
+                align-items: center;
+                position: relative;
+                margin-right: 3rem;
 
+                @media only screen and (max-width: $bp-small) {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                &__title-area {
+                    color: $color-primary;
+                    text-align: right;
+                    padding-right: 1.3rem;
+                    border-right: 1px solid $color-grey-light-2;
+                    display: flex;
+                    flex-direction: column;
+
+                    @media only screen and (max-width: $bp-small) {
+                        border-right: none;
+                        padding-right: 0rem;
+                        text-align: left;
+                    }
+
+                    &__subtext {
+                        font-size: 1.2rem;
+                        color: $color-grey-2;
+                        font-weight: 400;
+                    }
+
+                    &__text {
+                        font-size: 1.6rem;
+                        line-height: 1.6rem;
+                        font-weight: 700;
+                    }
+                }
+
+                &__amount {
+                    color: $color-primary;
+                    padding-left: 1.3rem;
+                    font-size: 3rem;
+                    font-weight: 500;
+                    //letter-spacing: 0.1rem;
+
+                    & span {
+                        transform: translateX(-1rem);
+                        color: $color-primary;
+                    }
+
+                    &__discount {
+                        font-size: 1.2rem;
+                        font-weight: 400;
+                        transform: translateY(-1rem);
+                    }
+
+                    @media only screen and (max-width: $bp-small) {
+                        padding-left: 0rem;
+                    }
+                }
+
+                &__description {
+                    position: absolute;
+                    bottom: -1rem;
+                    left: 0;
+                    font-size: 1.1rem;
+                    letter-spacing: 0.1rem;
+                    text-align: start;
+                    white-space: nowrap;
+                }
+            }
+
+            &__cta {
+            }
         }
     }
 }

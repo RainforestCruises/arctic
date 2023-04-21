@@ -368,6 +368,24 @@ function structuredDataFaq()
 }
 
 
+// Random Code Generator
+function getRandomHex($num_bytes = 4)
+{
+    return bin2hex(openssl_random_pseudo_bytes($num_bytes));
+}
+
+
+// generate array of years 
+function createYearSelection($current, $yearsCount)
+{
+    $years = [];
+    $count = 0;
+    while ($count < $yearsCount) {
+        $years[] = $current + $count;
+        $count++;
+    }
+    return $years;
+}
 
 
 
