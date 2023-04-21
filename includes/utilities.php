@@ -40,27 +40,30 @@ function afloat_image_markup($image_id, $image_size, $sizes_array = [])
     $default_width = $default_image_attributes[1];
     $default_height = $default_image_attributes[2];
 
-    echo 'src="' . $image_src . '" alt="' . $image_alt . '" ' . 'width="' . $default_width . '" height="' . $default_height . '"';
+    $markup = 'src="' . $image_src . '" alt="' . $image_alt . '" ' . 'width="' . $default_width . '" height="' . $default_height . '"';
 
+    
+    $generate_source_set_image_markup = get_field('generate_source_set_image_markup', 'options');
+    if (!$generate_source_set_image_markup) {
+        echo $markup;
+    } else {
 
-
-    // $image_srcset = '';
-    // $max_width = 0;
-    // foreach ($sizes_array as $s) {
-    //     $image_attributes = wp_get_attachment_image_src($image_id, $s);
-    //     $image_srcset = $image_srcset . $image_attributes[0] . ' ' . $image_attributes[1] . 'w,';
-
-    //     if ($image_attributes[1] > $max_width) {
-    //         $max_width = $image_attributes[1];
-    //     }
-    // }
-
- 
-    // if(!$sizes_array) {
-    //     echo 'src="' . $image_src . '" alt="' . $image_alt . '"';
-    // } else {
-    //     echo 'src="' . $image_src . '" srcset="' . $image_srcset . '" sizes="(max-width: ' . $max_width . 'px) 100vw, ' . $max_width . 'px" alt="' . $image_alt . '"';
-    // }
+        if (!$sizes_array){
+            echo $markup;
+        } else {
+            $image_srcset = '';
+            $max_width = 0;
+            foreach ($sizes_array as $s) {
+                $image_attributes = wp_get_attachment_image_src($image_id, $s);
+                $image_srcset = $image_srcset . $image_attributes[0] . ' ' . $image_attributes[1] . 'w,';
+    
+                if ($image_attributes[1] > $max_width) {
+                    $max_width = $image_attributes[1];
+                }
+            }  
+            echo $markup . ' " srcset="' . $image_srcset . '" sizes="(max-width: ' . $max_width . 'px) 100vw, ' . $max_width . 'px"';
+        }     
+    }
 }
 
 
@@ -108,8 +111,7 @@ function priceFormat($price)
         } else {
             $display = "N/A";
         }
-    }
-    else {
+    } else {
         if ($price > 0) {
             $display = "$" .  number_format($price, 0);
         } else {
@@ -370,24 +372,25 @@ function structuredDataFaq()
 
 
 // Table Of Contents Generator
-function generateIndex($html) {
-    preg_match_all('/<h([1-6])*[^>]*>(.*?)<\/h[1-6]>/',$html,$matches);
+function generateIndex($html)
+{
+    preg_match_all('/<h([1-6])*[^>]*>(.*?)<\/h[1-6]>/', $html, $matches);
 
     $index = "<ul>";
     $prev = 2;
 
-    foreach ($matches[0] as $i => $match){
+    foreach ($matches[0] as $i => $match) {
 
         $curr = $matches[1][$i];
         $text = strip_tags($matches[2][$i]);
-        $slug = strtolower(str_replace("--","-",preg_replace('/[^\da-z]/i', '-', $text)));
-        $anchor = '<div name="'.$slug.'" class="toc-link">'.$text.'</div>';
-        $html = str_replace($text,$anchor,$html);
+        $slug = strtolower(str_replace("--", "-", preg_replace('/[^\da-z]/i', '-', $text)));
+        $anchor = '<div name="' . $slug . '" class="toc-link">' . $text . '</div>';
+        $html = str_replace($text, $anchor, $html);
 
-        $prev <= $curr ?: $index .= str_repeat('</ul>',($prev - $curr));
+        $prev <= $curr ?: $index .= str_repeat('</ul>', ($prev - $curr));
         $prev >= $curr ?: $index .= "<ul>";
 
-        $index .= '<li><a href="#'.$slug.'" class="toc-link">'.$text.'</a></li>';
+        $index .= '<li><a href="#' . $slug . '" class="toc-link">' . $text . '</a></li>';
 
         $prev = $curr;
     }
@@ -398,14 +401,16 @@ function generateIndex($html) {
 }
 
 //Generate Initials 
-function generateInitials($name) {
+function generateInitials($name)
+{
     $words = explode(' ', $name);
 
     if (count($words) >= 2) {
         return mb_strtoupper(
-                mb_substr($words[0], 0, 1, 'UTF-8') . 
-                mb_substr(end($words), 0, 1, 'UTF-8'), 
-            'UTF-8');
+            mb_substr($words[0], 0, 1, 'UTF-8') .
+                mb_substr(end($words), 0, 1, 'UTF-8'),
+            'UTF-8'
+        );
     } else {
         preg_match_all('#([A-Z]+)#', $name, $capitals);
         if (count($capitals[1]) >= 2) {
@@ -416,7 +421,8 @@ function generateInitials($name) {
 }
 
 //Random Background Color
-function generateBgColor() {
+function generateBgColor()
+{
     $background_colors = array('#60568f', '#708765', '#164852', '#919169', '#798fb3', '#7d6a5f', '#608071', '#537875', '#455d73', '#734d6e');
     $rand_background = $background_colors[array_rand($background_colors)];
 
