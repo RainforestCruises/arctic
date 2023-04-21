@@ -1,9 +1,11 @@
 <?php
 $topics = get_field('topics');
+$show_topics = get_field('show_topics');
 
 ?>
 
 
+<?php if ($show_topics) : ?>
 
 <section class="grid-block" id="section-about">
     <?php $count = 1;
@@ -36,3 +38,4 @@ $topics = get_field('topics');
         </div>
     <?php $count++; endforeach; ?>
 </section>
+<?php endif; ?>

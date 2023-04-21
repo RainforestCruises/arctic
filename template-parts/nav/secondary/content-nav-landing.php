@@ -1,6 +1,7 @@
 <?php
 $title = get_the_title();
 $show_faq = get_field('show_faq');
+$show_topics = get_field('show_topics');
 
 ?>
 
@@ -21,9 +22,11 @@ $show_faq = get_field('show_faq');
             <a href="#section-itineraries" class="nav-secondary__content__links__link">
                 Itineraries
             </a>
-            <a href="#section-about" class="nav-secondary__content__links__link">
-                About
-            </a>
+            <?php if ($show_topics) : ?>
+                <a href="#section-about" class="nav-secondary__content__links__link">
+                    About
+                </a>
+            <?php endif; ?>
             <?php if ($show_faq) : ?>
                 <a href="#section-faq" class="nav-secondary__content__links__link">
                     FAQ
@@ -63,9 +66,11 @@ $show_faq = get_field('show_faq');
             <li class="nav-secondary__mobile-menu__list__item">
                 <a class="nav-secondary__mobile-menu__list__item__link" href="#section-itineraries">Itineraries</a>
             </li>
-            <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#section-about">About</a>
-            </li>
+            <?php if ($show_topics) : ?>
+                <li class="nav-secondary__mobile-menu__list__item">
+                    <a class="nav-secondary__mobile-menu__list__item__link" href="#section-about">About</a>
+                </li>
+            <?php endif; ?>
             <?php if ($show_faq) : ?>
                 <li class="nav-secondary__mobile-menu__list__item">
                     <a class="nav-secondary__mobile-menu__list__item__link" href="#section-faq">FAQ</a>

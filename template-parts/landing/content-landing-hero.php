@@ -3,6 +3,7 @@ $hero_images = get_field('hero_images');
 $hero_title = get_field('hero_title');
 $hero_subtitle = get_field('hero_subtitle');
 $show_faq = get_field('show_faq');
+$show_topics = get_field('show_topics');
 
 $itineraries = get_field('itineraries');
 $lowestOverallPrice = getLowestPriceFromListOfItineraries($itineraries);
@@ -38,7 +39,9 @@ $lowestOverallPrice = getLowestPriceFromListOfItineraries($itineraries);
         <!-- Nav Links -->
         <div class="landing-nav__content__links">
             <a href="#section-itineraries" class="landing-nav__content__links__link">Itineraries</a>
-            <a href="#section-about" class="landing-nav__content__links__link">About</a>
+            <?php if ($show_topics) : ?>
+                <a href="#section-about" class="landing-nav__content__links__link">About</a>
+            <?php endif; ?>
             <?php if ($show_faq) : ?>
                 <a href="#section-faq" class="landing-nav__content__links__link">FAQ</a>
             <?php endif; ?>
@@ -63,7 +66,7 @@ $lowestOverallPrice = getLowestPriceFromListOfItineraries($itineraries);
                 <div class="landing-nav__content__info__starting-price__amount">
                     <div class="landing-nav__content__info__starting-price__amount__text">
                         <?php priceFormat($lowestOverallPrice); ?>
-                    </div>                
+                    </div>
                 </div>
 
             </div>
