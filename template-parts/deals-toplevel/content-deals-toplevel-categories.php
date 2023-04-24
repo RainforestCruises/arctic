@@ -47,14 +47,6 @@ foreach ($sections as $section) :
     </section>
 
 
-
-
-
-
-
-
-
-
     <section class="slider-block deal-slider-block" id="section-deals-<?php echo $categoryCount; ?>">
         <div class="slider-block__content block-top-divider">
 
@@ -64,7 +56,7 @@ foreach ($sections as $section) :
                 <!-- Title -->
                 <div class="title-group">
                     <div class="title-group__title">
-                        Explore Itineraries With <?php echo $category_title ?> Deals
+                        Itineraries With <?php echo $category_title ?> Deals
                     </div>
                     <div class="title-group__sub">
                         <?php echo $subtitleDisplay; ?>

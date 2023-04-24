@@ -6,7 +6,6 @@
 
     @media only screen and (max-width: $bp-large) {
         margin-top: 7rem;
-        min-height: 50rem;
         height: auto;
     }
 
@@ -39,23 +38,34 @@
     &__content {
         max-width: $page-width-full;
         @include flexPadding; 
-        padding-top: 12rem;
-        padding-bottom: 2rem;
-        display: flex;
+        padding-top: 14rem;
+        display: grid;
+        grid-template-rows: 1fr min-content;
         color: $color-white;
+        height: 100%;
 
         @media only screen and (max-width: $bp-large) {
-            padding-top: 2rem;
-            padding-bottom: 2rem;
+            padding-top: 6rem;
+            min-height: 50rem;
+        }
+        @media only screen and (max-width: $bp-small) {
+            padding-top: 3rem;
+            min-height: auto;
         }
 
         &__title-group {
             max-width: 60rem;
-
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             &__category {
                 font-size: 1.8rem;
                 font-weight: 700;
-                margin-bottom: 1rem;
+                margin-bottom: .5rem;
+                @media only screen and (max-width: $bp-small) {
+                    font-size: 1.4rem;
+                    line-height: 2rem;
+                }
             }
 
 
@@ -63,11 +73,9 @@
                 font-size: 5rem;
                 font-weight: 400;
                 letter-spacing: 0.1rem;
-                display: flex;
-                align-self: end;
+               
                 line-height: 6.5rem;
                 position: relative;
-                align-items: flex-end;
                 margin-bottom: 1rem;
     
                 @media only screen and (max-width: $bp-large) {
@@ -75,6 +83,10 @@
                     line-height: 4.5rem;
                     font-weight: 600;
                     letter-spacing: 0rem;
+                }
+                @media only screen and (max-width: $bp-small) {
+                    font-size: 3rem;
+                    line-height: 3.5rem;
                 }
             }
             &__sub {
@@ -112,9 +124,16 @@
                     }
                 }
             }
-        }
+        }    
 
-     
-       
+      
+        &__bottom {     
+            padding: 4rem 0;    
+            @media only screen and (max-width: $bp-small) {
+                display: flex;
+                justify-content: center;
+            } 
+        } 
     }
+   
 }

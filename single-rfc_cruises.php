@@ -79,10 +79,10 @@ wp_localize_script(
   get_template_part('template-parts/cruise/content', 'cruise-overview', $args);
   ?>
 
-  <!-- Modal Deckplan Gallery
+  <!-- Modal Deckplan Gallery -->
   <?php
   get_template_part('template-parts/cruise/content', 'cruise-deckplan-gallery', $args);
-  ?> -->
+  ?> 
 
   <!-- Cabins -->
   <?php

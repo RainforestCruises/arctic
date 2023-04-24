@@ -94,8 +94,8 @@ jQuery(document).ready(function ($) {
 
     document.addEventListener('click', evt => {
 
-        const isButtonClick = navSecondaryButton.contains(evt.target);
-        const isOpen = navSecondaryMobile.classList.contains('active');
+        const isButtonClick = navSecondaryButton && navSecondaryButton.contains(evt.target);
+        const isOpen = navSecondaryMobile && navSecondaryMobile.classList.contains('active');
 
         if (!isButtonClick && isOpen) {
             navSecondaryMobile.classList.remove('active');

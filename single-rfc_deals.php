@@ -1,5 +1,6 @@
 <?php
 wp_enqueue_script('page-deal-single', get_template_directory_uri() . '/js/page-deal-single.js', array('jquery'), false, true);
+wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', array('jquery'), false, true);
 
 
 get_header();

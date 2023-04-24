@@ -181,10 +181,31 @@
         },
         {
             "key": "field_602bf5195119f",
-            "label": "Vessel Capacity",
+            "label": "Vessel Capacity (Base)",
             "name": "vessel_capacity",
             "type": "number",
             "instructions": "Total number of guests",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_64469e416c23b",
+            "label": "Vessel Capacity Antarctica",
+            "name": "vessel_capacity_antarctica",
+            "type": "number",
+            "instructions": "Total capacity when sailing in the Antarctica region (Leave blank if the same)",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -261,8 +282,27 @@
         },
         {
             "key": "field_64345ac2e14a2",
-            "label": "Guest to Crew Ratio",
+            "label": "Guest to Guide \/ Crew Ratio",
             "name": "guest_to_crew_ratio",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_64469dcd6c23a",
+            "label": "Guest to Space Ratio",
+            "name": "guest_to_space_ratio",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -831,5 +871,5 @@
     "active": true,
     "description": "Cruise - CPT",
     "show_in_rest": 0,
-    "modified": 1681152890
+    "modified": 1682351056
 }

@@ -14,6 +14,16 @@ $expandOverview = strlen($overview_content) > $max_length ? true : false;
 $overview_content_limited = substr($overview_content, 0, $max_length) . '...';
 
 
+$vessel_capacity = get_field('vessel_capacity');
+$vessel_capacity_antarctica = get_field('vessel_capacity_antarctica');
+
+
+$vessel_capacity_display = $vessel_capacity;
+if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_capacity) {
+    $vessel_capacity_display = $vessel_capacity . ' (' . $vessel_capacity_antarctica .' in Antarctica)';
+}
+
+
 ?>
 
 <!-- Cruise Overview -->
@@ -90,7 +100,7 @@ $overview_content_limited = substr($overview_content, 0, $max_length) . '...';
                                     Guests
                                 </div>
                                 <div class="specs__item__text">
-                                    <?php echo get_field('vessel_capacity') ?>
+                                    <?php echo $vessel_capacity_display ?>
                                 </div>
                             </div>
 
@@ -107,10 +117,20 @@ $overview_content_limited = substr($overview_content, 0, $max_length) . '...';
                             <!-- Guest to Crew Ratio -->
                             <div class="specs__item">
                                 <div class="specs__item__title">
-                                    Guest to Crew Ratio
+                                    Guest to Guide / Crew Ratio
                                 </div>
                                 <div class="specs__item__text">
                                     <?php echo get_field('guest_to_crew_ratio') ?>
+                                </div>
+                            </div>
+                            
+                             <!-- Guest to Space Ratio -->
+                            <div class="specs__item">
+                                <div class="specs__item__title">
+                                    Guest to Space Ratio
+                                </div>
+                                <div class="specs__item__text">
+                                    <?php echo get_field('guest_to_space_ratio') ?>
                                 </div>
                             </div>
 
@@ -130,7 +150,7 @@ $overview_content_limited = substr($overview_content, 0, $max_length) . '...';
                                     Number of Cabins
                                 </div>
                                 <div class="specs__item__text">
-                                    <?php echo count($args['cabins']) ?>
+                                     <?php echo get_field('number_of_cabins') ?>
                                 </div>
                             </div>
 

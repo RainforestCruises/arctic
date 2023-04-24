@@ -6,6 +6,7 @@ $has_expiry_date = get_field('has_expiry_date');
 $expiry_date =  get_field('expiry_date');
 $categoryPost = get_field('category');
 $categoryTitle = get_the_title($categoryPost);
+$top_level_deals_page =  get_field('top_level_deals_page', 'options');
 
 ?>
 
@@ -17,9 +18,19 @@ $categoryTitle = get_the_title($categoryPost);
 
     <div class="deal-hero__content">
 
+
         <div class="deal-hero__content__title-group">
             <div class="deal-hero__content__title-group__category">
-                All Deals / <?php echo $categoryTitle ?>
+                <!-- Breadcrumb -->
+                <ol class="breadcrumb-list">
+                    <li>
+                        <a href="<?php echo $top_level_deals_page; ?>">All Deals</a>
+                    </li>
+                    <li>
+                        <?php echo $categoryTitle ?>
+                    </li>
+                </ol>
+
             </div>
             <div class="deal-hero__content__title-group__title">
                 <?php echo $dealName ?>
@@ -42,5 +53,15 @@ $categoryTitle = get_the_title($categoryPost);
             <?php endif; ?>
         </div>
 
+        <div class="deal-hero__content__bottom">
+            <a class="btn-scroll-overlay btn-scroll-overlay--down" id="down-arrow-button" href="#section-intro">
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                </svg>
+            </a>
+        </div>
+
     </div>
+
+
 </section>

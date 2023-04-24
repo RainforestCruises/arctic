@@ -299,6 +299,30 @@ p {
       font-weight: 700;
       color: #1d2225; }
 
+.breadcrumb-list li {
+  display: inline-block;
+  width: max-content; }
+  .breadcrumb-list li:not(:last-child):after {
+    content: " / ";
+    padding-right: 3px; }
+  .breadcrumb-list li a {
+    position: relative;
+    text-decoration: none;
+    color: currentColor; }
+    .breadcrumb-list li a::after {
+      content: "";
+      position: absolute;
+      bottom: -0.3rem;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.2s;
+      opacity: 0; }
+    .breadcrumb-list li a:hover::after {
+      color: #fff;
+      opacity: 1; }
+
 .badge-fly {
   font-size: 1.1rem;
   border-radius: 1rem;
@@ -670,14 +694,18 @@ p {
     width: 1.3rem;
     stroke: currentColor;
     fill: currentColor; }
+  .btn-scroll-overlay:hover {
+    background-color: rgba(255, 255, 255, 0.9); }
+  .btn-scroll-overlay--white {
+    color: rgba(255, 255, 255, 0.9); }
+    .btn-scroll-overlay--white:hover {
+      color: rgba(29, 34, 37, 0.9); }
   .btn-scroll-overlay--left svg {
     transform: rotate(180deg); }
   .btn-scroll-overlay--up svg {
     transform: rotate(270deg); }
   .btn-scroll-overlay--down svg {
     transform: rotate(90deg); }
-  .btn-scroll-overlay:hover {
-    background-color: rgba(255, 255, 255, 0.9); }
 
 .btn-pill {
   padding: 0.8rem 1.6rem;
@@ -781,11 +809,11 @@ p {
     height: 1.6rem;
     width: 1.6rem;
     stroke: currentColor;
-    fill: currentColor; }
+    fill: currentColor;
+    margin-right: .5rem; }
   .btn-pill-hero:hover {
-    background-color: rgba(255, 255, 255, 0.3); }
-  .btn-pill-hero.active {
-    background-color: rgba(255, 255, 255, 0.3); }
+    color: rgba(29, 34, 37, 0.9);
+    background-color: rgba(255, 255, 255, 0.9); }
 
 .close-button {
   position: relative;
@@ -6146,7 +6174,6 @@ p {
   @media only screen and (max-width: 62.5em) {
     .deal-hero {
       margin-top: 7rem;
-      min-height: 50rem;
       height: auto; } }
   .deal-hero__bg-image {
     position: absolute;
@@ -6170,32 +6197,41 @@ p {
     max-width: 160rem;
     width: 100%;
     padding: 0 6rem;
-    padding-top: 12rem;
-    padding-bottom: 2rem;
-    display: flex;
-    color: #fff; }
+    padding-top: 14rem;
+    display: grid;
+    grid-template-rows: 1fr min-content;
+    color: #fff;
+    height: 100%; }
     @media only screen and (max-width: 50em) {
       .deal-hero__content {
         padding: 0 3rem; } }
     @media only screen and (max-width: 62.5em) {
       .deal-hero__content {
-        padding-top: 2rem;
-        padding-bottom: 2rem; } }
+        padding-top: 6rem;
+        min-height: 50rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .deal-hero__content {
+        padding-top: 3rem;
+        min-height: auto; } }
     .deal-hero__content__title-group {
-      max-width: 60rem; }
+      max-width: 60rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; }
       .deal-hero__content__title-group__category {
         font-size: 1.8rem;
         font-weight: 700;
-        margin-bottom: 1rem; }
+        margin-bottom: .5rem; }
+        @media only screen and (max-width: 37.5em) {
+          .deal-hero__content__title-group__category {
+            font-size: 1.4rem;
+            line-height: 2rem; } }
       .deal-hero__content__title-group__title {
         font-size: 5rem;
         font-weight: 400;
         letter-spacing: 0.1rem;
-        display: flex;
-        align-self: end;
         line-height: 6.5rem;
         position: relative;
-        align-items: flex-end;
         margin-bottom: 1rem; }
         @media only screen and (max-width: 62.5em) {
           .deal-hero__content__title-group__title {
@@ -6203,6 +6239,10 @@ p {
             line-height: 4.5rem;
             font-weight: 600;
             letter-spacing: 0rem; } }
+        @media only screen and (max-width: 37.5em) {
+          .deal-hero__content__title-group__title {
+            font-size: 3rem;
+            line-height: 3.5rem; } }
       .deal-hero__content__title-group__sub {
         font-size: 1.6rem; }
       .deal-hero__content__title-group__urgency {
@@ -6227,6 +6267,12 @@ p {
           width: 3rem; }
         .deal-hero__content__title-group__urgency__title__sub {
           font-size: 1.2rem; }
+    .deal-hero__content__bottom {
+      padding: 4rem 0; }
+      @media only screen and (max-width: 37.5em) {
+        .deal-hero__content__bottom {
+          display: flex;
+          justify-content: center; } }
 
 .deal-intro {
   display: flex;

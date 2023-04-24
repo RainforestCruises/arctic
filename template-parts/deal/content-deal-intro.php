@@ -23,13 +23,6 @@ foreach ($ships as $ship) {
 
 $terms_and_conditions = get_field('terms_and_conditions');
 
-// $subtitleDisplay = "";
-// if (count($shipsWithDeal) > 1) {
-//     $subtitleDisplay = "Choose from the following " . count($shipsWithDeal) . " cruises with this special offer";
-// } else {
-//     $subtitleDisplay = "Choose from the following " . count($shipsWithDeal) . " cruise with this special offer";
-// }
-
 
 ?>
 

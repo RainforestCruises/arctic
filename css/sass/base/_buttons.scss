@@ -413,6 +413,17 @@
     fill: currentColor;
   }
 
+  &:hover {
+    background-color: rgba($color-white, 0.9);
+  }
+
+  &--white {
+    color: rgba($color-white, 0.9);
+    &:hover {
+      color: rgba($color-primary, 0.9);
+    }
+  }
+
   &--left {
     svg {
       transform: rotate(180deg);
@@ -429,11 +440,6 @@
     svg {
       transform: rotate(90deg);
     }
-  }
-
-  &:hover {
-    //opacity: 1;
-    background-color: rgba($color-white, 0.9);
   }
 }
 
@@ -573,15 +579,17 @@
     width: 1.6rem;
     stroke: currentColor;
     fill: currentColor;
+    margin-right: .5rem;
   }
 
   &:hover {
-    background-color: rgba($color-white, 0.3);
+    color: rgba($color-primary, 0.9);
+    background-color: rgba($color-white, 0.9);
   }
 
-  &.active {
-    background-color: rgba($color-white, 0.3);
-  }
+  // &.active {
+  //   background-color: rgba($color-white, 0.3);
+  // }
 }
 
 //OLD --------------------------
