@@ -80,7 +80,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                 <?php if ($deals) : ?>
                     <div class="product-hero__content__main__primary__deal-area">
                         <a class="specs-deal product-hero-deal-badge" href="#section-deals">
-                            <?php getDealsDisplay($deals); ?>
+                            <?php echo getDealsDisplay($deals); ?> Available
                         </a>
                     </div>
                 <?php endif; ?>

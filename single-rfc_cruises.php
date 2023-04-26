@@ -20,7 +20,6 @@ $deals = getDealsFromDepartureList($departures);
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
 
-
 //cabin posts
 $args = array(
   'posts_per_page' => -1,

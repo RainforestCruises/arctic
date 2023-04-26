@@ -361,20 +361,22 @@ jQuery(document).ready(function ($) {
 
 
 
-
-
-
-
-
-
     // deals - click event listeners
     const dealsModal = document.getElementById("dealsModal");
+    const dealsModalTitle = document.getElementById("dealsModalTitle");
+
     const dealCtaButtons = [...document.querySelectorAll('.deal-cta')];
 
     dealCtaButtons.forEach(item => {
         item.addEventListener('click', () => {
             dealsModal.style.display = 'flex';
             body.classList.add('no-scroll');
+
+            if(item.classList.contains('special-departure-cta')){
+                dealsModalTitle.innerHTML = "Special Departure Information";
+            } else {
+                dealsModalTitle.innerHTML = "Deal Information";
+            }
 
             const filterId = item.getAttribute('dealId');
             filterDeals(filterId);
@@ -386,7 +388,11 @@ jQuery(document).ready(function ($) {
         item.addEventListener('click', () => {
             dealsModal.style.display = 'flex';
             dealsModal.classList.add('modal-second-level');
-
+            if(item.classList.contains('special-departure-cta')){
+                dealsModalTitle.innerHTML = "Special Departure Information";
+            } else {
+                dealsModalTitle.innerHTML = "Deal Information";
+            }
             const filterId = item.getAttribute('dealId');
             filterDeals(filterId);
         });

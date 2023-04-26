@@ -66,7 +66,7 @@ $deals = getDealsFromDepartureList($departures);
             <li class="nav-secondary__mobile-menu__list__item">
                 <a class="nav-secondary__mobile-menu__list__item__link" href="#section-dates">Dates
                     <?php if ($deals) : ?>
-                        <span class="specs-deal" style="margin-left: 2rem;"><?php getDealsDisplay($deals); ?></span>
+                        <span class="specs-deal" style="margin-left: 2rem;"><?php echo getDealsDisplay($deals); ?></span>
                     <?php endif; ?>
                 </a>
             </li>

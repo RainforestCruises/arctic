@@ -9,7 +9,6 @@ $itineraryPosts = $args['itineraryPosts'];
 $ships = $args['ships'];
 ?>
 
-
 <div class="modal" id="inquireModal">
     <div class="modal__content">
         <div class=" modal__content__top">
@@ -126,7 +125,6 @@ $ships = $args['ships'];
                                 </div>
                             </div>
 
-
                             <!-- Specs -->
                             <div class="information-card__section">
                                 <div class="information-card__section__specs">
@@ -178,9 +176,11 @@ $ships = $args['ships'];
                                     <?php if ($deals) :
                                         foreach ($deals as $deal) :
                                             $dealId = $deal->ID;
+                                            $short_title = get_field('short_title', $deal);
+                                            $is_special_departure = get_field('is_special_departure', $deal);
                                     ?>
-                                            <div class="specs-deal modal-deal-card" dealId="<?php echo $dealId ?>">
-                                                <?php echo get_field('short_title', $deal) ?>
+                                            <div class="specs-deal <?php echo $is_special_departure ? "specs-deal--special special-departure-cta" : ""; ?> modal-deal-card" dealId="<?php echo $dealId ?>">
+                                                <?php echo $short_title; ?>
                                             </div>
                                     <?php endforeach;
                                     endif; ?>
@@ -259,6 +259,7 @@ $ships = $args['ships'];
                             $is_single =  get_field('is_single', $cabinPost);
                             $is_sharable =  get_field('is_sharable', $cabinPost);
                             $capacity =  get_field('capacity', $cabinPost);
+                            $quantity =  get_field('quantity', $cabinPost);
                             $beds =  get_field('beds', $cabinPost);
                             $hero_gallery = get_field('images', $cabinPost);
                             $image = $hero_gallery[0];
@@ -271,7 +272,6 @@ $ships = $args['ships'];
                             <div class="information-card information-card--horizontal modal-cabin-card" departureId="<?php echo $departureId; ?>">
                                 <!-- Title Group -->
                                 <div class="information-card__section">
-
                                     <div class="avatar " style="max-width: 100%;">
                                         <div class="avatar__image-area cabin-avatar-image" cabinId="<?php echo $cabinId; ?>" style="cursor: pointer">
                                             <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
@@ -283,6 +283,9 @@ $ships = $args['ships'];
                                             <div class="avatar__title-group__sub">
                                                 <?php echo $capacity; ?>, <?php echo $beds; ?>
                                             </div>
+                                            <div class="avatar__title-group__sub">
+                                                <?php echo $quantity; ?> <?php echo $quantity == 1 ? "Cabin" : "Cabins"; ?> Total
+                                            </div>
                                             <?php if ($is_sharable) : ?>
                                                 <div class="avatar__title-group__sub" style="font-style: italic;">
                                                     Option to Share
@@ -293,9 +296,6 @@ $ships = $args['ships'];
                                             </div>
                                         </div>
                                     </div>
-
-
-
                                 </div>
 
                                 <div class="information-card__section">

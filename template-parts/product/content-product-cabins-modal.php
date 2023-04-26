@@ -29,6 +29,7 @@ $cabins = $args['cabins'];
                 $description =  get_field('description', $c);
                 $is_single =  get_field('is_single', $c);
                 $capacity =  get_field('capacity', $c);
+                $quantity =  get_field('quantity', $c);
                 $amenities =  get_field('amenities', $c);
                 $beds =  get_field('beds', $c);
                 $images = get_field('images', $c);
@@ -54,8 +55,11 @@ $cabins = $args['cabins'];
                     <div class="cruise-cabins-modal-item__specification">
                         <span>Beds:</span> <?php echo $beds; ?>
                     </div>
-                    <div class="cruise-cabins-modal-item__specification" style="margin-bottom: 1.5rem">
+                    <div class="cruise-cabins-modal-item__specification" >
                         <span>Capacity:</span> <?php echo $capacity; ?>
+                    </div>
+                    <div class="cruise-cabins-modal-item__specification" style="margin-bottom: 1.5rem">
+                        <span>Number of Cabins:</span> <?php echo $quantity; ?> <?php echo $quantity == 1 ? "Cabin" : "Cabins"; ?>
                     </div>
                     <h3>
                         Features

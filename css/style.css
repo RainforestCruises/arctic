@@ -2713,8 +2713,6 @@ p {
         color: currentColor; }
       .resource-card__content__title-group__title {
         font-weight: 700; }
-        .resource-card__content__title-group__title span {
-          margin-left: 0.5rem; }
       .resource-card__content__title-group__sub {
         font-size: 1.4rem; }
     .resource-card__content__title-group-vertical {
@@ -3019,6 +3017,8 @@ p {
     grid-template-columns: min-content 1fr max-content;
     align-items: center;
     gap: 1.5rem; }
+    .deal-card__urgency--special {
+      background-color: rgba(141, 119, 235, 0.2); }
     .deal-card__urgency__icon {
       height: 3rem;
       width: 3rem;
@@ -3091,9 +3091,12 @@ p {
   padding: .5rem 2rem;
   cursor: pointer;
   display: flex;
-  text-decoration: none !important; }
+  text-decoration: none !important;
+  text-transform: capitalize; }
   .specs-deal:not(:last-child) {
     margin-bottom: 0.5rem; }
+  .specs-deal--special {
+    background-color: rgba(141, 119, 235, 0.2); }
 
 .specs-item {
   font-size: 1.4rem;

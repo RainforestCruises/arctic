@@ -5,7 +5,7 @@ return array (
   'title' => 'Deals',
   'type' => 'rfc_deals',
   'id' => '61dca42e9152d',
-  'updated' => 1681917060,
+  'updated' => 1682526020,
   'columns' => 
   array (
     'title' => 
@@ -110,6 +110,22 @@ return array (
       'filter_label' => '',
       'name' => '61dca405c8f5c4',
     ),
+    '64494f36b78d50' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Is Special Departure',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_64494ebbc5e66',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '64494f36b78d50',
+    ),
     '61dca3e7d020c4' => 
     array (
       'type' => 'column-acf_field',
@@ -125,23 +141,6 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '61dca3e7d020c4',
-    ),
-    '61e9e65e06a7f0' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Value Rating',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_61e9e50cbfa39',
-      'number_format' => '',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '61e9e65e06a7f0',
     ),
     '61e9e66a6147b0' => 
     array (

@@ -53,6 +53,7 @@ $curentYear = $args['curentYear'];
                         $dimensions =  get_field('dimensions', $cabinPost);
                         $is_single =  get_field('is_single', $cabinPost);
                         $capacity =  get_field('capacity', $cabinPost);
+                        $quantity =  get_field('quantity', $cabinPost);
                         $beds =  get_field('beds', $cabinPost);
                         $hero_gallery = get_field('images', $cabinPost);
                         $image = $hero_gallery[0];
@@ -73,6 +74,9 @@ $curentYear = $args['curentYear'];
                                 <div class="resource-card__content__title-group">
                                     <div class="resource-card__content__title-group__title">
                                         <?php echo $title ?>
+                                        <?php if($quantity) : 
+                                            echo ' (' . $quantity . ')';
+                                        endif;?>
                                     </div>
                                 </div>
 

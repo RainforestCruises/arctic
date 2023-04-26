@@ -38,6 +38,25 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_64494ebbc5e66",
+            "label": "Is Special Departure",
+            "name": "is_special_departure",
+            "type": "true_false",
+            "instructions": "Check if this is a Special Departure like a Guest Lecture instead of a typical deal",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_61dc9f9d53590",
             "label": "Navigation Title",
             "name": "navigation_title",
@@ -117,27 +136,6 @@
             "max_height": "",
             "max_size": "",
             "mime_types": ""
-        },
-        {
-            "key": "field_61e9e50cbfa39",
-            "label": "Value Rating",
-            "name": "value_rating",
-            "type": "number",
-            "instructions": "This will drive the priority the deals appear in dynamic content (product page slider) 1 being lowest priority, 1000 being highest",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": 1,
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": 1,
-            "max": 1000,
-            "step": ""
         },
         {
             "key": "field_61dca09f34c1b",
@@ -323,5 +321,5 @@
     "active": true,
     "description": "Deal - CPT",
     "show_in_rest": 0,
-    "modified": 1681917007
+    "modified": 1682525985
 }

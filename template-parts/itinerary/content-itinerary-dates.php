@@ -142,9 +142,11 @@ $deals = $args['deals'];
                                 <?php if ($deals) :
                                     foreach ($deals as $deal) :
                                         $dealId = $deal->ID;
+                                        $short_title = get_field('short_title', $deal);
+                                        $is_special_departure = get_field('is_special_departure', $deal);
                                 ?>
-                                        <div class="specs-deal deal-cta" dealId="<?php echo $dealId ?>">
-                                            <?php echo get_field('short_title', $deal) ?>
+                                        <div class="specs-deal <?php echo $is_special_departure ? "specs-deal--special special-departure-cta" : "" ?> deal-cta " dealId="<?php echo $dealId ?>">
+                                            <?php echo $short_title; ?>
                                         </div>
                                 <?php endforeach;
                                 endif; ?>

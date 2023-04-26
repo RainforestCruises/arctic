@@ -196,10 +196,10 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
                                 </div>
                             </div>
 
-                            <!-- Breadth -->
+                            <!-- Beam -->
                             <div class="specs__item">
                                 <div class="specs__item__title">
-                                    Breadth
+                                    Beam
                                 </div>
                                 <div class="specs__item__text">
                                     <?php echo get_field('breadth') ?>

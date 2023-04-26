@@ -1,6 +1,7 @@
 <?php
 
 // DEPARTURES ----------------------------------------------------------------------------------------------
+// get a list of departures
 function getDepartureList($post, $specificShip = null)
 {
     $departures = [];
@@ -23,6 +24,12 @@ function getDepartureList($post, $specificShip = null)
                     $cabin_prices = $d['cabin_prices'];
                     $ship = $d['ship'];
 
+                    if($cabin_prices){ // sort cabin price high to low
+                        usort($cabin_prices,function($first,$second){
+                            return strtolower($first['price']) < strtolower($second['price']);
+                        });
+                    }
+                    
                     if ($ship == $post) {
                         $departure = [
                             'ID' => $id,
@@ -56,6 +63,12 @@ function getDepartureList($post, $specificShip = null)
                 $cabin_prices = $d['cabin_prices'];
                 $ship = $d['ship'];
 
+                if($cabin_prices){ // sort cabin price high to low
+                    usort($cabin_prices,function($first,$second){
+                        return strtolower($first['price']) < strtolower($second['price']);
+                    });
+                }
+
                 $match = true;
                 if ($specificShip && ($specificShip != $ship)) {
                     $match = false;
@@ -88,7 +101,6 @@ function getDepartureList($post, $specificShip = null)
 
     return $departures;
 }
-
 // LIST
 // get lowest price from a list of departures
 function getLowestDepartureListPrice($departures)
@@ -204,6 +216,7 @@ function getBestDepartureDiscount($departure)
 
 
 // ITINERARY ----------------------------------------------------------
+// lowest price from list of itineraries
 function getLowestPriceFromListOfItineraries($itineraries){
 
     $priceList = [];

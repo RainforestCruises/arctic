@@ -1,6 +1,14 @@
 <?php
 $deals = $args['deals'];
-$subtitleDisplay = count($deals) == 1 ? "There is 1 deal available on select departures" : "Explore these " . count($deals) . " deals on select departures";
+$subtitleDisplay = 'Explore ' . getDealsDisplay($deals);
+$specialDisplay = getSpecialDeparturesDisplay($deals);
+$sectionTitle = 'Deals';
+if ($specialDisplay != "") {
+    $subtitleDisplay .= ' and ' . $specialDisplay;
+    $sectionTitle .= ' & Special Departures';
+}
+$subtitleDisplay .= ' on select dates';
+
 ?>
 
 <section class="slider-block narrow" id="section-deals">
@@ -12,10 +20,10 @@ $subtitleDisplay = count($deals) == 1 ? "There is 1 deal available on select dep
             <!-- Title -->
             <div class="slider-block__content__top__title">
                 <div class="title-group__title">
-                    Deals
+                    <?php echo $sectionTitle; ?>
                 </div>
                 <div class="title-group__sub">
-                    <?php echo $subtitleDisplay ?>
+                    <?php echo $subtitleDisplay; ?>
                 </div>
             </div>
 
@@ -47,6 +55,8 @@ $subtitleDisplay = count($deals) == 1 ? "There is 1 deal available on select dep
                         $description = get_field('description', $deal);
                         $has_expiry_date = get_field('has_expiry_date', $deal);
                         $expiry_date =  get_field('expiry_date', $deal);
+                        $is_special_departure = get_field('is_special_departure', $deal);
+
                     ?>
                         <div class="deal-card swiper-slide">
                             <!-- Title Group -->
@@ -67,19 +77,29 @@ $subtitleDisplay = count($deals) == 1 ? "There is 1 deal available on select dep
                                 <?php echo $description ?>
                             </div>
 
-                            <div class="deal-card__urgency">
-                                <svg class="deal-card__urgency__icon">
-                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-stopwatch"></use>
-                                </svg>
-                                <div class="deal-card__urgency__text">
-                                    <?php if ($has_expiry_date) :
-                                        echo 'Offer expires in ' . getDaysUntilExpiry($expiry_date) . ' days';
-                                    else :
-                                        echo 'Limited time offer';
-                                    endif; ?>
-                                </div>
+                            <div class="deal-card__urgency <?php echo $is_special_departure ? "deal-card__urgency--special" : ""; ?>">
+                                <?php if ($is_special_departure) : ?>
+                                    <svg class="deal-card__urgency__icon">
+                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat-front"></use>
+                                    </svg>
+                                    <div class="deal-card__urgency__text">
+                                        Special Departure
+                                    </div>
+                                <?php else : ?>
+                                    <svg class="deal-card__urgency__icon">
+                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-stopwatch"></use>
+                                    </svg>
+                                    <div class="deal-card__urgency__text">
+                                        <?php if ($has_expiry_date) :
+                                            echo 'Offer expires in ' . getDaysUntilExpiry($expiry_date) . ' days';
+                                        else :
+                                            echo 'Limited time offer';
+                                        endif; ?>
+                                    </div>
+                                <?php endif; ?>
+
                                 <div class="deal-card__urgency__cta">
-                                    <button class="cta-square-icon deal-cta" dealId="<?php echo $id ?>">
+                                    <button class="cta-square-icon <?php echo $is_special_departure ? "special-departure-cta" : "" ?> deal-cta" dealId="<?php echo $id ?>">
                                         Details
                                         <svg>
                                             <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
@@ -104,7 +124,7 @@ $subtitleDisplay = count($deals) == 1 ? "There is 1 deal available on select dep
         <!-- Top Modal Content -->
         <div class="modal__content__top">
             <div class="modal__content__top__nav">
-                <div class="modal__content__top__nav__title">
+                <div class="modal__content__top__nav__title" id="dealsModalTitle">
                     Deal Information
                 </div>
             </div>
@@ -128,6 +148,8 @@ $subtitleDisplay = count($deals) == 1 ? "There is 1 deal available on select dep
                 $terms_and_conditions = get_field('terms_and_conditions', $deal);
                 $has_expiry_date = get_field('has_expiry_date', $deal);
                 $expiry_date =  get_field('expiry_date', $deal);
+                $is_special_departure = get_field('is_special_departure', $deal);
+
             ?>
 
                 <div class="product-deals-modal-item" dealId="<?php echo $id; ?>">
@@ -169,8 +191,9 @@ $subtitleDisplay = count($deals) == 1 ? "There is 1 deal available on select dep
                             <?php endif; ?>
                         </div>
                         <div class="product-deals-modal-item__cta__button-area">
-                            <a class="cta-square-icon" href="<?php echo get_permalink($deal) ?>" target="_blank" >
-                                View Deal Page
+                            <a class="cta-square-icon" href="<?php echo get_permalink($deal) ?>" target="_blank">
+                                <span id="dealsModalCtaText">View Page</span>
+
                                 <svg>
                                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
                                 </svg>

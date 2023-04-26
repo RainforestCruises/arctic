@@ -125,17 +125,53 @@ function getDateListDisplay($departures, $limit)
 }
 
 // get a string display number of deals, with plurality 
-function getDealsDisplay($deals)
-{
+function getDealsDisplay($deals, $includeSpecialDepartures = false)
+{   
+    //$includeSpecialDepartures = false;
+    $dealsList = [];
+    if($includeSpecialDepartures == false){
+        foreach($deals as $deal){
+            $isSpecial = get_field('is_special_departure', $deal);
+            if(!$isSpecial){
+                $dealsList[] = $deal;
+            }
+        }
+    } else {
+        $dealsList = $deals;     
+    }
+
     $displayText = '';
-    if ($deals) {
-        if (count($deals) == 1) {
-            $displayText = '1 Deal Available';
+    if ($dealsList) {
+        if (count($dealsList) == 1) {
+            $displayText = '1 deal';
         } else {
-            $displayText =  count($deals) . ' Deals Available';
+            $displayText =  count($dealsList) . ' deals';
         }
     }
-    echo $displayText;
+    return $displayText;
+}
+
+// get a string display number of special departures with plurality
+function getSpecialDeparturesDisplay($deals)
+{   
+    //$includeSpecialDepartures = false;
+    $dealsList = [];
+    foreach($deals as $deal){
+        $isSpecial = get_field('is_special_departure', $deal);
+        if($isSpecial){
+            $dealsList[] = $deal;
+        }
+    }
+
+    $displayText = '';
+    if ($dealsList) {
+        if (count($dealsList) == 1) {
+            $displayText = '1 special departure';
+        } else {
+            $displayText =  count($dealsList) . ' special departures';
+        }
+    }
+    return $displayText;
 }
 
 // get a count of days until a deal expires

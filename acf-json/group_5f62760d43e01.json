@@ -396,7 +396,7 @@
         },
         {
             "key": "field_62c8707e514c7",
-            "label": "Breadth",
+            "label": "Breadth (Beam)",
             "name": "breadth",
             "type": "text",
             "instructions": "",
@@ -871,5 +871,5 @@
     "active": true,
     "description": "Cruise - CPT",
     "show_in_rest": 0,
-    "modified": 1682351056
+    "modified": 1682521901
 }
