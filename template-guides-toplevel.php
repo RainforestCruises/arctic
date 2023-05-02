@@ -3,6 +3,8 @@
 wp_enqueue_script('page-guides-toplevel', get_template_directory_uri() . '/js/page-guides-toplevel.js', array('jquery'), false, true);
 get_header();
 
+$args = array('footerCtaDivider' => true);
+
 ?>
 
 <main>
@@ -20,7 +22,7 @@ get_header();
 
     <!-- Footer CTA  -->
     <?php
-    get_template_part('template-parts/shared/content', 'shared-footer-cta');
+    get_template_part('template-parts/shared/content', 'shared-footer-cta', $args);
     ?>
 
 </main>

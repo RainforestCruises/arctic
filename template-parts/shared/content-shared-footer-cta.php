@@ -3,11 +3,11 @@ $footer_cta_title = get_field('footer_cta_title', 'options');
 $footer_cta_subtext = get_field('footer_cta_subtext', 'options');
 $footer_cta_steps = get_field('footer_cta_steps', 'options');
 $footerClasses = renderFooterClasses();
-
+$footerCtaDivider = $args['footerCtaDivider'];
 ?>
 
 <section class="grid-block <?php echo $footerClasses; ?>" id="section-footer">
-    <div class="grid-block__content block-top-divider">
+    <div class="grid-block__content <?php echo $footerCtaDivider ? "block-top-divider" : "";?>">
         <!-- Grid Area -->
         <div class="grid-block__content__grid grid1">
             <div class="footer-cta">

@@ -11,6 +11,7 @@ get_header();
 $content = get_field('content');
 $toc = get_field('table_of_contents');
 $toc_content = get_field('toc_content');
+$args = array('footerCtaDivider' => true);
 
 ?>
 
@@ -59,7 +60,7 @@ $toc_content = get_field('toc_content');
     
   <!-- Footer CTA  -->
   <?php
-  get_template_part('template-parts/shared/content', 'shared-footer-cta');
+  get_template_part('template-parts/shared/content', 'shared-footer-cta', $args);
   ?>
 
 </main>

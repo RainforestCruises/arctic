@@ -8,44 +8,13 @@ $sections = get_field('sections');
 $categoryCount = 0;
 foreach ($sections as $section) :
     $category = $section['category'];
-    $category_title = get_the_title($category);
-    $category_image = $section['category_image'];
+    $title = $section['title'];
     $snippet = $section['snippet'];
     $dealsInCategory = getDealsInCategory($category);
     $itineraries = getItinerariesWithDeal($dealsInCategory);
     if (!$itineraries) continue; // skip if no deals found for category
-    $subtitleDisplay = count($itineraries) > 1 ? "There are " . count($itineraries) . " itineraries with this deal"  : "There is 1 itinerary with this deal";
+    //$subtitleDisplay = count($itineraries) > 1 ? "There are " . count($itineraries) . " itineraries with this deal"  : "There is 1 itinerary with this deal";
 ?>
-
-    <section class="grid-block" id="section-deals">
-        <div class="grid-block__content <?php echo ($categoryCount != 0) ? "block-top-divider" : "margin-top-4"; ?>">
-            <!-- Grid Area -->
-            <div class="grid-block__content__grid">
-                <div class="full-card <?php echo ($categoryCount % 2 != 0) ? "reverse" : ""; ?>">
-
-                    <div class="full-card__image-area">
-                        <img <?php afloat_image_markup($category_image['id'], 'landscape-medium', array('landscape-medium', 'landscape-small')); ?>>
-
-                    </div>
-
-                    <div class="full-card__content">
-                        <div class="full-card__content__title">
-                            <?php echo $category_title ?> Deals
-                        </div>
-                        <div class="full-card__content__text">
-                            <?php echo $snippet ?>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
 
     <section class="slider-block deal-slider-block" id="section-deals-<?php echo $categoryCount; ?>">
         <div class="slider-block__content block-top-divider">
@@ -56,10 +25,10 @@ foreach ($sections as $section) :
                 <!-- Title -->
                 <div class="title-group">
                     <div class="title-group__title">
-                        Itineraries With <?php echo $category_title ?> Deals
+                        <?php echo $title ?>
                     </div>
                     <div class="title-group__sub">
-                        <?php echo $subtitleDisplay; ?>
+                        <?php echo $snippet; ?>
                     </div>
                 </div>
 

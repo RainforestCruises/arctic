@@ -42,6 +42,7 @@ $args = array(
   'curentYear' => $curentYear,
   'yearSelections' => $yearSelections,
   'cabins' => $cabins,
+  'footerCtaDivider' => true
 );
 
 //Itinerary JS Array
@@ -120,7 +121,7 @@ wp_localize_script(
 
   <!-- Footer CTA  -->
   <?php
-  get_template_part('template-parts/shared/content', 'shared-footer-cta');
+  get_template_part('template-parts/shared/content', 'shared-footer-cta', $args);
   ?>
 
 

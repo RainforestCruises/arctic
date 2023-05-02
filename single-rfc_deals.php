@@ -9,21 +9,9 @@ $deal = get_post();
 $dealName = get_field('navigation_title');
 
 
-
-// //cabin posts
-// $args = array(
-//     'posts_per_page' => -1,
-//     'post_type' => 'rfc_cabins',
-// );
-// $args['meta_query'][] = array(
-//     'key' => 'ship',
-//     'value' => $ship->ID
-// );
-// $cabins = get_posts($args);
-
-
 $args = array(
     'dealName' => $dealName,
+    'footerCtaDivider' => true
 );
 
 
@@ -51,7 +39,7 @@ $args = array(
 
     <!-- Footer CTA  -->
     <?php
-    get_template_part('template-parts/shared/content', 'shared-footer-cta');
+    get_template_part('template-parts/shared/content', 'shared-footer-cta', $args);
     ?>
 
 

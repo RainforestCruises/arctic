@@ -3290,44 +3290,85 @@ p {
     transform: rotate(360deg); } }
 
 .newsletter {
-  text-align: center;
-  color: #1d2225;
-  margin-top: 6rem;
-  margin-bottom: 12rem;
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  align-items: center; }
-  .newsletter__title {
-    font-size: 4rem;
-    line-height: 4.8rem;
-    color: #1d2225;
-    margin-bottom: 1rem;
-    font-weight: 400;
-    text-align: center; }
-    @media only screen and (max-width: 50em) {
-      .newsletter__title {
-        font-size: 2.5rem;
-        line-height: 2.8rem;
-        font-weight: 700; } }
-  .newsletter__text {
-    font-size: 1.6rem;
-    margin-bottom: 3rem;
-    width: 50%; }
-    @media only screen and (max-width: 50em) {
-      .newsletter__text {
-        width: 100%; } }
-  .newsletter__email {
+  align-items: center;
+  position: relative;
+  width: 100%;
+  position: relative;
+  margin-top: 8rem; }
+  .newsletter__bg-image {
+    height: 100%;
     width: 100%;
-    max-width: 60rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem; }
-    @media only screen and (max-width: 37.5em) {
-      .newsletter__email {
-        grid-template-columns: 1fr; } }
-    .newsletter__email a,
-    .newsletter__email button {
-      display: block; }
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0; }
+    .newsletter__bg-image img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      z-index: 1; }
+    .newsletter__bg-image::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-image: linear-gradient(to right, rgba(30, 30, 30, 0.6), rgba(30, 30, 30, 0.6));
+      z-index: 2; }
+  .newsletter__content {
+    width: 100%;
+    padding: 0 6rem;
+    max-width: 160rem;
+    margin-top: 3rem;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    @media only screen and (max-width: 50em) {
+      .newsletter__content {
+        padding: 0 3rem; } }
+    .newsletter__content__title-group {
+      width: 100%;
+      padding: 8rem 0;
+      padding-top: 5rem;
+      color: #fff;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      @media only screen and (max-width: 50em) {
+        .newsletter__content__title-group {
+          padding: 5rem 0;
+          padding-top: 2rem; } }
+      .newsletter__content__title-group__title {
+        font-size: 4rem;
+        line-height: 4.8rem;
+        font-weight: 400;
+        margin-bottom: 1.5rem; }
+        @media only screen and (max-width: 50em) {
+          .newsletter__content__title-group__title {
+            font-size: 2.5rem;
+            line-height: 2.8rem;
+            font-weight: 700; } }
+      .newsletter__content__title-group__sub {
+        font-size: 1.6rem;
+        margin-bottom: 3rem;
+        max-width: 80rem; }
+      .newsletter__content__title-group__cta {
+        display: flex;
+        justify-content: center; }
+        .newsletter__content__title-group__cta button {
+          max-width: 50rem;
+          background-color: transparent;
+          white-space: normal;
+          line-height: 2rem;
+          border: 1px solid #fff; }
+          .newsletter__content__title-group__cta button:hover {
+            border-color: #347fff; }
 
 .inquire-form {
   width: 100%; }
@@ -6385,7 +6426,6 @@ p {
   @media only screen and (max-width: 62.5em) {
     .deals-toplevel-hero {
       margin-top: 7rem;
-      min-height: 50rem;
       height: auto; } }
   .deals-toplevel-hero__bg-image {
     position: absolute;
@@ -6409,32 +6449,41 @@ p {
     max-width: 160rem;
     width: 100%;
     padding: 0 6rem;
-    padding-top: 12rem;
-    padding-bottom: 2rem;
-    display: flex;
-    color: #fff; }
+    padding-top: 14rem;
+    display: grid;
+    grid-template-rows: 1fr min-content;
+    color: #fff;
+    height: 100%; }
     @media only screen and (max-width: 50em) {
       .deals-toplevel-hero__content {
         padding: 0 3rem; } }
     @media only screen and (max-width: 62.5em) {
       .deals-toplevel-hero__content {
-        padding-top: 2rem;
-        padding-bottom: 2rem; } }
+        padding-top: 6rem;
+        min-height: 50rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .deals-toplevel-hero__content {
+        padding-top: 3rem;
+        min-height: auto; } }
     .deals-toplevel-hero__content__title-group {
-      max-width: 60rem; }
+      max-width: 60rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; }
       .deals-toplevel-hero__content__title-group__category {
         font-size: 1.8rem;
         font-weight: 700;
-        margin-bottom: 1rem; }
+        margin-bottom: .5rem; }
+        @media only screen and (max-width: 37.5em) {
+          .deals-toplevel-hero__content__title-group__category {
+            font-size: 1.4rem;
+            line-height: 2rem; } }
       .deals-toplevel-hero__content__title-group__title {
         font-size: 5rem;
         font-weight: 400;
         letter-spacing: 0.1rem;
-        display: flex;
-        align-self: end;
         line-height: 6.5rem;
         position: relative;
-        align-items: flex-end;
         margin-bottom: 1rem; }
         @media only screen and (max-width: 62.5em) {
           .deals-toplevel-hero__content__title-group__title {
@@ -6442,6 +6491,10 @@ p {
             line-height: 4.5rem;
             font-weight: 600;
             letter-spacing: 0rem; } }
+        @media only screen and (max-width: 37.5em) {
+          .deals-toplevel-hero__content__title-group__title {
+            font-size: 3rem;
+            line-height: 3.5rem; } }
       .deals-toplevel-hero__content__title-group__sub {
         font-size: 1.6rem; }
       .deals-toplevel-hero__content__title-group__urgency {
@@ -6466,6 +6519,70 @@ p {
           width: 3rem; }
         .deals-toplevel-hero__content__title-group__urgency__title__sub {
           font-size: 1.2rem; }
+    .deals-toplevel-hero__content__bottom {
+      padding: 4rem 0; }
+      @media only screen and (max-width: 37.5em) {
+        .deals-toplevel-hero__content__bottom {
+          display: flex;
+          justify-content: center; } }
+
+.deals-toplevel-intro {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  margin-top: 4rem; }
+  .deals-toplevel-intro__content {
+    z-index: 2;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 160rem;
+    width: 100%;
+    padding: 0 6rem; }
+    @media only screen and (max-width: 50em) {
+      .deals-toplevel-intro__content {
+        padding: 0 3rem; } }
+    .deals-toplevel-intro__content__grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8rem;
+      position: relative; }
+      @media only screen and (max-width: 62.5em) {
+        .deals-toplevel-intro__content__grid {
+          grid-template-columns: 1fr; } }
+      .deals-toplevel-intro__content__grid__overview__text {
+        padding-top: 3rem;
+        position: relative; }
+        .deals-toplevel-intro__content__grid__overview__text::before {
+          content: "";
+          width: 100%;
+          height: 1px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background-color: #e6e6e6; }
+      .deals-toplevel-intro__content__grid__overview__expand {
+        display: flex;
+        justify-content: flex-end;
+        min-height: 2rem;
+        font-weight: 700;
+        color: #1d2225; }
+      .deals-toplevel-intro__content__grid__secondary {
+        margin-top: 1.5rem; }
+        .deals-toplevel-intro__content__grid__secondary__media {
+          height: 50rem; }
+        .deals-toplevel-intro__content__grid__secondary__cta {
+          display: flex;
+          justify-content: space-between;
+          align-items: center; }
+        @media only screen and (max-width: 62.5em) {
+          .deals-toplevel-intro__content__grid__secondary {
+            display: none; } }
 
 .header {
   z-index: 100;

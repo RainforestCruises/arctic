@@ -68,6 +68,7 @@ $args = array(
   'yearSelections' => $yearSelections,
   'shipSizeRange' => $shipSizeRange,
   'destinationCount' => count($itineraryObjects[0]['featureList']),
+  'footerCtaDivider' => true
 );
 
 ?>
@@ -135,7 +136,7 @@ $args = array(
 
   <!-- Footer CTA  -->
   <?php
-  get_template_part('template-parts/shared/content', 'shared-footer-cta');
+  get_template_part('template-parts/shared/content', 'shared-footer-cta', $args);
   ?>
 
 </main>

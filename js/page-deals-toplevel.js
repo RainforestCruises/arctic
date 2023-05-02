@@ -1,6 +1,18 @@
 
 jQuery(document).ready(function ($) {
 
+
+    //intro text modal
+    const contentModal = document.querySelector("#contentModal");
+    const expandContent = document.querySelector("#expand-content");
+    if (expandContent) {
+        expandContent.addEventListener('click', () => {
+            contentModal.style.display = 'flex';
+            body.classList.add('no-scroll');
+        });
+    }
+
+
     const dealSliderSections = [...document.querySelectorAll('.deal-slider-block')];
 
     dealSliderSections.forEach((section, index) => {

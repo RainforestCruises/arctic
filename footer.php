@@ -61,7 +61,7 @@ $footerClasses = renderFooterClasses();
             
                 </div>
                 <div class="footer__content__main__newsletter__cta">
-                    <button class="cta-primary" id="newsletter-subscribe-button">Join Our Newsletter</button>
+                    <button class="cta-primary newsletter-subscribe-button">Join Our Newsletter</button>
                 </div>
             </div>
 

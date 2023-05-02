@@ -5,6 +5,8 @@ wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', 
 
 get_header();
 
+$args = array('footerCtaDivider' => false);
+
 
 ?>
 
@@ -16,15 +18,29 @@ get_header();
     get_template_part('template-parts/deals-toplevel/content', 'deals-toplevel-hero');
     ?>
 
+    <!-- Intro -->
+    <?php
+    get_template_part('template-parts/deals-toplevel/content', 'deals-toplevel-intro');
+    ?>
 
     <!-- Categories -->
     <?php
-    get_template_part('template-parts/deals-toplevel/content', 'deals-toplevel-categories', $args);
+    get_template_part('template-parts/deals-toplevel/content', 'deals-toplevel-categories');
+    ?>
+
+    <!-- Topics -->
+    <?php
+    get_template_part('template-parts/deals-toplevel/content', 'deals-toplevel-topics');
+    ?>
+
+    <!-- Newsletter -->
+    <?php
+    get_template_part('template-parts/shared/content', 'shared-newsletter');
     ?>
 
     <!-- Footer CTA  -->
     <?php
-    get_template_part('template-parts/shared/content', 'shared-footer-cta');
+    get_template_part('template-parts/shared/content', 'shared-footer-cta', $args);
     ?>
 
 </main>

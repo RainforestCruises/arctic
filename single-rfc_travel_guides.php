@@ -8,7 +8,9 @@ $show_ships = get_field('show_ships');
 $show_itineraries = get_field('show_itineraries');
 
 
-
+$args = array(
+  'footerCtaDivider' => true
+);
 
 ?>
 
@@ -46,7 +48,7 @@ $show_itineraries = get_field('show_itineraries');
   ?>
   <!-- Footer CTA  -->
   <?php
-  get_template_part('template-parts/shared/content', 'shared-footer-cta');
+  get_template_part('template-parts/shared/content', 'shared-footer-cta', $args);
   ?>
 
 

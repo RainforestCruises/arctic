@@ -25,6 +25,7 @@ wp_localize_script(
 
 get_header();
 
+$args = array('footerCtaDivider' => true);
 
 ?>
 
@@ -80,7 +81,7 @@ get_header();
 
     <!-- Footer CTA  -->
     <?php
-    get_template_part('template-parts/shared/content', 'shared-footer-cta');
+    get_template_part('template-parts/shared/content', 'shared-footer-cta', $args);
     ?>
 
 </main>

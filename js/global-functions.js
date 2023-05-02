@@ -88,12 +88,16 @@ jQuery(document).ready(function ($) {
 
     // newsletter modal
     const newsletterModal = document.querySelector("#newsletterModal");
-    const newsletterSubscribeButton = document.querySelector("#newsletter-subscribe-button");
-    if (newsletterSubscribeButton) {
-        newsletterSubscribeButton.addEventListener('click', () => {
-            newsletterModal.style.display = 'flex';
-            body.classList.add('no-scroll');
-        });
+    const newsletterSubscribeButtons = [...document.querySelectorAll(".newsletter-subscribe-button")];
+
+    if (newsletterSubscribeButtons) {
+        newsletterSubscribeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                newsletterModal.style.display = 'flex';
+                body.classList.add('no-scroll');
+            });
+        })
+        
     }
 
     const localizationModal = document.querySelector("#localizationModal");

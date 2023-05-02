@@ -6,6 +6,9 @@ wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', 
 
 get_header();
 
+
+$args = array('footerCtaDivider' => true);
+
 ?>
 
 
