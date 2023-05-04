@@ -7,12 +7,47 @@ function getDealsFromDepartureList($departures)
     foreach ($departures as $d) {
         $deals = $d['Deals'];
         foreach ($deals as $deal) {
-            if (!in_array($deal, $uniqueDealsArray)) {
-                $uniqueDealsArray[] = $deal; // only add non dulpicates
+            $is_active = get_field('is_active', $deal);
+            $has_expiry_date = get_field('has_expiry_date', $deal);
+            if (!$is_active) { // skip inactive deals
+                continue;
+            }
+            if ($has_expiry_date) { // skip expired deals
+                $expiry_date =  get_field('expiry_date', $deal);
+                $isCurrent = strtotime($expiry_date) >= strtotime(date('Y-m-d'));
+                if (!$isCurrent) {
+                    continue;
+                }
+            }
+            if (!in_array($deal, $uniqueDealsArray)) { // only add non dulpicates
+                $uniqueDealsArray[] = $deal;
             }
         }
     }
     return $uniqueDealsArray;
+}
+
+// get a list of active deals from a single departure
+function getDealsFromSingleDeparture($departure)
+{
+    $dealsArray = [];
+    $deals = $departure['deals'];
+    foreach ($deals as $deal) {
+        $is_active = get_field('is_active', $deal);
+        $has_expiry_date = get_field('has_expiry_date', $deal);
+        if (!$is_active) { // skip inactive deals
+            continue;
+        }
+        if ($has_expiry_date) { // skip expired deals
+            $expiry_date =  get_field('expiry_date', $deal);
+            $isCurrent = strtotime($expiry_date) >= strtotime(date('Y-m-d'));
+            if (!$isCurrent) {
+                continue;
+            }
+        }
+        $dealsArray[] = $deal;
+    }
+    return $dealsArray;
 }
 
 // get a list of departure dates that have a given deal
@@ -126,18 +161,18 @@ function getDateListDisplay($departures, $limit)
 
 // get a string display number of deals, with plurality 
 function getDealsDisplay($deals, $includeSpecialDepartures = false)
-{   
+{
     //$includeSpecialDepartures = false;
     $dealsList = [];
-    if($includeSpecialDepartures == false){
-        foreach($deals as $deal){
+    if ($includeSpecialDepartures == false) {
+        foreach ($deals as $deal) {
             $isSpecial = get_field('is_special_departure', $deal);
-            if(!$isSpecial){
+            if (!$isSpecial) {
                 $dealsList[] = $deal;
             }
         }
     } else {
-        $dealsList = $deals;     
+        $dealsList = $deals;
     }
 
     $displayText = '';
@@ -153,12 +188,12 @@ function getDealsDisplay($deals, $includeSpecialDepartures = false)
 
 // get a string display number of special departures with plurality
 function getSpecialDeparturesDisplay($deals)
-{   
+{
     //$includeSpecialDepartures = false;
     $dealsList = [];
-    foreach($deals as $deal){
+    foreach ($deals as $deal) {
         $isSpecial = get_field('is_special_departure', $deal);
-        if($isSpecial){
+        if ($isSpecial) {
             $dealsList[] = $deal;
         }
     }

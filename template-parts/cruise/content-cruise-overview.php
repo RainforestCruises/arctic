@@ -117,7 +117,7 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
                             <!-- Guest to Crew Ratio -->
                             <div class="specs__item">
                                 <div class="specs__item__title">
-                                    Guest to Guide / Crew Ratio
+                                    Guide & Crew to Guest Ratios
                                 </div>
                                 <div class="specs__item__text">
                                     <?php echo get_field('guest_to_crew_ratio') ?>

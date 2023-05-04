@@ -31,6 +31,8 @@ function getDepartureList($post, $specificShip = null)
                     }
                     
                     if ($ship == $post) {
+
+                        $filteredDeals = getDealsFromSingleDeparture($d);
                         $departure = [
                             'ID' => $id,
                             'DepartureDate' => $d['date'],
@@ -44,7 +46,8 @@ function getDepartureList($post, $specificShip = null)
                             'HighestPrice' => getHighestDeparturePrice($d),
                             'BestDiscount' => getBestDepartureDiscount($d),
                             'LengthInNights' => $itineraryLength,
-                            'Deals' => $d['deals'],
+                            'Deals' => $filteredDeals,
+                            //'Deals' => $d['deals'],
                         ];
                         $departures[] = $departure;
                     }
@@ -74,6 +77,7 @@ function getDepartureList($post, $specificShip = null)
                     $match = false;
                 }
                 if ($match) {
+                    $filteredDeals = getDealsFromSingleDeparture($d);
                     $departure = [
                         'ID' => $id,
                         'Ship' => $d['ship'],
@@ -87,7 +91,7 @@ function getDepartureList($post, $specificShip = null)
                         'HighestPrice' => getHighestDeparturePrice($d),
                         'BestDiscount' => getBestDepartureDiscount($d),
                         'LengthInNights' => $itineraryLength,
-                        'Deals' => $d['deals'],
+                        'Deals' => $filteredDeals
                     ];
                     $departures[] = $departure;
                 }

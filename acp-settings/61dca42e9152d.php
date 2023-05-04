@@ -5,7 +5,7 @@ return array (
   'title' => 'Deals',
   'type' => 'rfc_deals',
   'id' => '61dca42e9152d',
-  'updated' => 1682526020,
+  'updated' => 1683218685,
   'columns' => 
   array (
     'title' => 
@@ -110,6 +110,40 @@ return array (
       'filter_label' => '',
       'name' => '61dca405c8f5c4',
     ),
+    '6453e0cfd8d4fc' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Has Expiry Date',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_64357469240b4',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '6453e0cfd8d4fc',
+    ),
+    '6453e088249ba4' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Expiry Date',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_6435752d240b8',
+      'date_format' => 'acf',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'filter_format' => '',
+      'name' => '6453e088249ba4',
+    ),
     '64494f36b78d50' => 
     array (
       'type' => 'column-acf_field',
@@ -125,22 +159,6 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '64494f36b78d50',
-    ),
-    '61dca3e7d020c4' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Is Exclusive',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_61dca09f34c1b',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '61dca3e7d020c4',
     ),
     '61e9e66a6147b0' => 
     array (
