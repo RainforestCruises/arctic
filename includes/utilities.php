@@ -395,9 +395,9 @@ function generateIndex($html)
     foreach ($matches[0] as $i => $match) {
         $curr = $matches[1][$i];
         $text = strip_tags($matches[2][$i]);
-        $slug = strtolower(str_replace("--", "-", preg_replace('/[^\da-z]/i', '-', $text)));
+        $slug = strtolower(str_replace("--", "-", preg_replace('/[^\da-z&]/i', '-', str_replace('&', 'and', $text))));
         $anchor = '<div name="' . $slug . '" class="toc-link">' . $text . '</div>';
-        $html = preg_replace('/(<h[1-6][^>]*>)' . preg_quote($text) . '(<\/h[1-6]>)/i', '$1' . $anchor . '$2', $html, 1);
+        $html = preg_replace('/(?<=<h[1-6][^>]*>)([^<]*)/', $anchor, $html, 1);
         $prev <= $curr ?: $index .= str_repeat('</ul>', ($prev - $curr));
         $prev >= $curr ?: $index .= "<ul>";
         $index .= '<li><a href="#' . $slug . '" class="toc-link">' . $text . '</a></li>';
