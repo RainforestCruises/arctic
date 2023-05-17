@@ -90,23 +90,21 @@ jQuery(document).ready(function ($) {
   $('.nav-main__content__center__nav__list__item').hover(
     function () { //over
 
-      navMega.classList.add('active');
       navMain.classList.add('active');
-      navMain.classList.add('mega-active');
       navBackdrop.classList.add('active');
-
-      navMainLinks.forEach(link => {
-        link.classList.remove('active');
-      })
-      this.classList.add('active');
-
+      navMain.classList.add('mega-active');
+      navMega.classList.add('active');
 
       var panelId = this.getAttribute("navelement");
       var panelTarget = $(".nav-mega__panel[panel='" + panelId + "']");
 
       $('.nav-mega__panel').removeClass('active');
+      navMainLinks.forEach(link => {
+        link.classList.remove('active');
+      })
+      this.classList.add('active');
       $(panelTarget).addClass('active');
-
+      
     },
     function () { //out
 
@@ -120,6 +118,28 @@ jQuery(document).ready(function ($) {
 
       }
 
+    },
+  );
+
+
+
+  $('.nav-main__content__center__nav__list__link').hover(
+    function () { //over
+
+      navMain.classList.add('active');
+      navBackdrop.classList.add('active');
+      $('.nav-mega__panel').removeClass('active');
+      navMainLinks.forEach(link => {
+        link.classList.remove('active');
+      })
+      navMega.classList.remove('active');
+      navMain.classList.remove('mega-active');
+
+      
+    },
+    function () { //out
+      
+  
     },
   );
 

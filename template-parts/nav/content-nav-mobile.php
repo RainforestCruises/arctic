@@ -35,6 +35,7 @@ $ships = get_field('ships', 'options');
 $guides = get_field('guides', 'options');
 $logo = get_field('logo_main', 'options');
 $top_level_guides_page = get_field('top_level_guides_page', 'options');
+$top_level_deals_page = get_field('top_level_deals_page', 'options');
 
 ?>
 
@@ -94,7 +95,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-ic_chevron_right_36px"></use>
                 </svg>
             </a>
-            <a class="nav-button mobile-link" href="<?php echo get_home_url(); ?>/deals">
+            <a class="nav-button mobile-link" href="<?php echo $top_level_deals_page; ?>">
                 <div class="nav-button__svg-icon">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-discount-24"></use>

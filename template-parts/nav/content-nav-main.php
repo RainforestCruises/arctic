@@ -3,6 +3,7 @@ $landing_pages = get_field('landing_pages', 'options');
 $ships = get_field('ships', 'options');
 $guides = get_field('guides', 'options');
 $top_level_guides_page = get_field('top_level_guides_page', 'options');
+$top_level_deals_page = get_field('top_level_deals_page', 'options');
 
 $alwaysActiveMainNav = checkActiveHeader();
 ?>
@@ -39,7 +40,9 @@ $alwaysActiveMainNav = checkActiveHeader();
                     <li class="nav-main__content__center__nav__list__item" navelement="guides">
                         Guides
                     </li>
-
+                    <li class="nav-main__content__center__nav__list__link" navelement="deals">
+                        <a href="<?php echo $top_level_deals_page; ?>">Deals</a>                
+                    </li>
                 </ul>
 
             </nav>

@@ -117,6 +117,9 @@
                         &__item {
                             color: rgba($color-primary, 0.5);
                         }
+                        &__link {
+                            color: rgba($color-primary, 0.5);
+                        }
                     }
                 }
             }
@@ -189,11 +192,8 @@
             &__nav {
                 display: flex;
                 width: 100%;
-                //justify-content: flex-end;
-                //justify-content: center;
                 z-index: 1800;
                 height: 100%;
-                //transition: all 0.2s;
 
                 @media only screen and (max-width: $bp-large) {
                     display: none;
@@ -205,6 +205,28 @@
                     height: 100%;
                     align-items: center;
                     margin-bottom: 0;
+
+                    &__link {
+
+                        & a {
+                            display: flex;
+                            height: 100%;
+                            align-items: center;
+                            width: calc(max-content + 1rem);
+                            padding: 0 1.5rem;
+                            transition: all 0.2s;
+
+                            &:link,
+                            &:visited {
+                                color: currentColor;
+                                text-decoration: none;
+                            }
+                            &:hover {
+                                color: $color-supporting-light;
+                                font-weight: 700;
+                            }
+                        }
+                    }
 
                     &__item {
                         color: currentColor;
@@ -219,6 +241,13 @@
                         padding: 0 1.5rem;
                         position: relative;
                         margin-bottom: 0;
+                        
+
+                        &:link,
+                        &:visited {
+                            color: currentColor;
+                            text-decoration: none;
+                        }
                         &:hover {
                             color: $color-supporting-light;
                             font-weight: 700;
