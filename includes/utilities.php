@@ -387,54 +387,54 @@ function createYearSelection($current, $yearsCount)
     return $years;
 }
 
-function generateIndex($html)
-{
-    preg_match_all('/<h([1-6])*[^>]*>(.*?)<\/h[1-6]>/', $html, $matches);
-    $index = "<ul>";
-    $prev = 2;
-    foreach ($matches[0] as $i => $match) {
-        $curr = $matches[1][$i];
-        $text = strip_tags($matches[2][$i]);
-        $slug = strtolower(str_replace("--", "-", preg_replace('/[^\da-z&]/i', '-', str_replace('&', 'and', $text))));
-        $anchor = '<div name="' . $slug . '" class="toc-link">' . $text . '</div>';
-        $html = preg_replace('/(?<=<h[1-6][^>]*>)([^<]*)/', $anchor, $html, 1);
-        $prev <= $curr ?: $index .= str_repeat('</ul>', ($prev - $curr));
-        $prev >= $curr ?: $index .= "<ul>";
-        $index .= '<li><a href="#' . $slug . '" class="toc-link">' . $text . '</a></li>';
-        $prev = $curr;
-    }
-    $index .= "</ul>";
-    return ["html" => $html, "index" => $index];
-}
-
-// // Table Of Contents Generator
 // function generateIndex($html)
 // {
 //     preg_match_all('/<h([1-6])*[^>]*>(.*?)<\/h[1-6]>/', $html, $matches);
-
 //     $index = "<ul>";
 //     $prev = 2;
-
 //     foreach ($matches[0] as $i => $match) {
-
 //         $curr = $matches[1][$i];
 //         $text = strip_tags($matches[2][$i]);
-//         $slug = strtolower(str_replace("--", "-", preg_replace('/[^\da-z]/i', '-', $text)));
+//         $slug = strtolower(str_replace("--", "-", preg_replace('/[^\da-z&]/i', '-', str_replace('&', 'and', $text))));
 //         $anchor = '<div name="' . $slug . '" class="toc-link">' . $text . '</div>';
-//         $html = str_replace($text, $anchor, $html);
-
+//         $html = preg_replace('/(?<=<h[1-6][^>]*>)([^<]*)/', $anchor, $html, 1);
 //         $prev <= $curr ?: $index .= str_repeat('</ul>', ($prev - $curr));
 //         $prev >= $curr ?: $index .= "<ul>";
-
 //         $index .= '<li><a href="#' . $slug . '" class="toc-link">' . $text . '</a></li>';
-
 //         $prev = $curr;
 //     }
-
 //     $index .= "</ul>";
-
 //     return ["html" => $html, "index" => $index];
 // }
+
+// Table Of Contents Generator
+function generateIndex($html)
+{
+    preg_match_all('/<h([1-6])*[^>]*>(.*?)<\/h[1-6]>/', $html, $matches);
+
+    $index = "<ul>";
+    $prev = 2;
+
+    foreach ($matches[0] as $i => $match) {
+
+        $curr = $matches[1][$i];
+        $text = strip_tags($matches[2][$i]);
+        $slug = strtolower(str_replace("--", "-", preg_replace('/[^\da-z]/i', '-', $text)));
+        $anchor = '<div name="' . $slug . '" class="toc-link">' . $text . '</div>';
+        $html = str_replace($text, $anchor, $html);
+
+        $prev <= $curr ?: $index .= str_repeat('</ul>', ($prev - $curr));
+        $prev >= $curr ?: $index .= "<ul>";
+
+        $index .= '<li><a href="#' . $slug . '" class="toc-link">' . $text . '</a></li>';
+
+        $prev = $curr;
+    }
+
+    $index .= "</ul>";
+
+    return ["html" => $html, "index" => $index];
+}
 
 //Generate Initials 
 function generateInitials($name)
