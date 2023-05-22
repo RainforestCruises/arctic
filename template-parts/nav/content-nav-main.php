@@ -38,7 +38,7 @@ $alwaysActiveMainNav = checkActiveHeader();
                         Ships
                     </li>
                     <li class="nav-main__content__center__nav__list__item" navelement="guides">
-                        Guides
+                        Guide
                     </li>
                     <li class="nav-main__content__center__nav__list__link" navelement="deals">
                         <a href="<?php echo $top_level_deals_page; ?>">Deals</a>                
@@ -168,7 +168,7 @@ $alwaysActiveMainNav = checkActiveHeader();
                     </div>
                     <div class="nav-mega__panel__cta">
                         <a class="btn-pill icon-right" href="<?php echo $top_level_guides_page; ?>">
-                            View All Guides
+                            View The Guide
                             <svg>
                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
                             </svg>

@@ -2,6 +2,7 @@
 $title = get_the_title();
 $show_faq = get_field('show_faq');
 $show_topics = get_field('show_topics');
+$show_map = get_field('show_map');
 
 ?>
 
@@ -27,12 +28,16 @@ $show_topics = get_field('show_topics');
                     About
                 </a>
             <?php endif; ?>
+            <?php if ($show_map) : ?>
+                <a href="#section-map" class="nav-secondary__content__links__link">
+                    Map
+                </a>
+            <?php endif; ?>
             <?php if ($show_faq) : ?>
                 <a href="#section-faq" class="nav-secondary__content__links__link">
                     FAQ
                 </a>
             <?php endif; ?>
-
             <a href="#section-ships" class="nav-secondary__content__links__link">
                 Ships
             </a>
@@ -69,6 +74,11 @@ $show_topics = get_field('show_topics');
             <?php if ($show_topics) : ?>
                 <li class="nav-secondary__mobile-menu__list__item">
                     <a class="nav-secondary__mobile-menu__list__item__link" href="#section-about">About</a>
+                </li>
+            <?php endif; ?>
+            <?php if ($show_map) : ?>
+                <li class="nav-secondary__mobile-menu__list__item">
+                    <a class="nav-secondary__mobile-menu__list__item__link" href="#section-map">Map</a>
                 </li>
             <?php endif; ?>
             <?php if ($show_faq) : ?>

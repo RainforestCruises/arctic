@@ -81,6 +81,7 @@ function getItineraryObject($itinerary)
         'startLongitude' => get_field('longitude_start_point', $itinerary),
         'startZoom' => get_field('zoom_level_start_point', $itinerary),
         'postId' => get_the_ID($itinerary),
+        'excludeDayMarkup' => false
     ];
 
     return $itineraryObject;
@@ -141,6 +142,7 @@ function getItineraryObjectFromDestinations($destinations, $startLatitude, $star
         'startLongitude' => $startLongitude,
         'startZoom' => $startZoomPoint,
         'postId' => null,
+        'excludeDayMarkup' => true
     ];
 
     return $itineraryObject;

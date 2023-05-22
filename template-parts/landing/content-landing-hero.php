@@ -4,6 +4,7 @@ $hero_title = get_field('hero_title');
 $hero_subtitle = get_field('hero_subtitle');
 $show_faq = get_field('show_faq');
 $show_topics = get_field('show_topics');
+$show_map = get_field('show_map');
 
 $itineraries = get_field('itineraries');
 $lowestOverallPrice = getLowestPriceFromListOfItineraries($itineraries);
@@ -41,6 +42,9 @@ $lowestOverallPrice = getLowestPriceFromListOfItineraries($itineraries);
             <a href="#section-itineraries" class="landing-nav__content__links__link">Itineraries</a>
             <?php if ($show_topics) : ?>
                 <a href="#section-about" class="landing-nav__content__links__link">About</a>
+            <?php endif; ?>
+            <?php if ($show_map) : ?>
+                <a href="#section-map" class="landing-nav__content__links__link">Map</a>
             <?php endif; ?>
             <?php if ($show_faq) : ?>
                 <a href="#section-faq" class="landing-nav__content__links__link">FAQ</a>

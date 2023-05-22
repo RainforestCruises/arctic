@@ -89,7 +89,7 @@ $top_level_deals_page = get_field('top_level_deals_page', 'options');
                     </svg>
                 </div>
                 <div class="nav-button__text">
-                    Guides
+                    Guide
                 </div>
                 <svg>
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-ic_chevron_right_36px"></use>
@@ -258,7 +258,7 @@ $top_level_deals_page = get_field('top_level_deals_page', 'options');
     <div class="nav-mobile__content-panel nav-mobile__content-panel--sub" menuid="menu-guides">
         <div class="nav-mobile__content-panel__static">
             <div class="nav-mobile__content-panel__static__heading">
-                Guides
+                Guide
             </div>
             <div class="nav-close-button">
                 <svg>

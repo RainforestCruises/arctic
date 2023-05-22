@@ -6,7 +6,7 @@ $guides_title_subtext = get_field('guides_title_subtext');
 $top_level_guides_page = get_field('top_level_guides_page', 'options');
 ?>
 
-<section class="grid-block" id="section-guides">
+<section class="grid-block" id="section-guide">
     <div class="grid-block__content block-top-divider">
 
         <!-- Top - Title/Nav -->
@@ -53,7 +53,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
         </div>
         <div class="grid-block__content__cta">
             <a class="cta-primary cta-primary--inverse" id="all-guides-link" href="<?php echo $top_level_guides_page; ?>">
-                Read All Guides
+                View The Guide
             </a>
         </div>
     </div>

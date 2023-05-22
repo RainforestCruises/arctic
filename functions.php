@@ -11,6 +11,7 @@ require_once(__DIR__ . '/includes/product-functions.php');
 require_once(__DIR__ . '/includes/deal-functions.php');
 require_once(__DIR__ . '/includes/map-functions.php');
 require_once(__DIR__ . '/includes/chron-scripts.php');
+require_once(__DIR__ . '/includes/rank-math-config.php');
 
 
 require_once(__DIR__ . '/includes/search-forms.php');

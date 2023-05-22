@@ -58,7 +58,7 @@ function create_post_type_rfc_travel_guides()
                 'singular_name' => __('Travel Guide'),
             ),
             'public' => true,
-            'rewrite' => array('slug' => 'guides'),
+            'rewrite' => array('slug' => 'guide'),
             'supports' => array(
                 'title', 'editor'
             )

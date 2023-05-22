@@ -3,11 +3,13 @@
 wp_enqueue_script('page-landing', get_template_directory_uri() . '/js/page-landing.js', array('jquery'), false, true);
 wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', array('jquery'), false, true);
 
-
 get_header();
 
-
 $args = array('footerCtaDivider' => true);
+
+$show_faq = get_field('show_faq');
+$show_topics = get_field('show_topics');
+$show_map = get_field('show_map');
 
 ?>
 
@@ -32,17 +34,23 @@ $args = array('footerCtaDivider' => true);
 
   <!-- Topics  -->
   <?php
-  get_template_part('template-parts/landing/content', 'landing-topics', $args);
+  if ($show_topics) :
+    get_template_part('template-parts/landing/content', 'landing-topics', $args);
+  endif;
   ?>
 
-  <!-- map  -->
+  <!-- Map -->
   <?php
-  get_template_part('template-parts/landing/content', 'landing-map', $args);
+  if ($show_map) :
+    get_template_part('template-parts/landing/content', 'landing-map', $args);
+  endif;
   ?>
 
   <!-- Faq  -->
   <?php
-  get_template_part('template-parts/landing/content', 'landing-faq', $args);
+  if ($show_faq) :
+    get_template_part('template-parts/landing/content', 'landing-faq', $args);
+  endif;
   ?>
 
   <!-- Ships -->
@@ -58,7 +66,7 @@ $args = array('footerCtaDivider' => true);
 
   <!-- Footer CTA  -->
   <?php
-  get_template_part('template-parts/shared/content', 'shared-footer-cta');
+  get_template_part('template-parts/shared/content', 'shared-footer-cta', $args);
   ?>
 
 

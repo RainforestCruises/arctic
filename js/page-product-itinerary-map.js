@@ -58,18 +58,20 @@ jQuery(document).ready(function ($) {
                 description = "Disembarkation"
             }
 
+            let popupMarkup = `<div class="mapboxgl-popup-content__title-area">`;
+            if(initialObject.excludeDayMarkup == false) {
+                popupMarkup += `<div class="mapboxgl-popup-content__title-area__day-count">${feature.properties.day}</div>`;
+            }
+            popupMarkup += `<div class="mapboxgl-popup-content__title-area__title">${feature.properties.title}</div>
+            <div class="mapboxgl-popup-content__title-area__description">${description}</div></div>
+            <div class="mapboxgl-popup-content__image-area"><img src="${feature.properties.image}"></div>`;
+
+
             const marker = new mapboxgl.Marker(el)
                 .setLngLat(feature.geometry.coordinates)
                 .setPopup(
                     new mapboxgl.Popup({ offset: 25 }) // add popups
-                        .setHTML(
-                            `<div class="mapboxgl-popup-content__title-area">
-                            <div class="mapboxgl-popup-content__title-area__day-count">${feature.properties.day}</div>
-                            <div class="mapboxgl-popup-content__title-area__title">${feature.properties.title}</div>
-                            <div class="mapboxgl-popup-content__title-area__description">${description}</div>
-                            </div>
-                            <div class="mapboxgl-popup-content__image-area"><img src="${feature.properties.image}"></div>`
-                        )
+                        .setHTML(popupMarkup)
                 ).addTo(map);
 
             markersReference.push(marker);
