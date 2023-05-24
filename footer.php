@@ -82,7 +82,7 @@ $footerClasses = renderFooterClasses();
                     Antarctica Cruises
                 </div>
                 <div class="footer__content__main__contact__text">
-                    <div>1680 Michigan Avenue, Suite 500</div>
+                    <div>1680 Michigan Avenue, Suite 700</div>
                     <div>Miami Beach, FL 33139</div>
                 </div>
             </div>
