@@ -16,9 +16,9 @@ console_log($lowestPrice);
 
             <!-- Title -->
             <div class="title-group">
-                <div class="title-group__title">
+                <h2 class="title-group__title">
                     <?php echo $itineraries_title; ?>
-                </div>
+                </h2>
                 <div class="title-group__sub">
                     <?php echo $itineraries_title_subtext; ?>
                 </div>
@@ -26,7 +26,6 @@ console_log($lowestPrice);
 
             <!-- Nav Buttons -->
             <div class="slider-block__content__top__nav">
-
                 <div class="swiper-button-prev swiper-button-prev--white-border itineraries-slider-btn-prev">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-left"></use>
@@ -37,19 +36,16 @@ console_log($lowestPrice);
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
                     </svg>
                 </div>
-
-
             </div>
+
         </div>
 
         <!-- Slider Area -->
         <div class="slider-block__content__slider">
 
-
             <!-- Swiper -->
             <div class="swiper" id="itineraries-slider">
                 <div class="swiper-wrapper">
-
                     <?php
                     $index = 0;
                     foreach ($itineraries as $itinerary) :
@@ -86,9 +82,9 @@ console_log($lowestPrice);
                             <div class="resource-card__content">
 
                                 <!-- Title -->
-                                <a class="resource-card__content__title" href="<?php echo get_permalink($itinerary) ?>">
-                                    <?php echo $title; ?>
-                                </a>
+                                <h3 class="resource-card__content__title">
+                                    <a href="<?php echo get_permalink($itinerary) ?>"><?php echo $title; ?></a>
+                                </h3>
 
                                 <!-- Specs -->
                                 <div class="resource-card__content__specs">

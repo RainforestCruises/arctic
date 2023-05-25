@@ -14,9 +14,9 @@ $itineraries_title_subtext = get_field('itineraries_title_subtext');
 
             <!-- Title -->
             <div class="title-group">
-                <div class="title-group__title">
+                <h2 class="title-group__title">
                     <?php echo $itineraries_title; ?>
-                </div>
+                </h2>
                 <div class="title-group__sub">
                     <?php echo $itineraries_title_subtext; ?>
                 </div>
@@ -87,9 +87,9 @@ $itineraries_title_subtext = get_field('itineraries_title_subtext');
                             <div class="resource-card__content">
 
                                 <!-- Title -->
-                                <a class="resource-card__content__title" href="<?php echo get_permalink($itinerary) ?>">
-                                    <?php echo $title; ?>
-                                </a>
+                                <h3 class="resource-card__content__title">
+                                    <a href="<?php echo get_permalink($itinerary) ?>"><?php echo $title; ?></a>
+                                </h3>
 
                                 <!-- Specs -->
                                 <div class="resource-card__content__specs">

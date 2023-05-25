@@ -1,17 +1,16 @@
 <?php
-
 $reviews = get_field('reviews');
 $firstReviews = array_slice($reviews, 0, 4);
 $displayLimit = 250;
-
 ?>
+
+<!-- Cruise Reviews -->
 <section class="grid-block narrow" id="section-reviews">
     <div class="grid-block__content block-top-divider">
 
-        <div class="title-single">
+        <h2 class="title-single">
             Recent Reviews
-
-        </div>
+        </h2>
 
         <div class="grid-block__content__grid grid2">
             <?php
@@ -21,7 +20,6 @@ $displayLimit = 250;
                 $title = $r['title'];
                 $date = $r['date'];
                 $text = $r['text'];
-
                 $expand = strlen($text) > $displayLimit ? true : false;
                 $text_limited = substr($text, 0, $displayLimit) . ($expand ? '...' : '');
             ?>
@@ -75,7 +73,7 @@ $displayLimit = 250;
 </section>
 
 
-
+<!-- Cruise Reviews Modal -->
 <div class="modal" id="reviewsModal">
     <div class="modal__content">
         <div class=" modal__content__top">

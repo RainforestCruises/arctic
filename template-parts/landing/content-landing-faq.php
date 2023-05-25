@@ -9,9 +9,9 @@ $displayLimit = 250;
     <div class="grid-block__content block-top-divider">
         <div class="grid-block__content__top">
             <!-- Title -->
-            <div class="title-single">
+            <h2 class="title-single">
                 <?php echo $faq_title; ?>
-            </div>
+            </h2>
         </div>
 
         <!-- Grid Area -->
@@ -28,9 +28,9 @@ $displayLimit = 250;
 
                 <div class="text-card encapsulated">
 
-                    <div class="text-card__title-single">
+                    <h3 class="text-card__title-single">
                         <?php echo $question; ?>
-                    </div>
+                    </h3>
                     <div class="text-card__text">
                         <?php echo $answer_limited; ?>
                     </div>

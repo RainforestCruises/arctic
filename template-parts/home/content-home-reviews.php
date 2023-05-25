@@ -12,9 +12,9 @@ $reviews_title = get_field('reviews_title');
         <div class="grid-block__content__top">
 
             <!-- Title -->
-            <div class="title-single">
+            <h2 class="title-single">
                 <?php echo $reviews_title; ?>
-            </div>
+            </h2>
 
         </div>
 

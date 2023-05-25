@@ -18,24 +18,25 @@ wp_localize_script(
     )
 );
 ?>
+
+<!-- Itinerary Map (landing page variant) -->
 <section class="itinerary-map landing-variant" id="section-map">
     <div class="itinerary-map__content block-top-divider">
 
+        <!-- Title -->
         <div class="title-group">
-            <div class="title-group__title">
+            <h2 class="title-group__title">
                 <?php echo $map_title ?>
-            </div>
+            </h2>
             <div class="title-group__sub">
                 <?php echo $map_title_subtext ?>
             </div>
         </div>
 
+        <!-- Map -->
         <div class="itinerary-map__content__map-area">
-
-            <!-- Map -->
             <div class="full-component" id="itinerary-map"></div>
-
-
         </div>
+
     </div>
 </section>

@@ -72,7 +72,7 @@ wp_localize_script(
 
   <!-- Modal Product Gallery -->
   <?php
-  get_template_part('template-parts/cruise/content', 'product-gallery', $args);
+  get_template_part('template-parts/product/content', 'product-gallery', $args);
   ?>
 
   <!-- Overview -->
@@ -125,9 +125,7 @@ wp_localize_script(
   get_template_part('template-parts/shared/content', 'shared-footer-cta', $args);
   ?>
 
-
 </main>
-
 
 <!-- Inquire Modal -->
 <?php

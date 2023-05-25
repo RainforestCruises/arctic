@@ -17,9 +17,9 @@ $subtitle = get_field('subtitle');
             <div class="deals-toplevel-hero__content__title-group__category">
                 All Deals
             </div>
-            <div class="deals-toplevel-hero__content__title-group__title">
+            <h1 class="deals-toplevel-hero__content__title-group__title">
                 <?php echo $title ?>
-            </div>
+            </h1>
             <div class="deals-toplevel-hero__content__title-group__sub">
                 <?php echo $subtitle ?>
             </div>

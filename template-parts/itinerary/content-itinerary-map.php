@@ -7,9 +7,9 @@ $destinationCount = $args['destinationCount'];
     <div class="itinerary-map__content">
 
         <div class="title-group">
-            <div class="title-group__title">
+            <h2 class="title-group__title">
                 Route Map
-            </div>
+            </h2>
             <div class="title-group__sub">
                 There are <?php echo $destinationCount ?> main destinations visited
             </div>

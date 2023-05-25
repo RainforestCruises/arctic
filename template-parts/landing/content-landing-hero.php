@@ -21,9 +21,9 @@ $lowestOverallPrice = getLowestPriceFromListOfItineraries($itineraries);
     <div class="landing-hero__content">
 
         <div class="landing-hero__content__title-group">
-            <div class="landing-hero__content__title-group__title">
+            <h1 class="landing-hero__content__title-group__title">
                 <?php echo $hero_title ?>
-            </div>
+            </h1>
             <div class="landing-hero__content__title-group__sub">
                 <?php echo $hero_subtitle ?>
             </div>

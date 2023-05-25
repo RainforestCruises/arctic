@@ -26,7 +26,7 @@ $intro_text_limited = substr($intro_text, 0, 950) . '...';
 
                 <!-- Highlights -->
                 <div class="landing-overview__content__grid__overview__highlights">
-                    <h3 class="title-single">Highlights</h3>
+                    <h2 class="title-single">Highlights</h2>
                     <ul class="highlight-list">
                         <?php if ($highlights) : ?>
                             <?php foreach ($highlights as $h) : ?>
@@ -79,9 +79,9 @@ $intro_text_limited = substr($intro_text, 0, 950) . '...';
         <div class=" modal__content__top">
             <!-- Top Modal Content -->
             <div class="modal__content__top__nav">
-                <div class="modal__content__top__nav__title">
+                <h2 class="modal__content__top__nav__title">
                     About <?php echo $hero_title; ?>
-                </div>
+                </h2>
             </div>
             <button class="btn-text-icon close-modal-button">
                 Close

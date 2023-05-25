@@ -1,12 +1,9 @@
 <?php
-
-
 $currentYear = date('Y');
 $yearSelections = $args['yearSelections'];
 $ships = $args['ships'];
 $departures = $args['departures'];
 $deals = $args['deals'];
-
 ?>
 
 <section class="slider-block narrow" id="section-dates">
@@ -17,9 +14,9 @@ $deals = $args['deals'];
 
             <!-- Title -->
             <div class="slider-block__content__top__title">
-                <div class="title-group__title">
+                <h2 class="title-group__title">
                     Departure Dates
-                </div>
+                </h2>
                 <div class="title-group__sub departure-date-subtitle">
                     Showing <?php echo count($departures); ?> scheduled departures
                 </div>

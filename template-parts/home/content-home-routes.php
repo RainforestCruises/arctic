@@ -5,7 +5,7 @@ $routes_title_subtext = get_field('routes_title_subtext');
 
 ?>
 
-<!-- Itineraries -->
+<!-- Routes (home variant) -->
 <section class="cruise-itineraries home-variant" id="section-routes">
 
 
@@ -16,9 +16,9 @@ $routes_title_subtext = get_field('routes_title_subtext');
             <!-- Title -->
             <div class="cruise-itineraries__content__top__title">
                 <div class="title-group">
-                    <div class="title-group__title">
+                    <h2 class="title-group__title">
                         <?php echo $routes_title; ?>
-                    </div>
+                    </h2>
                     <div class="title-group__sub">
                         <?php echo $routes_title_subtext; ?>
                     </div>
@@ -132,19 +132,19 @@ $routes_title_subtext = get_field('routes_title_subtext');
                                 <!-- Desktop -->
                                 <div class="resource-card medium encapsulated ">
                                     <!-- Images Slider -->
-                                    <div class="resource-card__image-area">
+                                    <a class="resource-card__image-area" href="<?php echo $landing_page; ?>">
                                         <img <?php afloat_image_markup($image['id'], 'landscape-small', array('landscape-small', 'portrait-small')); ?>>
-                                    </div>
+                                    </a>
 
                                     <!-- Content -->
                                     <div class="resource-card__content">
 
                                         <!-- Title -->
-                                        <div class="resource-card__content__title-group">
-                                            <div class="resource-card__content__title-group__title">
+                                        <h3 class="resource-card__content__title">
+                                            <a href="<?php echo $landing_page; ?>">
                                                 <?php echo $title; ?>
-                                            </div>
-                                        </div>
+                                            </a>
+                                        </h3>
 
                                         <!-- Description -->
                                         <div class="resource-card__content__description divider">

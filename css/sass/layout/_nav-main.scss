@@ -205,7 +205,7 @@
                     height: 100%;
                     align-items: center;
                     margin-bottom: 0;
-
+                    font-weight: 500;
                     &__link {
 
                         & a {
@@ -223,7 +223,7 @@
                             }
                             &:hover {
                                 color: $color-supporting-light;
-                                font-weight: 700;
+                                //font-weight: 700;
                             }
                         }
                     }
@@ -250,12 +250,12 @@
                         }
                         &:hover {
                             color: $color-supporting-light;
-                            font-weight: 700;
+                            //font-weight: 700;
                         }
 
                         &.active {
                             color: $color-supporting-light !important;
-                            font-weight: 700;
+                            //font-weight: 700;
 
                             &::after {
                                 content: "";

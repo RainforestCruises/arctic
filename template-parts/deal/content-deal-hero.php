@@ -32,9 +32,9 @@ $top_level_deals_page =  get_field('top_level_deals_page', 'options');
                 </ol>
 
             </div>
-            <div class="deal-hero__content__title-group__title">
+            <h1 class="deal-hero__content__title-group__title">
                 <?php echo $dealName ?>
-            </div>
+            </h1>
             <div class="deal-hero__content__title-group__sub">
                 <?php echo $description ?>
             </div>

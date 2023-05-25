@@ -6,6 +6,7 @@ $footerClasses = renderFooterClasses();
 $footerCtaDivider = $args['footerCtaDivider'];
 ?>
 
+<!-- CTA Pre-Footer -->
 <section class="grid-block <?php echo $footerClasses; ?>" id="section-footer">
     <div class="grid-block__content <?php echo $footerCtaDivider ? "block-top-divider" : "";?>">
         <!-- Grid Area -->
@@ -14,14 +15,15 @@ $footerCtaDivider = $args['footerCtaDivider'];
 
                 <!-- Title Area -->
                 <div class="footer-cta__title-group">
-                    <div class="footer-cta__title-group__title">
+                    <h2 class="footer-cta__title-group__title">
                         <?php echo $footer_cta_title; ?>
-                    </div>
+                    </h2>
                     <div class="footer-cta__title-group__sub">
                         <?php echo $footer_cta_subtext; ?>
                     </div>
                 </div>
 
+                <!-- Steps -->
                 <div class="footer-cta__steps">
                     <?php foreach ($footer_cta_steps as $step) :
                         $icon = $step['icon'];
@@ -32,14 +34,12 @@ $footerCtaDivider = $args['footerCtaDivider'];
                             <div class="footer-cta__steps__item__icon-area">
                                 <?php echo $icon; ?>
                             </div>
-                            <div class="footer-cta__steps__item__title">
+                            <h3 class="footer-cta__steps__item__title">
                                 <?php echo $title; ?>
-                            </div>
+                            </h3>
                             <div class="footer-cta__steps__item__text">
                                 <?php echo $text; ?>
                             </div>
-
-
                         </div>
 
                     <?php endforeach; ?>

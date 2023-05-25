@@ -14,9 +14,9 @@ $ships_title = get_field('ships_title');
 
             <!-- Title -->
             <div class="title-group">
-                <div class="title-group__title">
+                <h2 class="title-group__title">
                     <?php echo $ships_title; ?>
-                </div>
+                </h2>
                 <div class="title-group__sub">
                     <?php echo $ships_title_subtext; ?>
                 </div>
@@ -67,9 +67,9 @@ $ships_title = get_field('ships_title');
                     <div class="resource-card__content">
 
                         <!-- Title -->
-                        <a class="resource-card__content__title" href="<?php echo get_permalink($ship) ?>">
-                            <?php echo $title; ?>
-                        </a>
+                        <h3 class="resource-card__content__title">
+                            <a href="<?php echo get_permalink($ship) ?>"><?php echo $title; ?></a>
+                        </h3>
 
                         <!-- Specs -->
                         <div class="resource-card__content__specs">

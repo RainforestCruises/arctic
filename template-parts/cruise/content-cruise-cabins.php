@@ -12,13 +12,12 @@ $curentYear = $args['curentYear'];
             <!-- Title -->
             <div class="slider-block__content__top__title">
                 <div class="title-group">
-                    <div class="title-group__title">
+                    <h2 class="title-group__title">
                         Cabins
-                    </div>
+                    </h2>
                     <div class="title-group__sub">
                         There are <?php echo count($cabins); ?> cabin types available
                     </div>
-
                 </div>
             </div>
 
@@ -71,14 +70,12 @@ $curentYear = $args['curentYear'];
                             <div class="resource-card__content">
 
                                 <!-- Title -->
-                                <div class="resource-card__content__title-group">
-                                    <div class="resource-card__content__title-group__title">
-                                        <?php echo $title ?>
-                                        <?php if($quantity) : 
-                                            echo ' (' . $quantity . ')';
-                                        endif;?>
-                                    </div>
-                                </div>
+                                <h3 class="resource-card__content__title">
+                                    <?php echo $title ?>
+                                    <?php if ($quantity) :
+                                        echo ' (' . $quantity . ')';
+                                    endif; ?>
+                                </h3>
 
                                 <!-- Specs -->
                                 <div class="resource-card__content__specs">
@@ -123,4 +120,3 @@ $curentYear = $args['curentYear'];
         </div>
     </div>
 </section>
-

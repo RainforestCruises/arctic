@@ -10,9 +10,9 @@ $extra_activities = get_field('extra_activities')
 
             <!-- Title -->
             <div class="slider-block__content__top__title">
-                <div class="title-group__title">
+                <h2 class="title-group__title">
                     Extra Activities
-                </div>
+                </h2>
                 <div class="title-group__sub">
                     Explore these <?php echo count($extra_activities) ?> add on activities
                 </div>
@@ -65,9 +65,9 @@ $extra_activities = get_field('extra_activities')
                                         echo " Per Person";
                                         ?>
                                     </div>
-                                    <div class="overlay-card__content__title-section__title">
+                                    <h3 class="overlay-card__content__title-section__title">
                                         <?php echo $title ?>
-                                    </div>
+                                    </h3>
                                 </div>
                                 <div class="overlay-card__content__cta">
                                     <button class="cta-primary cta-primary--white">

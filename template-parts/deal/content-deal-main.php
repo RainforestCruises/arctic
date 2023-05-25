@@ -29,13 +29,13 @@ if (count($itinerariesWithDeal) > 1) {
 
             <!-- Title -->
             <div class="title-group">
-                <div class="title-group__title">
+                <h2 class="title-group__title">
                     Find Your Journey
-                </div>
+                </h2>
                 <div class="title-group__sub">
                     <?php echo $subtitleDisplay; ?>
                 </div>
-                
+
             </div>
 
         </div>
@@ -86,9 +86,9 @@ if (count($itinerariesWithDeal) > 1) {
                     <div class="resource-card__content">
 
                         <!-- Title -->
-                        <a class="resource-card__content__title" href="<?php echo get_permalink($itinerary) ?>">
-                            <?php echo $title; ?>
-                        </a>
+                        <h3 class="resource-card__content__title">
+                            <a href="<?php echo get_permalink($itinerary) ?>"><?php echo $title; ?></a>
+                        </h3>
 
                         <!-- Specs -->
                         <div class="resource-card__content__specs">

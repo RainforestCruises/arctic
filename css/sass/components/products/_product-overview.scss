@@ -150,9 +150,6 @@
 }
 
 
-
-
-//specs
 .specs {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -160,18 +157,22 @@
     padding: 2rem;
     padding-bottom: 1rem;
     &__item {
-        font-size: 1.4rem;
+        
         &__title {
             color: $color-primary;
             font-weight: 700;
             padding-bottom: 0.5rem;
+            font-size: 1.4rem;
+            line-height: 1.8rem;
+            margin-bottom: 0;
         }
         &__text {
+            font-size: 1.4rem;
         }
     }
 }
 
-//ships
+
 .itinerary-ships {
     display: grid;
     grid-template-columns: 1fr;

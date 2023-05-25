@@ -19,9 +19,9 @@ $subtitleDisplay .= ' on select dates';
 
             <!-- Title -->
             <div class="slider-block__content__top__title">
-                <div class="title-group__title">
+                <h2 class="title-group__title">
                     <?php echo $sectionTitle; ?>
-                </div>
+                </h2>
                 <div class="title-group__sub">
                     <?php echo $subtitleDisplay; ?>
                 </div>
@@ -66,9 +66,9 @@ $subtitleDisplay .= ' on select dates';
                                         <img <?php afloat_image_markup($image['id'], 'square-thumb', array('square-thumb')); ?>>
                                     </div>
                                     <div class="avatar__title-group">
-                                        <div class="avatar__title-group__title">
+                                        <h3 class="avatar__title-group__title" style="margin-bottom: 0;">
                                             <?php echo  $title; ?>
-                                        </div>
+                                        </h3>
                                     </div>
                                 </div>
                             </div>

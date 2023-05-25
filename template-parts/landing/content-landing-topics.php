@@ -12,13 +12,12 @@ $topics = get_field('topics');
 
                     <div class="full-card__image-area">
                         <img <?php afloat_image_markup($topic['image']['id'], 'landscape-medium', array('landscape-medium', 'landscape-small')); ?>>
-
                     </div>
 
                     <div class="full-card__content">
-                        <div class="full-card__content__title">
+                        <h2 class="full-card__content__title">
                             <?php echo $topic['title'] ?>
-                        </div>
+                        </h2>
                         <div class="full-card__content__text">
                             <?php echo $topic['text'] ?>
 

@@ -5,7 +5,6 @@ $itineraries = get_field('itineraries');
 <!-- Itineraries -->
 <section class="cruise-itineraries" id="section-itineraries">
 
-
     <div class="cruise-itineraries__content">
 
         <div class="cruise-itineraries__content__top">
@@ -13,9 +12,9 @@ $itineraries = get_field('itineraries');
             <!-- Title -->
             <div class="cruise-itineraries__content__top__title">
                 <div class="title-group">
-                    <div class="title-group__title">
+                    <h2 class="title-group__title">
                         Itineraries
-                    </div>
+                    </h2>
                     <div class="title-group__sub">
                         There are <?php echo count($itineraries); ?> itineraries available
                     </div>
@@ -37,7 +36,6 @@ $itineraries = get_field('itineraries');
                             <div class="cruise-itineraries__content__top__nav-area__slider__item swiper-slide" slideIndex="<?php echo $count ?>" postId="<?php echo $id ?>">
                                 <button class="cruise-itineraries__content__top__nav-area__slider__item__button">
                                     <?php echo $length; ?>
-
                                     <?php echo $hasFlight ? '<span class="badge-fly">Fly</span>' : ''; ?>
                                 </button>
                             </div>
@@ -77,35 +75,27 @@ $itineraries = get_field('itineraries');
                             $id = $itinerary->ID;
                             $hero_gallery = get_field('hero_gallery', $itinerary);
                             $hero_image = $hero_gallery[0];
-
                             $embarkation_point = get_field('embarkation_point', $itinerary);
                             $embarkation = get_the_title($embarkation_point) . ", " . get_field('country_name', $embarkation_point);
-
                             $disembarkation_point = get_field('disembarkation_point', $itinerary);
                             $disembarkation = get_the_title($disembarkation_point) . ", " . get_field('country_name', $disembarkation_point);
                             $hasDifferentPorts = $disembarkation_point != null && ($disembarkation_point != $embarkation_point);
-
-
                             $days = get_field('itinerary', $itinerary);
                             $departures = getDepartureList($itinerary, get_post());
                             $lowestPrice = getLowestDepartureListPrice($departures);
                             $highestPrice = getHighestDepartureListPrice($departures);
                             $bestOverallDiscount = getBestDepartureListDiscount($departures);
-
                             $destinations = getItineraryDestinations($itinerary); //build list of unique destinations within an itinerary, with embarkations removed
-
                             $title = get_field('display_name', $itinerary);
                             $length_in_nights = get_field('length_in_nights', $itinerary);
                             $top_snippet = get_field('top_snippet', $itinerary);
                             $link = get_the_permalink($itinerary);
                             $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
                             $flightOption = getFlightOption($itinerary);
-
                         ?>
 
                             <!-- Itinerary Card -->
                             <div class="cruise-itineraries__content__main__detail-area__slider__slide swiper-slide" slideIndex="<?php echo $count ?>" postId="<?php echo $id ?>">
-
 
                                 <!-- Mobile -->
                                 <div class="tiny-card">
@@ -151,23 +141,20 @@ $itineraries = get_field('itineraries');
                                     <?php endif; ?>
 
                                     <!-- Images Slider -->
-                                    <div class="resource-card__image-area">
+                                    <a class="resource-card__image-area" href="<?php echo $link; ?>">
                                         <img <?php afloat_image_markup($hero_image['id'], 'portrait-small', array('portrait-small')); ?>>
-                                    </div>
+                                    </a>
 
                                     <!-- Content -->
                                     <div class="resource-card__content">
 
                                         <!-- Title -->
-                                        <div class="resource-card__content__title-group">
-                                            <div class="resource-card__content__title-group__title">
+                                        <h3 class="resource-card__content__title">
+                                            <a href="<?php echo $link; ?>">
                                                 <?php echo $title; ?>
                                                 <?php echo $flightOption ? '<span class="badge-fly">' . $flightOption . '</span>' : ''; ?>
-                                            </div>
-                                            <div class="resource-card__content__title-group__sub">
-
-                                            </div>
-                                        </div>
+                                            </a>
+                                        </h3>
 
                                         <!-- Description -->
                                         <div class="resource-card__content__description divider">

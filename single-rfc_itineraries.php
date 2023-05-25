@@ -6,6 +6,8 @@ wp_enqueue_script('page-product-dates', get_template_directory_uri() . '/js/page
 wp_enqueue_script('page-product-itinerary-map', get_template_directory_uri() . '/js/page-product-itinerary-map.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-cabins', get_template_directory_uri() . '/js/page-product-cabins.js', array('jquery'), false, true);
 
+get_header();
+
 $itinerary = get_post();
 $ships = get_field('ships');
 $productName = get_field('display_name');
@@ -30,7 +32,6 @@ wp_localize_script(
   )
 );
 
-get_header();
 
 // cabin posts (for all ships)
 $args = array(
@@ -81,9 +82,9 @@ $args = array(
   get_template_part('template-parts/itinerary/content', 'itinerary-hero', $args);
   ?>
 
-  <!-- Modal Product Gallery (from cruise folder)-->
+  <!-- Modal Product Gallery -->
   <?php
-  get_template_part('template-parts/cruise/content', 'product-gallery', $args);
+  get_template_part('template-parts/product/content', 'product-gallery', $args);
   ?>
 
   <!-- Overview -->

@@ -236,6 +236,10 @@ h3 {
   font-weight: 700;
   color: #1d2225;
   margin-bottom: 1.5rem; }
+  h3 a {
+    text-decoration: none; }
+    h3 a:link, h3 a:visited {
+      color: inherit; }
 
 h4 {
   font-size: 1.8rem;
@@ -1538,7 +1542,8 @@ p {
         .modal__content__top__nav__title {
           font-size: 1.8rem;
           font-weight: 700;
-          color: #1d2225; }
+          color: #1d2225;
+          margin-bottom: 0; }
         .modal__content__top__nav button {
           margin-right: 2rem; }
     .modal__content__main {
@@ -2614,13 +2619,13 @@ p {
     width: 100%; }
     .overlay-card__content:link, .overlay-card__content:visited {
       text-decoration: none; }
-    .overlay-card__content__title-section {
+    .overlay-card__content__title-section__sub {
+      font-size: 1.2rem;
       color: #fff; }
-      .overlay-card__content__title-section__sub {
-        font-size: 1.2rem; }
-      .overlay-card__content__title-section__title {
-        font-size: 1.8rem;
-        font-weight: 700; }
+    .overlay-card__content__title-section__title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff; }
 
 .resource-card {
   position: relative;
@@ -2678,7 +2683,8 @@ p {
     width: 100%;
     height: 33rem;
     border-radius: 1rem;
-    overflow: hidden !important; }
+    overflow: hidden !important;
+    background-color: #fff; }
     @media only screen and (max-width: 37.5em) {
       .resource-card__image-area {
         height: 28rem; } }
@@ -3075,7 +3081,8 @@ p {
     color: #1d2225;
     font-weight: 700;
     font-size: 1.6rem;
-    line-height: 2rem; }
+    line-height: 2rem;
+    margin-bottom: .5rem; }
     .avatar__title-group__title:link {
       text-decoration: none; }
   .avatar__title-group__sub {
@@ -4042,12 +4049,15 @@ p {
   gap: 2rem;
   padding: 2rem;
   padding-bottom: 1rem; }
-  .specs__item {
+  .specs__item__title {
+    color: #1d2225;
+    font-weight: 700;
+    padding-bottom: 0.5rem;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    margin-bottom: 0; }
+  .specs__item__text {
     font-size: 1.4rem; }
-    .specs__item__title {
-      color: #1d2225;
-      font-weight: 700;
-      padding-bottom: 0.5rem; }
 
 .itinerary-ships {
   display: grid;
@@ -4297,196 +4307,12 @@ p {
   .urgent-deal__title__sub {
     font-size: 1.2rem; }
 
-.itinerary-overview {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  width: 100%; }
-  .itinerary-overview__content {
-    z-index: 2;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 0 6rem;
-    max-width: 128rem; }
-    @media only screen and (max-width: 50em) {
-      .itinerary-overview__content {
-        padding: 0 3rem; } }
-    .itinerary-overview__content__grid {
-      width: 100%;
-      display: grid;
-      grid-template-columns: 55% 45%;
-      grid-template-rows: 30rem min-content; }
-      @media only screen and (max-width: 62.5em) {
-        .itinerary-overview__content__grid {
-          grid-template-rows: min-content; } }
-      @media only screen and (max-width: 50em) {
-        .itinerary-overview__content__grid {
-          grid-template-columns: 100%; } }
-      .itinerary-overview__content__grid__overview {
-        grid-row: 1 / -1;
-        padding-top: 3rem;
-        padding-right: 4rem; }
-        @media only screen and (max-width: 50em) {
-          .itinerary-overview__content__grid__overview {
-            grid-row: auto;
-            padding-right: 0rem; } }
-        .itinerary-overview__content__grid__overview__highlights {
-          padding-bottom: 1.5rem; }
-          .itinerary-overview__content__grid__overview__highlights__list {
-            list-style: none;
-            font-size: 1.6rem; }
-            .itinerary-overview__content__grid__overview__highlights__list li {
-              display: grid;
-              grid-template-columns: min-content 1fr;
-              margin-bottom: 1.5rem; }
-              .itinerary-overview__content__grid__overview__highlights__list li span {
-                font-weight: 700;
-                color: #1d2225 !important;
-                margin-right: 2rem; }
-        .itinerary-overview__content__grid__overview__transport {
-          position: relative;
-          padding-bottom: 2rem;
-          padding-top: 2rem; }
-          .itinerary-overview__content__grid__overview__transport::before {
-            content: "";
-            width: 100%;
-            height: 1px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: #e6e6e6; }
-          .itinerary-overview__content__grid__overview__transport__title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #1d2225; }
-            .itinerary-overview__content__grid__overview__transport__title span {
-              margin-left: 0.5rem;
-              color: #9ea0a4; }
-          .itinerary-overview__content__grid__overview__transport__snippet {
-            font-size: 1.6rem; }
-          .itinerary-overview__content__grid__overview__transport__cta {
-            width: 100%;
-            display: flex;
-            justify-content: flex-end; }
-        .itinerary-overview__content__grid__overview__text {
-          padding-bottom: 5rem;
-          padding-top: 3rem;
-          position: relative; }
-          .itinerary-overview__content__grid__overview__text::before {
-            content: "";
-            width: 100%;
-            height: 1px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: #e6e6e6; }
-      .itinerary-overview__content__grid__map-area {
-        position: relative; }
-        @media only screen and (max-width: 62.5em) {
-          .itinerary-overview__content__grid__map-area {
-            padding-top: 3rem; } }
-        @media only screen and (max-width: 50em) {
-          .itinerary-overview__content__grid__map-area {
-            padding-top: 0rem;
-            padding-bottom: 5rem;
-            order: -1; } }
-        .itinerary-overview__content__grid__map-area__map {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          height: 70rem;
-          width: 100%;
-          background-color: #eff6ff;
-          overflow: hidden;
-          border-radius: 1rem;
-          box-shadow: 0 2rem 2rem -1rem rgba(0, 0, 0, 0.25); }
-          @media only screen and (max-width: 62.5em) {
-            .itinerary-overview__content__grid__map-area__map {
-              position: relative; } }
-      .itinerary-overview__content__grid__ship-area {
-        padding-top: 5rem;
-        padding-bottom: 5rem;
-        min-height: 20rem;
-        position: relative; }
-        @media only screen and (max-width: 62.5em) {
-          .itinerary-overview__content__grid__ship-area {
-            grid-column: 1 / -1; }
-            .itinerary-overview__content__grid__ship-area::before {
-              content: "";
-              width: 100%;
-              height: 1px;
-              position: absolute;
-              top: 0;
-              left: 0;
-              background-color: #e6e6e6; } }
-        .itinerary-overview__content__grid__ship-area__ship {
-          display: grid;
-          grid-template-columns: min-content 1fr;
-          padding: 2rem 2.5rem;
-          width: 100%;
-          margin-bottom: 4rem;
-          border: 1px solid #e6e6e6;
-          border-radius: 1rem; }
-          .itinerary-overview__content__grid__ship-area__ship:link, .itinerary-overview__content__grid__ship-area__ship:visited {
-            text-decoration: none;
-            color: #747474; }
-          .itinerary-overview__content__grid__ship-area__ship__avatar {
-            display: flex;
-            align-items: center; }
-            .itinerary-overview__content__grid__ship-area__ship__avatar img {
-              height: 10rem;
-              width: 10rem;
-              border-radius: 50%; }
-          .itinerary-overview__content__grid__ship-area__ship__info {
-            margin-left: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; }
-            .itinerary-overview__content__grid__ship-area__ship__info__name__title {
-              font-size: 1.8rem;
-              font-weight: 700;
-              color: #1d2225; }
-            .itinerary-overview__content__grid__ship-area__ship__info__name__sub {
-              font-size: 1.3rem; }
-            .itinerary-overview__content__grid__ship-area__ship__info__cta {
-              display: flex;
-              justify-content: flex-end;
-              font-size: 1.4rem;
-              font-weight: 700;
-              color: #1d2225; }
-        .itinerary-overview__content__grid__ship-area__title {
-          font-size: 1.8rem;
-          line-height: 2rem;
-          font-weight: 700;
-          color: #1d2225; }
-          .itinerary-overview__content__grid__ship-area__title__sub {
-            font-size: 1.2rem;
-            font-weight: 400;
-            color: #747474; }
-        .itinerary-overview__content__grid__ship-area__slider {
-          margin-top: 3rem; }
-          .itinerary-overview__content__grid__ship-area__slider .slick-slide {
-            margin-right: 2rem; }
-          .itinerary-overview__content__grid__ship-area__slider__btn-left {
-            transform: translateY(-50%);
-            position: absolute;
-            top: -5rem;
-            right: calc(4rem);
-            z-index: 20; }
-          .itinerary-overview__content__grid__ship-area__slider__btn-right {
-            transform: translateY(-50%);
-            position: absolute;
-            top: -5rem;
-            right: calc(0rem);
-            z-index: 20; }
-
 .day-list__title__pre {
   color: #9ea0a4;
   font-size: 1.3rem; }
+
+.day-list__title__text {
+  margin-bottom: 0rem; }
 
 .day-list__content {
   margin-bottom: 3rem; }
@@ -5112,6 +4938,7 @@ p {
       grid-template-columns: 1fr; } }
   .quote-grid__text-area__title {
     font-size: 3.2rem;
+    line-height: 4rem;
     font-weight: 700;
     padding: 3rem 0;
     color: #fff; }
@@ -5139,9 +4966,10 @@ p {
       width: 8rem; }
     @media only screen and (max-width: 37.5em) {
       .quote-grid__text-area__text {
-        padding-left: 3rem;
+        padding-left: 1.5rem;
         padding-top: 1.5rem; }
         .quote-grid__text-area__text svg {
+          left: -1.5rem;
           height: 4rem;
           width: 4rem; } }
   .quote-grid__text-area .avatar {
@@ -5194,10 +5022,11 @@ p {
   #experiences-slider .resource-card {
     color: #c2c6c9;
     margin-bottom: 6rem; }
-  #experiences-slider .resource-card__content__title-group__title {
+  #experiences-slider .resource-card__content__title {
     color: #fff;
     margin: 1.5rem 0;
-    font-size: 2.2rem; }
+    font-size: 2.2rem;
+    line-height: 2.8rem; }
 
 .home-full-search {
   height: 100%;
@@ -6996,7 +6825,8 @@ p {
           list-style: none;
           height: 100%;
           align-items: center;
-          margin-bottom: 0; }
+          margin-bottom: 0;
+          font-weight: 500; }
           .nav-main__content__center__nav__list__link a {
             display: flex;
             height: 100%;
@@ -7008,8 +6838,7 @@ p {
               color: currentColor;
               text-decoration: none; }
             .nav-main__content__center__nav__list__link a:hover {
-              color: #4d8eff;
-              font-weight: 700; }
+              color: #4d8eff; }
           .nav-main__content__center__nav__list__item {
             color: currentColor;
             display: flex;
@@ -7027,11 +6856,9 @@ p {
               color: currentColor;
               text-decoration: none; }
             .nav-main__content__center__nav__list__item:hover {
-              color: #4d8eff;
-              font-weight: 700; }
+              color: #4d8eff; }
             .nav-main__content__center__nav__list__item.active {
-              color: #4d8eff !important;
-              font-weight: 700; }
+              color: #4d8eff !important; }
               .nav-main__content__center__nav__list__item.active::after {
                 content: "";
                 position: absolute;

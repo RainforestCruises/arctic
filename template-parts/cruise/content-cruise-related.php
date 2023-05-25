@@ -39,9 +39,9 @@ $ships = get_posts($queryArgs);
 
             <!-- Title -->
             <div class="slider-block__content__top__title">
-                <div class="title-group__title">
+                <h2 class="title-group__title">
                     Related Cruises
-                </div>
+                </h2>
                 <div class="title-group__sub">
                     Explore from <?php echo count($ships) ?> ships sailing the Antarctic
                 </div>
@@ -70,8 +70,6 @@ $ships = get_posts($queryArgs);
             <!-- Swiper -->
             <div class="swiper" id="related-slider">
                 <div class="swiper-wrapper">
-
-
                     <?php foreach ($ships as $ship) :
                         $images =  get_field('hero_gallery', $ship);
                         $image = $images[0];
@@ -83,10 +81,7 @@ $ships = get_posts($queryArgs);
                         $lowestPrice = getLowestDepartureListPrice($departures);
                         $highestPrice = getHighestDepartureListPrice($departures);
                         $bestOverallDiscount = getBestDepartureListDiscount($departures);
-
-
                     ?>
-
                         <!-- Cabin Card -->
                         <div class="resource-card swiper-slide">
 
@@ -96,7 +91,7 @@ $ships = get_posts($queryArgs);
                                     Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
                                 </div>
                             <?php endif; ?>
-                            
+
                             <!-- Images Slider -->
                             <a class="resource-card__image-area swiper related-card-image-area" href="<?php echo get_permalink($ship) ?>">
                                 <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
@@ -106,9 +101,9 @@ $ships = get_posts($queryArgs);
                             <div class="resource-card__content">
 
                                 <!-- Title -->
-                                <a class="resource-card__content__title" href="<?php echo get_permalink($ship) ?>">
-                                    <?php echo $title; ?>
-                                </a>
+                                <h3 class="resource-card__content__title">
+                                    <a href="<?php echo get_permalink($ship) ?>"><?php echo $title; ?></a>
+                                </h3>
 
                                 <!-- Specs -->
                                 <div class="resource-card__content__specs">
@@ -150,22 +145,13 @@ $ships = get_posts($queryArgs);
                                     </div>
                                 </div>
 
-
                             </div>
                         </div>
 
-
                     <?php endforeach; ?>
-
-
-
-
 
                 </div>
             </div>
-
-
-
         </div>
     </div>
 </section>

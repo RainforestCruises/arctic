@@ -39,7 +39,7 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
 
                 <!-- Highlights -->
                 <div class="product-overview__content__grid__overview__highlights">
-                    <h3 class="title-single">Highlights</h3>
+                    <h2 class="title-single">Highlights</h2>
                     <ul class="highlight-list">
                         <?php if (have_rows('highlights')) : ?>
                             <?php while (have_rows('highlights')) : the_row(); ?>
@@ -80,9 +80,9 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
 
                     <!-- Panel Heading -->
                     <div class="outline-panel__heading">
-                        <h5 class="outline-panel__heading__text">
+                        <h2 class="outline-panel__heading__text">
                             Specifications
-                        </h5>
+                        </h2>
                         <svg>
                             <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-down"></use>
                         </svg>
@@ -96,9 +96,9 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
 
                             <!-- Guests -->
                             <div class="specs__item">
-                                <div class="specs__item__title">
+                                <h3 class="specs__item__title">
                                     Guests
-                                </div>
+                                </h3>
                                 <div class="specs__item__text">
                                     <?php echo $vessel_capacity_display ?>
                                 </div>
@@ -106,9 +106,9 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
 
                             <!-- Crew -->
                             <div class="specs__item">
-                                <div class="specs__item__title">
+                                <h3 class="specs__item__title">
                                     Staff & Crew
-                                </div>
+                                </h3>
                                 <div class="specs__item__text">
                                     <?php echo get_field('crew') ?>
                                 </div>
@@ -116,9 +116,9 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
 
                             <!-- Guest to Crew Ratio -->
                             <div class="specs__item">
-                                <div class="specs__item__title">
+                                <h3 class="specs__item__title">
                                     Guide & Crew to Guest Ratios
-                                </div>
+                                </h3>
                                 <div class="specs__item__text">
                                     <?php echo get_field('guest_to_crew_ratio') ?>
                                 </div>
@@ -126,9 +126,9 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
                             
                              <!-- Guest to Space Ratio -->
                             <div class="specs__item">
-                                <div class="specs__item__title">
+                                <h3 class="specs__item__title">
                                     Guest to Space Ratio
-                                </div>
+                                </h3>
                                 <div class="specs__item__text">
                                     <?php echo get_field('guest_to_space_ratio') ?>
                                 </div>
@@ -136,9 +136,9 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
 
                             <!-- Number of Decks -->
                             <div class="specs__item">
-                                <div class="specs__item__title">
+                                <h3 class="specs__item__title">
                                     Number of Decks
-                                </div>
+                                </h3>
                                 <div class="specs__item__text">
                                     <?php echo get_field('number_of_decks') ?>
                                 </div>
@@ -146,21 +146,19 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
 
                             <!-- Number of Cabins -->
                             <div class="specs__item">
-                                <div class="specs__item__title">
+                                <h3 class="specs__item__title">
                                     Number of Cabins
-                                </div>
+                                </h3>
                                 <div class="specs__item__text">
                                      <?php echo get_field('number_of_cabins') ?>
                                 </div>
                             </div>
 
-                            
-
                             <!-- Zodiacs -->
                             <div class="specs__item">
-                                <div class="specs__item__title">
+                                <h3 class="specs__item__title">
                                     Zodiacs
-                                </div>
+                                </h3>
                                 <div class="specs__item__text">
                                     <?php echo get_field('zodiacs') ?>
                                 </div>
@@ -168,9 +166,9 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
 
                             <!-- Year Built -->
                             <div class="specs__item">
-                                <div class="specs__item__title">
+                                <h3 class="specs__item__title">
                                     Year Built
-                                </div>
+                                </h3>
                                 <div class="specs__item__text">
                                     <?php echo get_field('year_built') ?>
                                 </div>
@@ -178,9 +176,9 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
 
                             <!-- Ice Class -->
                             <div class="specs__item">
-                                <div class="specs__item__title">
+                                <h3 class="specs__item__title">
                                     Ice Class
-                                </div>
+                                </h3>
                                 <div class="specs__item__text">
                                     <?php echo get_field('ice_class') ?>
                                 </div>
@@ -188,9 +186,9 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
 
                             <!-- Length -->
                             <div class="specs__item">
-                                <div class="specs__item__title">
+                                <h3 class="specs__item__title">
                                     Length
-                                </div>
+                                </h3>
                                 <div class="specs__item__text">
                                     <?php echo get_field('length') ?>
                                 </div>
@@ -198,9 +196,9 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
 
                             <!-- Beam -->
                             <div class="specs__item">
-                                <div class="specs__item__title">
+                                <h3 class="specs__item__title">
                                     Beam
-                                </div>
+                                </h3>
                                 <div class="specs__item__text">
                                     <?php echo get_field('breadth') ?>
                                 </div>
@@ -208,9 +206,9 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
 
                             <!-- Draft -->
                             <div class="specs__item">
-                                <div class="specs__item__title">
+                                <h3 class="specs__item__title">
                                     Draft
-                                </div>
+                                </h3>
                                 <div class="specs__item__text">
                                     <?php echo get_field('draft') ?>
                                 </div>
@@ -218,9 +216,9 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
 
                             <!-- Speed -->
                             <div class="specs__item">
-                                <div class="specs__item__title">
+                                <h3 class="specs__item__title">
                                     Cruising Speed
-                                </div>
+                                </h3>
                                 <div class="specs__item__text">
                                     <?php echo get_field('speed') ?>
                                 </div>
@@ -228,15 +226,13 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
 
                             <!-- Stabilizers -->
                             <div class="specs__item">
-                                <div class="specs__item__title">
+                                <h3 class="specs__item__title">
                                     Stabilizers
-                                </div>
+                                </h3>
                                 <div class="specs__item__text">
                                     <?php echo get_field('stabilizers') ?>
                                 </div>
-                            </div>
-
-                            
+                            </div>                  
 
                         </div>
                     </div>
@@ -247,9 +243,9 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
 
                     <!-- Panel Heading -->
                     <div class="outline-panel__heading">
-                        <h5 class="outline-panel__heading__text">
+                        <h2 class="outline-panel__heading__text">
                             Amenities
-                        </h5>
+                        </h2>
                         <svg>
                             <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-down"></use>
                         </svg>
@@ -318,9 +314,9 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
         <div class=" modal__content__top">
             <!-- Top Modal Content -->
             <div class="modal__content__top__nav">
-                <div class="modal__content__top__nav__title">
+                <h2 class="modal__content__top__nav__title">
                     About the <?php echo $productName; ?>
-                </div>
+                </h2>
             </div>
             <button class="btn-text-icon close-modal-button ">
                 Close

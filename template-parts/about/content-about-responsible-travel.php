@@ -8,8 +8,7 @@ $continents = get_field('continents');
     <div class="about-partners__content">
         <div class="about-partners__content__title">
             <h2>Local Community School Projects</h2>
-            
-
+        
             <div class="about-partners__content__title__image-area">
                 <img src="<?php echo $partners_image['url']; ?>" alt="logo" />
             </div>

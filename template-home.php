@@ -3,17 +3,15 @@
 
 wp_enqueue_script('page-home', get_template_directory_uri() . '/js/page-home.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-cruise-itineraries', get_template_directory_uri() . '/js/page-product-cruise-itineraries.js', array('jquery'), false, true);
-
+get_header();
 
 $routes = get_field('routes');
-//Itinerary JS Array
+
 $itineraryObjects = [];
 foreach ($routes as $route) {
     $sample_itinerary = get_field('sample_itinerary', $route);
     $itineraryObjects[] = getItineraryObject($sample_itinerary);
 }
-
-
 wp_localize_script(
     'page-home',
     'page_vars',
@@ -22,8 +20,6 @@ wp_localize_script(
     )
 );
 
-
-get_header();
 
 $args = array('footerCtaDivider' => true);
 

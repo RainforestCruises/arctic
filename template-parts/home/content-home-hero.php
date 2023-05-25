@@ -12,28 +12,29 @@ $hero_items = get_field('hero_items');
 
     <div class="home-hero__bg-image">
         <img <?php afloat_image_markup($hero_featured_image['id'], 'landscape-full', array('landscape-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small'), false); ?> class="optimole-initial">
-
     </div>
 
     <!-- Hero Content -->
     <div class="home-hero__content">
 
+        <!-- Main Title Group -->
         <div class="home-hero__content__primary">
-            <div class="home-hero__content__primary__title">
+            <h1 class="home-hero__content__primary__title">
                 <?php echo $hero_title ?>
-            </div>
+            </h1>
             <div class="home-hero__content__primary__snippet">
                 <?php echo $hero_subtitle; ?>
             </div>
-
         </div>
 
+        <!-- Secondary -->
         <div class="home-hero__content__secondary">
 
-            <!-- Secondary Content -->
+
+            <!-- Content -->
             <div class="home-hero__content__secondary__content">
 
-                <!-- CTA -->
+                <!-- Video CTA -->
                 <div class="home-hero__content__secondary__content__cta">
 
                     <!-- Play Video Button -->
@@ -53,7 +54,7 @@ $hero_items = get_field('hero_items');
 
                 </div>
 
-                <!-- Secondary Items -->
+                <!-- Jump Links -->
                 <div class="home-hero__content__secondary__content__items">
                     <?php foreach ($hero_items as $item) :
 
@@ -72,7 +73,7 @@ $hero_items = get_field('hero_items');
                             </div>
                             <div class="hero-item__title-group">
                                 <div class="hero-item__title-group__title">
-                                 <?php echo $title; ?>
+                                    <?php echo $title; ?>
                                 </div>
                             </div>
                         </a>
@@ -90,7 +91,6 @@ $hero_items = get_field('hero_items');
                     </video>
                 </div>
             </div>
-
 
         </div>
 
@@ -114,7 +114,7 @@ $hero_items = get_field('hero_items');
             </button>
         </div>
 
-        <!-- Main Slider -->
+        <!-- Main -->
         <div class="modal__video__main">
             <div style="padding:56.25% 0 0 0;position:relative;">
                 <iframe id="modal-video-iframe" src="<?php echo get_field('vimeo_link') ?>" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Antarctica Cruises"></iframe>

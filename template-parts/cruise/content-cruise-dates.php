@@ -14,9 +14,9 @@ $departures = $args['departures'];
 
             <!-- Title -->
             <div class="slider-block__content__top__title">
-                <div class="title-group__title">
+                <h2 class="title-group__title">
                     Departure Dates
-                </div>
+                </h2>
                 <div class="title-group__sub departure-date-subtitle">
                     Showing <?php echo count($departures); ?> scheduled departures
                 </div>

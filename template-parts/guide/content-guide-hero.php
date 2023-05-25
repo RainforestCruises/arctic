@@ -32,9 +32,9 @@ $toc = generateIndex($content)['index'];
             <div class="guide-hero__content__title-area__category">
                 <?php echo $displayCategory ?>
             </div>
-            <div class="guide-hero__content__title-area__title">
+            <h1 class="guide-hero__content__title-area__title">
                 <?php echo get_field('navigation_title'); ?>
-            </div>
+            </h1>
 
             <div class="guide-hero__content__title-area__stats">
                 <div>

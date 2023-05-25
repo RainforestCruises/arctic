@@ -22,8 +22,9 @@ $intro_text_limited = substr($intro_text, 0, 1250) . '...';
 
             <!-- Main Overview (Highlights, Transport, Text) -->
             <div class="deals-toplevel-intro__content__grid__overview">
-            <h3 class="title-single"><?php echo $intro_title; ?></h3>
-
+                <h2 class="title-single">
+                    <?php echo $intro_title; ?>
+                </h2>
                 <!-- Text -->
                 <div class="deals-toplevel-intro__content__grid__overview__text ">
                     <?php echo $intro_text_limited; ?>

@@ -11,6 +11,7 @@ $expandItems = count($activities) > $max_items ? true : false;
 $expand = strlen($overview_content) > 950 ? true : false;
 $overview_content_limited = substr($overview_content, 0, 950) . '...';
 ?>
+
 <!-- Itinerary Overview -->
 <section class="product-overview" id="section-highlights">
 
@@ -24,7 +25,7 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
 
                 <!-- Highlights -->
                 <div class="product-overview__content__grid__overview__highlights">
-                    <h3 class="title-single">Highlights</h3>
+                    <h2 class="title-single">Highlights</h2>
                     <ul class="highlight-list">
                         <?php if (have_rows('highlights')) : ?>
                             <?php while (have_rows('highlights')) : the_row(); ?>
@@ -65,9 +66,9 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
 
                     <!-- Panel Heading -->
                     <div class="outline-panel__heading">
-                        <h5 class="outline-panel__heading__text">
+                        <h2 class="outline-panel__heading__text">
                             Ships
-                        </h5>
+                        </h2>
                         <svg>
                             <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-down"></use>
                         </svg>
@@ -89,9 +90,9 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
                                         <img <?php afloat_image_markup($ship_image['id'], 'square-thumb', array('square-thumb')); ?>>
                                     </a>
                                     <div class="avatar__title-group">
-                                        <a class="avatar__title-group__title" href="<?php echo get_permalink($ship); ?>">
-                                            <?php echo get_the_title($ship); ?>
-                                        </a>
+                                        <h3 class="avatar__title-group__title">
+                                            <a href="<?php echo get_permalink($ship); ?>"><?php echo get_the_title($ship); ?></a>
+                                        </h3>
                                         <div class="avatar__title-group__sub">
                                             <?php echo get_field('top_snippet', $ship); ?>
                                         </div>
@@ -109,9 +110,9 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
 
                     <!-- Panel Heading -->
                     <div class="outline-panel__heading">
-                        <h5 class="outline-panel__heading__text">
+                        <h2 class="outline-panel__heading__text">
                             Standard Activities
-                        </h5>
+                        </h2>
                         <svg>
                             <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-down"></use>
                         </svg>
@@ -168,9 +169,9 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
         <div class=" modal__content__top">
             <!-- Top Modal Content -->
             <div class="modal__content__top__nav">
-                <div class="modal__content__top__nav__title">
+                <h2 class="modal__content__top__nav__title">
                     About the <?php echo get_field('display_name'); ?>
-                </div>
+                </h2>
             </div>
             <button class="btn-text-icon close-modal-button ">
                 Close

@@ -9,7 +9,15 @@ $disembarkation_point = get_field('disembarkation_point');
 
 <!-- Itinerary Daily -->
 <section class="grid-block narrow" id="section-itinerary">
-    <div class="grid-block__content ">
+    <div class="grid-block__content">
+
+        <!-- Top - Title/Nav -->
+        <div class="grid-block__content__top">
+            <!-- Title -->
+            <h2 class="title-single">
+                Itinerary Day to Day
+            </h2>
+        </div>
 
         <!-- Grid Area -->
         <div class="grid-block__content__grid grid1">
@@ -32,9 +40,9 @@ $disembarkation_point = get_field('disembarkation_point');
                                 <div class="day-list__title__pre">
                                     <?php echo dayCountMarkup($day['day_count']); ?>
                                 </div>
-                                <div class="day-list__title__text">
+                                <h3 class="day-list__title__text">
                                     <?php echo $day['title']; ?>
-                                </div>
+                                </h3>
                             </div>
                             <svg>
                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-down"></use>
@@ -61,7 +69,7 @@ $disembarkation_point = get_field('disembarkation_point');
                                             <div class="avatar__title-group__title">
                                                 <?php echo $title; ?>
                                             </div>
-                            
+
                                             <?php if ($count == 0) : ?>
                                                 <div class="avatar__title-group__sub">
                                                     Embarkation Point

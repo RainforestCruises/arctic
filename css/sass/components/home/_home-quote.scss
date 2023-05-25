@@ -28,6 +28,7 @@
     &__text-area {
         &__title {
             font-size: 3.2rem;
+            line-height: 4rem;
             font-weight: 700;
             padding: 3rem 0;
             color: $color-white;
@@ -59,9 +60,10 @@
             }
 
             @media only screen and (max-width: $bp-small) {
-                padding-left: 3rem;
+                padding-left: 1.5rem;
                 padding-top: 1.5rem;
                 & svg {
+                    left: -1.5rem;
                     height: 4rem;
                     width: 4rem;
                 }
@@ -132,9 +134,10 @@
         color: $color-grey-light-2;
         margin-bottom: 6rem;
     }
-    & .resource-card__content__title-group__title {
+    & .resource-card__content__title {
         color: $color-white;
         margin: 1.5rem 0;
         font-size: 2.2rem;
+        line-height: 2.8rem;
     }
 }

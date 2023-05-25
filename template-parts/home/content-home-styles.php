@@ -5,18 +5,18 @@ $styles_title_subtext = get_field('styles_title_subtext');
 
 ?>
 
-
+<!-- Styles -->
 <section class="slider-block" id="section-styles">
-    <div class="slider-block__content  block-top-divider">
+    <div class="slider-block__content block-top-divider">
 
         <!-- Top - Title/Nav -->
         <div class="slider-block__content__top">
 
             <!-- Title -->
             <div class="title-group">
-                <div class="title-group__title">
+                <h2 class="title-group__title">
                     <?php echo $styles_title; ?>
-                </div>
+                </h2>
                 <div class="title-group__sub">
                     <?php echo $styles_title_subtext; ?>
                 </div>
@@ -38,7 +38,7 @@ $styles_title_subtext = get_field('styles_title_subtext');
 
         </div>
 
-        <!-- slider Area -->
+        <!-- Slider Area -->
         <div class="slider-block__content__slider">
             <div class="swiper" id="styles-slider">
                 <div class="swiper-wrapper">
@@ -57,9 +57,9 @@ $styles_title_subtext = get_field('styles_title_subtext');
                             </div>
                             <a class="overlay-card__content" href="<?php echo $landing_page; ?>">
                                 <div class="overlay-card__content__title-section">
-                                    <div class="overlay-card__content__title-section__title">
+                                    <h3 class="overlay-card__content__title-section__title">
                                         <?php echo $title; ?>
-                                    </div>
+                                    </h3>
                                 </div>
                             </a>
                         </div>

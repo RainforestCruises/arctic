@@ -84,9 +84,9 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                         </a>
                     </div>
                 <?php endif; ?>
-                <div class="product-hero__content__main__primary__title">
+                <h1 class="product-hero__content__main__primary__title">
                     <?php echo $title ?>
-                </div>
+                </h1>
                 <div class="product-hero__content__main__primary__snippet">
                     <?php echo $snippet; ?>
                 </div>

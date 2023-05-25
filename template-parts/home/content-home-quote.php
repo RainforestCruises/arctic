@@ -15,9 +15,9 @@ $quote_avatar = get_field('quote_avatar');
 
                 <!-- Text -->
                 <div class="quote-grid__text-area">
-                    <div class="quote-grid__text-area__title">
+                    <h2 class="quote-grid__text-area__title">
                         <?php echo $quote_title; ?>
-                    </div>
+                    </h2>
                     <div class="quote-grid__text-area__text">
                         <svg>
                             <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-quote"></use>

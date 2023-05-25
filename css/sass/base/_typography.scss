@@ -12,6 +12,14 @@ h3 {
     font-weight: 700;
     color: $color-primary;
     margin-bottom: 1.5rem;
+
+    & a {
+        text-decoration: none;
+        &:link,
+        &:visited {
+            color: inherit;
+        }
+    }
 }
 
 h4 {

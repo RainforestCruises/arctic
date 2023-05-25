@@ -164,15 +164,17 @@
         }
 
         &__title-section {
-            color: $color-white;
+            
 
             &__sub {
                 font-size: 1.2rem;
+                color: $color-white;
             }
 
             &__title {
                 font-size: 1.8rem;
                 font-weight: 700;
+                color: $color-white;
             }
         }
 
@@ -272,6 +274,7 @@
         height: 33rem;
         border-radius: 1rem;
         overflow: hidden !important;
+        background-color: $color-white;
 
         @media only screen and (max-width: $bp-small) {
             height: 28rem;
@@ -850,7 +853,7 @@
         }
     }
 
-    &__image-area {
+    &__image-area { 
         display: flex;
         align-items: center;
         user-select: none;
@@ -869,6 +872,7 @@
             font-weight: 700;
             font-size: 1.6rem;
             line-height: 2rem;
+            margin-bottom: .5rem;
             &:link {
                 text-decoration: none;
             }

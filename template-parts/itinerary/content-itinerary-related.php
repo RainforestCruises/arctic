@@ -9,8 +9,6 @@ $queryArgs = array(
 
 );
 
-
-//build meta query criteria
 $queryArgsDestination = array();
 $queryArgsDestination['relation'] = 'OR';
 
@@ -28,14 +26,8 @@ if ($destinations) {
     $queryArgs['meta_query'][] = $queryArgsDestination;
 }
 
-
 $itineraries = get_posts($queryArgs);
-
 ?>
-
-
-
-
 
 
 <section class="slider-block narrow product-related">
@@ -46,9 +38,9 @@ $itineraries = get_posts($queryArgs);
 
             <!-- Title -->
             <div class="slider-block__content__top__title">
-                <div class="title-group__title">
+                <h2 class="title-group__title">
                     Related Itineraries
-                </div>
+                </h2>
                 <div class="title-group__sub">
                     Explore these <?php echo count($itineraries) ?> related itineraries
                 </div>
@@ -118,9 +110,9 @@ $itineraries = get_posts($queryArgs);
                             <div class="resource-card__content">
 
                                 <!-- Title -->
-                                <a class="resource-card__content__title" href="<?php echo get_permalink($itinerary) ?>">
-                                    <?php echo $title; ?>
-                                </a>
+                                <h3 class="resource-card__content__title">
+                                    <a href="<?php echo get_permalink($itinerary) ?>"><?php echo $title; ?></a>
+                                </h3>
 
                                 <!-- Specs -->
                                 <div class="resource-card__content__specs">

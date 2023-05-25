@@ -17,9 +17,9 @@ $ships_title_subtext = get_field('ships_title_subtext');
 
             <!-- Title -->
             <div class="title-single">
-                <div class="title-group__title">
+                <h2 class="title-group__title">
                     <?php echo $ships_title; ?>
-                </div>
+                </h2>
                 <div class="title-group__sub">
                     <?php echo $ships_title_subtext; ?>
                 </div>
@@ -59,19 +59,20 @@ $ships_title_subtext = get_field('ships_title_subtext');
                         <div class="swiper-button-next swiper-button-prev--overlay"></div>
                     </div>
 
+                    <!-- Tag -->
+                    <?php if ($bestOverallDiscount) : ?>
+                        <div class="resource-card__tag">
+                            Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
+                        </div>
+                    <?php endif; ?>
+
                     <!-- Content -->
                     <div class="resource-card__content">
-                        <!-- Tag -->
-                        <?php if ($bestOverallDiscount) : ?>
-                            <div class="resource-card__tag">
-                                Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
-                            </div>
-                        <?php endif; ?>
 
                         <!-- Title -->
-                        <a class="resource-card__content__title" href="<?php echo get_permalink($ship) ?>">
-                            <?php echo $title; ?>
-                        </a>
+                        <h3 class="resource-card__content__title">
+                            <a href="<?php echo get_permalink($ship) ?>"><?php echo $title; ?></a>
+                        </h3>
 
                         <!-- Specs -->
                         <div class="resource-card__content__specs">
@@ -155,19 +156,19 @@ $ships_title_subtext = get_field('ships_title_subtext');
                         <div class="swiper-button-next swiper-button-next--overlay"></div>
                     </div>
 
+                    <!-- Tag -->
+                    <?php if ($bestOverallDiscount) : ?>
+                        <div class="resource-card__tag">
+                            Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
+                        </div>
+                    <?php endif; ?>
+
                     <!-- Content -->
                     <div class="resource-card__content">
-                        <!-- Tag -->
-                        <?php if ($bestOverallDiscount) : ?>
-                            <div class="resource-card__tag">
-                                Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
-                            </div>
-                        <?php endif; ?>
-
                         <!-- Title -->
-                        <a class="resource-card__content__title" href="<?php echo get_permalink($ship) ?>">
-                            <?php echo $title; ?>
-                        </a>
+                        <h3 class="resource-card__content__title">
+                            <a href="<?php echo get_permalink($ship) ?>"><?php echo $title; ?></a>
+                        </h3>
 
                         <!-- Specs -->
                         <div class="resource-card__content__specs">
