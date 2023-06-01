@@ -17,6 +17,10 @@ $lowestOverallPrice = getLowestDepartureListPrice($departures);
 $bestOverallDiscount = getBestDepartureListDiscount($departures);
 $deals = getDealsFromDepartureList($departures);
 
+
+$regions = getItineraryRegions($itinerary);
+console_log($regions);
+
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
 $shipSizeRange = getItineraryShipSize($ships);

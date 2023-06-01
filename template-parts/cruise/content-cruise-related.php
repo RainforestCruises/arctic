@@ -73,7 +73,7 @@ $ships = get_posts($queryArgs);
                     <?php foreach ($ships as $ship) :
                         $images =  get_field('hero_gallery', $ship);
                         $image = $images[0];
-                        $itineraries =  get_field('itineraries', $ship);
+                        $itineraries = getShipItineraries($ship);
                         $title = get_the_title($ship);
                         $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
                         $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . 'Luxury';

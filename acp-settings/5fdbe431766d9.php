@@ -5,7 +5,7 @@ return array (
   'title' => 'Cruises',
   'type' => 'rfc_cruises',
   'id' => '5fdbe431766d9',
-  'updated' => 1667587074,
+  'updated' => 1685636174,
   'columns' => 
   array (
     'title' => 
@@ -72,22 +72,40 @@ return array (
       'filter_label' => '',
       'name' => '60aeb31bf645a0',
     ),
-    '609305e9428f5c' => 
+    '6478c4131d70a4' => 
     array (
       'type' => 'column-acf_field',
-      'label' => 'Property Id',
+      'label' => 'Top Snippet',
       'width' => '',
       'width_unit' => '%',
-      'field' => 'field_5f62761a2ee73',
-      'character_limit' => '20',
+      'field' => 'field_5f627996a57b4',
+      'excerpt_length' => '20',
       'export' => 'off',
       'sort' => 'on',
-      'edit' => 'off',
+      'edit' => 'on',
       'bulk_edit' => 'on',
       'search' => 'on',
       'filter' => 'off',
       'filter_label' => '',
-      'name' => '609305e9428f5c',
+      'name' => '6478c4131d70a4',
+    ),
+    '6478c434b1a9fc' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Service Level',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_63efb5dda315b',
+      'post_property_display' => 'title',
+      'post_link_to' => 'edit_post',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '6478c434b1a9fc',
     ),
   ),
   'settings' => 

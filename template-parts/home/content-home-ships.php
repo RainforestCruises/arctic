@@ -2,7 +2,6 @@
 $ships = get_field('ships');
 $firstShips = array_slice($ships, 0, 6);
 $expandedShips = array_slice($ships, 6, 99);
-
 $ships_title = get_field('ships_title');
 $ships_title_subtext = get_field('ships_title_subtext');
 
@@ -32,7 +31,7 @@ $ships_title_subtext = get_field('ships_title_subtext');
             <?php
             foreach ($firstShips as $ship) :
                 $images =  get_field('hero_gallery', $ship);
-                $itineraries =  get_field('itineraries', $ship);
+                $itineraries = getShipItineraries($ship);
                 $title = get_the_title($ship);
                 $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
                 $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . 'Luxury';
@@ -128,7 +127,7 @@ $ships_title_subtext = get_field('ships_title_subtext');
             <?php
             foreach ($expandedShips as $ship) :
                 $images =  get_field('hero_gallery', $ship);
-                $itineraries =  get_field('itineraries', $ship);
+                $itineraries = getShipItineraries($ship);
                 $title = get_the_title($ship);
                 $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
                 $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . 'Luxury';

@@ -26,8 +26,6 @@ if (count($itinerariesWithDeal) > 1) {
 
         <!-- Top - Title/Nav -->
         <div class="grid-block__content__top">
-
-            <!-- Title -->
             <div class="title-group">
                 <h2 class="title-group__title">
                     Find Your Journey
@@ -35,9 +33,7 @@ if (count($itinerariesWithDeal) > 1) {
                 <div class="title-group__sub">
                     <?php echo $subtitleDisplay; ?>
                 </div>
-
             </div>
-
         </div>
 
         <!-- Grid Area -->
@@ -46,7 +42,6 @@ if (count($itinerariesWithDeal) > 1) {
             foreach ($itinerariesWithDeal as $itinerary) :
                 $images =  get_field('hero_gallery', $itinerary);
                 $image = $images[0];
-                $itineraries =  get_field('itineraries', $itinerary);
                 $title = get_field('display_name', $itinerary);
                 $days = get_field('itinerary', $itinerary);
                 $length_in_nights = get_field('length_in_nights', $itinerary);
@@ -55,7 +50,6 @@ if (count($itinerariesWithDeal) > 1) {
                 $embarkation = get_the_title($embarkation_point);
                 $shipsDisplay = getItineraryShips($itinerary);
                 $destinations = getItineraryDestinations($itinerary);
-                $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
                 $guestsDisplay = get_field('vessel_capacity', $itinerary) . ' Guests, ' . 'Luxury';
                 $departures = getDepartureList($itinerary);
                 $lowestPrice = getLowestDepartureListPrice($departures);
@@ -73,7 +67,6 @@ if (count($itinerariesWithDeal) > 1) {
                             Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
                         </div>
                     <?php endif; ?>
-
 
                     <!-- Image -->
                     <div class="resource-card__image-area">
@@ -125,7 +118,6 @@ if (count($itinerariesWithDeal) > 1) {
                                 <div class="specs-item__text">
                                     Dates:
                                     <?php getDateListDisplay($departuresWithDealList, 3); ?>
-
                                 </div>
                             </div>
                         </div>

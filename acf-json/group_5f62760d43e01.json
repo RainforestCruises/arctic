@@ -611,47 +611,6 @@
             "mime_types": ""
         },
         {
-            "key": "field_63597262588a9",
-            "label": "Itineraries",
-            "name": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_6359726a588aa",
-            "label": "Itineraries",
-            "name": "itineraries",
-            "type": "relationship",
-            "instructions": "Include all that apply",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "rfc_itineraries"
-            ],
-            "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "object"
-        },
-        {
             "key": "field_62d59112d9b25",
             "label": "Reviews",
             "name": "",
@@ -871,5 +830,5 @@
     "active": true,
     "description": "Cruise - CPT",
     "show_in_rest": 0,
-    "modified": 1682521901
+    "modified": 1685634951
 }

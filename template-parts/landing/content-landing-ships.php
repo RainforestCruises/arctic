@@ -28,7 +28,7 @@ $ships_title = get_field('ships_title');
         <div class="grid-block__content__grid grid3">
             <?php foreach ($ships as $ship) :
                 $images =  get_field('hero_gallery', $ship);
-                $itineraries =  get_field('itineraries', $ship);
+                $itineraries = getShipItineraries($ship);
                 $title = get_the_title($ship);
                 $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
                 $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . 'Luxury';

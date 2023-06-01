@@ -1,19 +1,25 @@
 <?php
 
-
+function getUniquePostsFromArrayOfPosts($posts)
+{
+    $uniquePosts = [];
+    foreach ($posts as $post) {
+        if (!in_array($post, $uniquePosts)) {
+            $uniquePosts[] = $post;
+        }
+    }
+    return $uniquePosts;
+}
 
 function findObjectById($id, $array, $key = 'Id')
 {
-
     foreach ($array as $element) {
         if ($id == $element[$key]) {
             return $element;
         }
     }
-
     return false;
 }
-
 
 
 //Console Log Utility--------------
@@ -42,13 +48,13 @@ function afloat_image_markup($image_id, $image_size, $sizes_array = [])
 
     $markup = 'src="' . $image_src . '" alt="' . $image_alt . '" ' . 'width="' . $default_width . '" height="' . $default_height . '"';
 
-    
+
     $generate_source_set_image_markup = get_field('generate_source_set_image_markup', 'options');
     if (!$generate_source_set_image_markup) {
         echo $markup;
     } else {
 
-        if (!$sizes_array){
+        if (!$sizes_array) {
             echo $markup;
         } else {
             $image_srcset = '';
@@ -56,13 +62,13 @@ function afloat_image_markup($image_id, $image_size, $sizes_array = [])
             foreach ($sizes_array as $s) {
                 $image_attributes = wp_get_attachment_image_src($image_id, $s);
                 $image_srcset = $image_srcset . $image_attributes[0] . ' ' . $image_attributes[1] . 'w,';
-    
+
                 if ($image_attributes[1] > $max_width) {
                     $max_width = $image_attributes[1];
                 }
-            }  
+            }
             echo $markup . ' " srcset="' . $image_srcset . '" sizes="(max-width: ' . $max_width . 'px) 100vw, ' . $max_width . 'px"';
-        }     
+        }
     }
 }
 
@@ -387,6 +393,7 @@ function createYearSelection($current, $yearsCount)
     return $years;
 }
 
+// Table Of Contents Generator
 function generateIndex($html)
 {
     preg_match_all('/<h([1-6])([^>]*)>(.*?)<\/h[1-6]>/i', $html, $matches, PREG_SET_ORDER);
@@ -408,34 +415,7 @@ function generateIndex($html)
     $index .= "</ul>";
     return ["html" => $html, "index" => $index];
 }
-// // Table Of Contents Generator
-// function generateIndex($html)
-// {
-//     preg_match_all('/<h([1-6])*[^>]*>(.*?)<\/h[1-6]>/', $html, $matches);
 
-//     $index = "<ul>";
-//     $prev = 2;
-
-//     foreach ($matches[0] as $i => $match) {
-
-//         $curr = $matches[1][$i];
-//         $text = strip_tags($matches[2][$i]);
-//         $slug = strtolower(str_replace("--", "-", preg_replace('/[^\da-z]/i', '-', $text)));
-//         $anchor = '<div name="' . $slug . '" class="toc-link">' . $text . '</div>';
-//         $html = str_replace($text, $anchor, $html);
-
-//         $prev <= $curr ?: $index .= str_repeat('</ul>', ($prev - $curr));
-//         $prev >= $curr ?: $index .= "<ul>";
-
-//         $index .= '<li><a href="#' . $slug . '" class="toc-link">' . $text . '</a></li>';
-
-//         $prev = $curr;
-//     }
-
-//     $index .= "</ul>";
-
-//     return ["html" => $html, "index" => $index];
-// }
 
 //Generate Initials 
 function generateInitials($name)

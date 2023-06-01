@@ -22,34 +22,11 @@
             "maxlength": ""
         },
         {
-            "key": "field_6011eb1e4c9c8",
-            "label": "Default Search Link",
-            "name": "default_search_link",
-            "type": "page_link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "page"
-            ],
-            "taxonomy": [
-                "category:search"
-            ],
-            "allow_null": 0,
-            "allow_archives": 0,
-            "multiple": 0
-        },
-        {
-            "key": "field_62ed761e1edef",
-            "label": "Latitude",
-            "name": "latitude",
+            "key": "field_6478d2d944538",
+            "label": "Season Start",
+            "name": "season_start",
             "type": "number",
-            "instructions": "",
+            "instructions": "Number of the starting month 1-12 (ex: January is 1, February is 2, etc.)",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -61,16 +38,16 @@
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "min": "",
-            "max": "",
+            "min": 1,
+            "max": 12,
             "step": ""
         },
         {
-            "key": "field_62ed762b1edf0",
-            "label": "Longitude",
-            "name": "longitude",
+            "key": "field_6478d34f44539",
+            "label": "Season Length",
+            "name": "season_length",
             "type": "number",
-            "instructions": "",
+            "instructions": "Number months the season lasts for",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -82,71 +59,8 @@
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
-        },
-        {
-            "key": "field_62f52efc46b5b",
-            "label": "Latitude Zoom Point",
-            "name": "latitude_zoom_point",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
-        },
-        {
-            "key": "field_62f52f1546b5c",
-            "label": "Longitude Zoom Point",
-            "name": "longitude_zoom_point",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
-        },
-        {
-            "key": "field_62f52f2b46b5d",
-            "label": "Zoom Level",
-            "name": "zoom_level",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
+            "min": 1,
+            "max": 12,
             "step": ""
         }
     ],
@@ -168,5 +82,5 @@
     "active": true,
     "description": "Regions - CPT",
     "show_in_rest": 0,
-    "modified": 1660235577
+    "modified": 1685641030
 }

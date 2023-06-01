@@ -11,7 +11,7 @@ get_header();
 
 $ship = get_post();
 $productName = get_the_title();
-$itineraries = get_field('itineraries');
+$itineraries = getShipItineraries($ship);
 $departures = getDepartureList($ship);
 $lowestOverallPrice = getLowestDepartureListPrice($departures);
 $bestOverallDiscount = getBestDepartureListDiscount($departures);
@@ -19,6 +19,10 @@ $deals = getDealsFromDepartureList($departures);
 
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
+
+
+$regions = getShipRegions($ship);
+console_log($regions);
 
 
 //cabin posts

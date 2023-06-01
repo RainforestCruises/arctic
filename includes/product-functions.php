@@ -24,12 +24,12 @@ function getDepartureList($post, $specificShip = null)
                     $cabin_prices = $d['cabin_prices'];
                     $ship = $d['ship'];
 
-                    if($cabin_prices){ // sort cabin price high to low
-                        usort($cabin_prices,function($first,$second){
+                    if ($cabin_prices) { // sort cabin price high to low
+                        usort($cabin_prices, function ($first, $second) {
                             return strtolower($first['price']) < strtolower($second['price']);
                         });
                     }
-                    
+
                     if ($ship == $post) {
 
                         $filteredDeals = getDealsFromSingleDeparture($d);
@@ -66,8 +66,8 @@ function getDepartureList($post, $specificShip = null)
                 $cabin_prices = $d['cabin_prices'];
                 $ship = $d['ship'];
 
-                if($cabin_prices){ // sort cabin price high to low
-                    usort($cabin_prices,function($first,$second){
+                if ($cabin_prices) { // sort cabin price high to low
+                    usort($cabin_prices, function ($first, $second) {
                         return strtolower($first['price']) < strtolower($second['price']);
                     });
                 }
@@ -221,16 +221,17 @@ function getBestDepartureDiscount($departure)
 
 // ITINERARY ----------------------------------------------------------
 // lowest price from list of itineraries
-function getLowestPriceFromListOfItineraries($itineraries){
+function getLowestPriceFromListOfItineraries($itineraries)
+{
 
     $priceList = [];
-    foreach($itineraries as $itinerary){
+    foreach ($itineraries as $itinerary) {
         $departures = getDepartureList($itinerary);
         $priceList[] = getLowestDepartureListPrice($departures);
     }
 
     $lowestPrice = min($priceList);
-    return($lowestPrice);
+    return ($lowestPrice);
 }
 
 // fly / sail display
@@ -267,7 +268,6 @@ function getEmbarkationDisplay($itinerary)
 
     return $display;
 }
-
 // get display of passenger count range
 function getItineraryShipSize($ships)
 {
@@ -340,6 +340,20 @@ function getItineraryShips($itinerary)
     return $display;
 }
 
+// get list of regions from itinerary post
+function getItineraryRegions($itinerary)
+{
+    $routes = get_field('route', $itinerary);
+    $regionsList = [];
+    foreach ($routes as $route) {
+        $regionsList[] = get_field('region', $route);
+    }
+   
+
+    $uniqueRegionsList = getUniquePostsFromArrayOfPosts($regionsList);
+    return $uniqueRegionsList;
+}
+
 // range (From x Days to x Days)
 function itineraryRange($itineraries, $separator, $onlyMin = false)
 {
@@ -383,4 +397,50 @@ function shipSizeDisplay($pax)
         $displayText = "Medium Size";
     }
     return $displayText;
+}
+
+// gets a list of itinerary posts that have this ship within a departure
+function getShipItineraries($ship)
+{
+    $queryArgs = array(
+        'post_type' => 'rfc_itineraries',
+        'posts_per_page' => -1,
+    );
+
+    $itineraries = get_posts($queryArgs);
+    $itineraryList = [];
+    foreach ($itineraries as $itinerary) {
+        $departures = get_field('departures', $itinerary);
+        $departureMatch = false;
+        foreach ($departures as $departure) {
+            $departureShip = $departure['ship'];
+            if ($departureShip == $ship) {
+                $departureMatch = true;
+            }
+        }
+
+        if ($departureMatch) {
+            $itineraryList[] = $itinerary;
+        }
+    }
+
+    return $itineraryList;
+}
+
+// gets a list of unique regions per ship
+function getShipRegions($ship)
+{
+    $itineraries = getShipItineraries($ship);
+    $regionsList = [];
+    foreach ($itineraries as $itinerary) {
+        $routes = get_field('route', $itinerary);
+        foreach ($routes as $route) {
+            $regionsList[] = get_field('region', $route);
+        }
+       
+    }
+    
+    $uniqueShipRegionsList = getUniquePostsFromArrayOfPosts($regionsList);
+    return($uniqueShipRegionsList);
+    //return $uniqueRegionsListList;
 }

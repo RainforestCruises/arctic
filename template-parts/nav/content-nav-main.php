@@ -87,7 +87,7 @@ $alwaysActiveMainNav = checkActiveHeader();
                     <div class="nav-mega__panel__grid">
                         <?php foreach ($ships as $group) :
                             $group_title = $group['group'];
-                            $items = $group['items'];
+                            $items = $group['items']; //ships
                         ?>
                             <div class="nav-mega__panel__grid__group">
                                 <div class="nav-mega__panel__grid__group__title">
@@ -99,7 +99,7 @@ $alwaysActiveMainNav = checkActiveHeader();
                                         $title = get_the_title($item);
                                         $hero_gallery = get_field('hero_gallery', $item);
                                         $ship_image = $hero_gallery[0];
-                                        $itineraries = get_field('itineraries', $item);
+                                        $itineraries = getShipItineraries($item);
                                         $itineraryDisplay = count($itineraries) . ' Itineraries, ' . itineraryRange($itineraries, "-") . " Days";
                                         $guestsDisplay = get_field('vessel_capacity', $item) . ' Guests';
                                     ?>
