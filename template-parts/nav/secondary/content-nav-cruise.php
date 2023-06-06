@@ -15,6 +15,9 @@ $deals = getDealsFromDepartureList($departures);
             </a>
         </div>
         <div class="nav-secondary__content__links">
+            <a href="#section-highlights" class="nav-secondary__content__links__link">
+                Highlights
+            </a>
             <a href="#section-cabins" class="nav-secondary__content__links__link">
                 Cabins
             </a>
@@ -50,6 +53,9 @@ $deals = getDealsFromDepartureList($departures);
     <!--mobile menu expand-->
     <nav class="nav-secondary__mobile-menu">
         <ul class="nav-secondary__mobile-menu__list">
+            <li class="nav-secondary__mobile-menu__list__item">
+                <a class="nav-secondary__mobile-menu__list__item__link" href="#section-highlights">Highlights</a>
+            </li>
             <li class="nav-secondary__mobile-menu__list__item">
                 <a class="nav-secondary__mobile-menu__list__item__link" href="#section-cabins">Cabins</a>
             </li>

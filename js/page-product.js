@@ -4,12 +4,15 @@ jQuery(document).ready(function ($) {
     //MODALS ---------------------
     const body = document.getElementById("body");
     const contentModal = document.querySelector("#contentModal");
+    const contentModalMain = document.querySelector("#contentModalMain");
 
     const expandContent = document.querySelector("#expand-content");
     if (expandContent) {
         expandContent.addEventListener('click', () => {
             contentModal.style.display = 'flex';
             body.classList.add('no-scroll');
+            contentModalMain.scrollTop = 300;
+            
         });
     }
 
@@ -213,7 +216,7 @@ jQuery(document).ready(function ($) {
             prevEl: '.hero-gallery-slider-prev',
         },
         breakpoints: {
-            1280: {
+            1500: {
                 slidesPerView: 3,
             }
         }

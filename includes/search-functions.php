@@ -1,147 +1,74 @@
 <?php
 //Upper bounded list of products for search results
-function getSearchPosts($travelStyles, $destinations, $experiences, $searchType, $destinationId, $regionId, $minLength, $maxLength, $datesArray, $searchInput, $sorting, $pageNumber, $viewType)
+function getSearchPosts($region, $routes, $styles, $minLength, $maxLength, $datesArray, $searchInput, $sorting, $pageNumber, $viewType)
 {
-
-    $charterFilter = false;
-    if ($travelStyles == null) {
-        $travelStyles = array('rfc_cruises', 'rfc_tours', 'rfc_lodges');
-    } else {
-
-        if ($travelStyles[0] == 'charter_cruises') {
-            $travelStyles = array('rfc_cruises');
-            $charterFilter = true;
-        }
-    }
-
 
     $args = array(
         'posts_per_page' => -1,
-        'post_type' => $travelStyles,
+        'post_type' => 'rfc_itineraries',
     );
 
 
-
-    if ($charterFilter == true) {
-        $args['meta_query'][] = array(
-            'key' => 'charter_available',
-            'value' => true,
-            'compare' => 'LIKE'
+    // regions - generate list of possible routes (IDs)
+    $regionalRoutes = [];
+    if ($region != null) {
+        $routeCriteria = array(
+            'posts_per_page' => -1,
+            'post_type' => 'rfc_routes',
+            "meta_key" => "region",
+            "meta_value" => $region
         );
+        $regionalRoutes = wp_list_pluck(get_posts($routeCriteria), 'ID');
+    } else {
+        $routeCriteria = array(
+            'posts_per_page' => -1,
+            'post_type' => 'rfc_routes',
+        );
+        $regionalRoutes = wp_list_pluck(get_posts($routeCriteria), 'ID');
     }
 
-
-
-    //Get destinations by destination
-
-    if ($searchType == 'destination') { //DESTINATION
-        if ($destinations != null) { //selection - (Get Lima, Cusco, Amazon)
-
-            $args['meta_query'][] = array(
-                'key' => 'destinations',
-                'value' => '"' . $destinationId . '"',
-                'compare' => 'LIKE'
-            );
-
-            $queryargs = array();
-            $queryargs['relation'] = 'OR';
-            foreach ($destinations as $l) {
-                $queryargs[] = array(
-                    'key'     => 'locations',
-                    'value'   => '"' . $l . '"',
-                    'compare' => 'LIKE'
-                );
-            }
-
-            $args['meta_query'][] = $queryargs;
-        } else { //no selection -- (Get all from Peru)
-
-            $args['meta_query'][] = array(
-                'key' => 'destinations',
-                'value' => '"' . $destinationId . '"',
-                'compare' => 'LIKE'
-            );
-        }
-    } else { //REGION / TOP
-        if ($destinations != null) { //if selection
-
-            $queryargs = array();
-            $queryargs['relation'] = 'OR';
-            foreach ($destinations as $d) {
-                $queryargs[] = array(
-                    'key'     => 'destinations',
-                    'value'   => '"' . $d . '"', //value must be in parenthesis to get ACF exact match, and use LIKE
-                    'compare' => 'LIKE'
-                );
-            }
-
-            $args['meta_query'][] = $queryargs;
-        } else { //if no selection
-            //- Get destinations by region if nothing selected, then get all products in those destinations
-
-            if ($searchType == 'region') {
-                $destinationCriteria = array(
-                    'posts_per_page' => -1,
-                    'post_type' => 'rfc_destinations',
-                    "meta_key" => "region",
-                    "meta_value" => $regionId
-                );
-                $destinations = get_posts($destinationCriteria);
-            } else {
-                $destinationCriteria = array(
-                    'posts_per_page' => -1,
-                    'post_type' => 'rfc_destinations',
-                );
-                $destinations = get_posts($destinationCriteria);
-            }
-
-
-
-            //build meta query criteria
-            $queryargs = array();
-            $queryargs['relation'] = 'OR';
-            foreach ($destinations as $d) {
-                $queryargs[] = array(
-                    'key'     => 'destinations',
-                    'value'   => serialize(strval($d->ID)),
-                    'compare' => 'LIKE'
-                );
-            }
-
-            $args['meta_query'][] = $queryargs;
-        }
-    }
-
-
-
-
-    //experiences
-    if ($experiences != null) {
-
+    // routes
+    if ($routes != null) {
+        $matchedRoutes = array_intersect($routes, $regionalRoutes); // find routes that are within regional selection
 
         $queryargs = array();
         $queryargs['relation'] = 'OR';
-        foreach ($experiences as $e) {
+        foreach ($matchedRoutes as $route) {
             $queryargs[] = array(
-                'key'     => 'experiences',
-                'value'   => '"' . $e . '"', //value must be in parenthesis to get ACF exact match, and use LIKE
+                'key'     => 'route',
+                'value'   => '"' . $route . '"', //value must be in parenthesis to get ACF exact match, and use LIKE
                 'compare' => 'LIKE'
             );
         }
+        $args['meta_query'][] = $queryargs;
+    }
 
+
+    // styles
+    if ($styles != null) {
+        $queryargs = array();
+        $queryargs['relation'] = 'OR';
+        foreach ($styles as $style) {
+            $queryargs[] = array(
+                'key'     => 'styles',
+                'value'   => '"' . $style . '"', //value must be in parenthesis to get ACF exact match, and use LIKE
+                'compare' => 'LIKE'
+            );
+        }
         $args['meta_query'][] = $queryargs;
     }
 
 
 
     $posts = get_posts($args); //Stage I posts
-    $formattedPosts = formatFilterSearch($posts, $minLength, $maxLength, $datesArray, $charterFilter, $sorting, $searchInput, $viewType); //Stage II metadata
+    $formattedPosts = $posts;
+    //formatFilterSearch($posts, $minLength, $maxLength, $datesArray, $charterFilter, $sorting, $searchInput, $viewType); //Stage II metadata
 
 
 
 
 
-    $resultsPerPage = 8;
+    $resultsPerPage = 100;
     if ($viewType == 'grid') {
         $resultsPerPage = 30;
     }
@@ -173,7 +100,6 @@ function getSearchPosts($travelStyles, $destinations, $experiences, $searchType,
         'pageCount' => $pageCount,
         'pageNumber' => $pageNumber,
         'viewType' => $viewType,
-        'charterFilter' => $charterFilter,
     ];
 
 
@@ -225,7 +151,7 @@ function formatFilterSearch($posts, $minLength, $maxLength, $datesArray, $charte
         $vesselCapacityDisplay = "";
         $numberOfCabinsDisplay = "";
 
- 
+
 
 
         $charterAvailable = false;

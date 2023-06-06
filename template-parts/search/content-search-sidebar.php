@@ -15,68 +15,43 @@ for ($x = $currentMonth; $x < $currentMonth + $monthLimit; $x++) {
 }
 
 //page variables
-$searchType = $args['searchType'];
-$destinationId = $args['destinationId'];
-$regionId = $args['regionId'];
+$selectedRegion = $args['region'];
 
 //preselections
-$selectedTravelTypes = $args['travelTypes'];
-$selectedExperiences = $args['experiences'];
-$selectedDestinations = $args['destinations'];
+$selectedStyles = $args['styles'];
+$selectedRoutes = $args['routes'];
 $selectedDepartures = $args['departures'];
 $searchInput = $args['searchInput'];
 
 
-
 //Build Filter Lists
-$experiencesArgs = array(
-    'post_type' => 'rfc_experiences',
+$regionsArgs = array(
+    'post_type' => 'rfc_regions',
     'posts_per_page' => -1,
     'order' => 'ASC',
     'orderby' => 'title',
-
 );
+$regions = get_posts($regionsArgs);
 
-$experiences = get_posts($experiencesArgs);
-$destinations = null; //can be location or destination depending on search type
-$isBucketList = false;
+$routesArgs = array(
+    'post_type' => 'rfc_routes',
+    'posts_per_page' => -1,
+    'order' => 'ASC',
+    'orderby' => 'title',
+);
+$routes = get_posts($routesArgs);
 
-if ($searchType == 'destination') {
-    $destinations = get_field('locations', $destinationId); //locations
-    $isBucketList = get_field('is_bucket_list', $destinationId); //to hide location filters
-
-    usort($destinations, fn ($a, $b) => strcmp($a->navigation_title, $b->navigation_title)); //sort locations
-   
-  
-}
-
-
-if ($searchType == 'region') {
-    $destinationsArgs = array(
-        'post_type' => 'rfc_destinations', //destinations
-        'posts_per_page' => -1,
-        "meta_key" => "region",
-        "meta_value" => $regionId,
-    );
-    $destinations = get_posts($destinationsArgs);
-
-    //usort($destinations, fn ($a, $b) => strcmp($a->navigation_title, $b->navigation_title));
-}
-
-if ($searchType == 'top') {
-    $destinationsArgs = array(
-        'post_type' => 'rfc_destinations', //destinations
-        'posts_per_page' => -1,
-        'orderby'   => 'meta_value',
-        'order' => 'ASC',
-        'meta_key' => 'navigation_title',
-    );
-    $destinations = get_posts($destinationsArgs);
-}
+$stylesArgs = array(
+    'post_type' => 'rfc_styles',
+    'posts_per_page' => -1,
+    'order' => 'ASC',
+    'orderby' => 'title',
+);
+$styles = get_posts($stylesArgs);
 
 //itinerary length
 $itinerary_length_min = 1;
-$itinerary_length_max = 21;
+$itinerary_length_max = 28;
 if (get_field('itinerary_length_min') != null) {
     $itinerary_length_min = get_field('itinerary_length_min');
 };
@@ -110,50 +85,43 @@ if (get_field('itinerary_length_max') != null) {
     </div>
 
 
-    <?php if ($searchType == 'top') : ?>
-        <!-- Product Name Search Filter -->
-        <div class="filter">
-            <div class="filter__heading">
-                <h5 class="filter__heading__text">
-                    Product Name
-                </h5>
-                <svg>
-                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-down"></use>
-                </svg>
-            </div>
-            <div class="filter__content" style="padding-right: .5rem; padding-bottom: 3.5rem; padding-top: 0rem;">
-                <div class="filter__content__search-area">
-                    <input class="filter__content__search-area__input" type="text" id="searchInput" autocomplete="off" value="<?php echo $searchInput; ?>">
-                    <button class="filter__content__search-area__clear" id="searchInputClear">
-                        <svg>
-                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-cross"></use>
-                        </svg>
-                    </button>
-                    <button class="filter__content__search-area__button " id="searchInputButton">
-                        <svg>
-                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-magnifying-glass"></use>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-    <?php endif; ?>
-
-
-
-    <!-- Travel Style Filter -->
+    <!-- Product Name Search Filter -->
     <div class="filter">
         <div class="filter__heading">
             <h5 class="filter__heading__text">
-                Travel Style
+                Product Name
+            </h5>
+            <svg>
+                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-down"></use>
+            </svg>
+        </div>
+        <div class="filter__content" style="padding-right: .5rem; padding-bottom: 3.5rem; padding-top: 0rem;">
+            <div class="filter__content__search-area">
+                <input class="filter__content__search-area__input" type="text" id="searchInput" autocomplete="off" value="<?php echo $searchInput; ?>">
+                <button class="filter__content__search-area__clear" id="searchInputClear">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-cross"></use>
+                    </svg>
+                </button>
+                <button class="filter__content__search-area__button " id="searchInputButton">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-magnifying-glass"></use>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
 
-                <?php $filterCount = count($selectedTravelTypes); ?>
-                <div class="filter__heading__text__count <?php echo ($filterCount > 0 ? 'show' : '') ?>" id="travelStyleFilterCount">
+    <!-- Regions Filter -->
+    <div class="filter">
+        <div class="filter__heading">
+            <h5 class="filter__heading__text">
+                Region
+                <?php $filterCount = $selectedRegion != null ? 1 : 0 ?>
+                <div class="filter__heading__text__count <?php echo ($filterCount > 0 ? 'show' : '') ?>" id="stylesFilterCount">
                     <?php echo $filterCount; ?>
                 </div>
             </h5>
-
             <svg>
                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-down"></use>
             </svg>
@@ -161,34 +129,25 @@ if (get_field('itinerary_length_max') != null) {
         <div class="filter__content">
             <!-- List -->
             <ul class="filter__content__list">
-                <li class="filter__content__list__item">
-                    <div class="form-checkbox">
-                        <input class="checkbox travel-style-checkbox" type="checkbox" id="travel-style-checkbox-1" value="rfc_tours" <?php echo (in_array('rfc_tours', $selectedTravelTypes) ? 'checked' : '') ?>>
-                        <label for="travel-style-checkbox-1" tabindex="1">Tours</label>
-                    </div>
-                </li>
-                <li class="filter__content__list__item">
-                    <div class="form-checkbox">
-                        <input class="checkbox travel-style-checkbox" type="checkbox" id="travel-style-checkbox-2" value="rfc_cruises" <?php echo (in_array('rfc_cruises', $selectedTravelTypes) ? 'checked' : '') ?>>
-                        <label for="travel-style-checkbox-2" tabindex="2">Cruises</label>
-                    </div>
-                </li>
-                <li class="filter__content__list__item">
-                    <div class="form-checkbox">
-                        <input class="checkbox travel-style-checkbox" type="checkbox" id="travel-style-checkbox-3" value="rfc_lodges" <?php echo (in_array('rfc_lodges', $selectedTravelTypes) ? 'checked' : '') ?>>
-                        <label for="travel-style-checkbox-3" tabindex="3">Lodges</label>
-                    </div>
-                </li>
-                <li class="filter__content__list__item filter__content__list__item--divider">
-                    <div class="form-checkbox">
-                        <input class="checkbox travel-style-checkbox" type="checkbox" id="charterCheckbox" value="charter_cruises" <?php echo (in_array('charter_cruises', $selectedTravelTypes) ? 'checked' : '') ?>>
-                        <label for="charterCheckbox" tabindex="4">Private Charters</label>
-                    </div>
-                </li>
+                <?php
+                $count = 1;
+                foreach ($regions as $region) :
+                ?>
+                    <li class="filter__content__list__item">
+                        <div class="form-checkbox">
+                            <input class="checkbox region-checkbox" type="checkbox" id="region-checkbox-<?php echo $count; ?>" value="<?php echo $region->ID ?>" <?php echo ($selectedRegion != null ? (in_array($region->ID, $selectedRegion) ? 'checked' : '') : '') ?>>
+                            <label for="region-checkbox-<?php echo $count; ?>" tabindex="1"><?php echo get_the_title($region) ?></label>
+                        </div>
+                    </li>
+                <?php $count++;
+                endforeach; ?>
+
             </ul>
-            <!-- Extras here, button etc-->
         </div>
     </div>
+
+
+
 
     <!-- Departure Date Filter -->
     <div class="filter">
@@ -230,16 +189,15 @@ if (get_field('itinerary_length_max') != null) {
         </div>
     </div>
 
-    <!-- Destinations/Locations Filter -->
+    <!-- Routes Filter -->
     <div class="filter">
         <div class="filter__heading">
             <h5 class="filter__heading__text">
-
+                Routes
                 <?php
-                echo ($searchType == 'top') ? 'Regions' : 'Destinations';
-                $filterCount = count($selectedDestinations);
+                $filterCount = count($selectedRoutes);
                 ?>
-                <div class="filter__heading__text__count <?php echo ($filterCount > 0 ? 'show' : '') ?>" id="destinationsFilterCount">
+                <div class="filter__heading__text__count <?php echo ($filterCount > 0 ? 'show' : '') ?>" id="routesFilterCount">
                     <?php echo $filterCount; ?>
                 </div>
 
@@ -254,11 +212,13 @@ if (get_field('itinerary_length_max') != null) {
 
                 <?php
                 $count = 1;
-                foreach ($destinations as $d) : ?>
-                    <li class="filter__content__list__item <?php echo (get_field('non_cruise_destination', $d) == true ? 'no-cruise' : '') ?>">
+                foreach ($routes as $route) : 
+                    $routeRegion = get_field('region', $route);
+                ?>
+                    <li class="filter__content__list__item region-<?php echo $routeRegion != null ? $routeRegion->ID : 0 ?>">
                         <div class="form-checkbox">
-                            <input class="checkbox destination-checkbox" type="checkbox" id="destination-checkbox-<?php echo $count; ?>" value="<?php echo $d->ID ?>" <?php echo ($selectedDestinations != null ? (in_array($d->ID, $selectedDestinations) ? 'checked' : '') : '') ?>>
-                            <label for="destination-checkbox-<?php echo $count; ?>"><?php echo get_field('navigation_title', $d) ?></label>
+                            <input class="checkbox route-checkbox" type="checkbox" id="route-checkbox-<?php echo $count; ?>" value="<?php echo $route->ID ?>" <?php echo ($selectedRoutes != null ? (in_array($route->ID, $selectedRoutes) ? 'checked' : '') : '') ?>>
+                            <label for="route-checkbox-<?php echo $count; ?>"><?php echo get_field('title', $route) ?></label>
                         </div>
                     </li>
                 <?php $count++;
@@ -270,13 +230,13 @@ if (get_field('itinerary_length_max') != null) {
 
 
 
-    <!-- Experiences Filter -->
+    <!-- Styles Filter -->
     <div class="filter">
         <div class="filter__heading">
             <h5 class="filter__heading__text">
-                Experiences
-                <?php $filterCount = count($selectedExperiences); ?>
-                <div class="filter__heading__text__count <?php echo ($filterCount > 0 ? 'show' : '') ?>" id="experiencesFilterCount">
+                Themes
+                <?php $filterCount = count($selectedStyles); ?>
+                <div class="filter__heading__text__count <?php echo ($filterCount > 0 ? 'show' : '') ?>" id="stylesFilterCount">
                     <?php echo $filterCount; ?>
                 </div>
             </h5>
@@ -287,15 +247,14 @@ if (get_field('itinerary_length_max') != null) {
         <div class="filter__content">
             <!-- List -->
             <ul class="filter__content__list">
-
                 <?php
                 $count = 1;
-                foreach ($experiences as $e) :
+                foreach ($styles as $style) :
                 ?>
                     <li class="filter__content__list__item">
                         <div class="form-checkbox">
-                            <input class="checkbox experience-checkbox" type="checkbox" id="experience-checkbox-<?php echo $count; ?>" value="<?php echo $e->ID ?>" <?php echo ($selectedExperiences != null ? (in_array($e->ID, $selectedExperiences) ? 'checked' : '') : '') ?>>
-                            <label for="experience-checkbox-<?php echo $count; ?>" tabindex="1"><?php echo get_the_title($e) ?></label>
+                            <input class="checkbox experience-checkbox" type="checkbox" id="experience-checkbox-<?php echo $count; ?>" value="<?php echo $style->ID ?>" <?php echo ($selectedStyles != null ? (in_array($style->ID, $selectedStyles) ? 'checked' : '') : '') ?>>
+                            <label for="experience-checkbox-<?php echo $count; ?>" tabindex="1"><?php echo get_the_title($style) ?></label>
                         </div>
                     </li>
                 <?php $count++;

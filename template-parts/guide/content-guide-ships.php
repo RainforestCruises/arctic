@@ -11,10 +11,9 @@ $ships_title = get_field('ships_title');
 
             <!-- Title -->
             <div class="slider-block__content__top__title">
-            <div class="title-single" style="height:3rem;">
+                <h2 class="title-single" style="height:3rem;">
                     <?php echo $ships_title; ?>
-                </div>
-   
+                </h2>
             </div>
 
             <!-- Nav Buttons -->
@@ -65,7 +64,7 @@ $ships_title = get_field('ships_title');
                             <?php endif; ?>
 
                             <!-- Images Slider -->
-                            <a class="resource-card__image-area swiper related-card-image-area"  href="<?php echo get_permalink($ship) ?>">
+                            <a class="resource-card__image-area swiper related-card-image-area" href="<?php echo get_permalink($ship) ?>">
                                 <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
                             </a>
 
@@ -73,9 +72,9 @@ $ships_title = get_field('ships_title');
                             <div class="resource-card__content">
 
                                 <!-- Title -->
-                                <a class="resource-card__content__title" href="<?php echo get_permalink($ship) ?>">
-                                    <?php echo $title; ?>
-                                </a>
+                                <h3 class="resource-card__content__title">
+                                    <a href="<?php echo get_permalink($ship) ?>"><?php echo $title; ?></a>
+                                </h3>
 
                                 <!-- Specs -->
                                 <div class="resource-card__content__specs">

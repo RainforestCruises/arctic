@@ -1,0 +1,303 @@
+{
+    "key": "group_6478f72169c18",
+    "title": "Search2",
+    "fields": [
+        {
+            "key": "field_6478f72187ca2",
+            "label": "Page",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_6478f721968e7",
+            "label": "Grid View Default",
+            "name": "grid_view_default",
+            "type": "true_false",
+            "instructions": "Select to set grid view as the default view (instead of list view)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_6478f7219a398",
+            "label": "Title Text",
+            "name": "title_text",
+            "type": "text",
+            "instructions": "Title above the snippet, the H1",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_6478f7219de44",
+            "label": "Breadcrumb",
+            "name": "breadcrumb",
+            "type": "repeater",
+            "instructions": "Build the breadcrumb links. ex- Home (default) \/ Link \/ Link \/ current page (no link)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_6478f72200add",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "Display name of the link",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_6478f72204598",
+                    "label": "Link",
+                    "name": "link",
+                    "type": "page_link",
+                    "instructions": "Link to search page",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "page"
+                    ],
+                    "taxonomy": [
+                        "category:search",
+                        "category:destinations"
+                    ],
+                    "allow_null": 0,
+                    "allow_archives": 0,
+                    "multiple": 0
+                }
+            ]
+        },
+        {
+            "key": "field_6478f721a5633",
+            "label": "Intro Snippet",
+            "name": "intro_snippet",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6478f721a1ae8",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_6478f721ad020",
+            "label": "Filters",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_6478f7f4caba6",
+            "label": "Region",
+            "name": "region",
+            "type": "post_object",
+            "instructions": "Preselected region.. leave blank if 'Any'",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_regions"
+            ],
+            "taxonomy": "",
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "id",
+            "ui": 1
+        },
+        {
+            "key": "field_6478f854caba7",
+            "label": "Routes",
+            "name": "routes",
+            "type": "relationship",
+            "instructions": "Preselected routes (cruises).. leave blank if 'Any'",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_routes"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "id"
+        },
+        {
+            "key": "field_6478f721b46da",
+            "label": "Styles",
+            "name": "styles",
+            "type": "relationship",
+            "instructions": "Preselected styles (themes).. leave blank if 'Any'",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_styles"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "id"
+        },
+        {
+            "key": "field_6478f721bfc32",
+            "label": "Itinerary Length Min",
+            "name": "itinerary_length_min",
+            "type": "number",
+            "instructions": "For preselected itinerary lengths",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 1,
+            "max": 21,
+            "step": ""
+        },
+        {
+            "key": "field_6478f721c3926",
+            "label": "Itinerary Length Max",
+            "name": "itinerary_length_max",
+            "type": "number",
+            "instructions": "For preselected itinerary lengths - enter 21 for no limit. For example, 9+ Days, enter as 9 min 21 max",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 1,
+            "max": 21,
+            "step": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-search2.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt"
+    ],
+    "active": true,
+    "description": "Search - Page",
+    "show_in_rest": 0,
+    "modified": 1685722391
+}

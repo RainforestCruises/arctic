@@ -8,11 +8,11 @@ $max_items = 6;
 $firstActivities = array_slice($activities, 0, $max_items);
 $expandItems = count($activities) > $max_items ? true : false;
 
-$expand = strlen($overview_content) > 950 ? true : false;
-$overview_content_limited = substr($overview_content, 0, 950) . '...';
+$expand = strlen($overview_content) > 2000 ? true : false;
+$overview_content_limited = substr($overview_content, 0, 2000) . '...';
 ?>
 
-<!-- Itinerary Overview -->
+<!-- Itinerary Overview (highlights) -->
 <section class="product-overview" id="section-highlights">
 
     <div class="product-overview__content">
@@ -209,7 +209,7 @@ $overview_content_limited = substr($overview_content, 0, 950) . '...';
         </div>
 
         <!-- Main Modal Content -->
-        <div class="modal__content__main">
+        <div class="modal__content__main" id="contentModalMain">
             <?php foreach ($activities as $a) :
                 $activity_post = $a['standard_activity'];
                 $icon = get_field('icon', $activity_post);

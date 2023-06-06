@@ -19,15 +19,15 @@ $vessel_capacity_antarctica = get_field('vessel_capacity_antarctica');
 
 
 $vessel_capacity_display = $vessel_capacity;
-if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_capacity) {
-    $vessel_capacity_display = $vessel_capacity . ' (' . $vessel_capacity_antarctica .' in Antarctica)';
+if ($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_capacity) {
+    $vessel_capacity_display = $vessel_capacity . ' (' . $vessel_capacity_antarctica . ' in Antarctica)';
 }
 
 
 ?>
 
-<!-- Cruise Overview -->
-<section class="product-overview" id="overview">
+<!-- Cruise Overview (highlights) -->
+<section class="product-overview" id="section-highlights">
 
     <div class="product-overview__content">
 
@@ -92,149 +92,149 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
                     <div class="outline-panel__content">
 
                         <!-- Specs Grid -->
-                        <div class="specs">
+                        <ul class="specs">
 
                             <!-- Guests -->
-                            <div class="specs__item">
-                                <h3 class="specs__item__title">
+                            <li class="specs__item">
+                                <div class="specs__item__title">
                                     Guests
-                                </h3>
+                                </div>
                                 <div class="specs__item__text">
                                     <?php echo $vessel_capacity_display ?>
                                 </div>
-                            </div>
+                            </li>
 
                             <!-- Crew -->
-                            <div class="specs__item">
-                                <h3 class="specs__item__title">
+                            <li class="specs__item">
+                                <div class="specs__item__title">
                                     Staff & Crew
-                                </h3>
+                                </div>
                                 <div class="specs__item__text">
                                     <?php echo get_field('crew') ?>
                                 </div>
-                            </div>
+                            </li>
 
                             <!-- Guest to Crew Ratio -->
-                            <div class="specs__item">
-                                <h3 class="specs__item__title">
+                            <li class="specs__item">
+                                <div class="specs__item__title">
                                     Guide & Crew to Guest Ratios
-                                </h3>
+                                </div>
                                 <div class="specs__item__text">
                                     <?php echo get_field('guest_to_crew_ratio') ?>
                                 </div>
-                            </div>
-                            
-                             <!-- Guest to Space Ratio -->
-                            <div class="specs__item">
-                                <h3 class="specs__item__title">
+                            </li>
+
+                            <!-- Guest to Space Ratio -->
+                            <li class="specs__item">
+                                <div class="specs__item__title">
                                     Guest to Space Ratio
-                                </h3>
+                                </div>
                                 <div class="specs__item__text">
                                     <?php echo get_field('guest_to_space_ratio') ?>
                                 </div>
-                            </div>
+                            </li>
 
                             <!-- Number of Decks -->
-                            <div class="specs__item">
-                                <h3 class="specs__item__title">
+                            <li class="specs__item">
+                                <div class="specs__item__title">
                                     Number of Decks
-                                </h3>
+                                </div>
                                 <div class="specs__item__text">
                                     <?php echo get_field('number_of_decks') ?>
                                 </div>
-                            </div>
+                            </li>
 
                             <!-- Number of Cabins -->
-                            <div class="specs__item">
-                                <h3 class="specs__item__title">
+                            <li class="specs__item">
+                                <div class="specs__item__title">
                                     Number of Cabins
-                                </h3>
-                                <div class="specs__item__text">
-                                     <?php echo get_field('number_of_cabins') ?>
                                 </div>
-                            </div>
+                                <div class="specs__item__text">
+                                    <?php echo get_field('number_of_cabins') ?>
+                                </div>
+                            </li>
 
                             <!-- Zodiacs -->
-                            <div class="specs__item">
-                                <h3 class="specs__item__title">
+                            <li class="specs__item">
+                                <div class="specs__item__title">
                                     Zodiacs
-                                </h3>
+                                </div>
                                 <div class="specs__item__text">
                                     <?php echo get_field('zodiacs') ?>
                                 </div>
-                            </div>
+                            </li>
 
                             <!-- Year Built -->
-                            <div class="specs__item">
-                                <h3 class="specs__item__title">
+                            <li class="specs__item">
+                                <div class="specs__item__title">
                                     Year Built
-                                </h3>
+                                </div>
                                 <div class="specs__item__text">
                                     <?php echo get_field('year_built') ?>
                                 </div>
-                            </div>
+                            </li>
 
                             <!-- Ice Class -->
-                            <div class="specs__item">
-                                <h3 class="specs__item__title">
+                            <li class="specs__item">
+                                <div class="specs__item__title">
                                     Ice Class
-                                </h3>
+                                </div>
                                 <div class="specs__item__text">
                                     <?php echo get_field('ice_class') ?>
                                 </div>
-                            </div>
+                            </li>
 
                             <!-- Length -->
-                            <div class="specs__item">
-                                <h3 class="specs__item__title">
+                            <li class="specs__item">
+                                <div class="specs__item__title">
                                     Length
-                                </h3>
+                                </div>
                                 <div class="specs__item__text">
                                     <?php echo get_field('length') ?>
                                 </div>
-                            </div>
+                            </li>
 
                             <!-- Beam -->
-                            <div class="specs__item">
-                                <h3 class="specs__item__title">
+                            <li class="specs__item">
+                                <div class="specs__item__title">
                                     Beam
-                                </h3>
+                                </div>
                                 <div class="specs__item__text">
                                     <?php echo get_field('breadth') ?>
                                 </div>
-                            </div>
+                            </li>
 
                             <!-- Draft -->
-                            <div class="specs__item">
-                                <h3 class="specs__item__title">
+                            <li class="specs__item">
+                                <div class="specs__item__title">
                                     Draft
-                                </h3>
+                                </div>
                                 <div class="specs__item__text">
                                     <?php echo get_field('draft') ?>
                                 </div>
-                            </div>
+                            </li>
 
                             <!-- Speed -->
-                            <div class="specs__item">
-                                <h3 class="specs__item__title">
+                            <li class="specs__item">
+                                <div class="specs__item__title">
                                     Cruising Speed
-                                </h3>
+                                </div>
                                 <div class="specs__item__text">
                                     <?php echo get_field('speed') ?>
                                 </div>
-                            </div>
+                            </li>
 
                             <!-- Stabilizers -->
-                            <div class="specs__item">
-                                <h3 class="specs__item__title">
+                            <li class="specs__item">
+                                <div class="specs__item__title">
                                     Stabilizers
-                                </h3>
+                                </div>
                                 <div class="specs__item__text">
                                     <?php echo get_field('stabilizers') ?>
                                 </div>
-                            </div>                  
+                            </li>
 
-                        </div>
+                        </ul>
                     </div>
                 </div>
 
@@ -327,7 +327,7 @@ if($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_c
         </div>
 
         <!-- Main Modal Content -->
-        <div class="modal__content__main">
+        <div class="modal__content__main" id="contentModalMain">
             <?php echo $overview_content; ?>
         </div>
     </div>

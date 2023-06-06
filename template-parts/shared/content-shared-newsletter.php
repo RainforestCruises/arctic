@@ -14,9 +14,9 @@ $footerClasses = renderFooterClasses();
     <div class="newsletter__content">
 
         <div class="newsletter__content__title-group">
-            <div class="newsletter__content__title-group__title">
+            <h2 class="newsletter__content__title-group__title">
                 <?php echo $newsletter_cta_title; ?>
-            </div>
+            </h2>
             <div class="newsletter__content__title-group__sub">
                 <?php echo $newsletter_cta_subtext; ?>
             </div>

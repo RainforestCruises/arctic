@@ -2,7 +2,7 @@
 $faqs = get_field('faqs');
 $faq_title = get_field('faq_title');
 $firstFaqs = array_slice($faqs, 0, 6);
-$displayLimit = 250;
+$displayLimit = 320;
 ?>
 
 <section class="grid-block" id="section-faq">

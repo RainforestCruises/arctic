@@ -39,7 +39,12 @@ $lowestOverallPrice = getLowestPriceFromListOfItineraries($itineraries);
 
         <!-- Nav Links -->
         <div class="landing-nav__content__links">
-            <a href="#section-itineraries" class="landing-nav__content__links__link">Itineraries</a>
+            <a href="#section-highlights" class="landing-nav__content__links__link">
+                Highlights
+            </a>
+            <a href="#section-itineraries" class="landing-nav__content__links__link">
+                Itineraries
+            </a>
             <?php if ($show_topics) : ?>
                 <a href="#section-about" class="landing-nav__content__links__link">About</a>
             <?php endif; ?>
@@ -50,7 +55,7 @@ $lowestOverallPrice = getLowestPriceFromListOfItineraries($itineraries);
                 <a href="#section-faq" class="landing-nav__content__links__link">FAQ</a>
             <?php endif; ?>
             <a href="#section-ships" class="landing-nav__content__links__link">Ships</a>
-            <a href="#section-guide" class="landing-nav__content__links__link">Travel Guide</a>
+            <a href="#section-guide" class="landing-nav__content__links__link">Guide</a>
 
         </div>
 
@@ -72,10 +77,7 @@ $lowestOverallPrice = getLowestPriceFromListOfItineraries($itineraries);
                         <?php priceFormat($lowestOverallPrice); ?>
                     </div>
                 </div>
-
             </div>
-
-
 
             <!-- CTA Button -->
             <div class="landing-nav__content__info__cta">
@@ -86,11 +88,7 @@ $lowestOverallPrice = getLowestPriceFromListOfItineraries($itineraries);
                     </svg>
                 </button>
             </div>
-
         </div>
-
-
-
     </div>
 </section>
 

@@ -49,21 +49,24 @@ $cabins = $args['cabins'];
                         <div class="swiper-button-prev swiper-button-prev--overlay"></div>
                         <div class="swiper-button-next swiper-button-prev--overlay"></div>
                     </div>
-                    <h2>
+                    <h3>
                         <?php echo $title; ?>
-                    </h2>
+                    </h3>
+                    <div class="cruise-cabins-modal-item__specification" >
+                        <span>Capacity:</span> <?php echo $capacity; ?>
+                    </div>
                     <div class="cruise-cabins-modal-item__specification">
                         <span>Beds:</span> <?php echo $beds; ?>
                     </div>
-                    <div class="cruise-cabins-modal-item__specification" >
-                        <span>Capacity:</span> <?php echo $capacity; ?>
+                    <div class="cruise-cabins-modal-item__specification">
+                        <span>Dimensions:</span> <?php echo $dimensions; ?>
                     </div>
                     <div class="cruise-cabins-modal-item__specification" style="margin-bottom: 1.5rem">
                         <span>Number of Cabins:</span> <?php echo $quantity; ?> <?php echo $quantity == 1 ? "Cabin" : "Cabins"; ?>
                     </div>
-                    <h3>
+                    <h4>
                         Features
-                    </h3>
+                    </h4>
                     <div class="cruise-cabins-modal-item__features">
                         <?php
                         if ($amenities) :
@@ -82,9 +85,9 @@ $cabins = $args['cabins'];
                         <?php endforeach;
                         endif; ?>
                     </div>
-                    <h3>
+                    <h4>
                         Description
-                    </h3>
+                    </h4>
                     <div class="cruise-cabins-modal-item__description">
                         <?php echo $description; ?>
                     </div>

@@ -2205,6 +2205,138 @@ p {
       padding: 0 3rem;
       max-width: 100%; } }
 
+.result-card {
+  position: relative;
+  color: #1d2225;
+  display: flex !important;
+  flex-direction: column; }
+  .result-card__tag {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: max-content;
+    padding: 0.5rem 1rem;
+    background-color: #fff;
+    color: #1d2225;
+    border-radius: 2rem;
+    z-index: 10; }
+  .result-card.small .resource-card__image-area {
+    height: 22rem !important; }
+  .result-card.medium .resource-card__image-area {
+    height: 28rem !important; }
+  .result-card.large .resource-card__image-area {
+    height: 44rem !important; }
+  .result-card.shadow .resource-card__image-area {
+    box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.4); }
+  .result-card.encapsulated {
+    box-shadow: 0 0rem 3rem rgba(0, 0, 0, 0.2);
+    border-radius: 1rem; }
+    @media only screen and (max-width: 37.5em) {
+      .result-card.encapsulated {
+        box-shadow: none; } }
+    .result-card.encapsulated .resource-card__image-area {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0; }
+    .result-card.encapsulated .resource-card__content {
+      background-color: white;
+      padding: 1.5rem 2rem;
+      border-bottom-left-radius: 1rem;
+      border-bottom-right-radius: 1rem; }
+  .result-card .swiper-button-next,
+  .result-card .swiper-button-prev {
+    opacity: 0; }
+    @media only screen and (max-width: 37.5em) {
+      .result-card .swiper-button-next,
+      .result-card .swiper-button-prev {
+        opacity: 1; } }
+  .result-card:hover .swiper-button-next,
+  .result-card:hover .swiper-button-prev {
+    opacity: 1;
+    transition: opacity 0.2s;
+    display: flex; }
+  .result-card__image-area {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 33rem;
+    border-radius: 1rem;
+    overflow: hidden !important;
+    background-color: #fff; }
+    @media only screen and (max-width: 37.5em) {
+      .result-card__image-area {
+        height: 28rem; } }
+    .result-card__image-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+    .result-card__image-area__item {
+      width: 100%;
+      height: 100%; }
+  .result-card__content {
+    padding: 1rem 0rem;
+    color: currentColor; }
+    .result-card__content__title {
+      font-weight: 700;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem; }
+      .result-card__content__title:link, .result-card__content__title:visited {
+        text-decoration: none;
+        color: currentColor; }
+    .result-card__content__title-group {
+      display: grid;
+      grid-template-columns: 1fr max-content;
+      align-items: center;
+      font-size: 1.8rem;
+      line-height: 2.3rem;
+      color: currentColor;
+      margin-bottom: 0.5rem; }
+      .result-card__content__title-group:link, .result-card__content__title-group:visited {
+        text-decoration: none;
+        color: currentColor; }
+      .result-card__content__title-group__title {
+        font-weight: 700; }
+      .result-card__content__title-group__sub {
+        font-size: 1.4rem; }
+    .result-card__content__title-group-vertical {
+      color: currentColor;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem; }
+      .result-card__content__title-group-vertical__title {
+        font-weight: 700; }
+      .result-card__content__title-group-vertical__sub {
+        font-size: 1.4rem; }
+    .result-card__content__specs {
+      margin-bottom: 0.5rem; }
+      .result-card__content__specs.divider {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid #e6e6e6; }
+      .result-card__content__specs .specs-item {
+        margin-bottom: 0 !important; }
+    .result-card__content__description {
+      margin-bottom: 0.5rem;
+      font-size: 1.4rem; }
+      .result-card__content__description.divider {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid #e6e6e6; }
+    .result-card__content__bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .result-card__content__bottom__price-group {
+        color: currentColor;
+        font-size: 1.6rem;
+        display: flex;
+        align-items: flex-end; }
+        .result-card__content__bottom__price-group__amount {
+          font-weight: 700;
+          margin-right: 0.5rem; }
+        .result-card__content__bottom__price-group__text {
+          font-size: 1.4rem; }
+
 .popper-tooltip {
   z-index: 90;
   background-color: #fff;
@@ -3355,7 +3487,8 @@ p {
         font-size: 4rem;
         line-height: 4.8rem;
         font-weight: 400;
-        margin-bottom: 1.5rem; }
+        margin-bottom: 1.5rem;
+        color: #fff; }
         @media only screen and (max-width: 50em) {
           .newsletter__content__title-group__title {
             font-size: 2.5rem;
@@ -4048,7 +4181,8 @@ p {
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   padding: 2rem;
-  padding-bottom: 1rem; }
+  padding-bottom: 1rem;
+  list-style: none; }
   .specs__item__title {
     color: #1d2225;
     font-weight: 700;
@@ -4621,6 +4755,9 @@ p {
     margin-bottom: 1.5rem; }
   .cruise-cabins-modal-item__description {
     font-size: 1.6rem; }
+  .cruise-cabins-modal-item h4,
+  .cruise-cabins-modal-item h5 {
+    font-style: normal; }
 
 .home-hero {
   display: flex;
@@ -5278,16 +5415,29 @@ p {
         padding: 0 3rem; } }
     .landing-nav__content__links {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 50rem; }
-      .landing-nav__content__links__link:link, .landing-nav__content__links__link:visited {
-        color: currentColor;
-        font-size: 1.6rem;
-        font-weight: 500;
-        text-decoration: none; }
-      .landing-nav__content__links__link:hover {
-        color: #347fff; }
+      align-items: center; }
+      .landing-nav__content__links__link {
+        margin-right: 1.5rem;
+        border: 1px solid #c2c6c9;
+        border-radius: 4rem;
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all .2s; }
+        .landing-nav__content__links__link:link, .landing-nav__content__links__link:visited {
+          color: currentColor;
+          font-size: 1.4rem;
+          line-height: 1.4rem;
+          font-weight: 500;
+          text-decoration: none; }
+        .landing-nav__content__links__link:hover {
+          color: #347fff;
+          border-color: #1d2225; }
+        .landing-nav__content__links__link svg {
+          height: 1.6rem;
+          width: 1.6rem;
+          margin-left: 1rem; }
     .landing-nav__content__info {
       display: flex;
       justify-content: space-between;

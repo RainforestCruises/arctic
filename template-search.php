@@ -9,13 +9,8 @@ wp_localize_script(
       'templateUrl' =>  $templateUrl
     )
   );
-?>
 
-<?php
 get_header();
-?>
-
-<?php 
 
 //Initial Search from Page Load
 

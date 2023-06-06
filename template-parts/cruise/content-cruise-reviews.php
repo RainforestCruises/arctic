@@ -1,7 +1,7 @@
 <?php
 $reviews = get_field('reviews');
 $firstReviews = array_slice($reviews, 0, 4);
-$displayLimit = 250;
+$displayLimit = 320;
 ?>
 
 <!-- Cruise Reviews -->

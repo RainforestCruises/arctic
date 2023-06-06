@@ -20,6 +20,9 @@ $show_map = get_field('show_map');
             </a>
         </div>
         <div class="nav-secondary__content__links">
+            <a href="#section-highlights" class="nav-secondary__content__links__link">
+                Highlights
+            </a>
             <a href="#section-itineraries" class="nav-secondary__content__links__link">
                 Itineraries
             </a>
@@ -42,7 +45,7 @@ $show_map = get_field('show_map');
                 Ships
             </a>
             <a href="#section-guide" class="nav-secondary__content__links__link">
-                Travel Guide
+                Guide
             </a>
 
         </div>
@@ -69,6 +72,9 @@ $show_map = get_field('show_map');
     <nav class="nav-secondary__mobile-menu">
         <ul class="nav-secondary__mobile-menu__list">
             <li class="nav-secondary__mobile-menu__list__item">
+                <a class="nav-secondary__mobile-menu__list__item__link" href="#section-highlights">Highlights</a>
+            </li>
+            <li class="nav-secondary__mobile-menu__list__item">
                 <a class="nav-secondary__mobile-menu__list__item__link" href="#section-itineraries">Itineraries</a>
             </li>
             <?php if ($show_topics) : ?>
@@ -90,7 +96,7 @@ $show_map = get_field('show_map');
                 <a class="nav-secondary__mobile-menu__list__item__link" href="#section-ships">Ships</a>
             </li>
             <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#section-guide">Travel Guide</a>
+                <a class="nav-secondary__mobile-menu__list__item__link" href="#section-guide">Guide</a>
             </li>
         </ul>
     </nav>

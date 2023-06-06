@@ -12,9 +12,9 @@ $itineraries_title = get_field('itineraries_title');
 
             <!-- Title -->
             <div class="slider-block__content__top__title">
-                <div class="title-single" style="height:3rem;">
+                <h2 class="title-single" style="height:3rem;">
                     <?php echo $itineraries_title; ?>
-                </div>
+                </h2>
             </div>
 
             <!-- Nav Buttons -->
@@ -82,9 +82,9 @@ $itineraries_title = get_field('itineraries_title');
                             <div class="resource-card__content">
 
                                 <!-- Title -->
-                                <a class="resource-card__content__title" href="<?php echo get_permalink($itinerary) ?>">
-                                    <?php echo $title; ?>
-                                </a>
+                                <h3 class="resource-card__content__title">
+                                    <a href="<?php echo get_permalink($itinerary) ?>"><?php echo $title; ?></a>                            
+                                </h3>
 
                                 <!-- Specs -->
                                 <div class="resource-card__content__specs">

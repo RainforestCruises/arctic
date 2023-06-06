@@ -36,9 +36,9 @@ $relatedGuidePosts = get_posts($queryArgs);
 
             <!-- Title -->
             <div class="slider-block__content__top__title">
-                <div class="title-single">
+                <h2 class="title-single">
                     You May Also Be Interested In
-                </div>
+                </h2>
             </div>
 
             <!-- Nav Buttons -->
@@ -82,11 +82,11 @@ $relatedGuidePosts = get_posts($queryArgs);
                             <div class="resource-card__content">
 
                                 <!-- Title -->
-                                <a class="resource-card__content__title-group"  href="<?php echo get_permalink($relatedPost); ?>" >
-                                    <div class="resource-card__content__title-group__title">
+                                <h3 class="resource-card__content__title-group"  >
+                                    <a class="resource-card__content__title-group__title" href="<?php echo get_permalink($relatedPost); ?>" >
                                         <?php echo get_the_title($relatedPost); ?>
-                                    </div>
-                                </a>
+                                    </a>
+                                </h3>
 
                                 <!-- Description -->
                                 <div class="resource-card__content__description">

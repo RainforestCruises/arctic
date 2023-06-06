@@ -72,9 +72,7 @@ $curentYear = $args['curentYear'];
                                 <!-- Title -->
                                 <h3 class="resource-card__content__title">
                                     <?php echo $title ?>
-                                    <?php if ($quantity) :
-                                        echo ' (' . $quantity . ')';
-                                    endif; ?>
+
                                 </h3>
 
                                 <!-- Specs -->
@@ -105,7 +103,20 @@ $curentYear = $args['curentYear'];
                                             </div>
                                         </div>
                                     </div>
-
+                                    <?php if ($quantity) : ?>
+                                        <div class="specs-item">
+                                            <div class="specs-item__icon">
+                                                <svg>
+                                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-door-3"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="specs-item__text">
+                                                <div class="specs-item__text__main">
+                                                    <?php echo $quantity; ?> <?php echo $quantity == 1 ? "Cabin" : "Cabins"; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

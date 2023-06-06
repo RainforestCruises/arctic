@@ -88,6 +88,7 @@ $deals = $args['deals'];
                     <?php echo $snippet; ?>
                 </div>
                 <div class="product-hero__content__main__primary__nav">
+                    <a href="#section-highlights" class="product-hero__content__main__primary__nav__link">Highlights</a>
                     <a href="#section-cabins" class="product-hero__content__main__primary__nav__link">Cabins</a>
                     <a href="#section-itineraries" class="product-hero__content__main__primary__nav__link">Itineraries</a>
                     <a href="#section-dates" class="product-hero__content__main__primary__nav__link">Dates</a>

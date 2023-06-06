@@ -39,9 +39,9 @@ $exclusions = get_field('exclusions');
     <div class="grid-block__content  block-top-divider">
 
         <div class="grid-block__content__top">
-            <div class="title-single">
+            <h2 class="title-single">
                 What's Excluded
-            </div>
+            </h2>
         </div>
 
         <!-- Grid Area -->
