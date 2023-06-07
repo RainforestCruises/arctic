@@ -1,21 +1,18 @@
 <?php
 $reviews = get_field('reviews');
 $reviews_title = get_field('reviews_title');
-
+$maxlength = 320;
 ?>
 
 
 <section class="grid-block" id="section-reviews">
     <div class="grid-block__content">
-
         <!-- Top - Title/Nav -->
         <div class="grid-block__content__top">
-
             <!-- Title -->
             <h2 class="title-single">
                 <?php echo $reviews_title; ?>
             </h2>
-
         </div>
 
         <!-- Grid Area -->
@@ -25,13 +22,10 @@ $reviews_title = get_field('reviews_title');
                 $title = $review['title'];
                 $date = $review['date'];
                 $text = $review['text'];
-
-                $expand = strlen($text) > 230 ? true : false;
-                $text_limited = substr($text, 0, 230) . ($expand ? '...' : '');
+                $expand = strlen($text) > $maxlength ? true : false;
+                $text_limited = substr($text, 0, $maxlength) . ($expand ? '...' : '');
             ?>
-
-
-                <div class="text-card ">
+               <div class="text-card ">
                     <div class="text-card__avatar">
                         <div class="text-card__avatar__image-area" style="background-color: <?php echo generateBgColor(); ?>;">
                             <?php echo generateInitials($title); ?>
@@ -48,11 +42,9 @@ $reviews_title = get_field('reviews_title');
                             </div>
                         </div>
                     </div>
-
                     <div class="text-card__text">
                         <?php echo $text_limited; ?>
                     </div>
-
                     <?php if ($expand) : ?>
                         <div class="text-card__expand">
                             <button class="btn-text-plain" id="expand-content">
@@ -63,21 +55,13 @@ $reviews_title = get_field('reviews_title');
                             </button>
                         </div>
                     <?php endif; ?>
-
                 </div>
-
-
             <?php endforeach; ?>
-
-
-
-
         </div>
         <div class="grid-block__content__cta">
             <a class="cta-primary cta-primary--inverse" id="all-guides-link">
                 Read All Reviews
             </a>
         </div>
-
     </div>
 </section>

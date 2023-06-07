@@ -1,30 +1,19 @@
 <?php
 /*Template Name: Contact*/
-
-
-wp_enqueue_script('page-contact', get_template_directory_uri() . '/js/page-contact.js', array('jquery'), false, true);
-$templateUrl = get_template_directory_uri();
-wp_localize_script(
-    'page-contact',
-    'page_vars',
-    array(
-      'templateUrl' =>  $templateUrl
-    )
-  );
-?>
-
-<?php
 get_header();
 $primary_contact_form_id = get_field('primary_contact_form_id', 'options');
 $phone_number = get_field('phone_number', 'options');
 $phone_number_numeric = get_field('phone_number_numeric', 'options');
+
+$reviews = get_field('reviews');
+$maxlength = 320;
 ?>
 
 <!-- Contact Page Container -->
 <section class="contact-page">
     <div class="contact-page__intro">
         <h1 class="contact-page__intro__title">
-            Plan Your Adventure Today.
+            Start Your Adventure Today.
         </h1>
         <div class="contact-page__intro__subtitle">
             Call us on the number below to speak to one of our destination specialists, or alternatively please fill in the form beneath and we'll get back to you ASAP.
@@ -69,44 +58,64 @@ $phone_number_numeric = get_field('phone_number_numeric', 'options');
             </div>
         </div>
     </div>
-
 </section>
 
-<section class="sliding-testimonials">
-    <h2 class="contact-page__testimonial-title">
-        What Our Customers are Saying About Us
-    </h2>
-    <div class="sliding-testimonials__slider" id="testimonials-slider">
-        <?php
-        $testimonials = get_field('testimonials', 'options');
-        
-        if ($testimonials) :
-            foreach ($testimonials as $testimonial) :
-                $t = $testimonial['snippet'];
-                $t_person = $testimonial['person_name'];
-                $t_image = $testimonial['image'];
-        ?>
-                <!-- Slide -->
-                <!-- Testimonial -->
-                <div class="sliding-testimonial">
-                    <div class="sliding-testimonial__content">
-                        <div class="sliding-testimonial__content__snippet">
-                            <?php echo $t ?>
-                        </div>
-                        <div class="sliding-testimonial__content__person">
-                            - <?php echo $t_person ?>
-                        </div>
-                    </div>
 
-                    <div class="sliding-testimonial__image-area ">
-                        <img <?php afloat_image_markup($t_image['id'], 'vertical-medium'); ?>>
+<!-- Reviews -->
+<section class="grid-block" style="margin-top: 6rem; margin-bottom: 10rem;" id="reviews">
+    <div class="grid-block__content">
+        <!-- Top - Title/Nav -->
+        <div class="grid-block__content__top">
+            <!-- Title -->
+            <h2 class="title-single" style="text-align: center; margin-bottom: 6rem;">
+                What Our Customers are Saying About Us
+            </h2>
+        </div>
+
+        <!-- Grid Area -->
+        <div class="grid-block__content__grid grid3">
+            <?php foreach ($reviews as $review) :
+                $image = $review['image'];
+                $title = $review['title'];
+                $date = $review['date'];
+                $text = $review['text'];
+                $expand = strlen($text) > $maxlength ? true : false;
+                $text_limited = substr($text, 0, $maxlength) . ($expand ? '...' : '');
+            ?>
+               <div class="text-card ">
+                    <div class="text-card__avatar">
+                        <div class="text-card__avatar__image-area" style="background-color: <?php echo generateBgColor(); ?>;">
+                            <?php echo generateInitials($title); ?>
+                            <?php if ($image) : ?>
+                                <img <?php afloat_image_markup($image['id'], 'square-thumb', array('square-thumb')); ?>>
+                            <?php endif; ?>
+                        </div>
+                        <div class="text-card__avatar__title-group">
+                            <div class="text-card__avatar__title-group__title">
+                                <?php echo $title; ?>
+                            </div>
+                            <div class="text-card__avatar__title-group__sub">
+                                <?php echo $date; ?>
+                            </div>
+                        </div>
                     </div>
+                    <div class="text-card__text">
+                        <?php echo $text_limited; ?>
+                    </div>
+                    <?php if ($expand) : ?>
+                        <div class="text-card__expand">
+                            <button class="btn-text-plain" id="expand-content">
+                                Read More
+                                <svg>
+                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    <?php endif; ?>
                 </div>
+            <?php endforeach; ?>
+        </div>
 
-        <?php
-            endforeach;
-
-        endif; ?>
     </div>
 </section>
 

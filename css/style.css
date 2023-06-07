@@ -2618,11 +2618,11 @@ p {
     height: 5rem !important;
     width: 100% !important;
     margin-top: 3rem !important;
-    border-radius: 1rem !important; }
+    border-radius: 1rem !important;
+    transition: all .2s; }
     .form-general button:hover {
-      color: #1d2225 !important;
-      background-color: #fff !important;
-      box-shadow: inset 0px 0px 0px 2px #1d2225 !important; }
+      color: #fff !important;
+      background-color: #347fff !important; }
 
 .wpforms-container input[type=radio] {
   -webkit-appearance: radio !important;
@@ -7875,95 +7875,6 @@ p {
       @media only screen and (max-width: 37.5em) {
         .contact-section__wrapper__close-button {
           top: 2rem; } }
-
-.sliding-testimonials {
-  width: 100%;
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column; }
-  .sliding-testimonials__header {
-    max-width: 128rem;
-    width: 100%;
-    padding: 0 6rem; }
-    @media only screen and (max-width: 50em) {
-      .sliding-testimonials__header {
-        padding: 0 3rem; } }
-  .sliding-testimonials__slider {
-    width: 100%;
-    max-width: 114rem;
-    position: relative;
-    margin-top: 6rem;
-    margin-bottom: 9rem;
-    padding: 0 9rem; }
-    @media only screen and (max-width: 37.5em) {
-      .sliding-testimonials__slider {
-        padding: 0rem;
-        margin-top: 3rem; } }
-    .sliding-testimonials__slider__btn--left {
-      transform: translateY(-50%);
-      position: absolute;
-      z-index: 10;
-      top: 40%;
-      left: 1.5rem; }
-    .sliding-testimonials__slider__btn--right {
-      transform: translateY(-50%);
-      position: absolute;
-      z-index: 10;
-      top: 40%;
-      right: 1.5rem; }
-
-.sliding-testimonial {
-  display: flex !important;
-  width: 100%; }
-  .sliding-testimonial__content {
-    padding: 0rem 3rem;
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    justify-content: center; }
-    @media only screen and (max-width: 37.5em) {
-      .sliding-testimonial__content {
-        width: 100%;
-        margin-bottom: 2rem; } }
-    .sliding-testimonial__content__snippet {
-      font-size: 2.2rem;
-      line-height: 2.8rem;
-      color: #1d2225;
-      margin-bottom: 2.5rem;
-      padding-right: 4rem; }
-      @media only screen and (max-width: 62.5em) {
-        .sliding-testimonial__content__snippet {
-          font-size: 2.4rem;
-          line-height: 3rem;
-          padding-right: 2rem; } }
-      @media only screen and (max-width: 37.5em) {
-        .sliding-testimonial__content__snippet {
-          padding-right: 0;
-          text-align: center; } }
-    .sliding-testimonial__content__person {
-      font-size: 1.8rem;
-      font-weight: 600;
-      letter-spacing: .1rem;
-      text-transform: uppercase; }
-      @media only screen and (max-width: 37.5em) {
-        .sliding-testimonial__content__person {
-          text-align: center; } }
-  .sliding-testimonial__image-area {
-    width: 40%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-right: 3rem; }
-    @media only screen and (max-width: 37.5em) {
-      .sliding-testimonial__image-area {
-        display: none; } }
-    .sliding-testimonial__image-area img {
-      object-fit: contain;
-      width: 100%;
-      height: 100%;
-      border-radius: 1rem; }
 
 .about-mission {
   display: flex;

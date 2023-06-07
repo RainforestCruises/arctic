@@ -47,11 +47,11 @@
         width: 100% !important;
         margin-top: 3rem !important;
         border-radius: 1rem !important;
+        transition: all .2s;
 
         &:hover {
-            color: $color-primary !important;
-            background-color: $color-white !important;
-            box-shadow: $inner-border-dark !important;
+            color: $color-white !important;
+            background-color: $color-supporting !important;
         }
     }
 }  
