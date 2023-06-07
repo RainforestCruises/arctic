@@ -3,7 +3,7 @@ $cabins = $args['cabins'];
 $curentYear = $args['curentYear'];
 ?>
 
-<section class="slider-block narrow" id="section-cabins">
+<section class="slider-block narrow" id="cabins">
     <div class="slider-block__content block-top-divider">
 
         <!-- Top - Title/Nav -->

@@ -285,7 +285,7 @@ function getItineraryShipSize($ships)
 }
 
 // build list of unique destinations within an itinerary, with embarkations removed
-function getItineraryDestinations($itinerary)
+function getItineraryDestinationsDisplay($itinerary, $limit)
 {
     $days = get_field('itinerary', $itinerary);
 
@@ -304,19 +304,33 @@ function getItineraryDestinations($itinerary)
 
     $uniqueDestinationList = array_unique($destinationList);
 
-    $display = "";
+    $displayString = "";
     $destinationCount = count($uniqueDestinationList);
 
-    $x = 1;
+    $count = 1;
+    $overCount = 0;
+
     foreach ($uniqueDestinationList as $name) {
-        if ($x < $destinationCount) {
-            $display .= $name . ", ";
+        if ($count <= $limit) {
+            $displayString .= $name;
+
+            // trailing comma
+            if ($count != $destinationCount) {
+                $displayString .= ', ';
+            }
+   
         } else {
-            $display .= $name;
+            $overCount++;
         }
-        $x++;
+       
+        $count++;
     }
-    return $display;
+
+    if ($overCount > 0) {
+        $displayString .= ' + ' . $overCount . ' More';
+    }
+
+    return $displayString;
 }
 
 // get display of ships sailing the itinerary

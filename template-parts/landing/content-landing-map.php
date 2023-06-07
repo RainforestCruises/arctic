@@ -20,7 +20,7 @@ wp_localize_script(
 ?>
 
 <!-- Itinerary Map (landing page variant) -->
-<section class="itinerary-map landing-variant" id="section-map">
+<section class="itinerary-map landing-variant" id="map">
     <div class="itinerary-map__content block-top-divider">
 
         <!-- Title -->

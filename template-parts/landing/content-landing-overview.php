@@ -14,7 +14,7 @@ $intro_text_limited = substr($intro_text, 0, 2000) . '...';
 ?>
 
 <!-- Overview / Highlights -->
-<section class="landing-overview" id="section-highlights">
+<section class="landing-overview" id="highlights">
 
     <div class="landing-overview__content">
 

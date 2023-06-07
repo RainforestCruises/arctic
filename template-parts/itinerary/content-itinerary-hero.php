@@ -13,7 +13,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
 ?>
 
 <!-- Itinerary Hero -->
-<section class="product-hero" id="section-top">
+<section class="product-hero" id="top">
     <!-- Desktop BG Image -->
     <div class="product-hero__bg-image">
         <img <?php afloat_image_markup($images[0]['id'], 'landscape-full', array('landscape-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small')); ?> class="optimole-initial">
@@ -79,7 +79,7 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
             <div class="product-hero__content__main__primary">
                 <?php if ($deals) : ?>
                     <div class="product-hero__content__main__primary__deal-area">
-                        <a class="specs-deal product-hero-deal-badge" href="#section-deals">
+                        <a class="specs-deal product-hero-deal-badge" href="#deals">
                             <?php echo getDealsDisplay($deals); ?> Available
                         </a>
                     </div>
@@ -91,11 +91,11 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                     <?php echo $snippet; ?>
                 </div>
                 <div class="product-hero__content__main__primary__nav">
-                    <a href="#section-highlights" class="product-hero__content__main__primary__nav__link">Highlights</a>
-                    <a href="#section-itinerary" class="product-hero__content__main__primary__nav__link">Itinerary</a>
-                    <a href="#section-map" class="product-hero__content__main__primary__nav__link">Map</a>
-                    <a href="#section-dates" class="product-hero__content__main__primary__nav__link">Dates</a>
-                    <a href="#section-extras" class="product-hero__content__main__primary__nav__link">Extras</a>
+                    <a href="#highlights" class="product-hero__content__main__primary__nav__link">Highlights</a>
+                    <a href="#itinerary" class="product-hero__content__main__primary__nav__link">Itinerary</a>
+                    <a href="#map" class="product-hero__content__main__primary__nav__link">Map</a>
+                    <a href="#dates" class="product-hero__content__main__primary__nav__link">Dates</a>
+                    <a href="#extras" class="product-hero__content__main__primary__nav__link">Extras</a>
                 </div>
             </div>
 

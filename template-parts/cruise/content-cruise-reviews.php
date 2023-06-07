@@ -5,7 +5,7 @@ $displayLimit = 320;
 ?>
 
 <!-- Cruise Reviews -->
-<section class="grid-block narrow" id="section-reviews">
+<section class="grid-block narrow" id="reviews">
     <div class="grid-block__content block-top-divider">
 
         <h2 class="title-single">

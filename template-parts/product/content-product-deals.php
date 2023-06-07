@@ -11,7 +11,7 @@ $subtitleDisplay .= ' on select dates';
 
 ?>
 
-<section class="slider-block narrow" id="section-deals">
+<section class="slider-block narrow" id="deals">
     <div class="slider-block__content block-top-divider">
 
         <!-- Top - Title/Nav -->

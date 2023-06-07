@@ -11,24 +11,24 @@ $deals = getDealsFromDepartureList($departures);
     <!-- desktop content -->
     <div class="nav-secondary__content">
         <div class="nav-secondary__content__title-area">
-            <a href="#section-top" class="nav-secondary__content__title-area__link">
+            <a href="#top" class="nav-secondary__content__title-area__link">
                 <?php echo $title; ?>
             </a>
         </div>
         <div class="nav-secondary__content__links">
-            <a href="#section-highlights" class="nav-secondary__content__links__link">
+            <a href="#highlights" class="nav-secondary__content__links__link">
                 Highlights
             </a>
-            <a href="#section-itinerary" class="nav-secondary__content__links__link">
+            <a href="#itinerary" class="nav-secondary__content__links__link">
                 Itinerary
             </a>
-            <a href="#section-map" class="nav-secondary__content__links__link">
+            <a href="#map" class="nav-secondary__content__links__link">
                 Map
             </a>
-            <a href="#section-dates" class="nav-secondary__content__links__link">
+            <a href="#dates" class="nav-secondary__content__links__link">
                 Dates
             </a>
-            <a href="#section-extras" class="nav-secondary__content__links__link">
+            <a href="#extras" class="nav-secondary__content__links__link">
                 Extras
             </a>
         </div>
@@ -55,23 +55,23 @@ $deals = getDealsFromDepartureList($departures);
     <nav class="nav-secondary__mobile-menu">
         <ul class="nav-secondary__mobile-menu__list">
             <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#section-highlights">Highlights</a>
+                <a class="nav-secondary__mobile-menu__list__item__link" href="#highlights">Highlights</a>
             </li>
             <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#section-itinerary">Itinerary</a>
+                <a class="nav-secondary__mobile-menu__list__item__link" href="#itinerary">Itinerary</a>
             </li>
             <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#section-map">Map</a>
+                <a class="nav-secondary__mobile-menu__list__item__link" href="#map">Map</a>
             </li>
             <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#section-dates">Dates
+                <a class="nav-secondary__mobile-menu__list__item__link" href="#dates">Dates
                     <?php if ($deals) : ?>
                         <span class="specs-deal" style="margin-left: 2rem;"><?php echo getDealsDisplay($deals); ?></span>
                     <?php endif; ?>
                 </a>
             </li>
             <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#section-extras">Extras</a>
+                <a class="nav-secondary__mobile-menu__list__item__link" href="#extras">Extras</a>
             </li>
         </ul>
     </nav>

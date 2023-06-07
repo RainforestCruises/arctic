@@ -7,7 +7,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options')
 ?>
 
 <!-- Travel Guides -->
-<section class="grid-block" id="section-guide">
+<section class="grid-block" id="guide">
     <div class="grid-block__content block-top-divider">
 
         <!-- Top - Title/Nav -->

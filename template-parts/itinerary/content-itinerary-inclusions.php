@@ -5,7 +5,7 @@ $exclusions = get_field('exclusions');
 ?>
 
 <!-- Inclusions -->
-<section class="grid-block narrow" id="section-inclusions">
+<section class="grid-block narrow" id="inclusions">
     <div class="grid-block__content  block-top-divider">
 
         <div class="grid-block__content__top">

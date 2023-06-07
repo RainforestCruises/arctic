@@ -27,7 +27,7 @@ if ($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_
 ?>
 
 <!-- Cruise Overview (highlights) -->
-<section class="product-overview" id="section-highlights">
+<section class="product-overview" id="highlights">
 
     <div class="product-overview__content">
 

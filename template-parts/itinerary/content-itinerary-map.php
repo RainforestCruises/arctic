@@ -3,7 +3,7 @@
 $destinationCount = $args['destinationCount'];
 
 ?>
-<section class="itinerary-map" id="section-map">
+<section class="itinerary-map" id="map">
     <div class="itinerary-map__content">
 
         <div class="title-group">

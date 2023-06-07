@@ -3,7 +3,7 @@ $itineraries = get_field('itineraries');
 ?>
 
 <!-- Itineraries -->
-<section class="cruise-itineraries" id="section-itineraries">
+<section class="cruise-itineraries" id="itineraries">
 
     <div class="cruise-itineraries__content">
 
@@ -85,7 +85,7 @@ $itineraries = get_field('itineraries');
                             $lowestPrice = getLowestDepartureListPrice($departures);
                             $highestPrice = getHighestDepartureListPrice($departures);
                             $bestOverallDiscount = getBestDepartureListDiscount($departures);
-                            $destinations = getItineraryDestinations($itinerary); //build list of unique destinations within an itinerary, with embarkations removed
+                            $destinations = getItineraryDestinationsDisplay($itinerary, 4); //build list of unique destinations within an itinerary, with embarkations removed
                             $title = get_field('display_name', $itinerary);
                             $length_in_nights = get_field('length_in_nights', $itinerary);
                             $top_snippet = get_field('top_snippet', $itinerary);

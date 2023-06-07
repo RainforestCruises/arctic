@@ -5,7 +5,7 @@ $firstFaqs = array_slice($faqs, 0, 6);
 $displayLimit = 320;
 ?>
 
-<section class="grid-block" id="section-faq">
+<section class="grid-block" id="faq">
     <div class="grid-block__content block-top-divider">
         <div class="grid-block__content__top">
             <!-- Title -->

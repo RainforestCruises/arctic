@@ -8,7 +8,7 @@ $disembarkation_point = get_field('disembarkation_point');
 ?>
 
 <!-- Itinerary Daily -->
-<section class="grid-block narrow" id="section-itinerary">
+<section class="grid-block narrow" id="itinerary">
     <div class="grid-block__content">
 
         <!-- Top - Title/Nav -->

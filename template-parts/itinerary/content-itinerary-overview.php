@@ -13,7 +13,7 @@ $overview_content_limited = substr($overview_content, 0, 2000) . '...';
 ?>
 
 <!-- Itinerary Overview (highlights) -->
-<section class="product-overview" id="section-highlights">
+<section class="product-overview" id="highlights">
 
     <div class="product-overview__content">
 

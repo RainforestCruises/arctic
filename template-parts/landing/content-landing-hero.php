@@ -11,7 +11,7 @@ $lowestOverallPrice = getLowestPriceFromListOfItineraries($itineraries);
 ?>
 
 <!-- Hero section -->
-<section class="landing-hero" id="section-top">
+<section class="landing-hero" id="top">
 
     <!-- Desktop BG Image -->
     <div class="landing-hero__bg-image">
@@ -34,28 +34,28 @@ $lowestOverallPrice = getLowestPriceFromListOfItineraries($itineraries);
 
 
 <!-- Nav section -->
-<section class="landing-nav" id="section-nav">
+<section class="landing-nav" id="nav">
     <div class="landing-nav__content">
 
         <!-- Nav Links -->
         <div class="landing-nav__content__links">
-            <a href="#section-highlights" class="landing-nav__content__links__link">
+            <a href="#highlights" class="landing-nav__content__links__link">
                 Highlights
             </a>
-            <a href="#section-itineraries" class="landing-nav__content__links__link">
+            <a href="#itineraries" class="landing-nav__content__links__link">
                 Itineraries
             </a>
             <?php if ($show_topics) : ?>
-                <a href="#section-about" class="landing-nav__content__links__link">About</a>
+                <a href="#about" class="landing-nav__content__links__link">About</a>
             <?php endif; ?>
             <?php if ($show_map) : ?>
-                <a href="#section-map" class="landing-nav__content__links__link">Map</a>
+                <a href="#map" class="landing-nav__content__links__link">Map</a>
             <?php endif; ?>
             <?php if ($show_faq) : ?>
-                <a href="#section-faq" class="landing-nav__content__links__link">FAQ</a>
+                <a href="#faq" class="landing-nav__content__links__link">FAQ</a>
             <?php endif; ?>
-            <a href="#section-ships" class="landing-nav__content__links__link">Ships</a>
-            <a href="#section-guide" class="landing-nav__content__links__link">Guide</a>
+            <a href="#ships" class="landing-nav__content__links__link">Ships</a>
+            <a href="#guide" class="landing-nav__content__links__link">Guide</a>
 
         </div>
 

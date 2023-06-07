@@ -49,10 +49,21 @@ $cabins = $args['cabins'];
                         <div class="swiper-button-prev swiper-button-prev--overlay"></div>
                         <div class="swiper-button-next swiper-button-prev--overlay"></div>
                     </div>
-                    <h3>
-                        <?php echo $title; ?>
-                    </h3>
-                    <div class="cruise-cabins-modal-item__specification" >
+
+                    <!-- Title -->
+                    <?php if (get_post_type() == 'rfc_cruises') : ?>
+                        <h2 class="cruise-cabins-modal-item__title">
+                            <?php echo $title; ?>
+                        </h2>
+                    <?php else : ?>
+                        <div class="cruise-cabins-modal-item__title">
+                            <?php echo $title; ?>
+                        </div>
+                    <?php endif ?>
+
+
+
+                    <div class="cruise-cabins-modal-item__specification">
                         <span>Capacity:</span> <?php echo $capacity; ?>
                     </div>
                     <div class="cruise-cabins-modal-item__specification">
@@ -64,9 +75,19 @@ $cabins = $args['cabins'];
                     <div class="cruise-cabins-modal-item__specification" style="margin-bottom: 1.5rem">
                         <span>Number of Cabins:</span> <?php echo $quantity; ?> <?php echo $quantity == 1 ? "Cabin" : "Cabins"; ?>
                     </div>
-                    <h4>
-                        Features
-                    </h4>
+
+                    <!-- Subtitle -->
+                    <?php if (get_post_type() == 'rfc_cruises') : ?>
+                        <h3 class="cruise-cabins-modal-item__subtitle">
+                            Features
+                        </h3>
+                    <?php else : ?>
+                        <div class="cruise-cabins-modal-item__subtitle">
+                            Features
+                        </div>
+                    <?php endif ?>
+
+
                     <div class="cruise-cabins-modal-item__features">
                         <?php
                         if ($amenities) :
@@ -85,9 +106,20 @@ $cabins = $args['cabins'];
                         <?php endforeach;
                         endif; ?>
                     </div>
-                    <h4>
-                        Description
-                    </h4>
+
+
+                    <!-- Subtitle -->
+                    <?php if (get_post_type() == 'rfc_cruises') : ?>
+                        <h3 class="cruise-cabins-modal-item__subtitle">
+                            Description
+                        </h3>
+                    <?php else : ?>
+                        <div class="cruise-cabins-modal-item__subtitle">
+                            Description
+                        </div>
+                    <?php endif ?>
+
+
                     <div class="cruise-cabins-modal-item__description">
                         <?php echo $description; ?>
                     </div>

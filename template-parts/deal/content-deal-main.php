@@ -49,7 +49,7 @@ if (count($itinerariesWithDeal) > 1) {
                 $embarkation_point = get_field('embarkation_point', $itinerary);
                 $embarkation = get_the_title($embarkation_point);
                 $shipsDisplay = getItineraryShips($itinerary);
-                $destinations = getItineraryDestinations($itinerary);
+                $destinations = getItineraryDestinationsDisplay($itinerary, 4);
                 $guestsDisplay = get_field('vessel_capacity', $itinerary) . ' Guests, ' . 'Luxury';
                 $departures = getDepartureList($itinerary);
                 $lowestPrice = getLowestDepartureListPrice($departures);

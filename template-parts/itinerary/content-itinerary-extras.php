@@ -2,7 +2,7 @@
 $extra_activities = get_field('extra_activities')
 ?>
 
-<section class="slider-block narrow" id="section-extras">
+<section class="slider-block narrow" id="extras">
     <div class="slider-block__content block-top-divider">
 
         <!-- Top - Title/Nav -->

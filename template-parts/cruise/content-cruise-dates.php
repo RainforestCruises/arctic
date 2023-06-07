@@ -6,7 +6,7 @@ $itineraries = $args['itineraries'];
 $departures = $args['departures'];
 ?>
 
-<section class="slider-block narrow cruise-dates" id="section-dates">
+<section class="slider-block narrow cruise-dates" id="dates">
     <div class="slider-block__content block-top-divider">
 
         <!-- Top - Title/Nav -->

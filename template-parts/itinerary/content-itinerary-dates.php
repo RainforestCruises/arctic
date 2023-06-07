@@ -6,7 +6,7 @@ $departures = $args['departures'];
 $deals = $args['deals'];
 ?>
 
-<section class="slider-block narrow" id="section-dates">
+<section class="slider-block narrow" id="dates">
     <div class="slider-block__content block-top-divider">
 
         <!-- Top - Title/Nav -->

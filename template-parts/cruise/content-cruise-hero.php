@@ -14,7 +14,7 @@ $deals = $args['deals'];
 ?>
 
 <!-- Cruise Hero -->
-<section class="product-hero" id="section-top">
+<section class="product-hero" id="top">
     <!-- Desktop BG Image (first image in main) -->
     <div class="product-hero__bg-image">
         <img <?php afloat_image_markup($images[0]['id'], 'landscape-full', array('landscape-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small')); ?> class="optimole-initial">
@@ -76,7 +76,7 @@ $deals = $args['deals'];
             <div class="product-hero__content__main__primary">
                 <?php if ($deals) : ?>
                     <div class="product-hero__content__main__primary__deal-area">
-                        <a class="specs-deal product-hero-deal-badge" href="#section-deals">
+                        <a class="specs-deal product-hero-deal-badge" href="#deals">
                             <?php echo getDealsDisplay($deals); ?> Available
                         </a>
                     </div>
@@ -88,11 +88,11 @@ $deals = $args['deals'];
                     <?php echo $snippet; ?>
                 </div>
                 <div class="product-hero__content__main__primary__nav">
-                    <a href="#section-highlights" class="product-hero__content__main__primary__nav__link">Highlights</a>
-                    <a href="#section-cabins" class="product-hero__content__main__primary__nav__link">Cabins</a>
-                    <a href="#section-itineraries" class="product-hero__content__main__primary__nav__link">Itineraries</a>
-                    <a href="#section-dates" class="product-hero__content__main__primary__nav__link">Dates</a>
-                    <a href="#section-reviews" class="product-hero__content__main__primary__nav__link">Reviews</a>
+                    <a href="#highlights" class="product-hero__content__main__primary__nav__link">Highlights</a>
+                    <a href="#cabins" class="product-hero__content__main__primary__nav__link">Cabins</a>
+                    <a href="#itineraries" class="product-hero__content__main__primary__nav__link">Itineraries</a>
+                    <a href="#dates" class="product-hero__content__main__primary__nav__link">Dates</a>
+                    <a href="#reviews" class="product-hero__content__main__primary__nav__link">Reviews</a>
                 </div>
             </div>
 
