@@ -10,6 +10,7 @@ $itineraryCount = count($itineraries);
 $images = get_field('hero_gallery');
 $desktopImages = array_slice($images, 1); //for gallery desktop slider
 $deals = $args['deals'];
+$reviews = get_field('reviews');
 
 ?>
 
@@ -92,7 +93,10 @@ $deals = $args['deals'];
                     <a href="#cabins" class="product-hero__content__main__primary__nav__link">Cabins</a>
                     <a href="#itineraries" class="product-hero__content__main__primary__nav__link">Itineraries</a>
                     <a href="#dates" class="product-hero__content__main__primary__nav__link">Dates</a>
-                    <a href="#reviews" class="product-hero__content__main__primary__nav__link">Reviews</a>
+                    <?php if ($reviews) : ?>
+                        <a href="#reviews" class="product-hero__content__main__primary__nav__link">Reviews</a>
+                    <?php endif; ?>
+
                 </div>
             </div>
 

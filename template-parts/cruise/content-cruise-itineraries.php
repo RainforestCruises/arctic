@@ -1,5 +1,5 @@
 <?php
-$itineraries = get_field('itineraries');
+$itineraries = $args['itineraries'];
 ?>
 
 <!-- Itineraries -->

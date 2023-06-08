@@ -318,11 +318,10 @@ function getItineraryDestinationsDisplay($itinerary, $limit)
             if ($count != $destinationCount) {
                 $displayString .= ', ';
             }
-   
         } else {
             $overCount++;
         }
-       
+
         $count++;
     }
 
@@ -362,7 +361,7 @@ function getItineraryRegions($itinerary)
     foreach ($routes as $route) {
         $regionsList[] = get_field('region', $route);
     }
-   
+
 
     $uniqueRegionsList = getUniquePostsFromArrayOfPosts($regionsList);
     return $uniqueRegionsList;
@@ -419,6 +418,9 @@ function getShipItineraries($ship)
     $queryArgs = array(
         'post_type' => 'rfc_itineraries',
         'posts_per_page' => -1,
+        'meta_key' => 'length_in_nights',
+        'orderby'=> 'meta_value_num',
+        'order' => 'ASC'
     );
 
     $itineraries = get_posts($queryArgs);
@@ -438,6 +440,9 @@ function getShipItineraries($ship)
         }
     }
 
+
+
+
     return $itineraryList;
 }
 
@@ -451,10 +456,9 @@ function getShipRegions($ship)
         foreach ($routes as $route) {
             $regionsList[] = get_field('region', $route);
         }
-       
     }
-    
+
     $uniqueShipRegionsList = getUniquePostsFromArrayOfPosts($regionsList);
-    return($uniqueShipRegionsList);
+    return ($uniqueShipRegionsList);
     //return $uniqueRegionsListList;
 }

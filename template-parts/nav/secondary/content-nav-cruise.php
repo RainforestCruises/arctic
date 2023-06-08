@@ -3,6 +3,8 @@ $title = get_the_title();
 $ship = get_post();
 $departures = getDepartureList($ship);
 $deals = getDealsFromDepartureList($departures);
+$reviews = get_field('reviews');
+
 ?>
 <!-- Cruise Nav -->
 <nav class="nav-secondary small-width">
@@ -27,9 +29,11 @@ $deals = getDealsFromDepartureList($departures);
             <a href="#dates" class="nav-secondary__content__links__link">
                 Dates
             </a>
-            <a href="#reviews" class="nav-secondary__content__links__link">
-                Reviews
-            </a>
+            <?php if ($reviews) : ?>
+                <a href="#reviews" class="nav-secondary__content__links__link">
+                    Reviews
+                </a>
+            <?php endif; ?>
         </div>
         <div class="nav-secondary__content__cta product-template">
             <button class="nav-secondary__content__cta__button btn-pill btn-pill--dark generic-inquire-cta">
@@ -69,9 +73,11 @@ $deals = getDealsFromDepartureList($departures);
                     <?php endif; ?>
                 </a>
             </li>
+            <?php if ($reviews) : ?>
             <li class="nav-secondary__mobile-menu__list__item">
                 <a class="nav-secondary__mobile-menu__list__item__link" href="#reviews">Reviews</a>
             </li>
+            <?php endif; ?>
         </ul>
     </nav>
 </nav>

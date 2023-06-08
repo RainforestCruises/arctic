@@ -70,12 +70,12 @@ $disembarkation_point = get_field('disembarkation_point');
                                                 <?php echo $title; ?>
                                             </div>
 
-                                            <?php if ($count == 0) : ?>
+                                            <?php if ($count == 0 && $destination == $embarkation_point) : ?>
                                                 <div class="avatar__title-group__sub">
                                                     Embarkation Point
                                                 </div>
                                             <?php endif; ?>
-                                            <?php if ($count == $totalDays) : ?>
+                                            <?php if ($count == $totalDays && $destination == $disembarkation_point) : ?>
                                                 <div class="avatar__title-group__sub">
                                                     Disembarkation Point
                                                 </div>

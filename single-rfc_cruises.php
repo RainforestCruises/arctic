@@ -19,12 +19,10 @@ $deals = getDealsFromDepartureList($departures);
 
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
-
-
 $regions = getShipRegions($ship);
-console_log($regions);
+$reviews = get_field('reviews');
 
-
+console_log($itineraries);
 //cabin posts
 $args = array(
   'posts_per_page' => -1,
@@ -87,7 +85,7 @@ wp_localize_script(
   <!-- Modal Deckplan Gallery -->
   <?php
   get_template_part('template-parts/cruise/content', 'cruise-deckplan-gallery', $args);
-  ?> 
+  ?>
 
   <!-- Cabins -->
   <?php
@@ -116,7 +114,9 @@ wp_localize_script(
   ?>
   <!-- Reviews -->
   <?php
-  get_template_part('template-parts/cruise/content', 'cruise-reviews', $args);
+  if ($reviews) :
+    get_template_part('template-parts/cruise/content', 'cruise-reviews', $args);
+  endif
   ?>
 
   <!-- Related -->
