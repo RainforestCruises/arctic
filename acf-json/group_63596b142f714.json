@@ -44,6 +44,28 @@
             "ui": 1
         },
         {
+            "key": "field_648a24327c5c9",
+            "label": "Supplier",
+            "name": "supplier",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_suppliers"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
             "key": "field_63596ba542a4e",
             "label": "Images",
             "name": "images",
@@ -257,5 +279,5 @@
     "active": true,
     "description": "Cabins CPT",
     "show_in_rest": 0,
-    "modified": 1680708736
+    "modified": 1686774856
 }

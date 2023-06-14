@@ -1,0 +1,154 @@
+// guide top level page item (isotope) 
+.guide-item {
+    margin: 1.5rem;
+    margin-bottom: 6rem;
+    box-shadow: $shadow-medium;
+    background-color: $color-white;
+    border-radius: 1rem;
+    overflow: hidden;
+
+    width: 36rem; //to fix isotope overlapping
+
+    @media only screen and (max-width: $bp-small) {
+        margin: 0rem;
+        margin-bottom: 5rem;
+        width: 100%; //to fix isotope overlapping
+    }
+
+    display: flex;
+    flex-direction: column;
+
+    &__image-area {
+        height: 30rem;
+        position: relative;
+
+        @media only screen and (max-width: $bp-small) {
+            height: 26rem;
+        }
+
+        & img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+        & .exclusiveDeal {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            z-index: 10;
+            width: max-content;
+            background: $color-white;
+            color: $color-primary;
+            border-radius: 4rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            padding: 0.5rem 1.5rem;
+            margin-right: 2rem;
+        }
+    }
+    &__bottom {
+        display: flex;
+        flex-direction: column;
+
+        padding: 2rem 3rem;
+
+        &__category {
+            text-transform: uppercase;
+            color: $color-gold;
+            font-size: 1.4rem;
+            letter-spacing: 0.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+            list-style: none;
+
+            & li {
+                white-space: nowrap;
+                margin-right: 1rem;
+                position: relative;
+
+                &:not(:last-child) {
+                    &::after {
+                        content: ", ";
+                        position: absolute;
+                        right: -0.4rem;
+                    }
+                }
+            }
+        }
+
+        &__title {
+            color: $color-primary;
+            &:link,
+            &:visited {
+                text-decoration: none;
+                color: $color-primary;
+                &:hover {
+                    color: $color-supporting-light;
+                }
+            }
+
+            & h3 {
+                font-size: 3rem;
+                font-weight: 500;
+                letter-spacing: 0.1rem;
+                line-height: 4rem;
+
+                margin: 0.5rem 0;
+
+                transition: all 0.2s;
+            }
+        }
+
+        &__snippet {
+            font-size: 1.6rem;
+            padding: 1rem 0;
+            padding-bottom: 2rem;
+        }
+
+        &__cta {
+            &--multiple {
+                display: flex;
+                flex-wrap: wrap;
+                border-top: 1px solid $color-grey-light-2;
+                position: relative;
+                margin-top: 2rem;
+                padding-top: 1rem;
+                & span {
+                    position: absolute;
+                    top: -2rem;
+                    font-size: 1.2rem;
+                    color: $color-primary;
+                    letter-spacing: 0.1rem;
+                }
+
+                & a {
+                    color: $color-primary;
+                    background-color: $color-grey-light-1a;
+                    padding: 0.5rem 1rem;
+                    border: none;
+                    margin: 0.5rem 1rem;
+                    margin-left: 0rem;
+                    letter-spacing: 0.1rem;
+                    cursor: pointer;
+                    border-radius: 4rem;
+                    font-size: 1.2rem;
+
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    position: relative;
+                    text-decoration: none;
+                    white-space: nowrap;
+                    transition: all 0.2s;
+                    &:hover {
+                        background-color: $color-grey-light-2;
+                    }
+                }
+            }
+        }
+    }
+}

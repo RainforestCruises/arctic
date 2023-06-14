@@ -1,4 +1,23 @@
 <?php 
+// Custom Post Type - Suppliers
+function create_post_type_rfc_suppliers()
+{
+    register_post_type(
+        'rfc_suppliers',
+        array(
+            'labels' => array(
+                'name' => __('Suppliers'),
+                'singular_name' => __('Supplier'),
+            ),
+            'public' => true,
+            'rewrite' => array('slug' => 'suppliers'),
+            'supports' => array(
+                'title'
+            )
+        )
+    );
+}
+add_action('init', 'create_post_type_rfc_suppliers');
 
 
 // Custom Post Type - Deals

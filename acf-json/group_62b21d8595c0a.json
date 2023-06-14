@@ -94,6 +94,28 @@
             "return_format": "object"
         },
         {
+            "key": "field_648a233651915",
+            "label": "Supplier",
+            "name": "supplier",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_suppliers"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
             "key": "field_62b21d85df4c9",
             "label": "General Info",
             "name": "",
@@ -363,6 +385,33 @@
             },
             "placement": "top",
             "endpoint": 0
+        },
+        {
+            "key": "field_648a47a4d8e81",
+            "label": "Fly Category",
+            "name": "fly_category",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "sail-sail": "Sail \/ Sail",
+                "fly-sail": "Fly \/ Sail",
+                "sail-fly": "Sail \/ Fly",
+                "fly-fly": "Fly \/ Fly"
+            },
+            "default_value": "sail-sail",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
         },
         {
             "key": "field_63655a3f4eafa",
@@ -1234,5 +1283,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1681229630
+    "modified": 1686784529
 }

@@ -237,18 +237,18 @@ function getLowestPriceFromListOfItineraries($itineraries)
 // fly / sail display
 function getFlightOption($itinerary)
 {
-    $embarkation_is_flight = get_field('embarkation_is_flight', $itinerary);
-    $disembarkation_is_flight = get_field('disembarkation_is_flight', $itinerary);
 
-    if ($embarkation_is_flight && $disembarkation_is_flight) {
+    $fly_category = get_field('fly_category', $itinerary);
+
+    if ($fly_category == 'fly-fly') {
         return 'Fly / Fly';
     }
 
-    if ($embarkation_is_flight && !$disembarkation_is_flight) {
+    if ($fly_category == 'fly-sail') {
         return 'Fly / Sail';
     }
 
-    if (!$embarkation_is_flight && $disembarkation_is_flight) {
+    if ($fly_category == 'sail-fly') {
         return 'Sail / Fly';
     }
 

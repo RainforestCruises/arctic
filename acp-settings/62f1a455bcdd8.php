@@ -5,7 +5,7 @@ return array (
   'title' => 'Itineraries',
   'type' => 'rfc_itineraries',
   'id' => '62f1a455bcdd8',
-  'updated' => 1669655468,
+  'updated' => 1686784280,
   'columns' => 
   array (
     'title' => 
@@ -37,6 +37,40 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '636556573a9fc0',
+    ),
+    '648a23728d9168' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Supplier',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_648a233651915',
+      'post_property_display' => 'title',
+      'post_link_to' => 'edit_post',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '648a23728d9168',
+    ),
+    '648a4906ddf3b8' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Fly Category',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_648a47a4d8e81',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '648a4906ddf3b8',
     ),
     '63655a640fdf3c' => 
     array (

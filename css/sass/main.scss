@@ -22,7 +22,16 @@
 @import "pages/reviews";
 
 // cards
+@import "components/cards/card-components"; // shared card components
+@import "components/cards/information-card";
+@import "components/cards/resource-card";
+@import "components/cards/overlay-card";
 @import "components/cards/result-card";
+@import "components/cards/text-card";
+@import "components/cards/tiny-card";
+@import "components/cards/deal-card";
+@import "components/cards/full-card";
+@import "components/cards/guide-item";
 
 
 // shared
@@ -30,7 +39,6 @@
 @import "components/shared/grid-block";
 @import "components/shared/slider-block";
 @import "components/shared/form-general";
-@import "components/shared/cards";
 @import "components/shared/burger";
 @import "components/shared/loading-spinner";
 @import "components/shared/newsletter";

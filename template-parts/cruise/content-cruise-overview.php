@@ -157,7 +157,7 @@ if ($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_
                             <!-- Zodiacs -->
                             <li class="specs__item">
                                 <div class="specs__item__title">
-                                    Zodiacs
+                                    Zodiacs & Loading Bays
                                 </div>
                                 <div class="specs__item__text">
                                     <?php echo get_field('zodiacs') ?>

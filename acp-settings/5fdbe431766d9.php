@@ -5,7 +5,7 @@ return array (
   'title' => 'Cruises',
   'type' => 'rfc_cruises',
   'id' => '5fdbe431766d9',
-  'updated' => 1685636174,
+  'updated' => 1686774780,
   'columns' => 
   array (
     'title' => 
@@ -20,6 +20,24 @@ return array (
       'bulk_edit' => 'on',
       'search' => 'on',
       'name' => 'title',
+    ),
+    '648a23edd9db24' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Supplier',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_648a23bac0ae7',
+      'post_property_display' => 'title',
+      'post_link_to' => 'edit_post',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '648a23edd9db24',
     ),
     '631a3f9da7ef9c' => 
     array (

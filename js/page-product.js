@@ -265,7 +265,7 @@ jQuery(document).ready(function ($) {
         spaceBetween: 15,
         slidesPerView: 1.2,
         watchSlidesProgress: true,
-        slideToClickedSlide: true,
+        slideToClickedSlide: false,
         navigation: {
             nextEl: '.extras-slider-btn-next',
             prevEl: '.extras-slider-btn-prev',

@@ -9,9 +9,9 @@
     }
 
     &__item {
-        display: inline-block;
+        display: block;
 
-        &__content {
+        &__content { 
             font-size: 1.4rem;
             line-height: 2rem;
             display: grid;

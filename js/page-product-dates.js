@@ -225,7 +225,7 @@ jQuery(document).ready(function ($) {
     var datesSwiper = new Swiper('#dates-slider', {
         spaceBetween: 15,
         slidesPerView: 1.2,
-        slideToClickedSlide: true,
+        slideToClickedSlide: false,
         watchSlidesProgress: true,
         navigation: {
             nextEl: '.dates-slider-btn-next',

@@ -70,9 +70,9 @@ $extra_activities = get_field('extra_activities')
                                     </h3>
                                 </div>
                                 <div class="overlay-card__content__cta">
-                                    <button class="cta-primary cta-primary--white">
+                                    <div class="cta-primary cta-primary--white">
                                         View Details
-                                    </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

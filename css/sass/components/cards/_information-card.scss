@@ -1,0 +1,97 @@
+// departure / cabin data
+.information-card {
+    border: 1px solid $color-grey-light-1a;
+    border-radius: 1rem;
+    padding: 1.5rem 2rem;
+    color: $color-primary;
+    position: relative;
+    background-color: $color-white;
+
+    &--horizontal {
+        & .information-card__bottom {
+            justify-content: flex-end;
+        }
+        //above 600px
+        @media only screen and (min-width: $bp-small) {
+            display: grid;
+            grid-template-columns: 1fr 24rem 12rem;
+            column-gap: 2rem;
+            align-items: center;
+            min-height: 12rem;
+
+            & .information-card__section {
+                margin: 0rem;
+                padding: 0rem;
+                border-bottom: none;
+            }
+
+            & .information-card__bottom {
+                margin: 0rem;
+                padding: 0rem;
+                border-bottom: none;
+                flex-direction: column;
+                justify-content: center;
+
+                & button {
+                    margin: 0.5rem 0rem;
+                }
+
+                &__price-group {
+                    margin-right: 0rem;
+                }
+            }
+        }
+    }
+
+    &__section {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid $color-grey-light-1a;
+
+        &__specs {
+        }
+    }
+
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &__price-group {
+            margin-right: 2rem;
+        }
+
+        &__deals {
+            display: flex;
+            align-items: center;
+
+            & span {
+                background-color: $color-grey-light-1;
+                color: $color-primary;
+                border-radius: 0.5rem;
+                padding: 0.2rem 0.8rem;
+                font-size: 1.2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            & svg {
+                height: 1.6rem;
+                width: 1.6rem;
+                color: $color-orange;
+                margin-right: 0.5rem;
+            }
+        }
+
+        &__cta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            & .btn-text-plain {
+                margin-top: 0.3rem;
+            }
+        }
+    }
+}

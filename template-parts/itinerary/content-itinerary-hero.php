@@ -9,7 +9,7 @@ $shipSizeRange = $args['shipSizeRange'];
 $deals = $args['deals'];
 $images = get_field('hero_gallery');
 $desktopImages = array_slice($images, 1); //for gallery desktop slider
-
+$fly_category = getFlightOption(get_post());
 ?>
 
 <!-- Itinerary Hero -->
@@ -154,6 +154,12 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                                 Length
                             </div>
                             <?php echo $length . " Days"; ?>
+
+                            <?php if ($fly_category) : ?>
+                                <div class="sub-attribute">
+                                   <span><?php echo $fly_category ?></span> 
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
 
@@ -169,7 +175,6 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                         <div class="product-hero__content__main__secondary__attributes__item__text">
                             <div class="sub-attribute">
                                 Embark
-                                <?php echo  $embarkation_is_flight ? '<span>Fly</span>' : ''; ?>
                             </div>
                             <?php
                             $embarkation_point = get_field('embarkation_point', $itinerary);
@@ -189,9 +194,6 @@ $desktopImages = array_slice($images, 1); //for gallery desktop slider
                         <div class="product-hero__content__main__secondary__attributes__item__text">
                             <div class="sub-attribute">
                                 Disembark
-                                <?php echo  $disembarkation_is_flight ? '<span>Fly</span>' : ''; ?>
-
-
                             </div>
 
                             <?php
