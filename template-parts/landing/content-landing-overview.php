@@ -7,7 +7,8 @@ $highlights = get_field('highlights');
 
 $intro_text =  get_field('intro_text');
 $expand = strlen($intro_text) > 2000 ? true : false;
-$intro_text_limited = substr($intro_text, 0, 2000) . '...';
+$intro_text_limited = substr($intro_text, 0, 2000); // dots missing
+
 
 
 

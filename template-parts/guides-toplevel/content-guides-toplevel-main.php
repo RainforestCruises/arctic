@@ -1,7 +1,7 @@
 <?php
 $queryArgs = array(
     'post_type' => 'rfc_travel_guides',
-    'posts_per_page' => 50,
+    'posts_per_page' => -1,
 );
 
 $posts = get_posts($queryArgs);

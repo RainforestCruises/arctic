@@ -1,7 +1,7 @@
 <?php
 // DEALS ----------------------------------------------------------------------------------------------
 // get a list of unique deals from a list of departures
-function getDealsFromDepartureList($departures)
+function getDealsFromDepartureList($departures, $getSpecials = false)
 {
     $uniqueDealsArray = [];
     foreach ($departures as $d) {
@@ -9,6 +9,10 @@ function getDealsFromDepartureList($departures)
         foreach ($deals as $deal) {
             $is_active = get_field('is_active', $deal);
             $has_expiry_date = get_field('has_expiry_date', $deal);
+            $is_special_departure = get_field('is_special_departure', $deal);
+            if ($is_special_departure != $getSpecials) { // skip inactive deals
+                continue;
+            }
             if (!$is_active) { // skip inactive deals
                 continue;
             }
@@ -160,54 +164,20 @@ function getDateListDisplay($departures, $limit)
 }
 
 // get a string display number of deals, with plurality 
-function getDealsDisplay($deals, $includeSpecialDepartures = false)
+function getDealsDisplay($deals, $specialDepartures = false)
 {
-    //$includeSpecialDepartures = false;
-    $dealsList = [];
-    if ($includeSpecialDepartures == false) {
-        foreach ($deals as $deal) {
-            $isSpecial = get_field('is_special_departure', $deal);
-            if (!$isSpecial) {
-                $dealsList[] = $deal;
-            }
-        }
-    } else {
-        $dealsList = $deals;
-    }
-
     $displayText = '';
-    if ($dealsList) {
-        if (count($dealsList) == 1) {
-            $displayText = '1 deal';
+    if ($deals) {
+        if (count($deals) == 1) {
+            $displayText = $specialDepartures ? '1 special departure' : '1 deal';
         } else {
-            $displayText =  count($dealsList) . ' deals';
+            $displayText =  count($deals);
+            $displayText .= $specialDepartures ? 'special departures' : 'deals';
         }
     }
     return $displayText;
 }
 
-// get a string display number of special departures with plurality
-function getSpecialDeparturesDisplay($deals)
-{
-    //$includeSpecialDepartures = false;
-    $dealsList = [];
-    foreach ($deals as $deal) {
-        $isSpecial = get_field('is_special_departure', $deal);
-        if ($isSpecial) {
-            $dealsList[] = $deal;
-        }
-    }
-
-    $displayText = '';
-    if ($dealsList) {
-        if (count($dealsList) == 1) {
-            $displayText = '1 special departure';
-        } else {
-            $displayText =  count($dealsList) . ' special departures';
-        }
-    }
-    return $displayText;
-}
 
 // get a count of days until a deal expires
 function getDaysUntilExpiry($expiry_date)

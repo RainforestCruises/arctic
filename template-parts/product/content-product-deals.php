@@ -1,7 +1,8 @@
 <?php
 $deals = $args['deals'];
+$specialDepartures = $args['specialDepartures'];
 $subtitleDisplay = 'Explore ' . getDealsDisplay($deals);
-$specialDisplay = getSpecialDeparturesDisplay($deals);
+$specialDisplay = getDealsDisplay($specialDepartures, true);
 $sectionTitle = 'Deals';
 if ($specialDisplay != "") {
     $subtitleDisplay .= ' and ' . $specialDisplay;
@@ -48,7 +49,8 @@ $subtitleDisplay .= ' on select dates';
             <div class="swiper" id="deals-slider">
                 <div class="swiper-wrapper">
                     <?php
-                    foreach ($deals as $deal) :
+                    $combinedDeals = array_merge($deals, $specialDepartures);
+                    foreach ($combinedDeals as $deal) :
                         $id = $deal->ID;
                         $image = get_field('featured_image', $deal);
                         $title = get_field('navigation_title', $deal);

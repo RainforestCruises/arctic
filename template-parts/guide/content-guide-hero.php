@@ -29,9 +29,15 @@ $toc = generateIndex($content)['index'];
     <div class="guide-hero__content">
 
         <div class="guide-hero__content__title-area">
-            <div class="guide-hero__content__title-area__category">
-                <?php echo $displayCategory ?>
-            </div>
+            <ul class="guide-hero__content__title-area__category breadcrumb-list">
+                <li>
+                    <a href="<?php echo $top_level_guides_page ?>">Travel Guide</a>
+                </li>
+                <li>
+                    <?php echo $displayCategory ?>
+                </li>
+
+            </ul>
             <h1 class="guide-hero__content__title-area__title">
                 <?php echo get_field('navigation_title'); ?>
             </h1>
@@ -72,7 +78,7 @@ $toc = generateIndex($content)['index'];
                 <svg>
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-plus"></use>
                 </svg>
-             Sections
+                Sections
             </div>
             <div class="guide-menu__menu">
                 <?php echo $toc; ?>

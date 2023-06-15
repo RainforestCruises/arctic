@@ -319,11 +319,11 @@ p {
       left: 0;
       width: 100%;
       height: 2px;
-      background-color: #fff;
+      background-color: currentColor;
       transition: all 0.2s;
       opacity: 0; }
     .breadcrumb-list li a:hover::after {
-      color: #fff;
+      color: currentColor;
       opacity: 1; }
 
 .badge-fly {
@@ -2259,6 +2259,8 @@ p {
     margin-bottom: 0.5rem; }
   .specs-deal--special {
     background-color: rgba(141, 119, 235, 0.2); }
+  .specs-deal--fly {
+    background-color: rgba(255, 255, 255, 0.2); }
 
 .specs-item {
   font-size: 1.4rem;
@@ -3706,7 +3708,7 @@ p {
       opacity: 0; }
       .product-hero__gallery__slider.swiper-initialized {
         visibility: visible;
-        transition: opacity .3s;
+        transition: opacity 0.3s;
         opacity: 1; }
       @media only screen and (max-width: 62.5em) {
         .product-hero__gallery__slider {
@@ -3751,7 +3753,7 @@ p {
       font-size: 1.3rem;
       font-weight: 600;
       z-index: 10;
-      padding: .8rem 1.6rem;
+      padding: 0.8rem 1.6rem;
       border-radius: 1rem; }
   .product-hero__content {
     z-index: 5;
@@ -3781,11 +3783,10 @@ p {
           .product-hero__content__main__primary {
             margin-top: 2rem;
             color: #1d2225; } }
-        .product-hero__content__main__primary__deal-area {
-          padding-bottom: 1rem; }
-          @media only screen and (min-width: 62.5em) {
-            .product-hero__content__main__primary__deal-area .specs-deal {
-              background-color: #0ec48d; } }
+        .product-hero__content__main__primary__badge-area {
+          padding-bottom: 1rem;
+          display: flex;
+          flex-wrap: wrap; }
         .product-hero__content__main__primary__title {
           font-size: 5rem;
           font-weight: 400;
@@ -3954,7 +3955,7 @@ p {
                 padding: 1.5rem; } }
             .product-hero__content__main__secondary__attributes__item__icon {
               display: flex;
-              padding-top: .3rem; }
+              padding-top: 0.3rem; }
               .product-hero__content__main__secondary__attributes__item__icon svg {
                 height: 3.2rem;
                 width: 3.2rem; }
@@ -3969,8 +3970,8 @@ p {
                 font-weight: 500; }
                 .product-hero__content__main__secondary__attributes__item__text .sub-attribute span {
                   border-radius: 1rem;
-                  letter-spacing: .1rem;
-                  padding: .2rem .8rem;
+                  letter-spacing: 0.1rem;
+                  padding: 0.2rem 0.8rem;
                   background-color: #347fff;
                   color: #fff;
                   font-weight: 700; }
@@ -4065,6 +4066,37 @@ p {
     transform: translateX(1px); }
   .btn-swiper-blur__prev svg {
     transform: translateX(-1px) rotate(180deg); }
+
+.product-hero-badge {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1d2225;
+  background-color: rgba(14, 196, 141, 0.8);
+  border-radius: 2rem;
+  width: max-content;
+  padding: 0.5rem 2rem;
+  margin-bottom: .5rem;
+  display: flex;
+  text-decoration: none !important;
+  text-transform: capitalize; }
+  .product-hero-badge:not(:last-child) {
+    margin-right: 1rem; }
+  .product-hero-badge--deal {
+    cursor: pointer;
+    transition: all .2s; }
+    .product-hero-badge--deal:hover {
+      background-color: #0ec48d; }
+  .product-hero-badge--fly {
+    background-color: rgba(255, 255, 255, 0.8); }
+    @media only screen and (max-width: 62.5em) {
+      .product-hero-badge--fly {
+        border: 1px solid #1d2225; } }
+  .product-hero-badge--special {
+    cursor: pointer;
+    transition: all .2s;
+    background-color: rgba(141, 119, 235, 0.8); }
+    .product-hero-badge--special:hover {
+      background-color: #8d77eb; }
 
 .product-overview {
   display: flex;

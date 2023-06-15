@@ -16,10 +16,8 @@ $departures = getDepartureList($itinerary);
 $lowestOverallPrice = getLowestDepartureListPrice($departures);
 $bestOverallDiscount = getBestDepartureListDiscount($departures);
 $deals = getDealsFromDepartureList($departures);
-
-
+$specialDepartures = getDealsFromDepartureList($departures, true);
 $regions = getItineraryRegions($itinerary);
-console_log($regions);
 
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
@@ -69,6 +67,8 @@ $args = array(
   'days' => $days,
   'departures' => $departures,
   'deals' => $deals,
+  'specialDepartures' => $specialDepartures,
+
   'curentYear' => $curentYear,
   'yearSelections' => $yearSelections,
   'shipSizeRange' => $shipSizeRange,
@@ -113,7 +113,7 @@ $args = array(
 
   <!-- Deals -->
   <?php
-  if ($deals) :
+  if ($deals || $specialDepartures) :
     get_template_part('template-parts/product/content', 'product-deals', $args);
   endif;
   ?>

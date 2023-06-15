@@ -7,9 +7,14 @@ $lowestOverallPrice = $args['lowestOverallPrice'];
 $bestOverallDiscount = $args['bestOverallDiscount'];
 $shipSizeRange = $args['shipSizeRange'];
 $deals = $args['deals'];
+$specialDepartures = $args['specialDepartures'];
 $images = get_field('hero_gallery');
 $desktopImages = array_slice($images, 1); //for gallery desktop slider
 $fly_category = getFlightOption(get_post());
+
+console_log($deals);
+console_log($specialDepartures);
+
 ?>
 
 <!-- Itinerary Hero -->
@@ -77,13 +82,29 @@ $fly_category = getFlightOption(get_post());
         <div class="product-hero__content__main">
             <!-- Primary (Title + Description) -->
             <div class="product-hero__content__main__primary">
-                <?php if ($deals) : ?>
-                    <div class="product-hero__content__main__primary__deal-area">
-                        <a class="specs-deal product-hero-deal-badge" href="#deals">
+
+
+
+                <div class="product-hero__content__main__primary__badge-area">
+                    <?php if ($fly_category) : ?>
+                        <span class="product-hero-badge product-hero-badge--fly">
+                            <?php echo $fly_category; ?>
+                        </span>
+                    <?php endif; ?>
+                    <?php if ($deals) : ?>
+                        <a class="product-hero-badge product-hero-badge--deal" href="#deals">
                             <?php echo getDealsDisplay($deals); ?> Available
                         </a>
-                    </div>
-                <?php endif; ?>
+                    <?php endif; ?>
+                    <?php if ($specialDepartures) : ?>
+                        <a class="product-hero-badge product-hero-badge--special" href="#deals">
+                            <?php echo getDealsDisplay($specialDepartures, true); ?> Available
+                        </a>
+                    <?php endif; ?>
+
+                </div>
+
+
                 <h1 class="product-hero__content__main__primary__title">
                     <?php echo $title ?>
                 </h1>
@@ -155,11 +176,6 @@ $fly_category = getFlightOption(get_post());
                             </div>
                             <?php echo $length . " Days"; ?>
 
-                            <?php if ($fly_category) : ?>
-                                <div class="sub-attribute">
-                                   <span><?php echo $fly_category ?></span> 
-                                </div>
-                            <?php endif; ?>
                         </div>
                     </div>
 
