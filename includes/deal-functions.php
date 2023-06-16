@@ -172,7 +172,7 @@ function getDealsDisplay($deals, $specialDepartures = false)
             $displayText = $specialDepartures ? '1 special departure' : '1 deal';
         } else {
             $displayText =  count($deals);
-            $displayText .= $specialDepartures ? 'special departures' : 'deals';
+            $displayText .= $specialDepartures ? ' special departures' : ' deals';
         }
     }
     return $displayText;
