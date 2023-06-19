@@ -89,9 +89,17 @@ jQuery(document).ready(function ($) {
         if ($(window).width() > 1000) {
             threshHold = 1200;
         }
+
+        console.log(window.scrollY);
+        console.log($(document).height());
         if (window.scrollY < threshHold) {
+            console.log('above');
+            $('.guide-menu-area').removeClass('active');
+        } else if(window.scrollY > $(document).height() - 2000) {
+            console.log('below');
             $('.guide-menu-area').removeClass('active');
         } else {
+            console.log('mid');
             $('.guide-menu-area').addClass('active');
         }
         progressBarScroll();
@@ -103,7 +111,6 @@ jQuery(document).ready(function ($) {
             height = document.documentElement.scrollHeight - document.documentElement.clientHeight - 500,
             scrolled = (winScroll / height) * 100;
         document.getElementById("progressBar").style.width = scrolled + "%";
-        console.log('ccc');
     }
 
 

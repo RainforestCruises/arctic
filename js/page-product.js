@@ -12,7 +12,7 @@ jQuery(document).ready(function ($) {
             contentModal.style.display = 'flex';
             body.classList.add('no-scroll');
             contentModalMain.scrollTop = 300;
-            
+
         });
     }
 
@@ -239,27 +239,6 @@ jQuery(document).ready(function ($) {
     });
 
 
-    // Cabins Swiper
-    new Swiper('#cabins-slider', {
-        spaceBetween: 15,
-        slidesPerView: 1.2,
-        watchSlidesProgress: true,
-        slideToClickedSlide: true,
-        navigation: {
-            nextEl: '.cabins-slider-btn-next',
-            prevEl: '.cabins-slider-btn-prev',
-        },
-        breakpoints: {
-            600: {
-                slidesPerView: 2,
-            },
-            800: {
-                slidesPerView: 3,
-            }
-        }
-    });
-
-
     // Extras Swiper
     new Swiper('#extras-slider', {
         spaceBetween: 15,
@@ -289,7 +268,13 @@ jQuery(document).ready(function ($) {
                 body.classList.add('no-scroll');
                 const section = item.getAttribute('section');
                 const modalDivSectionOffset = document.getElementById(section).offsetTop;
-                extrasModalMainContent.scrollTop = modalDivSectionOffset - 120;
+
+                if (section == "extras-section-0") {
+                    extrasModalMainContent.scrollTop = 0;
+                } else {
+                    extrasModalMainContent.scrollTop = modalDivSectionOffset - 90;
+                }
+
 
             });
         })
@@ -375,7 +360,7 @@ jQuery(document).ready(function ($) {
             dealsModal.style.display = 'flex';
             body.classList.add('no-scroll');
 
-            if(item.classList.contains('special-departure-cta')){
+            if (item.classList.contains('special-departure-cta')) {
                 dealsModalTitle.innerHTML = "Special Departure Information";
             } else {
                 dealsModalTitle.innerHTML = "Deal Information";
@@ -391,7 +376,7 @@ jQuery(document).ready(function ($) {
         item.addEventListener('click', () => {
             dealsModal.style.display = 'flex';
             dealsModal.classList.add('modal-second-level');
-            if(item.classList.contains('special-departure-cta')){
+            if (item.classList.contains('special-departure-cta')) {
                 dealsModalTitle.innerHTML = "Special Departure Information";
             } else {
                 dealsModalTitle.innerHTML = "Deal Information";

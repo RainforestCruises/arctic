@@ -6,9 +6,10 @@ $intro_title =  get_field('intro_title');
 
 $intro_text =  get_field('intro_text');
 $expand = strlen($intro_text) > 1250 ? true : false;
-$intro_text_limited = substr($intro_text, 0, 1250) . '...';
-
-
+$intro_text_limited = substr($intro_text, 0, 1250);
+if($expand){
+    $intro_text_limited .= '...';
+}
 
 ?>
 

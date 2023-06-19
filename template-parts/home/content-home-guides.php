@@ -4,10 +4,12 @@ $firstGuides = array_slice($guides, 0, 7);
 $guides_title = get_field('guides_title');
 $guides_title_subtext = get_field('guides_title_subtext');
 $top_level_guides_page = get_field('top_level_guides_page', 'options');
+$show_reviews = get_field('show_reviews');
+
 ?>
 
 <section class="grid-block" id="section-guide">
-    <div class="grid-block__content block-top-divider">
+    <div class="grid-block__content <?php echo ($show_reviews) ? "block-top-divider" : "" ?>">
 
         <!-- Top - Title/Nav -->
         <div class="grid-block__content__top">
@@ -29,7 +31,6 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
             foreach ($firstGuides as $guide) :
                 $image = get_field('featured_image', $guide);
                 $minutes_to_read = get_field('minutes_to_read', $guide);
-
                 $title = get_the_title($guide);
                 $text = get_the_excerpt($guide);
                 $lastUpdate = get_the_modified_time('F jS, Y', $guide);

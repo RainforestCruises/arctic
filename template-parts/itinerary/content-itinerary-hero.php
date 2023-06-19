@@ -12,8 +12,7 @@ $images = get_field('hero_gallery');
 $desktopImages = array_slice($images, 1); //for gallery desktop slider
 $fly_category = getFlightOption(get_post());
 
-console_log($deals);
-console_log($specialDepartures);
+
 
 ?>
 
@@ -101,7 +100,6 @@ console_log($specialDepartures);
                             <?php echo getDealsDisplay($specialDepartures, true); ?> Available
                         </a>
                     <?php endif; ?>
-
                 </div>
 
 

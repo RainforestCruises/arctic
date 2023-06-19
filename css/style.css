@@ -5127,7 +5127,8 @@ p {
     color: #fff; }
     @media only screen and (max-width: 37.5em) {
       .quote-grid__text-area__title {
-        font-size: 2.2rem; } }
+        font-size: 2.2rem;
+        line-height: 2.6rem; } }
   .quote-grid__text-area__text {
     padding: 3rem 0;
     padding-left: 6rem;

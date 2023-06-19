@@ -22,6 +22,7 @@ wp_localize_script(
 
 
 $args = array('footerCtaDivider' => true);
+$show_reviews = get_field('show_reviews');
 
 ?>
 
@@ -66,7 +67,9 @@ $args = array('footerCtaDivider' => true);
 
     <!-- Reviews  -->
     <?php
-    get_template_part('template-parts/home/content', 'home-reviews');
+    if ($show_reviews) :
+        get_template_part('template-parts/home/content', 'home-reviews');
+    endif;
     ?>
 
     <!-- Guides  -->

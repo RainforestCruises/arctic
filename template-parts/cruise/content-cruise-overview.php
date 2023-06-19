@@ -10,8 +10,11 @@ $overview_content = get_field('overview_content');
 $deck_plans = get_field('deck_plans');
 
 $max_length = 1500;
-$expandOverview = strlen($overview_content) > $max_length ? true : false;
-$overview_content_limited = substr($overview_content, 0, $max_length) . '...';
+$expand = strlen($overview_content) > $max_length ? true : false;
+$overview_content_limited = substr($overview_content, 0, $max_length);
+if($expand){
+    $overview_content_limited .= '...';
+}
 
 
 $vessel_capacity = get_field('vessel_capacity');
@@ -60,7 +63,7 @@ if ($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_
                 </div>
 
                 <div class="product-overview__content__grid__overview__expand">
-                    <?php if ($expandOverview) : ?>
+                    <?php if ($expand) : ?>
                         <button class="btn-text-plain" id="expand-content">
                             Read More
                             <svg>

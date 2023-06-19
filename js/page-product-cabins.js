@@ -8,7 +8,7 @@ jQuery(document).ready(function ($) {
         spaceBetween: 15,
         slidesPerView: 1.2,
         watchSlidesProgress: true,
-        slideToClickedSlide: true,
+        slideToClickedSlide: false,
         navigation: {
             nextEl: '.cabins-slider-btn-next',
             prevEl: '.cabins-slider-btn-prev',

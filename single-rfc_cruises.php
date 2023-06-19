@@ -16,7 +16,7 @@ $departures = getDepartureList($ship);
 $lowestOverallPrice = getLowestDepartureListPrice($departures);
 $bestOverallDiscount = getBestDepartureListDiscount($departures);
 $deals = getDealsFromDepartureList($departures);
-
+$specialDepartures = getDealsFromDepartureList($departures, true);
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
 $regions = getShipRegions($ship);
@@ -42,6 +42,7 @@ $args = array(
   'itineraries' => $itineraries,
   'departures' => $departures,
   'deals' => $deals,
+  'specialDepartures' => $specialDepartures,
   'curentYear' => $curentYear,
   'yearSelections' => $yearSelections,
   'cabins' => $cabins,
@@ -108,7 +109,7 @@ wp_localize_script(
   ?>
   <!-- Deals -->
   <?php
-  if ($deals) :
+  if ($deals || $specialDepartures) :
     get_template_part('template-parts/product/content', 'product-deals', $args);
   endif;
   ?>

@@ -68,7 +68,6 @@ $args = array(
   'departures' => $departures,
   'deals' => $deals,
   'specialDepartures' => $specialDepartures,
-
   'curentYear' => $curentYear,
   'yearSelections' => $yearSelections,
   'shipSizeRange' => $shipSizeRange,

@@ -9,7 +9,11 @@ $firstActivities = array_slice($activities, 0, $max_items);
 $expandItems = count($activities) > $max_items ? true : false;
 
 $expand = strlen($overview_content) > 2000 ? true : false;
-$overview_content_limited = substr($overview_content, 0, 2000) . '...';
+$overview_content_limited = substr($overview_content, 0, 2000);
+if($expand){
+    $overview_content_limited .= '...';
+}
+
 ?>
 
 <!-- Itinerary Overview (highlights) -->
