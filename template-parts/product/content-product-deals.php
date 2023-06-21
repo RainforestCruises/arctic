@@ -1,14 +1,26 @@
 <?php
 $deals = $args['deals'];
 $specialDepartures = $args['specialDepartures'];
-$subtitleDisplay = 'Explore ' . getDealsDisplay($deals);
-$specialDisplay = getDealsDisplay($specialDepartures, true);
-$sectionTitle = 'Deals';
-if ($specialDisplay != "") {
-    $subtitleDisplay .= ' and ' . $specialDisplay;
-    $sectionTitle .= ' & Special Departures';
+$combinedDeals = array_merge($deals, $specialDepartures);
+
+$sectionTitle = "";
+$subtitleDisplay = "";
+
+
+if ($deals && !$specialDepartures) {
+    $subtitleDisplay = 'Explore ' .  getDealsDisplay($deals) . ' on select dates';
+    $sectionTitle = 'Deals';
 }
-$subtitleDisplay .= ' on select dates';
+
+if (!$deals && $specialDepartures) {
+    $subtitleDisplay = 'Explore ' . getDealsDisplay($specialDepartures, true) . ' on select dates';
+    $sectionTitle = 'Special Departures';
+}
+
+if ($deals && $specialDepartures) {
+    $subtitleDisplay = 'Explore ' . getDealsDisplay($specialDepartures) . ' and ' . getDealsDisplay($specialDepartures, true) . ' on select dates';
+    $sectionTitle = 'Deals & Special Departures';
+}
 
 ?>
 
@@ -49,15 +61,20 @@ $subtitleDisplay .= ' on select dates';
             <div class="swiper" id="deals-slider">
                 <div class="swiper-wrapper">
                     <?php
-                    $combinedDeals = array_merge($deals, $specialDepartures);
                     foreach ($combinedDeals as $deal) :
                         $id = $deal->ID;
                         $image = get_field('featured_image', $deal);
                         $title = get_field('navigation_title', $deal);
-                        $description = get_field('description', $deal);
                         $has_expiry_date = get_field('has_expiry_date', $deal);
                         $expiry_date =  get_field('expiry_date', $deal);
                         $is_special_departure = get_field('is_special_departure', $deal);
+
+                        $description = get_field('description', $deal);
+                        $expand = strlen($description) > 320 ? true : false;
+                        $description_limited = substr($description, 0, 320);
+                        if ($expand) {
+                            $description_limited .= '...';
+                        }
 
                     ?>
                         <div class="deal-card swiper-slide">
@@ -76,7 +93,7 @@ $subtitleDisplay .= ' on select dates';
                             </div>
 
                             <div class="deal-card__description">
-                                <?php echo $description ?>
+                                <?php echo $description_limited ?>
                             </div>
 
                             <div class="deal-card__urgency <?php echo $is_special_departure ? "deal-card__urgency--special" : ""; ?>">
@@ -142,7 +159,7 @@ $subtitleDisplay .= ' on select dates';
         <div class="modal__content__main" id="dealsModalMainContent">
 
             <?php
-            foreach ($deals as $deal) :
+            foreach ($combinedDeals as $deal) :
                 $id = $deal->ID;
                 $image = get_field('featured_image', $deal);
                 $title = get_field('navigation_title', $deal);

@@ -1,6 +1,13 @@
 .guide-hero {
     @include flexBlock;
     @include pageTopPadding;
+    
+    &.site-notice-variant {
+        padding-top: 18rem; //top padding
+        @media only screen and (max-width: $bp-small) {
+            padding-top: 18rem;
+        }
+    }
 
     &__content {
         width: 100%;

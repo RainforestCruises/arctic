@@ -4856,6 +4856,14 @@ p {
     @media only screen and (max-width: 62.5em) {
       .home-hero__content {
         margin-top: 6rem; } }
+    .home-hero__content.site-notice-variant {
+      margin-top: 20rem; }
+      @media only screen and (max-width: 62.5em) {
+        .home-hero__content.site-notice-variant {
+          margin-top: 12rem; } }
+      @media only screen and (max-width: 37.5em) {
+        .home-hero__content.site-notice-variant {
+          margin-top: 16rem; } }
     .home-hero__content__primary {
       color: #fff; }
       @media only screen and (max-width: 50em) {
@@ -5644,6 +5652,11 @@ p {
   @media only screen and (max-width: 37.5em) {
     .guide-hero {
       padding-top: 10rem; } }
+  .guide-hero.site-notice-variant {
+    padding-top: 18rem; }
+    @media only screen and (max-width: 37.5em) {
+      .guide-hero.site-notice-variant {
+        padding-top: 18rem; } }
   .guide-hero__content {
     width: 100%;
     max-width: 128rem;
@@ -6657,6 +6670,26 @@ p {
   background-color: rgba(52, 127, 255, 0.8);
   height: 3px;
   width: 0%; }
+
+.site-notice {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #1d2225;
+  color: #fff;
+  z-index: 1000;
+  font-size: 1.4rem;
+  padding: 1rem 0; }
+  .site-notice.narrow .site-notice__content {
+    max-width: 128rem; }
+  .site-notice__content {
+    max-width: 160rem;
+    text-align: center;
+    width: 100%;
+    padding: 0 6rem; }
+    @media only screen and (max-width: 50em) {
+      .site-notice__content {
+        padding: 0 3rem; } }
 
 .footer-cta {
   display: flex;

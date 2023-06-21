@@ -18,13 +18,14 @@ if ($categories) {
 $query = get_post(get_the_ID());
 $content = apply_filters('the_content', $query->post_content);
 $toc = generateIndex($content)['index'];
+$show_site_notice = get_field('show_site_notice', 'options');
 
 ?>
 
 
 
 <!-- Hero Section -->
-<section class="guide-hero">
+<section class="guide-hero <?php echo ($show_site_notice ? "site-notice-variant" : "") ?>">
 
     <div class="guide-hero__content">
 

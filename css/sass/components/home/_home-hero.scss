@@ -55,6 +55,16 @@
             margin-top: 6rem;
         }
 
+        &.site-notice-variant {
+            margin-top: 20rem;
+            @media only screen and (max-width: $bp-large) {
+                margin-top: 12rem;
+            }
+            @media only screen and (max-width: $bp-small) {
+                margin-top: 16rem;
+            }
+        }
+
         &__primary {
             color: $color-white;
 

@@ -66,3 +66,30 @@
     height: 3px;
     width: 0%;
 }
+
+.site-notice {
+    //position: absolute;
+    //top: 0;
+    //left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: $color-primary;
+    color: $color-white;
+    z-index: 1000;
+    font-size: 1.4rem;
+    padding: 1rem 0;
+
+    &.narrow {
+        & .site-notice__content {
+            max-width: $page-width;
+        }
+    }
+
+
+    &__content {
+        max-width: $page-width-full;
+        text-align: center;
+        @include flexPadding;
+    }
+}

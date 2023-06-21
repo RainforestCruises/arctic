@@ -10,8 +10,8 @@ $alwaysActiveMainNav = checkActiveHeader();
 
 <!-- Nav Main -->
 <div class="nav-main <?php echo ($alwaysActiveMainNav == true) ? 'active' : ''; ?>">
-    <div class="nav-main__content">
 
+    <div class="nav-main__content">
         <!-- Left (logo) -->
         <div class="nav-main__content__left">
             <a href="<?php echo get_home_url(); ?>" class="nav-main__content__left__logo-area">
@@ -41,7 +41,7 @@ $alwaysActiveMainNav = checkActiveHeader();
                         Guide
                     </li>
                     <li class="nav-main__content__center__nav__list__link" navelement="deals">
-                        <a href="<?php echo $top_level_deals_page; ?>">Deals</a>                
+                        <a href="<?php echo $top_level_deals_page; ?>">Deals</a>
                     </li>
                 </ul>
 

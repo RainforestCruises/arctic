@@ -26,18 +26,12 @@ $top_level_deals_page =  get_field('top_level_deals_page', 'options');
                     <li>
                         <a href="<?php echo $top_level_deals_page; ?>">All Deals</a>
                     </li>
-                    <li>
-                        <?php echo $categoryTitle ?>
-                    </li>
                 </ol>
 
             </div>
             <h1 class="deal-hero__content__title-group__title">
                 <?php echo $dealName ?>
             </h1>
-            <div class="deal-hero__content__title-group__sub">
-                <?php echo $description ?>
-            </div>
             <?php if ($has_expiry_date) : ?>
                 <div class="deal-hero__content__title-group__urgency">
                     <svg class="deal-hero__content__title-group__urgency__icon">

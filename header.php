@@ -53,8 +53,19 @@
     <?php get_template_part('template-parts/nav/content', 'nav-mobile'); ?>
 
     <!-- Header (Main Nav) -->
-    <?php $headerClasses = renderHeaderClasses(); ?>
-    <header class="header <?php echo $headerClasses; ?>" id="header">
+
+    <header class="header <?php echo renderHeaderClasses(); ?>" id="header">
+
+        <!--  Notice -->
+        <?php if (get_field('show_site_notice', 'options')) : ?>
+            <div class="site-notice <?php echo renderHeaderClasses(); ?>">
+                <div class="site-notice__content">
+                    <?php echo get_field('site_notice', 'options') ?>
+                </div>
+            </div>
+        <?php endif; ?>
+        <!-- End Notice -->
+
         <?php if (get_post_type() == 'rfc_travel_guides') : ?>
             <div class="progress-container">
                 <div class="progress-bar" id="progressBar"></div>

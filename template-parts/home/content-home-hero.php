@@ -5,6 +5,7 @@ $hero_title = get_field('hero_title');
 $hero_subtitle = get_field('hero_subtitle');
 $category_landing_pages = get_field('category_landing_pages', 'options');
 $hero_items = get_field('hero_items');
+$show_site_notice = get_field('show_site_notice', 'options');
 
 ?>
 
@@ -15,7 +16,7 @@ $hero_items = get_field('hero_items');
     </div>
 
     <!-- Hero Content -->
-    <div class="home-hero__content">
+    <div class="home-hero__content <?php echo ($show_site_notice ? "site-notice-variant" : "") ?>">
 
         <!-- Main Title Group -->
         <div class="home-hero__content__primary">
