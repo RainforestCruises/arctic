@@ -36,6 +36,7 @@ $guides = get_field('guides', 'options');
 $logo = get_field('logo_main', 'options');
 $top_level_guides_page = get_field('top_level_guides_page', 'options');
 $top_level_deals_page = get_field('top_level_deals_page', 'options');
+$top_level_about_page = get_field('top_level_about_page', 'options');
 
 ?>
 
@@ -105,7 +106,7 @@ $top_level_deals_page = get_field('top_level_deals_page', 'options');
                     Deals
                 </div>
             </a>
-            <a class="nav-button mobile-link" href="<?php echo get_home_url(); ?>/about">
+            <a class="nav-button mobile-link" href="<?php echo $top_level_about_page;?>">
                 <div class="nav-button__svg-icon">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-c-question-24"></use>
