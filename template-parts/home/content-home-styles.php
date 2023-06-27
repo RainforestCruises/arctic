@@ -6,7 +6,7 @@ $styles_title_subtext = get_field('styles_title_subtext');
 ?>
 
 <!-- Styles -->
-<section class="slider-block" id="section-styles">
+<section class="slider-block" id="styles">
     <div class="slider-block__content block-top-divider">
 
         <!-- Top - Title/Nav -->

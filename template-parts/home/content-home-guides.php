@@ -8,7 +8,7 @@ $show_reviews = get_field('show_reviews');
 
 ?>
 
-<section class="grid-block" id="section-guide">
+<section class="grid-block" id="guide">
     <div class="grid-block__content <?php echo ($show_reviews) ? "block-top-divider" : "" ?>">
 
         <!-- Top - Title/Nav -->

@@ -5,7 +5,7 @@ $maxlength = 320;
 ?>
 
 
-<section class="grid-block" id="section-reviews">
+<section class="grid-block" id="reviews">
     <div class="grid-block__content">
         <!-- Top - Title/Nav -->
         <div class="grid-block__content__top">

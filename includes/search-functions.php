@@ -68,7 +68,7 @@ function getSearchPosts($region, $routes, $styles, $minLength, $maxLength, $date
 
 
 
-    $resultsPerPage = 100;
+    $resultsPerPage = 12;
     if ($viewType == 'grid') {
         $resultsPerPage = 30;
     }

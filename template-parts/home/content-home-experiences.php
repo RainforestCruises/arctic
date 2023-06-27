@@ -4,7 +4,7 @@ $experiences = get_field('experiences');
 ?>
 
 
-<section class="slider-block inverse" id="section-experiences" style="margin-bottom: 2rem; transform: translateY(-2rem)">
+<section class="slider-block inverse" id="experiences" style="margin-bottom: 2rem; transform: translateY(-2rem)">
     <div class="slider-block__content">
         <div class="slider-block__content__top title-divider">
             <!-- Title -->

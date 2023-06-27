@@ -1,7 +1,17 @@
 .search-intro {
-    grid-column: center-start / center-end;
-    padding: 2rem 0;
-    padding-bottom: 1.5rem;
+  @include flexBlock;
+  padding-top: 16rem; //top padding
+
+  // margin-top: 4rem;
+  margin-bottom: 2rem;
+  &__content {
+    z-index: 2;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: $page-width-full;
+    @include flexPadding;
 
     &__breadcrumb {
       display: flex;
@@ -9,19 +19,19 @@
       font-size: 1.5rem;
       font-weight: 500;
       flex-wrap: wrap;
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
       text-transform: capitalize;
       & li {
         display: inline-block;
-        color: $color-grey-1; 
+        color: $color-grey-1;
         width: max-content;
-        &:not(:last-child):after{
+        &:not(:last-child):after {
           content: "/";
           padding-left: 1px;
-          padding-right: 4px; 
+          padding-right: 4px;
         }
 
-        & a { 
+        & a {
           text-decoration: none;
           color: currentColor;
           &:hover {
@@ -36,12 +46,12 @@
       line-height: 3.5rem;
       color: $color-primary;
       cursor: pointer;
-      transition: .3s all;
+      transition: 0.3s all;
       font-weight: 700;
       display: flex;
       width: 100%;
-      margin-bottom: .5rem;
-      
+      margin-bottom: 0.5rem;
+
       align-items: center;
 
       &:hover {
@@ -49,33 +59,31 @@
       }
 
       & span {
-        margin-right: .5rem;
+        margin-right: 0.5rem;
       }
 
-      & svg {  
+      & svg {
         height: 3rem;
         width: 3rem;
         fill: $color-grey-1;
         transform: rotate(-90deg);
-        transition: all .3s;
+        transition: all 0.3s;
       }
 
       &--collapsed {
-        & svg {  
+        & svg {
           transform: rotate(90deg);
         }
       }
     }
     &__text {
-      
-
       & p {
         font-size: 1.4rem;
 
         &:not(:last-child) {
           margin-bottom: 1rem !important;
         }
-        
       }
     }
   }
+}

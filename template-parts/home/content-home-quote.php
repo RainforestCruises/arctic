@@ -6,7 +6,7 @@ $quote_avatar = get_field('quote_avatar');
 
 ?>
 
-<section class="home-quote" id="section-quote">
+<section class="home-quote" id="quote">
     <div class="home-quote__content">
 
         <!-- Grid Area -->

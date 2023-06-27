@@ -8,7 +8,7 @@ $ships_title_subtext = get_field('ships_title_subtext');
 ?>
 
 
-<section class="grid-block" id="section-ships">
+<section class="grid-block" id="ships">
     <div class="grid-block__content block-top-divider">
 
         <!-- Top - Title/Nav -->

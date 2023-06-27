@@ -6,7 +6,7 @@ $routes_title_subtext = get_field('routes_title_subtext');
 ?>
 
 <!-- Routes (home variant) -->
-<section class="cruise-itineraries home-variant" id="section-routes">
+<section class="cruise-itineraries home-variant" id="routes">
 
 
     <div class="cruise-itineraries__content">

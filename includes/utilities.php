@@ -403,7 +403,7 @@ function generateIndex($html)
         $curr = $match[1];
         $attributes = $match[2];
         $text = strip_tags($match[3]);
-        $slug = strtolower(str_replace("--", "-", preg_replace('/[^\da-z&]/i', '-', str_replace('&', 'and', $text))));
+        $slug = strtolower(str_replace("--", "-", preg_replace('/[^\da-z&]/i', '-', str_replace('&amp', 'and', $text))));
         $anchor = '<div name="' . $slug . '" class="toc-link">' . $text . '</div>';
         $replacement = "<h{$curr}{$attributes}>{$anchor}</h{$curr}>";
         $html = str_replace($match[0], $replacement, $html);
