@@ -104,23 +104,34 @@ jQuery(document).ready(function ($) {
     }
   
     const formViewType = document.querySelector('#formViewType');
-    const selectGridView = document.querySelector('#view-grid-layout');
-    const selectListView = document.querySelector('#view-list-layout');
-  
+    const selectItinerariesView = document.querySelector('#view-itineraries');
+    const selectShipsView = document.querySelector('#view-ships');
+    const selectDeparturesView = document.querySelector('#view-departures');
+
   
     //View Type
-    selectGridView.addEventListener('click', () => {
-      formViewType.value = 'grid';
-      selectGridView.classList.add('active');
-      selectListView.classList.remove('active');
+    selectItinerariesView.addEventListener('click', () => {
+      formViewType.value = 'search-itineraries';
+      selectItinerariesView.classList.add('active');
+      selectShipsView.classList.remove('active');
+      selectDeparturesView.classList.remove('active');
       reloadResults();
     })
-    selectListView.addEventListener('click', () => {
-      formViewType.value = 'list';
-      selectGridView.classList.remove('active');
-      selectListView.classList.add('active');
+    selectShipsView.addEventListener('click', () => {
+      formViewType.value = 'search-ships';
+      selectShipsView.classList.add('active');
+      selectItinerariesView.classList.remove('active');
+      selectDeparturesView.classList.remove('active');
       reloadResults();
     })
+    selectDeparturesView.addEventListener('click', () => {
+      formViewType.value = 'search-departures';
+      selectDeparturesView.classList.add('active');
+      selectShipsView.classList.remove('active');
+      selectItinerariesView.classList.remove('active');
+      reloadResults();
+    })
+
   
   
     const formDates = document.querySelector('#formDates');
@@ -300,145 +311,95 @@ jQuery(document).ready(function ($) {
           departuresFilterCount.classList.remove("show");
           departuresFilterCount.innerHTML = count;
         }
-  
         formDates.value = departuresString;
         reloadResults();
   
       });
     })
   
-    //Travel Style selections
-    let travelStylesString = formTravelStyles.value;
-    const travelStylesArray = [...document.querySelectorAll('.travel-style-checkbox')];
-    travelStylesArray.forEach(item => {
+   
+    // checkNonCruiseDestinations();
+    // function checkNonCruiseDestinations() {
+    //   const nonCruiseCheckboxes = [...document.querySelectorAll('.no-cruise')];
+    //   if (formTravelStyles.value == 'rfc_cruises' || formTravelStyles.value == 'charter_cruises') {
+  
+    //     nonCruiseCheckboxes.forEach(x => {
+    //       x.style.display = 'none';
+    //       //would need to uncheck and remove ID from form/url
+    //     })
+    //   } else {
+    //     nonCruiseCheckboxes.forEach(x => {
+    //       x.style.display = 'block';
+    //     })
+    //   }
+    // }
+  
+    // routes selections
+    let routesString = formRoutes.value;
+    const routesArray = [...document.querySelectorAll('.route-checkbox')];
+    routesArray.forEach(item => {
       item.addEventListener('click', () => {
-  
-        //if charterCruises = selected --> make unselected
-        if (item.value != 'charter_cruises') {
-          const charterCheckbox = document.getElementById('charterCheckbox');
-          charterCheckbox.checked = false;
-        } else {
-          //if this is charterCruises (and not selected) --> unselect all the other checkboxes
-          if (item.checked == true) {
-            travelStylesArray.forEach(checkboxItem => {
-              checkboxItem.checked = false;
-            });
-            charterCheckbox.checked = true;
-          }
-        }
-  
-        travelStylesString = "";
+        routesString = "";
         let count = 0;
-        travelStylesArray.forEach(checkbox => {
-          const itemValue = checkbox.value;
+        routesArray.forEach(checkbox => {
+          const itemValue = parseInt(checkbox.value);
+  
           if (checkbox.checked) {
             if (count > 0) {
-              travelStylesString += ";";
+              routesString += ";";
             }
-            travelStylesString += itemValue;
+            routesString += itemValue;
             count++;
           }
         })
   
         //filter count
-        let travelStyleFilterCount = document.getElementById('travelStyleFilterCount');
+        let routesFilterCount = document.getElementById('routesFilterCount');
         if (count > 0) {
-          travelStyleFilterCount.classList.add("show");
-          travelStyleFilterCount.innerHTML = count;
+          routesFilterCount.classList.add("show");
+          routesFilterCount.innerHTML = count;
         } else {
-          travelStyleFilterCount.classList.remove("show");
-          travelStyleFilterCount.innerHTML = count;
+          routesFilterCount.classList.remove("show");
+          routesFilterCount.innerHTML = count;
         }
   
-  
-        formTravelStyles.value = travelStylesString;
-        checkNonCruiseDestinations();
+        formRoutes.value = routesString;
         reloadResults();
       });
     })
   
-    checkNonCruiseDestinations();
-    function checkNonCruiseDestinations() {
-      const nonCruiseCheckboxes = [...document.querySelectorAll('.no-cruise')];
-      if (formTravelStyles.value == 'rfc_cruises' || formTravelStyles.value == 'charter_cruises') {
-  
-        nonCruiseCheckboxes.forEach(x => {
-          x.style.display = 'none';
-          //would need to uncheck and remove ID from form/url
-        })
-      } else {
-        nonCruiseCheckboxes.forEach(x => {
-          x.style.display = 'block';
-        })
-      }
-    }
-  
-    //Destination selections
-    let destinationsString = formDestinations.value;
-    const destinationsArray = [...document.querySelectorAll('.destination-checkbox')];
-    destinationsArray.forEach(item => {
+    // themes selections
+    let themesString = formThemes.value;
+    const themesArray = [...document.querySelectorAll('.theme-checkbox')];
+    themesArray.forEach(item => {
       item.addEventListener('click', () => {
-        destinationsString = "";
+        themesString = "";
         let count = 0;
-        destinationsArray.forEach(checkbox => {
-          const itemValue = parseInt(checkbox.value);
-  
-          if (checkbox.checked) {
-            if (count > 0) {
-              destinationsString += ";";
-            }
-            destinationsString += itemValue;
-            count++;
-          }
-        })
-  
-        //filter count
-        let destinationsFilterCount = document.getElementById('destinationsFilterCount');
-        if (count > 0) {
-          destinationsFilterCount.classList.add("show");
-          destinationsFilterCount.innerHTML = count;
-        } else {
-          destinationsFilterCount.classList.remove("show");
-          destinationsFilterCount.innerHTML = count;
-        }
-  
-        formDestinations.value = destinationsString;
-        reloadResults();
-      });
-    })
-  
-    //Experiences selections
-    let experiencesString = formExperiences.value;
-    const experiencesArray = [...document.querySelectorAll('.experience-checkbox')];
-    experiencesArray.forEach(item => {
-      item.addEventListener('click', () => {
-        experiencesString = "";
-        let count = 0;
-        experiencesArray.forEach(checkbox => {
+        themesArray.forEach(checkbox => {
           const itemValue = parseInt(checkbox.value);
   
           if (checkbox.checked) {
   
             if (count > 0) {
-              experiencesString += ";";
+              themesString += ";";
             }
-            experiencesString += itemValue;
+            themesString += itemValue;
             count++;
           }
   
         });
   
         //filter count
-        let experiencesFilterCount = document.getElementById('experiencesFilterCount');
+        let themesFilterCount = document.getElementById('themesFilterCount');
         if (count > 0) {
-          experiencesFilterCount.classList.add("show");
-          experiencesFilterCount.innerHTML = count;
+          themesFilterCount.classList.add("show");
+          themesFilterCount.innerHTML = count;
         } else {
-          experiencesFilterCount.classList.remove("show");
-          experiencesFilterCount.innerHTML = count;
+          themesFilterCount.classList.remove("show");
+          themesFilterCount.innerHTML = count;
         }
   
-        formExperiences.value = experiencesString;
+        formThemes.value = themesString;
         reloadResults();
       });
     })
@@ -489,16 +450,14 @@ jQuery(document).ready(function ($) {
   
     function clearFilters() {
       departuresString = "";
-      travelStylesString = "";
-      destinationsString = "";
-      experiencesString = "";
+      themesString = "";
+      routesString = "";
       searchInputString = "";
   
       formSearchInput.value = null;
       formDates.value = null;
-      formTravelStyles.value = null;
-      formDestinations.value = null;
-      formExperiences.value = null;
+      formThemes.value = null;
+      formRoutes.value = null;
   
       formMinLength.value = lengthSliderMin;
       formMaxLength.value = lengthSliderMax;
@@ -545,7 +504,9 @@ jQuery(document).ready(function ($) {
   
     });
     toggleClearButtons();
-    //RELOAD RESULTS
+
+
+    //RELOAD RESULTS -------------------------------------------------------------------------------------------------------------------------------------------
     function reloadResults(preservePage) {
   
       //set url params
@@ -559,19 +520,12 @@ jQuery(document).ready(function ($) {
         params.set('departures', departuresString);
       }
   
-      if (travelStylesString != null) {
-        params.set('travel_style', travelStylesString);
-  
+      if (routesString != null) {
+        params.set('routes', routesString);
       }
   
-      if (destinationsString != null) {
-        params.set('destinations', destinationsString);
-  
-      }
-  
-      if (experiencesString != null) {
-        params.set('experiences', experiencesString);
-  
+      if (themesString != null) {
+        params.set('themes', themesString);
       }
   
       if (formMinLength.value != null) {
@@ -580,7 +534,6 @@ jQuery(document).ready(function ($) {
   
       if (formMinLength.value != null) {
         params.set('length_max', formMaxLength.value);
-  
       }
   
       if (formSort.value != null) {
@@ -592,15 +545,12 @@ jQuery(document).ready(function ($) {
       }
   
   
-  
-      if (preservePage == true) { //for when page numbers are clicked, otherwise page will always be reset to 1
+      if (preservePage == true) { // for when page numbers are clicked, otherwise page will always be reset to 1
         if (formPageNumber.value != null) {
-          params.set('pageNumber', formPageNumber.value);
-  
+          params.set('pageNumber', formPageNumber.value);  
         }
-  
         if (formPageNumber.value != 'all') {
-          $('body, html, .search-results').animate({ scrollTop: 0 }, "fast"); //paging scroll up
+          $('body, html, .search-results').animate({ scrollTop: 0 }, "fast"); // paging scroll up
         }
       } else {
         formPageNumber.value = 1;
@@ -611,10 +561,7 @@ jQuery(document).ready(function ($) {
         $('body, html, .search-results').animate({ scrollTop: 0 }, "fast"); //paging scroll up
       }
   
-  
-  
       window.history.replaceState({}, '', `${location.pathname}?${params}`);
-  
   
       //ajax call / submit form
       var searchForm = $('#search-form');
@@ -627,11 +574,7 @@ jQuery(document).ready(function ($) {
           $('.search-sidebar').addClass('loading'); //indicate loading
           $("#response").append('<div class="lds-ring lds-ring--large"><div></div><div></div><div></div><div></div></div>');
           $('#response-count').html('Searching...');
-  
-          let pageDisplay = document.querySelector('#page-number'); //page number
-          pageDisplay.innerHTML = "";
-  
-          //showResultsButton.textContent = "Searching";
+
           showResultsButton.innerHTML = `<div class="lds-ring"><div></div><div></div><div></div><div></div></div>`
   
           //Need to hide clear button immediately 
@@ -648,23 +591,14 @@ jQuery(document).ready(function ($) {
           var resultCount = $('#totalResultsDisplay').attr('value');
           var pageNumberDisplay = $('#pageNumberDisplay').attr('value');
           var viewTypeDisplay = $('#viewTypeDisplay').attr('value');
-          var charterFilter = $('#charterFilter').attr('value');
-  
-          if (viewTypeDisplay == 'grid') {
-            $('#response').addClass('gridview');
-          } else {
-            $('#response').removeClass('gridview');
-          }
-  
-  
-          let pageDisplay = document.querySelector('#page-number'); //show page number if not on page 1
-          if (pageNumberDisplay > 1) {
-            pageDisplay.innerHTML = "Page " + pageNumberDisplay;
-          } else {
-            pageDisplay.innerHTML = "";
-          }
-  
-  
+
+          $('#response').removeClass('search-itineraries');
+          $('#response').removeClass('search-ships');
+          $('#response').removeClass('search-departures');
+          $('#response').addClass(viewTypeDisplay);
+
+          // top area text
+          let pageDisplay = (pageNumberDisplay > 1) ? " (Page " + pageNumberDisplay + ")" : ""; //show page number if not on page 1   
           var resultCountDisplay = ""
           if (resultCount == 1) {
             resultCountDisplay = "Found " + resultCount + " result"
@@ -673,52 +607,9 @@ jQuery(document).ready(function ($) {
             resultCountDisplay = "No results found"
             showResultsButton.textContent = "No results found";
           } else {
-            resultCountDisplay = "Found " + resultCount + " results"
+            resultCountDisplay = "Found " + resultCount + " results" + pageDisplay;
             showResultsButton.textContent = "See " + resultCount + " results";
           }
-  
-          if (charterFilter == true) {
-            resultCountDisplay += '<span>Charter prices are shown in USD price per day</span>';
-          } else {
-            resultCountDisplay += '<span>Prices are displayed in USD per person in double occupancy or charter per day</span>';
-          }
-  
-  
-          //SERP Tabs
-          const tabArray = [...document.querySelectorAll('.search-result__detail__header__tab')];
-          tabArray.forEach(item => {
-            item.addEventListener('click', (e) => {
-  
-              var thisTabArray = $(item).parent().find('.search-result__detail__header__tab');
-              $(thisTabArray).removeClass('current');
-  
-              var panels = $(item).parent().parent().find('.search-result__detail__panel');
-              panels.removeClass('current');
-  
-              var subtitles = $(item).parent().parent().parent().find('.search-result__content__top__title-group__subtitle span');
-              subtitles.removeClass('current');
-        
-              var badges = $(item).parent().parent().parent().find('.dealbadge');
-              badges.removeClass('current');
-        
-              if (item.classList.contains('fit-tab')) {
-                panels[0].classList.add('current');
-                thisTabArray[0].classList.add('current');
-                subtitles[0].classList.add('current');
-                badges[0].classList.add('current');
-        
-              } else {
-                panels[1].classList.add('current');
-                thisTabArray[1].classList.add('current');
-                subtitles[1].classList.add('current');
-                badges[1].classList.add('current');
-              }
-    
-  
-            })
-          })
-  
-  
           $('#response-count').html(resultCountDisplay);
   
   
@@ -729,31 +620,27 @@ jQuery(document).ready(function ($) {
             })
           }
   
-  
-  
-  
-          let pageButtonArray = [...document.querySelectorAll('.search-results__grid__pagination__pages-group__button')];
-  
-  
+
+          let pageButtonArray = [...document.querySelectorAll('.search-results-area__grid__pagination__pages-group__button')];
+
           //post-ajax loaded button js
           pageButtonArray.forEach(item => {
             item.addEventListener('click', (e) => {
               var pageNumber = item.value;
-  
               if (!item.classList.contains('current') && !item.classList.contains('disabled')) {
   
                 // next button
-                if (item.classList.contains('search-results__grid__pagination__pages-group__button--next-button')) {
+                if (item.classList.contains('search-results-area__grid__pagination__pages-group__button--next-button')) {
                   var pageGoTo = (+pageNumberDisplay + 1);
                   $("#formPageNumber").val(pageGoTo);
   
                   // back button
-                } else if (item.classList.contains('search-results__grid__pagination__pages-group__button--back-button')) {
+                } else if (item.classList.contains('search-results-area__grid__pagination__pages-group__button--back-button')) {
                   var pageGoTo = (+pageNumberDisplay - 1);
                   $("#formPageNumber").val(pageGoTo);
   
                   //all button
-                } else if (item.classList.contains('search-results__grid__pagination__pages-group__button--all-button')) {
+                } else if (item.classList.contains('search-results-area__grid__pagination__pages-group__button--all-button')) {
                   $("#formPageNumber").val('all');
   
                   //page button
@@ -771,50 +658,9 @@ jQuery(document).ready(function ($) {
       });
     }
   
-  
-  
-    //SERP Tabs
-    const tabArray = [...document.querySelectorAll('.search-result__detail__header__tab')];
-    tabArray.forEach(item => {
-      item.addEventListener('click', (e) => {
-  
-        var thisTabArray = $(item).parent().find('.search-result__detail__header__tab');
-        $(thisTabArray).removeClass('current');
-  
-        var panels = $(item).parent().parent().find('.search-result__detail__panel');
-        panels.removeClass('current');
-  
-        var subtitles = $(item).parent().parent().parent().find('.search-result__content__top__title-group__subtitle span');
-        subtitles.removeClass('current');
-  
-        var badges = $(item).parent().parent().parent().find('.dealbadge');
-        badges.removeClass('current');
-  
-        if (item.classList.contains('fit-tab')) {
-          panels[0].classList.add('current');
-          thisTabArray[0].classList.add('current');
-          subtitles[0].classList.add('current');
-          badges[0].classList.add('current');
-  
-        } else {
-          panels[1].classList.add('current');
-          thisTabArray[1].classList.add('current');
-          subtitles[1].classList.add('current');
-          badges[1].classList.add('current');
-        }
-        //Pre Title Text Change - charter
-        //Promo badge hide - charter
-        //handle charter only and charter unavailable boats
-  
-        //calculate min price based on itinerary length charter
-        //optimize lowest price algorithm FIT
-  
-      })
-    })
-  
-  
+
     //pagination js
-    let pageButtonArray = [...document.querySelectorAll('.search-results__grid__pagination__pages-group__button')];
+    let pageButtonArray = [...document.querySelectorAll('.search-results-area__grid__pagination__pages-group__button')];
     pageButtonArray.forEach(item => {
       item.addEventListener('click', (e) => {
         var pageNumberDisplay = formPageNumber.value;
@@ -823,17 +669,17 @@ jQuery(document).ready(function ($) {
         if (!item.classList.contains('current') && !item.classList.contains('disabled')) {
   
           // next button
-          if (item.classList.contains('search-results__grid__pagination__pages-group__button--next-button')) {
+          if (item.classList.contains('search-results-area__grid__pagination__pages-group__button--next-button')) {
             var pageGoTo = (+pageNumberDisplay + 1);
             $("#formPageNumber").val(pageGoTo);
   
             // back button
-          } else if (item.classList.contains('search-results__grid__pagination__pages-group__button--back-button')) {
+          } else if (item.classList.contains('search-results-area__grid__pagination__pages-group__button--back-button')) {
             var pageGoTo = (+pageNumberDisplay - 1);
             $("#formPageNumber").val(pageGoTo);
   
             //all button
-          } else if (item.classList.contains('search-results__grid__pagination__pages-group__button--all-button')) {
+          } else if (item.classList.contains('search-results-area__grid__pagination__pages-group__button--all-button')) {
             $("#formPageNumber").val('all');
   
             //page button
@@ -869,15 +715,13 @@ jQuery(document).ready(function ($) {
       if (formDates.value != "") {
         filtersApplied = true;
       }
-      if (formTravelStyles.value != "") {
+      if (formThemes.value != "") {
         filtersApplied = true;
       }
-      if (formDestinations.value != "") {
+      if (formRoutes.value != "") {
         filtersApplied = true;
       }
-      if (formExperiences.value != "") {
-        filtersApplied = true;
-      }
+
       if (formMinLength.value != lengthSliderMin) {
         filtersApplied = true;
       }

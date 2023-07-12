@@ -89,7 +89,7 @@ $routes_title_subtext = get_field('routes_title_subtext');
 
                             $ports = get_field('ports', $route);
                             $portsDisplay = comma_separate_list($ports);
-                            $destinations = getItineraryDestinationsDisplay($sample_itinerary, 4); //build list of unique, with embarkations removed
+                            $destinations = getItineraryDestinations($sample_itinerary, true, 4); //build list of unique, with embarkations removed
 
                         ?>
 

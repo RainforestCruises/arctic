@@ -28,15 +28,16 @@ $departuresString = "";
 if (isset($_GET["departures"]) && $_GET["departures"]) {
     $departuresParameters = htmlspecialchars($_GET["departures"]);
     $departuresString = $departuresParameters;
+    console_log($departuresString);
     $departures = explode(";", $departuresString);
 }
 
 //View
-$viewType = 'list';
-$gridDefault = get_field('grid_view_default');
-if ($gridDefault == true) {
-    $viewType = 'grid';
-}
+$viewType = 'search-itineraries';
+// $gridDefault = get_field('grid_view_default');
+// if ($gridDefault == true) {
+//     $viewType = 'grid';
+// }
 
 if (isset($_GET["viewType"]) && $_GET["viewType"]) {
     $viewType = htmlspecialchars($_GET["viewType"]);
@@ -46,7 +47,7 @@ if (isset($_GET["viewType"]) && $_GET["viewType"]) {
 // Region
 $region = get_field('region');
 if (isset($_GET["region"]) && $_GET["region"]) {
-    $region = htmlspecialchars($_GET["region"]);
+    $regions = htmlspecialchars($_GET["region"]);
 }
 
 
@@ -135,8 +136,6 @@ if (isset($_GET["length_max"])) {
 $resultsObject = getSearchPosts($region, $routes, $styles, $lengthMin, $lengthMax, $departures, $searchInput, $sorting, $pageNumber, $viewType);
 $resultCount = $resultsObject['resultsCount'];
 
-console_log($resultsObject);
-
 //Page arguments ------------
 $args = array(
     'region' => $region, //preselection
@@ -162,7 +161,6 @@ $args = array(
     get_template_part('template-parts/search/content', 'search-intro', $args);
     ?>
 
-
     <div class="search-filter-bar" id="search-filter-bar">
         <button class="search-filter-bar__button search-button" id="search-filter-bar-button">
             Filters
@@ -170,20 +168,14 @@ $args = array(
     </div>
 
     <!-- Content -->
-    <section class="search-main" id="search-page-content">
-        <div class="search-main__content">
+    <section class="search-main" >
+        <div class="search-main__content" id="search-page-content">
             <?php
             get_template_part('template-parts/search/content', 'search-sidebar', $args); //page args --> initial preselection
             get_template_part('template-parts/search/content', 'search-results-area', $args); //page args --> initial render
             ?>
-
         </div>
-
-
-
     </section>
-
-
 
 </main>
 
@@ -213,9 +205,9 @@ $args = array(
     <input type="hidden" name="formSort" id="formSort" value="<?php echo $sorting ?>">
     <input type="hidden" name="formPageNumber" id="formPageNumber" value="<?php echo $pageNumber ?>">
 
-    <input type="hidden" name="regions" id="region" value="<?php echo $region ?>">
-    <input type="hidden" name="styles" id="styles" value="<?php echo $stylesString ?>">
-    <input type="hidden" name="routes" id="routes" value="<?php echo $routesString ?>">
+    <input type="hidden" name="formRegion" id="formRegion" value="<?php echo $region ?>">
+    <input type="hidden" name="formThemes" id="formThemes" value="<?php echo $stylesString ?>">
+    <input type="hidden" name="formRoutes" id="formRoutes" value="<?php echo $routesString ?>">
 
     <input type="hidden" name="initialPage" id="initialPage" value="">
 

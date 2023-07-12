@@ -1,0 +1,143 @@
+.search-card-itinerary {
+    position: relative;
+    color: $color-primary;
+    flex-direction: column;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-rows: 22rem 1fr min-content;
+    border: 1px solid $color-grey-light-1a;
+    cursor: pointer;
+
+    text-decoration: none;
+
+    &:hover {
+        transition: all .2s;
+        border-color: $color-grey-light-2;
+        box-shadow: 0 0rem 3rem rgba(0, 0, 0, 0.1);
+    }
+
+    &__tag {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        width: max-content;
+        padding: 0.5rem 1rem;
+        background-color: $color-white;
+        color: $color-primary;
+        border-radius: 2rem;
+        z-index: 10;
+    }
+
+
+    &__image-area {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 22rem;
+        border-radius: 1rem;
+        overflow: hidden !important;
+        background-color: $color-white;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+
+
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        &__item {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__content {
+        padding: 1rem 0rem;
+        color: currentColor;
+        background-color: rgba($color-white, 1);
+        padding: 1.5rem 2rem;
+        padding-bottom: 0rem;
+
+
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      
+
+        &__title {
+            font-weight: 700;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+
+            &:link,
+            &:visited {
+                text-decoration: none;
+                color: currentColor;
+            }
+        }
+
+        &__title-group {
+            display: grid;
+            grid-template-columns: 1fr max-content;
+            align-items: center;
+            font-size: 1.8rem;
+            line-height: 2.3rem;
+            color: currentColor;
+
+            &:link,
+            &:visited {
+                text-decoration: none;
+                color: currentColor;
+            }
+
+            &__title {
+                font-weight: 700;
+            }
+
+            &__sub {
+                font-size: 1.4rem;
+            }
+
+            margin-bottom: 0.5rem;
+        }
+
+
+        &__specs {
+            margin-bottom: 0.5rem;
+            & .specs-item {
+                margin-bottom: 0 !important;
+            }
+        }
+    }
+    
+    &__bottom {
+        border-top: 1px solid $color-grey-light-1a;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 1.5rem 2rem;
+        margin-top: .5rem;
+        &__price-group {
+            color: currentColor;
+            font-size: 1.4rem;
+            line-height: 2rem;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            &__amount {
+                font-weight: 700;
+                margin-right: 1rem;
+            }
+            &__text {
+                font-size: 1.2rem;
+            }
+        }
+
+        &__cta {
+        }
+    }
+}

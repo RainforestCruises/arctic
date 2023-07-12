@@ -1,0 +1,23 @@
+//No Results
+.search-no-results {
+    width: 100%;
+    text-align: center;
+    padding: 2rem;
+    padding-top: 7rem;
+    grid-column: 1 / -1;
+    &__maintext {
+        font-size: 2rem;
+        color: $color-primary;
+        font-weight: 600;
+    }
+    &__subtext {
+        font-size: 1.4rem;
+        margin-bottom: 3rem;
+    }
+
+    &__button-area {
+        & button {
+            transform: scale(0.8);
+        }
+    }
+}

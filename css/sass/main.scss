@@ -15,7 +15,6 @@
 
 // page 
 @import "pages/home";
-@import "pages/search";
 @import "pages/generic";
 @import "pages/test";
 @import "pages/404";
@@ -26,7 +25,6 @@
 @import "components/cards/information-card";
 @import "components/cards/resource-card";
 @import "components/cards/overlay-card";
-@import "components/cards/result-card";
 @import "components/cards/text-card";
 @import "components/cards/tiny-card";
 @import "components/cards/deal-card";
@@ -127,11 +125,11 @@
 
 //search
 @import "components/search/search-intro";
-
-@import "components/search/search-control";
-@import "components/search/search-results";
+@import "components/search/search-main"; // layout
+@import "components/search/search-results-area";
 @import "components/search/search-sidebar";
-@import "components/search/search-result";
 @import "components/search/search-checkbox";
-
+@import "components/search/search-no-results";
+@import "components/search/search-card-itinerary";
+@import "components/search/search-card-departure";
 

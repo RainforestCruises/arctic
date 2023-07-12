@@ -5,6 +5,7 @@ $snippet = get_field('top_snippet');
 $length = get_field('length_in_nights') + 1;
 $lowestOverallPrice = $args['lowestOverallPrice'];
 $bestOverallDiscount = $args['bestOverallDiscount'];
+$extraActivities = $args['extraActivities'];
 $shipSizeRange = $args['shipSizeRange'];
 $deals = $args['deals'];
 $specialDepartures = $args['specialDepartures'];
@@ -114,7 +115,9 @@ $fly_category = getFlightOption(get_post());
                     <a href="#itinerary" class="product-hero__content__main__primary__nav__link">Itinerary</a>
                     <a href="#map" class="product-hero__content__main__primary__nav__link">Map</a>
                     <a href="#dates" class="product-hero__content__main__primary__nav__link">Dates</a>
-                    <a href="#extras" class="product-hero__content__main__primary__nav__link">Extras</a>
+                    <?php if ($extraActivities) : ?>
+                        <a href="#extras" class="product-hero__content__main__primary__nav__link">Extras</a>
+                    <?php endif; ?>
                 </div>
             </div>
 
@@ -136,7 +139,7 @@ $fly_category = getFlightOption(get_post());
                         </div>
                         <div class="product-hero__content__main__secondary__info__starting-price__amount">
                             <div class="product-hero__content__main__secondary__info__starting-price__amount__text">
-                                <?php priceFormat($lowestOverallPrice); ?>
+                                <?php echo ($lowestOverallPrice) ? priceFormat($lowestOverallPrice) : "<span class ='red-text'>Sold Out</span>"; ?>
                             </div>
                             <?php if ($bestOverallDiscount) : ?>
                                 <div class="product-hero__content__main__secondary__info__starting-price__amount__discount">

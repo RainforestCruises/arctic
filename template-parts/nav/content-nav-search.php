@@ -34,24 +34,18 @@ $destinations = get_field('destinations', 'options');
             </svg>
         </div>
         <div class="nav-search__mobile-cta__text">
-            Search Cruises
-          
+            Search Cruises        
         </div>
-
-
     </div>
 </div>
 
 
 <div class="nav-search-control">
     <div class="nav-search-control__inputs">
-
         <!-- Destination -->
         <div class="nav-search-control__inputs__item" id="destination-input-container">
             Where
-
         </div>
-
         <!-- Dates -->
         <div class="nav-search-control__inputs__item">
             When

@@ -26,17 +26,21 @@ add_action('after_setup_theme', 'afloat_images_sizes');
 function afloat_images_sizes()
 {
 
+    // wide aspect
     add_image_size('wide-full', 1920, 720, true);
 
+    // 16:9 aspect
     add_image_size('landscape-full', 1920, 1080, true); 
     add_image_size('landscape-large', 1280, 720, true); 
     add_image_size('landscape-medium', 960, 540, true);
     add_image_size('landscape-small', 640, 360, true);
 
+    // 4:3 aspect
     add_image_size('portrait-large', 960, 720, true);
     add_image_size('portrait-medium', 640, 480, true);
     add_image_size('portrait-small', 440, 330, true);
 
+    // 1:1 aspect
     add_image_size('square-small', 325, 325, true); 
     add_image_size('square-thumb', 100, 100, true); 
 

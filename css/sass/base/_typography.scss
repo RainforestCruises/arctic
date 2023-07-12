@@ -168,6 +168,9 @@ p {
     font-weight: 700;
     border: 1px solid $color-supporting;
 }
+.red-text {
+    color: $color-red !important;
+}
 
 .green-text {
     color: $color-green !important;

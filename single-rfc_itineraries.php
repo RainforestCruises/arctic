@@ -11,6 +11,7 @@ get_header();
 $itinerary = get_post();
 $ships = get_field('ships');
 $productName = get_field('display_name');
+$extraActivities = get_field('extra_activities');
 $days = get_field('itinerary');
 $departures = getDepartureList($itinerary);
 $lowestOverallPrice = getLowestDepartureListPrice($departures);
@@ -61,6 +62,7 @@ $cabins = get_posts($args);
 $args = array(
   'ships' => $ships,
   'cabins' => $cabins,
+  'extraActivities' => $extraActivities,
   'productName' => $productName,
   'lowestOverallPrice' => $lowestOverallPrice,
   'bestOverallDiscount' => $bestOverallDiscount,
@@ -125,8 +127,9 @@ $args = array(
 
   <!-- Extras -->
   <?php
-  get_template_part('template-parts/itinerary/content', 'itinerary-extras', $args);
-  ?>
+  if ($extraActivities) :
+    get_template_part('template-parts/itinerary/content', 'itinerary-extras', $args);
+  endif; ?>
 
   <!-- Inclusions / Exclusions -->
   <?php

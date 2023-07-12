@@ -236,7 +236,7 @@ if (get_field('itinerary_length_max') != null) {
             <h5 class="filter__heading__text">
                 Themes
                 <?php $filterCount = count($selectedStyles); ?>
-                <div class="filter__heading__text__count <?php echo ($filterCount > 0 ? 'show' : '') ?>" id="stylesFilterCount">
+                <div class="filter__heading__text__count <?php echo ($filterCount > 0 ? 'show' : '') ?>" id="themesFilterCount">
                     <?php echo $filterCount; ?>
                 </div>
             </h5>
@@ -253,8 +253,8 @@ if (get_field('itinerary_length_max') != null) {
                 ?>
                     <li class="filter__content__list__item">
                         <div class="form-checkbox">
-                            <input class="checkbox experience-checkbox" type="checkbox" id="experience-checkbox-<?php echo $count; ?>" value="<?php echo $style->ID ?>" <?php echo ($selectedStyles != null ? (in_array($style->ID, $selectedStyles) ? 'checked' : '') : '') ?>>
-                            <label for="experience-checkbox-<?php echo $count; ?>" tabindex="1"><?php echo get_the_title($style) ?></label>
+                            <input class="checkbox theme-checkbox" type="checkbox" id="theme-checkbox-<?php echo $count; ?>" value="<?php echo $style->ID ?>" <?php echo ($selectedStyles != null ? (in_array($style->ID, $selectedStyles) ? 'checked' : '') : '') ?>>
+                            <label for="theme-checkbox-<?php echo $count; ?>" tabindex="1"><?php echo get_the_title($style) ?></label>
                         </div>
                     </li>
                 <?php $count++;

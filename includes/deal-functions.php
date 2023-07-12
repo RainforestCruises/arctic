@@ -32,13 +32,17 @@ function getDealsFromDepartureList($departures, $getSpecials = false)
 }
 
 // get a list of active deals from a single departure
-function getDealsFromSingleDeparture($departure)
+function getDealsFromSingleDeparture($departure, $getSpecials = false)
 {
     $dealsArray = [];
     $deals = $departure['deals'];
     foreach ($deals as $deal) {
         $is_active = get_field('is_active', $deal);
         $has_expiry_date = get_field('has_expiry_date', $deal);
+        $is_special_departure = get_field('is_special_departure', $deal);
+        if ($is_special_departure != $getSpecials) { // skip inactive deals
+            continue;
+        }
         if (!$is_active) { // skip inactive deals
             continue;
         }
@@ -160,7 +164,7 @@ function getDateListDisplay($departures, $limit)
         $displayString .= ' + ' . $overCount . ' More';
     }
 
-    echo $displayString;
+    return $displayString;
 }
 
 // get a string display number of deals, with plurality 

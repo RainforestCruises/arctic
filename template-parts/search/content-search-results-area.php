@@ -1,32 +1,40 @@
 <?php
-
 $resultsObject = $args['resultsObject'];
 $resultCount = $args['resultCount'];
 $pageNumber = $args['pageNumber'];
 $viewType = $args['viewType']; //for icon active 
-
+console_log($viewType);
 ?>
 
-<div class="search-results">
-    <div class="search-results__top-section" id="search-results-top">
-        <div class="search-results__top-section__result-count" id="response-count">
-            Found <?php echo $resultCount; ?> <?php echo ($resultCount == 1) ? 'result' : 'results'; ?>
-            <span>
-                Prices are displayed in USD per person with full occupancy
-            </span>
-        </div>
-
-        <div class="search-results__top-section__page-count" id="page-number">
-            <?php echo ($pageNumber > 1) ? "Page " . $pageNumber : ""; ?>
-        </div>
-
-        <div class="search-results__top-section__controls" id="sort-control">
-
-            <div class="search-results__top-section__controls__view-options">
-               View Options
-
+<div class="search-results-area">
+    <div class="search-results-area__top-section" id="search-results-top">
+        <div class="search-results-area__top-section__result-count">
+            <div class="search-results-area__top-section__result-count__findings" id="response-count">
+                Found <?php echo $resultCount; ?> <?php echo ($resultCount == 1) ? 'result' : 'results'; ?>
+                <span id="page-number">
+                    <?php echo ($pageNumber > 1) ? " (Page " . $pageNumber . ")" : ""; ?>
+                </span>
             </div>
+            <div class="search-results-area__top-section__result-count__subtext">
+                Prices are displayed in USD per person with full occupancy
+            </div>
+        </div>
 
+        <div class="search-results-area__top-section__view-type">
+            <div class="view-type-control">
+                <button class="<?php echo $viewType == 'search-itineraries' ? 'active' : ''?>" id="view-itineraries">
+                    Itineraries
+                </button>
+                <button class="<?php echo $viewType == 'search-ships' ? 'active' : ''?>" id="view-ships">
+                    Ships
+                </button>
+                <button class="<?php echo $viewType == 'search-departures' ? 'active' : ''?>" id="view-departures">
+                    Departures
+                </button>
+            </div>
+        </div>
+
+        <div class="search-results-area__top-section__controls" id="sort-control">
             <label class="sort-control" for="result-sort">
                 <span class="sort-control__label-text">Sort by</span>
                 <select class="sort-control__select" id="result-sort" name="result-sort">
@@ -38,10 +46,8 @@ $viewType = $args['viewType']; //for icon active
         </div>
     </div>
 
-    <div class="search-results__grid <?php echo ($viewType == 'grid') ? 'gridview' : ''; ?>" id="response">
-        <?php
-        get_template_part('template-parts/content', 'search-results-content', $resultsObject);
-        ?>
+    <div class="search-results-area__grid <?php echo $viewType; ?>" id="response">
+        <?php get_template_part('template-parts/search/content', 'search-listing', $resultsObject); ?>
     </div>
 
 

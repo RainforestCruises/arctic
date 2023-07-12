@@ -23,11 +23,17 @@ function shortcode_rankmath_years()
 }
 
 
-
-
 /**
  * Filter if XML sitemap transient cache is enabled.
  *
  * @param boolean $unsigned Enable cache or not, defaults to true
  */
 add_filter('rank_math/sitemap/enable_caching', '__return_false');
+
+
+/**
+ * Disable appending the query string in the redirection URL.
+ *
+ * @param int $number
+ */
+add_filter( 'rank_math/redirection/add_query_string', '__return_false' );

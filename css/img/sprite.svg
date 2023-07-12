@@ -203,6 +203,24 @@
                 <polygon points="2,15 0,9 16,9 13,15 " stroke="none"></polygon>
             </g>
         </symbol>
+        <symbol id="icon-calendar-date-2" viewBox="0 0 16 16">
+            <title>calendar 2</title>
+            <g class="nc-icon-wrapper">
+                <path d="M14,3H13V1a1,1,0,0,0-2,0V3H5V1A1,1,0,0,0,3,1V3H2A2,2,0,0,0,0,5v9a2,2,0,0,0,2,2H14a2,2,0,0,0,2-2V5A2,2,0,0,0,14,3ZM2,14V7H14v7Z" fill="currentColor" stroke="none"></path>
+            </g>
+        </symbol>
+        <symbol id="icon-calendar-date" viewBox="0 0 16 16">
+            <title>calendar date</title>
+            <g class="nc-icon-wrapper">
+                <rect x="4" y="7" width="2" height="2" fill="currentColor" stroke="none"></rect>
+                <rect x="7" y="7" width="2" height="2" fill="currentColor" stroke="none"></rect>
+                <rect x="4" y="10" width="2" height="2" fill="currentColor" stroke="none"></rect>
+                <rect x="7" y="10" width="2" height="2" fill="currentColor" stroke="none"></rect>
+                <rect x="10" y="7" width="2" height="2" fill="currentColor" stroke="none"></rect>
+                <rect x="10" y="10" width="2" height="2" fill="currentColor" stroke="none"></rect>
+                <path d="M15,3H13V1a1,1,0,0,0-2,0V3H5V1A1,1,0,0,0,3,1V3H1A1,1,0,0,0,0,4V15a1,1,0,0,0,1,1H15a1,1,0,0,0,1-1V4A1,1,0,0,0,15,3ZM14,14H2V5H14Z" fill="currentColor" stroke="none"></path>
+            </g>
+        </symbol>
         <symbol id="icon-check-out" viewBox="0 0 16 16">
             <title>check out</title>
             <g class="nc-icon-wrapper">
@@ -281,7 +299,7 @@
         <symbol id="icon-door-3" viewBox="0 0 16 16">
             <title>door 3</title>
             <g class="nc-icon-wrapper">
-                <path d="M14,14H11V12h2V4H11V2h3a1,1,0,0,1,1,1V13A1,1,0,0,1,14,14Z" stroke="none" fill="currentColor" ></path>
+                <path d="M14,14H11V12h2V4H11V2h3a1,1,0,0,1,1,1V13A1,1,0,0,1,14,14Z" stroke="none" fill="currentColor"></path>
                 <path d="M8.584.188a.994.994,0,0,0-.9-.136l-6,2A1,1,0,0,0,1,3V13a1,1,0,0,0,.684.948l6,2A.983.983,0,0,0,8,16a1,1,0,0,0,1-1V1A1,1,0,0,0,8.584.188ZM6,9A1,1,0,1,1,7,8,1,1,0,0,1,6,9Z" fill="currentColor" stroke="none"></path>
             </g>
         </symbol>

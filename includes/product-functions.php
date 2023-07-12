@@ -33,9 +33,12 @@ function getDepartureList($post, $specificShip = null)
                     if ($ship == $post) {
 
                         $filteredDeals = getDealsFromSingleDeparture($d);
+                        $filteredSpecialDepartures = getDealsFromSingleDeparture($d, true);
+
                         $departure = [
                             'ID' => $id,
                             'DepartureDate' => $d['date'],
+                            'DepartureDateSimple' => date('Y-m', strtotime($d['date'])),
                             'ReturnDate' => $returnDate,
                             'Cabins' => $cabin_prices,
                             'ShipId' => $ship->ID,
@@ -47,7 +50,7 @@ function getDepartureList($post, $specificShip = null)
                             'BestDiscount' => getBestDepartureDiscount($d),
                             'LengthInNights' => $itineraryLength,
                             'Deals' => $filteredDeals,
-                            //'Deals' => $d['deals'],
+                            'SpecialDepartures' => $filteredSpecialDepartures,
                         ];
                         $departures[] = $departure;
                     }
@@ -78,11 +81,14 @@ function getDepartureList($post, $specificShip = null)
                 }
                 if ($match) {
                     $filteredDeals = getDealsFromSingleDeparture($d);
+                    $filteredSpecialDepartures = getDealsFromSingleDeparture($d, true);
+
                     $departure = [
                         'ID' => $id,
                         'Ship' => $d['ship'],
                         'ShipId' => $ship->ID,
                         'DepartureDate' => $d['date'],
+                        'DepartureDateSimple' => date('Y-m', strtotime($d['date'])),
                         'ReturnDate' => $returnDate,
                         'Cabins' => $cabin_prices,
                         'ItineraryPostId' => $post->ID,
@@ -91,7 +97,9 @@ function getDepartureList($post, $specificShip = null)
                         'HighestPrice' => getHighestDeparturePrice($d),
                         'BestDiscount' => getBestDepartureDiscount($d),
                         'LengthInNights' => $itineraryLength,
-                        'Deals' => $filteredDeals
+                        'Deals' => $filteredDeals,
+                        'SpecialDepartures' => $filteredSpecialDepartures,
+
                     ];
                     $departures[] = $departure;
                 }
@@ -148,6 +156,39 @@ function getBestDepartureListDiscount($departures)
     }
     $bestDiscount = max($bestDiscountArray); //lowest price, not sold out
     return $bestDiscount;
+}
+
+// get ships from list of departures
+function getShipsFromDepartureList($departures, $display = false)
+{
+    $shipArray = [];
+    foreach ($departures as $d) {
+        $ship = $d['Ship'];
+        if ($ship) {
+            $shipArray[] = $ship;
+        }
+    }
+    $uniqueShipsList = getUniquePostsFromArrayOfPosts($shipArray);
+
+
+    if ($display) {
+        $display = "";
+        $shipCount = count($uniqueShipsList);
+        $x = 1;
+        foreach ($uniqueShipsList as $s) {
+            $name = get_the_title($s);
+
+            if ($x < $shipCount) {
+                $display .= $name . ", ";
+            } else {
+                $display .= $name;
+            }
+            $x++;
+        }
+        return $display;
+    } else {
+        return $uniqueShipsList;
+    }
 }
 
 // SINGLE
@@ -285,7 +326,7 @@ function getItineraryShipSize($ships)
 }
 
 // build list of unique destinations within an itinerary, with embarkations removed
-function getItineraryDestinationsDisplay($itinerary, $limit)
+function getItineraryDestinations($itinerary, $display = false, $limit = 0)
 {
     $days = get_field('itinerary', $itinerary);
 
@@ -304,32 +345,35 @@ function getItineraryDestinationsDisplay($itinerary, $limit)
 
     $uniqueDestinationList = array_unique($destinationList);
 
-    $displayString = "";
-    $destinationCount = count($uniqueDestinationList);
+    if ($display == false) {
+        return $uniqueDestinationList;
+    } else {
+        $displayString = "";
+        $destinationCount = count($uniqueDestinationList);
+        $count = 1;
+        $overCount = 0;
 
-    $count = 1;
-    $overCount = 0;
+        foreach ($uniqueDestinationList as $name) {
+            if ($count <= $limit) {
+                $displayString .= $name;
 
-    foreach ($uniqueDestinationList as $name) {
-        if ($count <= $limit) {
-            $displayString .= $name;
-
-            // trailing comma
-            if ($count != $destinationCount) {
-                $displayString .= ', ';
+                // trailing comma
+                if ($count != $destinationCount) {
+                    $displayString .= ', ';
+                }
+            } else {
+                $overCount++;
             }
-        } else {
-            $overCount++;
+
+            $count++;
         }
 
-        $count++;
-    }
+        if ($overCount > 0) {
+            $displayString .= ' + ' . $overCount . ' More';
+        }
 
-    if ($overCount > 0) {
-        $displayString .= ' + ' . $overCount . ' More';
+        return $displayString;
     }
-
-    return $displayString;
 }
 
 // get display of ships sailing the itinerary
@@ -419,7 +463,7 @@ function getShipItineraries($ship)
         'post_type' => 'rfc_itineraries',
         'posts_per_page' => -1,
         'meta_key' => 'length_in_nights',
-        'orderby'=> 'meta_value_num',
+        'orderby' => 'meta_value_num',
         'order' => 'ASC'
     );
 
@@ -460,5 +504,4 @@ function getShipRegions($ship)
 
     $uniqueShipRegionsList = getUniquePostsFromArrayOfPosts($regionsList);
     return ($uniqueShipRegionsList);
-    //return $uniqueRegionsListList;
 }

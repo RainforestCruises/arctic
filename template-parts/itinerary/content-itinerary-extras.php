@@ -1,5 +1,5 @@
 <?php
-$extra_activities = get_field('extra_activities')
+$extra_activities = get_field('extra_activities');
 ?>
 
 <section class="slider-block narrow" id="extras">

@@ -125,7 +125,12 @@ $deals = $args['deals'];
                                     </div>
                                     <div class="specs-item__text">
                                         <div class="specs-item__text__main">
-                                            <?php priceFormat($d['LowestPrice']);  ?> - <?php priceFormat($d['HighestPrice']);  ?>
+                                            <?php
+                                            if ($d['LowestPrice']) {
+                                                priceFormat($d['LowestPrice']) ?> - <?php priceFormat($d['HighestPrice']);
+                                            } else {
+                                                echo "<span class ='red-text'>Sold Out</span>";
+                                            }; ?>
                                         </div>
                                         <?php if ($bestDiscount) : ?>
                                             <div class="specs-item__text__sub">

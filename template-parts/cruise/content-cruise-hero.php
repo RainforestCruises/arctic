@@ -133,7 +133,7 @@ $fly_category = getFlightOption(get_post());
 
                         <div class="product-hero__content__main__secondary__info__starting-price__amount">
                             <div class="product-hero__content__main__secondary__info__starting-price__amount__text">
-                                <?php priceFormat($lowestOverallPrice); ?>
+                                <?php echo ($lowestOverallPrice) ? priceFormat($lowestOverallPrice) : "<span class ='red-text'>Sold Out</span>"; ?>
                             </div>
                             <?php if ($bestOverallDiscount) : ?>
                                 <div class="product-hero__content__main__secondary__info__starting-price__amount__discount">

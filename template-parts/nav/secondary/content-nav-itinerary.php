@@ -3,6 +3,9 @@ $title = get_field('display_name');
 $itinerary = get_post();
 $departures = getDepartureList($itinerary);
 $deals = getDealsFromDepartureList($departures);
+$extraActivities = get_field('extra_activities');
+
+
 ?>
 
 <!-- Itinerary Nav -->
@@ -28,9 +31,12 @@ $deals = getDealsFromDepartureList($departures);
             <a href="#dates" class="nav-secondary__content__links__link">
                 Dates
             </a>
-            <a href="#extras" class="nav-secondary__content__links__link">
-                Extras
-            </a>
+            <?php if ($extraActivities) : ?>
+                <a href="#extras" class="nav-secondary__content__links__link">
+                    Extras
+                </a>
+            <?php endif; ?>
+
         </div>
         <div class="nav-secondary__content__cta product-template">
             <button class="nav-secondary__content__cta__button btn-pill btn-pill--dark generic-inquire-cta">
@@ -70,9 +76,12 @@ $deals = getDealsFromDepartureList($departures);
                     <?php endif; ?>
                 </a>
             </li>
-            <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#extras">Extras</a>
-            </li>
+            <?php if ($extraActivities) : ?>
+                <li class="nav-secondary__mobile-menu__list__item">
+                    <a class="nav-secondary__mobile-menu__list__item__link" href="#extras">Extras</a>
+                </li>
+            <?php endif; ?>
+
         </ul>
     </nav>
 </nav>

@@ -46,8 +46,8 @@
     <!-- Form Hidden -->
     <form class="nav-search-form" action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="nav-search-form">
         <input type="hidden" name="action" value="navSearch">
-        <input type="hidden" name="formDates" id="formDates" value="">
-        <input type="hidden" name="formDestination" id="formDestination" value="">
+        <input type="hidden" name="formNavDates" id="formNavDates" value="">
+        <input type="hidden" name="formNavRoute" id="formNavRoute" value="">
     </form>
 
     <?php get_template_part('template-parts/nav/content', 'nav-mobile'); ?>
