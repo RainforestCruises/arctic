@@ -107,22 +107,29 @@ function comma_separate_list($arr, $limit = 0)
     return $display;
 }
 
-function priceFormat($price)
+function priceFormat($price, $priceHigh = null)
 {
     $display = "";
-    if (is_plugin_active('currency-switcher/index.php')) {
-        $display = do_shortcode('[wpcs_price value=' . $price . ']');
-        if ($price > 0) {
-            $display = do_shortcode('[wpcs_price value=' . $price . ']');
-        } else {
-            $display = "N/A";
-        }
+    if($price == false){
+        $display = "<span class='red-text'>Sold Out</span>";
     } else {
-        if ($price > 0) {
-            $display = "$" .  number_format($price, 0);
+
+        if (is_plugin_active('currency-switcher/index.php')) {
+            if ($priceHigh && $priceHigh != $price) {
+                $display = do_shortcode('[wpcs_price value=' . $price . ']');
+                $display .= " - " . do_shortcode('[wpcs_price value=' . $priceHigh . ']');
+            } else {
+                $display = do_shortcode('[wpcs_price value=' . $price . ']');
+            }
         } else {
-            $display = "N/A";
+            if ($priceHigh && $priceHigh != $price) {
+                $display = do_shortcode('[wpcs_price value=' . $price . ']');
+                $display .= " - " . do_shortcode('[wpcs_price value=' . $priceHigh . ']');
+            } else {
+                $display = do_shortcode('[wpcs_price value=' . $price . ']');
+            }
         }
+
     }
 
     echo $display;

@@ -2,6 +2,8 @@
 $hero_images = get_field('hero_images');
 $title = get_field('title');
 $subtitle = get_field('subtitle');
+$show_site_notice = get_field('show_site_notice', 'options');
+
 ?>
 
 <section class="deals-toplevel-hero">
@@ -12,7 +14,7 @@ $subtitle = get_field('subtitle');
     </div>
 
     <!-- Content -->
-    <div class="deals-toplevel-hero__content">
+    <div class="deals-toplevel-hero__content <?php echo ($show_site_notice ? "site-notice-variant" : "") ?>">
         <div class="deals-toplevel-hero__content__title-group">
 
             <h1 class="deals-toplevel-hero__content__title-group__title">

@@ -4,6 +4,7 @@
     color: $color-primary;
     display: flex !important;
     flex-direction: column;
+    text-decoration: none;
 
     &__tag {
         position: absolute;
@@ -200,7 +201,7 @@
                 color: currentColor;
                 font-size: 1.6rem;
                 display: flex;
-                align-items: flex-end;
+                align-items: center;
                 &__amount {
                     font-weight: 700;
                     margin-right: 0.5rem;
@@ -213,9 +214,6 @@
             &__cta {
             }
         }
-        // &__discount {
-        //     transform: translateY(-0.2rem);
-        //     font-size: 1.2rem;
-        // }
+
     }
 }

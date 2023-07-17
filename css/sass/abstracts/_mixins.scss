@@ -56,3 +56,26 @@
         padding-top: 7rem;
     }
 }
+
+@mixin siteNoticePadding {
+    &.site-notice-variant {
+        padding-top: 20rem;
+        @media only screen and (max-width: $bp-large) {
+            padding-top: 12rem;
+        }
+        @media only screen and (max-width: $bp-small) {
+            padding-top: 16rem;
+        }
+    }
+}
+
+@mixin siteNoticePaddingPage {
+    &.site-notice-variant {
+        padding-top: 18rem; //top padding
+        @media only screen and (max-width: $bp-small) {
+            padding-top: 20rem;
+        }
+    }
+}
+
+

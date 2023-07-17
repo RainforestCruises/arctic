@@ -1,6 +1,7 @@
 .about-mission {
     @include flexBlock;
     @include pageTopPadding;
+    @include siteNoticePaddingPage;
 
     margin-top: 4rem;
 
@@ -22,6 +23,12 @@
                 font-weight: 700;
                 margin-bottom: 2rem;
                 color: $color-primary;
+
+                @media only screen and (max-width: $bp-small) {
+                    font-size: 3rem;
+                    line-height: 3.8rem;
+                    letter-spacing: 0rem;
+                }
             }
     
             &__text {
@@ -40,11 +47,9 @@
     
             @media only screen and (max-width: $bp-medium) {
                 height: auto;
-    
             }
     
             @media only screen and (max-width: $bp-small) {
-                //height: 55vh;
                 margin-bottom: 0rem;
             }
     
@@ -89,7 +94,6 @@
                     font-size: 7rem;
                     line-height: 7.5rem;
                     letter-spacing: 0.2rem;
-                    font-family: $font-secondary;
                     text-align: center;
                     z-index: 5;
                     font-weight: 400;
@@ -185,13 +189,16 @@
                     font-size: 3rem;
                     line-height: 3.5rem;
                     text-align: center;
-                    font-family: $font-secondary;
+
+                    @media only screen and (max-width: $bp-small) {
+                        font-size: 2rem;
+                        line-height: 2.8rem;                    }
                 }
     
                 padding: 6rem 8rem;
     
                 @media only screen and (max-width: $bp-small) {
-                    padding: 9rem 3rem;
+                    padding: 6rem 3rem;
     
                 }
                 border-top: 1px solid $color-grey-light-1a;

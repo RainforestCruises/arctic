@@ -103,10 +103,10 @@ $ships_title = get_field('ships_title');
                             <!-- Price Group -->
                             <div class="resource-card__content__bottom__price-group">
                                 <div class="resource-card__content__bottom__price-group__amount">
-                                    <?php priceFormat($lowestPrice);  ?> - <?php priceFormat($highestPrice); ?>
+                                    <?php priceFormat($lowestPrice, $highestPrice); ?>
                                 </div>
                                 <div class="resource-card__content__bottom__price-group__text">
-                                    Per Person
+                                    <?php echo ($lowestPrice) ? "Per Person" : ""; ?>
                                 </div>
                             </div>
                         </div>

@@ -1,14 +1,6 @@
 <?php
 function load_scripts()
 {
-
-    wp_enqueue_style('flickity-css',  get_template_directory_uri() . '/vendor/flickity/flickity.css', array(), false, 'all');
-    wp_enqueue_style('flickity-fade-css', get_template_directory_uri() . '/vendor/flickity/flickity-fade.css', array(), false, 'all');
-
-    wp_enqueue_style('slick-theme',  get_template_directory_uri() . '/vendor/slick/slick-theme.css', array(), false, 'all');
-    wp_enqueue_style('slick-min', get_template_directory_uri() . '/vendor/slick/slick.css', array(), false, 'all');
-
-    wp_enqueue_style('magnific-css', get_template_directory_uri() .  '/vendor/magnific/magnific-popup.css', array(), false, 'all');
     wp_enqueue_style('select2-css', get_template_directory_uri() . '/vendor/select2/select2.min.css', array(), false, 'all');
     wp_enqueue_style('ion-css', get_template_directory_uri() . '/vendor/ion-range-slider/css/ion.rangeSlider.min.css', array(), false, 'all');
     wp_enqueue_style('odometer-css', get_template_directory_uri() . '/vendor/odometer/odometer-theme-minimal.css', array(), false, 'all');
@@ -16,50 +8,26 @@ function load_scripts()
     wp_enqueue_style('bootstrap-datepicker-css', get_template_directory_uri() . '/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css', array(), false, 'all');
     wp_enqueue_style('mapbox-gl-css', get_template_directory_uri() . '/vendor/mapbox/mapbox-gl.css', array(), false, 'all');
 
-
-
     wp_enqueue_style('template', get_template_directory_uri() . '/css/style.css', array(), false, 'all');
 
 
 
     //JS -------------- scripts
     wp_enqueue_script('jquery', get_template_directory_uri() . '/vendor/jquery/jquery-3.6.0.min.js', array(), '3.6.0', true);
-
-    wp_enqueue_script('flickity-js', get_template_directory_uri() . '/vendor/flickity/flickity.pkgd.min.js', array(), false, true);
-    wp_enqueue_script('flickity-fade-js', get_template_directory_uri() . '/vendor/flickity/flickity-fade.js', array(), false, true);
-    wp_enqueue_script('flickity-nav-js', get_template_directory_uri() . '/vendor/flickity/as-nav-for.js', array(), false, true);
-    wp_enqueue_script('flickity-responsive', get_template_directory_uri() . '/vendor/flickity/flickityResponsive.js', array(), false, true);
-
     wp_enqueue_script('mapbox-gl', get_template_directory_uri() . '/vendor/mapbox/mapbox-gl.js', array(), false, true);
-
-
-    wp_enqueue_script('slick', get_template_directory_uri() . '/vendor/slick/slick.js', array('jquery'), false, true);
-    wp_enqueue_script('magnific-js', get_template_directory_uri() .  '/vendor/magnific/jquery.magnific-popup.min.js', array('jquery'), false, true);
     wp_enqueue_script('select2',  get_template_directory_uri() .  '/vendor/select2/select2.min.js', array('jquery'), false, true);
     wp_enqueue_script('ion-js', get_template_directory_uri() . '/vendor/ion-range-slider/js/ion.rangeSlider.min.js', array('jquery'), false, true);
     wp_enqueue_script('isotope', get_template_directory_uri() . '/vendor/isotope/isotope.pkgd.min.js', array('jquery'), false, true);
     wp_enqueue_script('odometer', get_template_directory_uri() . '/vendor/odometer/odometer.min.js', array('jquery'), false, true);
     wp_enqueue_script('moment',  get_template_directory_uri() . '/vendor/moment/moment.min.js', array('jquery'), false, true);
-
-    wp_enqueue_script('amcharts-index', get_template_directory_uri() . '/vendor/amcharts5/index.js', array(), false, true);
-    wp_enqueue_script('amcharts-map', get_template_directory_uri() . '/vendor/amcharts5/map.js', array(), false, true);
-    wp_enqueue_script('amcharts-world', get_template_directory_uri() . '/vendor/amcharts5/geodata/worldLow.js', array(), false, true);
-    wp_enqueue_script('amcharts-theme', get_template_directory_uri() . '/vendor/amcharts5/themes/Animated.js', array(), false, true);
-    wp_enqueue_script('amcharts-theme2', get_template_directory_uri() . '/vendor/amcharts5/themes/Dark.js', array(), false, true);
-
     wp_enqueue_script('swiper', get_template_directory_uri() . '/vendor/swiper/swiper-bundle.min.js', array(), false, true);
     wp_enqueue_script('bootstrap-datepicker', get_template_directory_uri() . '/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js', array(), false, true);
     wp_enqueue_script('popper', get_template_directory_uri() . '/vendor/popperjs/popper.min.js', array(), false, true);
-
-    //https://player.vimeo.com/api/player.js
     wp_enqueue_script('vimeo', 'https://player.vimeo.com/api/player.js', array(), false, true);
-
-
 
     wp_enqueue_script('utility', get_template_directory_uri() . '/js/utilities.js', array('jquery'), false, true);
     wp_enqueue_script('global-functions', get_template_directory_uri() . '/js/global-functions.js', array('jquery'), false, true);
     wp_enqueue_script('header', get_template_directory_uri() . '/js/header.js', array('jquery'), false, true);
-    //wp_enqueue_script('nav-search', get_template_directory_uri() . '/js/nav-search.js', array('jquery'), false, true);
 
 
     $alwaysActiveHeader = checkActiveHeader();
@@ -71,14 +39,6 @@ function load_scripts()
         )
     );
 
-    // $templateUrl = get_template_directory_uri();
-    // wp_localize_script(
-    //     'nav-search',
-    //     'page_vars',
-    //     array(
-    //         'templateUrl' =>  $templateUrl
-    //     )
-    // );
 }
 
 add_action('wp_enqueue_scripts', 'load_scripts');

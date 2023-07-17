@@ -93,6 +93,9 @@ $ships = $args['ships'];
                         $secondaryFilterId = $itineraryPostId;
                         $subtitleDisplay = $d['LengthInNights'] + 1 . ' Days / ' . $d['LengthInNights'] . ' Nights';
                         $bestDiscount = $d['BestDiscount'];
+                        $lowestPrice = $d['LowestPrice'];
+                        $highestPrice = $d['HighestPrice'];
+
                         $deals = $d['Deals'];
 
                         if (get_post_type() == 'rfc_itineraries') {
@@ -163,7 +166,7 @@ $ships = $args['ships'];
                                         </div>
                                         <div class="specs-item__text">
                                             <div class="specs-item__text__main">
-                                                <?php priceFormat($d['LowestPrice']);  ?> - <?php priceFormat($d['HighestPrice']);  ?>
+                                                <?php priceFormat($lowestPrice, $highestPrice); ?>
                                             </div>
                                             <?php if ($bestDiscount) : ?>
                                                 <div class="specs-item__text__sub">

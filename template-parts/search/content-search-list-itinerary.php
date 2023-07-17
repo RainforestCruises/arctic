@@ -32,7 +32,7 @@
                     </svg>
                 </div>
                 <div class="specs-item__text">
-                    <?php echo $args->itineraryDisplay; ?>
+                    <?php echo $args->lengthDisplay; ?>
                 </div>
             </div>
 

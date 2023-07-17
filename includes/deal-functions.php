@@ -5,14 +5,11 @@ function getDealsFromDepartureList($departures, $getSpecials = false)
 {
     $uniqueDealsArray = [];
     foreach ($departures as $d) {
-        $deals = $d['Deals'];
+        $deals = ($getSpecials) ? $d['SpecialDepartures'] : $d['Deals'];
         foreach ($deals as $deal) {
             $is_active = get_field('is_active', $deal);
             $has_expiry_date = get_field('has_expiry_date', $deal);
-            $is_special_departure = get_field('is_special_departure', $deal);
-            if ($is_special_departure != $getSpecials) { // skip inactive deals
-                continue;
-            }
+
             if (!$is_active) { // skip inactive deals
                 continue;
             }
@@ -31,7 +28,8 @@ function getDealsFromDepartureList($departures, $getSpecials = false)
     return $uniqueDealsArray;
 }
 
-// get a list of active deals from a single departure
+// META OBJECT
+// get a list of active deals from a single departure 
 function getDealsFromSingleDeparture($departure, $getSpecials = false)
 {
     $dealsArray = [];
@@ -63,7 +61,9 @@ function getDeparturesWithDeal($departures, $deal)
 {
     $departuresWithDealsList = [];
     foreach ($departures as $departure) {
-        if ($departure['Deals'] && in_array($deal, $departure['Deals'])) {
+        $combinedDepartureDeals = array_merge($departure['Deals'], $departure['SpecialDepartures']);
+
+        if ($combinedDepartureDeals && in_array($deal, $combinedDepartureDeals)) {
             $departuresWithDealsList[] = $departure;
         }
     }
@@ -86,7 +86,25 @@ function getDealsInCategory($category)
         )
     );
 
-    return get_posts($queryArgs);
+    $deals = get_posts($queryArgs);
+    foreach ($deals as $deal) {
+        $is_active = get_field('is_active', $deal);
+        $has_expiry_date = get_field('has_expiry_date', $deal);
+
+        if (!$is_active) { // skip inactive deals
+            continue;
+        }
+        if ($has_expiry_date) { // skip expired deals
+            $expiry_date =  get_field('expiry_date', $deal);
+            $isCurrent = strtotime($expiry_date) >= strtotime(date('Y-m-d'));
+            if (!$isCurrent) {
+                continue;
+            }
+        }
+        $dealsArray[] = $deal;
+    }
+
+    return $dealsArray;
 }
 
 // get a list of itineraries that have a particular deal, accepts a single deal or array of deals to match
@@ -103,14 +121,16 @@ function getItinerariesWithDeal($deals)
         $departures = getDepartureList($itinerary);
         $hasDeal = false;
         foreach ($departures as $departure) {
+            $combinedDepartureDeals = array_merge($departure['Deals'], $departure['SpecialDepartures']);
+
             if (is_array($deals)) { // if matching an array of deals
                 foreach ($deals as $deal) {
-                    if ($departure['Deals'] && in_array($deal, $departure['Deals'])) {
+                    if ($combinedDepartureDeals && in_array($deal, $combinedDepartureDeals)) {
                         $hasDeal = true;
                     }
                 }
             } else { // if matchine a single deal
-                if ($departure['Deals'] && in_array($deals, $departure['Deals'])) {
+                if ($combinedDepartureDeals && in_array($deals, $combinedDepartureDeals)) {
                     $hasDeal = true;
                 }
             }
@@ -120,6 +140,40 @@ function getItinerariesWithDeal($deals)
         }
     }
     return $itinerariesWithDeal;
+}
+
+// get a list of itineraries that have a particular deal, accepts a single deal or array of deals to match
+function getShipsWithDeal($deals)
+{
+    $queryArgs = array(
+        'post_type' => 'rfc_cruises',
+        'posts_per_page' => -1,
+    );
+    $ships = get_posts($queryArgs);
+
+    $shipsWithDeal = [];
+    foreach ($ships as $ship) {
+        $departures = getDepartureList($ship);
+        $hasDeal = false;
+        foreach ($departures as $departure) {
+            $combinedDepartureDeals = array_merge($departure['Deals'], $departure['SpecialDepartures']);
+            if (is_array($deals)) { // if matching an array of deals
+                foreach ($deals as $deal) {
+                    if ($combinedDepartureDeals && in_array($deal, $combinedDepartureDeals)) {
+                        $hasDeal = true;
+                    }
+                }
+            } else { // if matchine a single deal
+                if ($combinedDepartureDeals && in_array($deals, $combinedDepartureDeals)) {
+                    $hasDeal = true;
+                }
+            }
+        }
+        if ($hasDeal) {
+            $shipsWithDeal[] = $ship;
+        }
+    }
+    return $shipsWithDeal;
 }
 
 // get a string display of departures dates, grouped by month, comma seperated and trucated with remainder
@@ -168,16 +222,23 @@ function getDateListDisplay($departures, $limit)
 }
 
 // get a string display number of deals, with plurality 
-function getDealsDisplay($deals, $specialDepartures = false)
+function getDealsDisplay($deals)
 {
     $displayText = '';
     if ($deals) {
-        if (count($deals) == 1) {
-            $displayText = $specialDepartures ? '1 special departure' : '1 deal';
-        } else {
-            $displayText =  count($deals);
-            $displayText .= $specialDepartures ? ' special departures' : ' deals';
-        }
+        $displayText = count($deals);
+        $displayText .= (count($deals) == 1) ? ' deal' : ' deals';
+    }
+    return $displayText;
+}
+
+// get a string display number of special departures, with plurality 
+function getSpecialDeparturesDisplay($specialDepartures)
+{
+    $displayText = '';
+    if ($specialDepartures) {
+        $displayText = count($specialDepartures);
+        $displayText .= (count($specialDepartures) == 1) ? ' special departure' : ' special departures';
     }
     return $displayText;
 }

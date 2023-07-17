@@ -264,15 +264,17 @@ function getBestDepartureDiscount($departure)
 // lowest price from list of itineraries
 function getLowestPriceFromListOfItineraries($itineraries)
 {
-
     $priceList = [];
     foreach ($itineraries as $itinerary) {
         $departures = getDepartureList($itinerary);
-        $priceList[] = getLowestDepartureListPrice($departures);
+        $lowestPrice = getLowestDepartureListPrice($departures);
+        if($lowestPrice){
+            $priceList[] = $lowestPrice;
+        }
     }
 
-    $lowestPrice = min($priceList);
-    return ($lowestPrice);
+    $lowestOverallPrice = min($priceList);
+    return ($lowestOverallPrice);
 }
 
 // fly / sail display

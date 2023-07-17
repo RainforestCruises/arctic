@@ -91,7 +91,7 @@ $fly_category = getFlightOption(get_post());
                     <?php endif; ?>
                     <?php if ($specialDepartures) : ?>
                         <a class="product-hero-badge product-hero-badge--special" href="#deals">
-                            <?php echo getDealsDisplay($specialDepartures, true); ?> Available
+                            <?php echo getSpecialDeparturesDisplay($specialDepartures); ?> Available
                         </a>
                     <?php endif; ?>
                 </div>
@@ -133,7 +133,7 @@ $fly_category = getFlightOption(get_post());
 
                         <div class="product-hero__content__main__secondary__info__starting-price__amount">
                             <div class="product-hero__content__main__secondary__info__starting-price__amount__text">
-                                <?php echo ($lowestOverallPrice) ? priceFormat($lowestOverallPrice) : "<span class ='red-text'>Sold Out</span>"; ?>
+                                <?php priceFormat($lowestOverallPrice); ?>
                             </div>
                             <?php if ($bestOverallDiscount) : ?>
                                 <div class="product-hero__content__main__secondary__info__starting-price__amount__discount">

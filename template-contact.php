@@ -4,13 +4,14 @@ get_header();
 $primary_contact_form_id = get_field('primary_contact_form_id', 'options');
 $phone_number = get_field('phone_number', 'options');
 $phone_number_numeric = get_field('phone_number_numeric', 'options');
+$show_site_notice = get_field('show_site_notice', 'options');
 
 $reviews = get_field('reviews');
 $maxlength = 320;
 ?>
 
 <!-- Contact Page Container -->
-<section class="contact-page">
+<section class="contact-page <?php echo ($show_site_notice ? "site-notice-variant" : "") ?>">
     <div class="contact-page__intro">
         <h1 class="contact-page__intro__title">
             Start Your Adventure Today.

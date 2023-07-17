@@ -13,12 +13,12 @@ if ($deals && !$specialDepartures) {
 }
 
 if (!$deals && $specialDepartures) {
-    $subtitleDisplay = 'Explore ' . getDealsDisplay($specialDepartures, true) . ' on select dates';
+    $subtitleDisplay = 'Explore ' . getSpecialDeparturesDisplay($specialDepartures) . ' on select dates';
     $sectionTitle = 'Special Departures';
 }
 
 if ($deals && $specialDepartures) {
-    $subtitleDisplay = 'Explore ' . getDealsDisplay($specialDepartures) . ' and ' . getDealsDisplay($specialDepartures, true) . ' on select dates';
+    $subtitleDisplay = 'Explore ' . getDealsDisplay($deals) . ' and ' . getSpecialDeparturesDisplay($specialDepartures) . ' on select dates';
     $sectionTitle = 'Deals & Special Departures';
 }
 

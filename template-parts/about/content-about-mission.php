@@ -1,5 +1,11 @@
+<?php
+$show_site_notice = get_field('show_site_notice', 'options');
+?>
+
+
+
 <!-- Overview / Highlights -->
-<section class="about-mission" id="section-mission">
+<section class="about-mission <?php echo ($show_site_notice ? "site-notice-variant" : "") ?>" id="section-mission">
     <div class="about-mission__content">
         <div class="about-mission__content__intro">
             <h1 class="about-mission__content__intro__title">

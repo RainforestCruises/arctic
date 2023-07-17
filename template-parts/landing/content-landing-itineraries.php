@@ -2,8 +2,6 @@
 $itineraries = get_field('itineraries');
 $itineraries_title_subtext = get_field('itineraries_title_subtext');
 $itineraries_title = get_field('itineraries_title');
-$lowestPrice = getLowestPriceFromListOfItineraries($itineraries);
-console_log($lowestPrice);
 ?>
 
 
@@ -117,10 +115,10 @@ console_log($lowestPrice);
                                     <!-- Price Group -->
                                     <div class="resource-card__content__bottom__price-group">
                                         <div class="resource-card__content__bottom__price-group__amount">
-                                            <?php priceFormat($lowestPrice);  ?> - <?php priceFormat($highestPrice); ?>
+                                            <?php priceFormat($lowestPrice, $highestPrice); ?>
                                         </div>
                                         <div class="resource-card__content__bottom__price-group__text">
-                                            Per Person
+                                            <?php echo ($lowestPrice) ? "Per Person" : ""; ?>
                                         </div>
                                     </div>
                                 </div>

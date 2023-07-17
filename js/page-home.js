@@ -1,7 +1,7 @@
 jQuery(document).ready(function ($) {
 
-     // On Click - Nav Links, href change position
-     $('.hero-item').click(function (event) {
+    // On Click - Nav Links, href change position
+    $('.hero-item').click(function (event) {
         var id = $(this).attr('href');
         changePosition(id)
         event.preventDefault();
@@ -15,7 +15,7 @@ jQuery(document).ready(function ($) {
         if ($(window).width() > 1200) { //large screen
             target = target - 50;
         } else { // small screen 
-            target = target - 25;        
+            target = target - 25;
         }
 
         if (id == "#section-ships") {
@@ -45,28 +45,30 @@ jQuery(document).ready(function ($) {
     const videoModal = document.querySelector("#videoModal");
     const videoPlayButton = document.querySelector(".video-play-button");
 
+    if (vimeoPlayer) {
+        // -- open / play
+        videoPlayButton.addEventListener('click', () => {
+            videoModal.style.display = 'flex';
+            body.classList.add('no-scroll');
 
-    // -- open / play
-    videoPlayButton.addEventListener('click', () => {
-        videoModal.style.display = 'flex';
-        body.classList.add('no-scroll');
-
-        vimeoPlayer.play();
-    });
-
-    heroVideoCard.addEventListener('click', () => {
-        videoModal.style.display = 'flex';
-        body.classList.add('no-scroll');
-        vimeoPlayer.play();
-    });
-
-    // -- stop playing 
-    const stopVideoSections = [...document.querySelectorAll('.stop-video')];
-    stopVideoSections.forEach(section => {
-        section.addEventListener('click', () => {
-            vimeoPlayer.pause();
+            vimeoPlayer.play();
         });
-    })
+
+        heroVideoCard.addEventListener('click', () => {
+            videoModal.style.display = 'flex';
+            body.classList.add('no-scroll');
+            vimeoPlayer.play();
+        });
+
+        // -- stop playing 
+        const stopVideoSections = [...document.querySelectorAll('.stop-video')];
+        stopVideoSections.forEach(section => {
+            section.addEventListener('click', () => {
+                vimeoPlayer.pause();
+            });
+        })
+    }
+
 
 
     // view all ships
@@ -76,7 +78,7 @@ jQuery(document).ready(function ($) {
 
     // -- open / play
     allShipsButton.addEventListener('click', () => {
-        if(expandedShips.classList.contains('expand')){
+        if (expandedShips.classList.contains('expand')) {
             expandedShips.classList.remove('expand')
             allShipsButton.innerHTML = "View All Ships"
         } else {

@@ -20,6 +20,8 @@ $deals = getDealsFromDepartureList($departures);
 $specialDepartures = getDealsFromDepartureList($departures, true);
 $regions = getItineraryRegions($itinerary);
 
+
+
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
 $shipSizeRange = getItineraryShipSize($ships);

@@ -1,29 +1,9 @@
 <?php
-$currentDeal = get_post();
-$queryArgs = array(
-    'post_type' => 'rfc_cruises',
-    'posts_per_page' => -1,
-);
-$ships = get_posts($queryArgs);
-
-$shipsWithDeal = [];
-foreach ($ships as $ship) {
-    $departures = getDepartureList($ship);
-    $hasDeal = false;
-    foreach ($departures as $departure) {
-        if ($departure['Deals'] && in_array($currentDeal, $departure['Deals'])) {
-            $hasDeal = true;
-        }
-    }
-
-    if ($hasDeal) {
-        $shipsWithDeal[] = $ship;
-    }
-}
-
+$deal = get_post();
+$shipsWithDeal = getShipsWithDeal($deal);
 $terms_and_conditions = get_field('terms_and_conditions');
 $description = get_field('description');
-
+$is_special_departure = get_field('is_special_departure');
 
 ?>
 
@@ -58,7 +38,9 @@ $description = get_field('description');
                 <?php endif; ?>
             </div>
             <div class="deal-intro__content__grid__ships">
-                <h2 class="title-single">Ships With This Deal</h2>
+                <h2 class="title-single">
+                    <?php echo $is_special_departure ? "Ships With This Special Departure" : "Ships With This Deal" ; ?>             
+                </h2>
                 <!-- Ships Grid -->
                 <?php foreach ($shipsWithDeal as $ship) :
                     $hero_gallery = get_field('hero_gallery', $ship);

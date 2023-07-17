@@ -1,7 +1,7 @@
 .guides-toplevel-hero {
     @include flexBlock;
     @include pageTopPadding;
-
+    @include siteNoticePaddingPage;
 
     &__content {
         position: relative;

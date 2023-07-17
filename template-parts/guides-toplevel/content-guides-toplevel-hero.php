@@ -8,10 +8,11 @@ $categories = get_posts(array(
     'orderby' => 'title',
     'order' => 'ASC',
 ));
+$show_site_notice = get_field('show_site_notice', 'options');
 
 ?>
 
-<section class="guides-toplevel-hero">
+<section class="guides-toplevel-hero <?php echo ($show_site_notice ? "site-notice-variant" : "") ?>">
     <div class="guides-toplevel-hero__content">
         <!-- Breadcrumb -->
         <ol class="guides-toplevel-hero__content__breadcrumb">

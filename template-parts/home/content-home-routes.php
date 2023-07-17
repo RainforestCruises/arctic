@@ -130,7 +130,7 @@ $routes_title_subtext = get_field('routes_title_subtext');
 
 
                                 <!-- Desktop -->
-                                <div class="resource-card medium encapsulated ">
+                                <div class="resource-card medium encapsulated">
                                     <!-- Images Slider -->
                                     <a class="resource-card__image-area" href="<?php echo $landing_page; ?>">
                                         <img <?php afloat_image_markup($image['id'], 'landscape-small', array('landscape-small', 'portrait-small')); ?>>
@@ -197,10 +197,10 @@ $routes_title_subtext = get_field('routes_title_subtext');
                                         <div class="resource-card__content__bottom">
                                             <div class="resource-card__content__bottom__price-group">
                                                 <div class="resource-card__content__bottom__price-group__amount">
-                                                    <?php priceFormat($price_low);  ?> - <?php priceFormat($price_high); ?>
+                                                    <?php priceFormat($price_low, $price_high); ?> 
                                                 </div>
                                                 <div class="resource-card__content__bottom__price-group__text">
-                                                    Per Person
+                                                    <?php echo ($price_low) ? "Per Person" : ""; ?>
                                                 </div>
                                             </div>
 

@@ -2347,7 +2347,8 @@ p {
   position: relative;
   color: #1d2225;
   display: flex !important;
-  flex-direction: column; }
+  flex-direction: column;
+  text-decoration: none; }
   .resource-card__tag {
     position: absolute;
     top: 1.5rem;
@@ -2468,7 +2469,7 @@ p {
         color: currentColor;
         font-size: 1.6rem;
         display: flex;
-        align-items: flex-end; }
+        align-items: center; }
         .resource-card__content__bottom__price-group__amount {
           font-weight: 700;
           margin-right: 0.5rem; }
@@ -4674,21 +4675,21 @@ p {
     justify-content: space-between;
     height: 100%;
     max-width: 160rem;
-    margin-top: 16rem; }
+    padding-top: 16rem; }
     @media only screen and (max-width: 50em) {
       .home-hero__content {
         padding: 0 3rem; } }
     @media only screen and (max-width: 62.5em) {
       .home-hero__content {
-        margin-top: 6rem; } }
+        padding-top: 6rem; } }
     .home-hero__content.site-notice-variant {
-      margin-top: 20rem; }
+      padding-top: 20rem; }
       @media only screen and (max-width: 62.5em) {
         .home-hero__content.site-notice-variant {
-          margin-top: 12rem; } }
+          padding-top: 12rem; } }
       @media only screen and (max-width: 37.5em) {
         .home-hero__content.site-notice-variant {
-          margin-top: 16rem; } }
+          padding-top: 16rem; } }
     .home-hero__content__primary {
       color: #fff; }
       @media only screen and (max-width: 50em) {
@@ -5481,7 +5482,7 @@ p {
     padding-top: 18rem; }
     @media only screen and (max-width: 37.5em) {
       .guide-hero.site-notice-variant {
-        padding-top: 18rem; } }
+        padding-top: 20rem; } }
   .guide-hero__content {
     width: 100%;
     max-width: 128rem;
@@ -5733,6 +5734,37 @@ p {
         @media only screen and (max-width: 37.5em) {
           .guide-main__content__copy iframe {
             height: 35rem; } }
+      .guide-main__content__copy blockquote p:first-child:first-letter {
+        font-size: 100%;
+        border: none;
+        padding: 0;
+        padding-top: 0;
+        display: inline;
+        top: 0;
+        float: none;
+        line-height: 1.6rem;
+        margin-right: 0;
+        margin-top: 0;
+        font-weight: 400; }
+      .guide-main__content__copy blockquote p:not(.wp-caption-text):first-of-type {
+        max-width: 80rem;
+        font-size: 1.8rem;
+        font-style: italic;
+        color: #1d2225;
+        position: relative;
+        line-height: 2.2rem;
+        padding: 2rem 0;
+        padding-top: 0rem;
+        margin-bottom: .5rem; }
+        .guide-main__content__copy blockquote p:not(.wp-caption-text):first-of-type::after {
+          content: "";
+          display: none; }
+        @media only screen and (max-width: 37.5em) {
+          .guide-main__content__copy blockquote p:not(.wp-caption-text):first-of-type {
+            padding-top: 1rem;
+            padding-bottom: 4rem;
+            margin-bottom: 0rem;
+            font-size: 1.8rem; } }
     .guide-main__content__question {
       display: flex;
       flex-direction: column;
@@ -5933,6 +5965,11 @@ p {
   @media only screen and (max-width: 37.5em) {
     .guides-toplevel-hero {
       padding-top: 10rem; } }
+  .guides-toplevel-hero.site-notice-variant {
+    padding-top: 18rem; }
+    @media only screen and (max-width: 37.5em) {
+      .guides-toplevel-hero.site-notice-variant {
+        padding-top: 20rem; } }
   .guides-toplevel-hero__content {
     position: relative;
     display: flex;
@@ -6329,6 +6366,14 @@ p {
       .deals-toplevel-hero__content {
         padding-top: 3rem;
         min-height: auto; } }
+    .deals-toplevel-hero__content.site-notice-variant {
+      padding-top: 20rem; }
+      @media only screen and (max-width: 62.5em) {
+        .deals-toplevel-hero__content.site-notice-variant {
+          padding-top: 12rem; } }
+      @media only screen and (max-width: 37.5em) {
+        .deals-toplevel-hero__content.site-notice-variant {
+          padding-top: 16rem; } }
     .deals-toplevel-hero__content__title-group {
       max-width: 60rem;
       display: flex;
@@ -6337,7 +6382,7 @@ p {
       .deals-toplevel-hero__content__title-group__category {
         font-size: 1.8rem;
         font-weight: 700;
-        margin-bottom: .5rem; }
+        margin-bottom: 0.5rem; }
         @media only screen and (max-width: 37.5em) {
           .deals-toplevel-hero__content__title-group__category {
             font-size: 1.4rem;
@@ -7637,6 +7682,11 @@ p {
   @media only screen and (max-width: 37.5em) {
     .contact-page {
       padding-top: 10rem; } }
+  .contact-page.site-notice-variant {
+    padding-top: 18rem; }
+    @media only screen and (max-width: 37.5em) {
+      .contact-page.site-notice-variant {
+        padding-top: 20rem; } }
   .contact-page__intro {
     display: flex;
     flex-direction: column;
@@ -7647,7 +7697,8 @@ p {
     margin-bottom: 6rem; }
     @media only screen and (max-width: 37.5em) {
       .contact-page__intro {
-        padding: 0 3rem; } }
+        padding: 0 3rem;
+        margin-bottom: 2rem; } }
     .contact-page__intro__category {
       font-size: 1.6rem;
       letter-spacing: 0.2rem;
@@ -7779,6 +7830,11 @@ p {
   @media only screen and (max-width: 37.5em) {
     .about-mission {
       padding-top: 10rem; } }
+  .about-mission.site-notice-variant {
+    padding-top: 18rem; }
+    @media only screen and (max-width: 37.5em) {
+      .about-mission.site-notice-variant {
+        padding-top: 20rem; } }
   .about-mission__content {
     width: 100%;
     max-width: 128rem;
@@ -7798,6 +7854,11 @@ p {
         font-weight: 700;
         margin-bottom: 2rem;
         color: #1d2225; }
+        @media only screen and (max-width: 37.5em) {
+          .about-mission__content__intro__title {
+            font-size: 3rem;
+            line-height: 3.8rem;
+            letter-spacing: 0rem; } }
       .about-mission__content__intro__text {
         font-size: 1.6rem; }
     .about-mission__content__imagery {
@@ -7846,7 +7907,6 @@ p {
           font-size: 7rem;
           line-height: 7.5rem;
           letter-spacing: 0.2rem;
-          font-family: "Playfair Display", serif;
           text-align: center;
           z-index: 5;
           font-weight: 400; }
@@ -7920,11 +7980,14 @@ p {
         .about-mission__content__statement__snippet p {
           font-size: 3rem;
           line-height: 3.5rem;
-          text-align: center;
-          font-family: "Playfair Display", serif; }
+          text-align: center; }
+          @media only screen and (max-width: 37.5em) {
+            .about-mission__content__statement__snippet p {
+              font-size: 2rem;
+              line-height: 2.8rem; } }
         @media only screen and (max-width: 37.5em) {
           .about-mission__content__statement__snippet {
-            padding: 9rem 3rem; } }
+            padding: 6rem 3rem; } }
 
 .about-difference {
   display: flex;
@@ -7942,26 +8005,16 @@ p {
     margin-bottom: 6rem; }
     .about-difference__content__title {
       font-size: 3.5rem;
+      line-height: 4rem;
       color: #1d2225;
-      margin-bottom: 6rem;
-      font-weight: 700; }
+      margin-bottom: 3rem;
+      font-weight: 700;
+      padding: 3rem; }
     .about-difference__content__slider-area {
       width: 100%; }
       .about-difference__content__slider-area__slider {
         width: 100%;
         user-select: text; }
-        .about-difference__content__slider-area__slider .slick-list {
-          padding: 0 25% !important; }
-          @media only screen and (max-width: 62.5em) {
-            .about-difference__content__slider-area__slider .slick-list {
-              padding: 0 15% !important; } }
-          @media only screen and (max-width: 37.5em) {
-            .about-difference__content__slider-area__slider .slick-list {
-              padding: 0 10% !important; } }
-        .about-difference__content__slider-area__slider .slick-current .difference-card__content {
-          opacity: 1; }
-        .about-difference__content__slider-area__slider .slick-current .difference-card::after {
-          opacity: 0; }
 
 .difference-card {
   display: flex !important;
@@ -7970,6 +8023,10 @@ p {
   justify-content: flex-end;
   height: 60rem;
   user-select: text; }
+  .difference-card.swiper-slide-active .difference-card__content {
+    opacity: 1 !important; }
+  .difference-card.swiper-slide-active .difference-card::after {
+    opacity: 0 !important; }
   .difference-card__bg {
     position: absolute;
     top: 0;
@@ -8006,7 +8063,6 @@ p {
       line-height: 4rem;
       font-weight: 700;
       margin-bottom: 1.5rem;
-      font-family: "Playfair Display", serif;
       letter-spacing: 0.2rem;
       color: currentColor; }
       @media only screen and (max-width: 37.5em) {
@@ -9110,6 +9166,7 @@ p {
     background-color: white;
     padding: 1.5rem 2rem;
     padding-bottom: 0rem;
+    border-radius: 1rem;
     display: flex;
     flex-direction: column;
     height: 100%; }
@@ -9117,7 +9174,7 @@ p {
       font-weight: 700;
       font-size: 1.8rem;
       font-weight: 700;
-      margin-bottom: 1rem; }
+      margin-bottom: .5rem; }
       .search-card-itinerary__content__title:link, .search-card-itinerary__content__title:visited {
         text-decoration: none;
         color: currentColor; }
@@ -9136,6 +9193,9 @@ p {
         font-weight: 700; }
       .search-card-itinerary__content__title-group__sub {
         font-size: 1.4rem; }
+    .search-card-itinerary__content__description {
+      padding: 1.5rem 0rem;
+      padding-top: 0rem; }
     .search-card-itinerary__content__specs {
       margin-bottom: 0.5rem; }
       .search-card-itinerary__content__specs .specs-item {

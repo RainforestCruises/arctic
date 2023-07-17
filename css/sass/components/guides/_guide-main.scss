@@ -12,13 +12,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            //margin-bottom: 2rem;
             hyphens: auto;
             & p:not(.wp-caption-text):first-of-type {
                 max-width: 80rem;
                 font-size: 2rem;
                 color: $color-primary;
-                //text-align: center;
                 position: relative;
                 line-height: 2.8rem;
                 &::after {
@@ -59,7 +57,6 @@
 
             & p:not(:first-child) {
                 max-width: 80rem;
-                //align-self: center;
                 font-size: 1.6rem;
             }
 
@@ -102,7 +99,6 @@
             }
 
             & hr {
-                //align-self: center;
                 display: block;
                 width: 100%;
                 max-width: 80rem;
@@ -118,6 +114,44 @@
 
                 @media only screen and (max-width: $bp-small) {
                     height: 35rem;
+                }
+            }
+
+            & blockquote {
+                p:first-child:first-letter {
+                    font-size: 100%;
+                    border: none;
+                    padding: 0;
+                    padding-top: 0;
+                    display: inline;
+                    top: 0;
+                    float: none;
+                    line-height: 1.6rem;
+                    margin-right: 0;
+                    margin-top: 0;
+                    font-weight: 400;
+                }
+                p:not(.wp-caption-text):first-of-type {
+                    max-width: 80rem;
+                    font-size: 1.8rem;
+                    font-style: italic;
+                    color: $color-primary;
+                    position: relative;
+                    line-height: 2.2rem;
+                    &::after {
+                        content: "";
+                        display: none;
+                    }
+                    padding: 2rem 0;
+                    padding-top: 0rem;
+                    margin-bottom: .5rem;
+    
+                    @media only screen and (max-width: $bp-small) {
+                        padding-top: 1rem;
+                        padding-bottom: 4rem;
+                        margin-bottom: 0rem;
+                        font-size: 1.8rem;
+                    }
                 }
             }
         }

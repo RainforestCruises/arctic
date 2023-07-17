@@ -1,6 +1,6 @@
 .contact-page {
     @include pageTopPadding;
-
+    @include siteNoticePaddingPage;
     
     display: flex;
     flex-direction: column;
@@ -20,11 +20,14 @@
         width: 100%;
         max-width: $page-width;
         padding: 0 6rem;
+        margin-bottom: 6rem;
+
         @media only screen and (max-width: $bp-small) {
             padding: 0 3rem;
+            margin-bottom: 2rem;
+
         }
 
-        margin-bottom: 6rem;
 
         &__category {
             font-size: 1.6rem;

@@ -1,14 +1,6 @@
 <?php
-$currentDeal = get_post();
-$queryArgs = array(
-    'post_type' => 'rfc_itineraries',
-    'posts_per_page' => -1,
-);
-$itineraries = get_posts($queryArgs);
-
-$itinerariesWithDeal = getItinerariesWithDeal($currentDeal);
-
-
+$deal = get_post();
+$itinerariesWithDeal = getItinerariesWithDeal($deal);
 
 $subtitleDisplay = "";
 if (count($itinerariesWithDeal) > 1) {
@@ -55,7 +47,8 @@ if (count($itinerariesWithDeal) > 1) {
                 $lowestPrice = getLowestDepartureListPrice($departures);
                 $highestPrice = getHighestDepartureListPrice($departures);
                 $bestOverallDiscount = getBestDepartureListDiscount($departures);
-                $departuresWithDealList = getDeparturesWithDeal($departures, $currentDeal);
+                $departuresWithDealList = getDeparturesWithDeal($departures, $deal);
+
             ?>
 
                 <!-- Itinerary Card -->
@@ -126,10 +119,10 @@ if (count($itinerariesWithDeal) > 1) {
                             <!-- Price Group -->
                             <div class="resource-card__content__bottom__price-group">
                                 <div class="resource-card__content__bottom__price-group__amount">
-                                    <?php priceFormat($lowestPrice);  ?> - <?php priceFormat($highestPrice); ?>
+                                    <?php priceFormat($lowestPrice, $highestPrice); ?>
                                 </div>
                                 <div class="resource-card__content__bottom__price-group__text">
-                                    Per Person
+                                    <?php echo ($lowestPrice) ? "Per Person" : ""; ?>
                                 </div>
                             </div>
                         </div>

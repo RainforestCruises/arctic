@@ -60,7 +60,11 @@ $departures = $args['departures'];
                         $embarkationPost = get_field('embarkation_point', $itineraryPost);
                         $embarkationName = get_the_title($embarkationPost) . ', ' . get_field('country_name', $embarkationPost);
                         $bestDiscount = $d['BestDiscount'];
+                        $highestPrice = $d['HighestPrice'];
+                        $lowestPrice = $d['LowestPrice'];
                         $deals = $d['Deals'];
+                        $specialDepartures = $d['SpecialDepartures'];
+                        $combinedDeals = array_merge($deals, $specialDepartures);
                     ?>
 
                         <div class="information-card info-departure-card swiper-slide" data-filter-date="<?php echo date("Y", $departureStartDate); ?>" data-filter-secondary="<?php echo $itineraryPostId; ?>" data-filter-discount=<?php echo ($bestDiscount) ? true : false ?>>
@@ -125,12 +129,8 @@ $departures = $args['departures'];
                                     </div>
                                     <div class="specs-item__text">
                                         <div class="specs-item__text__main">
-                                            <?php
-                                            if ($d['LowestPrice']) {
-                                               priceFormat($d['LowestPrice']) ?> - <?php priceFormat($d['HighestPrice']);
-                                            } else {
-                                                echo "<span class ='red-text'>Sold Out</span>";
-                                            }; ?>
+                                            <?php priceFormat($lowestPrice, $highestPrice);  ?>
+
                                         </div>
                                         <?php if ($bestDiscount) : ?>
                                             <div class="specs-item__text__sub">
@@ -140,8 +140,8 @@ $departures = $args['departures'];
                                     </div>
                                 </div>
                                 <!-- Deals -->
-                                <?php if ($deals) :
-                                    foreach ($deals as $deal) :
+                                <?php if ($combinedDeals) :
+                                    foreach ($combinedDeals as $deal) :
                                         $dealId = $deal->ID;
                                         $short_title = get_field('short_title', $deal);
                                         $is_special_departure = get_field('is_special_departure', $deal);

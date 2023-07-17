@@ -60,7 +60,7 @@
         background-color: rgba($color-white, 1);
         padding: 1.5rem 2rem;
         padding-bottom: 0rem;
-
+        border-radius: 1rem;
 
         display: flex;
         flex-direction: column;
@@ -71,7 +71,7 @@
             font-weight: 700;
             font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: .5rem;
 
             &:link,
             &:visited {
@@ -103,6 +103,11 @@
             }
 
             margin-bottom: 0.5rem;
+        }
+
+        &__description {
+            padding: 1.5rem 0rem;
+            padding-top: 0rem;
         }
 
 

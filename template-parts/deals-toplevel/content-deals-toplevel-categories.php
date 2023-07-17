@@ -6,9 +6,8 @@ foreach ($sections as $section) :
     $title = $section['title'];
     $snippet = $section['snippet'];
     $dealsInCategory = getDealsInCategory($category);
-    $itineraries = getItinerariesWithDeal($dealsInCategory);
-    if (!$itineraries) continue; // skip if no deals found for category
-    //$subtitleDisplay = count($itineraries) > 1 ? "There are " . count($itineraries) . " itineraries with this deal"  : "There is 1 itinerary with this deal";
+
+    if (!$dealsInCategory) continue; // skip if no deals found for category
 ?>
 
     <section class="slider-block deal-slider-block" id="section-deals-<?php echo $categoryCount; ?>">
@@ -50,93 +49,47 @@ foreach ($sections as $section) :
                 <div class="swiper" id="category-slider-<?php echo $categoryCount; ?>">
                     <div class="swiper-wrapper">
 
-                        <?php foreach ($itineraries as $itinerary) :
-                            $images =  get_field('hero_gallery', $itinerary);
-                            $image = $images[0];
-                            $itineraries =  get_field('itineraries', $itinerary);
-                            $title = get_field('display_name', $itinerary);
-                            $days = get_field('itinerary', $itinerary);
-                            $length_in_nights = get_field('length_in_nights', $itinerary);
-                            $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
-                            $embarkation_point = get_field('embarkation_point', $itinerary);
-                            $embarkation = get_the_title($embarkation_point);
-                            $shipsDisplay = getItineraryShips($itinerary);
-                            $destinations = getItineraryDestinations($itinerary, true, 4);
-                            $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
-                            $guestsDisplay = get_field('vessel_capacity', $itinerary) . ' Guests, ' . 'Luxury';
-                            $departures = getDepartureList($itinerary);
-                            $lowestPrice = getLowestDepartureListPrice($departures);
-                            $highestPrice = getHighestDepartureListPrice($departures);
-                            $bestOverallDiscount = getBestDepartureListDiscount($departures);
+                        <?php foreach ($dealsInCategory as $deal) :
+                            $image =  get_field('featured_image', $deal);
+                            $itineraries = getItinerariesWithDeal($deal);
+                            $ships = getShipsWithDeal($deal);
+                            $title = get_field('navigation_title', $deal);
+                            $description = get_field('description', $deal);
+                            $expand = strlen($description) > 320 ? true : false;
+                            $description_limited = substr($description, 0, 320);
+                            if ($expand) {
+                                $description_limited .= '...';
+                            }
                         ?>
 
                             <!-- Itinerary Card -->
-                            <div class="resource-card swiper-slide">
-
-                                <!-- Tag -->
-                                <?php if ($bestOverallDiscount) : ?>
-                                    <div class="resource-card__tag">
-                                        Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
-                                    </div>
-                                <?php endif; ?>
+                            <a class="search-card-itinerary swiper-slide" href="<?php echo get_permalink($deal) ?>">
 
 
-                                <!-- Images Slider -->
-                                <div class="resource-card__image-area">
-                                    <a class="resource-card__image-area__item" href="<?php echo get_permalink($itinerary) ?>">
-                                        <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
-                                    </a>
+                                <!-- Image -->
+                                <div class="search-card-itinerary__image-area">
+                                    <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
+
                                 </div>
 
                                 <!-- Content -->
-                                <div class="resource-card__content">
+                                <div class="search-card-itinerary__content">
 
                                     <!-- Title -->
-                                    <h3 class="resource-card__content__title">
-                                        <a href="<?php echo get_permalink($itinerary) ?>"><?php echo $title; ?></a>
-                                    </h3>
-
-                                    <!-- Specs -->
-                                    <div class="resource-card__content__specs">
-
-                                        <!-- Itinerary -->
-                                        <div class="specs-item">
-                                            <div class="specs-item__icon">
-                                                <svg>
-                                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-time-clock"></use>
-                                                </svg>
-                                            </div>
-                                            <div class="specs-item__text">
-                                                Length: <?php echo $length; ?>
-                                            </div>
-                                        </div>
-                                        <!-- Ships -->
-                                        <div class="specs-item">
-                                            <div class="specs-item__icon">
-                                                <svg>
-                                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat-16"></use>
-                                                </svg>
-                                            </div>
-                                            <div class="specs-item__text">
-                                                Ships: <?php echo $shipsDisplay; ?>
-                                            </div>
-                                        </div>
+                                    <div class="search-card-itinerary__content__title">
+                                        <?php echo $title; ?>
                                     </div>
 
-                                    <div class="resource-card__content__bottom">
-                                        <!-- Price Group -->
-                                        <div class="resource-card__content__bottom__price-group">
-                                            <div class="resource-card__content__bottom__price-group__amount">
-                                                <?php priceFormat($lowestPrice);  ?> - <?php priceFormat($highestPrice); ?>
-                                            </div>
-                                            <div class="resource-card__content__bottom__price-group__text">
-                                                Per Person
-                                            </div>
-                                        </div>
+                                    <!-- Description -->
+                                    <div class="search-card-itinerary__content__description">
+                                        <?php echo $description_limited; ?>
                                     </div>
+
+                           
 
                                 </div>
-                            </div>
+
+                            </a>
 
                         <?php endforeach; ?>
 

@@ -10,9 +10,12 @@
 
         &__title {
             font-size: 3.5rem;
+            line-height: 4rem;
             color: $color-primary;
-            margin-bottom: 6rem;
+            margin-bottom: 3rem;
             font-weight: 700;
+            padding: 3rem;
+         
         }
 
         &__slider-area {
@@ -22,26 +25,8 @@
                 width: 100%;
                 user-select: text;
 
-                & .slick-list {
-                    padding: 0 25% !important;
 
-                    @media only screen and (max-width: $bp-large) {
-                        padding: 0 15% !important;
-                    }
-                    @media only screen and (max-width: $bp-small) {
-                        padding: 0 10% !important;
-                    }
-                }
-
-                & .slick-current {
-                    & .difference-card__content {
-                        opacity: 1;
-                    }
-
-                    & .difference-card::after {
-                        opacity: 0;
-                    }
-                }
+                
             }
         }
     }
@@ -55,6 +40,16 @@
     height: 60rem;
 
     user-select: text;
+    &.swiper-slide-active {
+       
+        & .difference-card__content {
+            opacity: 1 !important;
+        }
+
+        & .difference-card::after {
+            opacity: 0 !important;
+        }
+    }
 
     &__bg {
         position: absolute;
@@ -101,7 +96,6 @@
             line-height: 4rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            font-family: $font-secondary;
             letter-spacing: 0.2rem;
             color: currentColor;
             @media only screen and (max-width: $bp-small) {
