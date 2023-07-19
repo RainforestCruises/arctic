@@ -218,7 +218,7 @@ $ships_title_subtext = get_field('ships_title_subtext');
 
         </div>
         <div class="grid-block__content__cta">
-            <button class="cta-primary cta-primary--inverse" id="all-ships-button">
+            <button class="btn-primary btn-primary--inverse-outline" id="all-ships-button">
                 View All Ships
             </button>
         </div>

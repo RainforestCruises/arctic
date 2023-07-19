@@ -73,7 +73,7 @@ $is_special_departure = get_field('is_special_departure');
                         <div class="tiny-card__section">
 
                             <!-- CTA -->
-                            <button class="cta-square-icon">
+                            <button class="btn-primary btn-primary--icon btn-primary--small">
                                 Explore
                                 <svg>
                                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>

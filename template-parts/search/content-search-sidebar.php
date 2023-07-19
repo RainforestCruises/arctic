@@ -62,10 +62,11 @@ if (get_field('itinerary_length_max') != null) {
 
 ?>
 
+<!-- Search Sidebar -->
 <aside class="search-sidebar" id="search-sidebar">
 
+    <!-- Mobile Header -->
     <div class="search-sidebar__mobile-header" id="search-sidebar-mobile-header">
-
         <button class="search-sidebar__mobile-header__close-button" id="search-sidebar-mobile-close-button">
             <div class="search-sidebar__mobile-header__close-button__icon-area">
                 <svg>
@@ -75,11 +76,9 @@ if (get_field('itinerary_length_max') != null) {
             <div class="search-sidebar__mobile-header__close-button__text-area">
                 Close
             </div>
-
         </button>
 
-
-        <button class="search-sidebar__mobile-header__clear-button search-button clear-filters" id="search-sidebar-mobile-clear-button">
+        <button class="search-sidebar__mobile-header__clear-button btn-pill clear-filters" id="search-sidebar-mobile-clear-button">
             Clear
         </button>
     </div>
@@ -183,7 +182,7 @@ if (get_field('itinerary_length_max') != null) {
 
             </ul>
             <div class="filter__content__show-more">
-                <button id="departure-show-more">Show More</button>
+                <button class="btn-primary btn-primary--inverse-outline btn-primary--small btn-primary--bold" id="departure-show-more">Show More</button>
             </div>
             <!-- Extras here, button etc-->
         </div>
@@ -286,7 +285,7 @@ if (get_field('itinerary_length_max') != null) {
 
     <!-- Clear Filters Button -->
     <div class="filter--clear clear-filters-area" id="clear-filters-area">
-        <button class="search-button clear-filters">
+        <button class="btn-primary btn-primary--inverse-outline btn-primary--small btn-primary--bold clear-filters">
             Clear Filters
         </button>
     </div>

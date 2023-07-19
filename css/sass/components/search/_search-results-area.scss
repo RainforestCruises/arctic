@@ -195,27 +195,27 @@
                 justify-content: center;
                 align-items: center;
 
-                & button {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    background-color: transparent;
-                    border: none;
-                    cursor: pointer;
-                    width: auto;
-                    height: 4rem;
-                    font-family: $font-primary;
-                    font-weight: 700;
-                    font-size: 1.3rem;
-                    color: $color-primary;
-                    position: relative;
+                // & button {
+                //     display: flex;
+                //     align-items: center;
+                //     justify-content: center;
+                //     background-color: transparent;
+                //     border: none;
+                //     cursor: pointer;
+                //     width: auto;
+                //     height: 4rem;
+                //     font-family: $font-primary;
+                //     font-weight: 700;
+                //     font-size: 1.3rem;
+                //     color: $color-primary;
+                //     position: relative;
 
-                    &:hover {
-                        &:not(.disabled) {
-                            color: $color-primary;
-                        }
-                    }
-                }
+                //     &:hover {
+                //         &:not(.disabled) {
+                //             color: $color-primary;
+                //         }
+                //     }
+                // }
             }
         }
 

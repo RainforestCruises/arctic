@@ -32,7 +32,7 @@ $ships = $args['ships'];
                 </button>
             </div>
 
-            <button class="btn-text-icon close-modal-button ">
+            <button class="btn-text btn-text--bg close-modal-button ">
                 Close
                 <svg>
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
@@ -193,14 +193,14 @@ $ships = $args['ships'];
                             <div class="information-card__bottom">
                                 <!-- Price Group -->
                                 <div class="information-card__bottom__price-group">
-                                    <button class="cta-square-icon cta-square-icon--inverse departure-price-group-button" departureId="<?php echo $departureId; ?>" year="<?php echo date("Y", $departureStartDate); ?>" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itineraryTitle="<?php echo $title; ?>">
+                                    <button class="btn-primary btn-primary--small btn-primary--inverse departure-price-group-button" departureId="<?php echo $departureId; ?>" year="<?php echo date("Y", $departureStartDate); ?>" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itineraryTitle="<?php echo $title; ?>">
                                         View Prices
                                     </button>
                                 </div>
 
                                 <!-- CTA -->
                                 <div class="information-card__bottom__cta">
-                                    <button class="cta-square-icon departure-inquire-cta" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itineraryTitle="<?php echo $title; ?>">
+                                    <button class="btn-primary btn-primary--icon btn-primary--small departure-inquire-cta" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itineraryTitle="<?php echo $title; ?>">
                                         Inquire
                                         <svg>
                                             <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
@@ -241,7 +241,7 @@ $ships = $args['ships'];
 
                                     <div class="deal-card-inline__cta">
                                         <!-- CTA -->
-                                        <button class="btn-text-plain">
+                                        <button class="btn-text">
                                             Details
                                             <svg>
                                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
@@ -345,7 +345,7 @@ $ships = $args['ships'];
 
                                     <!-- CTA -->
                                     <div class="information-card__bottom__cta">
-                                        <button class="cta-square-icon cabin-inquire-cta" cabinTitle="<?php echo $title; ?>" <?php echo ($sold_out) ? "disabled" : "" ?>>
+                                        <button class="btn-primary btn-primary--icon btn-primary--small cabin-inquire-cta" cabinTitle="<?php echo $title; ?>" <?php echo ($sold_out) ? "disabled" : "" ?>>
                                             Inquire
                                             <svg>
                                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>

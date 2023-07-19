@@ -3,14 +3,11 @@
   padding-top: 11rem; //top padding
 
   &.site-notice-variant {
-    padding-top: 16rem; //top padding
+    padding-top: 15rem; //top padding
     @media only screen and (max-width: $bp-small) {
-        padding-top: 16rem;
+      padding-top: 17rem;
     }
-}
-
-
-
+  }
 
   margin-bottom: 2rem;
   &__content {
@@ -22,32 +19,21 @@
     max-width: $page-width-full;
     @include flexPadding;
 
-    &__breadcrumb {
-      display: flex;
-      list-style: none;
+    & .breadcrumb-list {
       font-size: 1.5rem;
       font-weight: 500;
-      flex-wrap: wrap;
-      margin-bottom: 0.5rem;
-      text-transform: capitalize;
-      & li {
-        display: inline-block;
-        color: $color-grey-1;
-        width: max-content;
-        &:not(:last-child):after {
-          content: "/";
-          padding-left: 1px;
-          padding-right: 4px;
-        }
-
-        & a {
-          text-decoration: none;
-          color: currentColor;
-          &:hover {
-            color: $color-supporting-light;
-          }
+      color: $color-grey-1;
+      & a {
+        text-decoration: none;
+        color: currentColor;
+        &:hover {
+          color: $color-supporting-light;
         }
       }
+    }
+
+    &.sticky-compensate {
+      margin-bottom: 7rem;
     }
 
     &__title {
@@ -60,12 +46,7 @@
       display: flex;
       width: 100%;
       margin-bottom: 0.5rem;
-
       align-items: center;
-
-      &:hover {
-        color: $color-supporting;
-      }
 
       & span {
         margin-right: 0.5rem;

@@ -47,7 +47,7 @@ $maxlength = 320;
                     </div>
                     <?php if ($expand) : ?>
                         <div class="text-card__expand">
-                            <button class="btn-text-plain" id="expand-content">
+                            <button class="btn-text" id="expand-content">
                                 Read More
                                 <svg>
                                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
@@ -59,7 +59,7 @@ $maxlength = 320;
             <?php endforeach; ?>
         </div>
         <div class="grid-block__content__cta">
-            <a class="cta-primary cta-primary--inverse" id="all-guides-link">
+            <a class="btn-primary btn-primary--inverse-outline" id="all-guides-link">
                 Read All Reviews
             </a>
         </div>

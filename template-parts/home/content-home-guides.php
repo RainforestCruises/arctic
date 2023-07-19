@@ -54,7 +54,7 @@ $show_reviews = get_field('show_reviews');
 
         </div>
         <div class="grid-block__content__cta">
-            <a class="cta-primary cta-primary--inverse" id="all-guides-link" href="<?php echo $top_level_guides_page; ?>">
+            <a class="btn-primary btn-primary--inverse-outline" id="all-guides-link" href="<?php echo $top_level_guides_page; ?>">
                 View The Guide
             </a>
         </div>

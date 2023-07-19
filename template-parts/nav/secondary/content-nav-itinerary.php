@@ -39,7 +39,7 @@ $extraActivities = get_field('extra_activities');
 
         </div>
         <div class="nav-secondary__content__cta product-template">
-            <button class="nav-secondary__content__cta__button btn-pill btn-pill--dark generic-inquire-cta">
+            <button class="nav-secondary__content__cta__button btn-pill btn-pill--inverse generic-inquire-cta">
                 Inquire
             </button>
         </div>

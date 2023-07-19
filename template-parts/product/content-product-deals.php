@@ -118,7 +118,7 @@ if ($deals && $specialDepartures) {
                                 <?php endif; ?>
 
                                 <div class="deal-card__urgency__cta">
-                                    <button class="cta-square-icon <?php echo $is_special_departure ? "special-departure-cta" : "" ?> deal-cta" dealId="<?php echo $id ?>">
+                                    <button class="btn-primary btn-primary--icon btn-primary--small <?php echo $is_special_departure ? "special-departure-cta" : "" ?> deal-cta" dealId="<?php echo $id ?>">
                                         Details
                                         <svg>
                                             <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
@@ -147,7 +147,7 @@ if ($deals && $specialDepartures) {
                     Deal Information
                 </div>
             </div>
-            <button class="btn-text-icon close-modal-button ">
+            <button class="btn-text btn-text--bg close-modal-button ">
                 Close
                 <svg>
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
@@ -210,7 +210,7 @@ if ($deals && $specialDepartures) {
                             <?php endif; ?>
                         </div>
                         <div class="product-deals-modal-item__cta__button-area">
-                            <a class="cta-square-icon" href="<?php echo get_permalink($deal) ?>" target="_blank">
+                            <a class="btn-primary btn-primary--icon btn-primary--small" href="<?php echo get_permalink($deal) ?>" target="_blank">
                                 <span id="dealsModalCtaText">View Page</span>
 
                                 <svg>

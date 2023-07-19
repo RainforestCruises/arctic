@@ -8,7 +8,7 @@ $footerCtaDivider = $args['footerCtaDivider'];
 
 <!-- CTA Pre-Footer -->
 <section class="grid-block <?php echo $footerClasses; ?>" id="section-footer">
-    <div class="grid-block__content <?php echo $footerCtaDivider ? "block-top-divider" : "";?>">
+    <div class="grid-block__content <?php echo $footerCtaDivider ? "block-top-divider" : ""; ?>">
         <!-- Grid Area -->
         <div class="grid-block__content__grid grid1">
             <div class="footer-cta">
@@ -47,9 +47,9 @@ $footerCtaDivider = $args['footerCtaDivider'];
 
                 <div class="footer-cta__closing">
                     <div class="footer-cta__closing__buttons">
-                        <a class="cta-primary cta-primary--inverse" href="<?php echo get_home_url(); ?>/contact">
-                        Start Your Adventure Today
-                        </a>      
+                        <a class="btn-primary btn-primary--inverse-outline" href="<?php echo get_home_url(); ?>/contact">
+                            Start Your Adventure Today
+                        </a>
                     </div>
                 </div>
             </div>
@@ -57,6 +57,3 @@ $footerCtaDivider = $args['footerCtaDivider'];
 
     </div>
 </section>
-
-
-

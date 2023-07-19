@@ -78,9 +78,10 @@
                 justify-content: center;
                 
                 & button {
+                    display: flex;
                     max-width: 50rem;
                     background-color: transparent;
-                    white-space:normal;
+                    white-space: normal !important;
                     line-height: 2rem;
                     //border-color: ;
                     border: 1px solid $color-white;

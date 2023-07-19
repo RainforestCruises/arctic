@@ -68,15 +68,13 @@
                        <?php foreach ($currencies as $item) :
                             $isCurrent = $item['name'] == $current_currency;
                         ?>
-                           <a class="cta-square-icon cta-square-icon--inverse <?php echo $isCurrent ? "active" : ""; ?>" href="<?php echo $current_url . "?currency=" . $item['name'] ?>">
+                           <a class="btn-primary btn-primary--icon btn-primary--small btn-primary--inverse <?php echo $isCurrent ? "active" : ""; ?>" href="<?php echo $current_url . "?currency=" . $item['name'] ?>">
                                <div>
                                    <?php echo $item['description']; ?>
-
                                </div>
                                <div class="subtext">
                                    <?php echo $item['name'] ?> &#8212; <?php echo $item['symbol']; ?>
                                </div>
-
                            </a>
                        <?php endforeach; ?>
                    </div>
@@ -92,7 +90,7 @@
                        <?php foreach ($languages as $item) :
                             $isCurrent = $item['language_code'] == $current_language;
                         ?>
-                           <a class="cta-square-icon cta-square-icon--inverse <?php echo $isCurrent ? "active" : ""; ?>" href="<?php echo $item['current_page_url'] ?>">
+                           <a class="btn-primary btn-primary--icon btn-primary--small btn-primary--inverse <?php echo $isCurrent ? "active" : ""; ?>" href="<?php echo $item['current_page_url'] ?>">
                                <?php echo $item['language_name'] ?>
                            </a>
                        <?php endforeach; ?>

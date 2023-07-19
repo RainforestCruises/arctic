@@ -64,7 +64,7 @@ if ($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_
 
                 <div class="product-overview__content__grid__overview__expand">
                     <?php if ($expand) : ?>
-                        <button class="btn-text-plain" id="expand-content">
+                        <button class="btn-text" id="expand-content">
                             Read More
                             <svg>
                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
@@ -283,7 +283,7 @@ if ($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_
                         </div>
                         <div class="outline-panel__content__expand">
                             <?php if ($expandItems) : ?>
-                                <button class="btn-text-plain" id="expand-items">
+                                <button class="btn-text" id="expand-items">
                                     View All <?php echo count($amenities); ?> Amenities
                                     <svg>
                                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
@@ -299,7 +299,7 @@ if ($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_
                 <div class="product-overview__content__grid__secondary__cta">
 
                     <?php if ($deck_plans) : ?>
-                        <button class="cta-primary cta-primary--inverse" id="deckplan-button">
+                        <button class="btn-primary btn-primary--inverse-outline" id="deckplan-button">
                             View Deckplans
                         </button>
                     <?php endif; ?>
@@ -321,7 +321,7 @@ if ($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_
                     About the <?php echo $productName; ?>
                 </h2>
             </div>
-            <button class="btn-text-icon close-modal-button ">
+            <button class="btn-text btn-text--bg close-modal-button">
                 Close
                 <svg>
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
@@ -347,7 +347,7 @@ if ($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_
                     <?php echo $productName; ?> Amenities
                 </div>
             </div>
-            <button class="btn-text-icon close-modal-button ">
+            <button class="btn-text btn-text--bg close-modal-button ">
                 Close
                 <svg>
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>

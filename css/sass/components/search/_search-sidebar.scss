@@ -49,10 +49,10 @@
 
 
     
-
+    // mobile header - close / clear buttons
     &__mobile-header {
-        display: none;
-
+        display: none; // hide on desktop
+        
         @media only screen and (max-width: $bp-large) {
             display: flex;
             justify-content: space-between;
@@ -60,6 +60,7 @@
             border-bottom: 1px solid $color-grey-light-2;
             position: fixed;
             width: 100%;
+            height: 7rem;
             background-color: $color-white;
             z-index: 15000;
         }
@@ -68,24 +69,16 @@
             margin-right: 2.5rem !important;
         }
 
-        &__close-button {
-            //mobile button (hidden on desktop)
+        &__close-button {     
             border: none;
             background-color: $color-white;
-
             font-size: 1.5rem;
-            letter-spacing: 0.2rem;
-            text-transform: uppercase;
-            font-weight: 700;
-
-            height: 7rem;
+            font-weight: 500;
+            height: 100%;
             cursor: pointer;
             color: $color-primary;
-            //width: 100%;
             font-family: $font-primary;
-            //width: min-content;
             outline: none;
-
             display: none;
 
             @media only screen and (max-width: $bp-large) {
@@ -106,10 +99,6 @@
                 width: 5rem;
                 height: 100%;
 
-                @media only screen and (max-width: $bp-small) {
-                    width: 7rem;
-                }
-
                 & svg {
                     height: 2.5rem;
                     width: 2.5rem;
@@ -121,7 +110,7 @@
             }
 
             &__text-area {
-                width: 10rem;
+                width: 8rem;
                 height: 100%;
                 display: flex;
                 align-items: center;
@@ -151,7 +140,6 @@
         justify-content: center;
         align-items: center;
         padding: 2rem;
-        transform: scale(0.8);
 
         &.show {
             display: flex;
@@ -253,42 +241,15 @@
         &__show-more {
             display: flex;
             justify-content: center;
-
             padding: 2rem;
             padding-bottom: 0rem;
-
-            & button {
-                background-color: $color-white;
-                font-family: $font-primary;
-                color: $color-supporting-light;
-                border: 1px solid currentColor;
-                border-radius: 0.5rem;
-                font-size: 1.2rem;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 0.1rem;
-                padding: 1rem 2rem;
-                cursor: pointer;
-                transition: all 0.2s;
-                outline: none;
-                white-space: nowrap;
-
-                width: max-content;
-                &:hover {
-                    background-color: $color-supporting-light;
-                    color: $color-white;
-                }
-            }
         }
 
         &__search-area {
             width: 100%;
-
             display: flex;
             justify-content: space-between;
-
             position: relative;
-
             
             @media only screen and (max-width: $bp-large) {
                 width: 95%;
@@ -301,15 +262,14 @@
                 background-color: transparent;
                 border: 1px solid $color-grey-light-2;
                 padding: 1rem 1.5rem;
-
                 font-family: $font-primary;
                 letter-spacing: 0.1rem;
                 color: $color-primary;
                 font-weight: 400;
                 font-size: 1.6rem;
-
                 transition: all 0.2s;
                 outline: none;
+
                 &:hover {
                     border: 1px solid $color-grey-1;
                 }
@@ -468,12 +428,6 @@
 
     display: none;
 
-    transition: all 0.3s;
-
-    &.scrollUp {
-        transform: translateY(-7rem);
-    }
-
     @include flexPadding;
 
     @media only screen and (max-width: $bp-large) {
@@ -482,6 +436,8 @@
 
     &.sticky {
         position: fixed;
+        top: 0;
+        left: 0;
         z-index: 30;
         border-top: none;
     }
@@ -543,51 +499,5 @@
         transition: all 0.2s;
         outline: none;
         white-space: nowrap;
-    }
-}
-
-.search-button {
-    color: $color-supporting-light;
-    background-color: transparent;
-    padding: 1.2rem 2.5rem;
-    border: none;
-    margin-right: 1rem;
-    height: 4rem;
-    letter-spacing: 0.2rem;
-    cursor: pointer;
-    outline: none;
-    font-size: 1.5rem;
-    font-family: $font-primary;
-    text-transform: uppercase;
-    font-weight: 700;
-    position: relative;
-    text-decoration: none;
-    white-space: nowrap;
-
-    &--inverse {
-        color: $color-white;
-        background-color: $color-supporting-light;
-        border-radius: 2.5rem;
-        &::after {
-            display: none;
-        }
-    }
-
-    &::after {
-        content: "";
-        transition: all 0.15s;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-        height: 100%;
-        width: 100%;
-        border-radius: 2.5rem;
-        border: 1px solid currentColor;
-    }
-
-    &:hover::after {
-        height: 95%;
-        width: 95%;
     }
 }

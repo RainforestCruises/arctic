@@ -32,7 +32,7 @@ if($expand){
                 </div>
                 <div class="product-overview__content__grid__overview__expand">
                     <?php if ($expand) : ?>
-                        <button class="btn-text-plain" id="expand-content">
+                        <button class="btn-text" id="expand-content">
                             Read More
                             <svg>
                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
@@ -68,7 +68,7 @@ if($expand){
                     About <?php echo $hero_title; ?>
                 </div>
             </div>
-            <button class="btn-text-icon close-modal-button">
+            <button class="btn-text btn-text--bg close-modal-button">
                 Close
                 <svg>
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>

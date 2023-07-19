@@ -27,7 +27,8 @@ body {
     &.logged-in {
         //wp admin bar fix
         & .home-full-search,
-        .search-filter-mobile-area {
+        .search-filter-mobile-area,
+        .search-filter-bar.sticky {
             margin-top: 32px;
             @media only screen and (max-width: 800px) {
                 margin-top: 46px;

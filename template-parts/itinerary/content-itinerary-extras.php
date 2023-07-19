@@ -53,14 +53,16 @@ $extra_activities = get_field('extra_activities');
                             <div class="overlay-card__content">
                                 <div class="overlay-card__content__title-section">
                                     <div class="overlay-card__content__title-section__sub">
-                                        From <?php priceFormat($price); ?> Per Person
+                                        <?php if ($price) : ?>
+                                            From <?php priceFormat($price); ?> Per Person
+                                        <?php endif; ?>
                                     </div>
                                     <h3 class="overlay-card__content__title-section__title">
                                         <?php echo $title ?>
                                     </h3>
                                 </div>
                                 <div class="overlay-card__content__cta">
-                                    <div class="cta-primary cta-primary--white">
+                                    <div class="btn-primary btn-primary--inverse">
                                         View Details
                                     </div>
                                 </div>
@@ -85,7 +87,7 @@ $extra_activities = get_field('extra_activities');
                     Extra Activities
                 </div>
             </div>
-            <button class="btn-text-icon close-modal-button ">
+            <button class="btn-text btn-text--bg close-modal-button ">
                 Close
                 <svg>
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
@@ -111,7 +113,9 @@ $extra_activities = get_field('extra_activities');
                             <?php echo $title; ?>
                         </div>
                         <div class="product-extras-modal-item__title-group__sub">
-                            From <?php priceFormat($price); ?> Per Person
+                            <?php if ($price) : ?>
+                                From <?php priceFormat($price); ?> Per Person
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="product-extras-modal-item__image-area">

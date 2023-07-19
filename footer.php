@@ -57,11 +57,11 @@ $footerClasses = renderFooterClasses();
                     <img src="<?php echo $logo_main['url']; ?>" class="nav-main__content__left__logo-area__logo-main" alt="<?php echo get_bloginfo('name') ?>" />
                 </a>
                 <div class="footer__content__main__newsletter__subtext">
-                <?php echo $newsletter_text; ?>
-            
+                    <?php echo $newsletter_text; ?>
+
                 </div>
                 <div class="footer__content__main__newsletter__cta">
-                    <button class="cta-primary newsletter-subscribe-button">Join Our Newsletter</button>
+                    <button class="btn-primary newsletter-subscribe-button">Join Our Newsletter</button>
                 </div>
             </div>
 
@@ -111,15 +111,13 @@ $footerClasses = renderFooterClasses();
             <div class="footer__content__bottom__access">
                 <div class="footer__content__bottom__access__localization">
 
-                    <button class="btn-text-plain btn-text-plain--icon-left localization-open-button">
+                    <button class="btn-text btn-text--icon-left localization-open-button">
                         <svg>
                             <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-globe"></use>
-                        </svg>             
-                        <?php if (is_plugin_active('translatepress-multilingual/index.php') && $show_translate_nav == true) : ?>
-                            <span  style="margin-right: 1rem;">
-                                <?php echo $current_language_name; ?>
-                            </span>
-                        <?php endif; ?>
+                        </svg>
+                        <?php if (is_plugin_active('translatepress-multilingual/index.php') && $show_translate_nav == true) :
+                            echo $current_language_name . " ";
+                        endif; ?>
 
                         <?php if (is_plugin_active('currency-switcher/index.php')) :
                             echo $current_symbol . " " . $current_currency;
@@ -178,7 +176,7 @@ $footerClasses = renderFooterClasses();
                     Change Locale Settings
                 </div>
             </div>
-            <button class="btn-text-icon close-modal-button ">
+            <button class="btn-text btn-text--bg close-modal-button ">
                 Close
                 <svg>
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
@@ -197,7 +195,7 @@ $footerClasses = renderFooterClasses();
                         <?php foreach ($currencies as $item) :
                             $isCurrent = $item['name'] == $current_currency;
                         ?>
-                            <a class="cta-square-icon cta-square-icon--inverse <?php echo $isCurrent ? "active" : ""; ?>" href="<?php echo $current_url . "?currency=" . $item['name'] ?>">
+                            <a class="btn-primary btn-primary--inverse <?php echo $isCurrent ? "active" : ""; ?>" href="<?php echo $current_url . "?currency=" . $item['name'] ?>">
                                 <div>
                                     <?php echo $item['description']; ?>
                                 </div>
@@ -220,7 +218,7 @@ $footerClasses = renderFooterClasses();
                         <?php foreach ($languages as $item) :
                             $isCurrent = $item['language_code'] == $current_language;
                         ?>
-                            <a class="cta-square-icon cta-square-icon--inverse <?php echo $isCurrent ? "active" : ""; ?>" href="<?php echo $item['current_page_url'] ?>">
+                            <a class="btn-primary btn-primary--inverse <?php echo $isCurrent ? "active" : ""; ?>" href="<?php echo $item['current_page_url'] ?>">
                                 <?php echo $item['language_name'] ?>
                             </a>
                         <?php endforeach; ?>
@@ -241,7 +239,7 @@ $footerClasses = renderFooterClasses();
             <div class="modal__content__top__nav">
 
             </div>
-            <button class="btn-text-icon close-modal-button ">
+            <button class="btn-text btn-text--bg close-modal-button">
                 Close
                 <svg>
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>

@@ -119,7 +119,7 @@ $routes_title_subtext = get_field('routes_title_subtext');
                                     <div class="tiny-card__section">
 
                                         <!-- CTA -->
-                                        <a class="cta-square-icon" href="<?php echo $landing_page; ?>">
+                                        <a class="btn-primary btn-primary--icon btn-primary--small" href="<?php echo $landing_page; ?>">
                                             Explore
                                             <svg>
                                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
@@ -206,7 +206,7 @@ $routes_title_subtext = get_field('routes_title_subtext');
 
                                             <!-- CTA -->
                                             <div class="resource-card__content__bottom__cta">
-                                                <a class="cta-square-icon" href="<?php echo $landing_page; ?>">
+                                                <a class="btn-primary btn-primary--icon btn-primary--small" href="<?php echo $landing_page; ?>">
                                                     Explore
                                                     <svg>
                                                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>

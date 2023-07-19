@@ -21,7 +21,7 @@ $footerClasses = renderFooterClasses();
                 <?php echo $newsletter_cta_subtext; ?>
             </div>
             <div class="newsletter__content__title-group__cta">
-                <button class="cta-primary newsletter-subscribe-button">
+                <button class="btn-primary newsletter-subscribe-button">
                     Sign Up For Our Newsletter To Get The Latest Antarctica Cruise Deals Straight To Your Inbox!
 
                 </button>

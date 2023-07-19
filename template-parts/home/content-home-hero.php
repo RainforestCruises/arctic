@@ -107,7 +107,7 @@ $show_site_notice = get_field('show_site_notice', 'options');
         <div class="modal__video__top">
             <span id="videoModalCount"></span>
             <span id="videoModalTitle"></span>
-            <button class="btn-text-icon close-modal-button stop-video">
+            <button class="btn-text btn-text--bg close-modal-button stop-video">
                 Close
                 <svg>
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>

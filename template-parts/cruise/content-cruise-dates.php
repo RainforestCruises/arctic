@@ -157,16 +157,16 @@ $departures = $args['departures'];
 
                             <div class="information-card__bottom">
 
-                                <!-- Price Group -->
-                                <div class="information-card__bottom__price-group">
-                                    <button class="cta-square-icon cta-square-icon--inverse departure-price-group-button" departureId="<?php echo $departureId; ?>" year="<?php echo date("Y", $departureStartDate); ?>" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itinerary="<?php echo $itineraryPostId; ?>" itineraryTitle="<?php echo $title; ?>">
+                                 <!-- Price Group -->
+                                 <div class="information-card__bottom__price-group">
+                                    <button class="btn-primary btn-primary--small btn-primary--inverse departure-price-group-button" departureId="<?php echo $departureId; ?>" year="<?php echo date("Y", $departureStartDate); ?>" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itinerary="<?php echo $itineraryPostId; ?>" itineraryTitle="<?php echo $title; ?>">
                                         View Prices
                                     </button>
                                 </div>
 
                                 <!-- CTA -->
                                 <div class="information-card__bottom__cta">
-                                    <button class="cta-square-icon departure-inquire-cta" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itinerary="<?php echo $itineraryPostId; ?>" itineraryTitle="<?php echo $title; ?>">
+                                    <button class="btn-primary btn-primary--icon btn-primary--small departure-inquire-cta" departureDate="<?php echo date("M d, Y", $departureStartDate); ?>" itinerary="<?php echo $itineraryPostId; ?>" itineraryTitle="<?php echo $title; ?>">
                                         Inquire
                                         <svg>
                                             <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
@@ -174,6 +174,7 @@ $departures = $args['departures'];
                                     </button>
 
                                 </div>
+
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -208,7 +209,7 @@ $departures = $args['departures'];
                         <button class="btn-pill" id="date-filter-clear-button">
                             Clear
                         </button>
-                        <button class="btn-pill btn-pill--dark" id="date-filter-search-button">
+                        <button class="btn-pill btn-pill--inverse" id="date-filter-search-button">
                             Search
                         </button>
                     </div>
@@ -241,7 +242,7 @@ $departures = $args['departures'];
                         <button class="btn-pill" id="itinerary-filter-clear-button">
                             Clear
                         </button>
-                        <button class="btn-pill btn-pill--dark" id="itinerary-filter-search-button">
+                        <button class="btn-pill btn-pill--inverse" id="itinerary-filter-search-button">
                             Search
                         </button>
                     </div>

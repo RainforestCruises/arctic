@@ -162,7 +162,7 @@ $args = array(
     ?>
 
     <div class="search-filter-bar" id="search-filter-bar">
-        <button class="search-filter-bar__button search-button" id="search-filter-bar-button">
+        <button class="search-filter-bar__button btn-pill" id="search-filter-bar-button">
             Filters
         </button>
     </div>

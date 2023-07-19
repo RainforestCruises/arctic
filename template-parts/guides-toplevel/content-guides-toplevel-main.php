@@ -59,7 +59,7 @@ $posts = get_posts($queryArgs);
                                 ?>
                             </div>
                             <div class="guide-item__bottom__cta">
-                                <a class="goto-button goto-button--dark" href="<?php echo the_permalink($p) ?>">
+                                <a class="btn-text btn-text--large" href="<?php echo the_permalink($p) ?>">
                                     Read More
                                     <svg>
                                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-arrow-right"></use>

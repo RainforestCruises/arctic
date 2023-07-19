@@ -66,7 +66,7 @@ else : ?>
             </button>
         </div>
         <div class="search-results-area__grid__pagination__show-all-group">
-            <button class="search-results-area__grid__pagination__pages-group__button search-results-area__grid__pagination__pages-group__button--all-button btn-outline btn-outline--small btn-outline--dark">
+            <button class="btn-primary btn-primary--inverse-outline" id="show-all-pages-button">
                 Show All
             </button>
         </div>

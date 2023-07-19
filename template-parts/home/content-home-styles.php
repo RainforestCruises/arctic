@@ -2,7 +2,6 @@
 $styles = get_field('styles');
 $styles_title = get_field('styles_title');
 $styles_title_subtext = get_field('styles_title_subtext');
-
 ?>
 
 <!-- Styles -->
@@ -51,9 +50,7 @@ $styles_title_subtext = get_field('styles_title_subtext');
                         <!-- Overlay Card -->
                         <div class="overlay-card swiper-slide">
                             <div class="overlay-card__image-area">
-                                <div class="overlay-card__image-area__item">
-                                    <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
-                                </div>
+                                <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
                             </div>
                             <a class="overlay-card__content" href="<?php echo $landing_page; ?>">
                                 <div class="overlay-card__content__title-section">
@@ -67,8 +64,6 @@ $styles_title_subtext = get_field('styles_title_subtext');
                 </div>
             </div>
         </div>
-
-
 
     </div>
 </section>

@@ -50,7 +50,4 @@ console_log($viewType);
         <?php get_template_part('template-parts/search/content', 'search-listing', $resultsObject); ?>
     </div>
 
-
-
-
 </div>

@@ -105,7 +105,7 @@ $maxlength = 320;
                     </div>
                     <?php if ($expand) : ?>
                         <div class="text-card__expand">
-                            <button class="btn-text-plain" id="expand-content">
+                            <button class="btn-text" id="expand-content">
                                 Read More
                                 <svg>
                                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>

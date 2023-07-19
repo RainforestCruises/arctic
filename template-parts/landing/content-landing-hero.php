@@ -81,7 +81,7 @@ $lowestOverallPrice = getLowestPriceFromListOfItineraries($itineraries);
 
             <!-- CTA Button -->
             <div class="landing-nav__content__info__cta">
-                <button class="cta-primary generic-inquire-cta">
+                <button class="btn-primary btn-primary--icon generic-inquire-cta">
                     Inquire
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>
@@ -114,7 +114,7 @@ $lowestOverallPrice = getLowestPriceFromListOfItineraries($itineraries);
 
     <!-- Inquire CTA Button -->
     <div class="mobile-info__cta">
-        <button class="cta-primary generic-inquire-cta">
+        <button class="btn-primary btn-primary--icon generic-inquire-cta">
             Inquire
             <svg>
                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>

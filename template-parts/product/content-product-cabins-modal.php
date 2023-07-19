@@ -11,7 +11,7 @@ $cabins = $args['cabins'];
                     Cabin Details
                 </div>
             </div>
-            <button class="btn-text-icon close-modal-button ">
+            <button class="btn-text btn-text--bg close-modal-button ">
                 Close
                 <svg>
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>

@@ -1,17 +1,16 @@
    <?php
-
     $breadcrumb = get_field('breadcrumb');
-
     $regionId = $args['region'];
     $regionPost = ($regionId != null) ? get_post($regionId) : null;
     $regionTitle = get_field('navigation_title', $regionPost);
+    $show_site_notice = get_field('show_site_notice', 'options');
 
 
     ?>
    <!-- Intro -->
-   <section class="search-intro" id="search-page-intro">
-       <div class="search-intro__content">
-           <ol class="search-intro__content__breadcrumb">
+   <section class="search-intro <?php echo ($show_site_notice ? "site-notice-variant" : "") ?>" id="search-page-intro">
+       <div class="search-intro__content" id="search-intro-content">
+           <ol class="breadcrumb-list">
                <li>
                    <a href="<?php echo home_url() ?>">Home</a>
                </li>

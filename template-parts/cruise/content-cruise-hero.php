@@ -147,7 +147,7 @@ $fly_category = getFlightOption(get_post());
 
                     <!-- Inquire CTA Button -->
                     <div class="product-hero__content__main__secondary__info__cta">
-                        <button class="cta-primary generic-inquire-cta">
+                        <button class="btn-primary btn-primary--icon generic-inquire-cta">
                             Inquire
                             <svg>
                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>
@@ -237,7 +237,7 @@ $fly_category = getFlightOption(get_post());
 
     <!-- Inquire CTA Button -->
     <div class="mobile-info__cta">
-        <button class="cta-primary generic-inquire-cta">
+        <button class="btn-primary btn-primary--icon generic-inquire-cta">
             Inquire
             <svg>
                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>

@@ -37,7 +37,7 @@ $displayLimit = 320;
 
                     <?php if ($expand) : ?>
                         <div class="text-card__expand">
-                            <button class="btn-text-plain read-all-faqs" section="faq-section-<?php echo $count; ?>">
+                            <button class="btn-text read-all-faqs" section="faq-section-<?php echo $count; ?>">
                                 Read More
                                 <svg>
                                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
@@ -53,7 +53,7 @@ $displayLimit = 320;
 
         <!-- CTA -->
         <div class="grid-block__content__cta">
-            <button class="cta-primary cta-primary--inverse read-all-faqs" section="faq-section-0">
+            <button class="btn-primary btn-primary--inverse-outline read-all-faqs" section="faq-section-0">
                 Read All FAQs
             </button>
         </div>
@@ -71,7 +71,7 @@ $displayLimit = 320;
                     All FAQs
                 </div>
             </div>
-            <button class="btn-text-icon close-modal-button ">
+            <button class="btn-text btn-text--bg close-modal-button ">
                 Close
                 <svg>
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
