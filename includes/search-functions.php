@@ -59,9 +59,8 @@ function getSearchPosts($region, $routes, $styles, $minLength, $maxLength, $date
     }
 
 
-
     $itineraries = get_posts($args); // stage I - itinerary posts w/ initial filters
-    $formattedPosts =  formatFilterSearch($itineraries, $minLength, $maxLength, $datesArray, $sorting, $searchInput, $viewType); // stage II metadata filtering
+    $resultObjects =  filterAndBuildMetaObject($itineraries, $minLength, $maxLength, $datesArray, $sorting, $searchInput, $viewType); // stage II metadata filtering
 
 
     $resultsPerPage = 12;
@@ -72,7 +71,7 @@ function getSearchPosts($region, $routes, $styles, $minLength, $maxLength, $date
         $resultsPerPage = 18;
     }
 
-    $resultsTotal = count($formattedPosts);
+    $resultsTotal = count($resultObjects);
     $pageCount = floor($resultsTotal / $resultsPerPage);
     if ($resultsTotal % $resultsPerPage != 0) {
         $pageCount++;
@@ -80,31 +79,29 @@ function getSearchPosts($region, $routes, $styles, $minLength, $maxLength, $date
 
     if (is_numeric($pageNumber) && $pageNumber != 'all') {
         $startIndex = (($pageNumber - 1) * $resultsPerPage);
-        $formattedPosts = array_slice($formattedPosts, $startIndex, $resultsPerPage);
+        $resultObjects = array_slice($resultObjects, $startIndex, $resultsPerPage);
     } else if ($pageNumber == 'all') {
-        $formattedPosts = array_slice($formattedPosts, 0, 50);
+        $resultObjects = array_slice($resultObjects, 0, 50);
     } else {
         $startIndex = 0;
-        $formattedPosts = array_slice($formattedPosts, $startIndex, $resultsPerPage);
+        $resultObjects = array_slice($resultObjects, $startIndex, $resultsPerPage);
     }
 
     //return object with results, result count, and page count seperately
     $searchResults = [
-        'results' => $formattedPosts,
+        'results' => $resultObjects,
         'resultsCount' => $resultsTotal,
         'pageCount' => $pageCount,
         'pageNumber' => $pageNumber,
         'viewType' => $viewType,
     ];
 
-
-
     return $searchResults;
 }
 
 
 //Stage II - metadata
-function formatFilterSearch($itineraries, $minLength, $maxLength, $datesArray, $sorting, $searchInput, $viewType)
+function filterAndBuildMetaObject($itineraries, $minLength, $maxLength, $datesArray, $sorting, $searchInput, $viewType)
 {
     $results = [];
     $itineraryObjects = [];
@@ -140,6 +137,9 @@ function formatFilterSearch($itineraries, $minLength, $maxLength, $datesArray, $
         }
 
 
+
+
+
         // generic result object fields
         $regions = getItineraryRegions($itinerary);
         $itineraryImages = get_field('hero_gallery', $itinerary);
@@ -170,33 +170,33 @@ function formatFilterSearch($itineraries, $minLength, $maxLength, $datesArray, $
                 $returnDate = $departure['ReturnDate'];
 
                 $results[] = (object) array(
-                    'type' => 'departure',
-                    'itinerary' => $itinerary,
-                    'resourceLink' => get_permalink($itinerary),
-                    'displayName' => $displayName,
-                    'flightOption' => $flightOption,
-                    'lengthInNights' => $lengthInNights,
-                    'lengthDisplay' => $lengthDisplay,
-                    'lowestPrice' => $lowestPrice,
-                    'highestPrice' => $highestPrice,
-                    'bestDiscount' => $bestDiscount,
-                    'deals' => $deals,
-                    'specialDepartures' => $specialDepartures,
-                    'embarkation' => $embarkation_point,
-                    'embarkationDisplay' => get_the_title($embarkation_point),
-                    'disembarkation' => $disembarkation_point,
-                    'disembarkationDisplay' => get_the_title($disembarkation_point),
-                    'hasDifferentPorts' =>  $disembarkation_point != null && ($disembarkation_point != $embarkation_point),
-                    'departureDate' => $departureDate,
-                    'returnDate' => $returnDate,
-                    'destinations' => $destinations,
-                    'destinationDisplay' => $destinationDisplay,
-                    'itineraryHeroImage' => $itineraryHeroImage,
-                    'shipHeroImage' => $shipHeroImage,
-                    'shipDisplayName' => $shipDisplayName,
-                    'ship' => $ship,
-                    'regions' => $regions,
-                    'searchRank' => $searchRank
+                    'Type' => 'departure',
+                    'Itinerary' => $itinerary,
+                    'ResourceLink' => get_permalink($itinerary),
+                    'DisplayName' => $displayName,
+                    'FlightOption' => $flightOption,
+                    'LengthInNights' => $lengthInNights,
+                    'LengthDisplay' => $lengthDisplay,
+                    'LowestPrice' => $lowestPrice,
+                    'HighestPrice' => $highestPrice,
+                    'BestDiscount' => $bestDiscount,
+                    'Deals' => $deals,
+                    'SpecialDepartures' => $specialDepartures,
+                    'Embarkation' => $embarkation_point,
+                    'EmbarkationDisplay' => get_the_title($embarkation_point),
+                    'Disembarkation' => $disembarkation_point,
+                    'DisembarkationDisplay' => get_the_title($disembarkation_point),
+                    'HasDifferentPorts' =>  $disembarkation_point != null && ($disembarkation_point != $embarkation_point),
+                    'DepartureDate' => $departureDate,
+                    'ReturnDate' => $returnDate,
+                    'Destinations' => $destinations,
+                    'DestinationDisplay' => $destinationDisplay,
+                    'ItineraryHeroImage' => $itineraryHeroImage,
+                    'ShipHeroImage' => $shipHeroImage,
+                    'ShipDisplayName' => $shipDisplayName,
+                    'Ship' => $ship,
+                    'Regions' => $regions,
+                    'SearchRank' => $searchRank
                 );
             }
         }
@@ -213,33 +213,33 @@ function formatFilterSearch($itineraries, $minLength, $maxLength, $datesArray, $
             $datesDisplay = getDateListDisplay($departures, 3);
 
             $results[] = (object) array(
-                'type' => 'itinerary',
-                'itinerary' => $itinerary,
-                'resourceLink' => get_permalink($itinerary),
-                'displayName' => $displayName,
-                'flightOption' => $flightOption,
-                'lengthInNights' => $lengthInNights,
-                'lengthDisplay' => $lengthDisplay,
-                'topSnippet' => $topSnippet,
-                'lowestPrice' => $lowestPrice,
-                'highestPrice' => $highestPrice,
-                'bestDiscount' => $bestDiscount,
-                'deals' => $deals,
-                'specialDepartures' => $specialDepartures,
-                'ships' => $ships,
-                'shipsDisplay' => $shipsDisplay,
-                'embarkation' => $embarkation_point,
-                'embarkationDisplay' => get_the_title($embarkation_point),
-                'disembarkation' => $disembarkation_point,
-                'disembarkationDisplay' => get_the_title($disembarkation_point),
-                'hasDifferentPorts' =>  $disembarkation_point != null && ($disembarkation_point != $embarkation_point),
-                'departures' => $departures,
-                'datesDisplay' => $datesDisplay,
-                'destinations' => $destinations,
-                'destinationDisplay' => $destinationDisplay,
-                'itineraryHeroImage' => $itineraryHeroImage,
-                'regions' => $regions,
-                'searchRank' => $searchRank
+                'Type' => 'itinerary',
+                'Itinerary' => $itinerary,
+                'ResourceLink' => get_permalink($itinerary),
+                'DisplayName' => $displayName,
+                'FlightOption' => $flightOption,
+                'LengthInNights' => $lengthInNights,
+                'LengthDisplay' => $lengthDisplay,
+                'TopSnippet' => $topSnippet,
+                'LowestPrice' => $lowestPrice,
+                'HighestPrice' => $highestPrice,
+                'BestDiscount' => $bestDiscount,
+                'Deals' => $deals,
+                'SpecialDepartures' => $specialDepartures,
+                'Ships' => $ships,
+                'ShipsDisplay' => $shipsDisplay,
+                'Embarkation' => $embarkation_point,
+                'EmbarkationDisplay' => get_the_title($embarkation_point),
+                'Disembarkation' => $disembarkation_point,
+                'DisembarkationDisplay' => get_the_title($disembarkation_point),
+                'HasDifferentPorts' =>  $disembarkation_point != null && ($disembarkation_point != $embarkation_point),
+                'Departures' => $departures,
+                'DatesDisplay' => $datesDisplay,
+                'Destinations' => $destinations,
+                'DestinationDisplay' => $destinationDisplay,
+                'ItineraryHeroImage' => $itineraryHeroImage,
+                'Regions' => $regions,
+                'SearchRank' => $searchRank
             );
         }
     }
@@ -263,7 +263,6 @@ function formatFilterSearch($itineraries, $minLength, $maxLength, $datesArray, $
 
                 $departureMatches = [];
                 foreach ($departures as $departure) { // loop all departures of this itinerary     
-
                     if ($departure['Ship'] == $ship) {
                         $departureMatches[] = $departure;
                     }
@@ -294,65 +293,78 @@ function formatFilterSearch($itineraries, $minLength, $maxLength, $datesArray, $
                 $specialDeparturesList = [];
                 //$bestDiscountList = [];
 
-                foreach($itineraryResults as $itineraryResult){
+                foreach ($itineraryResults as $itineraryResult) {
                     $itinerariesList[] = $itineraryResult->itinerary;
 
-                    foreach($itineraryResult->departures as $departure){
+                    foreach ($itineraryResult->departures as $departure) {
                         $lowPriceList[] = $departure['LowestPrice'];
                         $highPriceList[] = $departure['HighestPrice'];
                         $departuresList[] = $departure;
 
-                        foreach($departure['Deals'] as $deal){
+                        foreach ($departure['Deals'] as $deal) {
                             $dealsList[] = $deal;
                         }
-                        foreach($departure['SpecialDepartures'] as $specialDeparture){
+                        foreach ($departure['SpecialDepartures'] as $specialDeparture) {
                             $specialDeparturesList[] = $specialDeparture;
                         }
-
                     }
                 }
-                usort($departuresList, "sortDates2"); //sort by search rank score
+                usort($departuresList, "sortDates"); //sort by search rank score
 
                 $itineraryDisplay = itineraryRange($itinerariesList, "-") . " Days, " . count($itinerariesList);
                 $itineraryDisplay .= count($itinerariesList) == 1 ? ' Itinerary' : ' Itineraries';
                 $datesDisplay = getDateListDisplay($departuresList, 3);
 
-
                 $results[] = (object) array(
-                    'type' => 'ship',
-                    'itineraries' => $itineraryResults,
-                    'ship' => $ship,
-                    'resourceLink' => get_permalink($ship),
-                    'displayName' => get_the_title($ship),
-                    'shipHeroImage' => $shipHeroImage,
-                    'lowestPrice' => min($lowPriceList),
-                    'highestPrice' => max($highPriceList),
-                    'guestsDisplay' => $guestsDisplay,
-                    'itineraryDisplay' => $itineraryDisplay,
+                    'Type' => 'ship',
+                    'Itineraries' => $itineraryResults,
+                    'Ship' => $ship,
+                    'ResourceLink' => get_permalink($ship),
+                    'DisplayName' => get_the_title($ship),
+                    'ShipHeroImage' => $shipHeroImage,
+                    'LowestPrice' => min($lowPriceList),
+                    'HighestPrice' => max($highPriceList),
+                    'GuestsDisplay' => $guestsDisplay,
+                    'ItineraryDisplay' => $itineraryDisplay,
 
                     // 'bestDiscount' => $bestDiscount,
-                    'deals' => $deals,
-                    'specialDepartures' => $specialDepartures,
-                    'datesDisplay' => $datesDisplay,
-
+                    'Deals' => $deals,
+                    'SpecialDepartures' => $specialDepartures,
+                    'DatesDisplay' => $datesDisplay,
                 );
             }
-
-
         }
-
     }
 
 
+    // search input field
+    $searchMatches = [];
+    if ($searchInput != null) {
+        foreach($results as $result){
+            $matchString = $result->DisplayName;
+            if($result->Type == 'departure'){ //
+                $matchString .= " " . $result->ShipDisplayName;
+            }
+            if($result->Type == 'itinerary'){ //
+                $matchString .= " " . $result->ShipsDisplay;
+            }
+
+
+            if(preg_match("/{$searchInput}/i", $matchString)){
+                $searchMatches[] = $result;
+            }
+        }
+        $results = $searchMatches;
+    }
 
 
     if ($viewType == 'search-departures') {
-        usort($results, "sortDates"); //sort by search rank score
+        usort($results, "sortDates");
         return $results;
     }
 
     if ($sorting == 'popularity') {
-        usort($results, "sortRank"); //sort by search rank score
+        usort($results, "sortRank"); // sort by search rank score
     }
 
     if ($sorting == 'high') {
@@ -373,7 +385,7 @@ function formatFilterSearch($itineraries, $minLength, $maxLength, $datesArray, $
 function sortRank($a, $b)
 {
     if (is_object($a) && is_object($b)) {
-        return $b->searchRank - $a->searchRank;
+        return $b->SearchRank - $a->SearchRank;
     }
 }
 
@@ -381,7 +393,7 @@ function sortRank($a, $b)
 function sortPriceHigh($a, $b)
 {
     if (is_object($a) && is_object($b)) {
-        return $b->lowestPrice - $a->lowestPrice;
+        return $b->LowestPrice - $a->LowestPrice;
     }
 }
 
@@ -389,20 +401,12 @@ function sortPriceHigh($a, $b)
 function sortPriceLow($a, $b)
 {
     if (is_object($a) && is_object($b)) {
-        return $a->lowestPrice - $b->lowestPrice;
+        return $a->LowestPrice - $b->LowestPrice;
     }
 }
 
 // dates
 function sortDates($a, $b)
-{
-    if (is_object($a) && is_object($b)) {
-        return strtotime($a->departureDate) - strtotime($b->departureDate);
-    }
-}
-
-// dates (but with capital field name)
-function sortDates2($a, $b)
 {
     if (is_object($a) && is_object($b)) {
         return strtotime($a->DepartureDate) - strtotime($b->DepartureDate);

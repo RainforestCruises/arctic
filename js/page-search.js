@@ -97,6 +97,7 @@ jQuery(document).ready(function ($) {
     selectItinerariesView.classList.add('active');
     selectShipsView.classList.remove('active');
     selectDeparturesView.classList.remove('active');
+    searchSortControl.style.visibility = "visible"
     reloadResults();
   })
   selectShipsView.addEventListener('click', () => {
@@ -104,6 +105,7 @@ jQuery(document).ready(function ($) {
     selectShipsView.classList.add('active');
     selectItinerariesView.classList.remove('active');
     selectDeparturesView.classList.remove('active');
+    searchSortControl.style.visibility = "visible"
     reloadResults();
   })
   selectDeparturesView.addEventListener('click', () => {
@@ -111,6 +113,7 @@ jQuery(document).ready(function ($) {
     selectDeparturesView.classList.add('active');
     selectShipsView.classList.remove('active');
     selectItinerariesView.classList.remove('active');
+    searchSortControl.style.visibility = "hidden"
     reloadResults();
   })
 

@@ -1,19 +1,19 @@
 <!-- Departure Result -->
-<a class="search-card-departure" href="<?php echo $args->resourceLink; ?>">
+<a class="search-card-departure" href="<?php echo $args->ResourceLink; ?>">
 
     <!-- Itinerary -->
     <div class="search-card-departure__section search-card-departure__section--itinerary">
         <div class="avatar avatar--small">
             <div class="avatar__image-area">
-                <img <?php afloat_image_markup($args->itineraryHeroImage['id'], 'portrait-small', array('portrait-small')); ?>>
+                <img <?php afloat_image_markup($args->ItineraryHeroImage['id'], 'portrait-small', array('portrait-small')); ?>>
             </div>
             <div class="avatar__title-group">
                 <div class="avatar__title-group__title">
-                    <?php echo $args->displayName ?>
-                    <?php echo $args->flightOption ? '<span class="badge-fly">' . $args->flightOption . '</span>' : ''; ?>
+                    <?php echo $args->DisplayName ?>
+                    <?php echo $args->FlightOption ? '<span class="badge-fly">' . $args->FlightOption . '</span>' : ''; ?>
                 </div>
                 <div class="avatar__title-group__sub">
-                    <?php echo $args->lengthDisplay ?>
+                    <?php echo $args->LengthDisplay ?>
                 </div>
             </div>
         </div>
@@ -21,17 +21,17 @@
 
     <!-- Ship -->
     <?php
-    $service_level = get_field('service_level', $args->ship);
-    $subtitleDisplay = get_the_title($service_level) . ", " . get_field('vessel_capacity', $args->ship) . ' Guests';
+    $service_level = get_field('service_level', $args->Ship);
+    $subtitleDisplay = get_the_title($service_level) . ", " . get_field('vessel_capacity', $args->Ship) . ' Guests';
     ?>
     <div class="search-card-departure__section search-card-departure__section--ship">
         <div class="avatar avatar--small">
             <div class="avatar__image-area">
-                <img <?php afloat_image_markup($args->shipHeroImage['id'], 'portrait-small', array('portrait-small')); ?>>
+                <img <?php afloat_image_markup($args->ShipHeroImage['id'], 'portrait-small', array('portrait-small')); ?>>
             </div>
             <div class="avatar__title-group">
                 <div class="avatar__title-group__title">
-                    <?php echo $args->shipDisplayName ?>
+                    <?php echo $args->ShipDisplayName ?>
                 </div>
                 <div class="avatar__title-group__sub">
                     <?php echo $subtitleDisplay ?>
@@ -52,7 +52,7 @@
             </div>
             <div class="specs-item__text">
                 <div class="specs-item__text__main">
-                    <span style="font-weight: 700;"><?php echo  date("F j", strtotime($args->departureDate)); ?></span> - <?php echo  date("M j, Y", strtotime($args->returnDate)); ?>
+                    <span style="font-weight: 700;"><?php echo  date("F j", strtotime($args->DepartureDate)); ?></span> - <?php echo  date("M j, Y", strtotime($args->ReturnDate)); ?>
                 </div>
             </div>
         </div>
@@ -64,7 +64,7 @@
                 </svg>
             </div>
             <div class="specs-item__text">
-                Ship: <?php echo $args->shipDisplayName; ?>
+                Ship: <?php echo $args->ShipDisplayName; ?>
             </div>
         </div>
         <!-- Embark -->
@@ -76,7 +76,7 @@
             </div>
             <div class="specs-item__text">
                 <div class="specs-item__text__main">
-                    Embarkation: <?php echo $args->embarkationDisplay; ?>
+                    Embarkation: <?php echo $args->EmbarkationDisplay; ?>
                 </div>
             </div>
         </div>
@@ -87,10 +87,10 @@
         <!-- Price Group -->
         <div class="search-card-departure__bottom__price-group">
             <span class="search-card-departure__bottom__price-group__amount">
-                <?php priceFormat($args->lowestPrice); ?> - <?php priceFormat($args->highestPrice);  ?>
+                <?php priceFormat($args->LowestPrice, $args->HighestPrice); ?>
             </span>
             <span class="search-card-departure__bottom__price-group__text">
-                Per Person
+                <?php echo ($args->LowestPrice) ? "Per Person" : ""; ?>
             </span>
         </div>
     </div>

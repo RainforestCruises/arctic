@@ -1,15 +1,15 @@
 <!-- Itinerary Result -->
-<a class="search-card-itinerary" href="<?php echo $args->resourceLink; ?>">
+<a class="search-card-itinerary" href="<?php echo $args->ResourceLink; ?>">
     <!-- Tag -->
-    <?php if ($args->bestOverallDiscount) : ?>
+    <?php if ($args->BestOverallDiscount) : ?>
         <div class="search-card-itinerary__tag">
-            Up to <span class="green-text"><?php echo $args->bestOverallDiscount ?>%</span> savings
+            Up to <span class="green-text"><?php echo $args->BestOverallDiscount ?>%</span> savings
         </div>
     <?php endif; ?>
 
     <!-- Image Area -->
     <div class="search-card-itinerary__image-area">
-        <img <?php afloat_image_markup($args->shipHeroImage['id'], 'portrait-small', array('portrait-small')); ?>>
+        <img <?php afloat_image_markup($args->ShipHeroImage['id'], 'portrait-small', array('portrait-small')); ?>>
     </div>
 
     <!-- Content -->
@@ -17,7 +17,7 @@
 
         <!-- Title -->
         <h3 class="search-card-itinerary__content__title">
-            <?php echo $args->displayName; ?>
+            <?php echo $args->DisplayName; ?>
         </h3>
 
         <!-- Specs -->
@@ -32,7 +32,7 @@
                 </div>
                 <div class="specs-item__text">
                     <div class="specs-item__text__main">
-                        <?php echo $args->itineraryDisplay; ?>
+                        <?php echo $args->ItineraryDisplay; ?>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                     </svg>
                 </div>
                 <div class="specs-item__text">
-                    <?php echo $args->guestsDisplay; ?>
+                    <?php echo $args->GuestsDisplay; ?>
                 </div>
             </div>
 
@@ -59,7 +59,7 @@
                 </div>
                 <div class="specs-item__text">
                     Dates:
-                    <?php echo $args->datesDisplay; ?>
+                    <?php echo $args->DatesDisplay; ?>
                 </div>
             </div>
         </div>
@@ -70,10 +70,10 @@
         <!-- Price Group -->
         <div class="search-card-itinerary__bottom__price-group">
             <span class="search-card-itinerary__bottom__price-group__amount">
-                <?php priceFormat($args->lowestPrice); ?> - <?php priceFormat($args->highestPrice);  ?>
+                <?php priceFormat($args->LowestPrice, $args->HighestPrice); ?>
             </span>
             <span class="search-card-itinerary__bottom__price-group__text">
-                Per Person
+                <?php echo ($args->LowestPrice) ? "Per Person" : ""; ?>
             </span>
         </div>
     </div>

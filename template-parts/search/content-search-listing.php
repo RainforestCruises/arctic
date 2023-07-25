@@ -1,10 +1,10 @@
 <?php
-
 $results = $args['results'];
 $resultsTotal = $args['resultsCount'];
 $pageCount = $args['pageCount'];
 $pageNumber = $args['pageNumber'];
 $viewType = $args['viewType'];
+console_log($results);
 
 if ($results) :
     foreach ($results as $result) :
