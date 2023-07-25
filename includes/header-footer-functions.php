@@ -5,7 +5,7 @@ function checkActiveHeader()
     $templateName = get_page_template_slug();
     $postTypeName = get_post_type();
 
-    if ( $templateName == 'template-reviews-toplevel.php' || $templateName == 'template-about.php' || $templateName == 'template-generic.php' || $templateName == 'template-deals.php' || $templateName == 'template-error404.php' || $templateName == 'template-contact.php' || $templateName == 'template-search2.php' || $templateName == 'template-guides-toplevel.php') {
+    if ( $templateName == 'template-reviews-toplevel.php' || $templateName == 'template-about.php' || $templateName == 'template-generic.php' || $templateName == 'template-deals.php' || $templateName == 'template-error404.php' || $templateName == 'template-contact.php' || $templateName == 'template-search.php' || $templateName == 'template-guides-toplevel.php') {
         $alwaysActiveHeader = true;
     }
 

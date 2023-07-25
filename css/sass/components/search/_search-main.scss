@@ -1,35 +1,21 @@
 .search-main {
-
-   @include flexBlock;
-
-
-  // &.sticky {
-  //   @media only screen and (max-width: $bp-large) {
-  //     margin-top: 7rem;
-  //   }
-     
-  // }
-
+  @include flexBlock;
   &__content {
     display: flex;
     width: 100%;
     max-width: $page-width-full;
     @include flexPadding;
     margin-bottom: 6rem;
- 
-  
   }
-
-
 }
 
+
+// search components
 .search-bottom {
   display: flex;
   flex-direction: column;
-
   max-width: $page-width;
   @include flexPadding;
-
   height: 10rem;
   background-color: $color-grey-light-1a;
 }
@@ -43,24 +29,57 @@
     font-family: $font-primary;
     padding: 1rem 2rem;
 
-    &:first-child{
+    &:first-child {
       border-top-left-radius: 1rem;
       border-bottom-left-radius: 1rem;
     }
 
-    &:last-child{
+    &:last-child {
       border-top-right-radius: 1rem;
       border-bottom-right-radius: 1rem;
     }
 
     &.active {
-      //border: 1px solid $color-primary;
       background-color: $color-grey-light-1a;
-      transition: all .2s;
+      transition: all 0.2s;
     }
 
     &:hover {
       border: 1px solid $color-primary;
     }
+  }
+}
+
+
+
+.sort-control {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  &__label-text {
+      font-size: 1.6rem;
+      color: $color-primary;
+      line-height: 2rem;
+      font-weight: 700;
+      white-space: nowrap;
+      @media only screen and (max-width: $bp-small) {
+          display: none;
+      }
+  }
+
+  & .select2-selection--single {
+      border: none !important;
+  }
+
+  & .select2-selection__rendered {
+      font-size: 1.5rem !important;
+      color: $color-grey-3 !important;
+      &:hover {
+          color: $color-grey-1 !important;
+      }
+  }
+
+  & select {
+      visibility: hidden !important;
   }
 }

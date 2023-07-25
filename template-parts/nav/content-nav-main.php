@@ -167,7 +167,7 @@ $alwaysActiveMainNav = checkActiveHeader();
 
                     </div>
                     <div class="nav-mega__panel__cta">
-                        <a class="btn-pill icon-right" href="<?php echo $top_level_guides_page; ?>">
+                        <a class="btn-pill btn-pill--icon" href="<?php echo $top_level_guides_page; ?>">
                             View The Guide
                             <svg>
                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>

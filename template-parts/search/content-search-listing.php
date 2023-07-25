@@ -6,7 +6,6 @@ $pageCount = $args['pageCount'];
 $pageNumber = $args['pageNumber'];
 $viewType = $args['viewType'];
 
-console_log($results);
 if ($results) :
     foreach ($results as $result) :
 ?>
@@ -33,7 +32,7 @@ else : ?>
             Try clearing the filters to get more results
         </div>
         <div class="search-no-results__button-area">
-            <button class="search-button" id="no-results-clear-button">
+            <button class="btn-primary btn-primary--inverse-outline" id="no-results-clear-button">
                 Clear Filters
             </button>
         </div>

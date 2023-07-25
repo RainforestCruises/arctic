@@ -18,13 +18,13 @@ $ships = $args['ships'];
                 <div class="modal__content__top__nav__title" id="departure-modal-title">
                     Departure Dates
                 </div>
-                <button class="btn-pill modal-tab-link" tab-panel="dates">
+                <button class="btn-pill btn-pill--icon modal-tab-link" tab-panel="dates">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-left"></use>
                     </svg>
                     Date Selection
                 </button>
-                <button class="btn-pill modal-tab-link" tab-panel="cabins">
+                <button class="btn-pill btn-pill--icon modal-tab-link" tab-panel="cabins">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-left"></use>
                     </svg>

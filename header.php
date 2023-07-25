@@ -7,6 +7,43 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="author" content="Ryan">
 
+    <!-- Custom OG Meta --> 
+    <?php
+    // Note: use WP Featured Image for Serps
+    $og_featured_image = null;
+
+    // home page
+    if (is_page_template('template-home.php')) {
+        $og_featured_image = get_field('hero_featured_image');
+    }
+
+    // landing / deals top-level page
+    if (is_page_template('template-landing.php' || 'template-deals-toplevel.php')) {
+        $images = get_field('hero_images');
+        $og_featured_image = $images[0];
+    }
+
+    // deal / travel guide post
+    if (get_post_type() == 'rfc_deals' || get_post_type() == 'rfc_travel_guides') {
+        $og_featured_image = get_field('featured_image');
+    }
+
+    // ship / itinerary post
+    if (get_post_type() == 'rfc_cruises' || get_post_type() == 'rfc_itineraries') {
+        $images = get_field('hero_gallery');
+        $og_featured_image = $images[0];
+    }
+   
+    if ($og_featured_image) : ?>
+        <meta property="og:image" content="<?php echo $og_featured_image['url']; ?>" />
+        <meta property="og:image:secure_url" content="<?php echo $og_featured_image['url']; ?>" />
+        <meta property="og:width" content="<?php echo $og_featured_image['width']; ?>" />
+        <meta property="og:height" content="<?php echo $og_featured_image['height']; ?>" />
+        <meta property="og:alt" content="<?php echo $og_featured_image['alt']; ?>" />
+        <meta property="og:type" content="image/jpeg" />
+        <meta name="twitter:image" content="<?php echo $og_featured_image['url']; ?>" />
+    <?php endif; ?>
+
     <!-- Structured Data / Rich Snippets -->
     <!-- Load Head / Style Sheets -->
 

@@ -60,10 +60,8 @@ function getSearchPosts($region, $routes, $styles, $minLength, $maxLength, $date
 
 
 
-    $itineraries = get_posts($args); // stage I posts 
-    $formattedPosts =  formatFilterSearch($itineraries, $minLength, $maxLength, $datesArray, $sorting, $searchInput, $viewType); // stage II metadata
-
-
+    $itineraries = get_posts($args); // stage I - itinerary posts w/ initial filters
+    $formattedPosts =  formatFilterSearch($itineraries, $minLength, $maxLength, $datesArray, $sorting, $searchInput, $viewType); // stage II metadata filtering
 
 
     $resultsPerPage = 12;
@@ -75,14 +73,10 @@ function getSearchPosts($region, $routes, $styles, $minLength, $maxLength, $date
     }
 
     $resultsTotal = count($formattedPosts);
-
     $pageCount = floor($resultsTotal / $resultsPerPage);
     if ($resultsTotal % $resultsPerPage != 0) {
         $pageCount++;
     };
-
-
-
 
     if (is_numeric($pageNumber) && $pageNumber != 'all') {
         $startIndex = (($pageNumber - 1) * $resultsPerPage);
@@ -324,7 +318,6 @@ function formatFilterSearch($itineraries, $minLength, $maxLength, $datesArray, $
                 $datesDisplay = getDateListDisplay($departuresList, 3);
 
 
-
                 $results[] = (object) array(
                     'type' => 'ship',
                     'itineraries' => $itineraryResults,
@@ -407,6 +400,8 @@ function sortDates($a, $b)
         return strtotime($a->departureDate) - strtotime($b->departureDate);
     }
 }
+
+// dates (but with capital field name)
 function sortDates2($a, $b)
 {
     if (is_object($a) && is_object($b)) {

@@ -237,36 +237,3 @@
     }
 }
 
-//Sort Control
-.sort-control {
-    display: flex;
-    align-items: center;
-    margin: 0;
-    &__label-text {
-        font-size: 1.6rem;
-        color: $color-primary;
-        line-height: 2rem;
-        font-weight: 700;
-        white-space: nowrap;
-        @media only screen and (max-width: $bp-small) {
-            display: none;
-        }
-    }
-
-    & .select2-selection--single {
-        border: none !important;
-    }
-
-    & .select2-selection__rendered {
-        font-size: 1.6rem !important;
-        color: $color-grey-3 !important;
-
-        &:hover {
-            color: $color-grey-1 !important;
-        }
-    }
-
-    & select {
-        visibility: hidden !important;
-    }
-}

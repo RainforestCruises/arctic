@@ -1,6 +1,6 @@
 {
     "key": "group_6478f72169c18",
-    "title": "Search2",
+    "title": "Search",
     "fields": [
         {
             "key": "field_6478f72187ca2",
@@ -17,25 +17,6 @@
             },
             "placement": "top",
             "endpoint": 0
-        },
-        {
-            "key": "field_6478f721968e7",
-            "label": "Grid View Default",
-            "name": "grid_view_default",
-            "type": "true_false",
-            "instructions": "Select to set grid view as the default view (instead of list view)",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
         },
         {
             "key": "field_6478f7219a398",
@@ -55,6 +36,33 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_6478f721a5633",
+            "label": "Intro Snippet",
+            "name": "intro_snippet",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6478f721a1ae8",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_6478f7219de44",
@@ -121,33 +129,6 @@
             ]
         },
         {
-            "key": "field_6478f721a5633",
-            "label": "Intro Snippet",
-            "name": "intro_snippet",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6478f721a1ae8",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 0,
-            "delay": 0
-        },
-        {
             "key": "field_6478f721ad020",
             "label": "Filters",
             "name": "",
@@ -162,6 +143,32 @@
             },
             "placement": "top",
             "endpoint": 0
+        },
+        {
+            "key": "field_6478f721968e7",
+            "label": "Default View",
+            "name": "default_view",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "search-itineraries": "Itineraries",
+                "search-ships": "Ships",
+                "search-departures": "Departures"
+            },
+            "default_value": "search-itineraries",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
         },
         {
             "key": "field_6478f7f4caba6",
@@ -261,7 +268,7 @@
             "label": "Itinerary Length Max",
             "name": "itinerary_length_max",
             "type": "number",
-            "instructions": "For preselected itinerary lengths - enter 21 for no limit. For example, 9+ Days, enter as 9 min 21 max",
+            "instructions": "For preselected itinerary lengths - enter 28 for no limit. For example, 9+ Days, enter as 9 min 28 max",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -274,7 +281,7 @@
             "prepend": "",
             "append": "",
             "min": 1,
-            "max": 21,
+            "max": 28,
             "step": ""
         }
     ],
@@ -283,7 +290,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "template-search2.php"
+                "value": "template-search.php"
             }
         ]
     ],
@@ -299,5 +306,5 @@
     "active": true,
     "description": "Search - Page",
     "show_in_rest": 0,
-    "modified": 1685722391
+    "modified": 1690316795
 }

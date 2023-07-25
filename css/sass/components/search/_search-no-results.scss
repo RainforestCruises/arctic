@@ -16,8 +16,7 @@
     }
 
     &__button-area {
-        & button {
-            transform: scale(0.8);
-        }
+        display: flex;
+        justify-content: center;
     }
 }

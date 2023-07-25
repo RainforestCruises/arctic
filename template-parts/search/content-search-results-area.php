@@ -1,9 +1,10 @@
 <?php
 $resultsObject = $args['resultsObject'];
+
 $resultCount = $args['resultCount'];
 $pageNumber = $args['pageNumber'];
-$viewType = $args['viewType']; //for icon active 
-console_log($viewType);
+$viewType = $args['viewType']; 
+console_log($resultsObject);
 ?>
 
 <div class="search-results-area">

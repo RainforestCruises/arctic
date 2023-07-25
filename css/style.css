@@ -469,7 +469,9 @@ p {
   font-family: "Metropolis", sans-serif;
   font-size: 1.4rem;
   height: min-content;
-  display: flex;
+  display: grid;
+  grid-template-columns: max-content;
+  column-gap: .5rem;
   justify-content: center;
   align-items: center;
   border-radius: 4rem;
@@ -480,14 +482,11 @@ p {
   .btn-pill svg {
     height: 1.3rem;
     width: 1.3rem;
-    transform: translateY(-1px);
-    margin-right: 0.5rem;
     stroke: currentColor;
     fill: currentColor;
     stroke: 1; }
-  .btn-pill.icon-right svg {
-    margin-left: 0.5rem;
-    margin-right: 0; }
+  .btn-pill--icon {
+    grid-template-columns: max-content max-content; }
   .btn-pill.active {
     background-color: #e6e6e6;
     border: 1px solid #1d2225; }
@@ -7696,9 +7695,32 @@ p {
       border-bottom-right-radius: 1rem; }
     .view-type-control button.active {
       background-color: #e6e6e6;
-      transition: all .2s; }
+      transition: all 0.2s; }
     .view-type-control button:hover {
       border: 1px solid #1d2225; }
+
+.sort-control {
+  display: flex;
+  align-items: center;
+  margin: 0; }
+  .sort-control__label-text {
+    font-size: 1.6rem;
+    color: #1d2225;
+    line-height: 2rem;
+    font-weight: 700;
+    white-space: nowrap; }
+    @media only screen and (max-width: 37.5em) {
+      .sort-control__label-text {
+        display: none; } }
+  .sort-control .select2-selection--single {
+    border: none !important; }
+  .sort-control .select2-selection__rendered {
+    font-size: 1.5rem !important;
+    color: #747474 !important; }
+    .sort-control .select2-selection__rendered:hover {
+      color: #9ea0a4 !important; }
+  .sort-control select {
+    visibility: hidden !important; }
 
 .search-results-area {
   margin-left: 3rem;
@@ -7851,29 +7873,6 @@ p {
     display: flex;
     justify-content: center;
     margin-bottom: 5rem; }
-
-.sort-control {
-  display: flex;
-  align-items: center;
-  margin: 0; }
-  .sort-control__label-text {
-    font-size: 1.6rem;
-    color: #1d2225;
-    line-height: 2rem;
-    font-weight: 700;
-    white-space: nowrap; }
-    @media only screen and (max-width: 37.5em) {
-      .sort-control__label-text {
-        display: none; } }
-  .sort-control .select2-selection--single {
-    border: none !important; }
-  .sort-control .select2-selection__rendered {
-    font-size: 1.6rem !important;
-    color: #747474 !important; }
-    .sort-control .select2-selection__rendered:hover {
-      color: #9ea0a4 !important; }
-  .sort-control select {
-    visibility: hidden !important; }
 
 .search-sidebar {
   width: 28rem;
@@ -8299,8 +8298,9 @@ p {
   .search-no-results__subtext {
     font-size: 1.4rem;
     margin-bottom: 3rem; }
-  .search-no-results__button-area button {
-    transform: scale(0.8); }
+  .search-no-results__button-area {
+    display: flex;
+    justify-content: center; }
 
 .search-card-itinerary {
   position: relative;

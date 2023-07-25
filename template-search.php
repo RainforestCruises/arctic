@@ -1,45 +1,8 @@
 <?php
 /*Template Name: Search*/
 wp_enqueue_script('page-search', get_template_directory_uri() . '/js/page-search.js', array('jquery'), false, true);
-$templateUrl = get_template_directory_uri();
-wp_localize_script(
-    'page-search',
-    'page_vars',
-    array(
-      'templateUrl' =>  $templateUrl
-    )
-  );
-
 get_header();
 
-//Initial Search from Page Load
-
-//Region / Destination Setup --------------
-$searchType = get_field('search_type');
-
-$region = null;
-$regionId = null;
-$destination = null;
-$destinationId = null;
-
-if ($searchType == 'region') {
-    $region = get_field('region');
-    
-    $regionId = $region->ID;
-} else if ($searchType == 'destination'){
-
-    $destination = get_field('destination');
-    $region = get_field('region', $destination);
-
-    $regionId = $region->ID;
-    $destinationId = $destination->ID;
-} 
-
-
-
-
-//Preselections (strings for form values) ------------
-//From URL
 
 //Paging
 $pageNumber = 1;
@@ -47,14 +10,11 @@ if (isset($_GET["pageNumber"]) && $_GET["pageNumber"]) {
     $pageNumber = htmlspecialchars($_GET["pageNumber"]);
 }
 
-
-
 //Sorting
 $sorting = "popularity";
 if (isset($_GET["sorting"]) && $_GET["sorting"]) {
     $sorting = htmlspecialchars($_GET["sorting"]);
 }
-
 
 //Search Input
 $searchInput = '';
@@ -62,136 +22,93 @@ if (isset($_GET["searchInput"]) && $_GET["searchInput"]) {
     $searchInput = htmlspecialchars($_GET["searchInput"]);
 }
 
-//View
-$viewType = 'list';
-$gridDefault = get_field('grid_view_default');
-
-if($gridDefault == true){
-    $viewType = 'grid';
-}
-
-if (isset($_GET["viewType"]) && $_GET["viewType"]) {
-    $viewType = htmlspecialchars($_GET["viewType"]);
-}
-
-
-
-//--Length Max
-$lengthMax = 21;
-$selectedLengthMax = get_field('itinerary_length_max');
-if ($selectedLengthMax != null) {
-    $lengthMax = $selectedLengthMax;
-}
-
-
-
 //Departure Dates
 $departures = [];
 $departuresString = "";
-$selectedDepartures = get_field('departures'); //--preselection
-if ($selectedDepartures != null) {
-    $departures = $selectedDepartures;
-    $departuresString = implode(";", $departures);
+if (isset($_GET["departures"]) && $_GET["departures"]) {
+    $departuresParameters = htmlspecialchars($_GET["departures"]);
+    $departuresString = $departuresParameters;
+    console_log($departuresString);
+    $departures = explode(";", $departuresString);
 }
 
-//URL param
-if (isset($_GET["departures"])) {
-    if (isset($_GET["departures"]) && $_GET["departures"]) {
-        $departuresParameters = htmlspecialchars($_GET["departures"]);
-        $departuresString = $departuresParameters;
-        $departures = explode(";", $departuresString);
+//View
+$viewType = get_field('default_view');
+if (isset($_GET["viewType"])) {
+    if (isset($_GET["viewType"]) && $_GET["viewType"]) {
+        $viewType = htmlspecialchars($_GET["viewType"]);
     } else {
-        $departures = [];
-        $departuresString = "";
+        $viewType = 'search-itineraries';
     }
 }
 
 
-//--Travel style
-$travelTypes = [];
-$travelTypesString = "";
-$selectedTravelTypes = get_field('travel_type');
-if ($selectedTravelTypes != null) {
-    $travelTypes = $selectedTravelTypes;
-    $travelTypesString = implode(";", $travelTypes);
-}
 
-//URL param
-if (isset($_GET["travel_style"])) {
-    if (isset($_GET["travel_style"]) && $_GET["travel_style"]) {
-        $travelTypesParameters = htmlspecialchars($_GET["travel_style"]);
-        $travelTypesString = $travelTypesParameters;
-        $travelTypes = explode(";", $travelTypesString);
+// Region
+$region = get_field('region');
+if (isset($_GET["region"])) {
+    if (isset($_GET["region"]) && $_GET["region"]) {
+        $region = htmlspecialchars($_GET["region"]);
     } else {
-        $travelTypes = [];
-        $travelTypesString = "";
+        $region = null;
     }
 }
 
 
 
-$charterFilter = false;
-if (!$travelTypes == null) {
-
-    if ($travelTypes[0] == 'charter_cruises') {
-        $charterFilter = true;
-    }
+// Routes
+$routes = [];
+$routesString = "";
+$selectedRoutes = get_field('routes');
+if ($selectedRoutes != null) {
+    $routes = $selectedRoutes;
+    $routesString = implode(";", $routes);
 }
 
-
-//--Destinations
-$destinations = [];
-$destinationsString = "";
-$selectedDestinations = ($searchType == 'destination') ? get_field('location_filter') : get_field('destination_filter');
-if ($selectedDestinations != null) {
-    $destinations = $selectedDestinations;
-    $destinationsString = implode(";", $destinations);
-}
-
-//URL param
-if (isset($_GET["destinations"])) {
-    if (isset($_GET["destinations"]) && $_GET["destinations"]) {
-        $destinationsParameters = htmlspecialchars($_GET["destinations"]);
-        $destinationsString = $destinationsParameters;
-        $destinations = explode(";", $destinationsString);
+// -- URL param
+if (isset($_GET["routes"])) {
+    if (isset($_GET["routes"]) && $_GET["routes"]) {
+        $routesParameters = htmlspecialchars($_GET["routes"]);
+        $routesString = $routesParameters;
+        $routes = explode(";", $routesString);
     } else {
-        $destinations = [];
-        $destinationsString = "";
+        $routes = [];
+        $routesString = "";
     }
 }
 
 
-//--Experiences
-$experiences = [];
-$experiencesString = "";
-$selectedExperiences = get_field('experience');
-if ($selectedExperiences != null) {
-    $experiences = $selectedExperiences;
-    $experiencesString = implode(";", $experiences);
+// Styles
+$styles = [];
+$stylesString = "";
+$selectedStyles = get_field('styles');
+if ($selectedStyles != null) {
+    $styles = $selectedStyles;
+    $stylesString = implode(";", $styles);
 }
 
-
-
-//URL param
-if (isset($_GET["experiences"])) {
-    if (isset($_GET["experiences"]) && $_GET["experiences"]) {
-        $experiencesParameters = htmlspecialchars($_GET["experiences"]);
-        $experiencesString = $experiencesParameters;
-        $experiences = explode(";", $experiencesString);
+// -- URL param
+if (isset($_GET["styles"])) {
+    if (isset($_GET["styles"]) && $_GET["styles"]) {
+        $stylesParameters = htmlspecialchars($_GET["styles"]);
+        $stylesString = $stylesParameters;
+        $styles = explode(";", $stylesString);
     } else {
-        $experiences = [];
-        $experiencesString = "";
+        $styles = [];
+        $stylesString = "";
     }
 }
 
-//--Length Min
+
+
+// Length Min
 $lengthMin = 1;
 $selectedLengthMin = get_field('itinerary_length_min');
 if ($selectedLengthMin != null) {
     $lengthMin = $selectedLengthMin;
 }
 
-//URL param
+// -- URL param
 if (isset($_GET["length_min"])) {
     if (isset($_GET["length_min"]) && $_GET["length_min"]) {
         $lengthMinParameters = htmlspecialchars($_GET["length_min"]);
@@ -201,35 +118,34 @@ if (isset($_GET["length_min"])) {
     }
 }
 
-//--Length Max
-$lengthMax = 21;
+// Length Max
+$lengthMax = 28;
 $selectedLengthMax = get_field('itinerary_length_max');
 if ($selectedLengthMax != null) {
     $lengthMax = $selectedLengthMax;
 }
 
-//URL param
+// -- URL param
 if (isset($_GET["length_max"])) {
     if (isset($_GET["length_max"]) && $_GET["length_max"]) {
         $lengthMaxParameters = htmlspecialchars($_GET["length_max"]);
         $lengthMax = $lengthMaxParameters;
     } else {
-        $lengthMax = 21;
+        $lengthMax = 28;
     }
 }
 
-//first load
-$resultsObject = getSearchPosts($travelTypes,  $destinations, $experiences, $searchType, $destinationId, $regionId, $lengthMin, $lengthMax, $departures, $searchInput, $sorting, $pageNumber, $viewType);
+
+
+//  first load
+$resultsObject = getSearchPosts($region, $routes, $styles, $lengthMin, $lengthMax, $departures, $searchInput, $sorting, $pageNumber, $viewType);
 $resultCount = $resultsObject['resultsCount'];
 
 //Page arguments ------------
 $args = array(
-    'searchType' => $searchType,
-    'destinationId' => $destinationId,
-    'regionId' => $regionId,
-    'travelTypes' => $travelTypes, //preselection
-    'experiences' => $experiences, //preselection
-    'destinations' => $destinations, //preselection
+    'region' => $region, //preselection
+    'styles' => $styles, //preselection
+    'routes' => $routes, //preselection
     'departures' => $departures, //preselection
     'lengthMin' => $lengthMin, //preselection
     'lengthMax' => $lengthMax, //preselection
@@ -239,38 +155,32 @@ $args = array(
     'resultsObject' => $resultsObject,
     'resultCount' => $resultCount,
     'viewType' => $viewType,
-    'charterFilter' => $charterFilter,
-
 );
 
 
 
 ?>
 
-<main class="search-page">
-    <section class="search-page__intro" id="search-page-intro">
-        <?php
-        get_template_part('template-parts/search/content', 'search-intro', $args);
-        ?>
-    </section>
+<main class="main-content">
+    <?php
+    get_template_part('template-parts/search/content', 'search-intro', $args);
+    ?>
 
     <div class="search-filter-bar" id="search-filter-bar">
-        <button class="search-filter-bar__button search-button" id="search-filter-bar-button">
+        <button class="search-filter-bar__button btn-pill" id="search-filter-bar-button">
             Filters
         </button>
     </div>
 
     <!-- Content -->
-    <section class="search-page__content" id="search-page-content">
-
-        <?php
-        get_template_part('template-parts/search/content', 'search-sidebar', $args); //page args --> initial preselection
-        get_template_part('template-parts/search/content', 'search-results-area', $args); //page args --> initial render
-        ?>
-
+    <section class="search-main" >
+        <div class="search-main__content" id="search-page-content">
+            <?php
+            get_template_part('template-parts/search/content', 'search-sidebar', $args); //page args --> initial preselection
+            get_template_part('template-parts/search/content', 'search-results-area', $args); //page args --> initial render
+            ?>
+        </div>
     </section>
-
-
 
 </main>
 
@@ -291,26 +201,22 @@ $args = array(
 
     <!-- Direct to function within functions.php -->
     <input type="hidden" name="action" value="primarySearch">
-    <input type="hidden" name="formSearchInput" id="formSearchInput" value="<?php echo $searchInput ?>"> 
-    <input type="hidden" name="formViewType" id="formViewType" value="<?php echo $viewType ?>"> 
-
+    <input type="hidden" name="formSearchInput" id="formSearchInput" value="<?php echo $searchInput ?>">
+    <input type="hidden" name="formViewType" id="formViewType" value="<?php echo $viewType ?>">
 
     <input type="hidden" name="formDates" id="formDates" value="<?php echo $departuresString ?>">
-    <input type="hidden" name="formTravelStyles" id="formTravelStyles" value="<?php echo $travelTypesString ?>">
-    <input type="hidden" name="formDestinations" id="formDestinations" value="<?php echo $destinationsString ?>">
-    <input type="hidden" name="formExperiences" id="formExperiences" value="<?php echo $experiencesString ?>">
     <input type="hidden" name="formMinLength" id="formMinLength" value="<?php echo $lengthMin ?>">
     <input type="hidden" name="formMaxLength" id="formMaxLength" value="<?php echo $lengthMax ?>">
     <input type="hidden" name="formSort" id="formSort" value="<?php echo $sorting ?>">
     <input type="hidden" name="formPageNumber" id="formPageNumber" value="<?php echo $pageNumber ?>">
 
-    <input type="hidden" name="region" id="region" value="<?php echo $regionId ?>">
-    <input type="hidden" name="destination" id="destination" value="<?php echo $destinationId ?>">
-    <input type="hidden" name="searchType" id="searchType" value="<?php echo $searchType ?>">
+    <input type="hidden" name="formRegion" id="formRegion" value="<?php echo $region ?>">
+    <input type="hidden" name="formThemes" id="formThemes" value="<?php echo $stylesString ?>">
+    <input type="hidden" name="formRoutes" id="formRoutes" value="<?php echo $routesString ?>">
+
     <input type="hidden" name="initialPage" id="initialPage" value="">
 
 </form>
 
 
 <?php get_footer(); ?>
-

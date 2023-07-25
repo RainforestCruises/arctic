@@ -98,7 +98,10 @@
   font-family: $font-primary;
   font-size: 1.4rem;
   height: min-content;
-  display: flex;
+  
+  display: grid;
+  grid-template-columns: max-content;
+  column-gap: .5rem;
   justify-content: center;
   align-items: center;
   border-radius: 4rem;
@@ -109,19 +112,24 @@
   & svg {
     height: 1.3rem;
     width: 1.3rem;
-    transform: translateY(-1px);
-    margin-right: 0.5rem;
+    //transform: translateY(-1px);
+    //margin-right: 0.5rem;
     stroke: currentColor;
     fill: currentColor;
     stroke: 1;
   }
 
-  &.icon-right {
-    svg {
-      margin-left: 0.5rem;
-      margin-right: 0;
-    }
+  
+  &--icon {
+    grid-template-columns: max-content max-content;
   }
+
+  // &.icon-right {
+  //   svg {
+  //     margin-left: 0.5rem;
+  //     margin-right: 0;
+  //   }
+  // }
 
   &.active {
     background-color: $color-grey-light-1a;

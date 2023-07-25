@@ -14,16 +14,14 @@ for ($x = $currentMonth; $x < $currentMonth + $monthLimit; $x++) {
     $months[] = $object;
 }
 
-//page variables
+// preselections
 $selectedRegion = $args['region'];
-
-//preselections
 $selectedStyles = $args['styles'];
 $selectedRoutes = $args['routes'];
 $selectedDepartures = $args['departures'];
 $searchInput = $args['searchInput'];
 
-
+console_log($selectedRegion);
 //Build Filter Lists
 $regionsArgs = array(
     'post_type' => 'rfc_regions',
@@ -116,8 +114,8 @@ if (get_field('itinerary_length_max') != null) {
         <div class="filter__heading">
             <h5 class="filter__heading__text">
                 Region
-                <?php $filterCount = $selectedRegion != null ? 1 : 0 ?>
-                <div class="filter__heading__text__count <?php echo ($filterCount > 0 ? 'show' : '') ?>" id="stylesFilterCount">
+                <?php $filterCount = count($selectedRegion)?>
+                <div class="filter__heading__text__count <?php echo ($filterCount > 0 ? 'show' : '') ?>" id="regionFilterCount">
                     <?php echo $filterCount; ?>
                 </div>
             </h5>
@@ -134,7 +132,7 @@ if (get_field('itinerary_length_max') != null) {
                 ?>
                     <li class="filter__content__list__item">
                         <div class="form-checkbox">
-                            <input class="checkbox region-checkbox" type="checkbox" id="region-checkbox-<?php echo $count; ?>" value="<?php echo $region->ID ?>" <?php echo ($selectedRegion != null ? (in_array($region->ID, $selectedRegion) ? 'checked' : '') : '') ?>>
+                            <input class="checkbox region-checkbox" type="checkbox" id="region-checkbox-<?php echo $count; ?>" value="<?php echo $region->ID ?>" <?php echo ($selectedRegion != null ? ($region->ID == $selectedRegion ? 'checked' : '') : '') ?>>
                             <label for="region-checkbox-<?php echo $count; ?>" tabindex="1"><?php echo get_the_title($region) ?></label>
                         </div>
                     </li>
@@ -213,10 +211,11 @@ if (get_field('itinerary_length_max') != null) {
                 $count = 1;
                 foreach ($routes as $route) : 
                     $routeRegion = get_field('region', $route);
+                    $matchRegion = ($selectedRegion != null && $routeRegion->ID != $selectedRegion) ? "none" : "block";
                 ?>
-                    <li class="filter__content__list__item region-<?php echo $routeRegion != null ? $routeRegion->ID : 0 ?>">
+                    <li class="filter__content__list__item route-checkbox-group" region-value="<?php echo $routeRegion != null ? $routeRegion->ID : 0 ?>" style="display: <?php echo $matchRegion ?>">
                         <div class="form-checkbox">
-                            <input class="checkbox route-checkbox" type="checkbox" id="route-checkbox-<?php echo $count; ?>" value="<?php echo $route->ID ?>" <?php echo ($selectedRoutes != null ? (in_array($route->ID, $selectedRoutes) ? 'checked' : '') : '') ?>>
+                            <input class="checkbox route-checkbox" type="checkbox" id="route-checkbox-<?php echo $count; ?>" value="<?php echo $route->ID ?>" <?php echo ($selectedRoutes != null ? (in_array($route->ID, $selectedRoutes) ? 'checked' : '') : '') ?> region-value="<?php echo $routeRegion != null ? $routeRegion->ID : 0 ?>">
                             <label for="route-checkbox-<?php echo $count; ?>"><?php echo get_field('title', $route) ?></label>
                         </div>
                     </li>
