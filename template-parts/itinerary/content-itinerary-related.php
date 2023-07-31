@@ -9,21 +9,19 @@ $queryArgs = array(
 
 );
 
-$queryArgsDestination = array();
-$queryArgsDestination['relation'] = 'OR';
+$queryArgsRoute = array();
+$queryArgsRoute['relation'] = 'OR';
 
-$destinations = get_field('destinations');
-if ($destinations) {
-    foreach ($destinations as $d) {
-        if (get_field('is_country', $d) == true) {
-            $queryArgsDestination[] = array(
-                'key'     => 'destinations',
-                'value'   => serialize(strval($d->ID)),
-                'compare' => 'LIKE'
-            );
-        }
+$routes = get_field('route');
+if ($routes) {
+    foreach ($routes as $route) {
+        $queryArgsRoute[] = array(
+            'key'     => 'route',
+            'value'   => serialize(strval($route->ID)),
+            'compare' => 'LIKE'
+        );
     }
-    $queryArgs['meta_query'][] = $queryArgsDestination;
+    $queryArgs['meta_query'][] = $queryArgsRoute;
 }
 
 $itineraries = get_posts($queryArgs);
@@ -42,7 +40,7 @@ $itineraries = get_posts($queryArgs);
                     Related Itineraries
                 </h2>
                 <div class="title-group__sub">
-                    Explore these <?php echo count($itineraries) ?> related itineraries
+                    Explore these similar Antarctica itineraries
                 </div>
             </div>
 
@@ -71,7 +69,19 @@ $itineraries = get_posts($queryArgs);
                 <div class="swiper-wrapper">
 
 
-                    <?php foreach ($itineraries as $itinerary) :
+                    <?php
+                    $count = 0;
+                    foreach ($itineraries as $itinerary) :
+                        if ($count > 11) {
+                            continue;
+                        }
+                        $departures = getDepartureList($itinerary);
+                        $lowestPrice = getLowestDepartureListPrice($departures);
+                        $highestPrice = getHighestDepartureListPrice($departures);
+                        $bestOverallDiscount = getBestDepartureListDiscount($departures);
+                        if (!$lowestPrice) {
+                            continue;
+                        }
                         $images =  get_field('hero_gallery', $itinerary);
                         $image = $images[0];
                         $itineraries =  get_field('itineraries', $itinerary);
@@ -85,10 +95,7 @@ $itineraries = get_posts($queryArgs);
                         $destinations = getItineraryDestinations($itinerary, true, 4);
                         $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
                         $guestsDisplay = get_field('vessel_capacity', $itinerary) . ' Guests, ' . 'Luxury';
-                        $departures = getDepartureList($itinerary);
-                        $lowestPrice = getLowestDepartureListPrice($departures);
-                        $highestPrice = getHighestDepartureListPrice($departures);
-                        $bestOverallDiscount = getBestDepartureListDiscount($departures);
+
                     ?>
 
                         <!-- Itinerary Card -->
@@ -156,7 +163,8 @@ $itineraries = get_posts($queryArgs);
                             </div>
                         </div>
 
-                    <?php endforeach; ?>
+                    <?php $count++;
+                    endforeach; ?>
                 </div>
             </div>
         </div>

@@ -98,7 +98,6 @@
   font-family: $font-primary;
   font-size: 1.4rem;
   height: min-content;
-  
   display: grid;
   grid-template-columns: max-content;
   column-gap: .5rem;
@@ -109,27 +108,14 @@
   color: $color-primary;
   border: 1px solid $color-grey-light-1a;
   white-space: nowrap;
+
   & svg {
     height: 1.3rem;
     width: 1.3rem;
-    //transform: translateY(-1px);
-    //margin-right: 0.5rem;
     stroke: currentColor;
     fill: currentColor;
     stroke: 1;
   }
-
-  
-  &--icon {
-    grid-template-columns: max-content max-content;
-  }
-
-  // &.icon-right {
-  //   svg {
-  //     margin-left: 0.5rem;
-  //     margin-right: 0;
-  //   }
-  // }
 
   &.active {
     background-color: $color-grey-light-1a;
@@ -138,6 +124,10 @@
 
   &:hover {
     border: 1px solid $color-primary;
+  }
+
+  &--icon {
+    grid-template-columns: max-content max-content;
   }
 
   &--grey {
@@ -159,8 +149,6 @@
       background-color: $color-supporting;
     }
   }
-
-
 }
 
 // plain text button -- close modal, read more, deckplan
@@ -221,22 +209,20 @@
   background-color: rgba($color-white, 0.3);
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
-
   border: none;
   border-radius: 50%;
   cursor: pointer;
   position: relative;
   z-index: 0;
   outline: none;
-
   font-size: 1.3rem;
   font-weight: 700;
   display: flex;
   justify-content: center;
   align-items: center;
-
   color: rgba($color-primary, 0.9);
   transition: all 0.2s;
+  
   svg {
     height: 1.3rem;
     width: 1.3rem;

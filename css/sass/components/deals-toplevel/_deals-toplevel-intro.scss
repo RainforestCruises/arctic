@@ -30,6 +30,12 @@
                     padding-top: 3rem;
                     position: relative;
 
+                    & ul, ol {
+                        font-size: 1.6rem;
+                        padding-left: 2rem;
+                        margin-bottom: 3rem;
+                    }
+
                     &::before {
                         content: "";
                         width: 100%;

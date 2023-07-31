@@ -3,9 +3,6 @@ $currentYear = date('Y');
 $yearSelections = $args['yearSelections'];
 $ships = $args['ships'];
 $departures = $args['departures'];
-// $deals = $args['deals'];
-// $specialDepartures = $args['specialDepartures'];
-// $combinedDeals = array_merge($deals, $specialDepartures);
 ?>
 
 <section class="slider-block narrow" id="dates">

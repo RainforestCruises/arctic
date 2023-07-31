@@ -9,11 +9,11 @@ wp_enqueue_script('page-product-cabins', get_template_directory_uri() . '/js/pag
 get_header();
 
 $itinerary = get_post();
-$ships = get_field('ships');
 $productName = get_field('display_name');
 $extraActivities = get_field('extra_activities');
 $days = get_field('itinerary');
 $departures = getDepartureList($itinerary);
+$ships = getShipsFromDepartureList($departures);
 $lowestOverallPrice = getLowestDepartureListPrice($departures);
 $bestOverallDiscount = getBestDepartureListDiscount($departures);
 $deals = getDealsFromDepartureList($departures);
@@ -46,7 +46,6 @@ $args = array(
 
 $queryArgsShips = array();
 $queryArgsShips['relation'] = 'OR';
-$ships = get_field('ships');
 if ($ships) {
   foreach ($ships as $s) {
     $queryArgsShips[] = array(

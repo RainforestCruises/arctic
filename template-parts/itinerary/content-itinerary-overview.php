@@ -1,6 +1,6 @@
 <?php
 
-$ships = get_field('ships');
+$ships = $args['ships'];
 $overview_content = get_field('overview_content');
 $activities = get_field('activities');
 

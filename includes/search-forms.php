@@ -59,8 +59,8 @@ function search_filter_primary_search()
     
     $resultsObject = getSearchPosts($formRegion, $formRoutes, $formThemes, $formMinLength, $formMaxLength, $formDates, $formSearchInput, $sorting, $pageNumber, $viewType);
 
-    
-    //Return result cards -- content-search-results-content
+
+    // return result cards -- content-search-listing
     get_template_part('template-parts/search/content', 'search-listing', $resultsObject);
 
 

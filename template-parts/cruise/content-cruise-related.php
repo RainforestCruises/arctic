@@ -8,22 +8,17 @@ $queryArgs = array(
     'order' => 'DESC',
 );
 
-//build meta query criteria
-$queryArgsDestination = array();
-$queryArgsDestination['relation'] = 'OR';
+$queryArgsService = array();
+$queryArgsService['relation'] = 'OR';
 
-$destinations = get_field('destinations');
-if ($destinations) {
-    foreach ($destinations as $d) {
-        if (get_field('is_country', $d) == true) {
-            $queryArgsDestination[] = array(
-                'key'     => 'destinations',
-                'value'   => serialize(strval($d->ID)),
-                'compare' => 'LIKE'
-            );
-        }
-    }
-    $queryArgs['meta_query'][] = $queryArgsDestination;
+$serviceLevel = get_field('service_level');
+if ($serviceLevel) {
+    $queryArgsService[] = array(
+        'key'     => 'service_level',
+        'value'   => strval($serviceLevel->ID),
+        'compare' => 'LIKE'
+    );
+    $queryArgs['meta_query'][] = $queryArgsService;
 }
 
 $ships = get_posts($queryArgs);
@@ -43,7 +38,7 @@ $ships = get_posts($queryArgs);
                     Related Cruises
                 </h2>
                 <div class="title-group__sub">
-                    Explore from <?php echo count($ships) ?> ships sailing the Antarctic
+                    Explore from these similar ships sailing the Antarctic
                 </div>
             </div>
 
@@ -70,7 +65,19 @@ $ships = get_posts($queryArgs);
             <!-- Swiper -->
             <div class="swiper" id="related-slider">
                 <div class="swiper-wrapper">
-                    <?php foreach ($ships as $ship) :
+                    <?php 
+                    $count = 0;
+                    foreach ($ships as $ship) :
+                        if($count > 11){
+                            continue;
+                        }
+                        $departures = getDepartureList($ship);
+                        $lowestPrice = getLowestDepartureListPrice($departures);
+                        $highestPrice = getHighestDepartureListPrice($departures);
+                        $bestOverallDiscount = getBestDepartureListDiscount($departures);
+                        if(!$lowestPrice){
+                            continue;
+                        }
                         $images =  get_field('hero_gallery', $ship);
                         $image = $images[0];
                         $itineraries = getShipItineraries($ship);
@@ -79,10 +86,7 @@ $ships = get_posts($queryArgs);
                         $service_level =  get_field('service_level', $ship);
                         $serviceLevelDisplay = ($service_level) ? get_the_title($service_level) : "N/A";
                         $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . $serviceLevelDisplay;
-                        $departures = getDepartureList($ship);
-                        $lowestPrice = getLowestDepartureListPrice($departures);
-                        $highestPrice = getHighestDepartureListPrice($departures);
-                        $bestOverallDiscount = getBestDepartureListDiscount($departures);
+
                     ?>
                         <!-- Cabin Card -->
                         <div class="resource-card swiper-slide">
@@ -149,7 +153,7 @@ $ships = get_posts($queryArgs);
                             </div>
                         </div>
 
-                    <?php endforeach; ?>
+                    <?php $count++; endforeach; ?>
 
                 </div>
             </div>
