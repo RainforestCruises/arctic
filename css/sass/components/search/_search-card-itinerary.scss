@@ -1,3 +1,21 @@
+.card-tag {
+    width: max-content;
+    padding: 0.5rem 1rem;
+    background-color: $color-white;
+    color: $color-primary;
+    border-radius: 2rem;
+
+    &--dark {
+        background-color: $color-primary;
+        color: $color-white;
+    }
+
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+    }
+}
+
 .search-card-itinerary {
     position: relative;
     color: $color-primary;
@@ -16,17 +34,27 @@
         box-shadow: 0 0rem 3rem rgba(0, 0, 0, 0.1);
     }
 
-    &__tag {
+    &__tag-area {
         position: absolute;
         top: 1.5rem;
         right: 1.5rem;
-        width: max-content;
-        padding: 0.5rem 1rem;
-        background-color: $color-white;
-        color: $color-primary;
-        border-radius: 2rem;
         z-index: 10;
+        display: grid;
+        gap: .5rem;
+        justify-items: end;
     }
+
+    // &__tag {
+    //     position: absolute;
+    //     top: 1.5rem;
+    //     right: 1.5rem;
+    //     width: max-content;
+    //     padding: 0.5rem 1rem;
+    //     background-color: $color-white;
+    //     color: $color-primary;
+    //     border-radius: 2rem;
+    //     z-index: 10;
+    // }
 
 
     &__image-area {

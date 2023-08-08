@@ -8306,6 +8306,19 @@ p {
     display: flex;
     justify-content: center; }
 
+.card-tag {
+  width: max-content;
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  color: #1d2225;
+  border-radius: 2rem; }
+  .card-tag--dark {
+    background-color: #1d2225;
+    color: #fff; }
+  .card-tag--green {
+    background-color: #1d2225;
+    color: #fff; }
+
 .search-card-itinerary {
   position: relative;
   color: #1d2225;
@@ -8320,16 +8333,14 @@ p {
     transition: all .2s;
     border-color: #c2c6c9;
     box-shadow: 0 0rem 3rem rgba(0, 0, 0, 0.1); }
-  .search-card-itinerary__tag {
+  .search-card-itinerary__tag-area {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
-    width: max-content;
-    padding: 0.5rem 1rem;
-    background-color: #fff;
-    color: #1d2225;
-    border-radius: 2rem;
-    z-index: 10; }
+    z-index: 10;
+    display: grid;
+    gap: .5rem;
+    justify-items: end; }
   .search-card-itinerary__image-area {
     position: relative;
     top: 0;
@@ -8423,6 +8434,7 @@ p {
   @media only screen and (max-width: 50em) {
     .search-card-departure {
       grid-template-columns: 1fr;
+      grid-template-rows: min-content 1fr min-content;
       row-gap: 2rem;
       padding: 1.5rem 0rem; } }
   .search-card-departure:hover {
@@ -8435,7 +8447,8 @@ p {
     flex-direction: column; }
     @media only screen and (max-width: 50em) {
       .search-card-departure__section {
-        padding: 0 2rem; } }
+        padding: 0 2rem;
+        justify-content: start; } }
     @media only screen and (max-width: 50em) {
       .search-card-departure__section--itinerary {
         border-bottom: 1px solid #e6e6e6;
@@ -8449,14 +8462,20 @@ p {
       @media only screen and (max-width: 50em) {
         .search-card-departure__section .specs-mobile {
           display: flex; } }
+    .search-card-departure__section .card-tag:not(:last-child) {
+      margin-bottom: .5rem; }
   .search-card-departure__bottom {
     display: flex;
-    align-items: center; }
+    flex-direction: column;
+    justify-content: center;
+    height: 100%; }
     @media only screen and (max-width: 50em) {
       .search-card-departure__bottom {
         border-top: 1px solid #e6e6e6;
         padding: 0 2rem;
         padding-top: 1.5rem; } }
+    .search-card-departure__bottom__savings {
+      font-size: 1.2rem; }
     .search-card-departure__bottom__price-group {
       color: currentColor;
       font-size: 1.6rem;

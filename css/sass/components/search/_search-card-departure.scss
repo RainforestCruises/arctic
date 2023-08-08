@@ -12,6 +12,7 @@
     text-decoration: none;
     @media only screen and (max-width: $bp-medium) {
         grid-template-columns: 1fr;
+        grid-template-rows: min-content 1fr min-content;
         row-gap: 2rem;
         padding: 1.5rem 0rem;
 
@@ -28,7 +29,9 @@
         justify-content: center;
         flex-direction: column;
         @media only screen and (max-width: $bp-medium) {
-            padding: 0 2rem;           
+            padding: 0 2rem;  
+            justify-content: start;
+         
         }
 
         &--itinerary {
@@ -52,16 +55,28 @@
                 display: flex;
             }
         }
+
+        & .card-tag {
+            &:not(:last-child){
+                margin-bottom: .5rem;
+            }
+        }
     }
 
     &__bottom {
         display: flex;
-        align-items: center;
-
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
         @media only screen and (max-width: $bp-medium) {
             border-top: 1px solid $color-grey-light-1a;
             padding: 0 2rem;
             padding-top: 1.5rem;
+        }
+
+        &__savings {
+            font-size: 1.2rem;
+
         }
 
         &__price-group {

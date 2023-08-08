@@ -1,11 +1,28 @@
 <!-- Itinerary Result -->
 <a class="search-card-itinerary" href="<?php echo $args->ResourceLink; ?>">
-    <!-- Tag -->
-    <?php if ($args->BestOverallDiscount) : ?>
-        <div class="search-card-itinerary__tag">
-            Up to <span class="green-text"><?php echo $args->BestOverallDiscount ?>%</span> savings
-        </div>
-    <?php endif; ?>
+
+    <!-- Tag Area -->
+    <div class="search-card-itinerary__tag-area">
+        <?php if ($args->BestDiscount) : ?>
+            <div class="card-tag">
+                Up to <span class="green-text"><?php echo $args->BestDiscount ?>%</span> savings
+            </div>
+        <?php endif; ?>
+        <?php if ($args->Deals) :
+            foreach ($args->Deals as $deal) : ?>
+                <div class="card-tag card-tag--dark">
+                    <?php echo get_field('short_title', $deal) ?>
+                </div>
+        <?php endforeach;
+        endif; ?>
+        <?php if ($args->SpecialDepartures) :
+            foreach ($args->SpecialDepartures as $special) : ?>
+                <div class="card-tag card-tag--dark">
+                    <?php echo get_field('short_title', $special) ?>
+                </div>
+        <?php endforeach;
+        endif; ?>
+    </div>
 
     <!-- Image Area -->
     <div class="search-card-itinerary__image-area">

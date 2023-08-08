@@ -283,6 +283,86 @@
             "min": 1,
             "max": 28,
             "step": ""
+        },
+        {
+            "key": "field_64d26b459d50f",
+            "label": "Itinerary Price Min",
+            "name": "itinerary_price_min",
+            "type": "number",
+            "instructions": "For preselected itinerary lengths 1 - 50000",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 1,
+            "max": 50000,
+            "step": ""
+        },
+        {
+            "key": "field_64d26b1b9d50e",
+            "label": "Itinerary Price Max",
+            "name": "itinerary_price_max",
+            "type": "number",
+            "instructions": "For preselected itinerary lengths - enter 50000 for no limit.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 1,
+            "max": 50000,
+            "step": ""
+        },
+        {
+            "key": "field_64d26bad9d510",
+            "label": "Filter Deals",
+            "name": "filter_deals",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_64d26be49d511",
+            "label": "Filter Special Departures",
+            "name": "filter_special_departures",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -306,5 +386,5 @@
     "active": true,
     "description": "Search - Page",
     "show_in_rest": 0,
-    "modified": 1690316795
+    "modified": 1691511844
 }

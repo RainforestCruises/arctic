@@ -26,16 +26,16 @@ jQuery(document).ready(function ($) {
     if ($(window).width() < 1000) { //mobile view         
       if (searchFilterBar.contains(searchSortControl) == false) { // sort control
         searchFilterBar.appendChild(searchSortControl)
-      }   
+      }
       if (mobileFiltersDiv.contains(searchSidebar) == false) { // sidebar
         mobileFiltersDiv.appendChild(searchSidebar);
       }
     }
     else { // desktop view    
-      hideMobileFilters();   
+      hideMobileFilters();
       if (searchResultsTop.contains(searchSortControl) == false) { // sort control
         searchResultsTop.appendChild(searchSortControl);
-      } 
+      }
       if (searchContent.contains(searchSidebar) == false) { // sidebar
         searchContent.insertBefore(searchSidebar, searchContent.firstChild);
       }
@@ -75,11 +75,16 @@ jQuery(document).ready(function ($) {
 
   // Form ----------------
   const formViewType = document.querySelector('#formViewType');
+  const formFilterDeals = document.querySelector('#formFilterDeals');
+  const formFilterSpecials = document.querySelector('#formFilterSpecials');
+
   const formRegion = document.querySelector('#formRegion');
   const formDates = document.querySelector('#formDates');
   const formRoutes = document.querySelector('#formRoutes');
   const formMinLength = document.querySelector('#formMinLength');
   const formMaxLength = document.querySelector('#formMaxLength');
+  const formMinPrice = document.querySelector('#formMinPrice');
+  const formMaxPrice = document.querySelector('#formMaxPrice');
   const formSort = document.querySelector('#formSort');
   const formPageNumber = document.querySelector('#formPageNumber');
 
@@ -184,7 +189,7 @@ jQuery(document).ready(function ($) {
   // search input 
   let searchInputString = formSearchInput.value;
   let mobileReload = false; //check to perform search when hiding mobile filters
-  if (hasSearchInput) { 
+  if (hasSearchInput) {
     searchInputButton.addEventListener('click', () => { // magnifying glass click
       searchInputString = searchInput.value
       formSearchInput.value = searchInputString;
@@ -407,15 +412,15 @@ jQuery(document).ready(function ($) {
     });
   })
 
-  var lengthSliderMin = 1;
-  var lengthSliderMax = 28
 
-  //Length Slider
+  // length slider
+  var lengthSliderMin = 1;
+  var lengthSliderMax = 28;
   $("#range-slider").ionRangeSlider({
     skin: "round",
     type: "double",
-    min: lengthSliderMin, //default
-    max: lengthSliderMax, //default
+    min: lengthSliderMin, 
+    max: lengthSliderMax, 
     from: formMinLength.value,
     to: formMaxLength.value,
     postfix: " Day",
@@ -427,8 +432,61 @@ jQuery(document).ready(function ($) {
     },
   });
 
+  // price slider
+  var priceSliderMin = 1;
+  var priceSliderMax = 50000;
+  $("#price-slider").ionRangeSlider({
+    skin: "round",
+    type: "double",
+    min: priceSliderMin, 
+    max: priceSliderMax, 
+    from: formMinPrice.value,
+    to: formMaxPrice.value,
+    prefix: "$",
+    max_postfix: "+",
+    onFinish: function () {
+      formMinPrice.value = $("#price-slider").data("from");
+      formMaxPrice.value = $("#price-slider").data("to");
+      reloadResults();
+    },
+  });
 
-  //Clear 
+
+  // extras -- deals + specials
+  const filterDealsCheckbox = document.getElementById('deal-checkbox');
+  filterDealsCheckbox.addEventListener('click', () => {
+    formFilterDeals.value = filterDealsCheckbox.checked;
+    reloadResults();
+    calcExtrasFilterCount();
+  })
+  const filterSpecialsCheckbox = document.getElementById('special-checkbox');
+  filterSpecialsCheckbox.addEventListener('click', () => {
+    formFilterSpecials.value = filterSpecialsCheckbox.checked;
+    reloadResults();
+    calcExtrasFilterCount();
+  })
+
+  const extrasArray = [...document.querySelectorAll('.extras-checkbox')];
+  function calcExtrasFilterCount() {
+    let count = 0;
+    extrasArray.forEach(checkbox => {
+      if (checkbox.checked) {
+        count++;
+      }
+    });
+    let extrasFilterCount = document.getElementById('extrasFilterCount');
+      if (count > 0) {
+        extrasFilterCount.classList.add("show");
+        extrasFilterCount.innerHTML = count;
+      } else {
+        extrasFilterCount.classList.remove("show");
+        extrasFilterCount.innerHTML = count;
+      }
+  }
+
+
+
+  // clear 
   const clearButtons = [...document.querySelectorAll('.clear-filters')];
   const checkBoxes = [...document.querySelectorAll('.checkbox')];
   const filterCounts = [...document.querySelectorAll('.filter__heading__text__count')];
@@ -460,11 +518,21 @@ jQuery(document).ready(function ($) {
 
     formMinLength.value = lengthSliderMin;
     formMaxLength.value = lengthSliderMax;
+    formMinPrice.value = priceSliderMin;
+    formMaxPrice.value = priceSliderMax;
+    formFilterDeals.value = null;
+    formFilterSpecials.value = null;
 
     var lengthSlider = $("#range-slider").data("ionRangeSlider");
     lengthSlider.update({
       from: lengthSliderMin,
       to: lengthSliderMax
+    });
+
+    var priceSlider = $("#price-slider").data("ionRangeSlider");
+    priceSlider.update({
+      from: priceSliderMin,
+      to: priceSliderMax
     });
 
     filterCounts.forEach(item => {
@@ -536,8 +604,16 @@ jQuery(document).ready(function ($) {
       params.set('length_min', formMinLength.value);
     }
 
-    if (formMinLength.value != null) {
+    if (formMaxLength.value != null) {
       params.set('length_max', formMaxLength.value);
+    }
+
+    if (formMinPrice.value != null) {
+      params.set('price_min', formMinPrice.value);
+    }
+
+    if (formMaxPrice.value != null) {
+      params.set('price_max', formMaxPrice.value);
     }
 
     if (formSort.value != null) {
@@ -548,6 +624,12 @@ jQuery(document).ready(function ($) {
       params.set('viewType', formViewType.value);
     }
 
+    if (formFilterDeals.value != null) {
+      params.set('filterDeals', formFilterDeals.value);
+    }
+    if (formFilterSpecials.value != null) {
+      params.set('filterSpecials', formFilterSpecials.value);
+    }
 
     if (preservePage == true) { // for when page numbers are clicked, otherwise page will always be reset to 1
       if (formPageNumber.value != null) {
@@ -736,6 +818,20 @@ jQuery(document).ready(function ($) {
       filtersApplied = true;
     }
     if (formMaxLength.value != lengthSliderMax) {
+      filtersApplied = true;
+    }
+
+    if (formMinPrice.value != priceSliderMin) {
+      filtersApplied = true;
+    }
+    if (formMaxPrice.value != priceSliderMax) {
+      filtersApplied = true;
+    }
+
+    if (formFilterDeals.value != "") {
+      filtersApplied = true;
+    }
+    if (formFilterSpecials.value != "") {
       filtersApplied = true;
     }
 

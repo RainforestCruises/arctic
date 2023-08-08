@@ -4,25 +4,25 @@ wp_enqueue_script('page-search', get_template_directory_uri() . '/js/page-search
 get_header();
 
 
-//Paging
+// Paging
 $pageNumber = 1;
 if (isset($_GET["pageNumber"]) && $_GET["pageNumber"]) {
     $pageNumber = htmlspecialchars($_GET["pageNumber"]);
 }
 
-//Sorting
+// Sorting
 $sorting = "popularity";
 if (isset($_GET["sorting"]) && $_GET["sorting"]) {
     $sorting = htmlspecialchars($_GET["sorting"]);
 }
 
-//Search Input
+// Search Input
 $searchInput = '';
 if (isset($_GET["searchInput"]) && $_GET["searchInput"]) {
     $searchInput = htmlspecialchars($_GET["searchInput"]);
 }
 
-//Departure Dates
+// Departure Dates
 $departures = [];
 $departuresString = "";
 if (isset($_GET["departures"]) && $_GET["departures"]) {
@@ -32,7 +32,7 @@ if (isset($_GET["departures"]) && $_GET["departures"]) {
     $departures = explode(";", $departuresString);
 }
 
-//View
+// View
 $viewType = get_field('default_view');
 if (isset($_GET["viewType"])) {
     if (isset($_GET["viewType"]) && $_GET["viewType"]) {
@@ -42,6 +42,25 @@ if (isset($_GET["viewType"])) {
     }
 }
 
+// Deals
+$filterDeals = get_field('filter_deals');
+if (isset($_GET["filterDeals"])) {
+    if (isset($_GET["filterDeals"]) && $_GET["filterDeals"]) {
+        $filterDeals = filter_var($_GET['filterDeals'], FILTER_VALIDATE_BOOLEAN);
+    } else {
+        $filterDeals = false;
+    }
+}
+
+// Specials
+$filterSpecials = get_field('filter_special_departures');
+if (isset($_GET["filterSpecials"])) {
+    if (isset($_GET["filterSpecials"]) && $_GET["filterSpecials"]) {
+        $filterSpecials = filter_var($_GET['filterSpecials'], FILTER_VALIDATE_BOOLEAN);
+    } else {
+        $filterSpecials = false;
+    }
+}
 
 
 // Region
@@ -53,7 +72,6 @@ if (isset($_GET["region"])) {
         $region = null;
     }
 }
-
 
 
 // Routes
@@ -137,11 +155,48 @@ if (isset($_GET["length_max"])) {
 
 
 
-//  first load
-$resultsObject = getSearchPosts($region, $routes, $styles, $lengthMin, $lengthMax, $departures, $searchInput, $sorting, $pageNumber, $viewType);
+
+// Price Min
+$priceMin = 1;
+$selectedPriceMin = get_field('itinerary_price_min');
+if ($selectedPriceMin != null) {
+    $priceMin = $selectedPriceMin;
+}
+
+// -- URL param
+if (isset($_GET["price_min"])) {
+    if (isset($_GET["price_min"]) && $_GET["price_min"]) {
+        $priceMinParameters = htmlspecialchars($_GET["price_min"]);
+        $priceMin = $priceMinParameters;
+    } else {
+        $priceMin = 1;
+    }
+}
+
+// Price Max
+$priceMax = 50000;
+$selectedPriceMax = get_field('itinerary_price_max');
+if ($selectedPriceMax != null) {
+    $priceMax = $selectedPriceMax;
+}
+
+// -- URL param
+if (isset($_GET["price_max"])) {
+    if (isset($_GET["price_max"]) && $_GET["price_max"]) {
+        $priceMaxParameters = htmlspecialchars($_GET["price_max"]);
+        $priceMax = $priceMaxParameters;
+    } else {
+        $priceMax = 28;
+    }
+}
+
+
+
+// first load
+$resultsObject = getSearchPosts($region, $routes, $styles, $lengthMin, $lengthMax, $priceMin, $priceMax, $departures, $searchInput, $sorting, $pageNumber, $viewType, $filterDeals, $filterSpecials);
 $resultCount = $resultsObject['resultsCount'];
 
-//Page arguments ------------
+// page arguments ------------
 $args = array(
     'region' => $region, //preselection
     'styles' => $styles, //preselection
@@ -149,15 +204,18 @@ $args = array(
     'departures' => $departures, //preselection
     'lengthMin' => $lengthMin, //preselection
     'lengthMax' => $lengthMax, //preselection
+    'priceMin' => $priceMin, //preselection
+    'priceMax' => $priceMax, //preselection
     'sorting' => $sorting,
     'searchInput' => $searchInput,
     'pageNumber' => $pageNumber,
     'resultsObject' => $resultsObject,
     'resultCount' => $resultCount,
     'viewType' => $viewType,
+    'filterDeals' => $filterDeals,
+    'filterSpecials' => $filterSpecials,
+
 );
-
-
 
 ?>
 
@@ -176,8 +234,8 @@ $args = array(
     <section class="search-main" >
         <div class="search-main__content" id="search-page-content">
             <?php
-            get_template_part('template-parts/search/content', 'search-sidebar', $args); //page args --> initial preselection
-            get_template_part('template-parts/search/content', 'search-results-area', $args); //page args --> initial render
+            get_template_part('template-parts/search/content', 'search-sidebar', $args); // page args --> initial preselection
+            get_template_part('template-parts/search/content', 'search-results-area', $args); // page args --> initial render
             ?>
         </div>
     </section>
@@ -203,13 +261,16 @@ $args = array(
     <input type="hidden" name="action" value="primarySearch">
     <input type="hidden" name="formSearchInput" id="formSearchInput" value="<?php echo $searchInput ?>">
     <input type="hidden" name="formViewType" id="formViewType" value="<?php echo $viewType ?>">
+    <input type="hidden" name="formFilterDeals" id="formFilterDeals" value="<?php echo $filterDeals ?>">
+    <input type="hidden" name="formFilterSpecials" id="formFilterSpecials" value="<?php echo $filterSpecials ?>">
 
     <input type="hidden" name="formDates" id="formDates" value="<?php echo $departuresString ?>">
     <input type="hidden" name="formMinLength" id="formMinLength" value="<?php echo $lengthMin ?>">
     <input type="hidden" name="formMaxLength" id="formMaxLength" value="<?php echo $lengthMax ?>">
+    <input type="hidden" name="formMinPrice" id="formMinPrice" value="<?php echo $priceMin ?>">
+    <input type="hidden" name="formMaxPrice" id="formMaxPrice" value="<?php echo $priceMax ?>">
     <input type="hidden" name="formSort" id="formSort" value="<?php echo $sorting ?>">
     <input type="hidden" name="formPageNumber" id="formPageNumber" value="<?php echo $pageNumber ?>">
-
     <input type="hidden" name="formRegion" id="formRegion" value="<?php echo $region ?>">
     <input type="hidden" name="formThemes" id="formThemes" value="<?php echo $stylesString ?>">
     <input type="hidden" name="formRoutes" id="formRoutes" value="<?php echo $routesString ?>">

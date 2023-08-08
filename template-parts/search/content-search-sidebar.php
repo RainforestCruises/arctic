@@ -20,8 +20,9 @@ $selectedStyles = $args['styles'];
 $selectedRoutes = $args['routes'];
 $selectedDepartures = $args['departures'];
 $searchInput = $args['searchInput'];
+$selectedDeals = $args['filterDeals'];
+$selectedSpecials = $args['filterSpecials'];
 
-console_log($selectedRegion);
 //Build Filter Lists
 $regionsArgs = array(
     'post_type' => 'rfc_regions',
@@ -46,16 +47,6 @@ $stylesArgs = array(
     'orderby' => 'title',
 );
 $styles = get_posts($stylesArgs);
-
-//itinerary length
-$itinerary_length_min = 1;
-$itinerary_length_max = 28;
-if (get_field('itinerary_length_min') != null) {
-    $itinerary_length_min = get_field('itinerary_length_min');
-};
-if (get_field('itinerary_length_max') != null) {
-    $itinerary_length_max = get_field('itinerary_length_max');
-};
 
 
 ?>
@@ -114,7 +105,7 @@ if (get_field('itinerary_length_max') != null) {
         <div class="filter__heading">
             <h5 class="filter__heading__text">
                 Region
-                <?php $filterCount = count($selectedRegion)?>
+                <?php $filterCount = count($selectedRegion) ?>
                 <div class="filter__heading__text__count <?php echo ($filterCount > 0 ? 'show' : '') ?>" id="regionFilterCount">
                     <?php echo $filterCount; ?>
                 </div>
@@ -142,8 +133,6 @@ if (get_field('itinerary_length_max') != null) {
             </ul>
         </div>
     </div>
-
-
 
 
     <!-- Departure Date Filter -->
@@ -209,7 +198,7 @@ if (get_field('itinerary_length_max') != null) {
 
                 <?php
                 $count = 1;
-                foreach ($routes as $route) : 
+                foreach ($routes as $route) :
                     $routeRegion = get_field('region', $route);
                     $matchRegion = ($selectedRegion != null && $routeRegion->ID != $selectedRegion) ? "none" : "block";
                 ?>
@@ -225,8 +214,6 @@ if (get_field('itinerary_length_max') != null) {
             </ul>
         </div>
     </div>
-
-
 
     <!-- Styles Filter -->
     <div class="filter">
@@ -280,6 +267,67 @@ if (get_field('itinerary_length_max') != null) {
                 Drag sliders to modify range
             </div>
         </div>
+    </div>
+
+    <!-- Price Filter -->
+    <div class="filter">
+        <div class="filter__heading">
+            <h5 class="filter__heading__text">
+                Price Range
+            </h5>
+            <svg>
+                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-down"></use>
+            </svg>
+        </div>
+        <div class="filter__content">
+            <!-- List -->
+            <input class="filter__content__range-slider" type="text" name="price-slider" id="price-slider">
+            <div class="filter__content__fine-print">
+                Drag sliders to modify range
+            </div>
+        </div>
+    </div>
+
+    <!-- Extras Filter -->
+    <div class="filter">
+        <div class="filter__heading">
+            <h5 class="filter__heading__text">
+                Extras
+                <?php
+                $filterCount = 0;
+                $filterCount += $selectedDeals == true ? 1 : 0;
+                $filterCount += $selectedSpecials == true ? 1 : 0;
+                ?>
+                <div class="filter__heading__text__count <?php echo ($filterCount > 0 ? 'show' : '') ?>" id="extrasFilterCount">
+                    <?php echo $filterCount; ?>
+                </div>
+            </h5>
+            <svg>
+                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-down"></use>
+            </svg>
+        </div>
+
+        <div class="filter__content">
+            <!-- List -->
+            <ul class="filter__content__list">
+
+                <li class="filter__content__list__item">
+                    <div class="form-checkbox">
+                        <input class="checkbox extras-checkbox" type="checkbox" id="deal-checkbox" <?php echo ($selectedDeals == true ? 'checked' : '') ?>>
+                        <label for="deal-checkbox" tabindex="1">Departures with Deals</label>
+                    </div>
+                </li>
+                <li class="filter__content__list__item">
+                    <div class="form-checkbox">
+                        <input class="checkbox extras-checkbox" type="checkbox" id="special-checkbox" <?php echo ($selectedSpecials == true ? 'checked' : '') ?>>
+                        <label for="special-checkbox" tabindex="2">Special Departures</label>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+
     </div>
 
     <!-- Clear Filters Button -->

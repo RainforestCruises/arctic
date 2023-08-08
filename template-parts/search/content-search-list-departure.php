@@ -80,19 +80,43 @@
                 </div>
             </div>
         </div>
+        <!-- Deals -->
+        <?php if ($args->Deals) :
+            foreach ($args->Deals as $deal) : ?>
+                <div class="card-tag card-tag--dark">
+                    <?php echo get_field('short_title', $deal) ?>
+                </div>
+        <?php endforeach;
+        endif; ?>
+        <!-- Deals -->
+        <?php if ($args->SpecialDepartures) :
+            foreach ($args->SpecialDepartures as $special) : ?>
+                <div class="card-tag card-tag--dark">
+                    <?php echo get_field('short_title', $special) ?>
+                </div>
+        <?php endforeach;
+        endif; ?>
     </div>
 
     <!-- Bottom -->
     <div class="search-card-departure__bottom">
+        <?php if ($args->BestDiscount) : ?>
+            <div class="search-card-departure__bottom__savings">
+                Up to <span class="green-text"><?php echo $args->BestDiscount;?>%</span> Savings
+            </div>
+        <?php endif; ?>
         <!-- Price Group -->
         <div class="search-card-departure__bottom__price-group">
+
             <span class="search-card-departure__bottom__price-group__amount">
                 <?php priceFormat($args->LowestPrice, $args->HighestPrice); ?>
             </span>
             <span class="search-card-departure__bottom__price-group__text">
                 <?php echo ($args->LowestPrice) ? "Per Person" : ""; ?>
             </span>
+
         </div>
+
     </div>
 
 
