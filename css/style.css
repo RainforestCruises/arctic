@@ -2618,25 +2618,41 @@ p {
   .inquire-form__intro {
     border-bottom: 1px solid #e6e6e6;
     padding-bottom: 2rem;
-    text-align: center; }
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
     .inquire-form__intro__title {
       font-size: 3rem;
       line-height: 3.5rem;
       color: #1d2225;
       font-weight: 700;
       margin-bottom: 1rem; }
-    .inquire-form__intro__selection__item {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #347fff;
-      display: none;
+    .inquire-form__intro__selection {
       margin-bottom: 1rem; }
+      .inquire-form__intro__selection__item {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #347fff;
+        display: none; }
     .inquire-form__intro__subtext {
       font-size: 1.6rem;
-      margin-bottom: 0; }
+      margin-bottom: 1.5rem;
+      max-width: 40rem; }
+    .inquire-form__intro__icon {
+      display: flex;
+      justify-content: center; }
+      .inquire-form__intro__icon svg {
+        height: 4rem;
+        width: 4rem;
+        color: #1d2225; }
   .inquire-form__form {
     margin-top: 2rem;
     padding: 0 3rem; }
+    .inquire-form__form__subtext {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      text-align: center; }
   .inquire-form__outro {
     font-size: 1.3rem;
     text-align: center; }

@@ -35,19 +35,19 @@ $maxlength = 320;
                     Give us a Call
                 </h2>
                 <div class="contact-section__wrapper__intro__subtitle">
-                    Speak with our trip specialists to book your next experience.
+                    We ❤️ to talk! A brief call with one of our destination specialists is the quickest and easiest way to create your perfect trip.
                 </div>
                 <div class="contact-section__wrapper__intro__phone">
-                <a href="tel:<?php echo $phone_number_numeric; ?>">
-                            <?php echo $phone_number; ?>
-                        </a>
+                    <a href="tel:<?php echo $phone_number_numeric; ?>">
+                        <?php echo $phone_number; ?>
+                    </a>
                 </div>
             </div>
 
             <!-- Form -->
             <div class="contact-section__wrapper__form">
-            <?php 
-            
+                <?php
+
                 //Check if WpForms is active
                 if (is_plugin_active('wpforms/wpforms.php')) {
                     wpforms_display($primary_contact_form_id);
@@ -83,7 +83,7 @@ $maxlength = 320;
                 $expand = strlen($text) > $maxlength ? true : false;
                 $text_limited = substr($text, 0, $maxlength) . ($expand ? '...' : '');
             ?>
-               <div class="text-card ">
+                <div class="text-card ">
                     <div class="text-card__avatar">
                         <div class="text-card__avatar__image-area" style="background-color: <?php echo generateBgColor(); ?>;">
                             <?php echo generateInitials($title); ?>

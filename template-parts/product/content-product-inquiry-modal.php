@@ -7,6 +7,8 @@ $yearSelections = $args['yearSelections'];
 $itineraryDataList = $args['itineraryDataList'];
 $itineraryPosts = $args['itineraryPosts'];
 $ships = $args['ships'];
+$phone_number = get_field('phone_number', 'options');
+$phone_number_numeric = get_field('phone_number_numeric', 'options');
 ?>
 
 <div class="modal" id="inquireModal">
@@ -53,12 +55,28 @@ $ships = $args['ships'];
                         <div class="inquire-form__intro__selection__item" id="departure-selection-display"></div>
                         <div class="inquire-form__intro__selection__item" id="cabin-selection-display"></div>
                     </div>
+                    <div class="inquire-form__intro__icon">
+                        <svg>
+                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-headset"></use>
+                        </svg>
+                    </div>
+                    <h2 class="inquire-form__intro__title">
+                        Give us a Call
+                    </h2>
                     <div class="inquire-form__intro__subtext">
-                        Please fill in the form and we’ll get back to you ASAP.
+                        We ❤️ to talk! A brief call with one of our destination specialists is the quickest and easiest way to create your perfect trip.
+                    </div>
+                    <div class="inquire-form__intro__title">
+                        <a href="tel:<?php echo $phone_number_numeric; ?>">
+                            <?php echo $phone_number; ?>
+                        </a>
                     </div>
                 </div>
 
                 <div class="inquire-form__form">
+                    <div class="inquire-form__form__subtext">
+                        Alternately, please fill in the form and we’ll get back to you ASAP.
+                    </div>
                     <?php
                     if (is_plugin_active('wpforms/wpforms.php')) {
                         wpforms_display($primary_contact_form_id);
