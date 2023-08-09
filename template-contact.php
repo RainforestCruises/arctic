@@ -46,6 +46,9 @@ $maxlength = 320;
 
             <!-- Form -->
             <div class="contact-section__wrapper__form">
+                <div class="contact-section__wrapper__form__subtext">
+                    Alternately, please fill in the form and we’ll get back to you ASAP.
+                </div>
                 <?php
 
                 //Check if WpForms is active

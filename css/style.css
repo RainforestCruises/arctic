@@ -7104,6 +7104,10 @@ p {
     .contact-section__wrapper__form {
       width: 100%;
       max-width: 60rem; }
+      .contact-section__wrapper__form__subtext {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+        text-align: center; }
     .contact-section__wrapper__close-button {
       position: absolute;
       top: 3rem;
