@@ -7,7 +7,8 @@ function getDepartureList($post, $specificShip = null)
     $departures = [];
     if (get_post_type($post) == 'rfc_cruises') {
 
-        $itineraryPosts = get_field('itineraries', $post);
+        $itineraryPosts = getShipItineraries($post);
+
 
         foreach ($itineraryPosts as $i) { //each itinerary
 
