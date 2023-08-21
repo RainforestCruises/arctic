@@ -205,7 +205,9 @@ function getLowestDeparturePrice($departure)
     $priceArray = [];
     foreach ($cabin_prices as $c) {
         if ($c['sold_out'] != true) {
-            $priceArray[] = $c['discounted_price'] == "" ? $c['price'] : $c['discounted_price'];
+            if(!($c['discounted_price'] == "" && $c['price'] == "")) {
+                $priceArray[] = $c['discounted_price'] == "" ? $c['price'] : $c['discounted_price'];
+            }
         }
     }
 
@@ -225,7 +227,9 @@ function getHighestDeparturePrice($departure)
     $priceArray = [];
     foreach ($cabin_prices as $c) {
         if ($c['sold_out'] != true) {
-            $priceArray[] = $c['discounted_price'] == "" ? $c['price'] : $c['discounted_price'];
+            if(!($c['discounted_price'] == "" && $c['price'] == "")) {
+                $priceArray[] = $c['discounted_price'] == "" ? $c['price'] : $c['discounted_price'];
+            }
         }
     }
 

@@ -138,6 +138,27 @@
             "mime_types": ""
         },
         {
+            "key": "field_64e389172e5ac",
+            "label": "Search Rank",
+            "name": "search_rank",
+            "type": "number",
+            "instructions": "Weight given to search priority, from 1-1000. A higher number will appear first in search results. A product with a weight of 1 will appear last. Score average products: ~500 range, products to appear first: 700+ range, products to rank last: sub 300 range.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 1,
+            "max": 1000,
+            "step": 1
+        },
+        {
             "key": "field_61dca09f34c1b",
             "label": "Is Exclusive",
             "name": "is_exclusive",
@@ -321,5 +342,5 @@
     "active": true,
     "description": "Deal - CPT",
     "show_in_rest": 0,
-    "modified": 1682525985
+    "modified": 1692633443
 }

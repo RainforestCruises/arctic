@@ -53,6 +53,8 @@ function getDealsFromSingleDeparture($departure, $getSpecials = false)
         }
         $dealsArray[] = $deal;
     }
+    usort($dealsArray, "sortDealRank"); // sort by search rank score
+
     return $dealsArray;
 }
 
@@ -104,8 +106,11 @@ function getDealsInCategory($category)
         $dealsArray[] = $deal;
     }
 
+    usort($dealsArray, "sortDealRank"); // sort by search rank score
+
     return $dealsArray;
 }
+
 
 // get a list of itineraries that have a particular deal, accepts a single deal or array of deals to match
 function getItinerariesWithDeal($deals)
@@ -251,4 +256,13 @@ function getDaysUntilExpiry($expiry_date)
     $datediff = strtotime($expiry_date) - $now;
     $daysUntilExpiry = round($datediff / (60 * 60 * 24));
     return $daysUntilExpiry;
+}
+
+
+// Sorting - rank
+function sortDealRank($a, $b)
+{
+    if (is_object($a) && is_object($b)) {
+        return $b->search_rank - $a->search_rank;
+    }
 }

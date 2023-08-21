@@ -5,7 +5,7 @@ return array (
   'title' => 'Deals',
   'type' => 'rfc_deals',
   'id' => '61dca42e9152d',
-  'updated' => 1683218685,
+  'updated' => 1692633501,
   'columns' => 
   array (
     'title' => 
@@ -159,6 +159,23 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '64494f36b78d50',
+    ),
+    '64e38984400000' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Search Rank',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_64e389172e5ac',
+      'number_format' => '',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '64e38984400000',
     ),
     '61e9e66a6147b0' => 
     array (
