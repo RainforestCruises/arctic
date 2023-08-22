@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="author" content="Ryan">
 
-    <!-- Custom OG Meta --> 
+    <!-- Custom OG Meta -->
     <?php
     // Note: use WP Featured Image for Serps
     $og_featured_image = null;
@@ -33,7 +33,7 @@
         $images = get_field('hero_gallery');
         $og_featured_image = $images[0];
     }
-   
+
     if ($og_featured_image) : ?>
         <meta property="og:image" content="<?php echo $og_featured_image['url']; ?>" />
         <meta property="og:image:secure_url" content="<?php echo $og_featured_image['url']; ?>" />
@@ -79,6 +79,10 @@
 </head>
 
 <body <?php body_class("global"); ?> id="body">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NJ4WH6JQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <!-- Form Hidden -->
     <form class="nav-search-form" action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="nav-search-form">
