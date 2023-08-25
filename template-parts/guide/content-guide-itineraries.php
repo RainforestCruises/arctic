@@ -53,7 +53,7 @@ $itineraries_title = get_field('itineraries_title');
                         $embarkation_point = get_field('embarkation_point', $itinerary);
                         $embarkation = get_the_title($embarkation_point);
                         $shipsDisplay = getItineraryShips($itinerary);
-                        $destinations = getItineraryDestinationsDisplay($itinerary, 4);
+                        $destinations = getItineraryDestinations($itinerary, true, 4);
                         $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
                         $guestsDisplay = get_field('vessel_capacity', $itinerary) . ' Guests, ' . 'Luxury';
                         $departures = getDepartureList($itinerary);
@@ -83,7 +83,7 @@ $itineraries_title = get_field('itineraries_title');
 
                                 <!-- Title -->
                                 <h3 class="resource-card__content__title">
-                                    <a href="<?php echo get_permalink($itinerary) ?>"><?php echo $title; ?></a>                            
+                                    <a href="<?php echo get_permalink($itinerary) ?>"><?php echo $title; ?></a>
                                 </h3>
 
                                 <!-- Specs -->
@@ -117,10 +117,10 @@ $itineraries_title = get_field('itineraries_title');
                                 <div class="resource-card__content__bottom">
                                     <div class="resource-card__content__bottom__price-group">
                                         <div class="resource-card__content__bottom__price-group__amount">
-                                            <?php priceFormat($lowestPrice);  ?> - <?php priceFormat($highestPrice); ?>
+                                            <?php priceFormat($lowestPrice, $highestPrice); ?>
                                         </div>
                                         <div class="resource-card__content__bottom__price-group__text">
-                                            Per Person
+                                            <?php echo ($lowestPrice) ? "Per Person" : ""; ?>
                                         </div>
                                     </div>
                                 </div>
