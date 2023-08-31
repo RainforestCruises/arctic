@@ -6,11 +6,12 @@ foreach ($sections as $section) :
     $title = $section['title'];
     $snippet = $section['snippet'];
     $dealsInCategory = getDealsInCategory($category);
+    $titleSlug = slugify(get_the_title($category));
 
     if (!$dealsInCategory) continue; // skip if no deals found for category
 ?>
 
-    <section class="slider-block deal-slider-block" id="section-deals-<?php echo $categoryCount; ?>">
+    <section class="slider-block deal-slider-block" id="section-<?php echo $titleSlug; ?>">
         <div class="slider-block__content block-top-divider">
 
             <!-- Top - Title/Nav -->
