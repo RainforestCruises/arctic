@@ -3,6 +3,8 @@ $primary_contact_form_id = get_field('primary_contact_form_id', 'options');
 $productName = get_the_title();
 $phone_number = get_field('phone_number', 'options');
 $phone_number_numeric = get_field('phone_number_numeric', 'options');
+$email = get_field('email', 'options');
+
 ?>
 
 
@@ -67,7 +69,7 @@ $phone_number_numeric = get_field('phone_number_numeric', 'options');
                 </div>
                 <!-- Outro -->
                 <div class="inquire-form__outro">
-                    You can also send us a message directly at <a href="mailto:cruise@antarcticacruises.com">cruise@antarcticacruises.com</a>
+                    You can also send us a message directly at <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
                 </div>
             </div>
 

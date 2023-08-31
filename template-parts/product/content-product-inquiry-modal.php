@@ -9,6 +9,8 @@ $itineraryPosts = $args['itineraryPosts'];
 $ships = $args['ships'];
 $phone_number = get_field('phone_number', 'options');
 $phone_number_numeric = get_field('phone_number_numeric', 'options');
+$email = get_field('email', 'options');
+
 ?>
 
 <div class="modal" id="inquireModal">
@@ -87,7 +89,7 @@ $phone_number_numeric = get_field('phone_number_numeric', 'options');
                 </div>
                 <!-- Outro -->
                 <div class="inquire-form__outro">
-                    You can also send us a message directly at <a href="mailto:cruise@antarcticacruises.com">cruise@antarcticacruises.com</a>
+                    You can also send us a message directly at <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
                 </div>
             </div>
 

@@ -5,6 +5,7 @@ $primary_contact_form_id = get_field('primary_contact_form_id', 'options');
 $phone_number = get_field('phone_number', 'options');
 $phone_number_numeric = get_field('phone_number_numeric', 'options');
 $show_site_notice = get_field('show_site_notice', 'options');
+$email = get_field('email', 'options');
 
 $reviews = get_field('reviews');
 $maxlength = 320;
@@ -58,6 +59,11 @@ $maxlength = 320;
                     echo 'Forms Plugin Missing';
                 }
                 ?>
+
+                 <!-- Outro -->
+                 <div class="inquire-form__outro">
+                    You can also send us a message directly at <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
+                </div>
 
             </div>
         </div>
