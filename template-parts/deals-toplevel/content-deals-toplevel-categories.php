@@ -11,7 +11,7 @@ foreach ($sections as $section) :
     if (!$dealsInCategory) continue; // skip if no deals found for category
 ?>
 
-    <section class="slider-block deal-slider-block" id="section-<?php echo $titleSlug; ?>">
+    <section class="slider-block deal-slider-block" id="<?php echo $titleSlug; ?>">
         <div class="slider-block__content block-top-divider">
 
             <!-- Top - Title/Nav -->

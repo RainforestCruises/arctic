@@ -419,8 +419,8 @@ jQuery(document).ready(function ($) {
   $("#range-slider").ionRangeSlider({
     skin: "round",
     type: "double",
-    min: lengthSliderMin, 
-    max: lengthSliderMax, 
+    min: lengthSliderMin,
+    max: lengthSliderMax,
     from: formMinLength.value,
     to: formMaxLength.value,
     postfix: " Day",
@@ -438,8 +438,8 @@ jQuery(document).ready(function ($) {
   $("#price-slider").ionRangeSlider({
     skin: "round",
     type: "double",
-    min: priceSliderMin, 
-    max: priceSliderMax, 
+    min: priceSliderMin,
+    max: priceSliderMax,
     from: formMinPrice.value,
     to: formMaxPrice.value,
     prefix: "$",
@@ -475,13 +475,13 @@ jQuery(document).ready(function ($) {
       }
     });
     let extrasFilterCount = document.getElementById('extrasFilterCount');
-      if (count > 0) {
-        extrasFilterCount.classList.add("show");
-        extrasFilterCount.innerHTML = count;
-      } else {
-        extrasFilterCount.classList.remove("show");
-        extrasFilterCount.innerHTML = count;
-      }
+    if (count > 0) {
+      extrasFilterCount.classList.add("show");
+      extrasFilterCount.innerHTML = count;
+    } else {
+      extrasFilterCount.classList.remove("show");
+      extrasFilterCount.innerHTML = count;
+    }
   }
 
 
@@ -853,5 +853,49 @@ jQuery(document).ready(function ($) {
       })
     }
   }
+
+
+
+
+
+
+
+  // Travel Guide Slider
+  new Swiper('#travel-guide-slider', {
+    spaceBetween: 15,
+    slidesPerView: 1.2,
+    watchSlidesProgress: true,
+    navigation: {
+      nextEl: '.travel-guide-slider-btn-next',
+      prevEl: '.travel-guide-slider-btn-prev',
+    },
+    breakpoints: {
+      600: {
+        slidesPerView: 2,
+      },
+      800: {
+        slidesPerView: 3,
+      }
+    }
+  });
+
+
+  //faq modal
+  const faqsModal = document.querySelector("#faqsModal");
+  const faqsModalMainContent = document.querySelector("#faqsModalMainContent");
+  const readAllFaqs = [...document.querySelectorAll('.read-all-faqs')];
+  if (readAllFaqs) {
+      readAllFaqs.forEach(item => {
+          item.addEventListener('click', () => {
+              faqsModal.style.display = 'flex';
+              body.classList.add('no-scroll');
+              const section = item.getAttribute('section');
+              const modalDivSectionOffset = document.getElementById(section).offsetTop;
+              faqsModalMainContent.scrollTop = modalDivSectionOffset - 120;
+
+          });
+      })
+  }
+
 
 });

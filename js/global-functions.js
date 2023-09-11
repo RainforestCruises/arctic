@@ -58,15 +58,6 @@ jQuery(document).ready(function ($) {
 
 
 
-
-
-
-
-
-
-
-
-
     //Panels --------------------------------------------
     //expand/hide
     $(".outline-panel__heading").on("click", function (e) {

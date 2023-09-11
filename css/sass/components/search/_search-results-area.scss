@@ -9,7 +9,6 @@
     @media only screen and (max-width: $bp-large) {
         width: 100%;
         margin-left: 0rem;
-
         padding-top: 2rem;
     }
 
@@ -69,7 +68,7 @@
 
     &__grid {
         display: grid;
-        padding-bottom: 6rem;
+        //padding-bottom: 6rem;
         width: 100%;
         position: relative;
         z-index: 0;

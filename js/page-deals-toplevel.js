@@ -1,7 +1,16 @@
 
 jQuery(document).ready(function ($) {
 
-
+    // Inquire modal
+    const inquireModal = document.querySelector("#inquireModal");
+    const genericInquireCtaButtons = [...document.querySelectorAll('.generic-inquire-cta')];
+    genericInquireCtaButtons.forEach(item => {
+        item.addEventListener('click', () => {
+            inquireModal.style.display = 'flex';
+            body.classList.add('no-scroll');
+        });
+    })
+    
     //intro text modal
     const contentModal = document.querySelector("#contentModal");
     const expandContent = document.querySelector("#expand-content");

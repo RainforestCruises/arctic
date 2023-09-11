@@ -45,6 +45,10 @@ $args = array('footerCtaDivider' => false);
 
 </main>
 
+<!-- Inquire Modal -->
+<?php
+get_template_part('template-parts/shared/content', 'shared-basic-inquiry-modal', $args);
+?>
 
 
 <?php get_footer(); ?>

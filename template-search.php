@@ -4,6 +4,10 @@ wp_enqueue_script('page-search', get_template_directory_uri() . '/js/page-search
 get_header();
 
 
+$show_faqs = get_field('show_faqs');
+$show_travel_guides = get_field('show_travel_guides');
+
+
 // Paging
 $pageNumber = 1;
 if (isset($_GET["pageNumber"]) && $_GET["pageNumber"]) {
@@ -219,7 +223,7 @@ $args = array(
 
 ?>
 
-<main class="main-content">
+<main class="main-content" style="padding-bottom: 6rem;">
     <?php
     get_template_part('template-parts/search/content', 'search-intro', $args);
     ?>
@@ -231,7 +235,7 @@ $args = array(
     </div>
 
     <!-- Content -->
-    <section class="search-main" >
+    <section class="search-main">
         <div class="search-main__content" id="search-page-content">
             <?php
             get_template_part('template-parts/search/content', 'search-sidebar', $args); // page args --> initial preselection
@@ -239,6 +243,14 @@ $args = array(
             ?>
         </div>
     </section>
+
+    <?php if ($show_faqs) :
+        get_template_part('template-parts/search/content', 'search-faqs', $args);
+    endif; ?>
+
+    <?php if ($show_travel_guides) :
+        get_template_part('template-parts/search/content', 'search-travel-guides', $args);
+    endif; ?>
 
 </main>
 
