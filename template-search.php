@@ -8,6 +8,84 @@ $show_faqs = get_field('show_faqs');
 $show_travel_guides = get_field('show_travel_guides');
 
 
+// Region Preselection
+$preselectedRegion = get_field('region');
+if (isset($_GET["region"])) {
+    if (isset($_GET["region"]) && $_GET["region"]) {
+        $preselectedRegion = htmlspecialchars($_GET["region"]);
+    } else {
+        $preselectedRegion = null;
+    }
+}
+
+
+// Sidebar Filter Lists --------------------------------------------------------------------------------------------------------
+// Sidebar Regions
+$regionsArgs = array(
+    'post_type' => 'rfc_regions',
+    'posts_per_page' => -1,
+    'order' => 'ASC',
+    'orderby' => 'title',
+);
+$sidebarRegions = get_posts($regionsArgs);
+
+// Sidebar Routes
+$routesArgs = array(
+    'post_type' => 'rfc_routes',
+    'posts_per_page' => -1,
+    'order' => 'ASC',
+    'orderby' => 'title',
+);
+$sidebarRoutes = get_posts($routesArgs);
+
+// Sidebar Styles
+$stylesArgs = array(
+    'post_type' => 'rfc_styles',
+    'posts_per_page' => -1,
+    'order' => 'ASC',
+    'orderby' => 'title',
+);
+$sidebarStyles = get_posts($stylesArgs);
+
+// Sidebar Months
+$sidebarMonths = [];
+$currentMonth = (int)date('m');
+$monthLimit = 18;
+
+for ($x = $currentMonth; $x < $currentMonth + $monthLimit; $x++) {
+
+    $object = new stdClass();
+    $object->monthName = date('F', mktime(0, 0, 0, $x, 1));
+    $object->monthNumber = date('m', mktime(0, 0, 0, $x, 1));
+    $object->year = date('Y', mktime(0, 0, 0, $x, 1));
+    $object->initiallyShown = true;
+
+    $monthRegions = [];
+    foreach($sidebarRegions as $region){
+        $season_start = get_field('season_start', $region);
+        $season_length = get_field('season_length', $region);
+        $season_end = $season_start + $season_length;
+
+        $monthNumberArray = []; // build array of month numbers applicable to this region
+        for($z = $season_start - 1; $z <= $season_end; $z++){
+            $monthNumberArray[] = date('m', mktime(0, 0, 0, $z, 1));
+        }
+
+        if(array_search($object->monthNumber, $monthNumberArray)){ // check if the current month number corresponds to the array
+            $monthRegions[] = $region->ID;
+        }
+    }
+    $object->monthRegions = $monthRegions;
+
+    if($preselectedRegion != null && array_search($preselectedRegion, $object->monthRegions) === false){  // determine if initially shown based on preselected region
+        $object->initiallyShown = false;
+    }
+
+    $sidebarMonths[] = $object;
+}
+
+
+// Preselections --------------------------------------------------------------------------------------------------------
 // Paging
 $pageNumber = 1;
 if (isset($_GET["pageNumber"]) && $_GET["pageNumber"]) {
@@ -28,13 +106,58 @@ if (isset($_GET["searchInput"]) && $_GET["searchInput"]) {
 
 // Departure Dates
 $departures = [];
-$departuresString = "";
-if (isset($_GET["departures"]) && $_GET["departures"]) {
-    $departuresParameters = htmlspecialchars($_GET["departures"]);
-    $departuresString = $departuresParameters;
-    console_log($departuresString);
-    $departures = explode(";", $departuresString);
+// -- preselected months
+$selectedMonthsString = get_field('departure_months');
+if (trim($selectedMonthsString) != "") {
+    $selectedMonths = explode(",", $selectedMonthsString);
+    $currentYear = (int)date('Y');
+    $selectedDepartures = [];
+    for ($x = $currentYear; $x < $currentYear + 3; $x++) {
+        foreach ($selectedMonths as $selectedMonth) {
+            $selectedDepartures[] = $x . '-' . trim($selectedMonth);
+        }
+    }
+    $departures = $selectedDepartures;
 }
+
+// -- preselected years
+$selectedYearsString = get_field('departure_years');
+if (trim($selectedYearsString) != "") {
+    $selectedYears = explode(",", $selectedYearsString);
+    $currentYear = (int)date('Y');
+    $currentMonth = (int)date('m');
+    $selectedDepartures = [];
+    foreach ($selectedYears as $selectedYear) {
+        $startMonth = $currentYear == $selectedYear ? $currentMonth : 1;
+        for ($x = $startMonth; $x <= 12; $x++) {
+            $selectedDepartures[] = trim($selectedYear) . '-' . str_pad($x, 2, '0', STR_PAD_LEFT);
+        }
+    }
+    $departures = $selectedDepartures;
+}
+
+$preselectedDepartures = [];
+$preselectedDeparturesString = '';
+$filteredSidebarMonths = [];
+foreach($sidebarMonths as $m){   
+    if($m->initiallyShown == true){
+        $stringMonth = $m->year . "-" . $m->monthNumber;
+        $filteredSidebarMonths[] = $stringMonth;
+    }
+}
+$preselectedDepartures = array_intersect($filteredSidebarMonths, $departures); // reduce preselect to that of months only shown initially
+$preselectedDeparturesString = implode(";", $preselectedDepartures);
+
+
+// -- URL param
+if (isset($_GET["departures"])) {
+    if (isset($_GET["departures"]) && $_GET["departures"]) {
+        $departuresParameters = htmlspecialchars($_GET["departures"]);
+        $preselectedDeparturesString = $departuresParameters;
+        $preselectedDepartures = explode(";", $preselectedDeparturesString);
+    }
+}
+
 
 // View
 $viewType = get_field('default_view');
@@ -43,37 +166,6 @@ if (isset($_GET["viewType"])) {
         $viewType = htmlspecialchars($_GET["viewType"]);
     } else {
         $viewType = 'search-itineraries';
-    }
-}
-
-// Deals
-$filterDeals = get_field('filter_deals');
-if (isset($_GET["filterDeals"])) {
-    if (isset($_GET["filterDeals"]) && $_GET["filterDeals"]) {
-        $filterDeals = filter_var($_GET['filterDeals'], FILTER_VALIDATE_BOOLEAN);
-    } else {
-        $filterDeals = false;
-    }
-}
-
-// Specials
-$filterSpecials = get_field('filter_special_departures');
-if (isset($_GET["filterSpecials"])) {
-    if (isset($_GET["filterSpecials"]) && $_GET["filterSpecials"]) {
-        $filterSpecials = filter_var($_GET['filterSpecials'], FILTER_VALIDATE_BOOLEAN);
-    } else {
-        $filterSpecials = false;
-    }
-}
-
-
-// Region
-$region = get_field('region');
-if (isset($_GET["region"])) {
-    if (isset($_GET["region"]) && $_GET["region"]) {
-        $region = htmlspecialchars($_GET["region"]);
-    } else {
-        $region = null;
     }
 }
 
@@ -118,6 +210,27 @@ if (isset($_GET["styles"])) {
     } else {
         $styles = [];
         $stylesString = "";
+    }
+}
+
+
+// Deals
+$filterDeals = get_field('filter_deals');
+if (isset($_GET["filterDeals"])) {
+    if (isset($_GET["filterDeals"]) && $_GET["filterDeals"]) {
+        $filterDeals = filter_var($_GET['filterDeals'], FILTER_VALIDATE_BOOLEAN);
+    } else {
+        $filterDeals = false;
+    }
+}
+
+// Specials
+$filterSpecials = get_field('filter_special_departures');
+if (isset($_GET["filterSpecials"])) {
+    if (isset($_GET["filterSpecials"]) && $_GET["filterSpecials"]) {
+        $filterSpecials = filter_var($_GET['filterSpecials'], FILTER_VALIDATE_BOOLEAN);
+    } else {
+        $filterSpecials = false;
     }
 }
 
@@ -202,10 +315,10 @@ $resultCount = $resultsObject['resultsCount'];
 
 // page arguments ------------
 $args = array(
-    'region' => $region, //preselection
+    'preselectedRegion' => $preselectedRegion, //preselection
     'styles' => $styles, //preselection
     'routes' => $routes, //preselection
-    'departures' => $departures, //preselection
+    'departures' => $preselectedDepartures, //preselection
     'lengthMin' => $lengthMin, //preselection
     'lengthMax' => $lengthMax, //preselection
     'priceMin' => $priceMin, //preselection
@@ -218,6 +331,10 @@ $args = array(
     'viewType' => $viewType,
     'filterDeals' => $filterDeals,
     'filterSpecials' => $filterSpecials,
+    'sidebarMonths' => $sidebarMonths,
+    'sidebarRegions' => $sidebarRegions,
+    'sidebarRoutes' => $sidebarRoutes,
+    'sidebarStyles' => $sidebarStyles,
 
 );
 
@@ -276,14 +393,14 @@ $args = array(
     <input type="hidden" name="formFilterDeals" id="formFilterDeals" value="<?php echo $filterDeals ?>">
     <input type="hidden" name="formFilterSpecials" id="formFilterSpecials" value="<?php echo $filterSpecials ?>">
 
-    <input type="hidden" name="formDates" id="formDates" value="<?php echo $departuresString ?>">
+    <input type="hidden" name="formDates" id="formDates" value="<?php echo $preselectedDeparturesString ?>">
     <input type="hidden" name="formMinLength" id="formMinLength" value="<?php echo $lengthMin ?>">
     <input type="hidden" name="formMaxLength" id="formMaxLength" value="<?php echo $lengthMax ?>">
     <input type="hidden" name="formMinPrice" id="formMinPrice" value="<?php echo $priceMin ?>">
     <input type="hidden" name="formMaxPrice" id="formMaxPrice" value="<?php echo $priceMax ?>">
     <input type="hidden" name="formSort" id="formSort" value="<?php echo $sorting ?>">
     <input type="hidden" name="formPageNumber" id="formPageNumber" value="<?php echo $pageNumber ?>">
-    <input type="hidden" name="formRegion" id="formRegion" value="<?php echo $region ?>">
+    <input type="hidden" name="formRegion" id="formRegion" value="<?php echo $preselectedRegion ?>">
     <input type="hidden" name="formThemes" id="formThemes" value="<?php echo $stylesString ?>">
     <input type="hidden" name="formRoutes" id="formRoutes" value="<?php echo $routesString ?>">
 

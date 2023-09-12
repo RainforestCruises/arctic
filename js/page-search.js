@@ -282,9 +282,12 @@ jQuery(document).ready(function ($) {
 
       formRegion.value = regionString;
       hideRoutes(regionString);
+      hideDepartures(regionString);
       reloadResults();
     });
   })
+
+
 
   // if region selected, hide and uncheck unrelated routes
   const routeGroupArray = [...document.querySelectorAll('.route-checkbox-group')]; // li element of checkbox
@@ -305,7 +308,6 @@ jQuery(document).ready(function ($) {
     })
     computeRoutesString();
   }
-
 
   // routes selections
   let routesString = formRoutes.value;
@@ -345,39 +347,72 @@ jQuery(document).ready(function ($) {
   }
 
 
+  const departureGroupArray = [...document.querySelectorAll('.departure-checkbox-group')]; // li element of checkbox
+  function hideDepartures(selectedRegion) {
+    departureGroupArray.forEach(item => {
+      if (selectedRegion == "") {
+        item.style.display = "block";
+      } else {
+        var regionIdArray = item.getAttribute('region-value').split(',');
+        var matchedRegion = false;
+        regionIdArray.forEach(item => {
+          if (item == selectedRegion) {
+            matchedRegion = true;
+          }
+        })
+
+        if (matchedRegion) {
+          item.style.display = "block";
+        } else {
+          var targetCheckbox = item.querySelectorAll('.departure-checkbox');
+          $(targetCheckbox).prop('checked', false); // strange but vanilla js will not work
+          item.style.display = "none";
+        }
+      }
+    })
+    computeDeparturesString();
+  }
+
   // departure date selection
   let departuresString = formDates.value;
   const departureDatesArray = [...document.querySelectorAll('.departure-checkbox')];
   departureDatesArray.forEach(item => {
     item.addEventListener('click', () => {
-      departuresString = "";
-      let count = 0;
-      departureDatesArray.forEach(checkbox => {
-        const itemValue = checkbox.value;
-
-        if (checkbox.checked) {
-          if (count > 0) {
-            departuresString += ";";
-          }
-          departuresString += itemValue;
-          count++;
-        }
-      })
-
-      //filter count
-      let departuresFilterCount = document.getElementById('departuresFilterCount');
-      if (count > 0) {
-        departuresFilterCount.classList.add("show");
-        departuresFilterCount.innerHTML = count;
-      } else {
-        departuresFilterCount.classList.remove("show");
-        departuresFilterCount.innerHTML = count;
-      }
-      formDates.value = departuresString;
+      computeDeparturesString();
       reloadResults();
-
     });
   })
+
+
+
+  function computeDeparturesString() {
+    departuresString = "";
+    let count = 0;
+    departureDatesArray.forEach(checkbox => {
+      const itemValue = checkbox.value;
+
+      if (checkbox.checked) {
+        if (count > 0) {
+          departuresString += ";";
+        }
+        departuresString += itemValue;
+        count++;
+      }
+    })
+
+    //filter count
+    let departuresFilterCount = document.getElementById('departuresFilterCount');
+    if (count > 0) {
+      departuresFilterCount.classList.add("show");
+      departuresFilterCount.innerHTML = count;
+    } else {
+      departuresFilterCount.classList.remove("show");
+      departuresFilterCount.innerHTML = count;
+    }
+    formDates.value = departuresString;
+    reloadResults();
+  }
+
 
 
   // themes selections
@@ -885,16 +920,16 @@ jQuery(document).ready(function ($) {
   const faqsModalMainContent = document.querySelector("#faqsModalMainContent");
   const readAllFaqs = [...document.querySelectorAll('.read-all-faqs')];
   if (readAllFaqs) {
-      readAllFaqs.forEach(item => {
-          item.addEventListener('click', () => {
-              faqsModal.style.display = 'flex';
-              body.classList.add('no-scroll');
-              const section = item.getAttribute('section');
-              const modalDivSectionOffset = document.getElementById(section).offsetTop;
-              faqsModalMainContent.scrollTop = modalDivSectionOffset - 120;
+    readAllFaqs.forEach(item => {
+      item.addEventListener('click', () => {
+        faqsModal.style.display = 'flex';
+        body.classList.add('no-scroll');
+        const section = item.getAttribute('section');
+        const modalDivSectionOffset = document.getElementById(section).offsetTop;
+        faqsModalMainContent.scrollTop = modalDivSectionOffset - 120;
 
-          });
-      })
+      });
+    })
   }
 
 

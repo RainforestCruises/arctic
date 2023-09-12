@@ -1,6 +1,6 @@
    <?php
     $breadcrumb = get_field('breadcrumb');
-    $regionId = $args['region'];
+    $regionId = $args['preselectedRegion'];
     $regionPost = ($regionId != null) ? get_post($regionId) : null;
     $regionTitle = get_field('navigation_title', $regionPost);
     $show_site_notice = get_field('show_site_notice', 'options');

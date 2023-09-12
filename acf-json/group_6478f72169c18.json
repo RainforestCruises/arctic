@@ -243,6 +243,44 @@
             "return_format": "id"
         },
         {
+            "key": "field_64ff8bd8a8ba6",
+            "label": "Departure Months",
+            "name": "departure_months",
+            "type": "text",
+            "instructions": "Comma separated list of month number, use two digits with leading zero. For example September - November would be: 09, 10, 11",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_64ff8c52a8ba7",
+            "label": "Departure Years",
+            "name": "departure_years",
+            "type": "text",
+            "instructions": "Comma separated list of year number, For example 2023, 2024",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_6478f721bfc32",
             "label": "Itinerary Length Min",
             "name": "itinerary_length_min",
@@ -556,5 +594,5 @@
     "active": true,
     "description": "Search - Page",
     "show_in_rest": 0,
-    "modified": 1694459380
+    "modified": 1694469241
 }

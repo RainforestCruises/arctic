@@ -90,16 +90,12 @@ jQuery(document).ready(function ($) {
             threshHold = 1200;
         }
 
-        console.log(window.scrollY);
-        console.log($(document).height());
+
         if (window.scrollY < threshHold) {
-            console.log('above');
             $('.guide-menu-area').removeClass('active');
         } else if(window.scrollY > $(document).height() - 2000) {
-            console.log('below');
             $('.guide-menu-area').removeClass('active');
         } else {
-            console.log('mid');
             $('.guide-menu-area').addClass('active');
         }
         progressBarScroll();

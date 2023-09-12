@@ -3,13 +3,11 @@ $hero_images = get_field('hero_images');
 $title = get_field('title');
 $subtitle = get_field('subtitle');
 $show_site_notice = get_field('show_site_notice', 'options');
-
 $sections = get_field('sections');
-
 
 ?>
 
-<section class="deals-toplevel-hero">
+<section class="deals-toplevel-hero" id="top">
 
     <!-- BG Image -->
     <div class="deals-toplevel-hero__bg-image">
@@ -28,13 +26,7 @@ $sections = get_field('sections');
             </div>
         </div>
 
-        <div class="deals-toplevel-hero__content__bottom">
-            <a class="btn-scroll-overlay btn-scroll-overlay--down" id="down-arrow-button" href="#section-intro">
-                <svg>
-                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                </svg>
-            </a>
-        </div>
+
     </div>
 
 </section>
@@ -56,7 +48,7 @@ $sections = get_field('sections');
                 <a href="#<?php echo $titleSlug; ?>" class="landing-nav__content__links__link"><?php echo get_the_title($category) ?></a>
 
             <?php endforeach; ?>
-            <a href="#section-about" class="landing-nav__content__links__link">About</a>
+            <a href="#group" class="landing-nav__content__links__link">Group</a>
 
         </div>
 

@@ -1,52 +1,19 @@
 <?php
-// Time
-$months = array();
-$currentMonth = (int)date('m');
-$monthLimit = 18;
 
-for ($x = $currentMonth; $x < $currentMonth + $monthLimit; $x++) {
+// Sidebar lists
+$sidebarMonths = $args['sidebarMonths'];
+$sidebarRegions = $args['sidebarRegions'];
+$sidebarRoutes = $args['sidebarRoutes'];
+$sidebarStyles = $args['sidebarStyles'];
 
-    $object = new stdClass();
-    $object->monthName = date('F', mktime(0, 0, 0, $x, 1));
-    $object->monthNumber = date('m', mktime(0, 0, 0, $x, 1));
-    $object->year = date('Y', mktime(0, 0, 0, $x, 1));
-
-    $months[] = $object;
-}
-
-// preselections
-$selectedRegion = $args['region'];
+// Preselections
+$preselectedRegion = $args['preselectedRegion'];
 $selectedStyles = $args['styles'];
 $selectedRoutes = $args['routes'];
 $selectedDepartures = $args['departures'];
 $searchInput = $args['searchInput'];
 $selectedDeals = $args['filterDeals'];
 $selectedSpecials = $args['filterSpecials'];
-
-//Build Filter Lists
-$regionsArgs = array(
-    'post_type' => 'rfc_regions',
-    'posts_per_page' => -1,
-    'order' => 'ASC',
-    'orderby' => 'title',
-);
-$regions = get_posts($regionsArgs);
-
-$routesArgs = array(
-    'post_type' => 'rfc_routes',
-    'posts_per_page' => -1,
-    'order' => 'ASC',
-    'orderby' => 'title',
-);
-$routes = get_posts($routesArgs);
-
-$stylesArgs = array(
-    'post_type' => 'rfc_styles',
-    'posts_per_page' => -1,
-    'order' => 'ASC',
-    'orderby' => 'title',
-);
-$styles = get_posts($stylesArgs);
 
 
 ?>
@@ -105,7 +72,7 @@ $styles = get_posts($stylesArgs);
         <div class="filter__heading">
             <h5 class="filter__heading__text">
                 Region
-                <?php $filterCount = count($selectedRegion) ?>
+                <?php $filterCount = count($preselectedRegion) ?>
                 <div class="filter__heading__text__count <?php echo ($filterCount > 0 ? 'show' : '') ?>" id="regionFilterCount">
                     <?php echo $filterCount; ?>
                 </div>
@@ -119,11 +86,11 @@ $styles = get_posts($stylesArgs);
             <ul class="filter__content__list">
                 <?php
                 $count = 1;
-                foreach ($regions as $region) :
+                foreach ($sidebarRegions as $region) :
                 ?>
                     <li class="filter__content__list__item">
                         <div class="form-checkbox">
-                            <input class="checkbox region-checkbox" type="checkbox" id="region-checkbox-<?php echo $count; ?>" value="<?php echo $region->ID ?>" <?php echo ($selectedRegion != null ? ($region->ID == $selectedRegion ? 'checked' : '') : '') ?>>
+                            <input class="checkbox region-checkbox" type="checkbox" id="region-checkbox-<?php echo $count; ?>" value="<?php echo $region->ID ?>" <?php echo ($preselectedRegion != null ? ($region->ID == $preselectedRegion ? 'checked' : '') : '') ?>>
                             <label for="region-checkbox-<?php echo $count; ?>" tabindex="1"><?php echo get_the_title($region) ?></label>
                         </div>
                     </li>
@@ -155,12 +122,14 @@ $styles = get_posts($stylesArgs);
 
                 <?php
                 $count = 1;
-                foreach ($months as $m) :
+                foreach ($sidebarMonths as $m) :
                     $currentItemValue = $m->year . '-' . $m->monthNumber;
+                    $matchRegion = $m->initiallyShown == false ? "none" : "block";
+
                 ?>
-                    <li class="filter__content__list__item">
+                    <li class="filter__content__list__item departure-checkbox-group" region-value="<?php echo implode(",", $m->monthRegions); ?>" style="display: <?php echo $matchRegion ?>">
                         <div class="form-checkbox">
-                            <input class="checkbox departure-checkbox <?php echo ($count > 6) ? 'checkbox-expand-group' : ''; ?>" type="checkbox" id="departure-checkbox-<?php echo $count; ?>" value="<?php echo $currentItemValue; ?>" <?php echo ($selectedDepartures != null ? (in_array($currentItemValue, $selectedDepartures) ? 'checked' : '') : '') ?>>
+                            <input class="checkbox departure-checkbox <?php echo ($count > 6) ? 'checkbox-expand-group' : ''; ?>"  type="checkbox" id="departure-checkbox-<?php echo $count; ?>" value="<?php echo $currentItemValue; ?>" <?php echo ($selectedDepartures != null ? (in_array($currentItemValue, $selectedDepartures) ? 'checked' : '') : '') ?> >
                             <label for="departure-checkbox-<?php echo $count; ?>"><?php echo $m->monthName . " " . $m->year; ?></label>
                         </div>
                     </li>
@@ -198,9 +167,9 @@ $styles = get_posts($stylesArgs);
 
                 <?php
                 $count = 1;
-                foreach ($routes as $route) :
+                foreach ($sidebarRoutes as $route) :
                     $routeRegion = get_field('region', $route);
-                    $matchRegion = ($selectedRegion != null && $routeRegion->ID != $selectedRegion) ? "none" : "block";
+                    $matchRegion = ($preselectedRegion != null && $routeRegion->ID != $preselectedRegion) ? "none" : "block";
                 ?>
                     <li class="filter__content__list__item route-checkbox-group" region-value="<?php echo $routeRegion != null ? $routeRegion->ID : 0 ?>" style="display: <?php echo $matchRegion ?>">
                         <div class="form-checkbox">
@@ -234,7 +203,7 @@ $styles = get_posts($stylesArgs);
             <ul class="filter__content__list">
                 <?php
                 $count = 1;
-                foreach ($styles as $style) :
+                foreach ($sidebarStyles as $style) :
                 ?>
                     <li class="filter__content__list__item">
                         <div class="form-checkbox">
