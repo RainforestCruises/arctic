@@ -80,8 +80,7 @@ $routes_title_subtext = get_field('routes_title_subtext');
                             $title = get_field('title', $route);
                             $description = get_field('description', $route);
                             $landing_page = get_field('landing_page', $route);
-                            $price_low = get_field('price_low', $route);
-                            $price_high = get_field('price_high', $route);
+
 
                             $sample_itinerary = get_field('sample_itinerary', $route);
                             $length_in_nights = get_field('length_in_nights', $sample_itinerary);
@@ -90,7 +89,9 @@ $routes_title_subtext = get_field('routes_title_subtext');
                             $ports = get_field('ports', $route);
                             $portsDisplay = comma_separate_list($ports);
                             $destinations = getItineraryDestinations($sample_itinerary, true, 4); //build list of unique, with embarkations removed
-
+                            $itinerariesList = getItinerariesFromRoute($route);
+                            $price_low = getLowestPriceFromListOfItineraries($itinerariesList);
+                            $price_high = getHighestPriceFromListOfItineraries($itinerariesList);
                         ?>
 
                             <!-- Itinerary Card -->

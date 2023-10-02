@@ -282,6 +282,22 @@ function getLowestPriceFromListOfItineraries($itineraries)
     return ($lowestOverallPrice);
 }
 
+// highest price from list of itineraries
+function getHighestPriceFromListOfItineraries($itineraries)
+{
+    $priceList = [];
+    foreach ($itineraries as $itinerary) {
+        $departures = getDepartureList($itinerary);
+        $highestPrice = getHighestDepartureListPrice($departures);
+        if($highestPrice){
+            $priceList[] = $highestPrice;
+        }
+    }
+
+    $highestOverallPrice = min($priceList);
+    return ($highestOverallPrice);
+}
+
 // fly / sail display
 function getFlightOption($itinerary)
 {
@@ -447,6 +463,32 @@ function itineraryRange($itineraries, $separator, $onlyMin = false)
     }
 
     return $returnString;
+}
+
+// get list of itineraries from route
+function getItinerariesFromRoute($routes){
+
+    $queryArgs = array(
+        'post_type' => 'rfc_itineraries',
+        'posts_per_page' => -1,
+    );
+    $itineraries = get_posts($queryArgs);
+
+    $itineraryList = [];
+    foreach ($itineraries as $itinerary) {
+        $itineraryRoutes = get_field('route', $itinerary);
+        $match = false;
+        foreach($itineraryRoutes as $itineraryRoute){
+            $match = is_array($routes) ? in_array($itineraryRoute, $routes) : $itineraryRoute == $routes;
+            if($match){
+                $itineraryList[] = $itinerary;
+            }
+        }
+    }
+
+    $uniqueItinerariesList = getUniquePostsFromArrayOfPosts($itineraryList);
+
+    return $uniqueItinerariesList;
 }
 
 
