@@ -19,3 +19,7 @@
         ?>
 
     </section>
+      <!-- Search-->
+      <div class="nav-main__content__center__search-area">
+                <?php get_template_part('template-parts/nav/content', 'nav-search'); ?>
+            </div>
