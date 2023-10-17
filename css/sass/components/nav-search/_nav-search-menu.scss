@@ -1,0 +1,20 @@
+.nav-search-menu {
+    position: absolute;
+    top: calc(100% - 1rem); //100 percent of nav center
+    width: 30rem;
+    background-color: $color-white;
+    color: $color-primary;
+    border-radius: 1rem;
+    box-shadow: $shadow-medium;
+    border: 1px solid $color-grey-light-2;
+    transition: all 0.2s;
+    z-index: 10;
+    display: none;
+    padding: 1rem 1.2rem;
+
+    &.active {
+        display: grid;
+        animation: fadein 0.2s;
+    }
+    gap: 1rem;
+}

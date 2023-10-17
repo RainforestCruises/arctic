@@ -2,7 +2,7 @@
     background-color: $color-white;
     border-bottom: 1px solid $color-grey-light-2;
 
-    //logo image
+    // logo image
     & .nav-main__content__left__logo-area {
         & img {
             filter: brightness(1) invert(0);
@@ -13,19 +13,24 @@
         color: $color-primary;
 
         &__search-area {
-            & .nav-search {
+            & .nav-search-cta {
                 color: currentColor;
                 border: 1px solid $color-grey-light-1a;
                 box-shadow: $shadow-short-bottom-light;
-                &__cta {
-                    button {
-                        background-color: currentColor;
-                    }
+                
+                &__button {
+                    background-color: currentColor;
+                }
+
+                &:hover{
+                    transition: border .2s;
+                    border: 1px solid $color-grey-light-2;
+
                 }
             }
         }
 
-        //change links to dark colors
+        // change links to dark colors
         &__nav {
             &__list {
                 &__item {
@@ -38,7 +43,7 @@
             }
         }
     }
-    //contact / phone
+    // contact / phone
     & .nav-main__content__right {
         color: $color-primary;
 
@@ -52,20 +57,8 @@
             }
         }
 
-        &__language {
-            // & .trp-language-switcher {
-            //     cursor: pointer;
-            //     color: currentColor;
-
-            //     & > div {
-            //         & > a {
-            //             color: $color-primary;
-            //         }
-            //     }
-            // }
-        }
     }
-    //burger
+    // burger
     & .burger-button {
         &::after {
             background-color: rgba($color-primary, 0.3);
@@ -180,7 +173,7 @@
             z-index: 0;
 
             @media only screen and (max-width: $bp-small) {
-                justify-content: center;
+                justify-content: flex-end;
             }
 
             &__search-area {

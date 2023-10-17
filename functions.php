@@ -14,8 +14,10 @@ require_once(__DIR__ . '/includes/chron-scripts.php');
 require_once(__DIR__ . '/includes/rank-math-config.php');
 
 
-require_once(__DIR__ . '/includes/search-forms.php');
-require_once(__DIR__ . '/includes/search-functions.php');
+require_once(__DIR__ . '/includes/search-form-primary.php');
+require_once(__DIR__ . '/includes/search-form-nav.php');
+require_once(__DIR__ . '/includes/search-functions-primary.php');
+require_once(__DIR__ . '/includes/search-functions-nav.php');
 
 
 

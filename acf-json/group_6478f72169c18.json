@@ -38,6 +38,27 @@
             "maxlength": ""
         },
         {
+            "key": "field_65285d3e5e259",
+            "label": "Search Rank",
+            "name": "search_rank",
+            "type": "number",
+            "instructions": "determines what shows first in the nav search",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 1,
+            "max": 1000,
+            "step": ""
+        },
+        {
             "key": "field_6478f721a5633",
             "label": "Intro Snippet",
             "name": "intro_snippet",
@@ -594,5 +615,5 @@
     "active": true,
     "description": "Search - Page",
     "show_in_rest": 0,
-    "modified": 1694469241
+    "modified": 1697145230
 }

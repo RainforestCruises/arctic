@@ -95,9 +95,23 @@
 @import "components/deals-toplevel/deals-toplevel-hero";
 @import "components/deals-toplevel/deals-toplevel-intro";
 
+//search
+@import "components/search/search-intro";
+@import "components/search/search-main"; // layout
+@import "components/search/search-results-area";
+@import "components/search/search-sidebar";
+@import "components/search/search-checkbox";
+@import "components/search/search-no-results";
+@import "components/search/search-card-itinerary";
+@import "components/search/search-card-departure";
 
-
-
+// nav-search
+@import "components/nav-search/nav-search-cta";
+@import "components/nav-search/nav-search-control";
+@import "components/nav-search/nav-search-menu-initial";
+@import "components/nav-search/nav-search-menu";
+@import "components/nav-search/nav-search-items";
+@import "components/nav-search/nav-dates-menu";
 
 
 
@@ -109,7 +123,7 @@
 @import "layout/nav-mega";
 @import "layout/nav-mobile";
 @import "layout/nav-secondary";
-@import "layout/nav-search";
+
 
 
 
@@ -124,13 +138,5 @@
 @import "components/about/about-team";
 @import "components/about/about-corporate";
 
-//search
-@import "components/search/search-intro";
-@import "components/search/search-main"; // layout
-@import "components/search/search-results-area";
-@import "components/search/search-sidebar";
-@import "components/search/search-checkbox";
-@import "components/search/search-no-results";
-@import "components/search/search-card-itinerary";
-@import "components/search/search-card-departure";
+
 

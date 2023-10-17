@@ -1,6 +1,6 @@
 <?php
 
-//Primary Search
+// Primary Search
 add_action('wp_ajax_primarySearch', 'search_filter_primary_search'); // wp_ajax_{ACTION HERE} 
 add_action('wp_ajax_nopriv_primarySearch', 'search_filter_primary_search');
 
@@ -12,7 +12,7 @@ function search_filter_primary_search()
     $pageNumber = $_POST['formPageNumber'];
     $viewType = $_POST['formViewType'];
 
-    
+
     $formFilterDeals = false;
     if (isset($_POST['formFilterDeals']) && $_POST['formFilterDeals']) {
         $formFilterDeals = filter_var($_POST['formFilterDeals'], FILTER_VALIDATE_BOOLEAN);
@@ -84,3 +84,5 @@ function search_filter_primary_search()
 
     die();
 }
+
+

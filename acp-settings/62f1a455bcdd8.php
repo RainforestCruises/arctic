@@ -5,7 +5,7 @@ return array (
   'title' => 'Itineraries',
   'type' => 'rfc_itineraries',
   'id' => '62f1a455bcdd8',
-  'updated' => 1686784280,
+  'updated' => 1697145200,
   'columns' => 
   array (
     'title' => 
@@ -143,6 +143,23 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '6384eb9a3be76c',
+    ),
+    '6528615fce147c' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Search Rank',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_62b21d85eab87',
+      'number_format' => '',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '6528615fce147c',
     ),
     '631fbb9d343958' => 
     array (

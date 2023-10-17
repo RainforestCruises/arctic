@@ -28,14 +28,18 @@ function load_scripts()
     wp_enqueue_script('utility', get_template_directory_uri() . '/js/utilities.js', array('jquery'), false, true);
     wp_enqueue_script('global-functions', get_template_directory_uri() . '/js/global-functions.js', array('jquery'), false, true);
     wp_enqueue_script('header', get_template_directory_uri() . '/js/header.js', array('jquery'), false, true);
+    wp_enqueue_script('header-mobile', get_template_directory_uri() . '/js/header-mobile.js', array('jquery'), false, true);
 
 
     $alwaysActiveHeader = checkActiveHeader();
+    $defaultSearchUrl = get_field('top_level_search_page', 'options');
     wp_localize_script(
         'header',
         'header_vars',
         array(
-            'alwaysActiveHeader' =>  $alwaysActiveHeader
+            'alwaysActiveHeader' =>  $alwaysActiveHeader,
+            'defaultSearchUrl' =>  $defaultSearchUrl,
+
         )
     );
 

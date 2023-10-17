@@ -1,25 +1,64 @@
-<section class="search-page__intro" id="search-page-intro">
-        <?php
-        get_template_part('template-parts/search/content', 'search-intro', $args);
-        ?>
-    </section>
-
-    <div class="search-filter-bar" id="search-filter-bar">
-        <button class="search-filter-bar__button search-button" id="search-filter-bar-button">
-            Filters
+<button class="btn-primary btn-primary--icon btn-primary--small btn-primary--rounded" id="searchInputDates">
+            <span>
+                Dates
+            </span>
+            <svg>
+                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-calendar"></use>
+            </svg>
         </button>
-    </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <!-- Cruises  -->
+ <?php
+    get_template_part('template-parts/home/content', 'home-ships');
+    ?>
 
-    <!-- Content -->
-    <section class="search-page__content" id="search-page-content">
+    <!-- Routes  -->
+    <?php
+    get_template_part('template-parts/home/content', 'home-routes');
+    ?>
 
-        <?php
-        get_template_part('template-parts/search/content', 'search-sidebar', $args); //page args --> initial preselection
-        get_template_part('template-parts/search/content', 'search-results-area', $args); //page args --> initial render
-        ?>
+    <!-- Itineraries  -->
+    <?php
+    get_template_part('template-parts/home/content', 'home-itineraries');
+    ?>
 
-    </section>
-      <!-- Search-->
-      <div class="nav-main__content__center__search-area">
-                <?php get_template_part('template-parts/nav/content', 'nav-search'); ?>
-            </div>
+    <!-- Styles  -->
+    <?php
+    get_template_part('template-parts/home/content', 'home-styles');
+    ?>
+
+    <!-- Quote  -->
+    <?php
+    get_template_part('template-parts/home/content', 'home-quote');
+    ?>
+
+
+    <!-- Experiences  -->
+    <?php
+    get_template_part('template-parts/home/content', 'home-experiences');
+    ?>
+
+    <!-- Reviews  -->
+    <?php
+    if ($show_reviews) :
+        get_template_part('template-parts/home/content', 'home-reviews');
+    endif;
+    ?>
+
+    <!-- Guides  -->
+    <?php
+    get_template_part('template-parts/home/content', 'home-guides');
+    ?>
+
+
+    <!-- Footer CTA  -->
+    <?php
+    get_template_part('template-parts/shared/content', 'shared-footer-cta', $args);
+    ?>

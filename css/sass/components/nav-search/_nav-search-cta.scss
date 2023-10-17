@@ -1,0 +1,96 @@
+.nav-search-cta {
+    display: grid;
+    grid-template-columns: min-content min-content;
+    border-radius: 4rem;
+    border: 1px solid rgba($color-grey-light-1a, 0);
+    align-items: center;
+    background-color: rgba($color-white, 0.05);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    padding: 0 0.3rem;
+    cursor: pointer;
+
+    &__mobile-icon {
+        display: none;
+        justify-content: center;
+        align-items: center;
+
+        height: 3.2rem;
+        width: 3.2rem;
+
+        & svg {
+            height: 1.6rem;
+            width: 1.6rem;
+            fill: $color-primary;
+        }
+        @media only screen and (max-width: $bp-small) {
+            display: flex;
+        }
+    }
+
+    &__input {
+        padding: 1rem 2rem;
+        
+        align-items: center;
+        line-height: 1.8rem;
+        @media only screen and (max-width: $bp-small) {
+            width: max-content;
+            padding: .5rem 1rem;
+            padding-left: 0;
+            line-height: 1rem;
+        }
+
+        &__desktop {
+            display: grid;
+            gap: 4rem;
+            grid-template-columns: max-content max-content;
+            &__search {
+                position: relative;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    right: -2rem;
+                    top: 0;
+                    width: 1px;
+                    height: 100%;
+                    background-color: $color-grey-light-1a;
+                    opacity: .4;
+                }
+            }
+            @media only screen and (max-width: $bp-small) {
+                display: none;
+            }
+        }
+
+        &__mobile {
+            display: none;
+            @media only screen and (max-width: $bp-small) {
+                display: flex;
+            }
+        }
+    }
+
+    &__button {
+        @media only screen and (max-width: $bp-small) {
+            display: none;
+        }
+        height: 3.4rem;
+        width: 3.4rem;
+        background-color: rgba($color-white, 0.1);
+        -webkit-backdrop-filter: blur(2px);
+        backdrop-filter: blur(2px);
+        border-radius: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        & svg {
+            height: 1.6rem;
+            width: 1.6rem;
+            fill: $color-white;
+        }
+    }
+}
+
+
+
+
