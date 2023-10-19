@@ -111,6 +111,10 @@
     <div class="nav-backdrop"></div>
 
 
+    <!-- Nav Search Modal -->
+    <?php get_template_part('template-parts/nav/search/content', 'nav-search-modal'); ?>
+
+
     <?php if (get_post_type() == 'rfc_cruises') :
         get_template_part('template-parts/nav/secondary/content', 'nav-cruise');
     endif; ?>

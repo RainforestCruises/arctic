@@ -29,7 +29,7 @@ $alwaysActiveMainNav = checkActiveHeader();
 
             <!-- Search-->
             <div class="nav-main__content__center__search-area">
-                <?php get_template_part('template-parts/nav/search/content', 'nav-search'); ?>
+                <?php get_template_part('template-parts/nav/search/content', 'nav-search-cta'); ?>
             </div>
 
             <!-- Nav Links -->

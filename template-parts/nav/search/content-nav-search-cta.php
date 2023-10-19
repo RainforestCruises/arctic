@@ -1,21 +1,11 @@
 <!-- Nav Search CTA -->
 <div class="nav-search-cta" id="nav-cta">
-    <div class="nav-search-cta__mobile-icon">
-        <svg>
-            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-magnifying-glass"></use>
-        </svg>
-    </div>
     <div class="nav-search-cta__input">
-        <div class="nav-search-cta__input__desktop">
-            <div class="nav-search-cta__input__desktop__search">
-                Explore Travel
-            </div>
-            <div class="nav-search-cta__input__desktop__dates">
-                Dates
-            </div>
+        <div class="nav-search-cta__input__search">
+            Explore Travel
         </div>
-        <div class="nav-search-cta__input__mobile">
-            Explore
+        <div class="nav-search-cta__input__dates">
+            Dates
         </div>
     </div>
     <div class="nav-search-cta__button">
@@ -26,10 +16,26 @@
 </div>
 
 
+
+<!-- Nav Search CTA Mobile-->
+<div class="nav-search-cta-mobile" id="nav-cta-mobile">
+    <div class="nav-search-cta-mobile__icon">
+        <svg>
+            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-magnifying-glass"></use>
+        </svg>
+    </div>
+    <div class="nav-search-cta-mobile__text">
+        Explore
+    </div>
+</div>
+
+
+
+
 <!-- Nav Search Control -->
 <div class="nav-search-control" id="nav-control">
     <!-- Control Search -->
-    <div class="nav-search-control__input-area nav-search-control__input-area--search inactive" id="nav-control-search">
+    <div class="nav-search-control__input-area nav-search-control__input-area--search" id="nav-control-search">
         <span class="label-span">
             Explore
         </span>
@@ -55,6 +61,7 @@
     <!--  Button -->
     <div class="nav-search-control__button-area">
         <button class="nav-search-cta__button" id="nav-control-submit-button">
+
             <svg>
                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-magnifying-glass"></use>
             </svg>
@@ -77,5 +84,8 @@
 <!-- Hidden Form -->
 <form class="search-form" action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="nav-search-form">
     <input type="hidden" name="action" value="navSearch">
-    <input type="hidden" name="formSearchInput" id="formSearchInput" value="<?php echo $searchInput ?>">
+    <input type="hidden" name="formSearchInput" id="formSearchInput" value="">
+    <input type="hidden" name="formNavDateInput" id="formNavDateInput" value="">
+    <input type="hidden" name="formNavRegionInput" id="formNavRegionInput" value="">
+
 </form>

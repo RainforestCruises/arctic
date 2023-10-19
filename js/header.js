@@ -19,10 +19,24 @@ jQuery(document).ready(function ($) {
   const navControlSubmitButton = document.querySelector('#nav-control-submit-button');
   const formSearchInput = document.querySelector('#formSearchInput');
 
+  const navCtaMobile = document.querySelector('#nav-cta-mobile');
+  const navSearchModal = document.getElementById('navSearchModal');
+  const navSearchModalMain = document.getElementById('navSearchModalMain');
+  const navSearchModalClose = document.getElementById('navSearchModalClose');
+
+
+
+  navCtaMobile.addEventListener('click', (event) => {
+    activeMobileSearch();
+  });
+  navSearchModalClose.addEventListener('click', (event) => {
+    closeMobileSearch();
+  });
+
 
   // cta & control interaction -----------------------------------------------------------------------------------------------------
   navCta.addEventListener('click', (event) => {
-    const isDates = document.querySelector('.nav-search-cta__input__desktop__dates').contains(event.target);
+    const isDates = document.querySelector('.nav-search-cta__input__dates').contains(event.target);
     activeSearch(isDates);
   });
 
@@ -37,6 +51,17 @@ jQuery(document).ready(function ($) {
     navControlSearchInput.value = "";
     activeSearch();
   });
+
+  function activeMobileSearch() {
+    navSearchModal.style.display = 'flex';
+    body.classList.add('no-scroll');
+
+  }
+
+  function closeMobileSearch() {
+    navSearchModal.style.display = 'none';
+    body.classList.remove('no-scroll');
+  }
 
 
   function activeSearch(isDates) {
@@ -162,6 +187,132 @@ jQuery(document).ready(function ($) {
   // check for enter key pressed
   navControlSearchInput.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
+      performSubmit();
+    }
+  });
+
+  // submit button clicked
+  navControlSubmitButton.addEventListener('click', (event) => {
+    performSubmit();
+  });
+
+
+
+  // date components -----------------------------------------------------------------------------------------------------
+  var navDatesSwiper = new Swiper('#nav-dates-menu-slider', {
+    slidesPerView: 3,
+    spaceBetween: 5,
+    watchSlidesProgress: true,
+    navigation: {
+      nextEl: '.nav-dates-swiper-button-next',
+      prevEl: '.nav-dates-swiper-button-prev',
+    },
+    breakpoints: {
+      600: {
+        slidesPerView: 4,
+      },
+      800: {
+        slidesPerView: 5,
+      }
+    }
+  });
+
+
+  const dateRegionButtons = [...document.querySelectorAll('.nav-dates-menu__section__buttons button')];
+  let selectedRegion = "";
+
+  dateRegionButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      dateRegionButtons.forEach(b => {
+        b.classList.remove('active');
+      })
+      button.classList.add('active');
+      selectedRegion = button.getAttribute('region');
+      filterDateCards();
+      checkDates();
+    });
+  })
+
+  const dateCards = [...document.querySelectorAll('.date-card')];
+  function filterDateCards() {
+    dateCards.forEach(item => {
+      if (selectedRegion == "") { // for 'flexible'
+        item.style.display = "flex";
+      } else {
+        var regionIdArray = item.getAttribute('region-value').split(',');
+        var matchedRegion = false;
+        regionIdArray.forEach(item => {
+          if (item == selectedRegion) {
+            matchedRegion = true;
+          }
+        })
+
+        if (matchedRegion) {
+          item.style.display = "flex";
+        } else {
+          item.style.display = "none";
+          item.classList.remove('selected');
+        }
+      }
+    })
+
+    navDatesSwiper.updateSize();
+    navDatesSwiper.updateSlides();
+    navDatesSwiper.updateProgress();
+    navDatesSwiper.updateSlidesClasses();
+    navDatesSwiper.slideTo(0);
+    navDatesSwiper.scrollbar.updateSize();
+  }
+
+
+  // on click date cards
+  dateCards.forEach(dateCard => {
+    dateCard.addEventListener('click', () => {
+      if (dateCard.classList.contains('selected')) {
+        dateCard.classList.remove('selected');
+      } else {
+        dateCard.classList.add('selected');
+      }
+      checkDates();
+    });
+  })
+
+
+
+  let selectedDates = [];
+  function checkDates() {
+    selectedDates = [];
+    dateCards.forEach(dateCard => {
+      if (dateCard.classList.contains('selected')) {
+        let dateValue = dateCard.getAttribute('date-value');
+        selectedDates.push(dateValue);
+      }
+    })
+    document.getElementById('formNavDateInput').value = selectedDates;
+    dateRegionButtons.forEach(button => {
+      if (button.classList.contains('active')) {
+        selectedRegion = button.getAttribute('region');
+        document.getElementById('formNavRegionInput').value = button.getAttribute('region');
+      }
+    })
+
+  }
+
+
+
+
+  function performSubmit() {
+
+    // dates
+    if (navControlDates.classList.contains('active')) {
+      if (selectedDates.length > 0) {
+        const dateString = selectedDates.join('%3B');
+        window.location.href = defaultSearchUrl + "?region=" + selectedRegion + "&departures=" + dateString;
+      }
+    }
+
+    // search
+    if (navControlSearch.classList.contains('active')) {
       if (!navControl.classList.contains('loading')) {
         let navSearchItems = [...document.querySelectorAll('.nav-search-item--result')];
         if (navSearchItems.length > 0) {
@@ -171,20 +322,7 @@ jQuery(document).ready(function ($) {
         }
       }
     }
-  });
-
-
-
-  // date components -----------------------------------------------------------------------------------------------------
-  new Swiper('#nav-dates-menu-slider', {
-    slidesPerView: 6,
-    spaceBetween: 5,
-    watchSlidesProgress: true,
-    navigation: {
-      nextEl: '.nav-dates-swiper-button-next',
-      prevEl: '.nav-dates-swiper-button-prev',
-    },
-  });
+  }
 
 
 
@@ -195,7 +333,11 @@ jQuery(document).ready(function ($) {
 
 
 
-  
+
+
+
+
+
 
 
 

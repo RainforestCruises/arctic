@@ -1,38 +1,13 @@
 <?php
 
-function getUniquePostsFromArrayOfPosts($posts)
-{
-    $uniquePosts = [];
-    foreach ($posts as $post) {
-        if (!in_array($post, $uniquePosts)) {
-            $uniquePosts[] = $post;
-        }
-    }
-    return $uniquePosts;
-}
-
-function findObjectById($id, $array, $key = 'Id')
-{
-    foreach ($array as $element) {
-        if ($id == $element[$key]) {
-            return $element;
-        }
-    }
-    return false;
-}
-
-
-//Console Log Utility--------------
 function console_log($data)
 {
     echo '<script>';
     echo 'console.log(' . json_encode($data) . ')';
     echo '</script>';
 }
-//--------------------------------
 
-
-//IMAGES ------------------------
+// IMAGES ------------------------
 function afloat_image_markup($image_id, $image_size, $sizes_array = [])
 {
     if ($image_id == '') {
@@ -72,15 +47,37 @@ function afloat_image_markup($image_id, $image_size, $sizes_array = [])
     }
 }
 
+// ARRAYS ---------------------------------
+function getUniquePostsFromArrayOfPosts($posts)
+{
+    $uniquePosts = [];
+    foreach ($posts as $post) {
+        if (!in_array($post, $uniquePosts)) {
+            $uniquePosts[] = $post;
+        }
+    }
+    return $uniquePosts;
+}
+
+function findObjectById($id, $array, $key = 'Id')
+{
+    foreach ($array as $element) {
+        if ($id == $element[$key]) {
+            return $element;
+        }
+    }
+    return false;
+}
 
 
-//FORMATTING -----------------------
+// FORMATTING -----------------------
 function removePtags($text)
 {
     $formatted_text = str_replace(['<p>', '</p>'], '', $text);
 
     return $formatted_text;
 }
+
 function comma_separate_list($arr, $limit = 0)
 {
     $count = 0;
@@ -135,7 +132,7 @@ function priceFormat($price, $priceHigh = null)
     echo $display;
 }
 
-//Breadcrumbs - json-ld
+// Breadcrumbs - json-ld
 function structuredData($templateType)
 {
 
@@ -332,8 +329,7 @@ function structuredData($templateType)
     }
 }
 
-
-//FAQ json-ld
+// FAQ json-ld
 function structuredDataFaq()
 {
     $faqs = get_field('faqs');
@@ -380,13 +376,11 @@ function structuredDataFaq()
     return $returnString;
 }
 
-
 // Random Code Generator
 function getRandomHex($num_bytes = 4)
 {
     return bin2hex(openssl_random_pseudo_bytes($num_bytes));
 }
-
 
 // generate array of years 
 function createYearSelection($current, $yearsCount)
@@ -423,8 +417,7 @@ function generateIndex($html)
     return ["html" => $html, "index" => $index];
 }
 
-
-//Generate Initials 
+// Generate Initials 
 function generateInitials($name)
 {
     $words = explode(' ', $name);
@@ -444,7 +437,7 @@ function generateInitials($name)
     }
 }
 
-//Random Background Color
+// Random Background Color
 function generateBgColor()
 {
     $background_colors = array('#60568f', '#708765', '#164852', '#919169', '#798fb3', '#7d6a5f', '#608071', '#537875', '#455d73', '#734d6e');

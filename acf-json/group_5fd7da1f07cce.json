@@ -62,6 +62,25 @@
             "min": 1,
             "max": 12,
             "step": ""
+        },
+        {
+            "key": "field_652ee8f6337f5",
+            "label": "Primary",
+            "name": "primary",
+            "type": "true_false",
+            "instructions": "Select primary for Antarctica region",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -82,5 +101,5 @@
     "active": true,
     "description": "Regions - CPT",
     "show_in_rest": 0,
-    "modified": 1685641030
+    "modified": 1697573135
 }

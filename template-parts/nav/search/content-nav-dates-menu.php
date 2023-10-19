@@ -7,6 +7,14 @@ $regionsArgs = array(
 );
 $regions = get_posts($regionsArgs);
 
+$primaryRegion = null;
+foreach ($regions as $region) {
+    $primary = get_field('primary', $region);
+    if ($primary) {
+        $primaryRegion = $region;
+    }
+}
+
 $selectionMonths = [];
 $currentMonth = (int)date('m');
 $monthLimit = 18;
@@ -17,6 +25,7 @@ for ($x = $currentMonth; $x < $currentMonth + $monthLimit; $x++) {
     $object->monthName = date('F', mktime(0, 0, 0, $x, 1));
     $object->monthNumber = date('m', mktime(0, 0, 0, $x, 1));
     $object->year = date('Y', mktime(0, 0, 0, $x, 1));
+    $object->initiallyShown = true;
 
     $monthRegions = [];
     foreach ($regions as $region) {
@@ -35,10 +44,14 @@ for ($x = $currentMonth; $x < $currentMonth + $monthLimit; $x++) {
     }
     $object->monthRegions = $monthRegions;
 
+    if (array_search($primaryRegion->ID, $object->monthRegions) === false) {  // determine if initially shown based on preselected region
+        $object->initiallyShown = false;
+    }
 
-    $selectionMonths[] = $object;
+    if ($object->monthRegions != null) { // exclude months that have no regional match
+        $selectionMonths[] = $object;
+    }
 }
-
 
 ?>
 
@@ -52,9 +65,10 @@ for ($x = $currentMonth; $x < $currentMonth + $monthLimit; $x++) {
         <div class="nav-dates-menu__section__buttons">
             <?php foreach ($regions as $region) :
                 $name = get_the_title($region);
+                $primary = get_field('primary', $region);
                 $regionId = $region->ID;
             ?>
-                <button class="btn-pill" region="<?php echo $regionId; ?>">
+                <button class="btn-pill <?php echo $primary ? 'active' : '' ?>" region="<?php echo $regionId; ?>">
                     <?php echo $name ?>
                 </button>
             <?php endforeach; ?>
@@ -81,8 +95,9 @@ for ($x = $currentMonth; $x < $currentMonth + $monthLimit; $x++) {
                 <div class="swiper-wrapper">
                     <?php foreach ($selectionMonths as $m) :
                         $currentItemValue = $m->year . '-' . $m->monthNumber;
+                        $matchRegion = $m->initiallyShown == false ? "none" : "flex";
                     ?>
-                        <div class="date-card swiper-slide" year-value="<?php echo $m->year; ?>" month-value="<?php echo $m->monthNumber; ?>" region-value="<?php echo implode(",", $m->monthRegions); ?>">
+                        <div class="date-card swiper-slide" style="display: <?php echo $matchRegion ?>" date-value="<?php echo $currentItemValue ?>" region-value="<?php echo implode(",", $m->monthRegions); ?>">
                             <svg>
                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-calendar"></use>
                             </svg>
