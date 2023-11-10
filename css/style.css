@@ -124,11 +124,13 @@ body {
   height: 100%;
   transition: all 0.3s ease-in; }
   body.logged-in .home-full-search,
+  body.logged-in .nav-search-modal,
   body.logged-in .search-filter-mobile-area,
   body.logged-in .search-filter-bar.sticky {
     margin-top: 32px; }
     @media only screen and (max-width: 800px) {
       body.logged-in .home-full-search,
+      body.logged-in .nav-search-modal,
       body.logged-in .search-filter-mobile-area,
       body.logged-in .search-filter-bar.sticky {
         margin-top: 46px; } }
@@ -6386,20 +6388,23 @@ p {
     height: 4.5rem;
     width: 100%;
     max-width: 28rem;
-    background-color: #4d8eff;
+    background-color: #1d2225;
     font-family: "Metropolis", sans-serif;
     color: #fff;
     border: none;
     border-radius: 2.5rem;
     font-size: 1.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
+    font-weight: 500;
     padding: 1rem 2rem;
     cursor: pointer;
     transition: all 0.2s;
     outline: none;
-    white-space: nowrap; }
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .search-filter-mobile-cta button .lds-ring {
+      color: #fff; }
 
 .checkbox {
   position: absolute;
@@ -6956,6 +6961,12 @@ p {
     animation: fadein 0.2s; }
   .nav-dates-menu__section {
     margin-bottom: 2rem; }
+    .nav-dates-menu__section--submit {
+      display: flex;
+      justify-content: center; }
+      @media only screen and (max-width: 50em) {
+        .nav-dates-menu__section--submit {
+          display: none; } }
     .nav-dates-menu__section__buttons {
       display: grid;
       grid-template-columns: 10rem 10rem;

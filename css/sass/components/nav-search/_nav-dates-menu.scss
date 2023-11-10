@@ -23,6 +23,14 @@
 
     &__section {
         margin-bottom: 2rem;
+        &--submit {
+            display: flex;
+            justify-content: center;
+
+            @media only screen and (max-width: $bp-medium) {
+                display: none;
+            }
+        }
   
         &__buttons {
             display: grid;

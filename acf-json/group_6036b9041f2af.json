@@ -1171,6 +1171,44 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_6537f28028a72",
+            "label": "Hide Secondary Regions",
+            "name": "hide_secondary_regions",
+            "type": "true_false",
+            "instructions": "Hides everything Arctic",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_6537f2bc28a73",
+            "label": "Hide Search Trends",
+            "name": "hide_search_trends",
+            "type": "true_false",
+            "instructions": "Hides the sitewide nav search trends",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6442aa1329d53",
             "label": "Generate Source Set Image Markup",
             "name": "generate_source_set_image_markup",
@@ -1270,5 +1308,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687541706
+    "modified": 1698168656
 }

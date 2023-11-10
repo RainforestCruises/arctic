@@ -50,7 +50,6 @@ jQuery(document).ready(function ($) {
     activeMobileSearch();
   });
 
-
   navSearchModalClose.addEventListener('click', (event) => {
     closeMobileSearch();
   });
@@ -94,12 +93,9 @@ jQuery(document).ready(function ($) {
       navSearchModalResultsInitial.classList.add('active');
       navSearchModalClearButton.classList.remove('active');
       navSearchModalResults.innerHTML = "";
-
-
     } else {
       navSearchModalClearButton.classList.add('active');
       navSearchModalResultsInitial.classList.remove('active');
-
       delayedSearchMobile();
     }
   }
@@ -164,13 +160,14 @@ jQuery(document).ready(function ($) {
     let selectedDates = document.getElementById('formNavDateInput').value;
     let selectedDatesArray = selectedDates.split(',');
 
-    console.log(selectedDatesArray);
-
     // dates
     if (navSearchModalDatesTab.classList.contains('active')) {
       if (selectedDates.length > 0) {
         const dateString = selectedDatesArray.join('%3B');
         window.location.href = defaultSearchUrl + "?region=" + selectedRegion + "&departures=" + dateString;
+      }
+      else {
+        window.location.href = defaultSearchUrl + "?region=" + selectedRegion;
       }
     }
 

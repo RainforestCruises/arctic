@@ -485,19 +485,25 @@
         width: 100%;
         max-width: 28rem;
 
-        background-color: $color-supporting-light;
+        background-color: $color-primary;
         font-family: $font-primary;
         color: $color-white;
         border: none;
         border-radius: 2.5rem;
         font-size: 1.5rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.2rem;
+        font-weight: 500;       
         padding: 1rem 2rem;
         cursor: pointer;
         transition: all 0.2s;
         outline: none;
         white-space: nowrap;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & .lds-ring {
+            color: $color-white;
+        }
     }
 }

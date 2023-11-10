@@ -17,7 +17,10 @@ jQuery(document).ready(function ($) {
   const navControlMenuDates = document.querySelector('#nav-control-menu-dates');
   const navControlClearButton = document.querySelector('#nav-control-clear-button');
   const navControlSubmitButton = document.querySelector('#nav-control-submit-button');
+  const navControlDateSubmitButton = document.querySelector('#nav-control-date-submit-button');
+
   const formSearchInput = document.querySelector('#formSearchInput');
+  const formNavRegionInput = document.querySelector('#formNavRegionInput');
 
   const navCtaMobile = document.querySelector('#nav-cta-mobile');
   const navSearchModal = document.getElementById('navSearchModal');
@@ -196,6 +199,10 @@ jQuery(document).ready(function ($) {
     performSubmit();
   });
 
+  navControlDateSubmitButton.addEventListener('click', (event) => {
+    performSubmit();
+  });
+
 
 
   // date components -----------------------------------------------------------------------------------------------------
@@ -219,7 +226,7 @@ jQuery(document).ready(function ($) {
 
 
   const dateRegionButtons = [...document.querySelectorAll('.nav-dates-menu__section__buttons button')];
-  let selectedRegion = "";
+  let selectedRegion = formNavRegionInput.value;
 
   dateRegionButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -308,6 +315,8 @@ jQuery(document).ready(function ($) {
       if (selectedDates.length > 0) {
         const dateString = selectedDates.join('%3B');
         window.location.href = defaultSearchUrl + "?region=" + selectedRegion + "&departures=" + dateString;
+      } else {
+        window.location.href = defaultSearchUrl + "?region=" + selectedRegion;
       }
     }
 

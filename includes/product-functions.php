@@ -554,3 +554,25 @@ function getShipRegions($ship)
     $uniqueShipRegionsList = getUniquePostsFromArrayOfPosts($regionsList);
     return ($uniqueShipRegionsList);
 }
+
+
+//REGIONS -----------------------------------
+function getPrimaryRegion(){
+    $regionsArgs = array(
+        'post_type' => 'rfc_regions',
+        'posts_per_page' => -1,
+        'order' => 'ASC',
+        'orderby' => 'title',
+    );
+    $regions = get_posts($regionsArgs);
+    
+    $primaryRegion = null;
+    foreach ($regions as $region) {
+        $primary = get_field('primary', $region);
+        if ($primary) {
+            $primaryRegion = $region;
+        }
+    }
+
+    return $primaryRegion;
+}

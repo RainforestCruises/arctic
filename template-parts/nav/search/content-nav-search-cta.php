@@ -1,3 +1,7 @@
+<?php 
+$primaryRegion = getPrimaryRegion();
+?>
+
 <!-- Nav Search CTA -->
 <div class="nav-search-cta" id="nav-cta">
     <div class="nav-search-cta__input">
@@ -61,7 +65,6 @@
     <!--  Button -->
     <div class="nav-search-control__button-area">
         <button class="nav-search-cta__button" id="nav-control-submit-button">
-
             <svg>
                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-magnifying-glass"></use>
             </svg>
@@ -86,6 +89,6 @@
     <input type="hidden" name="action" value="navSearch">
     <input type="hidden" name="formSearchInput" id="formSearchInput" value="">
     <input type="hidden" name="formNavDateInput" id="formNavDateInput" value="">
-    <input type="hidden" name="formNavRegionInput" id="formNavRegionInput" value="">
+    <input type="hidden" name="formNavRegionInput" id="formNavRegionInput" value="<?php echo $primaryRegion->ID ?>">
 
 </form>

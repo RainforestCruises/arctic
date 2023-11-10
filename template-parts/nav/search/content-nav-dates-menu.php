@@ -1,4 +1,6 @@
 <?php
+$hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
+
 $regionsArgs = array(
     'post_type' => 'rfc_regions',
     'posts_per_page' => -1,
@@ -7,17 +9,11 @@ $regionsArgs = array(
 );
 $regions = get_posts($regionsArgs);
 
-$primaryRegion = null;
-foreach ($regions as $region) {
-    $primary = get_field('primary', $region);
-    if ($primary) {
-        $primaryRegion = $region;
-    }
-}
 
 $selectionMonths = [];
 $currentMonth = (int)date('m');
 $monthLimit = 18;
+$primaryRegion = getPrimaryRegion();
 
 for ($x = $currentMonth; $x < $currentMonth + $monthLimit; $x++) {
 
@@ -58,23 +54,25 @@ for ($x = $currentMonth; $x < $currentMonth + $monthLimit; $x++) {
 
 <!-- Nav Dates Manu -->
 <div class="nav-dates-menu" id="nav-control-menu-dates">
-    <div class="nav-dates-menu__section">
-        <div class="nav-dates-menu__section__title">
-            Choose your region:
-        </div>
-        <div class="nav-dates-menu__section__buttons">
-            <?php foreach ($regions as $region) :
-                $name = get_the_title($region);
-                $primary = get_field('primary', $region);
-                $regionId = $region->ID;
-            ?>
-                <button class="btn-pill <?php echo $primary ? 'active' : '' ?>" region="<?php echo $regionId; ?>">
-                    <?php echo $name ?>
-                </button>
-            <?php endforeach; ?>
-        </div>
+    <?php if (!$hideSecondaryRegions) : ?>
+        <div class="nav-dates-menu__section">
+            <div class="nav-dates-menu__section__title">
+                Choose your region:
+            </div>
+            <div class="nav-dates-menu__section__buttons">
+                <?php foreach ($regions as $region) :
+                    $name = get_the_title($region);
+                    $primary = get_field('primary', $region);
+                    $regionId = $region->ID;
+                ?>
+                    <button class="btn-pill <?php echo $primary ? 'active' : '' ?>" region="<?php echo $regionId; ?>">
+                        <?php echo $name ?>
+                    </button>
+                <?php endforeach; ?>
+            </div>
 
-    </div>
+        </div>
+    <?php endif; ?>
 
     <div class="nav-dates-menu__section">
         <div class="nav-dates-menu__section__title">
@@ -113,5 +111,13 @@ for ($x = $currentMonth; $x < $currentMonth + $monthLimit; $x++) {
 
             </div>
         </div>
+    </div>
+    <div class="nav-dates-menu__section nav-dates-menu__section--submit">
+        <button class="btn-pill btn-pill--icon" id="nav-control-date-submit-button">
+            Search Dates
+            <svg>
+                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+            </svg>
+        </button>
     </div>
 </div>

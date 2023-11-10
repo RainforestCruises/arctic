@@ -1,15 +1,4 @@
-<button class="btn-primary btn-primary--icon btn-primary--small btn-primary--rounded" id="searchInputDates">
-            <span>
-                Dates
-            </span>
-            <svg>
-                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-calendar"></use>
-            </svg>
-        </button>
- 
- 
- 
- 
+
  
  
  
