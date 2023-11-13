@@ -83,7 +83,7 @@
         <!-- Deals -->
         <?php if ($args->Deals) :
             foreach ($args->Deals as $deal) : ?>
-                <div class="card-tag card-tag--dark">
+                <div class="card-tag card-tag--deal">
                     <?php echo get_field('short_title', $deal) ?>
                 </div>
         <?php endforeach;
@@ -91,7 +91,7 @@
         <!-- Deals -->
         <?php if ($args->SpecialDepartures) :
             foreach ($args->SpecialDepartures as $special) : ?>
-                <div class="card-tag card-tag--dark">
+                <div class="card-tag card-tag--special">
                     <?php echo get_field('short_title', $special) ?>
                 </div>
         <?php endforeach;

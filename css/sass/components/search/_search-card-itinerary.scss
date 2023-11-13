@@ -10,8 +10,13 @@
         color: $color-white;
     }
 
-    &--green {
-        background-color: $color-primary;
+    &--special {
+        background-color: $color-purple;
+        color: $color-white;
+    }
+
+    &--deal {
+        background-color: $color-green;
         color: $color-white;
     }
 }

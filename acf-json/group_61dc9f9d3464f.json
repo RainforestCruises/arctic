@@ -80,7 +80,7 @@
             "label": "Short Title",
             "name": "short_title",
             "type": "text",
-            "instructions": "Title to display in popovers",
+            "instructions": "Title to display in popovers (34 character max)",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -92,7 +92,7 @@
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "maxlength": ""
+            "maxlength": 34
         },
         {
             "key": "field_61dca7348a395",
@@ -342,5 +342,5 @@
     "active": true,
     "description": "Deal - CPT",
     "show_in_rest": 0,
-    "modified": 1692633443
+    "modified": 1699894602
 }
