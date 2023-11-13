@@ -262,7 +262,7 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
     <div class="filter">
         <div class="filter__heading">
             <h5 class="filter__heading__text">
-                Extras
+                Deals & Special Guests
                 <?php
                 $filterCount = 0;
                 $filterCount += $selectedDeals == true ? 1 : 0;
@@ -290,7 +290,7 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                 <li class="filter__content__list__item">
                     <div class="form-checkbox">
                         <input class="checkbox extras-checkbox" type="checkbox" id="special-checkbox" <?php echo ($selectedSpecials == true ? 'checked' : '') ?>>
-                        <label for="special-checkbox" tabindex="2">Special Departures</label>
+                        <label for="special-checkbox" tabindex="2">Special Guest Departures</label>
                     </div>
                 </li>
 
