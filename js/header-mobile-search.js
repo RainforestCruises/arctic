@@ -4,8 +4,7 @@ jQuery(document).ready(function ($) {
   const navCtaMobile = document.querySelector('#nav-cta-mobile');
 
   const navSearchModal = document.getElementById('navSearchModal');
-  const navSearchModalBottomCta = document.getElementById('navSearchModalBottomCta');
-  const navSearchModalSubmitButton = document.getElementById('navSearchModalSubmitButton');
+  //const navSearchModalSubmitButton = document.getElementById('navSearchModalSubmitButton');
   const navSearchModalInput = document.getElementById('navSearchModalInput');
   const navSearchModalInputArea = document.getElementById('navSearchModalInputArea');
   const navSearchModalResults = document.getElementById('navSearchModalResults');
@@ -66,8 +65,6 @@ jQuery(document).ready(function ($) {
 
   function activeMobileSearch() {
     navSearchModal.style.display = 'flex';
-    navSearchModalBottomCta.style.display = 'flex';
-    navSearchModalInput.focus();
     body.classList.add('no-scroll');
     navSearchModalDates.appendChild(navControlMenuDates)
 
@@ -76,7 +73,6 @@ jQuery(document).ready(function ($) {
 
   function closeMobileSearch() {
     navSearchModal.style.display = 'none';
-    navSearchModalBottomCta.style.display = 'none';
     body.classList.remove('no-scroll');
     document.querySelector('.nav-main__content__center__search-area').appendChild(navControlMenuDates)
 
@@ -149,13 +145,17 @@ jQuery(document).ready(function ($) {
   });
 
   // submit button clicked
-  navSearchModalSubmitButton.addEventListener('click', (event) => {
-    performSubmitMobile();
-  });
+  const navSearchModalSubmitButtons = [...document.querySelectorAll('.navSearchModalSubmitButton')];
+
+  navSearchModalSubmitButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      performSubmitMobile();
+    });
+  })
 
 
   function performSubmitMobile() {
-
+    console.log('mobileSearch');
     let selectedRegion = document.getElementById('formNavRegionInput').value;
     let selectedDates = document.getElementById('formNavDateInput').value;
     let selectedDatesArray = selectedDates.split(',');
@@ -169,16 +169,18 @@ jQuery(document).ready(function ($) {
       else {
         window.location.href = defaultSearchUrl + "?region=" + selectedRegion;
       }
-    }
-
-    if (!navSearchModalInputArea.classList.contains('loading')) {
-      let navSearchItems = [...document.querySelectorAll('.nav-search-item--result')];
-      if (navSearchItems.length > 0) {
-        window.location.href = navSearchItems[0].getAttribute('data-url');
-      } else {
-        window.location.href = defaultSearchUrl + "?searchInput=" + navControlSearchInput.value;
+    } else { // search
+      if (!navSearchModalInputArea.classList.contains('loading')) {
+        let navSearchItems = [...document.querySelectorAll('.nav-search-item--result')];
+        if (navSearchItems.length > 0) {
+          window.location.href = navSearchItems[0].getAttribute('data-url');
+        } else {
+          window.location.href = defaultSearchUrl + "?searchInput=" + navSearchModalInput.value;
+        }
       }
     }
+
+    
   }
 
 

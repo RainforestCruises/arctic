@@ -6702,7 +6702,7 @@ p {
   background-color: rgba(255, 255, 255, 0.05);
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
-  padding: 0 0.3rem;
+  padding: 0 0.2rem;
   cursor: pointer; }
   @media only screen and (max-width: 50em) {
     .nav-search-cta {
@@ -6958,7 +6958,8 @@ p {
   transition: all 0.2s;
   z-index: 10;
   display: none;
-  padding: 1rem 2rem; }
+  padding: 1rem 2rem;
+  padding-top: 2rem; }
   .nav-dates-menu.active {
     display: block;
     animation: fadein 0.2s; }
@@ -6967,12 +6968,20 @@ p {
     .nav-dates-menu__section--submit {
       display: flex;
       justify-content: center; }
-      @media only screen and (max-width: 50em) {
-        .nav-dates-menu__section--submit {
-          display: none; } }
+      .nav-dates-menu__section--submit .btn-primary {
+        display: none;
+        height: 5rem; }
+        @media only screen and (max-width: 50em) {
+          .nav-dates-menu__section--submit .btn-primary {
+            display: flex; } }
+      .nav-dates-menu__section--submit .btn-pill {
+        display: flex; }
+        @media only screen and (max-width: 50em) {
+          .nav-dates-menu__section--submit .btn-pill {
+            display: none; } }
     .nav-dates-menu__section__buttons {
       display: grid;
-      grid-template-columns: 10rem 10rem;
+      grid-template-columns: max-content max-content;
       gap: 1rem;
       justify-content: center; }
     .nav-dates-menu__section__title {
@@ -6981,18 +6990,13 @@ p {
       color: #1d2225;
       font-weight: 700;
       margin-bottom: 1rem; }
-    .nav-dates-menu__section__slider-area {
-      display: block;
-      position: relative;
-      padding: 0rem 1rem; }
-      .nav-dates-menu__section__slider-area .swiper-button-prev {
-        left: -7px;
-        transform: translateY(10%); }
-      .nav-dates-menu__section__slider-area .swiper-button-next {
-        transform: translateY(10%);
-        right: -7px; }
-      .nav-dates-menu__section__slider-area .swiper-button-disabled {
-        display: none; }
+    .nav-dates-menu__section__months {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem; }
+      @media only screen and (max-width: 37.5em) {
+        .nav-dates-menu__section__months {
+          grid-template-columns: repeat(3, 1fr); } }
 
 .date-card {
   border: 1px solid #e6e6e6;
@@ -7058,28 +7062,34 @@ p {
     padding-bottom: 8rem;
     overflow-y: scroll; }
     .nav-search-modal__main__input-area {
-      background-color: #e6e6e6;
-      border: 1px solid #c2c6c9;
-      border-radius: 1rem;
-      height: 5rem;
-      display: flex;
-      align-items: center;
-      padding: 1rem; }
-      .nav-search-modal__main__input-area .lds-ring {
-        display: none;
-        margin-right: 0.5rem; }
-      .nav-search-modal__main__input-area.loading .lds-ring {
-        display: flex; }
-      .nav-search-modal__main__input-area input {
-        background-color: transparent;
-        border: none;
-        font-family: "Metropolis", sans-serif;
-        width: 100%;
-        height: 100%;
-        font-size: 1.6rem; }
-      .nav-search-modal__main__input-area textarea:focus,
-      .nav-search-modal__main__input-area input:focus {
-        outline: none; }
+      display: grid;
+      grid-template-columns: 1fr max-content;
+      gap: 1rem; }
+      .nav-search-modal__main__input-area__input-group {
+        background-color: #e6e6e6;
+        border: 1px solid #c2c6c9;
+        border-radius: 1rem;
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        padding: 1rem; }
+        .nav-search-modal__main__input-area__input-group .lds-ring {
+          display: none;
+          margin-right: 0.5rem; }
+        .nav-search-modal__main__input-area__input-group.loading .lds-ring {
+          display: flex; }
+        .nav-search-modal__main__input-area__input-group input {
+          background-color: transparent;
+          border: none;
+          font-family: "Metropolis", sans-serif;
+          width: 100%;
+          height: 100%;
+          font-size: 1.6rem; }
+        .nav-search-modal__main__input-area__input-group textarea:focus,
+        .nav-search-modal__main__input-area__input-group input:focus {
+          outline: none; }
+      .nav-search-modal__main__input-area__cta button {
+        height: 100%; }
     .nav-search-modal__main__results-area {
       margin-top: 2rem;
       width: 100%;
@@ -7099,41 +7109,7 @@ p {
       box-shadow: none;
       width: 100%; }
     .nav-search-modal__dates .date-card {
-      padding: 4rem 1.5rem; }
-
-.nav-search-modal-cta {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  height: 10rem;
-  width: 100%;
-  border-top: 1px solid #c2c6c9;
-  background-color: rgba(255, 255, 255, 0.8);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  z-index: 200;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem; }
-  .nav-search-modal-cta button {
-    height: 4.5rem;
-    width: 100%;
-    max-width: 20rem;
-    background-color: #1d2225;
-    font-family: "Metropolis", sans-serif;
-    color: #fff;
-    border: none;
-    border-radius: 2.5rem;
-    font-size: 1.5rem;
-    font-weight: 700;
-    padding: 1rem 2rem;
-    cursor: pointer;
-    transition: all 0.2s;
-    outline: none;
-    white-space: nowrap; }
-    .nav-search-modal-cta button:hover {
-      background-color: #347fff; }
+      padding: 3rem 1.5rem; }
 
 .header {
   z-index: 100;

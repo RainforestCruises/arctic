@@ -473,3 +473,9 @@ function slugify($text, string $divider = '-')
 
   return $text;
 }
+
+function getMonthName($monthNum){
+    $dateObj   = DateTime::createFromFormat('!m', $monthNum);
+    $monthName = $dateObj->format('F');
+    return $monthName;
+}

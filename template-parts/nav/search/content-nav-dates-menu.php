@@ -8,108 +8,138 @@ $regionsArgs = array(
     'orderby' => 'title',
 );
 $regions = get_posts($regionsArgs);
-
-
-$selectionMonths = [];
-$currentMonth = (int)date('m');
-$monthLimit = 18;
 $primaryRegion = getPrimaryRegion();
 
-for ($x = $currentMonth; $x < $currentMonth + $monthLimit; $x++) {
 
-    $object = new stdClass();
-    $object->monthName = date('F', mktime(0, 0, 0, $x, 1));
-    $object->monthNumber = date('m', mktime(0, 0, 0, $x, 1));
-    $object->year = date('Y', mktime(0, 0, 0, $x, 1));
-    $object->initiallyShown = true;
+// selection regions
+$selectionRegions = [];
+foreach ($regions as $region) {
+    $season_start = get_field('season_start', $region);
+    $season_length = get_field('season_length', $region);
+    $season_end = $season_start + $season_length;
+    $region_name = get_the_title($region);
 
-    $monthRegions = [];
-    foreach ($regions as $region) {
-        $season_start = get_field('season_start', $region);
-        $season_length = get_field('season_length', $region);
-        $season_end = $season_start + $season_length;
 
-        $monthNumberArray = []; // build array of month numbers applicable to this region
+    // region
+    $regionObject = [
+        'ID' => $region->ID,
+        'name' => $region_name,
+        'season_start' => intval($season_start),
+        'season_length' => intval($season_length),
+        'isMultiYear' => $season_end > 12 ? true : false,
+        'isPrimary' => $primaryRegion->ID == $region->ID ? true : false,
+        'initallyShown' => $primaryRegion->ID == $region->ID ? true : false,
+        'seasons' => []
+    ];
+
+    // season 
+    $currentYear = date("Y");
+    $seasonArray = [];
+    for ($x = 0; $x < 2; $x++) :
+        $hexId = getRandomHex();
+        $initiallyShown = $regionObject['isPrimary'] && $x == 0 ? true : false;
+
+        // months
+        $monthArray = [];
         for ($z = $season_start - 1; $z <= $season_end; $z++) {
-            $monthNumberArray[] = date('m', mktime(0, 0, 0, $z, 1));
+            $monthObject = [
+                'hex' => $hexId,
+                'initiallyShown' => $initiallyShown,
+                'monthNumber' => date('m', mktime(0, 0, 0, $z, 1)),
+                'monthName' => date('F', mktime(0, 0, 0, $z, 1)),
+                'monthYear' => date('Y', mktime(0, 0, 0, $z, 1)) + $x
+            ];
+
+            if (!($monthObject['monthYear'] == $currentYear && $monthObject['monthNumber'] < (int)date('m'))) {
+                $monthArray[] = $monthObject;
+            };
         }
 
-        if (array_search($object->monthNumber, $monthNumberArray)) { // check if the current month number corresponds to the array
-            $monthRegions[] = $region->ID;
-        }
-    }
-    $object->monthRegions = $monthRegions;
+        $displayYear = $currentYear + $x;
+        $seasonName = $regionObject['isMultiYear']  ? $displayYear . "-" .  ($displayYear + 1) . " Season" : $displayYear . " Season";
+        $season = [
+            'index' => $x,
+            'hex' => $hexId,
+            'name' => $seasonName,
+            'regionId' => $object->ID,
+            'months' => $monthArray,
+            'initiallyShown' => $initiallyShown,
+        ];
 
-    if (array_search($primaryRegion->ID, $object->monthRegions) === false) {  // determine if initially shown based on preselected region
-        $object->initiallyShown = false;
-    }
+        $seasonArray[] = $season;
 
-    if ($object->monthRegions != null) { // exclude months that have no regional match
-        $selectionMonths[] = $object;
-    }
+    endfor;
+
+
+    $regionObject['seasons'] = $seasonArray;
+    $selectionRegions[] = $regionObject;
 }
-
+console_log($selectionRegions);
 ?>
 
 
 <!-- Nav Dates Manu -->
 <div class="nav-dates-menu" id="nav-control-menu-dates">
     <?php if (!$hideSecondaryRegions) : ?>
+        <!-- Region Select -->
         <div class="nav-dates-menu__section">
             <div class="nav-dates-menu__section__title">
                 Choose your region:
             </div>
-            <div class="nav-dates-menu__section__buttons">
-                <?php foreach ($regions as $region) :
-                    $name = get_the_title($region);
-                    $primary = get_field('primary', $region);
-                    $regionId = $region->ID;
-                ?>
-                    <button class="btn-pill <?php echo $primary ? 'active' : '' ?>" region="<?php echo $regionId; ?>">
-                        <?php echo $name ?>
+            <div class="nav-dates-menu__section__buttons nav-dates-menu__section__buttons--regions">
+                <?php foreach ($selectionRegions as $region) : ?>
+                    <button class="btn-pill <?php echo $region['isPrimary'] ? 'active' : '' ?>" region="<?php echo $region['ID']; ?>">
+                        <?php echo $region['name'] ?>
                     </button>
                 <?php endforeach; ?>
             </div>
-
         </div>
     <?php endif; ?>
 
+    <!-- Season / Year Select -->
+    <div class="nav-dates-menu__section">
+        <div class="nav-dates-menu__section__title">
+            Select season:
+        </div>
+        <div class="nav-dates-menu__section__buttons nav-dates-menu__section__buttons--seasons">
+            <?php foreach ($selectionRegions as $region) :
+                $initialDisplay = $region['isPrimary'] ? "flex" : "none";
+                foreach ($region['seasons'] as $season) : ?>
+                    <button class="btn-pill <?php echo $season['index'] == 0 ? 'active' : '' ?>" index="<?php echo $season['index']; ?>" region="<?php echo $region['ID']; ?>" season="<?php echo $season['hex'] ?>" style="display: <?php echo $initialDisplay ?>">
+                        <?php echo $season['name'] ?>
+                    </button>
+            <?php endforeach;
+            endforeach; ?>
+        </div>
+    </div>
+
+    <!-- Month Select -->
     <div class="nav-dates-menu__section">
         <div class="nav-dates-menu__section__title">
             When would you like to go?
         </div>
-        <div class="nav-dates-menu__section__slider-area">
-            <div class="swiper-button-prev swiper-button-prev--white-border nav-dates-swiper-button-prev">
-                <svg>
-                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-left"></use>
-                </svg>
-            </div>
-            <div class="swiper-button-next swiper-button-next--white-border nav-dates-swiper-button-next">
-                <svg>
-                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                </svg>
-            </div>
-            <div class="nav-dates-menu__section__slider-area__slider swiper" id="nav-dates-menu-slider">
-                <div class="swiper-wrapper">
-                    <?php foreach ($selectionMonths as $m) :
-                        $currentItemValue = $m->year . '-' . $m->monthNumber;
-                        $matchRegion = $m->initiallyShown == false ? "none" : "flex";
-                    ?>
-                        <div class="date-card swiper-slide" style="display: <?php echo $matchRegion ?>" date-value="<?php echo $currentItemValue ?>" region-value="<?php echo implode(",", $m->monthRegions); ?>">
+        <div class="nav-dates-menu__section__months">
+
+            <?php foreach ($selectionRegions as $region) :
+                foreach ($region['seasons'] as $season) :
+                    foreach ($season['months'] as $month) :
+                        $currentItemValue = $month['monthYear'] . '-' . $month['monthNumber'];
+
+            ?>
+                        <div class="date-card" style="display: <?php echo $month['initiallyShown'] ? 'flex' : 'none' ?>" date-value="<?php echo $currentItemValue ?>" season="<?php echo $season['hex']; ?>" region="<?php echo $region['ID']; ?>">
                             <svg>
                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-calendar"></use>
                             </svg>
                             <div class="date-card__title">
-                                <?php echo $m->monthName; ?>
+                                <?php echo $month['monthName']; ?>
                             </div>
                             <div class="date-card__subtitle">
-                                <?php echo $m->year; ?>
+                                <?php echo $month['monthYear'] ?>
                             </div>
                         </div>
-                    <?php endforeach; ?>
-                </div>
-
-            </div>
+            <?php endforeach;
+                endforeach;
+            endforeach; ?>
         </div>
     </div>
     <div class="nav-dates-menu__section nav-dates-menu__section--submit">
@@ -118,6 +148,9 @@ for ($x = $currentMonth; $x < $currentMonth + $monthLimit; $x++) {
             <svg>
                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
             </svg>
+        </button>
+        <button class="btn-primary navSearchModalSubmitButton">
+            Search Dates
         </button>
     </div>
 </div>

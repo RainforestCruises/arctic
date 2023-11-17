@@ -29,21 +29,33 @@ $resultsObject = getNavSearchResults("", true);
 
     <!-- Explore Search -->
     <div class="nav-search-modal__main" id="navSearchModalMain">
+        <div class="nav-search-modal__main__input-area">
 
-        <div class="nav-search-modal__main__input-area" id="navSearchModalInputArea">
-            <input type="text" id="navSearchModalInput">
-            <div class="lds-ring">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+            <!-- Input Group -->
+            <div class="nav-search-modal__main__input-area__input-group" id="navSearchModalInputArea">
+                <input type="text" id="navSearchModalInput" placeholder="Search Itineraries, Ships, Routes, Months...">
+                <div class="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <button class="nav-control-clear-button" id="navSearchModalClearButton">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-cross"></use>
+                    </svg>
+                </button>
             </div>
-            <button class="nav-control-clear-button" id="navSearchModalClearButton">
-                <svg>
-                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-cross"></use>
-                </svg>
-            </button>
+
+            <div class="nav-search-modal__main__input-area__cta">
+                <button class="btn-primary navSearchModalSubmitButton">
+                    Search
+                </button>
+            </div>
+
         </div>
+
+
         <div class="nav-search-modal__main__results-area" id="navSearchModalResults">
 
         </div>
@@ -83,9 +95,9 @@ $resultsObject = getNavSearchResults("", true);
 
     </div>
 </div>
-
+<!-- 
 <div class="nav-search-modal-cta" id="navSearchModalBottomCta">
     <button id="navSearchModalSubmitButton">
         Search
     </button>
-</div>
+</div> -->

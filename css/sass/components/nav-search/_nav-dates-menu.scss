@@ -12,7 +12,7 @@
     z-index: 10;
     display: none;
     padding: 1rem 2rem;
-
+    padding-top: 2rem;
 
     
 
@@ -27,14 +27,28 @@
             display: flex;
             justify-content: center;
 
-            @media only screen and (max-width: $bp-medium) {
+            & .btn-primary {
                 display: none;
+                height: 5rem;
+                @media only screen and (max-width: $bp-medium) {
+                    display: flex;
+                }
             }
+
+            & .btn-pill {
+                display: flex;
+                @media only screen and (max-width: $bp-medium) {
+                    display: none;
+                }
+            }
+
+
+            
         }
   
         &__buttons {
             display: grid;
-            grid-template-columns: 10rem 10rem;
+            grid-template-columns: max-content max-content;
             gap: 1rem;
             justify-content: center;
 
@@ -47,22 +61,16 @@
             margin-bottom: 1rem;
         }
 
-        &__slider-area {
-            display: block;
-            position: relative;
-            padding: 0rem 1rem;
-            & .swiper-button-prev {
-                left: -7px;
-                transform: translateY(10%);
-            }
-            & .swiper-button-next {
-                transform: translateY(10%);
-                right: -7px;
+        &__months {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+
+            @media only screen and (max-width: $bp-small) {
+                grid-template-columns: repeat(3, 1fr);
+
             }
 
-            & .swiper-button-disabled {
-                display: none;
-            }
         }
     }
 }
