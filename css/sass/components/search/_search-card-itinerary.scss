@@ -49,18 +49,6 @@
         justify-items: end;
     }
 
-    // &__tag {
-    //     position: absolute;
-    //     top: 1.5rem;
-    //     right: 1.5rem;
-    //     width: max-content;
-    //     padding: 0.5rem 1rem;
-    //     background-color: $color-white;
-    //     color: $color-primary;
-    //     border-radius: 2rem;
-    //     z-index: 10;
-    // }
-
 
     &__image-area {
         position: relative;
@@ -155,10 +143,15 @@
     &__bottom {
         border-top: 1px solid $color-grey-light-1a;
         display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
+        flex-direction: column;
+        justify-content: center;
         padding: 1.5rem 2rem;
         margin-top: .5rem;
+
+        &__savings {
+            font-size: 1.2rem;
+        }
+        
         &__price-group {
             color: currentColor;
             font-size: 1.4rem;

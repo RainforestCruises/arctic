@@ -5,6 +5,7 @@ $sidebarMonths = $args['sidebarMonths'];
 $sidebarRegions = $args['sidebarRegions'];
 $sidebarRoutes = $args['sidebarRoutes'];
 $sidebarStyles = $args['sidebarStyles'];
+$sidebarEmbarkationZones = $args['sidebarEmbarkationZones'];
 
 // Preselections
 $preselectedRegion = $args['preselectedRegion'];
@@ -14,6 +15,7 @@ $selectedDepartures = $args['departures'];
 $searchInput = $args['searchInput'];
 $selectedDeals = $args['filterDeals'];
 $selectedSpecials = $args['filterSpecials'];
+$selectedEmbarkationCountries = $args['embarkationCountries'];
 
 $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
 
@@ -296,9 +298,67 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
 
             </ul>
         </div>
-
-
     </div>
+
+    <!-- Embarkation Filter -->
+    <div class="filter">
+        <div class="filter__heading">
+            <h5 class="filter__heading__text">
+                Embarkation Points
+                <?php $filterCount = count($selectedEmbarkationCountries); ?>
+                <div class="filter__heading__text__count <?php echo ($filterCount > 0 ? 'show' : '') ?>" id="embarkFilterCount">
+                    <?php echo $filterCount; ?>
+                </div>
+            </h5>
+            <svg>
+                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-down"></use>
+            </svg>
+        </div>
+        <div class="filter__content">
+            <!-- List -->
+            <ul class="filter__content__list">
+                <?php
+                $count = 1;
+                foreach ($sidebarEmbarkationZones as $zone) :
+                    $matchRegion = ($preselectedRegion != null && $zone['region']->ID != $preselectedRegion) ? "none" : "block";
+                    $zonePost = $zone['zone'];
+                    $regionPost = $zone['region'];
+                    $countryList = $zone['countries'];
+                    $isPrimaryRegion = get_field('primary', $regionPost);
+                    if($hideSecondaryRegions && !$isPrimaryRegion) {
+                        continue;
+                    }
+                ?>
+                    <div class="filter__content__subtitle embark-subtitle"  region-value="<?php echo $zone['region']->ID ?>" style="display: <?php echo $matchRegion ?>">
+                        <?php echo get_the_title($zonePost); ?>
+                    </div>
+                    <?php foreach ($countryList as $country) : 
+                        $countryPost = $country['country']; 
+                        ?>
+                        <li class="filter__content__list__item embark-checkbox-group" region-value="<?php echo $zone['region']->ID ?>"  style="display: <?php echo $matchRegion ?>">
+                            <div class="form-checkbox">
+                                <input class="checkbox embark-checkbox" type="checkbox" id="embark-checkbox-<?php echo $count; ?>" value="<?php echo $countryPost->ID ?>" <?php echo ($selectedEmbarkationCountries != null ? (in_array($countryPost->ID, $selectedEmbarkationCountries) ? 'checked' : '') : '') ?>>
+                                <label for="embark-checkbox-<?php echo $count; ?>"><?php echo get_the_title($countryPost) ?></label>
+                            </div>
+                        </li>
+                <?php $count++;
+                    endforeach;
+                endforeach; ?>
+
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Clear Filters Button -->
     <div class="filter--clear clear-filters-area" id="clear-filters-area">

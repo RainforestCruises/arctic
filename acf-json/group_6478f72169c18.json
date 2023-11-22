@@ -424,6 +424,31 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_655d26088d0d1",
+            "label": "Embarkation Countries",
+            "name": "embarkation_countries",
+            "type": "relationship",
+            "instructions": "Preselected embarkation countries.. leave blank if 'Any'",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_countries"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "id"
+        },
+        {
             "key": "field_64ff64e72bbe3",
             "label": "Travel Guides",
             "name": "",
@@ -615,5 +640,5 @@
     "active": true,
     "description": "Search - Page",
     "show_in_rest": 0,
-    "modified": 1697145230
+    "modified": 1700603447
 }

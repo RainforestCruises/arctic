@@ -1,4 +1,7 @@
 <?php 
+
+
+
 // Custom Post Type - Suppliers
 function create_post_type_rfc_suppliers()
 {
@@ -354,6 +357,46 @@ function create_post_type_rfc_levels()
 add_action('init', 'create_post_type_rfc_levels');
 
 
+function create_post_type_rfc_countries()
+{
+    register_post_type(
+        'rfc_countries',
+        array(
+            'labels' => array(
+                'name' => __('Countries'),
+                'singular_name' => __('Country'),
+            ),
+            'public' => true,
+            'rewrite' => array('slug' => 'country'),
+            'supports' => array(
+                'title',
+            )
+
+        )
+    );
+}
+add_action('init', 'create_post_type_rfc_countries');
+
+
+
+function create_post_type_rfc_embark_zones()
+{
+    register_post_type(
+        'rfc_embark_zones',
+        array(
+            'labels' => array(
+                'name' => __('Embarkation Zones'),
+                'singular_name' => __('Embarkation Zone'),
+            ),
+            'public' => true,
+            'rewrite' => array('slug' => 'embark-zones'),
+            'supports' => array(
+                'title'
+            )
+        )
+    );
+}
+add_action('init', 'create_post_type_rfc_embark_zones');
 
 
 

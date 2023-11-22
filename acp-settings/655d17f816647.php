@@ -1,0 +1,76 @@
+<?php
+
+return array (
+  'version' => '5.6.4',
+  'title' => 'Embarkation Zones',
+  'type' => 'rfc_embark_zones',
+  'id' => '655d17f816647',
+  'updated' => 1700599818,
+  'columns' => 
+  array (
+    'title' => 
+    array (
+      'type' => 'title',
+      'label' => 'Title',
+      'width' => '',
+      'width_unit' => '%',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'off',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'name' => 'title',
+    ),
+    '655d17efed4fe0' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Region',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_655cdfa76bdb8',
+      'post_property_display' => 'title',
+      'post_link_to' => 'edit_post',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '655d17efed4fe0',
+    ),
+    'date' => 
+    array (
+      'type' => 'date',
+      'label' => 'Date',
+      'width' => '',
+      'width_unit' => '%',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'off',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'filter_format' => '',
+      'name' => 'date',
+    ),
+  ),
+  'settings' => 
+  array (
+    'hide_inline_edit' => 'off',
+    'hide_bulk_edit' => 'off',
+    'hide_filters' => 'off',
+    'hide_filter_post_date' => 'off',
+    'hide_smart_filters' => 'off',
+    'hide_segments' => 'off',
+    'hide_export' => 'off',
+    'hide_new_inline' => 'on',
+    'hide_submenu' => 'off',
+    'hide_search' => 'off',
+    'hide_bulk_actions' => 'off',
+    'horizontal_scrolling' => 'off',
+    'sorting' => '0',
+    'sorting_order' => 'asc',
+  ),
+);

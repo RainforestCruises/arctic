@@ -4,6 +4,7 @@
 function getDealsFromDepartureList($departures, $getSpecials = false)
 {
     $uniqueDealsArray = [];
+
     foreach ($departures as $d) {
         $deals = ($getSpecials) ? $d['SpecialDepartures'] : $d['Deals'];
         foreach ($deals as $deal) {
@@ -181,50 +182,7 @@ function getShipsWithDeal($deals)
     return $shipsWithDeal;
 }
 
-// get a string display of departures dates, grouped by month, comma seperated and trucated with remainder
-function getDateListDisplay($departures, $limit)
-{
-    $length = count($departures);
-    $displayString = "";
-    $count = 1;
-    $overCount = 0;
-    $monthNumber = null;
-    foreach ($departures as $departure) {
 
-        if ($count <= $limit) {
-            // month grouping
-            $newMonth = false;
-            if ($monthNumber == null) {
-                $monthNumber = date('m', strtotime($departure['DepartureDate']));
-                $newMonth = true;
-            } else {
-                if ($monthNumber != date('m', strtotime($departure['DepartureDate']))) {
-                    $newMonth = true;
-                }
-            }
-
-            if ($newMonth) {
-                $displayString .= date('M j', strtotime($departure['DepartureDate']));
-            } else {
-                $displayString .=  date('j', strtotime($departure['DepartureDate']));
-            }
-
-            // trailing comma
-            if ($count != $length) {
-                $displayString .= ', ';
-            }
-        } else {
-            $overCount++;
-        }
-        $count++;
-    }
-
-    if ($overCount > 0) {
-        $displayString .= ' + ' . $overCount . ' More';
-    }
-
-    return $displayString;
-}
 
 // get a string display number of deals, with plurality 
 function getDealsDisplay($deals)
@@ -266,3 +224,4 @@ function sortDealRank($a, $b)
         return $b->search_rank - $a->search_rank;
     }
 }
+

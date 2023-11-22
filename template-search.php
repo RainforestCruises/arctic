@@ -47,6 +47,16 @@ $stylesArgs = array(
 );
 $sidebarStyles = get_posts($stylesArgs);
 
+
+// Sidebar Embarkation
+$sidebarEmbarkationZones= getEmbarkationList();
+console_log($sidebarEmbarkationZones);
+
+
+
+
+
+
 // Sidebar Months
 $sidebarMonths = [];
 $currentMonth = (int)date('m');
@@ -309,8 +319,32 @@ if (isset($_GET["price_max"])) {
 
 
 
+
+// Embarkation Countries
+$embarkationCountries = [];
+$embarkationCountriesString = "";
+$selectedEmbarkationCountries = get_field('embarkation_countries');
+if ($selectedEmbarkationCountries != null) {
+    $embarkationCountries = $selectedEmbarkationCountries;
+    $embarkationCountriesString = implode(";", $embarkationCountries);
+}
+
+// -- URL param
+if (isset($_GET["countries"])) {
+    if (isset($_GET["countries"]) && $_GET["countries"]) {
+        $countriesParameters = htmlspecialchars($_GET["countries"]);
+        $embarkationCountriesString = $countriesParameters;
+        $embarkationCountries = explode(";", $embarkationCountriesString);
+    } else {
+        $embarkationCountries = [];
+        $embarkationCountriesString = "";
+    }
+}
+
+
+
 // first load
-$resultsObject = getSearchPosts($region, $routes, $styles, $lengthMin, $lengthMax, $priceMin, $priceMax, $departures, $searchInput, $sorting, $pageNumber, $viewType, $filterDeals, $filterSpecials);
+$resultsObject = getSearchPosts($region, $routes, $embarkationCountries, $styles, $lengthMin, $lengthMax, $priceMin, $priceMax, $departures, $searchInput, $sorting, $pageNumber, $viewType, $filterDeals, $filterSpecials);
 $resultCount = $resultsObject['resultsCount'];
 
 // page arguments ------------
@@ -323,6 +357,7 @@ $args = array(
     'lengthMax' => $lengthMax, //preselection
     'priceMin' => $priceMin, //preselection
     'priceMax' => $priceMax, //preselection
+    'embarkationCountries' => $embarkationCountries, //preselection
     'sorting' => $sorting,
     'searchInput' => $searchInput,
     'pageNumber' => $pageNumber,
@@ -335,6 +370,7 @@ $args = array(
     'sidebarRegions' => $sidebarRegions,
     'sidebarRoutes' => $sidebarRoutes,
     'sidebarStyles' => $sidebarStyles,
+    'sidebarEmbarkationZones' => $sidebarEmbarkationZones
 
 );
 
@@ -403,6 +439,7 @@ $args = array(
     <input type="hidden" name="formRegion" id="formRegion" value="<?php echo $preselectedRegion ?>">
     <input type="hidden" name="formThemes" id="formThemes" value="<?php echo $stylesString ?>">
     <input type="hidden" name="formRoutes" id="formRoutes" value="<?php echo $routesString ?>">
+    <input type="hidden" name="formCountries" id="formCountries" value="<?php echo $embarkationCountriesString ?>">
 
     <input type="hidden" name="initialPage" id="initialPage" value="">
 

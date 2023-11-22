@@ -3,11 +3,7 @@
 
     <!-- Tag Area -->
     <div class="search-card-itinerary__tag-area">
-        <?php if ($args->BestDiscount) : ?>
-            <div class="card-tag">
-                Up to <span class="green-text"><?php echo $args->BestDiscount ?>%</span> savings
-            </div>
-        <?php endif; ?>
+
         <?php if ($args->Deals) :
             foreach ($args->Deals as $deal) : ?>
                 <div class="card-tag card-tag--deal">
@@ -113,6 +109,11 @@
 
     <!-- Bottom -->
     <div class="search-card-itinerary__bottom">
+        <?php if ($args->BestDiscount) : ?>
+            <div class="search-card-itinerary__bottom__savings">
+                Up to <span class="green-text"><?php echo $args->BestDiscount; ?>%</span> Savings
+            </div>
+        <?php endif; ?>
         <!-- Price Group -->
         <div class="search-card-itinerary__bottom__price-group">
             <span class="search-card-itinerary__bottom__price-group__amount">

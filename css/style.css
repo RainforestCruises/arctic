@@ -6305,6 +6305,11 @@ p {
   .filter__content__fine-print {
     padding-top: 1rem;
     font-size: 1.2rem; }
+  .filter__content__subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1d2225;
+    margin-bottom: 1rem; }
 
 .clear-filters {
   display: none; }
@@ -6581,10 +6586,12 @@ p {
   .search-card-itinerary__bottom {
     border-top: 1px solid #e6e6e6;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+    flex-direction: column;
+    justify-content: center;
     padding: 1.5rem 2rem;
     margin-top: .5rem; }
+    .search-card-itinerary__bottom__savings {
+      font-size: 1.2rem; }
     .search-card-itinerary__bottom__price-group {
       color: currentColor;
       font-size: 1.4rem;

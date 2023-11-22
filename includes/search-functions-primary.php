@@ -1,13 +1,12 @@
 <?php
-//Upper bounded list of products for search results
-function getSearchPosts($region, $routes, $styles, $minLength, $maxLength, $minPrice, $maxPrice, $datesArray, $searchInput, $sorting, $pageNumber, $viewType, $filterDeals, $filterSpecials)
+// list of products for search results
+function getSearchPosts($region, $routes, $countries, $styles, $minLength, $maxLength, $minPrice, $maxPrice, $datesArray, $searchInput, $sorting, $pageNumber, $viewType, $filterDeals, $filterSpecials)
 {
 
     $args = array(
         'posts_per_page' => -1,
         'post_type' => 'rfc_itineraries',
     );
-
 
     // regional selection - generate list of possible routes (IDs)
     $regionalRoutes = [];
@@ -19,6 +18,16 @@ function getSearchPosts($region, $routes, $styles, $minLength, $maxLength, $minP
             "meta_value" => $region
         );
         $regionalRoutes = wp_list_pluck(get_posts($routeCriteria), 'ID');
+
+        if($routes == null){ // if region is selected, but no routes. Populate all routes
+            if ($routes == null) {
+                $routeCriteria = array(
+                    'posts_per_page' => -1,
+                    'post_type' => 'rfc_routes',
+                );
+                $routes = wp_list_pluck(get_posts($routeCriteria), 'ID');
+            }
+        }
     } else {
         $routeCriteria = array(
             'posts_per_page' => -1,
@@ -27,16 +36,18 @@ function getSearchPosts($region, $routes, $styles, $minLength, $maxLength, $minP
         $regionalRoutes = wp_list_pluck(get_posts($routeCriteria), 'ID');
     }
 
+
+
+
     // route selection
     if ($routes != null) {
         $matchedRoutes = array_intersect($routes, $regionalRoutes); // find routes that are within regional selection
-
         $queryargs = array();
         $queryargs['relation'] = 'OR';
         foreach ($matchedRoutes as $route) {
             $queryargs[] = array(
                 'key'     => 'route',
-                'value'   => '"' . $route . '"', //value must be in parenthesis to get ACF exact match, and use LIKE
+                'value'   => '"' . $route . '"', // value must be in parenthesis to get ACF exact match, and use LIKE
                 'compare' => 'LIKE'
             );
         }
@@ -60,7 +71,7 @@ function getSearchPosts($region, $routes, $styles, $minLength, $maxLength, $minP
 
 
     $itineraries = get_posts($args); // stage I - itinerary posts w/ initial filters
-    $resultObjects =  filterAndBuildMetaObject($itineraries, $minLength, $maxLength, $minPrice, $maxPrice, $datesArray, $sorting, $searchInput, $viewType, $filterDeals, $filterSpecials); // stage II metadata filtering
+    $resultObjects =  filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLength, $minPrice, $maxPrice, $datesArray, $sorting, $searchInput, $viewType, $filterDeals, $filterSpecials); // stage II metadata filtering
 
 
     $resultsPerPage = 12;
@@ -100,8 +111,8 @@ function getSearchPosts($region, $routes, $styles, $minLength, $maxLength, $minP
 }
 
 
-//Stage II - metadata
-function filterAndBuildMetaObject($itineraries, $minLength, $maxLength, $minPrice, $maxPrice, $datesArray, $sorting, $searchInput, $viewType, $filterDeals, $filterSpecials)
+// stage II - metadata
+function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLength, $minPrice, $maxPrice, $datesArray, $sorting, $searchInput, $viewType, $filterDeals, $filterSpecials)
 {
     $results = [];
     $itineraryObjects = [];
@@ -112,7 +123,27 @@ function filterAndBuildMetaObject($itineraries, $minLength, $maxLength, $minPric
             continue;
         }
 
-        $departuresFullList = getDepartureList($itinerary); // filter dates
+
+        $embarkation_point = get_field('embarkation_point', $itinerary); // filter embarkation countries
+        $disembarkation_point = get_field('disembarkation_point', $itinerary);
+        $embarkation_country = get_field('embarkation_country', $embarkation_point);
+        $embarkationMatch = false;
+        if ($countries == null) {
+            $embarkationMatch = true;
+        } else {
+            foreach ($countries as $country) {
+                if (intval($country) == $embarkation_country->ID) {
+                    $embarkationMatch = true;
+                }
+            }
+        }
+        if ($embarkationMatch == false) {
+            continue;
+        }
+
+
+
+        $departuresFullList = getDepartureList($itinerary, null, true); // filter dates (not including sold out)
         $departures = [];
         if ($datesArray) {
             foreach ($departuresFullList as $departure) {
@@ -137,6 +168,10 @@ function filterAndBuildMetaObject($itineraries, $minLength, $maxLength, $minPric
         }
 
 
+
+
+
+
         // generic result object fields
         $regions = getItineraryRegions($itinerary);
         $itineraryImages = get_field('hero_gallery', $itinerary);
@@ -144,8 +179,6 @@ function filterAndBuildMetaObject($itineraries, $minLength, $maxLength, $minPric
         $destinations = getItineraryDestinations($itinerary); // build list of unique destinations within an itinerary, with embarkations removed
         $destinationDisplay = getItineraryDestinations($itinerary, true, 4); // build list of unique destinations within an itinerary, with embarkations removed
         $searchRank = get_field('search_rank', $itinerary);
-        $embarkation_point = get_field('embarkation_point', $itinerary);
-        $disembarkation_point = get_field('disembarkation_point', $itinerary);
         $displayName = get_field('display_name', $itinerary);
         $flightOption = getFlightOption($itinerary);
         $topSnippet = get_field('top_snippet', $itinerary);
@@ -167,7 +200,7 @@ function filterAndBuildMetaObject($itineraries, $minLength, $maxLength, $minPric
             }
 
             if ($filterDeals && $filterSpecials) { // deals and specials filter
-                if (!$bestDiscount && !$deals && !$specialDepartures) { 
+                if (!$bestDiscount && !$deals && !$specialDepartures) {
                     continue;
                 }
             } else if ($filterDeals) {
@@ -181,7 +214,7 @@ function filterAndBuildMetaObject($itineraries, $minLength, $maxLength, $minPric
             }
 
 
-
+            // itinerary fields
             $results[] = (object) array(
                 'Type' => 'itinerary',
                 'Itinerary' => $itinerary,
@@ -200,6 +233,7 @@ function filterAndBuildMetaObject($itineraries, $minLength, $maxLength, $minPric
                 'ShipsDisplay' => $shipsDisplay,
                 'Embarkation' => $embarkation_point,
                 'EmbarkationDisplay' => get_the_title($embarkation_point),
+                'EmbarkationCountry' => $embarkation_country,
                 'Disembarkation' => $disembarkation_point,
                 'DisembarkationDisplay' => get_the_title($disembarkation_point),
                 'HasDifferentPorts' =>  $disembarkation_point != null && ($disembarkation_point != $embarkation_point),
@@ -233,7 +267,7 @@ function filterAndBuildMetaObject($itineraries, $minLength, $maxLength, $minPric
                 }
 
                 if ($filterDeals && $filterSpecials) { // deals and specials filter
-                    if (!$bestDiscount && !$deals && !$specialDepartures) { 
+                    if (!$bestDiscount && !$deals && !$specialDepartures) {
                         continue;
                     }
                 } else if ($filterDeals) {
@@ -261,6 +295,7 @@ function filterAndBuildMetaObject($itineraries, $minLength, $maxLength, $minPric
                     'SpecialDepartures' => $specialDepartures,
                     'Embarkation' => $embarkation_point,
                     'EmbarkationDisplay' => get_the_title($embarkation_point),
+                    'EmbarkationCountry' => $embarkation_country,
                     'Disembarkation' => $disembarkation_point,
                     'DisembarkationDisplay' => get_the_title($disembarkation_point),
                     'HasDifferentPorts' =>  $disembarkation_point != null && ($disembarkation_point != $embarkation_point),
@@ -330,10 +365,13 @@ function filterAndBuildMetaObject($itineraries, $minLength, $maxLength, $minPric
 
                 foreach ($itineraryResults as $itineraryResult) {
                     $itinerariesList[] = $itineraryResult->itinerary;
-
                     foreach ($itineraryResult->departures as $departure) {
-                        $lowPriceList[] = $departure['LowestPrice'];
-                        $highPriceList[] = $departure['HighestPrice'];
+                        if ($departure['LowestPrice'] > 0) {
+                            $lowPriceList[] = $departure['LowestPrice'];
+                        }
+                        if ($departure['HighestPrice']) {
+                            $highPriceList[] = $departure['HighestPrice'];
+                        }
                         $bestDiscountList[] = $departure['BestDiscount'];
                         $departuresList[] = $departure;
 
@@ -363,7 +401,7 @@ function filterAndBuildMetaObject($itineraries, $minLength, $maxLength, $minPric
                 }
 
                 if ($filterDeals && $filterSpecials) { // deals and specials filter
-                    if (!$bestDiscount && !$dealsList && !$specialDeparturesList) { 
+                    if (!$bestDiscount && !$dealsList && !$specialDeparturesList) {
                         continue;
                     }
                 } else if ($filterDeals) {

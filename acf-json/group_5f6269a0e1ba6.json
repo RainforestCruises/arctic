@@ -84,43 +84,51 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_633f0e42059ad",
-            "label": "Country Name",
-            "name": "country_name",
-            "type": "text",
+            "key": "field_655cd8a0619b6",
+            "label": "Embarkation",
+            "name": "",
+            "type": "tab",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6387c2f113254",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "placement": "top",
+            "endpoint": 0
         },
         {
-            "key": "field_633f0e52059ae",
-            "label": "Country_Name_Short",
-            "name": "country_name_short",
-            "type": "text",
+            "key": "field_655cd824619b4",
+            "label": "Is Embarkation Port",
+            "name": "is_embarkation_port",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_655cd83b619b5",
+            "label": "Embarkation Country",
+            "name": "embarkation_country",
+            "type": "post_object",
             "instructions": "",
             "required": 0,
             "conditional_logic": [
                 [
                     {
-                        "field": "field_6387c2f113254",
+                        "field": "field_655cd824619b4",
                         "operator": "==",
                         "value": "1"
                     }
@@ -131,11 +139,86 @@
                 "class": "",
                 "id": ""
             },
+            "post_type": "",
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_62ed72228a5d5",
+            "label": "Geographical",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_62ed72318a5d6",
+            "label": "Latitude (S)",
+            "name": "latitude",
+            "type": "number",
+            "instructions": "Latitude is direction South \/ North (use negative values for South)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "maxlength": ""
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_62ed724e8a5d7",
+            "label": "Longitude (W)",
+            "name": "longitude",
+            "type": "number",
+            "instructions": "Latitude is direction East \/ West (use negative values for West)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_655cd8ca619b7",
+            "label": "Additional",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_638a56679b389",
@@ -144,15 +227,7 @@
             "type": "textarea",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6387c2f113254",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -213,64 +288,6 @@
             "min": "",
             "max": "",
             "return_format": "object"
-        },
-        {
-            "key": "field_62ed72228a5d5",
-            "label": "Geographical",
-            "name": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_62ed72318a5d6",
-            "label": "Latitude (S)",
-            "name": "latitude",
-            "type": "number",
-            "instructions": "Latitude is direction South \/ North (use negative values for South)",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
-        },
-        {
-            "key": "field_62ed724e8a5d7",
-            "label": "Longitude (W)",
-            "name": "longitude",
-            "type": "number",
-            "instructions": "Latitude is direction East \/ West (use negative values for West)",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
         }
     ],
     "location": [
@@ -291,5 +308,5 @@
     "active": true,
     "description": "Destinations - CPT",
     "show_in_rest": 0,
-    "modified": 1671137417
+    "modified": 1700600258
 }

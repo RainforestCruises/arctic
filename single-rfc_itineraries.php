@@ -16,7 +16,7 @@ $departures = getDepartureList($itinerary);
 $ships = getShipsFromDepartureList($departures);
 $lowestOverallPrice = getLowestDepartureListPrice($departures);
 $bestOverallDiscount = getBestDepartureListDiscount($departures);
-$deals = getDealsFromDepartureList($departures);
+$deals = getDealsFromDepartureList($departures, false);
 $specialDepartures = getDealsFromDepartureList($departures, true);
 $regions = getItineraryRegions($itinerary);
 
