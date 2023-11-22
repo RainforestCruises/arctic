@@ -668,42 +668,25 @@ function getEmbarkationList()
     );
     $sidebarEmbarkZones = get_posts($embarkArgs);
 
+    $countryArgs = array(
+        'post_type' => 'rfc_countries',
+        'posts_per_page' => -1,          
+    );
+    $countryPosts = get_posts($countryArgs); // get all countries (bug is preventing a meta query)
+
     foreach ($sidebarEmbarkZones as $zone) {
 
-        $countryArgs = array(
-            'post_type' => 'rfc_countries',
-            'posts_per_page' => -1,
-            'meta_query' => array(
-                array(
-                    'key' => 'embarkation_zone',
-                    'value'   =>  '"' . $zone->ID . '"',
-                    'compare' => 'LIKE'
-                )
-            )
-        );
-        $countryPosts = get_posts($countryArgs);
 
         $countryList = [];
         foreach ($countryPosts as $countryPost) {
-
-            $destinationArgs = array(
-                'post_type' => 'rfc_destinations',
-                'posts_per_page' => -1,
-                'meta_query' => array(
-                    array(
-                        'key' => 'embarkation_country',
-                        'value'   =>  '"' . $countryPost->ID . '"',
-                        'compare' => 'LIKE'
-                    )
-                )
-            );
-            $destinationPosts = get_posts($destinationArgs);
-
-            $countryObject = [
-                'country' => $countryPost,
-                'destinations' => $destinationPosts
-            ];
-            $countryList[] = $countryObject;
+            $countryZone = get_field('embarkation_zone', $countryPost);
+            if($countryZone->ID == $zone->ID){
+                $countryObject = [
+                    'country' => $countryPost,
+                    'destinations' => []
+                ];
+                $countryList[] = $countryObject;
+            }       
         }
 
 
