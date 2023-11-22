@@ -139,7 +139,9 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": "",
+            "post_type": [
+                "rfc_countries"
+            ],
             "taxonomy": "",
             "allow_null": 0,
             "multiple": 0,
@@ -308,5 +310,5 @@
     "active": true,
     "description": "Destinations - CPT",
     "show_in_rest": 0,
-    "modified": 1700600258
+    "modified": 1700679377
 }

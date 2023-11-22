@@ -25,7 +25,7 @@
             "key": "field_655ce06caf77d",
             "label": "Embarkation Zone",
             "name": "embarkation_zone",
-            "type": "relationship",
+            "type": "post_object",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -34,17 +34,12 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "rfc_embark_zones"
-            ],
+            "post_type": "",
             "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "object"
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
         }
     ],
     "location": [
@@ -65,5 +60,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1700585640
+    "modified": 1700679348
 }
