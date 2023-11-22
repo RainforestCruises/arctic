@@ -21,7 +21,7 @@
             "taxonomy": "",
             "allow_null": 0,
             "multiple": 0,
-            "return_format": "object",
+            "return_format": "id",
             "ui": 1
         }
     ],
@@ -43,5 +43,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1700670890
+    "modified": 1700682356
 }

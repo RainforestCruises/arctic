@@ -664,8 +664,7 @@ function getEmbarkationList()
     $embarkArgs = array(
         'post_type' => 'rfc_embark_zones',
         'posts_per_page' => -1,
-        'order' => 'ASC',
-        'orderby' => 'title',
+
     );
     $sidebarEmbarkZones = get_posts($embarkArgs);
 
@@ -693,8 +692,8 @@ function getEmbarkationList()
                 'meta_query' => array(
                     array(
                         'key' => 'embarkation_country',
-                        'value'   =>  $countryPost->ID,
-                        'compare' => '='
+                        'value'   =>  '"' . $countryPost->ID . '"',
+                        'compare' => 'LIKE'
                     )
                 )
             );
