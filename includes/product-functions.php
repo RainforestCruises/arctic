@@ -693,8 +693,8 @@ function getEmbarkationList()
                 'meta_query' => array(
                     array(
                         'key' => 'embarkation_country',
-                        'value'   =>  '"' . $countryPost->ID . '"',
-                        'compare' => 'LIKE'
+                        'value'   =>  $countryPost->ID,
+                        'compare' => '='
                     )
                 )
             );

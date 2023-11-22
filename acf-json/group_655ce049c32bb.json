@@ -34,7 +34,9 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": "",
+            "post_type": [
+                "rfc_embark_zones"
+            ],
             "taxonomy": "",
             "allow_null": 0,
             "multiple": 0,
@@ -60,5 +62,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1700679348
+    "modified": 1700680008
 }
