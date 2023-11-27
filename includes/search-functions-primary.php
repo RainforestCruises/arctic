@@ -42,6 +42,7 @@ function getSearchPosts($region, $routes, $countries, $styles, $minLength, $maxL
     // route selection
     if ($routes != null) {
         $matchedRoutes = array_intersect($routes, $regionalRoutes); // find routes that are within regional selection
+
         $queryargs = array();
         $queryargs['relation'] = 'OR';
         foreach ($matchedRoutes as $route) {

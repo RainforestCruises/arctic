@@ -50,7 +50,6 @@ $sidebarStyles = get_posts($stylesArgs);
 
 // Sidebar Embarkation
 $sidebarEmbarkationZones= getEmbarkationList();
-console_log($sidebarEmbarkationZones);
 
 
 
@@ -344,7 +343,7 @@ if (isset($_GET["countries"])) {
 
 
 // first load
-$resultsObject = getSearchPosts($region, $routes, $embarkationCountries, $styles, $lengthMin, $lengthMax, $priceMin, $priceMax, $departures, $searchInput, $sorting, $pageNumber, $viewType, $filterDeals, $filterSpecials);
+$resultsObject = getSearchPosts($preselectedRegion, $routes, $embarkationCountries, $styles, $lengthMin, $lengthMax, $priceMin, $priceMax, $departures, $searchInput, $sorting, $pageNumber, $viewType, $filterDeals, $filterSpecials);
 $resultCount = $resultsObject['resultsCount'];
 
 // page arguments ------------

@@ -79,6 +79,9 @@
             float: right;
         }
 
+        & .avatar__title-group__sub {
+            color: $color-grey-light-2 !important;
+        }
         & .avatar__title-group__title {
             color: $color-white !important;
         }

@@ -33,7 +33,7 @@ $quote_avatar = get_field('quote_avatar');
                                 Jeremy Clubb
                             </div>
                             <div class="avatar__title-group__sub">
-                                Founder
+                                Founder & Director
                             </div>
                         </div>
                     </div>

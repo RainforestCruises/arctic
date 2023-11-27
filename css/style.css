@@ -4263,6 +4263,8 @@ p {
     margin-right: 2rem;
     width: max-content;
     float: right; }
+  .quote-grid__text-area .avatar__title-group__sub {
+    color: #c2c6c9 !important; }
   .quote-grid__text-area .avatar__title-group__title {
     color: #fff !important; }
   .quote-grid__image-area {
