@@ -119,9 +119,7 @@ $footerClasses = renderFooterClasses();
                             echo $current_language_name . " ";
                         endif; ?>
 
-                        <?php if (is_plugin_active('currency-switcher/index.php')) :
-                            echo $current_symbol . " " . $current_currency;
-                        endif; ?>
+
                     </button>
 
 
@@ -186,28 +184,7 @@ $footerClasses = renderFooterClasses();
         <div class="modal__content__main">
 
             <!-- Currency -->
-            <?php if (is_plugin_active('currency-switcher/index.php')) : ?>
-                <div class="hover-item-popover__container__content">
-                    <div class="hover-item-popover__container__content__header">
-                        Choose Currency
-                    </div>
-                    <div class="hover-item-popover__container__content__buttons">
-                        <?php foreach ($currencies as $item) :
-                            $isCurrent = $item['name'] == $current_currency;
-                        ?>
-                            <a class="btn-primary btn-primary--inverse <?php echo $isCurrent ? "active" : ""; ?>" href="<?php echo $current_url . "?currency=" . $item['name'] ?>">
-                                <div>
-                                    <?php echo $item['description']; ?>
-                                </div>
-                                <div class="subtext">
-                                    <?php echo $item['name'] ?> &#8212; <?php echo $item['symbol']; ?>
-                                </div>
-
-                            </a>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-            <?php endif; ?>
+            <div class="currency-select-area" style="margin-bottom: 1.5rem"></div>
             <!-- Language -->
             <?php if (is_plugin_active('translatepress-multilingual/index.php') && $show_translate_nav == true) : ?>
                 <div class="hover-item-popover__container__content">

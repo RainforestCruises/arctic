@@ -18,6 +18,7 @@ require_once(__DIR__ . '/includes/search-form-primary.php');
 require_once(__DIR__ . '/includes/search-form-nav.php');
 require_once(__DIR__ . '/includes/search-functions-primary.php');
 require_once(__DIR__ . '/includes/search-functions-nav.php');
+require_once(__DIR__ . '/includes/currency-form.php');
 
 
 

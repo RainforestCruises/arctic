@@ -5,33 +5,19 @@ jQuery(document).ready(function ($) {
   const navMain = document.querySelector(".nav-main");
   const navMega = document.querySelector(".nav-mega");
   const navBackdrop = document.querySelector(".nav-backdrop");
-  const navMainLinks = [
-    ...document.querySelectorAll(".nav-main__content__center__nav__list__item"),
-  ];
+  const navMainLinks = [...document.querySelectorAll(".nav-main__content__center__nav__list__item")];
 
   const navCta = document.querySelector("#nav-cta");
   const navControl = document.querySelector("#nav-control");
   const navControlSearch = document.querySelector("#nav-control-search");
-  const navControlSearchInput = document.querySelector(
-    "#nav-control-search-input"
-  );
-  const navControlMenuInitial = document.querySelector(
-    "#nav-control-menu-initial"
-  );
-  const navControlMenuSearch = document.querySelector(
-    "#nav-control-menu-search"
-  );
+  const navControlSearchInput = document.querySelector("#nav-control-search-input");
+  const navControlMenuInitial = document.querySelector("#nav-control-menu-initial");
+  const navControlMenuSearch = document.querySelector("#nav-control-menu-search");
   const navControlDates = document.querySelector("#nav-control-dates");
   const navControlMenuDates = document.querySelector("#nav-control-menu-dates");
-  const navControlClearButton = document.querySelector(
-    "#nav-control-clear-button"
-  );
-  const navControlSubmitButton = document.querySelector(
-    "#nav-control-submit-button"
-  );
-  const navControlDateSubmitButton = document.querySelector(
-    "#nav-control-date-submit-button"
-  );
+  const navControlClearButton = document.querySelector("#nav-control-clear-button");
+  const navControlSubmitButton = document.querySelector("#nav-control-submit-button");
+  const navControlDateSubmitButton = document.querySelector("#nav-control-date-submit-button");
 
   const formSearchInput = document.querySelector("#formSearchInput");
   const formNavRegionInput = document.querySelector("#formNavRegionInput");
@@ -41,6 +27,27 @@ jQuery(document).ready(function ($) {
   const navSearchModalMain = document.getElementById("navSearchModalMain");
   const navSearchModalClose = document.getElementById("navSearchModalClose");
 
+  // currency selection divs -----------------------------------------------------------------------------------------------------
+  const currencyDivs = [...document.querySelectorAll(".currency-select-area")];
+
+  // update currency via ajax to overcome cache issue
+  updateCurrency();
+  function updateCurrency() {
+    var currencyForm = $("#currency-form");
+    jqxhr = $.ajax({
+      url: currencyForm.attr("action"),
+      data: currencyForm.serialize(),
+      type: currencyForm.attr("method"),
+      success: function (data) {
+        currencyDivs.forEach((item) => {
+          item.innerHTML = data; 
+        });
+      },
+    });
+  }
+
+  // cta & control interaction -----------------------------------------------------------------------------------------------------
+
   navCtaMobile.addEventListener("click", (event) => {
     activeMobileSearch();
   });
@@ -48,11 +55,8 @@ jQuery(document).ready(function ($) {
     closeMobileSearch();
   });
 
-  // cta & control interaction -----------------------------------------------------------------------------------------------------
   navCta.addEventListener("click", (event) => {
-    const isDates = document
-      .querySelector(".nav-search-cta__input__dates")
-      .contains(event.target);
+    const isDates = document.querySelector(".nav-search-cta__input__dates").contains(event.target);
     activeSearch(isDates);
   });
 
@@ -116,13 +120,7 @@ jQuery(document).ready(function ($) {
     const isNavControlMenuSearch = navControlMenuSearch.contains(evt.target);
     const isNavControlMenuDates = navControlMenuDates.contains(evt.target);
 
-    if (
-      !isNavCta &&
-      !isNavControl &&
-      !isNavControlMenuInitial &&
-      !isNavControlMenuSearch &&
-      !isNavControlMenuDates
-    ) {
+    if (!isNavCta && !isNavControl && !isNavControlMenuInitial && !isNavControlMenuSearch && !isNavControlMenuDates) {
       removeActiveSearch();
     }
   });
@@ -189,9 +187,7 @@ jQuery(document).ready(function ($) {
         navControlMenuSearch.classList.add("active");
 
         // add click behavior for results
-        const navSearchItems = [
-          ...document.querySelectorAll(".nav-search-item"),
-        ];
+        const navSearchItems = [...document.querySelectorAll(".nav-search-item")];
         navSearchItems.forEach((item) => {
           item.addEventListener("click", () => {
             let dataUrl = item.getAttribute("data-url");
@@ -225,11 +221,7 @@ jQuery(document).ready(function ($) {
   let selectedSeasonIndex = 0;
 
   // region buttons
-  const dateRegionButtons = [
-    ...document.querySelectorAll(
-      ".nav-dates-menu__section__buttons--regions button"
-    ),
-  ];
+  const dateRegionButtons = [...document.querySelectorAll(".nav-dates-menu__section__buttons--regions button")];
 
   // region buttons click event
   dateRegionButtons.forEach((button) => {
@@ -244,11 +236,7 @@ jQuery(document).ready(function ($) {
   });
 
   // season buttons
-  const dateSeasonButtons = [
-    ...document.querySelectorAll(
-      ".nav-dates-menu__section__buttons--seasons button"
-    ),
-  ];
+  const dateSeasonButtons = [...document.querySelectorAll(".nav-dates-menu__section__buttons--seasons button")];
 
   // season buttons click event
   dateSeasonButtons.forEach((button) => {
@@ -332,8 +320,7 @@ jQuery(document).ready(function ($) {
     dateRegionButtons.forEach((button) => {
       if (button.classList.contains("active")) {
         selectedRegion = button.getAttribute("region");
-        document.getElementById("formNavRegionInput").value =
-          button.getAttribute("region");
+        document.getElementById("formNavRegionInput").value = button.getAttribute("region");
       }
     });
   }
@@ -343,21 +330,14 @@ jQuery(document).ready(function ($) {
     if (navControlDates.classList.contains("active")) {
       if (selectedDates.length > 0) {
         const dateString = selectedDates.join("%3B");
-        window.location.href =
-          defaultSearchUrl +
-          "?region=" +
-          selectedRegion +
-          "&departures=" +
-          dateString;
+        window.location.href = defaultSearchUrl + "?region=" + selectedRegion + "&departures=" + dateString;
       } else {
         window.location.href = defaultSearchUrl + "?region=" + selectedRegion;
       }
     } else {
       // search
       if (!navControl.classList.contains("loading")) {
-        let navSearchItems = [
-          ...document.querySelectorAll(".nav-search-item--result"),
-        ];
+        let navSearchItems = [...document.querySelectorAll(".nav-search-item--result")];
         if (navSearchItems.length > 0) {
           window.location.href = navSearchItems[0].getAttribute("data-url");
         } else {
@@ -523,16 +503,14 @@ jQuery(document).ready(function ($) {
   );
 
   //Remove mega when hover over other nav elements
-  $(".nav-main__content__center__search-area, .nav-main__content__right").hover(
-    function () {
-      //on hover over
-      navMega.classList.remove("active");
-      navMain.classList.remove("mega-active");
-      navMainLinks.forEach((link) => {
-        link.classList.remove("active");
-      });
-    }
-  );
+  $(".nav-main__content__center__search-area, .nav-main__content__right").hover(function () {
+    //on hover over
+    navMega.classList.remove("active");
+    navMain.classList.remove("mega-active");
+    navMainLinks.forEach((link) => {
+      link.classList.remove("active");
+    });
+  });
 
   //Mouse Leave Browser - remove mega / active / search
   $(document).mouseleave(function () {
