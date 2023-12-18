@@ -41,7 +41,7 @@ foreach ($regions as $region) {
 
         // months
         $monthArray = [];
-        for ($z = $season_start - 1; $z <= $season_end; $z++) {
+        for ($z = $season_start; $z <= $season_end; $z++) {
             $monthObject = [
                 'hex' => $hexId,
                 'initiallyShown' => $initiallyShown,
@@ -74,7 +74,6 @@ foreach ($regions as $region) {
     $regionObject['seasons'] = $seasonArray;
     $selectionRegions[] = $regionObject;
 }
-console_log($selectionRegions);
 ?>
 
 
