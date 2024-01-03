@@ -18,7 +18,7 @@ $maxlength = 320;
             Start Your Adventure Today.
         </h1>
         <div class="contact-page__intro__subtitle">
-            Call us on the number below to speak to one of our destination specialists, or alternatively please fill in the form beneath and we'll get back to you ASAP.
+        Call us on the number below to speak to one of our polar specialists, or alternatively please fill in the form beneath and we'll get back to you ASAP.
         </div>
     </div>
 
@@ -36,7 +36,7 @@ $maxlength = 320;
                     Give us a Call
                 </h2>
                 <div class="contact-section__wrapper__intro__subtitle">
-                    We ❤️ to talk! A brief call with one of our destination specialists is the quickest and easiest way to create your perfect trip.
+                Speak with our specialists for free on
                 </div>
                 <div class="contact-section__wrapper__intro__phone">
                     <a href="tel:<?php echo $phone_number_numeric; ?>">
@@ -47,9 +47,7 @@ $maxlength = 320;
 
             <!-- Form -->
             <div class="contact-section__wrapper__form">
-                <div class="contact-section__wrapper__form__subtext">
-                    Alternately, please fill in the form and we’ll get back to you ASAP.
-                </div>
+      
                 <?php
 
                 //Check if WpForms is active

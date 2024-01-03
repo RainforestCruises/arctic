@@ -8190,7 +8190,7 @@ p {
     width: 100%;
     max-width: 128rem;
     padding: 0 6rem;
-    margin-bottom: 6rem; }
+    margin-bottom: 4.5rem; }
     @media only screen and (max-width: 37.5em) {
       .contact-page__intro {
         padding: 0 3rem;
@@ -8297,7 +8297,7 @@ p {
         font-size: 1.6rem;
         text-align: center;
         max-width: 30rem;
-        margin-bottom: 3rem; }
+        margin-bottom: 1.5rem; }
       .contact-section__wrapper__intro__phone {
         font-size: 3rem;
         color: #1d2225;
