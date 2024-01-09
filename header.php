@@ -79,7 +79,7 @@
     <style>
         @media only screen and (max-width: 1000px) {
             .gist-messenger-iframe {
-                bottom: 160px;
+                bottom: 160px !important;
             }
             .gist-messenger-bubble-iframe iframe,
             .gist-notification-iframe iframe,
