@@ -5,7 +5,7 @@ return array (
   'title' => 'Deals',
   'type' => 'rfc_deals',
   'id' => '61dca42e9152d',
-  'updated' => 1692633501,
+  'updated' => 1704815808,
   'columns' => 
   array (
     'title' => 
@@ -143,6 +143,40 @@ return array (
       'filter_label' => '',
       'filter_format' => '',
       'name' => '6453e088249ba4',
+    ),
+    '659d6c9298d4fc' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Has Activation Date',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_659d6c3514b44',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '659d6c9298d4fc',
+    ),
+    '659d6ca9683128' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Activation Date',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_659d6c4814b45',
+      'date_format' => 'acf',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'filter_format' => '',
+      'name' => '659d6ca9683128',
     ),
     '64494f36b78d50' => 
     array (

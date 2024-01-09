@@ -10,7 +10,6 @@ foreach ($sections as $section) :
     $dealsInCategory = getDealsInCategory($category);
     $titleSlug = slugify(get_the_title($category));
 
-
     if (!$dealsInCategory) continue; // skip if no deals found for category
 ?>
 
@@ -49,7 +48,6 @@ foreach ($sections as $section) :
             <!-- Slider Area -->
             <div class="slider-block__content__slider">
 
-
                 <div class="swiper" id="category-slider-<?php echo $categoryCount; ?>">
                     <div class="swiper-wrapper">
 
@@ -72,11 +70,17 @@ foreach ($sections as $section) :
                             <!-- Itinerary Card -->
                             <div class="search-card-itinerary swiper-slide toplevel-deal-card <?php echo $is_special_departure ? "special-departure-cta" : "" ?>" dealId="<?php echo $id ?>">
 
-
+                                <!-- Tag Area -->
+                                <?php if ($is_special_departure) : ?>
+                                    <div class="search-card-itinerary__tag-area">
+                                        <div class="card-tag card-tag--special">
+                                            Special Departure
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
                                 <!-- Image -->
                                 <div class="search-card-itinerary__image-area">
                                     <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
-
                                 </div>
 
                                 <!-- Content -->
@@ -91,11 +95,7 @@ foreach ($sections as $section) :
                                     <div class="search-card-itinerary__content__description">
                                         <?php echo $description_limited; ?>
                                     </div>
-
-
-
                                 </div>
-
                             </div>
 
                         <?php endforeach; ?>
@@ -175,40 +175,39 @@ console_log($allDeals);
                             </div>
                         </div>
                     <?php endif; ?>
+
                     <!-- Products -->
-                    <div class="product-deals-modal-item__itineraries">
-
-                        <h4>Itineraries with <?php echo $is_special_departure ? 'Special Departure' : 'Deal' ?></h4>
-                        <div class="product-deals-modal-item__itineraries__grid">
-                            <?php
-                            foreach ($itinerariesWithDeal as $itinerary) :
-                                $images =  get_field('hero_gallery', $itinerary);
-                                $image = $images[0];
-                                $title = get_field('display_name', $itinerary);
-                                $length_in_nights = get_field('length_in_nights', $itinerary);
-                                $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
-                            ?>
-
-                                <!-- Itinerary Item -->
-                                <a class="nav-search-item nav-search-item--border nav-search-item--avatar" href="<?php echo get_permalink($itinerary);?>">
-                                    <?php if ($image != null) : ?>
-                                        <div class="nav-search-item__image-area">
-                                            <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
+                    <?php if (count($itinerariesWithDeal) > 0) : ?>
+                        <div class="product-deals-modal-item__itineraries">
+                            <h4>Itineraries with <?php echo $is_special_departure ? 'Special Departure' : 'Deal' ?></h4>
+                            <div class="product-deals-modal-item__itineraries__grid">
+                                <?php
+                                foreach ($itinerariesWithDeal as $itinerary) :
+                                    $images =  get_field('hero_gallery', $itinerary);
+                                    $image = $images[0];
+                                    $title = get_field('display_name', $itinerary);
+                                    $length_in_nights = get_field('length_in_nights', $itinerary);
+                                    $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
+                                ?>
+                                    <a class="nav-search-item nav-search-item--border nav-search-item--avatar" href="<?php echo get_permalink($itinerary); ?>">
+                                        <?php if ($image != null) : ?>
+                                            <div class="nav-search-item__image-area">
+                                                <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
+                                            </div>
+                                        <?php endif; ?>
+                                        <div class="nav-search-item__title-group">
+                                            <div class="nav-search-item__title-group__title">
+                                                <?php echo $title ?>
+                                            </div>
+                                            <div class="nav-search-item__title-group__sub">
+                                                <?php echo $length ?>
+                                            </div>
                                         </div>
-                                    <?php endif; ?>
-                                    <div class="nav-search-item__title-group">
-                                        <div class="nav-search-item__title-group__title">
-                                            <?php echo $title ?>
-                                        </div>
-                                        <div class="nav-search-item__title-group__sub">
-                                            <?php echo $length ?>
-                                        </div>
-                                    </div>
-                                </a>
-
-                            <?php endforeach; ?>
+                                    </a>
+                                <?php endforeach; ?>
+                            </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
 
                     <!-- TC -->
                     <?php if ($terms_and_conditions) : ?>

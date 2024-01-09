@@ -260,6 +260,50 @@
             "first_day": 1
         },
         {
+            "key": "field_659d6c3514b44",
+            "label": "Has Activation Date",
+            "name": "has_activation_date",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_659d6c4814b45",
+            "label": "Activation Date",
+            "name": "activation_date",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64357469240b4",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "F j, Y",
+            "return_format": "Y-m-d",
+            "first_day": 1
+        },
+        {
             "key": "field_643713dc9710c",
             "label": "Terms and Conditions",
             "name": "",
@@ -342,5 +386,5 @@
     "active": true,
     "description": "Deal - CPT",
     "show_in_rest": 0,
-    "modified": 1699894602
+    "modified": 1704815710
 }

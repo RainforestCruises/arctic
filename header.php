@@ -83,8 +83,8 @@
             .gist-notification-iframe iframe,
             .gist-post-small-iframe iframe,
             .gist-prompt-iframe iframe {
-                bottom: 10rem !important; 
-                left: 40px !important;
+                bottom: 11rem !important; 
+                right: 3rem !important;
             }
         }
     </style>

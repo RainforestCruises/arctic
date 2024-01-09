@@ -10,6 +10,7 @@ function getDealsFromDepartureList($departures, $getSpecials = false)
         foreach ($deals as $deal) {
             $is_active = get_field('is_active', $deal);
             $has_expiry_date = get_field('has_expiry_date', $deal);
+            $has_activation_date = get_field('has_activation_date', $deal);
 
             if (!$is_active) { // skip inactive deals
                 continue;
@@ -17,6 +18,13 @@ function getDealsFromDepartureList($departures, $getSpecials = false)
             if ($has_expiry_date) { // skip expired deals
                 $expiry_date =  get_field('expiry_date', $deal);
                 $isCurrent = strtotime($expiry_date) >= strtotime(date('Y-m-d'));
+                if (!$isCurrent) {
+                    continue;
+                }
+            }
+            if ($has_activation_date) { // skip prior to activated deals
+                $activation_date =  get_field('activation_date', $deal);
+                $isCurrent = strtotime($activation_date) <= strtotime(date('Y-m-d'));
                 if (!$isCurrent) {
                     continue;
                 }
@@ -38,6 +46,8 @@ function getDealsFromSingleDeparture($departure, $getSpecials = false)
     foreach ($deals as $deal) {
         $is_active = get_field('is_active', $deal);
         $has_expiry_date = get_field('has_expiry_date', $deal);
+        $has_activation_date = get_field('has_activation_date', $deal);
+
         $is_special_departure = get_field('is_special_departure', $deal);
         if ($is_special_departure != $getSpecials) { // skip type
             continue;
@@ -48,6 +58,13 @@ function getDealsFromSingleDeparture($departure, $getSpecials = false)
         if ($has_expiry_date) { // skip expired 
             $expiry_date =  get_field('expiry_date', $deal);
             $isCurrent = strtotime($expiry_date) >= strtotime(date('Y-m-d'));
+            if (!$isCurrent) {
+                continue;
+            }
+        }
+        if ($has_activation_date) { // skip prior to activated deals
+            $activation_date =  get_field('activation_date', $deal);
+            $isCurrent = strtotime($activation_date) <= strtotime(date('Y-m-d'));
             if (!$isCurrent) {
                 continue;
             }
@@ -93,6 +110,7 @@ function getDealsInCategory($category)
     foreach ($deals as $deal) {
         $is_active = get_field('is_active', $deal);
         $has_expiry_date = get_field('has_expiry_date', $deal);
+        $has_activation_date = get_field('has_activation_date', $deal);
 
         if (!$is_active) { // skip inactive deals
             continue;
@@ -100,6 +118,13 @@ function getDealsInCategory($category)
         if ($has_expiry_date) { // skip expired deals
             $expiry_date =  get_field('expiry_date', $deal);
             $isCurrent = strtotime($expiry_date) >= strtotime(date('Y-m-d'));
+            if (!$isCurrent) {
+                continue;
+            }
+        }
+        if ($has_activation_date) { // skip prior to activated deals
+            $activation_date =  get_field('activation_date', $deal);
+            $isCurrent = strtotime($activation_date) <= strtotime(date('Y-m-d'));
             if (!$isCurrent) {
                 continue;
             }
