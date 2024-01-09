@@ -182,6 +182,22 @@ if ($deals && $specialDepartures) {
                     <div class="product-deals-modal-item__description">
                         <?php echo $description; ?>
                     </div>
+                    <!-- Validity -->
+                    <?php if ($has_expiry_date) : ?>
+                        <div class="product-deals-modal-item__validity">
+                            <div class="validity">
+                                <svg class="validity__icon">
+                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-stopwatch"></use>
+                                </svg>
+                                <div class="validity__title">
+                                    Offer Valid Until <?php echo date("F j, Y", strtotime($expiry_date)); ?>
+                                    <div class="validity__title__sub">
+                                        <?php echo getDaysUntilExpiry($expiry_date) ?> Days Remaining
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                     <?php if ($terms_and_conditions) : ?>
                         <h4>Terms & Conditions</h4>
                         <ul class="highlight-list">
@@ -193,32 +209,8 @@ if ($deals && $specialDepartures) {
                             <?php endforeach; ?>
                         </ul>
                     <?php endif; ?>
-                    <div class="product-deals-modal-item__cta">
-                        <div class="product-deals-modal-item__cta__urgency-area">
-                            <?php if ($has_expiry_date) : ?>
-                                <div class="urgent-deal">
-                                    <svg class="urgent-deal__icon">
-                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-stopwatch"></use>
-                                    </svg>
-                                    <div class="urgent-deal__title">
-                                        Offer Valid Until <?php echo date("F j, Y", strtotime($expiry_date)); ?>
-                                        <div class="urgent-deal__title__sub">
-                                            <?php echo getDaysUntilExpiry($expiry_date) ?> Days Remaining
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                        <div class="product-deals-modal-item__cta__button-area">
-                            <a class="btn-primary btn-primary--icon btn-primary--small" href="<?php echo get_permalink($deal) ?>" target="_blank">
-                                <span id="dealsModalCtaText">View Page</span>
 
-                                <svg>
-                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
+
 
 
 

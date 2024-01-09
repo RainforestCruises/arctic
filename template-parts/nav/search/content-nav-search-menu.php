@@ -11,7 +11,7 @@ $resultsObject = getNavSearchResults("", true);
             </div>
             <div class="nav-search-menu-initial__category__group">
                 <?php foreach ($resultCategory['Items'] as $item) : ?>
-                    <div class="nav-search-item <?php echo ($item['Image'] == null) ? "nav-search-item--no-avatar" : "nav-search-item--avatar" ?>" data-url="<?php echo $item['Url']; ?>">
+                    <div class="nav-search-item nav-search-item--border <?php echo ($item['Image'] == null) ? "nav-search-item--no-avatar" : "nav-search-item--avatar" ?>" data-url="<?php echo $item['Url']; ?>">
 
                         <?php if ($item['Image'] != null) : ?>
                             <div class="nav-search-item__image-area">

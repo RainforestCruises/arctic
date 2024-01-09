@@ -47,6 +47,7 @@
     <!-- Structured Data / Rich Snippets -->
     <!-- Load Head / Style Sheets -->
 
+    <!-- Mapbox elements -->
     <style>
         .destination-marker {
             background-image: url("<?php echo bloginfo('template_url') ?>/css/img/pin-dest.png");
@@ -74,6 +75,19 @@
         }
     </style>
 
+    <!-- Chat widget -->
+    <style>
+        @media only screen and (max-width: 1000px) {
+
+            .gist-messenger-bubble-iframe iframe,
+            .gist-notification-iframe iframe,
+            .gist-post-small-iframe iframe,
+            .gist-prompt-iframe iframe {
+                bottom: 10rem !important; 
+                left: 40px !important;
+            }
+        }
+    </style>
 
     <?php wp_head(); ?>
 </head>

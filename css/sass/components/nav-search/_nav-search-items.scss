@@ -6,6 +6,9 @@
     cursor: pointer;
     color: $color-primary;
     transition: all .3s;
+    &:link {
+        text-decoration: none;
+    }
     &:hover {
         color: $color-supporting;
     }
@@ -17,6 +20,19 @@
         padding: .5rem 1rem !important;
         gap: 0 !important;
     }
+
+    &--border {
+        border: 1px solid $color-grey-light-1a;
+        border-radius: 4rem;
+        padding: 2px;    
+        
+        &:hover {
+            border: 1px solid $color-grey-light-2;
+        }
+
+    }
+
+
     &__image-area {
         display: flex;
         align-items: center;

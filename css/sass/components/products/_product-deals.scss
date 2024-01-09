@@ -1,69 +1,68 @@
 .product-deals-modal-item {
-    &__title {
-        margin-bottom: 1rem;
-        color: $color-primary;
-        font-size: 2.2rem;
-        font-weight: 700;
-    }
+  &__title {
+    margin-bottom: 1rem;
+    color: $color-primary;
+    font-size: 2.2rem;
+    font-weight: 700;
+  }
 
-    &__image-area {
-        & img {
-            border-radius: 1rem;
-            height: auto;
-            width: 100%;
-            max-height: 36rem;
-            object-fit: cover;
-        }
-        margin-bottom: 2rem;
+  &__image-area {
+    & img {
+      border-radius: 1rem;
+      height: auto;
+      width: 100%;
+      max-height: 36rem;
+      object-fit: cover;
     }
+    margin-bottom: 2rem;
+  }
 
-    &__description {
-        margin-bottom: 2rem;
+  &__description {
+    margin-bottom: 2rem;
+  }
+
+  &__itineraries {
+    margin-bottom: 2rem;
+    &__grid {
+      display: flex;
+      flex-wrap: wrap;
+      .nav-search-item {
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
     }
+  }
 
-    &__cta {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 3rem;
-        @media only screen and (max-width: $bp-small) {
-            grid-template-columns: 1fr;
-        }
-        
-
-        &__button-area {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-        }   
-    }
+  &__validity {
+    margin-bottom: 2rem;
+  }
 }
 
-
-.urgent-deal {
-    width: max-content;
-    @media only screen and (max-width: $bp-small) {
-        width: 100%;
-    }
+.validity {
+  width: max-content;
+  @media only screen and (max-width: $bp-small) {
     width: 100%;
-    padding: 1.5rem 4rem;
-    padding-left: 2.5rem;
-    border-radius: 1rem;
-    background-color: rgba($color-green, 0.1);
-    display: grid;
-    grid-template-columns: min-content 1fr;
-    align-items: center;
-    gap: 2rem;
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: $color-primary;
-    &__icon {
-        height: 3rem;
-        width: 3rem;
-    }
+  }
+  width: 100%;
+  padding: 1.5rem 4rem;
+  padding-left: 2.5rem;
+  border-radius: 1rem;
+  background-color: rgba($color-green, 0.2);
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  align-items: center;
+  gap: 2rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: $color-primary;
+  &__icon {
+    height: 3rem;
+    width: 3rem;
+  }
 
-    &__title {
-        &__sub {
-            font-size: 1.2rem;
-        }
+  &__title {
+    &__sub {
+      font-size: 1.2rem;
     }
+  }
 }

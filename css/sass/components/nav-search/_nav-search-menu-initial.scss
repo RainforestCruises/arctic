@@ -28,18 +28,9 @@
         &__group {
             display: flex;
             flex-wrap: wrap;
-
             & .nav-search-item {
-                border: 1px solid $color-grey-light-1a;
-                border-radius: 4rem;
-                padding: 2px;        
                 margin-right: .5rem;
                 margin-bottom: .5rem;   
-                
-                &:hover {
-                    border: 1px solid $color-grey-light-2;
-
-                }
             }
             
             & .nav-search-item--no-avatar {

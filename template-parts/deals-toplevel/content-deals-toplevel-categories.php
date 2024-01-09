@@ -1,12 +1,15 @@
 <?php
 $sections = get_field('sections');
 $categoryCount = 0;
+$allDeals = [];
+
 foreach ($sections as $section) :
     $category = $section['category'];
     $title = $section['title'];
     $snippet = $section['snippet'];
     $dealsInCategory = getDealsInCategory($category);
     $titleSlug = slugify(get_the_title($category));
+
 
     if (!$dealsInCategory) continue; // skip if no deals found for category
 ?>
@@ -51,11 +54,14 @@ foreach ($sections as $section) :
                     <div class="swiper-wrapper">
 
                         <?php foreach ($dealsInCategory as $deal) :
+                            $allDeals[] = $deal;
+                            $id = $deal->ID;
                             $image =  get_field('featured_image', $deal);
                             $itineraries = getItinerariesWithDeal($deal);
                             $ships = getShipsWithDeal($deal);
                             $title = get_field('navigation_title', $deal);
                             $description = get_field('description', $deal);
+                            $is_special_departure = get_field('is_special_departure', $deal);
                             $expand = strlen($description) > 320 ? true : false;
                             $description_limited = substr($description, 0, 320);
                             if ($expand) {
@@ -64,7 +70,7 @@ foreach ($sections as $section) :
                         ?>
 
                             <!-- Itinerary Card -->
-                            <a class="search-card-itinerary swiper-slide" href="<?php echo get_permalink($deal) ?>">
+                            <div class="search-card-itinerary swiper-slide toplevel-deal-card <?php echo $is_special_departure ? "special-departure-cta" : "" ?>" dealId="<?php echo $id ?>">
 
 
                                 <!-- Image -->
@@ -86,11 +92,11 @@ foreach ($sections as $section) :
                                         <?php echo $description_limited; ?>
                                     </div>
 
-                           
+
 
                                 </div>
 
-                            </a>
+                            </div>
 
                         <?php endforeach; ?>
 
@@ -102,4 +108,123 @@ foreach ($sections as $section) :
     </section>
 
 <?php $categoryCount++;
-endforeach; ?>
+endforeach;
+console_log($allDeals);
+?>
+
+
+<div class="modal" id="dealsModal">
+    <div class="modal__content">
+
+        <!-- Top Modal Content -->
+        <div class="modal__content__top">
+            <div class="modal__content__top__nav">
+                <div class="modal__content__top__nav__title" id="dealsModalTitle">
+                    Deal Information
+                </div>
+            </div>
+            <button class="btn-text btn-text--bg close-modal-button ">
+                Close
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Main Modal Content -->
+        <div class="modal__content__main" id="dealsModalMainContent">
+
+            <?php
+            foreach ($allDeals as $deal) :
+                $id = $deal->ID;
+                $image = get_field('featured_image', $deal);
+                $title = get_field('navigation_title', $deal);
+                $description = get_field('description', $deal);
+                $terms_and_conditions = get_field('terms_and_conditions', $deal);
+                $has_expiry_date = get_field('has_expiry_date', $deal);
+                $expiry_date =  get_field('expiry_date', $deal);
+                $is_special_departure = get_field('is_special_departure', $deal);
+                $itinerariesWithDeal = getItinerariesWithDeal($deal);
+
+            ?>
+
+                <div class="product-deals-modal-item" dealId="<?php echo $id; ?>">
+                    <div class="product-deals-modal-item__title">
+                        <?php echo $title; ?>
+                    </div>
+                    <div class="product-deals-modal-item__image-area">
+                        <img <?php afloat_image_markup($image['id'], 'landscape-small', array('landscape-small', 'portrait-small')); ?>>
+                    </div>
+
+                    <div class="product-deals-modal-item__description">
+                        <?php echo $description; ?>
+                    </div>
+                    <!-- Validity -->
+                    <?php if ($has_expiry_date) : ?>
+                        <div class="product-deals-modal-item__validity">
+                            <div class="validity">
+                                <svg class="validity__icon">
+                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-stopwatch"></use>
+                                </svg>
+                                <div class="validity__title">
+                                    Offer Valid Until <?php echo date("F j, Y", strtotime($expiry_date)); ?>
+                                    <div class="validity__title__sub">
+                                        <?php echo getDaysUntilExpiry($expiry_date) ?> Days Remaining
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    <!-- Products -->
+                    <div class="product-deals-modal-item__itineraries">
+
+                        <h4>Itineraries with <?php echo $is_special_departure ? 'Special Departure' : 'Deal' ?></h4>
+                        <div class="product-deals-modal-item__itineraries__grid">
+                            <?php
+                            foreach ($itinerariesWithDeal as $itinerary) :
+                                $images =  get_field('hero_gallery', $itinerary);
+                                $image = $images[0];
+                                $title = get_field('display_name', $itinerary);
+                                $length_in_nights = get_field('length_in_nights', $itinerary);
+                                $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
+                            ?>
+
+                                <!-- Itinerary Item -->
+                                <a class="nav-search-item nav-search-item--border nav-search-item--avatar" href="<?php echo get_permalink($itinerary);?>">
+                                    <?php if ($image != null) : ?>
+                                        <div class="nav-search-item__image-area">
+                                            <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
+                                        </div>
+                                    <?php endif; ?>
+                                    <div class="nav-search-item__title-group">
+                                        <div class="nav-search-item__title-group__title">
+                                            <?php echo $title ?>
+                                        </div>
+                                        <div class="nav-search-item__title-group__sub">
+                                            <?php echo $length ?>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+
+                    <!-- TC -->
+                    <?php if ($terms_and_conditions) : ?>
+                        <h4>Terms & Conditions</h4>
+                        <ul class="highlight-list">
+                            <?php foreach ($terms_and_conditions as $term) : ?>
+                                <li>
+                                    <span>&#8212;</span>
+                                    <?php echo $term['condition'] ?>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>
