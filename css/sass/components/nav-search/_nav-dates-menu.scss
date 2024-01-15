@@ -63,7 +63,7 @@
 
         &__months {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
 
             @media only screen and (max-width: $bp-small) {

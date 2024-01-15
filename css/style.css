@@ -4522,10 +4522,7 @@ p {
   @media only screen and (max-width: 62.5em) {
     .landing-hero {
       margin-top: 7rem;
-      height: 50rem; } }
-  @media only screen and (max-width: 37.5em) {
-    .landing-hero {
-      height: 35rem; } }
+      height: auto; } }
   .landing-hero__bg-image {
     position: absolute;
     height: 100%;
@@ -4542,14 +4539,16 @@ p {
       left: 0;
       height: 100%;
       width: 100%;
-      background-image: linear-gradient(to bottom, rgba(30, 30, 30, 0.3), transparent 20%), linear-gradient(to bottom, rgba(30, 30, 30, 0.1), rgba(30, 30, 30, 0.1)), linear-gradient(to right, rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.1) 50%);
+      background-image: linear-gradient(to bottom, rgba(30, 30, 30, 0.3), transparent 20%), linear-gradient(to bottom, rgba(30, 30, 30, 0.1), rgba(30, 30, 30, 0.1)), linear-gradient(to right, rgba(30, 30, 30, 0.75), rgba(30, 30, 30, 0.1) 50%);
       z-index: 2; }
+      @media only screen and (max-width: 62.5em) {
+        .landing-hero__bg-image::after {
+          background-image: linear-gradient(to right, rgba(30, 30, 30, 0.6), rgba(30, 30, 30, 0.6)); } }
   .landing-hero__content {
     max-width: 160rem;
     width: 100%;
     padding: 0 6rem;
-    padding-top: 12rem;
-    padding-bottom: 2rem;
+    padding-top: 9rem;
     display: flex;
     color: #fff; }
     @media only screen and (max-width: 50em) {
@@ -4557,8 +4556,8 @@ p {
         padding: 0 3rem; } }
     @media only screen and (max-width: 62.5em) {
       .landing-hero__content {
-        padding-top: 2rem;
-        padding-bottom: 2rem; } }
+        padding-top: 6rem;
+        padding-bottom: 6rem; } }
     .landing-hero__content__title-group__title {
       font-size: 5rem;
       font-weight: 400;
@@ -4621,7 +4620,7 @@ p {
           font-weight: 500;
           text-decoration: none; }
         .landing-nav__content__links__link:hover {
-          color: #347fff;
+          background-color: rgba(29, 34, 37, 0.05);
           border-color: #1d2225; }
         .landing-nav__content__links__link svg {
           height: 1.6rem;
@@ -5652,13 +5651,16 @@ p {
       left: 0;
       height: 100%;
       width: 100%;
-      background-image: linear-gradient(to bottom, rgba(30, 30, 30, 0.3), transparent 20%), linear-gradient(to bottom, rgba(30, 30, 30, 0.1), rgba(30, 30, 30, 0.1)), linear-gradient(to right, rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.1) 50%);
+      background-image: linear-gradient(to bottom, rgba(30, 30, 30, 0.3), transparent 20%), linear-gradient(to bottom, rgba(30, 30, 30, 0.1), rgba(30, 30, 30, 0.1)), linear-gradient(to right, rgba(30, 30, 30, 0.75), rgba(30, 30, 30, 0.1) 50%);
       z-index: 2; }
+      @media only screen and (max-width: 62.5em) {
+        .deals-toplevel-hero__bg-image::after {
+          background-image: linear-gradient(to right, rgba(30, 30, 30, 0.6), rgba(30, 30, 30, 0.6)); } }
   .deals-toplevel-hero__content {
     max-width: 160rem;
     width: 100%;
     padding: 0 6rem;
-    padding-top: 14rem;
+    padding-top: 9rem;
     display: grid;
     grid-template-rows: 1fr min-content;
     color: #fff;
@@ -5669,19 +5671,7 @@ p {
     @media only screen and (max-width: 62.5em) {
       .deals-toplevel-hero__content {
         padding-top: 6rem;
-        min-height: 50rem; } }
-    @media only screen and (max-width: 37.5em) {
-      .deals-toplevel-hero__content {
-        padding-top: 3rem;
-        min-height: auto; } }
-    .deals-toplevel-hero__content.site-notice-variant {
-      padding-top: 20rem; }
-      @media only screen and (max-width: 62.5em) {
-        .deals-toplevel-hero__content.site-notice-variant {
-          padding-top: 12rem; } }
-      @media only screen and (max-width: 37.5em) {
-        .deals-toplevel-hero__content.site-notice-variant {
-          padding-top: 16rem; } }
+        padding-bottom: 6rem; } }
     .deals-toplevel-hero__content__title-group {
       max-width: 60rem;
       display: flex;
@@ -7064,7 +7054,7 @@ p {
       margin-bottom: 1rem; }
     .nav-dates-menu__section__months {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1rem; }
       @media only screen and (max-width: 37.5em) {
         .nav-dates-menu__section__months {
