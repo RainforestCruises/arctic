@@ -12,9 +12,13 @@ $cabins = $args['cabins'];
                 </div>
             </div>
             <button class="btn-text btn-text--bg close-modal-button ">
-                Close
-                <svg>
+                <span class="close-modal-button--close-text">Close</span>
+                <span class="close-modal-button--back-text">Back</span>
+                <svg class="close-modal-button--close-text">
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
+                </svg>
+                <svg class="close-modal-button--back-text">
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-left"></use>
                 </svg>
             </button>
         </div>

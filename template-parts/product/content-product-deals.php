@@ -77,55 +77,76 @@ if ($deals && $specialDepartures) {
                         }
 
                     ?>
-                        <div class="deal-card swiper-slide">
-                            <!-- Title Group -->
-                            <div class="deal-card__section">
-                                <div class="avatar avatar--small">
-                                    <div class="avatar__image-area">
-                                        <img <?php afloat_image_markup($image['id'], 'square-thumb', array('square-thumb')); ?>>
-                                    </div>
-                                    <div class="avatar__title-group">
-                                        <h3 class="avatar__title-group__title" style="margin-bottom: 0;">
-                                            <?php echo  $title; ?>
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="deal-card__description">
-                                <?php echo $description_limited ?>
-                            </div>
 
-                            <div class="deal-card__urgency <?php echo $is_special_departure ? "deal-card__urgency--special" : ""; ?>">
-                                <?php if ($is_special_departure) : ?>
-                                    <svg class="deal-card__urgency__icon">
-                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat-front"></use>
-                                    </svg>
-                                    <div class="deal-card__urgency__text">
+                        <!-- Itinerary Card -->
+                        <div class="search-card-itinerary swiper-slide deal-cta <?php echo $is_special_departure ? "special-departure-cta" : "" ?>" dealId="<?php echo $id ?>">
+
+                            <!-- Tag Area -->
+                            <?php if ($is_special_departure) : ?>
+                                <div class="search-card-itinerary__tag-area">
+                                    <div class="card-tag card-tag--special">
                                         Special Departure
                                     </div>
+                                </div>
+                            <?php endif; ?>
+                            <!-- Image -->
+                            <div class="search-card-itinerary__image-area">
+                                <img <?php afloat_image_markup($image['id'], 'landscape-small'); ?>>
+                            </div>
+
+                            <!-- Content -->
+                            <div class="search-card-itinerary__content">
+
+                                <!-- Title -->
+                                <div class="search-card-itinerary__content__title">
+                                    <?php echo $title; ?>
+                                </div>
+
+                                <!-- Description -->
+                                <div class="search-card-itinerary__content__description">
+                                    <?php echo $description_limited; ?>
+                                </div>
+                            </div>
+                            <div class="search-card-itinerary__bottom search-card-itinerary__bottom--deal">
+                                <?php if (!$is_special_departure) : ?>
+                                    <div class="validity-badge">
+                                        <div class="validity-badge__icon-area">
+                                            <svg>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-stopwatch"></use>
+                                            </svg>
+                                        </div>
+
+                                        <div class="validity-badge__title">
+                                            <?php if ($has_expiry_date) : ?>
+                                                Expires <?php echo date("F j, Y", strtotime($expiry_date)); ?>
+                                                <div class="validity-badge__title__sub">
+                                                    <?php echo getDaysUntilExpiry($expiry_date) ?> Days Remaining
+                                                </div>
+                                            <?php else : ?>
+                                                Limited time offer
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
                                 <?php else : ?>
-                                    <svg class="deal-card__urgency__icon">
-                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-stopwatch"></use>
-                                    </svg>
-                                    <div class="deal-card__urgency__text">
-                                        <?php if ($has_expiry_date) :
-                                            echo 'Offer expires in ' . getDaysUntilExpiry($expiry_date) . ' days';
-                                        else :
-                                            echo 'Limited time offer';
-                                        endif; ?>
+                                    <div class="validity-badge">
+                                        <div class="validity-badge__icon-area">
+                                            <svg>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat-front"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="validity-badge__title">
+                                            Special Departure
+                                        </div>
                                     </div>
                                 <?php endif; ?>
 
-                                <div class="deal-card__urgency__cta">
-                                    <button class="btn-primary btn-primary--icon btn-primary--small <?php echo $is_special_departure ? "special-departure-cta" : "" ?> deal-cta" dealId="<?php echo $id ?>">
-                                        Details
-                                        <svg>
-                                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                                        </svg>
-                                    </button>
-                                </div>
-
+                                <button class="btn-primary btn-primary--icon btn-primary--small">
+                                    Details
+                                    <svg>
+                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                                    </svg>
+                                </button>
                             </div>
                         </div>
 
@@ -148,9 +169,13 @@ if ($deals && $specialDepartures) {
                 </div>
             </div>
             <button class="btn-text btn-text--bg close-modal-button ">
-                Close
-                <svg>
+                <span class="close-modal-button--close-text">Close</span>
+                <span class="close-modal-button--back-text">Back</span>
+                <svg class="close-modal-button--close-text">
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
+                </svg>
+                <svg class="close-modal-button--back-text">
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-left"></use>
                 </svg>
             </button>
         </div>
@@ -183,21 +208,23 @@ if ($deals && $specialDepartures) {
                         <?php echo $description; ?>
                     </div>
                     <!-- Validity -->
-                    <?php if ($has_expiry_date) : ?>
-                        <div class="product-deals-modal-item__validity">
-                            <div class="validity">
-                                <svg class="validity__icon">
-                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-stopwatch"></use>
-                                </svg>
-                                <div class="validity__title">
+                    <div class="product-deals-modal-item__validity">
+                        <div class="validity">
+                            <svg class="validity__icon">
+                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-stopwatch"></use>
+                            </svg>
+                            <div class="validity__title">
+                                <?php if ($has_expiry_date) : ?>
                                     Offer Valid Until <?php echo date("F j, Y", strtotime($expiry_date)); ?>
                                     <div class="validity__title__sub">
                                         <?php echo getDaysUntilExpiry($expiry_date) ?> Days Remaining
                                     </div>
-                                </div>
+                                <?php else : ?>
+                                    Limited time offer
+                                <?php endif; ?>
                             </div>
                         </div>
-                    <?php endif; ?>
+                    </div>
                     <?php if ($terms_and_conditions) : ?>
                         <h4>Terms & Conditions</h4>
                         <ul class="highlight-list">

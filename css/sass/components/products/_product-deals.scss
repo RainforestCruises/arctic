@@ -35,6 +35,8 @@
 
   &__validity {
     margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -43,26 +45,27 @@
   @media only screen and (max-width: $bp-small) {
     width: 100%;
   }
-  width: 100%;
   padding: 1.5rem 4rem;
   padding-left: 2.5rem;
   border-radius: 1rem;
-  background-color: rgba($color-green, 0.2);
+  background-color: rgba($color-green, 0.1);
   display: grid;
   grid-template-columns: min-content 1fr;
   align-items: center;
   gap: 2rem;
   font-size: 1.6rem;
-  font-weight: 600;
-  color: $color-primary;
+  line-height: 2.2rem;
+  font-weight: 700;
+  color: $color-green;
   &__icon {
-    height: 3rem;
-    width: 3rem;
+    height: 2.8rem;
+    width: 2.8rem;
   }
 
   &__title {
     &__sub {
       font-size: 1.2rem;
+      line-height: 1.4rem;
     }
   }
 }

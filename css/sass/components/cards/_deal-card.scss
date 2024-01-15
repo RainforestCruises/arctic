@@ -53,11 +53,10 @@
 }
 
 .deal-card-inline {
-    border: 1px solid $color-grey-light-1a;
+    border: 1px solid $color-green;
     border-radius: 1rem;
-    color: $color-primary;
+    color: $color-green !important;
     position: relative;
-    background-color: rgba($color-green, .2);
     padding: 1rem 2rem;
     padding-right: 3.5rem;
     font-size: 1.4rem;
@@ -67,8 +66,12 @@
     grid-template-columns: 1fr 8rem;
     margin-bottom: 2rem;
     cursor: pointer;
+    transition: all .2s;
+    &:hover {
+        background-color: rgba($color-green, .1);
+    }
     &__title {
-
+        font-weight: 700;    
     }
 
     &__cta {

@@ -62,6 +62,9 @@ foreach ($sections as $section) :
                             $is_special_departure = get_field('is_special_departure', $deal);
                             $expand = strlen($description) > 320 ? true : false;
                             $description_limited = substr($description, 0, 320);
+                            $has_expiry_date = get_field('has_expiry_date', $deal);
+                            $expiry_date =  get_field('expiry_date', $deal);
+
                             if ($expand) {
                                 $description_limited .= '...';
                             }
@@ -96,6 +99,46 @@ foreach ($sections as $section) :
                                         <?php echo $description_limited; ?>
                                     </div>
                                 </div>
+                                <div class="search-card-itinerary__bottom search-card-itinerary__bottom--deal">
+                                    <?php if (!$is_special_departure) : ?>
+                                        <div class="validity-badge">
+                                            <div class="validity-badge__icon-area">
+                                                <svg>
+                                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-stopwatch"></use>
+                                                </svg>
+                                            </div>
+
+                                            <div class="validity-badge__title">
+                                                <?php if ($has_expiry_date) : ?>
+                                                    Expires <?php echo date("F j, Y", strtotime($expiry_date)); ?>
+                                                    <div class="validity-badge__title__sub">
+                                                        <?php echo getDaysUntilExpiry($expiry_date) ?> Days Remaining
+                                                    </div>
+                                                <?php else : ?>
+                                                    Limited time offer
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                    <?php else : ?>
+                                        <div class="validity-badge">
+                                            <div class="validity-badge__icon-area">
+                                                <svg>
+                                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat-front"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="validity-badge__title">
+                                                Special Departure
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+
+                                    <button class="btn-primary btn-primary--icon btn-primary--small">
+                                        Details
+                                        <svg>
+                                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
 
                         <?php endforeach; ?>
@@ -109,7 +152,6 @@ foreach ($sections as $section) :
 
 <?php $categoryCount++;
 endforeach;
-console_log($allDeals);
 ?>
 
 
@@ -159,22 +201,27 @@ console_log($allDeals);
                     <div class="product-deals-modal-item__description">
                         <?php echo $description; ?>
                     </div>
+
                     <!-- Validity -->
-                    <?php if ($has_expiry_date) : ?>
-                        <div class="product-deals-modal-item__validity">
+                    <div class="product-deals-modal-item__validity">
+                        <?php if (!$is_special_departure) : ?>
                             <div class="validity">
                                 <svg class="validity__icon">
                                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-stopwatch"></use>
                                 </svg>
                                 <div class="validity__title">
-                                    Offer Valid Until <?php echo date("F j, Y", strtotime($expiry_date)); ?>
-                                    <div class="validity__title__sub">
-                                        <?php echo getDaysUntilExpiry($expiry_date) ?> Days Remaining
-                                    </div>
+                                    <?php if ($has_expiry_date) : ?>
+                                        Offer Valid Until <?php echo date("F j, Y", strtotime($expiry_date)); ?>
+                                        <div class="validity__title__sub">
+                                            <?php echo getDaysUntilExpiry($expiry_date) ?> Days Remaining
+                                        </div>
+                                    <?php else : ?>
+                                        Limited time offer
+                                    <?php endif; ?>
                                 </div>
                             </div>
-                        </div>
-                    <?php endif; ?>
+                        <?php endif; ?>
+                    </div>
 
                     <!-- Products -->
                     <?php if (count($itinerariesWithDeal) > 0) : ?>

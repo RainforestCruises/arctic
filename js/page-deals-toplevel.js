@@ -39,7 +39,7 @@ jQuery(document).ready(function ($) {
                 1000: {
                     slidesPerView: 3,
                 },
-                1300: {
+                1600: {
                     slidesPerView: 4,
                 }
             }

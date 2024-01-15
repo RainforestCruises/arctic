@@ -777,9 +777,17 @@ p {
   padding: 4rem;
   animation: fadein 0.2s;
   display: none; }
+  .modal .close-modal-button--back-text {
+    display: none; }
   .modal.modal-second-level {
     background-color: rgba(30, 30, 30, 0);
     z-index: 9999; }
+    .modal.modal-second-level .close-modal-button--close-text {
+      display: none; }
+    .modal.modal-second-level .close-modal-button--back-text {
+      display: inline !important; }
+    .modal.modal-second-level svg.close-modal-button--back-text {
+      order: -1; }
   @media only screen and (min-width: 50em) {
     .modal--minimal {
       align-items: center; }
@@ -1483,12 +1491,12 @@ p {
 
 .specs-deal {
   font-size: 1.2rem;
-  font-weight: 600;
-  color: #1d2225;
-  background-color: rgba(0, 172, 120, 0.2);
-  border-radius: 2rem;
+  font-weight: 700;
+  color: #00ac78;
+  background-color: rgba(0, 172, 120, 0.1);
+  border-radius: 1rem;
   width: max-content;
-  padding: .5rem 2rem;
+  padding: .3rem 1rem;
   cursor: pointer;
   display: flex;
   text-decoration: none !important;
@@ -1496,9 +1504,11 @@ p {
   .specs-deal:not(:last-child) {
     margin-bottom: 0.5rem; }
   .specs-deal--special {
-    background-color: rgba(120, 98, 216, 0.2); }
+    color: #7862d8;
+    background-color: rgba(120, 98, 216, 0.1); }
   .specs-deal--fly {
-    background-color: rgba(255, 255, 255, 0.2); }
+    color: #1d2225;
+    background-color: rgba(255, 255, 255, 0.1); }
 
 .specs-item {
   font-size: 1.4rem;
@@ -1925,11 +1935,10 @@ p {
       color: currentColor; }
 
 .deal-card-inline {
-  border: 1px solid #e6e6e6;
+  border: 1px solid #00ac78;
   border-radius: 1rem;
-  color: #1d2225;
+  color: #00ac78 !important;
   position: relative;
-  background-color: rgba(0, 172, 120, 0.2);
   padding: 1rem 2rem;
   padding-right: 3.5rem;
   font-size: 1.4rem;
@@ -1938,7 +1947,12 @@ p {
   align-items: center;
   grid-template-columns: 1fr 8rem;
   margin-bottom: 2rem;
-  cursor: pointer; }
+  cursor: pointer;
+  transition: all .2s; }
+  .deal-card-inline:hover {
+    background-color: rgba(0, 172, 120, 0.1); }
+  .deal-card-inline__title {
+    font-weight: 700; }
   .deal-card-inline__cta {
     display: flex;
     justify-content: flex-end; }
@@ -3163,8 +3177,8 @@ p {
 
 .product-hero-badge {
   font-size: 1.2rem;
-  font-weight: 600;
-  color: #1d2225;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
   border-radius: 2rem;
   width: max-content;
   padding: 0.5rem 2rem;
@@ -3175,15 +3189,23 @@ p {
   .product-hero-badge:not(:last-child) {
     margin-right: 1rem; }
   .product-hero-badge--deal {
-    background-color: rgba(0, 172, 120, 0.9);
+    background-color: rgba(0, 172, 120, 0.7);
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     cursor: pointer;
     transition: all 0.2s; }
     .product-hero-badge--deal:hover {
       background-color: #00ac78; }
+    @media only screen and (max-width: 62.5em) {
+      .product-hero-badge--deal {
+        background-color: rgba(0, 172, 120, 0.2);
+        color: #00ac78;
+        font-weight: 600; }
+        .product-hero-badge--deal:hover {
+          background-color: rgba(0, 172, 120, 0.3); } }
   .product-hero-badge--fly {
-    background-color: rgba(255, 255, 255, 0.9);
+    color: #1d2225;
+    background-color: rgba(255, 255, 255, 0.7);
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px); }
     @media only screen and (max-width: 62.5em) {
@@ -3192,11 +3214,18 @@ p {
   .product-hero-badge--special {
     cursor: pointer;
     transition: all 0.2s;
-    background-color: rgba(120, 98, 216, 0.9);
+    background-color: rgba(120, 98, 216, 0.7);
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px); }
     .product-hero-badge--special:hover {
       background-color: #7862d8; }
+    @media only screen and (max-width: 62.5em) {
+      .product-hero-badge--special {
+        background-color: rgba(120, 98, 216, 0.2);
+        color: #7862d8;
+        font-weight: 600; }
+        .product-hero-badge--special:hover {
+          background-color: rgba(120, 98, 216, 0.3); } }
 
 .product-overview {
   display: flex;
@@ -3548,30 +3577,33 @@ p {
       margin-bottom: 0.5rem; }
 
 .product-deals-modal-item__validity {
-  margin-bottom: 2rem; }
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center; }
 
 .validity {
   width: max-content;
-  width: 100%;
   padding: 1.5rem 4rem;
   padding-left: 2.5rem;
   border-radius: 1rem;
-  background-color: rgba(0, 172, 120, 0.2);
+  background-color: rgba(0, 172, 120, 0.1);
   display: grid;
   grid-template-columns: min-content 1fr;
   align-items: center;
   gap: 2rem;
   font-size: 1.6rem;
-  font-weight: 600;
-  color: #1d2225; }
+  line-height: 2.2rem;
+  font-weight: 700;
+  color: #00ac78; }
   @media only screen and (max-width: 37.5em) {
     .validity {
       width: 100%; } }
   .validity__icon {
-    height: 3rem;
-    width: 3rem; }
+    height: 2.8rem;
+    width: 2.8rem; }
   .validity__title__sub {
-    font-size: 1.2rem; }
+    font-size: 1.2rem;
+    line-height: 1.4rem; }
 
 .day-list__title__pre {
   color: #9ea0a4;
@@ -6598,6 +6630,28 @@ p {
     justify-content: center;
     padding: 1.5rem 2rem;
     margin-top: .5rem; }
+    .search-card-itinerary__bottom--deal {
+      display: grid;
+      grid-template-columns: 1fr max-content;
+      gap: 1rem; }
+      .search-card-itinerary__bottom--deal .validity-badge {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 1rem;
+        align-items: center; }
+        .search-card-itinerary__bottom--deal .validity-badge__icon-area svg {
+          height: 2.4rem;
+          width: 2.4rem; }
+        .search-card-itinerary__bottom--deal .validity-badge__title {
+          font-size: 1.4rem;
+          font-weight: 700;
+          line-height: 1.8rem; }
+          .search-card-itinerary__bottom--deal .validity-badge__title__sub {
+            font-size: 1.2rem;
+            line-height: 1.3rem;
+            font-weight: 400; }
+      .search-card-itinerary__bottom--deal button {
+        grid-column: 2 / span 1; }
     .search-card-itinerary__bottom__savings {
       font-size: 1.2rem; }
     .search-card-itinerary__bottom__price-group {

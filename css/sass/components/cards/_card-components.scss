@@ -60,12 +60,12 @@
 
 .specs-deal {
     font-size: 1.2rem;
-    font-weight: 600;
-    color: $color-primary;
-    background-color: rgba($color-green, .2);
-    border-radius: 2rem;
+    font-weight: 700;
+    color: $color-green;
+    background-color: rgba($color-green, .1);
+    border-radius: 1rem;
     width: max-content;
-    padding: .5rem 2rem;
+    padding: .3rem 1rem;
     cursor: pointer;
     display: flex;
     text-decoration: none !important;
@@ -76,11 +76,13 @@
     }
 
     &--special {
-        background-color: rgba($color-purple, .2);
+        color: $color-purple;
+        background-color: rgba($color-purple, .1);
     }
 
     &--fly {
-        background-color: rgba($color-white, .2);
+        color: $color-primary;
+        background-color: rgba($color-white, .1);
     }
 
    

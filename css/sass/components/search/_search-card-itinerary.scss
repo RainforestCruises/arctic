@@ -148,6 +148,39 @@
         padding: 1.5rem 2rem;
         margin-top: .5rem;
 
+        &--deal {
+            display: grid;
+            grid-template-columns: 1fr max-content;
+            gap: 1rem;
+            .validity-badge {
+                display: grid;
+                grid-template-columns: max-content 1fr;
+                gap: 1rem;
+                align-items: center;
+
+                &__icon-area {
+                    & svg {
+                        height: 2.4rem;
+                        width: 2.4rem;
+                    }
+                }
+                &__title {
+                    font-size: 1.4rem;
+                    font-weight: 700;
+                    line-height: 1.8rem;
+
+                    &__sub {
+                        font-size: 1.2rem;
+                        line-height: 1.3rem;
+                        font-weight: 400;
+                    }
+                }
+            }
+            & button {
+                grid-column: 2 / span 1;
+            }
+        }
+
         &__savings {
             font-size: 1.2rem;
         }

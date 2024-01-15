@@ -584,9 +584,8 @@
 
 .product-hero-badge {
   font-size: 1.2rem;
-  font-weight: 600;
-  color: $color-primary;
-  // background-color: rgba($color-green, 0.8);
+  font-weight: 400;
+  color: rgba($color-white, 0.9);
   border-radius: 2rem;
   width: max-content;
   padding: 0.5rem 2rem;
@@ -601,7 +600,7 @@
 
   &--deal {
 
-    background-color: rgba($color-green, 0.9);
+    background-color: rgba($color-green, 0.7);
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     cursor: pointer;
@@ -609,11 +608,20 @@
     &:hover {
       background-color: rgba($color-green, 1);
     }
+    @media only screen and (max-width: $bp-large) {
+      background-color: rgba($color-green, 0.2);
+      color: rgba($color-green, 1);
+      font-weight: 600;
+      &:hover {
+        background-color: rgba($color-green, .3);
+      }
+    }
   }
 
   &--fly {
+    color: $color-primary;
 
-    background-color: rgba($color-white, 0.9);
+    background-color: rgba($color-white, 0.7);
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     @media only screen and (max-width: $bp-large) {
@@ -625,11 +633,20 @@
     cursor: pointer;
     transition: all 0.2s;
 
-    background-color: rgba($color-purple, 0.9);
+    background-color: rgba($color-purple, 0.7);
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     &:hover {
       background-color: rgba($color-purple, 1);
+    }
+
+    @media only screen and (max-width: $bp-large) {
+      background-color: rgba($color-purple, 0.2);
+      color: rgba($color-purple, 1);
+      font-weight: 600;
+      &:hover {
+        background-color: rgba($color-purple, .3);
+      }
     }
   }
 }
