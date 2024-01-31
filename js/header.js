@@ -24,27 +24,9 @@ jQuery(document).ready(function ($) {
 
   const navCtaMobile = document.querySelector("#nav-cta-mobile");
   const navSearchModal = document.getElementById("navSearchModal");
-  const navSearchModalMain = document.getElementById("navSearchModalMain");
   const navSearchModalClose = document.getElementById("navSearchModalClose");
 
-  // currency selection divs -----------------------------------------------------------------------------------------------------
-  const currencyDivs = [...document.querySelectorAll(".currency-select-area")];
 
-  // update currency via ajax to overcome cache issue
-  updateCurrency();
-  function updateCurrency() {
-    var currencyForm = $("#currency-form");
-    jqxhr = $.ajax({
-      url: currencyForm.attr("action"),
-      data: currencyForm.serialize(),
-      type: currencyForm.attr("method"),
-      success: function (data) {
-        currencyDivs.forEach((item) => {
-          item.innerHTML = data; 
-        });
-      },
-    });
-  }
 
   // cta & control interaction -----------------------------------------------------------------------------------------------------
 
