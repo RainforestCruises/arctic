@@ -36,7 +36,7 @@ $alwaysActiveMainNav = checkActiveHeader();
             <nav class="nav-main__content__center__nav">
 
                 <ul class="nav-main__content__center__nav__list">
-                    <li class="nav-main__content__center__nav__list__item" navelement="categorical">
+                    <li class="nav-main__content__center__nav__list__item" navelement="category">
                         Cruises
                     </li>
                     <li class="nav-main__content__center__nav__list__item" navelement="ships">
@@ -55,79 +55,129 @@ $alwaysActiveMainNav = checkActiveHeader();
             <!-- Nav Mega (abs position)-->
             <div class="nav-mega">
 
-                <!-- Cruises Panel -->
-                <div class="nav-mega__panel" panel="categorical">
-                    <div class="nav-mega__panel__grid">
-                        <?php foreach ($landing_pages as $group) :
+                <!-- Cruises Panel (category) -->
+                <div class="nav-mega__panel" panel="category">
+                    <div class="mega-panel-category">
+                        <?php
+                        $categorySliderCount = 0;
+                        foreach ($landing_pages as $group) :
                             $group_title = $group['group'];
                             $items = $group['items'];
                         ?>
-                            <div class="nav-mega__panel__grid__group">
-                                <div class="nav-mega__panel__grid__group__title">
-                                    <?php echo $group_title; ?>
+                            <div class="mega-slider mega-slider--category">
+                                <div class="mega-slider__top title-divider">
+                                    <!-- Title -->
+                                    <div class="mega-slider__top__title">
+                                        <?php echo $group_title; ?>
+                                    </div>
+                                    <!-- Nav Buttons -->
+                                    <div class="mega-slider__top__nav">
+                                        <div class="swiper-button-prev swiper-button-prev--white-border mega-category-slider-btn-prev-<?php echo $categorySliderCount; ?>">
+                                            <svg>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-left"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="swiper-button-next swiper-button-next--white-border mega-category-slider-btn-next-<?php echo $categorySliderCount; ?>">
+                                            <svg>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="nav-mega__panel__grid__group__items">
-                                    <?php foreach ($items as $item) :
-                                        $url = get_permalink($item);
-                                        $hero_title = get_field('hero_title', $item);
-                                        $hero_images =  get_field('hero_images', $item);
-                                    ?>
-                                        <a class="mega-category-item" href="<?php echo $url; ?>">
-                                            <div class="mega-category-item__image-area">
-                                                <img <?php afloat_image_markup($hero_images[0]['id'], 'square-small', array('square-small')); ?>>
-                                            </div>
-                                            <div class="mega-category-item__title">
-                                                <?php echo $hero_title ?>
-                                            </div>
-                                        </a>
-                                    <?php endforeach; ?>
+
+
+                                <div class="swiper mega-slider__slider" id="mega-category-slider-<?php echo $categorySliderCount; ?>">
+                                    <div class="swiper-wrapper">
+                                        <?php foreach ($items as $item) :
+                                            $url = get_permalink($item);
+                                            $hero_title = get_field('hero_title', $item);
+                                            $hero_images =  get_field('hero_images', $item);
+                                        ?>
+                                            <a class="mega-category-item swiper-slide" href="<?php echo $url; ?>">
+                                                <div class="mega-category-item__image-area">
+                                                    <img <?php afloat_image_markup($hero_images[0]['id'], 'square-small', array('square-small')); ?>>
+                                                </div>
+                                                <div class="mega-category-item__title">
+                                                    <?php echo $hero_title ?>
+                                                </div>
+                                            </a>
+                                        <?php endforeach; ?>
+                                    </div>
                                 </div>
+
+
                             </div>
-                        <?php endforeach; ?>
+                        <?php $categorySliderCount++;
+                        endforeach; ?>
                     </div>
                 </div>
 
                 <!-- Ships Panel -->
                 <div class="nav-mega__panel " panel="ships">
-                    <div class="nav-mega__panel__grid">
-                        <?php foreach ($ships as $group) :
+                    <div class="mega-panel-ships">
+                        <?php
+                        $shipsSliderCount = 0;
+                        foreach ($ships as $group) :
                             $group_title = $group['group'];
                             $items = $group['items']; //ships
                         ?>
-                            <div class="nav-mega__panel__grid__group">
-                                <div class="nav-mega__panel__grid__group__title">
-                                    <?php echo $group_title; ?>
+                            <div class="mega-slider mega-slider--ships">
+                                <div class="mega-slider__top title-divider">
+                                    <!-- Title -->
+                                    <div class="mega-slider__top__title">
+                                        <?php echo $group_title; ?>
+                                    </div>
+                                    <!-- Nav Buttons -->
+                                    <div class="mega-slider__top__nav">
+                                        <div class="swiper-button-prev swiper-button-prev--white-border mega-ships-slider-btn-prev-<?php echo $shipsSliderCount; ?>">
+                                            <svg>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-left"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="swiper-button-next swiper-button-next--white-border mega-ships-slider-btn-next-<?php echo $shipsSliderCount; ?>">
+                                            <svg>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="nav-mega__panel__grid__group__items items-grid-5">
-                                    <?php foreach ($items as $item) :
-                                        $url = get_permalink($item);
-                                        $title = get_the_title($item);
-                                        $hero_gallery = get_field('hero_gallery', $item);
-                                        $ship_image = $hero_gallery[0];
-                                        $itineraries = getShipItineraries($item);
-                                        $itineraryDisplay = count($itineraries) . ' Itineraries, ' . itineraryRange($itineraries, "-") . " Days";
-                                        $guestsDisplay = get_field('vessel_capacity', $item) . ' Guests';
-                                    ?>
-                                        <a class="mega-item" href="<?php echo $url; ?>">
-                                            <div class="mega-item__image-area">
-                                                <img <?php afloat_image_markup($ship_image['id'], 'square-small'); ?>>
-                                            </div>
-                                            <div class="mega-item__title-group">
-                                                <div class="mega-item__title-group__title">
-                                                    <?php echo $title ?>
+                                <div class="mega-slider__slider" id="mega-ships-slider-<?php echo $shipsSliderCount; ?>">
+                                    <div class="swiper-wrapper">
+                                        <?php foreach ($items as $item) :
+                                            $url = get_permalink($item);
+                                            $title = get_the_title($item);
+                                            $hero_gallery = get_field('hero_gallery', $item);
+                                            $ship_image = $hero_gallery[0];
+                                            $itineraries = getShipItineraries($item);
+                                            $itineraryDisplay = count($itineraries) . ' Itineraries, ' . itineraryRange($itineraries, "-") . " Days";
+                                            $guestsDisplay = get_field('vessel_capacity', $item) . ' Guests';
+                                        ?>
+                                            <a class="mega-item swiper-slide" href="<?php echo $url; ?>">
+                                                <div class="mega-item__image-area">
+                                                    <img <?php afloat_image_markup($ship_image['id'], 'square-small'); ?>>
                                                 </div>
-                                                <div class="mega-item__title-group__sub">
-                                                    <?php echo $itineraryDisplay ?>
+                                                <div class="mega-item__title-group">
+                                                    <div class="mega-item__title-group__title">
+                                                        <?php echo $title ?>
+                                                    </div>
+                                                    <div class="mega-item__title-group__sub">
+                                                        <?php echo $itineraryDisplay ?>
+                                                    </div>
+                                                    <div class="mega-item__title-group__sub">
+                                                        <?php echo $guestsDisplay ?>
+                                                    </div>
                                                 </div>
-                                                <div class="mega-item__title-group__sub">
-                                                    <?php echo $guestsDisplay ?>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    <?php endforeach; ?>
+                                            </a>
+                                        <?php endforeach; ?>
+
+                                    </div>
+
                                 </div>
+
                             </div>
-                        <?php endforeach; ?>
+
+                        <?php $shipsSliderCount++;
+                        endforeach; ?>
                     </div>
                 </div>
 

@@ -4,6 +4,7 @@ jQuery(document).ready(function ($) {
   const headerDiv = document.querySelector(".header");
   const navMain = document.querySelector(".nav-main");
   const navMega = document.querySelector(".nav-mega");
+  const megaPanels = document.querySelectorAll(".nav-mega__panel");
   const navBackdrop = document.querySelector(".nav-backdrop");
   const navMainLinks = [...document.querySelectorAll(".nav-main__content__center__nav__list__item")];
 
@@ -25,8 +26,6 @@ jQuery(document).ready(function ($) {
   const navCtaMobile = document.querySelector("#nav-cta-mobile");
   const navSearchModal = document.getElementById("navSearchModal");
   const navSearchModalClose = document.getElementById("navSearchModalClose");
-
-
 
   // cta & control interaction -----------------------------------------------------------------------------------------------------
 
@@ -344,14 +343,13 @@ jQuery(document).ready(function ($) {
     window.addEventListener("scroll", clearMega);
   }
 
+  applyNavStyle();
   function applyNavStyle() {
-    let megaActive = navMega.classList.contains("active");
+    const megaActive = navMega.classList.contains("active");
+    removeActiveSearch(); // reset search
 
-    //reset search input
-    removeActiveSearch();
-
-    //reduce size (height)
     if (window.scrollY == 0) {
+      // reduce size (height)
       navMain.classList.remove("small-nav");
       if (!megaActive) {
         navBackdrop.classList.remove("active");
@@ -360,8 +358,8 @@ jQuery(document).ready(function ($) {
       navMain.classList.add("small-nav");
     }
 
-    //set active bg past threshold
     if (!opaqueNavAlways && !megaActive) {
+      // set active bg past threshold
       if (window.scrollY > 150) {
         navMain.classList.add("active");
       } else {
@@ -371,143 +369,207 @@ jQuery(document).ready(function ($) {
     }
   }
 
+  // main nav hover
+  navMain.addEventListener("mouseover", () => {
+    navMain.classList.add("active");
+  });
+  navMain.addEventListener("mouseout", () => {
+    var megaActive = navMega.classList.contains("active");
+    var searchActive = navControl.classList.contains("active");
+    var scrolledDown = window.scrollY > 300 ? true : false;
+    if (!opaqueNavAlways && !scrolledDown && !megaActive && !searchActive) {
+      navMain.classList.remove("active");
+    }
+    if (!megaActive) {
+      navBackdrop.classList.remove("active");
+    }
+  });
+
+  // nav link click
+  navMainLinks.forEach((item) => {
+    item.addEventListener("click", () => {
+      navMainLinks.forEach((link) => {
+        link.classList.remove("active"); // set active link
+      });
+      item.classList.add("active");
+
+      var panelId = item.getAttribute("navelement"); // set active panel
+      activateMega(panelId);
+    });
+  });
+
+  // activate mega menu
+  function activateMega(panelId) {
+    navMega.classList.add("active");
+    navMain.classList.add("mega-active");
+    navBackdrop.classList.add("active");
+
+    const panelTarget = document.querySelector(".nav-mega__panel[panel='" + panelId + "']");
+    megaPanels.forEach((panel) => {
+      panel.classList.remove("active");
+    });
+    panelTarget.classList.add("active");
+    removeActiveSearch();
+  }
+
+  // remove mega when click anywhere else
+  document.addEventListener("click", (evt) => {
+    let isNavMainLink = false;
+    navMainLinks.forEach((link) => {
+      if (link.contains(evt.target)) {
+        isNavMainLink = true;
+      }
+    });
+
+    let isNavMega = navMega.contains(evt.target);
+
+    if (!isNavMainLink && !isNavMega) {
+      clearMega();
+    }
+  });
+
+  // clear mega menu
   function clearMega() {
     navMega.classList.remove("active");
     navMain.classList.remove("mega-active");
     navBackdrop.classList.remove("active");
-
-    $(".nav-main__content__center__nav__list__item").removeClass("active");
+    navMainLinks.forEach((link) => {
+      link.classList.remove("active");
+    });
   }
 
-  // main nav hover
-  $(".nav-main").hover(
-    function () {
-      // hover-over
-      navMain.classList.add("active");
-    },
-    function () {
-      // hover-out
-      var megaActive = navMega.classList.contains("active");
-      var searchActive = navControl.classList.contains("active");
-      var scrolledDown = window.scrollY > 300 ? true : false;
-
-      if (!opaqueNavAlways && !scrolledDown && !megaActive && !searchActive) {
-        navMain.classList.remove("active");
-      }
-
-      if (!megaActive) {
-        navBackdrop.classList.remove("active");
-      }
-    }
-  );
-
-  // nav list behavior ----------
-  // nav item hover
-  $(".nav-main__content__center__nav__list__item").hover(
-    function () {
-      // over
-
-      navMain.classList.add("active");
-      navBackdrop.classList.add("active");
-      navMain.classList.add("mega-active");
-      navMega.classList.add("active");
-      removeActiveSearch();
-
-      var panelId = this.getAttribute("navelement");
-      var panelTarget = $(".nav-mega__panel[panel='" + panelId + "']");
-
-      $(".nav-mega__panel").removeClass("active");
-      navMainLinks.forEach((link) => {
-        link.classList.remove("active");
-      });
-      this.classList.add("active");
-      $(panelTarget).addClass("active");
-    },
-    function () {
-      // out
-
-      var megaActive = navMega.classList.contains("active");
-      if (window.scrollY == 0 && !opaqueNavAlways && !megaActive) {
-        navMain.classList.remove("active");
-      }
-
-      if (!megaActive) {
-        navBackdrop.classList.remove("active");
-      }
-    }
-  );
-
-  // nav link hover (deals)
-  $(".nav-main__content__center__nav__list__link").hover(
-    function () {
-      //over
-
-      navMain.classList.add("active");
-      navBackdrop.classList.add("active");
-      $(".nav-mega__panel").removeClass("active");
-      navMainLinks.forEach((link) => {
-        link.classList.remove("active");
-      });
-      navMega.classList.remove("active");
-      navMain.classList.remove("mega-active");
-      removeActiveSearch();
-    },
-    function () {
-      //out
-    }
-  );
-
-  // mega menu ----------
-  // remove mega and backdrop when hover back to page
-  $(".nav-mega").hover(
-    function () {
-      // on hover over
-    },
-    function () {
-      //on hover out
-      navMega.classList.remove("active");
-      navMain.classList.remove("mega-active");
-
-      navMainLinks.forEach((link) => {
-        link.classList.remove("active");
-      });
-
-      var mainActive = navMain.classList.contains("active");
-
-      if (window.scrollY == 0 && !opaqueNavAlways && !mainActive) {
-        navMain.classList.remove("active");
-      }
-
-      if (!mainActive) {
-        navBackdrop.classList.remove("active");
-      }
-    }
-  );
-
-  //Remove mega when hover over other nav elements
-  $(".nav-main__content__center__search-area, .nav-main__content__right").hover(function () {
-    //on hover over
-    navMega.classList.remove("active");
-    navMain.classList.remove("mega-active");
-    navMainLinks.forEach((link) => {
-      link.classList.remove("active");
+  // mega category sliders (cruises - routes / themes)
+  const categorySliderSections = [...document.querySelectorAll(".mega-slider--category")];
+  categorySliderSections.forEach((section, index) => {
+    new Swiper("#mega-category-slider-" + index, {
+      spaceBetween: 10,
+      slidesPerView: 5,
+      watchSlidesProgress: true,
+      navigation: {
+        nextEl: ".mega-category-slider-btn-next-" + index,
+        prevEl: ".mega-category-slider-btn-prev-" + index,
+      },
     });
   });
 
-  //Mouse Leave Browser - remove mega / active / search
-  $(document).mouseleave(function () {
-    navMega.classList.remove("active");
-    navMain.classList.remove("mega-active");
-    navBackdrop.classList.remove("active");
-    removeActiveSearch();
-    navMainLinks.forEach((link) => {
-      link.classList.remove("active");
+    // mega category sliders (cruises - routes / themes)
+    const shipsSliderSections = [...document.querySelectorAll(".mega-slider--ships")];
+    shipsSliderSections.forEach((section, index) => {
+      new Swiper("#mega-ships-slider-" + index, {
+        spaceBetween: 10,
+        slidesPerView: 5,
+        watchSlidesProgress: true,
+        navigation: {
+          nextEl: ".mega-ships-slider-btn-next-" + index,
+          prevEl: ".mega-ships-slider-btn-prev-" + index,
+        },
+      });
     });
 
-    if (window.scrollY == 0 && !opaqueNavAlways) {
-      navMain.classList.remove("active");
-    }
-  });
+  // // nav item hover
+  // $(".nav-main__content__center__nav__list__item").hover(
+  //   function () {
+  //     // over
 
-  applyNavStyle();
+  //     navMain.classList.add("active");
+  //     navBackdrop.classList.add("active");
+  //     navMain.classList.add("mega-active");
+  //     navMega.classList.add("active");
+  //     removeActiveSearch();
+
+  //     var panelId = this.getAttribute("navelement");
+  //     var panelTarget = $(".nav-mega__panel[panel='" + panelId + "']");
+
+  //     $(".nav-mega__panel").removeClass("active");
+  //     navMainLinks.forEach((link) => {
+  //       link.classList.remove("active");
+  //     });
+  //     this.classList.add("active");
+  //     $(panelTarget).addClass("active");
+  //   },
+  //   function () {
+  //     // out
+
+  //     var megaActive = navMega.classList.contains("active");
+  //     if (window.scrollY == 0 && !opaqueNavAlways && !megaActive) {
+  //       navMain.classList.remove("active");
+  //     }
+
+  //     if (!megaActive) {
+  //       navBackdrop.classList.remove("active");
+  //     }
+  //   }
+  // );
+
+  // // nav link hover (deals)
+  // $(".nav-main__content__center__nav__list__link").hover(
+  //   function () {
+  //     //over
+
+  //     navMain.classList.add("active");
+  //     navBackdrop.classList.add("active");
+  //     $(".nav-mega__panel").removeClass("active");
+  //     navMainLinks.forEach((link) => {
+  //       link.classList.remove("active");
+  //     });
+  //     navMega.classList.remove("active");
+  //     navMain.classList.remove("mega-active");
+  //     removeActiveSearch();
+  //   },
+  //   function () {
+  //     //out
+  //   }
+  // );
+
+  // // mega menu ----------
+  // // remove mega and backdrop when hover back to page
+  // $(".nav-mega").hover(
+  //   function () {
+  //     // on hover over
+  //   },
+  //   function () {
+  //     //on hover out
+  //     navMega.classList.remove("active");
+  //     navMain.classList.remove("mega-active");
+
+  //     navMainLinks.forEach((link) => {
+  //       link.classList.remove("active");
+  //     });
+
+  //     var mainActive = navMain.classList.contains("active");
+
+  //     if (window.scrollY == 0 && !opaqueNavAlways && !mainActive) {
+  //       navMain.classList.remove("active");
+  //     }
+
+  //     if (!mainActive) {
+  //       navBackdrop.classList.remove("active");
+  //     }
+  //   }
+  // );
+
+  // //Remove mega when hover over other nav elements
+  // $(".nav-main__content__center__search-area, .nav-main__content__right").hover(function () {
+  //   //on hover over
+  //   navMega.classList.remove("active");
+  //   navMain.classList.remove("mega-active");
+  //   navMainLinks.forEach((link) => {
+  //     link.classList.remove("active");
+  //   });
+  // });
+
+  // //Mouse Leave Browser - remove mega / active / search
+  // $(document).mouseleave(function () {
+  //   navMega.classList.remove("active");
+  //   navMain.classList.remove("mega-active");
+  //   navBackdrop.classList.remove("active");
+  //   removeActiveSearch();
+  //   navMainLinks.forEach((link) => {
+  //     link.classList.remove("active");
+  //   });
+
+  //   if (window.scrollY == 0 && !opaqueNavAlways) {
+  //     navMain.classList.remove("active");
+  //   }
+  // });
 });
