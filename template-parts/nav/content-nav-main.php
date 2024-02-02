@@ -4,6 +4,8 @@ $ships = get_field('ships', 'options');
 $guides = get_field('guides', 'options');
 $top_level_guides_page = get_field('top_level_guides_page', 'options');
 $top_level_deals_page = get_field('top_level_deals_page', 'options');
+$top_level_search_page = get_field('top_level_search_page', 'options');
+
 
 $alwaysActiveMainNav = checkActiveHeader();
 ?>
@@ -57,6 +59,17 @@ $alwaysActiveMainNav = checkActiveHeader();
 
                 <!-- Cruises Panel (category) -->
                 <div class="nav-mega__panel" panel="category">
+                    <div class="nav-mega__panel__regions" style="display: none;">
+                        <span class="info-span">
+                            Antarctica
+                        </span>
+                        <span class="info-span">
+                            Arctic
+                        </span>
+                        <span class=" info-span active">
+                            All
+                        </span>
+                    </div>
                     <div class="mega-panel-category">
                         <?php
                         $categorySliderCount = 0;
@@ -72,16 +85,7 @@ $alwaysActiveMainNav = checkActiveHeader();
                                     </div>
                                     <!-- Nav Buttons -->
                                     <div class="mega-slider__top__nav">
-                                        <div class="swiper-button-prev swiper-button-prev--white-border mega-category-slider-btn-prev-<?php echo $categorySliderCount; ?>">
-                                            <svg>
-                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-left"></use>
-                                            </svg>
-                                        </div>
-                                        <div class="swiper-button-next swiper-button-next--white-border mega-category-slider-btn-next-<?php echo $categorySliderCount; ?>">
-                                            <svg>
-                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                                            </svg>
-                                        </div>
+
                                     </div>
                                 </div>
 
@@ -102,6 +106,17 @@ $alwaysActiveMainNav = checkActiveHeader();
                                                 </div>
                                             </a>
                                         <?php endforeach; ?>
+                                    </div>
+
+                                    <div class="swiper-button-prev swiper-button-prev--white-border mega-category-slider-btn-prev-<?php echo $categorySliderCount; ?>">
+                                        <svg>
+                                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-left"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="swiper-button-next swiper-button-next--white-border mega-category-slider-btn-next-<?php echo $categorySliderCount; ?>">
+                                        <svg>
+                                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                                        </svg>
                                     </div>
                                 </div>
 
@@ -129,16 +144,7 @@ $alwaysActiveMainNav = checkActiveHeader();
                                     </div>
                                     <!-- Nav Buttons -->
                                     <div class="mega-slider__top__nav">
-                                        <div class="swiper-button-prev swiper-button-prev--white-border mega-ships-slider-btn-prev-<?php echo $shipsSliderCount; ?>">
-                                            <svg>
-                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-left"></use>
-                                            </svg>
-                                        </div>
-                                        <div class="swiper-button-next swiper-button-next--white-border mega-ships-slider-btn-next-<?php echo $shipsSliderCount; ?>">
-                                            <svg>
-                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                                            </svg>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="mega-slider__slider" id="mega-ships-slider-<?php echo $shipsSliderCount; ?>">
@@ -171,6 +177,16 @@ $alwaysActiveMainNav = checkActiveHeader();
                                         <?php endforeach; ?>
 
                                     </div>
+                                    <div class="swiper-button-prev swiper-button-prev--white-border mega-ships-slider-btn-prev-<?php echo $shipsSliderCount; ?>">
+                                        <svg>
+                                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-left"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="swiper-button-next swiper-button-next--white-border mega-ships-slider-btn-next-<?php echo $shipsSliderCount; ?>">
+                                        <svg>
+                                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                                        </svg>
+                                    </div>
 
                                 </div>
 
@@ -179,11 +195,20 @@ $alwaysActiveMainNav = checkActiveHeader();
                         <?php $shipsSliderCount++;
                         endforeach; ?>
                     </div>
+                    <!-- View All CTA -->
+                    <div class="nav-mega__panel__cta">
+                        <a class="btn-pill btn-pill--icon" href="<?php echo $top_level_search_page; ?> . ?viewType=search-ships">
+                            View All Ships
+                            <svg>
+                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Guides Panel -->
                 <div class="nav-mega__panel" panel="guides">
-                    <div class="nav-mega__panel__grid column-2">
+                    <div class="mega-panel-guides">
 
                         <?php foreach ($guides as $g) :
                             $group = $g['group'];
@@ -191,13 +216,18 @@ $alwaysActiveMainNav = checkActiveHeader();
                         ?>
 
                             <!-- Group -->
-                            <div class="nav-mega__panel__grid__group">
-                                <div class="nav-mega__panel__grid__group__title">
-                                    <?php echo $group ?>
-                                </div>
+                            <div class="mega-slider mega-slider--guides">
+                                <div class="mega-slider__top title-divider">
+                                    <!-- Title -->
+                                    <div class="mega-slider__top__title">
+                                        <?php echo $group; ?>
+                                    </div>
+                                    <!-- Nav Buttons -->
+                                    <div class="mega-slider__top__nav">
 
-                                <!-- Items -->
-                                <div class="nav-mega__panel__grid__group__items items-grid-2">
+                                    </div>
+                                </div>
+                                <div class="mega-slider__slider">
                                     <?php foreach ($items as $i) :
                                         $title = $i['title'];
                                         $guide_post = $i['guide_post'];
@@ -217,10 +247,11 @@ $alwaysActiveMainNav = checkActiveHeader();
                                         </a>
                                     <?php endforeach; ?>
                                 </div>
+
                             </div>
                         <?php endforeach; ?>
-
                     </div>
+                    <!-- View All CTA -->
                     <div class="nav-mega__panel__cta">
                         <a class="btn-pill btn-pill--icon" href="<?php echo $top_level_guides_page; ?>">
                             View The Guide

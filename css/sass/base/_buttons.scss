@@ -19,7 +19,7 @@
   color: $color-white;
   transition: all 0.2s;
   text-align: center;
-  
+
   &:hover {
     background-color: $color-supporting;
   }
@@ -46,13 +46,12 @@
     color: $color-grey-3;
   }
 
-
   &--icon {
     grid-template-columns: max-content max-content;
   }
 
   &--small {
-    column-gap: .5rem;
+    column-gap: 0.5rem;
     font-size: 1.2rem;
     padding: 0.8rem 1.2rem;
     font-weight: 400;
@@ -88,7 +87,6 @@
   &--rounded {
     border-radius: 4rem;
   }
-
 }
 
 // rounded button - filters, inquire
@@ -104,7 +102,7 @@
   height: min-content;
   display: grid;
   grid-template-columns: max-content;
-  column-gap: .5rem;
+  column-gap: 0.5rem;
   justify-content: center;
   align-items: center;
   border-radius: 4rem;
@@ -121,13 +119,23 @@
     stroke: 1;
   }
 
+  &:link,
+  &:visited {
+    color: $color-primary;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
   &.active {
-    background-color: $color-grey-light-1a;
-    border: 1px solid $color-primary;
+    background-color: rgba($color-primary, 0.05);
+    border-color: $color-primary;
   }
 
   &:hover {
-    border: 1px solid $color-primary;
+    background-color: rgba($color-primary, 0.05);
+    border-color: $color-primary;
+    color: $color-primary !important;
+
   }
 
   &--icon {
@@ -226,7 +234,7 @@
   align-items: center;
   color: rgba($color-primary, 0.9);
   transition: all 0.2s;
-  
+
   svg {
     height: 1.3rem;
     width: 1.3rem;

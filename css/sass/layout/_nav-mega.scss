@@ -1,268 +1,279 @@
 .nav-mega {
-    position: absolute;
+  position: absolute;
 
-    top: calc(100% - 1rem); //100 percent of nav center
-    left: -3rem;
-    width: calc(100% + 12rem);
+  top: calc(100% - 1rem); //100 percent of nav center
+  left: -3rem;
+  width: calc(100% + 12rem);
 
-    background-color: $color-white;
-    color: $color-primary;
-    border-radius: 1rem;
-    box-shadow: $shadow-medium;
-    border: 1px solid $color-grey-light-2;
-    transition: all 0.2s;
-    z-index: 10;
+  background-color: $color-white;
+  color: $color-primary;
+  border-radius: 1rem;
+  box-shadow: $shadow-medium;
+  border: 1px solid $color-grey-light-2;
+  transition: all 0.2s;
+  z-index: 10;
+  display: none;
+
+  &.active {
+    display: block;
+    animation: fadein 0.2s;
+  }
+
+  & a {
+    color: currentColor;
+    text-decoration: none;
+    &:hover {
+      color: $color-supporting-light;
+      transition: color 0.2s;
+    }
+  }
+
+  &__panel {
+    padding: 2rem;
     display: none;
+    opacity: 0;
+    transition: all 0.2s;
+    position: relative;
+
+    &__regions {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      z-index: 100;
+    }
 
     &.active {
-        display: block;
-        animation: fadein 0.2s;
+      opacity: 1;
+      display: block;
     }
 
-    & a {
-        color: currentColor;
-        text-decoration: none;
-        &:hover {
-            color: $color-supporting-light;
-            transition: color .2s;
-        }
+    &__cta {
+      margin-top: 2rem;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      & .btn-pill {
+        font-size: 1.2rem !important;
+      }
     }
-
-    &__panel {
-        padding: 2rem;
-        display: none;
-        opacity: 0;
-        transition: all 0.2s;
-
-        &.active {
-            opacity: 1;
-            display: block;
-        }
-
-        &__grid {
-            &.column-2 {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                column-gap: 3rem;
-  
-            }
-
-            &__group {
-                width: 100%;
-                margin-bottom: 1.5rem;
-                &__title {
-                    font-weight: 600;
-                    font-size: 1.3rem;
-                    margin-bottom: 1.5rem;
-                    background-color: $color-grey-light-1;
-                    border-radius: 1rem;
-                    text-align: center;
-                    padding: 0.5rem;
-                    padding-top: 0.8rem;
-                }
-
-                &__items {
-                    // display: grid;
-                    // grid-template-columns: repeat(5, 1fr);
-                    // row-gap: 2rem;
-                    // column-gap: 1rem;
-
-                    // &.items-grid-5 {
-                    //     grid-template-columns: repeat(5, 1fr);
-                    // }
-
-                    // &.items-grid-4 {
-                    //     grid-template-columns: repeat(4, 1fr);
-                    // }
-
-                    // &.items-grid-2 {
-                    //     grid-template-columns: repeat(2, 1fr);
-                    //     row-gap: 0rem;
-              
-                    // }
-
-                    & .swiper {
-                        width: 100%;
-                    }
-                }
-            }
-        }
-
-        &__cta {
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-        }
-    }
+  }
 }
 
-// PANELS
+// panels ----------------------------------------------------------------------------
 .mega-panel-category {
-    display: grid;
-    grid-template-columns: 100%;
-    gap: 2rem;
-    &--regional {
-        grid-template-columns: 20rem 100%;
-    }
+  display: grid;
+  grid-template-columns: 100%;
+  gap: 1.5rem;
+
+  & .swiper-button-prev {
+    bottom: 60% !important;
+  }
+
+  & .swiper-button-next {
+    bottom: 60% !important;
+  }
 }
 
 .mega-panel-ships {
+  display: grid;
+  grid-template-columns: 100%;
+  gap: 1.5rem;
+}
+
+.mega-panel-guides {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+
+  & .mega-slider__slider {
     display: grid;
-    grid-template-columns: 100%;
-    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 0rem;
+  }
 }
 
-
-
+// generic mega slider -----------------------------------------------------------------
 .mega-slider {
-    width: 100%;
-    //padding-top: 1rem;
-    
+  width: 100%;
 
-    &__top {
-        display: grid;
-        grid-template-columns: 1fr min-content;
-        position: relative;
+  &__top {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    position: relative;
 
-        &.title-divider {
-            margin-bottom: 1.5rem;
-            &::after {
-                content: "";
-                width: 100%;
-                height: 1px;
-                position: absolute;
-                bottom: 0;
-                left: 50%;
-                transform: translateX(-50%);
-                background-color: $color-grey-light-1a;
-            
-            }
-        }
-
-
-        &__title { 
-            font-size: 1.8rem;
-            line-height: 2.6rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        &__nav {
-            position: relative;
-            width: 8.5rem;
-
-            @media only screen and (max-width: $bp-small) {
-               display: none;
-            }
-
-            & .swiper-button-prev {
-                position: absolute !important;
-                margin-top: 0 !important;
-                right: 4.5rem;
-                left: auto;
-                bottom: 1rem;
-                top: auto;
-            }
-
-            & .swiper-button-next {
-                position: absolute !important;
-                margin-top: 0 !important;
-                bottom: 1rem;
-                right: 0rem;
-                left: auto;
-                top: auto;
-            }
-        }
-    }
-
-    &__slider {
+    &.title-divider {
+      margin-bottom: 1.5rem;
+      &::after {
+        content: "";
         width: 100%;
-        overflow: hidden;
-    } 
-}
-
-
-
-
-
-
-
-// ITEMS
-.mega-category-item {
-    &:hover {
-        & .mega-category-item__image-area {
-            //border: 2px solid $color-supporting;
-        }
-        & img {
-            transform: scale(1.1);
-            transition: transform .2s;
-        }
-    }
-
-    & img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: all 0.5s;
-    }
-
-    &__image-area {
-        height: 14rem;
-        width: 100%;
-        border-radius: 1rem;
-        overflow: hidden;
-        border: 1px solid transparent;
+        height: 1px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: $color-grey-light-1a;
+      }
     }
 
     &__title {
-        margin-top: 1rem;
-        font-size: 1.4rem;
-        line-height: 1.8rem;
-        font-weight: 700;
+      font-size: 1.8rem;
+      line-height: 2.6rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: grid;
+      grid-template-columns: max-content max-content;
     }
+
+    &__nav {
+      position: relative;
+    }
+  }
+
+  &__slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 0 1.4rem;
+
+    & .swiper-button-disabled {
+      opacity: 0 !important;
+    }
+
+    & .swiper-button-prev {
+      position: absolute !important;
+      margin-top: 0 !important;
+      transform: translateY(50%);
+      right: auto;
+      left: 0.2rem;
+      bottom: 50%;
+      top: auto;
+      pointer-events: all;
+      background-color: rgba($color-white, 1);
+      &::before {
+        height: 100%;
+        width: 100%;
+      }
+      &:hover::before {
+        border: 1px solid $color-grey-1;
+      }
+    }
+
+    & .swiper-button-next {
+      position: absolute !important;
+      margin-top: 0 !important;
+      transform: translateY(50%);
+
+      bottom: 50%;
+      right: 0.2rem;
+      left: auto;
+      top: auto;
+      pointer-events: all;
+      background-color: rgba($color-white, 1);
+      &::before {
+        height: 100%;
+        width: 100%;
+      }
+      &:hover::before {
+        border: 1px solid $color-grey-1;
+      }
+    }
+  }
 }
 
-.mega-item {
-    display: grid;
-    grid-template-columns: min-content 1fr;
+// Items ------------------------------------------------------------------------
+// Items - Routes / Themes
+.mega-category-item {
+  &:hover {
+    & img {
+      transform: scale(1.1);
+      transition: transform 0.2s;
+    }
+  }
+
+  & img {
     width: 100%;
-    border: 1px solid $color-grey-light-1a;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s;
+  }
+
+  &__image-area {
+    height: 14rem;
+    width: 100%;
     border-radius: 1rem;
-    padding: 1rem;
-    align-items: center;
+    overflow: hidden;
+    border: 1px solid transparent;
+  }
 
-    &.no-border {
-        border: none !important;
-    }
+  &__title {
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    font-weight: 700;
+  }
+}
 
-    &:hover {
-        border: 1px solid $color-grey-light-2;
-        transition: all 0.2s;
-    }
+// Items - Ships / Guides
+.mega-item {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  width: 100%;
+  border: 1px solid $color-grey-light-1a;
+  border-radius: 1rem;
+  padding: 0.8rem;
+  align-items: center;
 
-    &__image-area {
-        width: 6rem;
-        height: 6rem;
-        border-radius: 50%;
-        overflow: hidden;
-        & img {
-            height: 100%;
-            width: 100%;
-        }
-    }
+  &.no-border {
+    border: none !important;
+  }
 
-    &__title-group {
-        display: flex;
-        flex-direction: column;
-        margin-left: 1rem;
-        &__title {
-            font-size: 1.3rem;
-            line-height: 1.8rem;
-        }
-        &__sub {
-            font-size: 1.1rem;
-            line-height: 1.5rem;
-            color: $color-grey-3;
-        }
+  &:hover {
+    border: 1px solid $color-grey-light-2;
+    //transition: all 0.2s;
+    background-color: $color-grey-light-1;
+  }
+
+  &__image-area {
+    width: 6.5rem;
+    height: 6.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    & img {
+      height: 100%;
+      width: 100%;
     }
+  }
+
+  &__title-group {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    &__title {
+      font-size: 1.3rem;
+      line-height: 1.8rem;
+      font-weight: 700;
+    }
+    &__sub {
+      font-size: 1.1rem;
+      line-height: 1.5rem;
+      color: $color-grey-4;
+    }
+  }
+}
+
+.info-span {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 0.3rem 1rem;
+  color: $color-grey-3;
+  background-color: rgba($color-grey-3, 0.1);
+  border-radius: 1rem;
+
+  &.active {
+    color: $color-supporting;
+    background-color: rgba($color-supporting, 0.1);
+  }
 }

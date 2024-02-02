@@ -236,6 +236,11 @@ jQuery(document).ready(function ($) {
   function filterSeasonButtons() {
     dateSeasonButtons.forEach((button) => {
       button.classList.remove("active");
+      console.log(selectedSeasonIndex);
+
+      if(selectedSeasonIndex == -1){
+        selectedSeasonIndex = 0;
+      }
 
       if (button.getAttribute("region") == selectedRegion) {
         button.style.display = "flex";
@@ -442,7 +447,7 @@ jQuery(document).ready(function ($) {
   const categorySliderSections = [...document.querySelectorAll(".mega-slider--category")];
   categorySliderSections.forEach((section, index) => {
     new Swiper("#mega-category-slider-" + index, {
-      spaceBetween: 10,
+      spaceBetween: 15,
       slidesPerView: 5,
       watchSlidesProgress: true,
       navigation: {
@@ -456,8 +461,8 @@ jQuery(document).ready(function ($) {
     const shipsSliderSections = [...document.querySelectorAll(".mega-slider--ships")];
     shipsSliderSections.forEach((section, index) => {
       new Swiper("#mega-ships-slider-" + index, {
-        spaceBetween: 10,
-        slidesPerView: 5,
+        spaceBetween: 15,
+        slidesPerView: 4,
         watchSlidesProgress: true,
         navigation: {
           nextEl: ".mega-ships-slider-btn-next-" + index,

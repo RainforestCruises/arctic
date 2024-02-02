@@ -48,7 +48,11 @@
   
         &__buttons {
             display: grid;
-            grid-template-columns: max-content max-content;
+            grid-template-columns: repeat(3, max-content);
+            
+            @media only screen and (max-width: $bp-small) {
+                grid-template-columns: repeat(2, max-content);
+            }
             gap: 1rem;
             justify-content: center;
 

@@ -35,7 +35,10 @@ foreach ($regions as $region) {
     // season 
     $currentYear = date("Y");
     $seasonArray = [];
-    for ($x = 0; $x < 2; $x++) :
+
+
+    // if multiyear and now is before ending month, start the count one earlier
+    for ($x = ($regionObject['isMultiYear'] && ($season_end - 12) >= (int)date('m')) ? -1 : 0; $x < 2; $x++) :
         $hexId = getRandomHex();
         $initiallyShown = $regionObject['isPrimary'] && $x == 0 ? true : false;
 
@@ -50,7 +53,8 @@ foreach ($regions as $region) {
                 'monthYear' => date('Y', mktime(0, 0, 0, $z, 1)) + $x
             ];
 
-            if (!($monthObject['monthYear'] == $currentYear && $monthObject['monthNumber'] < (int)date('m'))) {
+            // if not current year and past month, and not last year
+            if (!($monthObject['monthYear'] == $currentYear && $monthObject['monthNumber'] < (int)date('m')) && !($monthObject['monthYear'] == $currentYear - 1)) {
                 $monthArray[] = $monthObject;
             };
         }
@@ -74,6 +78,8 @@ foreach ($regions as $region) {
     $regionObject['seasons'] = $seasonArray;
     $selectionRegions[] = $regionObject;
 }
+
+console_log($selectionRegions);
 ?>
 
 

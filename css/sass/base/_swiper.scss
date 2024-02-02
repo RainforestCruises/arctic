@@ -1,108 +1,111 @@
 // swiper default button/pagination style overrides
 .swiper-pagination {
-    & .swiper-pagination-bullet {
-      background-color: $color-white;
+  & .swiper-pagination-bullet {
+    background-color: $color-white;
+  }
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: rgba($color-white, 0.5);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s;
+
+  &::after {
+    font-size: 0.9rem;
+    color: rgba($color-primary, 0.9);
+    font-weight: 700;
+    z-index: 10;
+  }
+
+  &:hover {
+    background-color: rgba($color-white, 0.8);
+  }
+
+  &--overlay {
+    &.swiper-button-disabled {
+      opacity: 0 !important;
+      pointer-events: all;
+    }
+
+    @media only screen and (max-width: 600px) {
+      display: none !important;
     }
   }
-  
-  .swiper-button-next,
-  .swiper-button-prev {
-    width: 3.5rem;
-    height: 3.5rem;
-    background-color: rgba($color-white, 0.5);
-    -webkit-backdrop-filter: blur(2px);
-    backdrop-filter: blur(2px);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    outline: none;
+
+
+  &--white-border {
+    box-shadow: $shadow-short-bottom-light;
     transition: all 0.2s;
-  
+
+    & svg {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+
     &::after {
-      font-size: 0.9rem;
-      color: rgba($color-primary, 0.9);
-      font-weight: 700;
-      z-index: 10;
+      //svg
+      display: none;
     }
-  
+
+    &::before {
+      //border
+      content: "";
+      transition: all 0.15s;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      transform-origin: center;
+      height: 95%;
+      width: 95%;
+      border-radius: 50%;
+      border: 1px solid $color-grey-light-2;
+    }
+
     &:hover {
-      background-color: rgba($color-white, 0.8);
+      box-shadow: $shadow-short-bottom;
     }
-  
-    &--overlay {
-      &.swiper-button-disabled {
-        opacity: 0 !important;
-        pointer-events: all;
-      }
-  
-      @media only screen and (max-width: 600px) {
-        display: none !important;
-      }
-    }
-  
-    &--white-border {
-      box-shadow: $shadow-short-bottom-light;
-      transition: all 0.2s;
-  
-      & svg {
-        height: 1.5rem;
-        width: 1.5rem;
-      }
-  
-      &::after { //svg   
-        display: none;
-      }
-  
-      &::before { //border     
-        content: "";
-        transition: all 0.15s;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-        transform-origin: center;
-        height: 95%;
-        width: 95%;
-        border-radius: 50%;
-        border: 1px solid $color-grey-light-2;
-      }
-  
-      &:hover {
-        box-shadow: $shadow-short-bottom;
-      }
-  
-      &:hover::before {
-        height: 100%;
-        width: 100%;
-        border: 1px solid $color-grey-light-2;
-      }
-    }
-  
-    &--inverse {
-      transition: all 0.2s;
-      background-color: rgba($color-white, 0.2);
-  
-      & svg {
-        height: 1.5rem;
-        width: 1.5rem;
-        fill: $color-white;
-      }
-  
-      &::after {
-        //svg
-        display: none;
-      }
-  
-      &::before {
-        display: none;
-      }
-  
-      &:hover::before {
-        display: none;
-      }
-  
-      &:hover {
-        background-color: rgba($color-white, 0.4);
-      }
+
+    &:hover::before {
+      height: 100%;
+      width: 100%;
+      border: 1px solid $color-grey-light-2;
     }
   }
+
+  &--inverse {
+    transition: all 0.2s;
+    background-color: rgba($color-white, 0.2);
+
+    & svg {
+      height: 1.5rem;
+      width: 1.5rem;
+      fill: $color-white;
+    }
+
+    &::after {
+      //svg
+      display: none;
+    }
+
+    &::before {
+      display: none;
+    }
+
+    &:hover::before {
+      display: none;
+    }
+
+    &:hover {
+      background-color: rgba($color-white, 0.4);
+    }
+  }
+}
