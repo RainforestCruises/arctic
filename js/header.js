@@ -314,6 +314,7 @@ jQuery(document).ready(function ($) {
   function performSubmit() {
     // dates
     if (navControlDates.classList.contains("active")) {
+      document.querySelector(".nav-dates-menu__loading").style.display = "flex";
       if (selectedDates.length > 0) {
         const dateString = selectedDates.join("%3B");
         window.location.href = defaultSearchUrl + "?region=" + selectedRegion + "&departures=" + dateString;

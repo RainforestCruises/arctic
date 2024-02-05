@@ -37,6 +37,7 @@ $logo = get_field('logo_main', 'options');
 $top_level_guides_page = get_field('top_level_guides_page', 'options');
 $top_level_deals_page = get_field('top_level_deals_page', 'options');
 $top_level_about_page = get_field('top_level_about_page', 'options');
+$top_level_search_page = get_field('top_level_search_page', 'options');
 
 ?>
 
@@ -106,7 +107,7 @@ $top_level_about_page = get_field('top_level_about_page', 'options');
                     Deals
                 </div>
             </a>
-            <a class="nav-button mobile-link" href="<?php echo $top_level_about_page;?>">
+            <a class="nav-button mobile-link" href="<?php echo $top_level_about_page; ?>">
                 <div class="nav-button__svg-icon">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-c-question-24"></use>
@@ -250,6 +251,13 @@ $top_level_about_page = get_field('top_level_about_page', 'options');
                     </a>
                 <?php endforeach; ?>
             <?php endforeach; ?>
+            <a class="btn-pill btn-pill--icon mobile-nav-view-all-button" href="<?php echo $top_level_search_page; ?> . ?viewType=search-ships" style="margin: 2rem">
+                View All Ships
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                </svg>
+            </a>
+
         </div>
     </div>
 
@@ -299,17 +307,10 @@ $top_level_about_page = get_field('top_level_about_page', 'options');
                     </a>
                 <?php endforeach; ?>
             <?php endforeach; ?>
-            <a class="nav-button view-all"  href="<?php echo $top_level_guides_page; ?>">
-                <div class="nav-button__svg-icon">
-                    <svg>
-                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-read-24"></use>
-                    </svg>
-                </div>
-                <div class="nav-button__text">
-                    View All
-                </div>
+            <a class="btn-pill btn-pill--icon mobile-nav-view-all-button" href="<?php echo $top_level_guides_page; ?>" style="margin: 2rem">
+                View All Gudies
                 <svg>
-                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-ic_chevron_right_36px"></use>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
                 </svg>
             </a>
         </div>

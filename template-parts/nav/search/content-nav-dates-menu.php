@@ -85,77 +85,93 @@ console_log($selectionRegions);
 
 <!-- Nav Dates Manu -->
 <div class="nav-dates-menu" id="nav-control-menu-dates">
-    <?php if (!$hideSecondaryRegions) : ?>
-        <!-- Region Select -->
+    <!-- Content Wrapper -->
+    <div style="position: relative;">
+        <!-- Loading  -->
+        <div class="nav-dates-menu__loading">
+            <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+        <!-- Sections -->
+        <?php if (!$hideSecondaryRegions) : ?>
+            <!-- Region Select -->
+            <div class="nav-dates-menu__section">
+                <div class="nav-dates-menu__section__title">
+                    Choose your region:
+                </div>
+                <div class="nav-dates-menu__section__buttons nav-dates-menu__section__buttons--regions">
+                    <?php foreach ($selectionRegions as $region) : ?>
+                        <button class="btn-pill <?php echo $region['isPrimary'] ? 'active' : '' ?>" region="<?php echo $region['ID']; ?>">
+                            <?php echo $region['name'] ?>
+                        </button>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+
+        <!-- Season / Year Select -->
         <div class="nav-dates-menu__section">
             <div class="nav-dates-menu__section__title">
-                Choose your region:
+                Select season:
             </div>
-            <div class="nav-dates-menu__section__buttons nav-dates-menu__section__buttons--regions">
-                <?php foreach ($selectionRegions as $region) : ?>
-                    <button class="btn-pill <?php echo $region['isPrimary'] ? 'active' : '' ?>" region="<?php echo $region['ID']; ?>">
-                        <?php echo $region['name'] ?>
-                    </button>
-                <?php endforeach; ?>
+            <div class="nav-dates-menu__section__buttons nav-dates-menu__section__buttons--seasons">
+                <?php foreach ($selectionRegions as $region) :
+                    $initialDisplay = $region['isPrimary'] ? "flex" : "none";
+                    foreach ($region['seasons'] as $season) : ?>
+                        <button class="btn-pill <?php echo $season['index'] == 0 ? 'active' : '' ?>" index="<?php echo $season['index']; ?>" region="<?php echo $region['ID']; ?>" season="<?php echo $season['hex'] ?>" style="display: <?php echo $initialDisplay ?>">
+                            <?php echo $season['name'] ?>
+                        </button>
+                <?php endforeach;
+                endforeach; ?>
             </div>
         </div>
-    <?php endif; ?>
 
-    <!-- Season / Year Select -->
-    <div class="nav-dates-menu__section">
-        <div class="nav-dates-menu__section__title">
-            Select season:
-        </div>
-        <div class="nav-dates-menu__section__buttons nav-dates-menu__section__buttons--seasons">
-            <?php foreach ($selectionRegions as $region) :
-                $initialDisplay = $region['isPrimary'] ? "flex" : "none";
-                foreach ($region['seasons'] as $season) : ?>
-                    <button class="btn-pill <?php echo $season['index'] == 0 ? 'active' : '' ?>" index="<?php echo $season['index']; ?>" region="<?php echo $region['ID']; ?>" season="<?php echo $season['hex'] ?>" style="display: <?php echo $initialDisplay ?>">
-                        <?php echo $season['name'] ?>
-                    </button>
-            <?php endforeach;
-            endforeach; ?>
-        </div>
-    </div>
+        <!-- Month Select -->
+        <div class="nav-dates-menu__section">
+            <div class="nav-dates-menu__section__title">
+                When would you like to go?
+            </div>
+            <div class="nav-dates-menu__section__months">
 
-    <!-- Month Select -->
-    <div class="nav-dates-menu__section">
-        <div class="nav-dates-menu__section__title">
-            When would you like to go?
-        </div>
-        <div class="nav-dates-menu__section__months">
+                <?php foreach ($selectionRegions as $region) :
+                    foreach ($region['seasons'] as $season) :
+                        foreach ($season['months'] as $month) :
+                            $currentItemValue = $month['monthYear'] . '-' . $month['monthNumber'];
 
-            <?php foreach ($selectionRegions as $region) :
-                foreach ($region['seasons'] as $season) :
-                    foreach ($season['months'] as $month) :
-                        $currentItemValue = $month['monthYear'] . '-' . $month['monthNumber'];
-
-            ?>
-                        <div class="date-card" style="display: <?php echo $month['initiallyShown'] ? 'flex' : 'none' ?>" date-value="<?php echo $currentItemValue ?>" season="<?php echo $season['hex']; ?>" region="<?php echo $region['ID']; ?>">
-                            <svg>
-                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-calendar"></use>
-                            </svg>
-                            <div class="date-card__title">
-                                <?php echo $month['monthName']; ?>
+                ?>
+                            <div class="date-card" style="display: <?php echo $month['initiallyShown'] ? 'flex' : 'none' ?>" date-value="<?php echo $currentItemValue ?>" season="<?php echo $season['hex']; ?>" region="<?php echo $region['ID']; ?>">
+                                <svg>
+                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-calendar"></use>
+                                </svg>
+                                <div class="date-card__title">
+                                    <?php echo $month['monthName']; ?>
+                                </div>
+                                <div class="date-card__subtitle">
+                                    <?php echo $month['monthYear'] ?>
+                                </div>
                             </div>
-                            <div class="date-card__subtitle">
-                                <?php echo $month['monthYear'] ?>
-                            </div>
-                        </div>
-            <?php endforeach;
-                endforeach;
-            endforeach; ?>
+                <?php endforeach;
+                    endforeach;
+                endforeach; ?>
+            </div>
+        </div>
+        <div class="nav-dates-menu__section nav-dates-menu__section--submit">
+            <button class="btn-pill btn-pill--icon" id="nav-control-date-submit-button">
+                Search Dates
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                </svg>
+            </button>
+            <button class="btn-primary navSearchModalSubmitButton">
+                Search Dates
+            </button>
         </div>
     </div>
-    <div class="nav-dates-menu__section nav-dates-menu__section--submit">
-        <button class="btn-pill btn-pill--icon" id="nav-control-date-submit-button">
-            Search Dates
-            <svg>
-                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-            </svg>
-        </button>
-        <button class="btn-primary navSearchModalSubmitButton">
-            Search Dates
-        </button>
-    </div>
+
+
 </div>

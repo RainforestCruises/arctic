@@ -169,10 +169,6 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
         }
 
 
-
-
-
-
         // generic result object fields
         $regions = getItineraryRegions($itinerary);
         $itineraryImages = get_field('hero_gallery', $itinerary);
@@ -351,6 +347,7 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
 
                 $shipImages = get_field('hero_gallery', $ship);
                 $shipHeroImage = ($shipImages) ? $shipImages[0] : null;
+                $searchRank = get_field('search_rank', $ship);
 
                 $service_level =  get_field('service_level', $ship);
                 $serviceLevelDisplay = ($service_level) ? get_the_title($service_level) : "N/A";
@@ -430,6 +427,8 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
                     'Deals' => $dealsList,
                     'SpecialDepartures' => $specialDeparturesList,
                     'DatesDisplay' => $datesDisplay,
+                    'SearchRank' => $searchRank
+
                 );
             }
         }

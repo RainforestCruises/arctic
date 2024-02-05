@@ -14,6 +14,23 @@
     padding: 1rem 2rem;
     padding-top: 2rem;
 
+    & .nav-dates-menu__loading {
+        height: 100%;
+        width: 100%;
+        background-color: rgba($color-white, .3);
+        z-index: 120;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        justify-content: center;
+        align-items: center;
+
+        & .lds-ring {
+            transform: scale(2);
+        }
+    }
+
     
 
     &.active { 

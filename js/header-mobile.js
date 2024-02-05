@@ -2,7 +2,8 @@ jQuery(document).ready(function ($) {
     const burgerButton = document.querySelector('#burger-menu');
     const navMobile = document.querySelector('.nav-mobile');
     const navCloseButtons = [...document.querySelectorAll('.nav-close-button')];
-  
+    const navViewAllButtons = [...document.querySelectorAll('.mobile-nav-view-all-button')];
+
 
     // burger open
     burgerButton.addEventListener('click', evt => {
@@ -16,6 +17,13 @@ jQuery(document).ready(function ($) {
         closeMobile();
       });
     })
+
+    navViewAllButtons.forEach(item => {
+      item.addEventListener('click', () => {
+        closeMobile();
+      });
+    })
+  
   
   
     function closeMobile() {

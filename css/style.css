@@ -6815,7 +6815,7 @@ p {
   background-color: rgba(255, 255, 255, 0.05);
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
-  padding-right: 0.3rem;
+  padding-right: 0.2rem;
   color: currentColor;
   box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.1);
   background-color: #e6e6e6; }
@@ -7028,6 +7028,19 @@ p {
   display: none;
   padding: 1rem 2rem;
   padding-top: 2rem; }
+  .nav-dates-menu .nav-dates-menu__loading {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: 120;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center; }
+    .nav-dates-menu .nav-dates-menu__loading .lds-ring {
+      transform: scale(2); }
   .nav-dates-menu.active {
     display: block;
     animation: fadein 0.2s; }
