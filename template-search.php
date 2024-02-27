@@ -33,8 +33,9 @@ $sidebarRegions = get_posts($regionsArgs);
 $routesArgs = array(
     'post_type' => 'rfc_routes',
     'posts_per_page' => -1,
-    'order' => 'ASC',
-    'orderby' => 'title',
+    'meta_key' => 'title', // Sorting by ACF field 'display_title'
+    'orderby' => 'meta_value', // Order by meta value
+    'order' => 'ASC', // ASC or DESC
 );
 $sidebarRoutes = get_posts($routesArgs);
 

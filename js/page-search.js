@@ -684,7 +684,12 @@ jQuery(document).ready(function ($) {
   toggleClearButtons();
 
   //RELOAD RESULTS -------------------------------------------------------------------------------------------------------------------------------------------
+
+  var jqxhr = { abort: function () {} };
+
   function reloadResults(preservePage) {
+    jqxhr.abort();
+
     //set url params
     const params = new URLSearchParams(location.search);
 
@@ -764,7 +769,8 @@ jQuery(document).ready(function ($) {
 
     //ajax call / submit form
     var searchForm = $("#search-form");
-    $.ajax({
+    
+    jqxhr = $.ajax({
       url: searchForm.attr("action"),
       data: searchForm.serialize(),
       type: searchForm.attr("method"),

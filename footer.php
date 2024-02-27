@@ -115,14 +115,15 @@ $footerClasses = renderFooterClasses();
                         <svg>
                             <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-globe"></use>
                         </svg>
-                        <?php if (is_plugin_active('translatepress-multilingual/index.php') && $show_translate_nav == true) :
-                            echo $current_language_name . " ";
-                        endif; ?>
-
-
+                        <div>
+                        <?php if (is_plugin_active('translatepress-multilingual/index.php') && $show_translate_nav == true) : ?>
+                            <span><?php echo $current_language_name; ?></span>
+                        <?php endif; ?>
+                        <?php if (is_plugin_active('currency-switcher/index.php')) : ?>
+                            <span class="currency-name-display"><?php echo $current_currency; ?></span>
+                        <?php endif; ?>
+                        </div>
                     </button>
-
-
                 </div>
                 <div class="footer__content__bottom__access__social">
                     <a href="<?php echo get_field('facebook_link', 'options'); ?>" class="footer__content__bottom__access__social__link">

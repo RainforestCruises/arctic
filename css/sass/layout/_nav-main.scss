@@ -307,7 +307,6 @@
                 height: 3rem;
                 text-decoration: none;
                 cursor: pointer;
-                //transition: color 0.2s;
                 &:link,
                 &:visited {
                     color: $color-grey-light-1a;
@@ -344,6 +343,16 @@
                 position: relative;
                 cursor: pointer;
 
+                &--currency {
+                    width: 8rem;
+
+                    & .hover-item {
+                        & svg {
+                            margin-right: 0rem;
+                        }
+                    }
+                }
+
                 @media only screen and (max-width: $bp-large) {
                     display: none;
                 }
@@ -356,6 +365,14 @@
 
                     @media only screen and (max-width: $bp-small) {
                         stroke-width: 2;
+                    }
+                }
+
+                & .hover-item {
+                    display: flex;
+                    align-items: center;
+                    & svg {
+                        margin-right: 1rem;
                     }
                 }
 

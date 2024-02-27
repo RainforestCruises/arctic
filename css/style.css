@@ -3102,7 +3102,7 @@ p {
   bottom: 0;
   left: 0;
   width: 100%;
-  z-index: 150;
+  z-index: 50;
   background-color: #fff; }
   @media only screen and (max-width: 50em) {
     .mobile-info {
@@ -7734,6 +7734,10 @@ p {
         height: 5rem;
         position: relative;
         cursor: pointer; }
+        .nav-main__content__right__hover-item--currency {
+          width: 8rem; }
+          .nav-main__content__right__hover-item--currency .hover-item svg {
+            margin-right: 0rem; }
         @media only screen and (max-width: 62.5em) {
           .nav-main__content__right__hover-item {
             display: none; } }
@@ -7746,6 +7750,11 @@ p {
           @media only screen and (max-width: 37.5em) {
             .nav-main__content__right__hover-item svg {
               stroke-width: 2; } }
+        .nav-main__content__right__hover-item .hover-item {
+          display: flex;
+          align-items: center; }
+          .nav-main__content__right__hover-item .hover-item svg {
+            margin-right: 1rem; }
         .nav-main__content__right__hover-item:hover .hover-item-popover {
           display: flex; }
   .nav-main__overlay {

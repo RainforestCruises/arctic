@@ -238,7 +238,7 @@ jQuery(document).ready(function ($) {
       button.classList.remove("active");
       console.log(selectedSeasonIndex);
 
-      if(selectedSeasonIndex == -1){
+      if (selectedSeasonIndex == -1) {
         selectedSeasonIndex = 0;
       }
 
@@ -458,124 +458,17 @@ jQuery(document).ready(function ($) {
     });
   });
 
-    // mega category sliders (cruises - routes / themes)
-    const shipsSliderSections = [...document.querySelectorAll(".mega-slider--ships")];
-    shipsSliderSections.forEach((section, index) => {
-      new Swiper("#mega-ships-slider-" + index, {
-        spaceBetween: 15,
-        slidesPerView: 4,
-        watchSlidesProgress: true,
-        navigation: {
-          nextEl: ".mega-ships-slider-btn-next-" + index,
-          prevEl: ".mega-ships-slider-btn-prev-" + index,
-        },
-      });
+  // mega category sliders (cruises - routes / themes)
+  const shipsSliderSections = [...document.querySelectorAll(".mega-slider--ships")];
+  shipsSliderSections.forEach((section, index) => {
+    new Swiper("#mega-ships-slider-" + index, {
+      spaceBetween: 15,
+      slidesPerView: 4,
+      watchSlidesProgress: true,
+      navigation: {
+        nextEl: ".mega-ships-slider-btn-next-" + index,
+        prevEl: ".mega-ships-slider-btn-prev-" + index,
+      },
     });
-
-  // // nav item hover
-  // $(".nav-main__content__center__nav__list__item").hover(
-  //   function () {
-  //     // over
-
-  //     navMain.classList.add("active");
-  //     navBackdrop.classList.add("active");
-  //     navMain.classList.add("mega-active");
-  //     navMega.classList.add("active");
-  //     removeActiveSearch();
-
-  //     var panelId = this.getAttribute("navelement");
-  //     var panelTarget = $(".nav-mega__panel[panel='" + panelId + "']");
-
-  //     $(".nav-mega__panel").removeClass("active");
-  //     navMainLinks.forEach((link) => {
-  //       link.classList.remove("active");
-  //     });
-  //     this.classList.add("active");
-  //     $(panelTarget).addClass("active");
-  //   },
-  //   function () {
-  //     // out
-
-  //     var megaActive = navMega.classList.contains("active");
-  //     if (window.scrollY == 0 && !opaqueNavAlways && !megaActive) {
-  //       navMain.classList.remove("active");
-  //     }
-
-  //     if (!megaActive) {
-  //       navBackdrop.classList.remove("active");
-  //     }
-  //   }
-  // );
-
-  // // nav link hover (deals)
-  // $(".nav-main__content__center__nav__list__link").hover(
-  //   function () {
-  //     //over
-
-  //     navMain.classList.add("active");
-  //     navBackdrop.classList.add("active");
-  //     $(".nav-mega__panel").removeClass("active");
-  //     navMainLinks.forEach((link) => {
-  //       link.classList.remove("active");
-  //     });
-  //     navMega.classList.remove("active");
-  //     navMain.classList.remove("mega-active");
-  //     removeActiveSearch();
-  //   },
-  //   function () {
-  //     //out
-  //   }
-  // );
-
-  // // mega menu ----------
-  // // remove mega and backdrop when hover back to page
-  // $(".nav-mega").hover(
-  //   function () {
-  //     // on hover over
-  //   },
-  //   function () {
-  //     //on hover out
-  //     navMega.classList.remove("active");
-  //     navMain.classList.remove("mega-active");
-
-  //     navMainLinks.forEach((link) => {
-  //       link.classList.remove("active");
-  //     });
-
-  //     var mainActive = navMain.classList.contains("active");
-
-  //     if (window.scrollY == 0 && !opaqueNavAlways && !mainActive) {
-  //       navMain.classList.remove("active");
-  //     }
-
-  //     if (!mainActive) {
-  //       navBackdrop.classList.remove("active");
-  //     }
-  //   }
-  // );
-
-  // //Remove mega when hover over other nav elements
-  // $(".nav-main__content__center__search-area, .nav-main__content__right").hover(function () {
-  //   //on hover over
-  //   navMega.classList.remove("active");
-  //   navMain.classList.remove("mega-active");
-  //   navMainLinks.forEach((link) => {
-  //     link.classList.remove("active");
-  //   });
-  // });
-
-  // //Mouse Leave Browser - remove mega / active / search
-  // $(document).mouseleave(function () {
-  //   navMega.classList.remove("active");
-  //   navMain.classList.remove("mega-active");
-  //   navBackdrop.classList.remove("active");
-  //   removeActiveSearch();
-  //   navMainLinks.forEach((link) => {
-  //     link.classList.remove("active");
-  //   });
-
-  //   if (window.scrollY == 0 && !opaqueNavAlways) {
-  //     navMain.classList.remove("active");
-  //   }
-  // });
+  });
 });

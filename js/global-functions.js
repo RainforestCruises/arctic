@@ -95,15 +95,29 @@ jQuery(document).ready(function ($) {
 
   // update currency via ajax to overcome cache issue
   const currencyDivs = [...document.querySelectorAll(".currency-select-area")];
+  const currencyCtaDivs = [...document.querySelectorAll(".currency-name-display")];
+
   updateCurrency();
   function updateCurrency() {
     var currencyForm = $("#currency-form");
     jqxhr = $.ajax({
       url: currencyForm.attr("action"),
-      data: currencyForm.serialize(),
+      data: 'action=currencyForm',
       type: currencyForm.attr("method"),
       success: function (data) {
         currencyDivs.forEach((item) => {
+          item.innerHTML = data;
+        });
+      },
+    });
+
+    jqxhr = $.ajax({
+      url: currencyForm.attr("action"),
+      data: 'action=currencyFormCta',
+      type: currencyForm.attr("method"),
+      success: function (data) {
+        console.log(data);
+        currencyCtaDivs.forEach((item) => {
           item.innerHTML = data;
         });
       },

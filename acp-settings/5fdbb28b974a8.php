@@ -5,7 +5,7 @@ return array (
   'title' => 'Destinations',
   'type' => 'rfc_destinations',
   'id' => '5fdbb28b974a8',
-  'updated' => 1700586281,
+  'updated' => 1709060096,
   'columns' => 
   array (
     'title' => 
@@ -117,7 +117,6 @@ return array (
       'field' => 'field_655cd83b619b5',
       'post_property_display' => 'title',
       'post_link_to' => 'edit_post',
-      'number_of_items' => '10',
       'export' => 'off',
       'sort' => 'on',
       'edit' => 'on',
@@ -142,6 +141,22 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '639b88b0249ba4',
+    ),
+    '65de2ff4d33334' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Exclude Map Pin',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_65de2fca0e078',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '65de2ff4d33334',
     ),
   ),
   'settings' => 

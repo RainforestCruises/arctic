@@ -150,9 +150,9 @@ $top_level_search_page = get_field('top_level_search_page', 'options');
                         </span>
                     <?php endif; ?>
 
-                    <?php if (is_plugin_active('currency-switcher/index.php')) :
-                        echo $current_symbol . " " . $current_currency;
-                    endif; ?>
+                    <?php if (is_plugin_active('currency-switcher/index.php')) : ?>
+                       <span class="currency-name-display"><?php echo $current_currency; ?></span> 
+                    <?php endif; ?>
                 </div>
             </a>
         </div>

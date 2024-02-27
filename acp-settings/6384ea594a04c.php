@@ -5,7 +5,7 @@ return array (
   'title' => 'Routes',
   'type' => 'rfc_routes',
   'id' => '6384ea594a04c',
-  'updated' => 1669655129,
+  'updated' => 1709060188,
   'columns' => 
   array (
     'title' => 
@@ -20,6 +20,40 @@ return array (
       'bulk_edit' => 'on',
       'search' => 'on',
       'name' => 'title',
+    ),
+    '65de3047b91688' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Display Title',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_63b31134a66aa',
+      'character_limit' => '20',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '65de3047b91688',
+    ),
+    '65de28a2774bc8' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Short Title',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_63b31177a66ab',
+      'character_limit' => '20',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '65de28a2774bc8',
     ),
     '6384ea35f0e560' => 
     array (

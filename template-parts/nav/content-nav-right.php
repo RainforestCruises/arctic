@@ -3,7 +3,9 @@
     $current_url = home_url(add_query_arg(array(), $wp->request));
     $show_translate_nav = get_field('show_translate_nav', 'options');
 
-
+    global $WPCS;
+    $currencies = $WPCS->get_currencies();
+    $current_currency = $WPCS->current_currency;
 
 
     if (is_plugin_active('translatepress-multilingual/index.php') && $show_translate_nav == true) {
@@ -47,33 +49,39 @@
        </span>
    </div>
    <!-- Global -->
-   <div class="nav-main__content__right__hover-item divider-left">
-       <svg>
-           <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-globe"></use>
-       </svg>
+   <div class="nav-main__content__right__hover-item <?php echo (is_plugin_active('currency-switcher/index.php') == true) ? "nav-main__content__right__hover-item--currency" : "" ?> divider-left">
+       <div class="hover-item">
+           <svg>
+               <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-globe"></use>
+           </svg>
+           <?php if (is_plugin_active('currency-switcher/index.php')) : ?>
+               <span class="currency-name-display"><?php echo $current_currency; ?></span>
+           <?php endif; ?>
+       </div>
+
        <span class="hover-item-popover">
            <div class="hover-item-popover__container">
                <div class="hover-item-popover__container__arrow"></div>
-               
+
                <!-- Currency -->
                <div class="currency-select-area" style="margin-bottom: 1.5rem"></div>
 
                <!-- Language -->
                <?php if (is_plugin_active('translatepress-multilingual/index.php') && $show_translate_nav == true) : ?>
-               <div class="hover-item-popover__container__content">
-                   <div class="hover-item-popover__container__content__header">
-                       Choose Language
+                   <div class="hover-item-popover__container__content">
+                       <div class="hover-item-popover__container__content__header">
+                           Choose Language
+                       </div>
+                       <div class="hover-item-popover__container__content__buttons" data-no-translation>
+                           <?php foreach ($languages as $item) :
+                                $isCurrent = $item['language_code'] == $current_language;
+                            ?>
+                               <a class="btn-primary btn-primary--icon btn-primary--small btn-primary--inverse <?php echo $isCurrent ? "active" : ""; ?>" href="<?php echo $item['current_page_url'] ?>">
+                                   <?php echo $item['language_name'] ?>
+                               </a>
+                           <?php endforeach; ?>
+                       </div>
                    </div>
-                   <div class="hover-item-popover__container__content__buttons" data-no-translation>
-                       <?php foreach ($languages as $item) :
-                            $isCurrent = $item['language_code'] == $current_language;
-                        ?>
-                           <a class="btn-primary btn-primary--icon btn-primary--small btn-primary--inverse <?php echo $isCurrent ? "active" : ""; ?>" href="<?php echo $item['current_page_url'] ?>">
-                               <?php echo $item['language_name'] ?>
-                           </a>
-                       <?php endforeach; ?>
-                   </div>
-               </div>
                <?php endif; ?>
            </div>
        </span>
@@ -88,6 +96,6 @@
 
 
    <!-- Hidden Form -->
-<form class="currency-form" action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="currency-form">
-    <input type="hidden" name="action" value="currencyForm">
-</form>
+   <form class="currency-form" action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="currency-form">
+   </form>
+ 

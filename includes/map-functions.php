@@ -20,6 +20,9 @@ function getItineraryObject($itinerary)
         $destinations = $day['destination']; // multiple destinations
 
         foreach ($destinations as $destination) {
+            if(get_field('exclude_map_pin', $destination)){
+                continue;
+            }
             $dayDisplay = dayCountMarkup($day['day_count']);
             $destinationImage =  get_field('image', $destination); //get default image if none provided
             $destinationImageURL = $destinationImage ? wp_get_attachment_image_url($destinationImage['ID'], 'portrait-small') : "";
