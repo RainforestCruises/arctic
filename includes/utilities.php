@@ -69,6 +69,13 @@ function findObjectById($id, $array, $key = 'Id')
     return false;
 }
 
+function getArrayOfPostIds($posts){
+    $ids = array();
+    foreach ($posts as $post) {
+        $ids[] = $post->ID;
+    }
+    return $ids;
+}
 
 // FORMATTING -----------------------
 function removePtags($text)

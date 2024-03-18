@@ -1,5 +1,7 @@
 <?php
 $productName = $args['productName'];
+$initialRegion = $args['initialRegion'];
+
 $amenities = get_field('amenities');
 
 $max_items = 6;

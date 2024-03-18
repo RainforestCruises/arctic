@@ -1,16 +1,18 @@
 <?php
+$deals = $args['deals'];
+$regions = $args['regions'];
+$initialRegion = $args['initialRegion'];
+$itineraries = $args['itineraries'];
+$lowestOverallPrice = $args['lowestOverallPrice'];
+$bestOverallDiscount = $args['bestOverallDiscount'];
+$specialDepartures = $args['specialDepartures'];
 
 $title = get_the_title();
 $snippet = get_field('top_snippet');
 $service_level = get_field('service_level');
-$itineraries = $args['itineraries'];
-$lowestOverallPrice = $args['lowestOverallPrice'];
-$bestOverallDiscount = $args['bestOverallDiscount'];
 $itineraryCount = count($itineraries);
 $images = get_field('hero_gallery');
 $desktopImages = array_slice($images, 1); //for gallery desktop slider
-$deals = $args['deals'];
-$specialDepartures = $args['specialDepartures'];
 $reviews = get_field('reviews');
 $fly_category = getFlightOption(get_post());
 
@@ -118,7 +120,7 @@ $fly_category = getFlightOption(get_post());
             <div class="product-hero__content__main__secondary">
 
                 <!-- Info -->
-                <div class="product-hero__content__main__secondary__info">
+                <div class="product-hero__content__main__secondary__info <?php echo count($regions) > 1 ? 'product-hero__content__main__secondary__info--regional' : '' ?>">
 
                     <!-- Starting Price -->
                     <div class="product-hero__content__main__secondary__info__starting-price">
@@ -130,7 +132,6 @@ $fly_category = getFlightOption(get_post());
                                 Per Person
                             </div>
                         </div>
-
                         <div class="product-hero__content__main__secondary__info__starting-price__amount">
                             <div class="product-hero__content__main__secondary__info__starting-price__amount__text">
                                 <?php priceFormat($lowestOverallPrice); ?>
@@ -140,11 +141,15 @@ $fly_category = getFlightOption(get_post());
                                     Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
                                 </div>
                             <?php endif; ?>
-
                         </div>
-
                     </div>
 
+                    <!-- Region -->
+                    <div class="product-hero__content__main__secondary__info__region">
+                        <button class="btn-pill switch-region-button">
+                            <?php echo get_the_title($initialRegion) ?>
+                        </button>
+                    </div>
                     <!-- Inquire CTA Button -->
                     <div class="product-hero__content__main__secondary__info__cta">
                         <button class="btn-primary btn-primary--icon generic-inquire-cta">
@@ -212,7 +217,7 @@ $fly_category = getFlightOption(get_post());
 
 
 <!-- Mobile Info -->
-<div class="mobile-info">
+<div class="mobile-info <?php echo count($regions) > 1 ? 'mobile-info--regional' : '' ?>">
 
     <div class="mobile-info__starting-price">
         <div class="mobile-info__starting-price__title-area">
@@ -232,13 +237,18 @@ $fly_category = getFlightOption(get_post());
                 </div>
             <?php endif; ?>
         </div>
-
     </div>
+    <!-- Region -->
+    <div class="mobile-info__region">
+        <button class="btn-pill switch-region-button">
+            <?php echo get_the_title($initialRegion) ?>
 
+        </button>
+    </div>
     <!-- Inquire CTA Button -->
     <div class="mobile-info__cta">
         <button class="btn-primary btn-primary--icon generic-inquire-cta">
-            Inquire
+            <span>Inquire</span>
             <svg>
                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>
             </svg>

@@ -82,12 +82,12 @@
 
 .mega-panel-guides {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 100%;
+  gap: 1.5rem;
 
   & .mega-slider__slider {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 0;
     padding: 0rem;
   }
@@ -214,63 +214,22 @@
   }
 }
 
-// Items - Ships / Guides
-.mega-item {
-  display: grid;
-  grid-template-columns: min-content 1fr;
-  width: 100%;
-  border: 1px solid $color-grey-light-1a;
-  border-radius: 1rem;
-  padding: 0.8rem;
-  align-items: center;
+ 
 
-  &.no-border {
-    border: none !important;
-  }
-
-  &:hover {
-    border: 1px solid $color-grey-light-2;
-    //transition: all 0.2s;
-    background-color: $color-grey-light-1;
-  }
-
-  &__image-area {
-    width: 6.5rem;
-    height: 6.5rem;
-    border-radius: 50%;
-    overflow: hidden;
-    & img {
-      height: 100%;
-      width: 100%;
-    }
-  }
-
-  &__title-group {
-    display: flex;
-    flex-direction: column;
-    margin-left: 1rem;
-    &__title {
-      font-size: 1.3rem;
-      line-height: 1.8rem;
-      font-weight: 700;
-    }
-    &__sub {
-      font-size: 1.1rem;
-      line-height: 1.5rem;
-      color: $color-grey-4;
-    }
-  }
-}
-
-.info-span {
+.btn-region {
   display: inline-block;
   margin-left: 0.5rem;
   font-size: 1.2rem;
   font-weight: 700;
-  padding: 0.3rem 1rem;
-  color: $color-grey-3;
-  background-color: rgba($color-grey-3, 0.1);
+  padding: 0.5rem 1.2rem;
+  color: $color-grey-2;
+  background-color: rgba($color-grey-2, 0.1);
   border-radius: 1rem;
+  transition: all .2s;
+  &:hover {
+    background-color: rgba($color-grey-2, 0.2);
+
+  }
 
   &.active {
     color: $color-supporting;

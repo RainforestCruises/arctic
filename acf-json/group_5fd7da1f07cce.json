@@ -64,6 +64,30 @@
             "step": ""
         },
         {
+            "key": "field_65f89113d44f2",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
             "key": "field_652ee8f6337f5",
             "label": "Primary",
             "name": "primary",
@@ -101,5 +125,5 @@
     "active": true,
     "description": "Regions - CPT",
     "show_in_rest": 0,
-    "modified": 1697573135
+    "modified": 1710788914
 }

@@ -155,7 +155,6 @@ jQuery(document).ready(function ($) {
 
 
   function performSubmitMobile() {
-    console.log('mobileSearch');
     let selectedRegion = document.getElementById('formNavRegionInput').value;
     let selectedDates = document.getElementById('formNavDateInput').value;
     let selectedDatesArray = selectedDates.split(',');

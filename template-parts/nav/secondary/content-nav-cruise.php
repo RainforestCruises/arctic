@@ -4,13 +4,15 @@ $ship = get_post();
 $departures = getDepartureList($ship);
 $deals = getDealsFromDepartureList($departures);
 $reviews = get_field('reviews');
+$regions = getShipRegions($ship);
+$initialRegion = checkPageRegion();
 
 ?>
 <!-- Cruise Nav -->
 <nav class="nav-secondary small-width">
 
     <!-- desktop content -->
-    <div class="nav-secondary__content">
+    <div class="nav-secondary__content <?php echo count($regions) > 1 ? 'nav-secondary__content--regional' : '' ?>">
         <div class="nav-secondary__content__title-area">
             <a href="#top" class="nav-secondary__content__title-area__link">
                 <?php echo $title; ?>
@@ -34,6 +36,12 @@ $reviews = get_field('reviews');
                     Reviews
                 </a>
             <?php endif; ?>
+        </div>
+        <div class="nav-secondary__content__region">
+            <button class="btn-pill switch-region-button">
+                <?php echo get_the_title($initialRegion) ?>
+
+            </button>
         </div>
         <div class="nav-secondary__content__cta product-template">
             <button class="nav-secondary__content__cta__button btn-pill btn-pill--inverse generic-inquire-cta">
@@ -74,9 +82,9 @@ $reviews = get_field('reviews');
                 </a>
             </li>
             <?php if ($reviews) : ?>
-            <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#reviews">Reviews</a>
-            </li>
+                <li class="nav-secondary__mobile-menu__list__item">
+                    <a class="nav-secondary__mobile-menu__list__item__link" href="#reviews">Reviews</a>
+                </li>
             <?php endif; ?>
         </ul>
     </nav>

@@ -170,7 +170,7 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
 
 
         // generic result object fields
-        $regions = getItineraryRegions($itinerary);
+        $region = getItineraryRegion($itinerary); // always singlular
         $itineraryImages = get_field('hero_gallery', $itinerary);
         $itineraryHeroImage = ($itineraryImages) ? $itineraryImages[0] : null;
         $destinations = getItineraryDestinations($itinerary); // build list of unique destinations within an itinerary, with embarkations removed
@@ -239,7 +239,7 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
                 'Destinations' => $destinations,
                 'DestinationDisplay' => $destinationDisplay,
                 'ItineraryHeroImage' => $itineraryHeroImage,
-                'Regions' => $regions,
+                'Region' => $region,
                 'SearchRank' => $searchRank
             );
         }
@@ -304,7 +304,7 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
                     'ShipHeroImage' => $shipHeroImage,
                     'ShipDisplayName' => $shipDisplayName,
                     'Ship' => $ship,
-                    'Regions' => $regions,
+                    'Region' => $region,
                     'SearchRank' => $searchRank
                 );
             }

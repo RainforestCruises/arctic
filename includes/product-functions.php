@@ -2,12 +2,12 @@
 
 // DEPARTURES ----------------------------------------------------------------------------------------------
 // get a list of departures
-function getDepartureList($post, $specificShip = null, $filterSoldOut = false)
+function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $region = null)
 {
     $departures = [];
     if (get_post_type($post) == 'rfc_cruises') {
 
-        $itineraryPosts = getShipItineraries($post);
+        $itineraryPosts = getShipItineraries($post, $region);
 
 
         foreach ($itineraryPosts as $i) { //each itinerary
@@ -436,7 +436,7 @@ function getItineraryShips($itinerary)
 }
 
 // get list of regions from itinerary post
-function getItineraryRegions($itinerary)
+function getItineraryRegion($itinerary)
 {
     $routes = get_field('route', $itinerary);
     $regionsList = [];
@@ -446,7 +446,7 @@ function getItineraryRegions($itinerary)
 
 
     $uniqueRegionsList = getUniquePostsFromArrayOfPosts($regionsList);
-    return $uniqueRegionsList;
+    return $uniqueRegionsList[0];
 }
 
 // range (From x Days to x Days)
@@ -522,7 +522,7 @@ function shipSizeDisplay($pax)
 }
 
 // gets a list of itinerary posts that have this ship within a departure
-function getShipItineraries($ship)
+function getShipItineraries($ship, $region = null)
 {
     $queryArgs = array(
         'post_type' => 'rfc_itineraries',
@@ -535,6 +535,15 @@ function getShipItineraries($ship)
     $itineraries = get_posts($queryArgs);
     $itineraryList = [];
     foreach ($itineraries as $itinerary) {
+
+        if($region != null){ // filter regions
+            $itineraryRegion = getItineraryRegion($itinerary);
+            if($region != $itineraryRegion){
+                continue;
+            }
+        }
+
+    
         $departures = get_field('departures', $itinerary);
         $departureMatch = false;
         foreach ($departures as $departure) {
@@ -548,6 +557,7 @@ function getShipItineraries($ship)
             $itineraryList[] = $itinerary;
         }
     }
+
 
 
 
@@ -569,6 +579,16 @@ function getShipRegions($ship)
 
     $uniqueShipRegionsList = getUniquePostsFromArrayOfPosts($regionsList);
     return ($uniqueShipRegionsList);
+}
+
+function shipHasMultipleRegions($ship){
+
+    $regions = getShipRegions($ship);
+    if(count($regions) > 1){
+        return true;
+    } else {
+        return false;
+    };
 }
 
 

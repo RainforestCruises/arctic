@@ -5,7 +5,7 @@ return array (
   'title' => 'Regions',
   'type' => 'rfc_regions',
   'id' => '5fdbb49d840f9',
-  'updated' => 1697573170,
+  'updated' => 1710789005,
   'columns' => 
   array (
     'title' => 
@@ -70,6 +70,25 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '652ee929431270',
+    ),
+    '65f8917bf47ae0' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Image',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_65f89113d44f2',
+      'image_size' => 'cpac-custom',
+      'image_size_w' => '60',
+      'image_size_h' => '60',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '65f8917bf47ae0',
     ),
   ),
   'settings' => 

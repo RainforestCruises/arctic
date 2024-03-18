@@ -31,11 +31,11 @@ $ships_title_subtext = get_field('ships_title_subtext');
             <?php
             foreach ($firstShips as $ship) :
                 $images =  get_field('hero_gallery', $ship);
-                $itineraries = getShipItineraries($ship);
+                $itineraries = getShipItineraries($ship, checkPageRegion());
                 $title = get_the_title($ship);
                 $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
                 $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . 'Luxury';
-                $departures = getDepartureList($ship);
+                $departures = getDepartureList($ship, null, false, checkPageRegion());
                 $lowestPrice = getLowestDepartureListPrice($departures);
                 $highestPrice = getHighestDepartureListPrice($departures);
                 $bestOverallDiscount = getBestDepartureListDiscount($departures);

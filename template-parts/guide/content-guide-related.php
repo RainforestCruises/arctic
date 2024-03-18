@@ -22,6 +22,8 @@ if ($categories) {
 
 $queryArgs['meta_query'][] = $queryArgsCategories; // match any category
 
+// TODO: filter on region also
+
 
 $relatedGuidePosts = get_posts($queryArgs);
 ?>

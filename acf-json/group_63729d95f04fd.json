@@ -3,6 +3,44 @@
     "title": "Landing Page",
     "fields": [
         {
+            "key": "field_65f20501ca45d",
+            "label": "Region Filter",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_65f20472ca45c",
+            "label": "Region",
+            "name": "region",
+            "type": "post_object",
+            "instructions": "Select to filter content by region, leave blank for mixed region",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_regions"
+            ],
+            "taxonomy": "",
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
             "key": "field_63729d96274e2",
             "label": "Hero",
             "name": "",
@@ -882,5 +920,5 @@
     "active": true,
     "description": "Landing - Page",
     "show_in_rest": 0,
-    "modified": 1682095333
+    "modified": 1710518311
 }

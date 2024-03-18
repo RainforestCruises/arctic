@@ -1,9 +1,11 @@
 <?php
 
 $ships = $args['ships'];
+$initialRegion = $args['initialRegion'];
+$primaryRegion = $args['primaryRegion'];
+
 $overview_content = get_field('overview_content');
 $activities = get_field('activities');
-
 $max_items = 6;
 $firstActivities = array_slice($activities, 0, $max_items);
 $expandItems = count($activities) > $max_items ? true : false;
@@ -86,16 +88,20 @@ if($expand){
                             <?php foreach ($ships as $ship) :
                                 $hero_gallery = get_field('hero_gallery', $ship);
                                 $ship_image = $hero_gallery[0];
+                                $url = get_permalink($ship);
+                                if($initialRegion != $primaryRegion){
+                                    $url .= '?region=' . $initialRegion->ID;
+                                }
                             ?>
                                 <!-- Ship -->
                                 <div class="avatar">
 
-                                    <a class="avatar__image-area" href="<?php echo get_permalink($ship); ?>">
+                                    <a class="avatar__image-area" href="<?php echo $url; ?>">
                                         <img <?php afloat_image_markup($ship_image['id'], 'square-thumb', array('square-thumb')); ?>>
                                     </a>
                                     <div class="avatar__title-group">
                                         <h3 class="avatar__title-group__title">
-                                            <a href="<?php echo get_permalink($ship); ?>"><?php echo get_the_title($ship); ?></a>
+                                            <a href="<?php echo $url; ?>"><?php echo get_the_title($ship); ?></a>
                                         </h3>
                                         <div class="avatar__title-group__sub">
                                             <?php echo get_field('top_snippet', $ship); ?>

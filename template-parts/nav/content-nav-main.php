@@ -1,17 +1,25 @@
 <?php
 $landing_pages = get_field('landing_pages', 'options');
-$ships = get_field('ships', 'options');
+$ships = get_field('ships', 'options'); // create new array with ships split for each region
 $guides = get_field('guides', 'options');
 $top_level_guides_page = get_field('top_level_guides_page', 'options');
 $top_level_deals_page = get_field('top_level_deals_page', 'options');
 $top_level_search_page = get_field('top_level_search_page', 'options');
 
-
-$alwaysActiveMainNav = checkActiveHeader();
+$regionsArgs = array(
+    'post_type' => 'rfc_regions',
+    'posts_per_page' => -1,
+    'order' => 'ASC',
+    'orderby' => 'title',
+);
+$regions = get_posts($regionsArgs);
+$initialRegion = checkPageRegion(); // set based on the page template
+$primaryRegion = getPrimaryRegion();
+$templateHeaderActive = checkActiveHeader();
 ?>
 
 <!-- Nav Main -->
-<div class="nav-main <?php echo ($alwaysActiveMainNav == true) ? 'active' : ''; ?>">
+<div class="nav-main <?php echo ($templateHeaderActive == true) ? 'active' : ''; ?>">
 
     <div class="nav-main__content">
         <!-- Left (logo) -->
@@ -59,16 +67,12 @@ $alwaysActiveMainNav = checkActiveHeader();
 
                 <!-- Cruises Panel (category) -->
                 <div class="nav-mega__panel" panel="category">
-                    <div class="nav-mega__panel__regions" style="display: none;">
-                        <span class="info-span">
-                            Antarctica
-                        </span>
-                        <span class="info-span">
-                            Arctic
-                        </span>
-                        <span class=" info-span active">
-                            All
-                        </span>
+                    <div class="nav-mega__panel__regions">
+                        <?php foreach ($regions as $region) : ?>
+                            <button class="btn-region <?php echo ($region == $initialRegion) ? 'active' : '' ?> nav-region-select" region="<?php echo $region->ID; ?>">
+                                <?php echo get_the_title($region) ?>
+                            </button>
+                        <?php endforeach; ?>
                     </div>
                     <div class="mega-panel-category">
                         <?php
@@ -96,8 +100,11 @@ $alwaysActiveMainNav = checkActiveHeader();
                                             $url = get_permalink($item);
                                             $hero_title = get_field('hero_title', $item);
                                             $hero_images =  get_field('hero_images', $item);
+                                            $itemRegionObject = get_field('region', $item);
+                                            $itemRegionId = $itemRegionObject ? $itemRegionObject->ID : "all";
+                                            $showInitial = $initialRegion->ID == $itemRegionId || $itemRegionId == "all";
                                         ?>
-                                            <a class="mega-category-item swiper-slide" href="<?php echo $url; ?>">
+                                            <a class="mega-category-item swiper-slide nav-mega-item" href="<?php echo $url; ?>" region="<?php echo $itemRegionId; ?>" style="display: <?php echo $showInitial ? '' : 'none' ?>">
                                                 <div class="mega-category-item__image-area">
                                                     <img <?php afloat_image_markup($hero_images[0]['id'], 'square-small', array('square-small')); ?>>
                                                 </div>
@@ -129,6 +136,13 @@ $alwaysActiveMainNav = checkActiveHeader();
 
                 <!-- Ships Panel -->
                 <div class="nav-mega__panel " panel="ships">
+                    <div class="nav-mega__panel__regions">
+                        <?php foreach ($regions as $region) : ?>
+                            <button class="btn-region <?php echo ($region == $initialRegion) ? 'active' : '' ?> nav-region-select" region="<?php echo $region->ID; ?>">
+                                <?php echo get_the_title($region) ?>
+                            </button>
+                        <?php endforeach; ?>
+                    </div>
                     <div class="mega-panel-ships">
                         <?php
                         $shipsSliderCount = 0;
@@ -149,32 +163,42 @@ $alwaysActiveMainNav = checkActiveHeader();
                                 </div>
                                 <div class="mega-slider__slider" id="mega-ships-slider-<?php echo $shipsSliderCount; ?>">
                                     <div class="swiper-wrapper">
-                                        <?php foreach ($items as $item) :
-                                            $url = get_permalink($item);
+                                        <?php foreach ($items as $item) : // ships
                                             $title = get_the_title($item);
                                             $hero_gallery = get_field('hero_gallery', $item);
                                             $ship_image = $hero_gallery[0];
-                                            $itineraries = getShipItineraries($item);
-                                            $itineraryDisplay = count($itineraries) . ' Itineraries, ' . itineraryRange($itineraries, "-") . " Days";
+                                            $shipRegions = getShipRegions($item);
                                             $guestsDisplay = get_field('vessel_capacity', $item) . ' Guests';
+
+                                            foreach ($shipRegions as $shipRegion) :
+                                                $url = get_permalink($item);
+                                                if($primaryRegion != $shipRegion){
+                                                    $url .= "?region=" . $shipRegion->ID;
+                                                }
+                                                $itineraries = getShipItineraries($item, $shipRegion);
+                                                $itineraryDisplay = count($itineraries) . ' Itineraries, ' . itineraryRange($itineraries, "-") . " Days";
+
+                                                
+                                                $shipRegionId = $shipRegion ? $shipRegion->ID : "all";
+                                                $showInitial = $initialRegion->ID == $shipRegionId || $shipRegionId == "all";
                                         ?>
-                                            <a class="mega-item swiper-slide" href="<?php echo $url; ?>">
-                                                <div class="mega-item__image-area">
+                                            <a class="btn-avatar-info swiper-slide nav-mega-item" href="<?php echo $url; ?>" region="<?php echo $shipRegionId; ?>" style="display: <?php echo $showInitial ? '' : 'none' ?>">
+                                                <div class="btn-avatar-info__image-area">
                                                     <img <?php afloat_image_markup($ship_image['id'], 'square-small'); ?>>
                                                 </div>
-                                                <div class="mega-item__title-group">
-                                                    <div class="mega-item__title-group__title">
+                                                <div class="btn-avatar-info__title-group">
+                                                    <div class="btn-avatar-info__title-group__title">
                                                         <?php echo $title ?>
                                                     </div>
-                                                    <div class="mega-item__title-group__sub">
+                                                    <div class="btn-avatar-info__title-group__sub">
                                                         <?php echo $itineraryDisplay ?>
                                                     </div>
-                                                    <div class="mega-item__title-group__sub">
+                                                    <div class="btn-avatar-info__title-group__sub">
                                                         <?php echo $guestsDisplay ?>
                                                     </div>
                                                 </div>
                                             </a>
-                                        <?php endforeach; ?>
+                                        <?php endforeach; endforeach; ?>
 
                                     </div>
                                     <div class="swiper-button-prev swiper-button-prev--white-border mega-ships-slider-btn-prev-<?php echo $shipsSliderCount; ?>">
@@ -208,6 +232,13 @@ $alwaysActiveMainNav = checkActiveHeader();
 
                 <!-- Guides Panel -->
                 <div class="nav-mega__panel" panel="guides">
+                    <div class="nav-mega__panel__regions">
+                        <?php foreach ($regions as $region) : ?>
+                            <button class="btn-region <?php echo ($region == $initialRegion) ? 'active' : '' ?> nav-region-select" region="<?php echo $region->ID; ?>">
+                                <?php echo get_the_title($region) ?>
+                            </button>
+                        <?php endforeach; ?>
+                    </div>
                     <div class="mega-panel-guides">
 
                         <?php foreach ($guides as $g) :
@@ -231,15 +262,18 @@ $alwaysActiveMainNav = checkActiveHeader();
                                     <?php foreach ($items as $i) :
                                         $title = $i['title'];
                                         $guide_post = $i['guide_post'];
-                                        $featured_image = get_field('featured_image', $guide_post)
+                                        $featured_image = get_field('featured_image', $guide_post);
+                                        $itemRegionObject = get_field('region', $guide_post);
+                                        $itemRegionId = $itemRegionObject ? $itemRegionObject->ID : "all";
+                                        $showInitial = $initialRegion->ID == $itemRegionId || $itemRegionId == "all";
                                     ?>
 
-                                        <a class="mega-item no-border" href="<?php echo get_permalink($guide_post); ?>">
-                                            <div class="mega-item__image-area">
+                                        <a class="btn-avatar-info no-border nav-mega-item" href="<?php echo get_permalink($guide_post); ?>" region="<?php echo $itemRegionId; ?>" style="display: <?php echo $showInitial ? '' : 'none' ?>">
+                                            <div class="btn-avatar-info__image-area">
                                                 <img <?php afloat_image_markup($featured_image['id'], 'square-small'); ?>>
                                             </div>
-                                            <div class="mega-item__title-group">
-                                                <div class="mega-item__title-group__title">
+                                            <div class="btn-avatar-info__title-group">
+                                                <div class="btn-avatar-info__title-group__title">
                                                     <?php echo $title ?>
                                                 </div>
 

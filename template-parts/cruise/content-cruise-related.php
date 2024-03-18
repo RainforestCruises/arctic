@@ -10,7 +10,6 @@ $queryArgs = array(
 
 $queryArgsService = array();
 $queryArgsService['relation'] = 'OR';
-
 $serviceLevel = get_field('service_level');
 if ($serviceLevel) {
     $queryArgsService[] = array(

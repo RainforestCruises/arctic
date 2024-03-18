@@ -9,6 +9,9 @@ wp_enqueue_script('page-product-cabins', get_template_directory_uri() . '/js/pag
 get_header();
 
 $itinerary = get_post();
+$initialRegion = checkPageRegion();
+$primaryRegion = getPrimaryRegion();
+
 $productName = get_field('display_name');
 $extraActivities = get_field('extra_activities');
 $days = get_field('itinerary');
@@ -18,7 +21,6 @@ $lowestOverallPrice = getLowestDepartureListPrice($departures);
 $bestOverallDiscount = getBestDepartureListDiscount($departures);
 $deals = getDealsFromDepartureList($departures, false);
 $specialDepartures = getDealsFromDepartureList($departures, true);
-$regions = getItineraryRegions($itinerary);
 
 
 
@@ -75,7 +77,9 @@ $args = array(
   'yearSelections' => $yearSelections,
   'shipSizeRange' => $shipSizeRange,
   'destinationCount' => count($itineraryObjects[0]['featureList']),
-  'footerCtaDivider' => true
+  'footerCtaDivider' => true,
+  'initialRegion' => $initialRegion,
+  'primaryRegion' => $primaryRegion,
 );
 
 ?>

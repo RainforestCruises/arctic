@@ -10,19 +10,22 @@ wp_enqueue_script('page-product-cabins', get_template_directory_uri() . '/js/pag
 get_header();
 
 $ship = get_post();
+$regions = getShipRegions($ship);
+$initialRegion = checkPageRegion();
+$primaryRegion = getPrimaryRegion();
 $productName = get_the_title();
-$itineraries = getShipItineraries($ship);
-$departures = getDepartureList($ship);
+$itineraries = getShipItineraries($ship, $initialRegion);
+$departures = getDepartureList($ship, null, false, $initialRegion);
 $lowestOverallPrice = getLowestDepartureListPrice($departures);
 $bestOverallDiscount = getBestDepartureListDiscount($departures);
 $deals = getDealsFromDepartureList($departures, false);
 $specialDepartures = getDealsFromDepartureList($departures, true);
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
-$regions = getShipRegions($ship);
 $reviews = get_field('reviews');
 
-console_log($itineraries);
+
+
 //cabin posts
 $args = array(
   'posts_per_page' => -1,
@@ -46,7 +49,11 @@ $args = array(
   'curentYear' => $curentYear,
   'yearSelections' => $yearSelections,
   'cabins' => $cabins,
-  'footerCtaDivider' => true
+  'footerCtaDivider' => true,
+  'initialRegion' => $initialRegion,
+  'regions' => $regions,
+  'primaryRegion' => $primaryRegion,
+
 );
 
 //Itinerary JS Array
@@ -137,5 +144,11 @@ wp_localize_script(
 get_template_part('template-parts/product/content', 'product-inquiry-modal', $args);
 ?>
 
+<!-- Regions -->
+<?php
+if (count($regions) > 1) :
+  get_template_part('template-parts/cruise/content', 'cruise-region-modal', $args);
+endif
+?>
 
 <?php get_footer() ?>

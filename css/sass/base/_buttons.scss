@@ -159,6 +159,8 @@
     &:hover {
       border: none;
       background-color: $color-supporting;
+      color: $color-white !important;
+
     }
   }
 }
@@ -214,6 +216,7 @@
   }
 }
 
+
 // hero scroll down
 .btn-scroll-overlay {
   width: 3.5rem;
@@ -268,6 +271,77 @@
   &--down {
     svg {
       transform: rotate(90deg);
+    }
+  }
+}
+
+
+// Items - Ships / Guides
+.btn-avatar-info {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  width: 100%;
+  border: 1px solid $color-grey-light-1a;
+  border-radius: 1rem;
+  padding: 0.8rem;
+  align-items: center;
+  background-color: transparent;
+  text-align: start;
+  text-decoration: none;
+
+  &.no-border {
+    border: none !important;
+  }
+
+  &:hover {
+    border: 1px solid $color-grey-light-2;
+    background-color: $color-grey-light-1;
+  }
+
+  &.active {
+    border: 1px solid $color-primary;
+    background-color: $color-grey-light-1;
+  }
+
+
+
+  &__image-area {
+    width: 6.5rem;
+    height: 6.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    & img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__title-group {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    &__title {
+      font-size: 1.3rem;
+      line-height: 1.8rem;
+      font-weight: 700;
+      color: $color-primary;
+    }
+    &__sub {
+      font-size: 1.1rem;
+      line-height: 1.5rem;
+      color: $color-grey-4;
+    }
+  }
+
+  &--large {
+    & .btn-avatar-info__title-group__title {
+      font-size: 1.5rem;
+      line-height: 2.2rem;
+
+    }
+    & .btn-avatar-info__title-group__sub {
+      font-size: 1.3rem;
+      line-height: 1.8rem;
     }
   }
 }
