@@ -16,6 +16,8 @@ $regions = get_posts($regionsArgs);
 $initialRegion = checkPageRegion(); // set based on the page template
 $primaryRegion = getPrimaryRegion();
 $templateHeaderActive = checkActiveHeader();
+$hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
+
 ?>
 
 <!-- Nav Main -->
@@ -67,7 +69,7 @@ $templateHeaderActive = checkActiveHeader();
 
                 <!-- Cruises Panel (category) -->
                 <div class="nav-mega__panel" panel="category">
-                    <div class="nav-mega__panel__regions">
+                    <div class="nav-mega__panel__regions" style="display: <?php echo $hideSecondaryRegions ? 'none' : '' ?>">
                         <?php foreach ($regions as $region) : ?>
                             <button class="btn-region <?php echo ($region == $initialRegion) ? 'active' : '' ?> nav-region-select" region="<?php echo $region->ID; ?>">
                                 <?php echo get_the_title($region) ?>
@@ -136,7 +138,7 @@ $templateHeaderActive = checkActiveHeader();
 
                 <!-- Ships Panel -->
                 <div class="nav-mega__panel " panel="ships">
-                    <div class="nav-mega__panel__regions">
+                    <div class="nav-mega__panel__regions" style="display: <?php echo $hideSecondaryRegions ? 'none' : '' ?>">
                         <?php foreach ($regions as $region) : ?>
                             <button class="btn-region <?php echo ($region == $initialRegion) ? 'active' : '' ?> nav-region-select" region="<?php echo $region->ID; ?>">
                                 <?php echo get_the_title($region) ?>
@@ -232,7 +234,7 @@ $templateHeaderActive = checkActiveHeader();
 
                 <!-- Guides Panel -->
                 <div class="nav-mega__panel" panel="guides">
-                    <div class="nav-mega__panel__regions">
+                    <div class="nav-mega__panel__regions" style="display: <?php echo $hideSecondaryRegions ? 'none' : '' ?>">
                         <?php foreach ($regions as $region) : ?>
                             <button class="btn-region <?php echo ($region == $initialRegion) ? 'active' : '' ?> nav-region-select" region="<?php echo $region->ID; ?>">
                                 <?php echo get_the_title($region) ?>
