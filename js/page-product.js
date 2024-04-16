@@ -16,6 +16,9 @@ jQuery(document).ready(function ($) {
   const departureSelectionDisplay = document.querySelector("#departure-selection-display");
   const cabinSelectionDisplay = document.querySelector("#cabin-selection-display");
 
+  const formDepartureDate = document.querySelector(".form-departure-date input:first-child");
+
+
   //hide outline panels on load (mobile) -- on resize fix
 
   if (window.innerWidth < 800) {
@@ -39,6 +42,8 @@ jQuery(document).ready(function ($) {
       departureSelectionDisplay.innerHTML = "";
       cabinSelectionDisplay.style.display = "";
       cabinSelectionDisplay.innerHTML = "";
+
+      formDepartureDate.value = "";
       hideModalTabButtons();
     });
   });
@@ -58,6 +63,8 @@ jQuery(document).ready(function ($) {
 
       departureSelectionDisplay.style.display = "block";
       departureSelectionDisplay.innerHTML = selection;
+      formDepartureDate.value = departureSelectionDisplay.innerHTML + " " + cabinSelectionDisplay.innerHTML;
+
       hideModalTabButtons("dates");
     });
   });
@@ -77,6 +84,7 @@ jQuery(document).ready(function ($) {
 
       cabinSelectionDisplay.style.display = "block";
       cabinSelectionDisplay.innerHTML = selection;
+      formDepartureDate.value = departureSelectionDisplay.innerHTML + " " + cabinSelectionDisplay.innerHTML;
     });
   });
 
