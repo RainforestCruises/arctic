@@ -18,6 +18,9 @@ $primaryRegion = getPrimaryRegion();
 $templateHeaderActive = checkActiveHeader();
 $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
 
+console_log('test');
+console_log($guides);
+
 ?>
 
 <!-- Nav Main -->
@@ -104,8 +107,10 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                                             $hero_images =  get_field('hero_images', $item);
                                             $itemRegionObject = get_field('region', $item);
                                             $itemRegionId = $itemRegionObject ? $itemRegionObject->ID : "all";
-                                            $showInitial = $initialRegion->ID == $itemRegionId || $itemRegionId == "all";
-                                        ?>
+                                            $showInitial = true;
+                                            if($itemRegionObject){
+                                                $showInitial = $initialRegion->ID == $itemRegionId || $itemRegionId == "all";
+                                            }                                        ?>
                                             <a class="mega-category-item swiper-slide nav-mega-item" href="<?php echo $url; ?>" region="<?php echo $itemRegionId; ?>" style="display: <?php echo $showInitial ? '' : 'none' ?>">
                                                 <div class="mega-category-item__image-area">
                                                     <img <?php afloat_image_markup($hero_images[0]['id'], 'square-small', array('square-small')); ?>>
@@ -267,7 +272,11 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                                         $featured_image = get_field('featured_image', $guide_post);
                                         $itemRegionObject = get_field('region', $guide_post);
                                         $itemRegionId = $itemRegionObject ? $itemRegionObject->ID : "all";
-                                        $showInitial = $initialRegion->ID == $itemRegionId || $itemRegionId == "all";
+                                        $showInitial = true;
+                                        if($itemRegionObject){
+                                            $showInitial = $initialRegion->ID == $itemRegionId || $itemRegionId == "all";
+                                        }
+                                        
                                     ?>
 
                                         <a class="btn-avatar-info no-border nav-mega-item" href="<?php echo get_permalink($guide_post); ?>" region="<?php echo $itemRegionId; ?>" style="display: <?php echo $showInitial ? '' : 'none' ?>">
