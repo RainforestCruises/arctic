@@ -9202,7 +9202,7 @@ p {
     @media only screen and (max-width: 50em) {
       .agency-person__content {
         padding: 0 3rem; } }
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 50em) {
       .agency-person__content {
         grid-template-columns: 1fr;
         gap: 3rem; } }
