@@ -1,0 +1,25 @@
+.agency-intro {
+  @include flexBlock;
+  margin-top: 8rem;
+  @media only screen and (max-width: $bp-small) {
+    margin-top: 4rem;
+  }
+  &__content {
+    max-width: $page-width;
+    @include flexPadding;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+      font-size: 2.6rem;
+      line-height: 3.2rem;
+      color: $color-primary;
+      margin-bottom: 3rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    &__main {
+    }
+  }
+}

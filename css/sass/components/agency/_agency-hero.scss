@@ -1,0 +1,65 @@
+.agency-hero {
+  @include flexBlock;
+  @include pageTopPadding;
+
+  margin-top: 4rem;
+
+  &__content {
+    width: 100%;
+    max-width: $page-width;
+    @include flexPadding;
+
+    display: grid;
+    grid-template-columns: 40rem 1fr;
+    gap: 10rem;
+
+    @media only screen and (max-width: $bp-small) {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      &__title {
+        font-size: 4rem;
+        line-height: 4.8rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: $color-primary;
+
+        @media only screen and (max-width: $bp-small) {
+            font-size: 3rem;
+            line-height: 3.8rem;
+            letter-spacing: 0rem;
+        }
+
+        @media only screen and (max-width: $bp-medium) {
+          text-align: center;
+        }
+      }
+
+      &__snippet {
+        font-size: 1.6rem;
+        @media only screen and (max-width: $bp-medium) {
+          text-align: center;
+        }
+      }
+    }
+
+    &__image {
+      & img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        position: relative;
+        border-radius: 1rem;
+        @media only screen and (max-width: $bp-large) {
+          max-height: 48rem;
+        }
+      }
+    }
+  }
+}

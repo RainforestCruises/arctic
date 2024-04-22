@@ -171,3 +171,58 @@ p {
 .blue-text {
     color: $color-supporting-light !important;
 }
+
+
+.svg-divider {
+    height: 9rem;
+    width: 30rem;
+
+    grid-column: 1 / -1;
+
+    display: grid;
+    grid-template-columns: 1fr min-content 1fr;
+
+    position: relative;
+    margin: 0rem auto;
+    align-content: center;
+    column-gap: 2rem;
+
+    color: $color-primary;
+    @media only screen and (max-width: $bp-small) {
+        height: 6rem;
+    }
+
+    & svg {
+        height: 5rem;
+        width: 5rem;
+        stroke-width: 2;
+        color: currentColor;
+        grid-column: 2 / span 1;
+
+        @media only screen and (max-width: $bp-small) {
+            height: 3rem;
+            width: 3rem;
+        }
+    }
+
+    &::after {
+        content: "";
+        grid-column: 3 / span 1;
+        height: 2px;
+        width: 50%;
+        background-color: currentColor;
+        z-index: 12;
+        align-self: center;
+        justify-self: start;
+    }
+    &::before {
+        content: "";
+        grid-column: 1 / span 1;
+        height: 2px;
+        width: 50%;
+        background-color: currentColor;
+        z-index: 12;
+        align-self: center;
+        justify-self: end;
+    }
+}

@@ -259,6 +259,27 @@
             "min": "",
             "max": "",
             "step": ""
+        },
+        {
+            "key": "field_6622a0ddddcd5",
+            "label": "Order",
+            "name": "order",
+            "type": "number",
+            "instructions": "Order the cabins appear in, 1 is first",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 1,
+            "max": 99,
+            "step": 1
         }
     ],
     "location": [
@@ -279,5 +300,5 @@
     "active": true,
     "description": "Cabins CPT",
     "show_in_rest": 0,
-    "modified": 1686774856
+    "modified": 1713545552
 }

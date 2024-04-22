@@ -5,7 +5,7 @@ return array (
   'title' => 'Cabins',
   'type' => 'rfc_cabins',
   'id' => '63655323eb134',
-  'updated' => 1686774909,
+  'updated' => 1713545757,
   'columns' => 
   array (
     'title' => 
@@ -55,6 +55,23 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '636553505a9fc0',
+    ),
+    '6622a2089d2f1c' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Order',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_6622a0ddddcd5',
+      'number_format' => '',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '6622a2089d2f1c',
     ),
     '648a246a9020c4' => 
     array (

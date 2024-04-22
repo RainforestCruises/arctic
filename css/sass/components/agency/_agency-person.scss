@@ -1,0 +1,46 @@
+.agency-person {
+  @include flexBlock;
+  margin-top: 8rem;
+  @media only screen and (max-width: $bp-small) {
+    margin-top: 4rem;
+  }
+  &__content {
+    max-width: $page-width;
+    @include flexPadding;
+    display: grid;
+    grid-template-columns: 1fr 50rem;
+    gap: 10rem;
+    width: 100%;
+    @media only screen and (max-width: $bp-small) {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    &__text {
+      &__title { 
+        font-size: 2.6rem;
+        line-height: 3.2rem;
+        color: $color-primary;
+        margin-bottom: 3rem;
+        font-weight: 700;
+      }
+
+      &__snippet {
+      }
+    }
+
+    &__image-area {
+      & img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        position: relative;
+        border-radius: 1rem;
+        @media only screen and (max-width: $bp-large) {
+          max-height: 48rem;
+        }
+      }
+    }
+  }
+}

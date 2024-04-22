@@ -37,6 +37,27 @@ $args['meta_query'][] = array(
 );
 $cabins = get_posts($args);
 
+usort($cabins, 'custom_sort');
+
+// Define custom sorting function
+function custom_sort($a, $b) {
+  // Get the 'ranking' field value for each post
+  $ranking_a = get_field('ranking', $a->ID);
+  $ranking_b = get_field('ranking', $b->ID);
+
+  // Handle null values
+  if ($ranking_a === null && $ranking_b === null) {
+      return 0; // Both values are null, consider them equal
+  } elseif ($ranking_a === null) {
+      return 1; // Null values should come after non-null values
+  } elseif ($ranking_b === null) {
+      return -1; // Non-null value should come before null values
+  }
+
+  // Compare numeric values
+  return $ranking_a - $ranking_b;
+}
+
 
 $args = array(
   'productName' => $productName,
