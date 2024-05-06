@@ -81,7 +81,7 @@ $itineraries = $args['itineraries'];
                             $disembarkation = get_the_title($disembarkation_point) . ", " . get_field('country_name', $disembarkation_point);
                             $hasDifferentPorts = $disembarkation_point != null && ($disembarkation_point != $embarkation_point);
                             $days = get_field('itinerary', $itinerary);
-                            $departures = getDepartureList($itinerary, get_post());
+                            $departures = getDepartureList($itinerary, get_post()); // need to restrict to specific ship to obtain correct prices and dates
                             $lowestPrice = getLowestDepartureListPrice($departures);
                             $highestPrice = getHighestDepartureListPrice($departures);
                             $bestOverallDiscount = getBestDepartureListDiscount($departures);

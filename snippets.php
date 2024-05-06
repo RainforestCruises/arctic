@@ -1,53 +1,43 @@
+<?php
 
- 
- 
- 
- 
- <!-- Cruises  -->
- <?php
-    get_template_part('template-parts/home/content', 'home-ships');
-    ?>
+// create the departure list to conform to WP departure lists
+function departuresFromApi($itinerary_post){
+    $automation_departure_data = get_field('automation_departure_data', $itinerary_post);
+    $departure_list = [];
 
-    <!-- Routes  -->
-    <?php
-    get_template_part('template-parts/home/content', 'home-routes');
-    ?>
+    foreach($automation_departure_data as $departure_item){
+        // build cabin rate list
+        $cabin_price_list = [];
+        foreach($departure_item['rates'] as $rate){        
+            $cabinPost = get_post($rate['wpRoomId']);
+            $cabin_price = [
+                'cabin' => $cabinPost,
+                'discounted_price' => $rate['discountedPrice'],
+                'price' => $rate['basePrice'],
+                'sold_out' => !$rate['hasAvailability'],
+            ];
+            $cabin_price_list[] = $cabin_price;
+        };
 
-    <!-- Itineraries  -->
-    <?php
-    get_template_part('template-parts/home/content', 'home-itineraries');
-    ?>
+        // get ship post
+        $shipPost = get_post($departure_item['wpShipId']);
 
-    <!-- Styles  -->
-    <?php
-    get_template_part('template-parts/home/content', 'home-styles');
-    ?>
+        // add deals
+        $deals_post_list = [];
+        foreach($departure_item['deals'] as $deal){        
+            $dealPost = get_post($deal['dealWpId']);   
+            $deals_post_list[] = $dealPost;
+        };
 
-    <!-- Quote  -->
-    <?php
-    get_template_part('template-parts/home/content', 'home-quote');
-    ?>
+        // build final departure object
+        $departure = [
+            'cabin_prices' => $cabin_price_list,
+            'date' => $departure_item['departureDate'],
+            'deals' => $deals_post_list,
+            'ship' => $shipPost,
+        ];
 
-
-    <!-- Experiences  -->
-    <?php
-    get_template_part('template-parts/home/content', 'home-experiences');
-    ?>
-
-    <!-- Reviews  -->
-    <?php
-    if ($show_reviews) :
-        get_template_part('template-parts/home/content', 'home-reviews');
-    endif;
-    ?>
-
-    <!-- Guides  -->
-    <?php
-    get_template_part('template-parts/home/content', 'home-guides');
-    ?>
-
-
-    <!-- Footer CTA  -->
-    <?php
-    get_template_part('template-parts/shared/content', 'shared-footer-cta', $args);
-    ?>
+        // return list of departures
+        $departure_list[] = $departure;
+    }
+}

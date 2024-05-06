@@ -79,7 +79,6 @@ foreach ($regions as $region) {
     $selectionRegions[] = $regionObject;
 }
 
-console_log($selectionRegions);
 ?>
 
 

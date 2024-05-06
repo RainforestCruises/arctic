@@ -18,8 +18,6 @@ $primaryRegion = getPrimaryRegion();
 $templateHeaderActive = checkActiveHeader();
 $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
 
-console_log('test');
-console_log($guides);
 
 ?>
 

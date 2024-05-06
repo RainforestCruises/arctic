@@ -116,7 +116,6 @@ jQuery(document).ready(function ($) {
       data: 'action=currencyFormCta',
       type: currencyForm.attr("method"),
       success: function (data) {
-        console.log(data);
         currencyCtaDivs.forEach((item) => {
           item.innerHTML = data;
         });

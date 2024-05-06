@@ -1,22 +1,71 @@
 <?php
 
 // DEPARTURES ----------------------------------------------------------------------------------------------
+
+// create the departure list to conform to WP departure lists
+function departuresFromApi($itinerary_post)
+{
+    $automation_departure_data = get_field('automation_departure_data', $itinerary_post);
+    $departure_list = [];
+
+    foreach ($automation_departure_data as $departure_item) {
+        // build cabin rate list
+        $cabin_price_list = [];
+        foreach ($departure_item['rates'] as $rate) {
+            $cabinPost = get_post($rate['wpRoomId']);
+            $cabin_price = [
+                'cabin' => $cabinPost,
+                'discounted_price' => $rate['discountedAmount'],
+                'price' => $rate['baseAmount'],
+                'sold_out' => $rate['soldOut'],
+            ];
+            $cabin_price_list[] = $cabin_price;
+        };
+
+        // get ship post
+        $shipPost = get_post($departure_item['wpShipId']);
+
+        // add deals
+        $deals_post_list = [];
+        foreach ($departure_item['deals'] as $deal) {
+            $dealPost = get_post($deal['dealWpId']);
+            $deals_post_list[] = $dealPost;
+        };
+
+        // build final departure object
+        $departure = [
+            'cabin_prices' => $cabin_price_list,
+            'date' => $departure_item['departureDate'],
+            'deals' => $deals_post_list,
+            'ship' => $shipPost,
+        ];
+
+        // return list of departures
+        $departure_list[] = $departure;
+    }
+
+    return $departure_list;
+}
+
+
 // get a list of departures
 function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $region = null)
 {
     $departures = [];
     if (get_post_type($post) == 'rfc_cruises') {
-
         $itineraryPosts = getShipItineraries($post, $region);
 
 
-        foreach ($itineraryPosts as $i) { //each itinerary
+        foreach ($itineraryPosts as $i) { // each itinerary
+
 
             $itineraryLength = get_field('length_in_nights', $i);
-            $itineraryDepartures = get_field('departures', $i);
+
+            // IF AUTOMATED
+            $use_automation = get_field('use_automation', $i);
+            $itineraryDepartures = $use_automation ? departuresFromApi($i) : get_field('departures', $i);
 
             foreach ($itineraryDepartures as $d) {   // each departure   
-
                 $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
 
                 if ($isCurrent) {
@@ -66,8 +115,14 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
             }
         }
     } else if (get_post_type($post) == 'rfc_itineraries') {
+
+
+
         $itineraryLength = get_field('length_in_nights', $post);
-        $itineraryDepartures = get_field('departures', $post);
+        // IF AUTOMATED
+        $use_automation = get_field('use_automation', $post);
+        $itineraryDepartures = $use_automation ? departuresFromApi($post) : get_field('departures', $post);
+
 
         foreach ($itineraryDepartures as $d) {   // each departure   
             $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
@@ -536,14 +591,14 @@ function getShipItineraries($ship, $region = null)
     $itineraryList = [];
     foreach ($itineraries as $itinerary) {
 
-        if($region != null){ // filter regions
+        if ($region != null) { // filter regions
             $itineraryRegion = getItineraryRegion($itinerary);
-            if($region != $itineraryRegion){
+            if ($region != $itineraryRegion) {
                 continue;
             }
         }
 
-    
+
         $departures = get_field('departures', $itinerary);
         $departureMatch = false;
         foreach ($departures as $departure) {
@@ -581,10 +636,11 @@ function getShipRegions($ship)
     return ($uniqueShipRegionsList);
 }
 
-function shipHasMultipleRegions($ship){
+function shipHasMultipleRegions($ship)
+{
 
     $regions = getShipRegions($ship);
-    if(count($regions) > 1){
+    if (count($regions) > 1) {
         return true;
     } else {
         return false;
@@ -690,7 +746,7 @@ function getEmbarkationList()
 
     $countryArgs = array(
         'post_type' => 'rfc_countries',
-        'posts_per_page' => -1,          
+        'posts_per_page' => -1,
     );
     $countryPosts = get_posts($countryArgs); // get all countries (bug is preventing a meta query)
 
@@ -700,13 +756,13 @@ function getEmbarkationList()
         $countryList = [];
         foreach ($countryPosts as $countryPost) {
             $countryZone = get_field('embarkation_zone', $countryPost);
-            if($countryZone->ID == $zone->ID){
+            if ($countryZone->ID == $zone->ID) {
                 $countryObject = [
                     'country' => $countryPost,
                     'destinations' => []
                 ];
                 $countryList[] = $countryObject;
-            }       
+            }
         }
 
 

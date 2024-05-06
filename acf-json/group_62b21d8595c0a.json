@@ -734,13 +734,123 @@
             "endpoint": 0
         },
         {
+            "key": "field_66292ca9bde32",
+            "label": "Use Automation",
+            "name": "use_automation",
+            "type": "true_false",
+            "instructions": "UNDER DEVELOPMENT Do not enable until automation exists for itinerary",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_66292d5ebde33",
+            "label": "Automation Itinerary ID",
+            "name": "automation_itinerary_id",
+            "type": "text",
+            "instructions": "Enter the GUID of the itinerary from the system",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66292ca9bde32",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_66292e4bbde34",
+            "label": "Automation Last Updated",
+            "name": "automation_last_updated",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66292ca9bde32",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 1
+        },
+        {
+            "key": "field_66292e60bde35",
+            "label": "Automation Departure Data",
+            "name": "automation_departure_data",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66292ca9bde32",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 1
+        },
+        {
             "key": "field_63595b2cf857f",
             "label": "Departures",
             "name": "departures",
             "type": "repeater",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66292ca9bde32",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -1283,5 +1393,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1686784529
+    "modified": 1713975115
 }
