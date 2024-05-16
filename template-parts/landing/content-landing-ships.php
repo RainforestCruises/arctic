@@ -32,7 +32,9 @@ $region = $args['region'];
                 $itineraries = getShipItineraries($ship);
                 $title = get_the_title($ship);
                 $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
-                $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . 'Luxury';
+                $serviceLevel = get_field('service_level', $ship);
+                $serviceLevelDisplay = get_field('service_level', $ship) ? get_the_title($serviceLevel) : '';
+                $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . $serviceLevelDisplay;
                 $departures = getDepartureList($ship, null, true, $region); // ships must specify region on a landing page
                 if(!$departures){
                     continue;
