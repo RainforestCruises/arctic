@@ -1,7 +1,9 @@
 <?php
-$itineraries = get_field('itineraries');
 $itineraries_title_subtext = get_field('itineraries_title_subtext');
 $itineraries_title = get_field('itineraries_title');
+$itineraries = $args['itineraries'];
+$region = $args['region'];
+
 ?>
 
 
@@ -45,18 +47,29 @@ $itineraries_title = get_field('itineraries_title');
             <div class="swiper" id="itineraries-slider">
                 <div class="swiper-wrapper">
                     <?php
-                    $index = 0;
+                    $count = 0;
                     foreach ($itineraries as $itinerary) :
+                        $departures = getDepartureList($itinerary, null, true, $region);
+                        if(!$departures){
+                            continue;
+                        } else {
+                            $count++;
+                        }
+                        if($count > 15){
+                            break;
+                        }
                         $images =  get_field('hero_gallery', $itinerary);
                         $image =  $images[0];
                         $title = get_field('display_name', $itinerary);
-                        $shipsDisplay = getItineraryShips($itinerary);
+                        $shipsDisplay = getShipsFromItineraryList($itinerary, true);
                         $length_in_nights = get_field('length_in_nights', $itinerary);
                         $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
-                        $departures = getDepartureList($itinerary);
+
                         $lowestPrice = getLowestDepartureListPrice($departures);
                         $highestPrice = getHighestDepartureListPrice($departures);
                         $bestOverallDiscount = getBestDepartureListDiscount($departures);
+                        
+               
                     ?>
 
                         <!-- Itinerary Card -->
@@ -125,7 +138,7 @@ $itineraries_title = get_field('itineraries_title');
                             </div>
                         </div>
 
-                    <?php $index++;
+                    <?php 
                     endforeach; ?>
                 </div>
             </div>

@@ -1,25 +1,44 @@
 <?php
+// On daily chron job 
+add_action('rfc_cron_refresh_api', 'refresh_itinerary_info_all'); // chron job hook
+function refresh_itinerary_info_all() // loop all itineraries with automation and refresh
+{
+    $args = array(
+        'posts_per_page' => -1,
+        'post_type' => array('rfc_itineraries'),
+    );
+
+    // loop all itineraries
+    $itineraryPosts = get_posts($args);
+    foreach ($itineraryPosts as $itineraryPost) {
+
+        $use_automation = get_field('use_automation', $itineraryPost);
+        if ($use_automation) {
+            $automation_itinerary_id = get_field('automation_itinerary_id', $itineraryPost);
+            refresh_itinerary_info($automation_itinerary_id, $itineraryPost->ID); // refresh data
+            usleep(2000000); // 2 second pause
+        }
+    }
+}
+
 
 
 // On Save Post
 add_action('acf/save_post', 'acf_automation_on_save');
-function acf_automation_on_save($post_id)
+function acf_automation_on_save($post_id) // get data from API if post type is itinerary and automation is enabled
 {
-
-    // get data from API if post type is itinerary and automation is enabled
     if ('rfc_itineraries' == get_post_type()) {
         $use_automation = get_field('use_automation', $post_id);
-        if($use_automation){
-            $automation_itinerary_id = get_field('automation_itinerary_id', $post_id); 
-            refresh_cruise_info($automation_itinerary_id, $post_id);
+        if ($use_automation) {
+            $automation_itinerary_id = get_field('automation_itinerary_id', $post_id);
+            refresh_itinerary_info($automation_itinerary_id, $post_id);
         }
     }
-   
 }
-function refresh_cruise_info($itineraryId, $post_id)
+function refresh_itinerary_info($itineraryId, $post_id)
 {
     // LOCAL 
-    $url = 'https://localhost:7250/api/wpitineraries/';        
+    $url = 'https://localhost:7250/api/wpitineraries/';
     $url .= $itineraryId;
     $request = wp_remote_get($url, array('sslverify' => FALSE));
 
@@ -31,28 +50,105 @@ function refresh_cruise_info($itineraryId, $post_id)
     if (is_wp_error($request)) {
         $error_message = $request->get_error_message();
         update_field('automation_departure_data', $error_message, $post_id);
-        return false; // Bail early
+        return false; 
     }
 
     $body = wp_remote_retrieve_body($request);
     $data = json_decode($body, true);
 
-    $timezone  = -5; //(GMT -5:00) EST (U.S. & Canada)
-    $currentTime =  gmdate("M d, Y  H:i:s", time() + 3600 * ($timezone + date("I")));
+    if($data['succeeded'] == false){
+        update_field('automation_message', 'Request failed', $post_id);
+        return false; 
+    }
 
-    update_field('automation_departure_data', $data['data'], $post_id);
+    $timezone  = -5; // (GMT -5:00) EST (U.S. & Canada)
+    $currentTime =  gmdate("M d, Y  H:i:s", time() + 3600 * ($timezone + date("I")));
+    $responseObject = formatDepartureApiData($data['data']);
+    update_field('automation_message', array_unique($responseObject['errors']), $post_id);
+    update_field('automation_departure_data', $responseObject['departures'], $post_id);
     update_field('automation_last_updated', $currentTime, $post_id);
 }
 
-function custom_log($message) {
-    $log_file = WP_CONTENT_DIR . '/custom.log'; // Path to your custom log file
-    error_log($message . PHP_EOL, 3, $log_file);
+
+
+// map / format API departure list to conform to WP departure lists ( )
+function formatDepartureApiData($automation_departure_data)
+{
+    $error_messages = [];
+    $departure_list = [];
+    foreach ($automation_departure_data as $departure_item) {     
+
+        // build cabin rate list
+        $cabin_price_list = []; 
+        foreach ($departure_item['rates'] as $rate) {
+            $cabinPost = get_post($rate['wpRoomId']);
+            if(!$cabinPost){ // check if not found
+                $error_messages[] = "missing cabin: " . $rate['wpRoomId'];
+            }
+            $cabin_price = [
+                'cabin' => $cabinPost,
+                'discounted_price' => $rate['discountedAmount'],
+                'price' => $rate['baseAmount'],
+                'sold_out' => $rate['soldOut'],
+            ];
+            $cabin_price_list[] = $cabin_price;
+        };
+
+        // get ship post
+        $shipPost = get_post($departure_item['wpShipId']);
+        if(!$shipPost){ // check if not found
+            $error_messages[] = "missing ship: " . $departure_item['wpShipId'];
+        }
+
+        // add deals
+        $deals_post_list = [];
+        foreach ($departure_item['deals'] as $deal) {
+            $dealPost = get_post($deal['dealWpId']);
+            if(!$dealPost){ // check if not found
+                $error_messages[] = "missing deal: " . $deal['dealWpId'];
+            }
+            $deals_post_list[] = $dealPost;
+        };
+
+        // build final departure object
+        $departure = [
+            'cabin_prices' => $cabin_price_list,
+            'date' => $departure_item['departureDate'],
+            'deals' => $deals_post_list,
+            'ship' => $shipPost,
+        ];
+
+        // add to departure list
+        $departure_list[] = $departure;
+    }
+
+    // return an object with departure list and any error messages
+    $responseObject = [
+        'departures' => $departure_list,
+        'errors' => $error_messages
+    ];
+
+    return $responseObject;
 }
+
+
+
+// function custom_log($message)
+// {
+//     $log_file = WP_CONTENT_DIR . '/custom.log'; // Path to your custom log file
+//     error_log($message . PHP_EOL, 3, $log_file);
+// }
 
 
 // Disable automation ACF fields in itinerary post admin view
 add_filter('acf/load_field/name=automation_last_updated', 'acf_read_only_automation_last_updated');
 function acf_read_only_automation_last_updated($field)
+{
+    $field['readonly'] = 1;
+    return $field;
+}
+add_filter('acf/load_field/name=automation_message', 'acf_read_only_automation_message');
+function acf_read_only_automation_message($field)
 {
     $field['readonly'] = 1;
     return $field;

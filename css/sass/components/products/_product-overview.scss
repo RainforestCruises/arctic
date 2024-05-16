@@ -180,40 +180,58 @@
     gap: 2rem;
     padding-top: 2rem;
     padding-bottom: 1rem;
+
+    &__notice {
+        font-size: 1.6rem;
+        text-align: center;
+    }
     
+    & .avatar{
+        padding: .6rem .3rem;
+        padding-right: .6rem;
+        border-radius: 1rem;
+        transition: all .3s;
+        border: 1px solid transparent;
 
-    &__item {
-        font-size: 1.4rem;
-        display: grid;
-        grid-template-columns: min-content 1fr;
-        gap: 2rem;
-        &__avatar {
-            display: flex;
-            align-items: center;
+    }
 
-            & img {
-                height: 8rem;
-                width: 8rem;
-                border-radius: 8rem;
-            }
-        }
+    & .avatar:hover{
+        background-color: $color-grey-light-1;
+        //border: 1px solid $color-grey-light-1a;
+    }
 
-        &__title-group {
-            &__title {
-                color: $color-primary;
-                font-weight: 700;
-                padding-bottom: 0.5rem;
+    // &__item {
+    //     font-size: 1.4rem;
+    //     display: grid;
+    //     grid-template-columns: min-content 1fr;
+    //     gap: 2rem;
+    //     &__avatar {
+    //         display: flex;
+    //         align-items: center;
+
+    //         & img {
+    //             height: 8rem;
+    //             width: 8rem;
+    //             border-radius: 8rem;
+    //         }
+    //     }
+
+    //     &__title-group {
+    //         &__title {
+    //             color: $color-primary;
+    //             font-weight: 700;
+    //             padding-bottom: 0.5rem;
                 
 
-                &:link{
-                    text-decoration: none;
-                }
-            }
-            &__text {
-            }
-        }
+    //             &:link{
+    //                 text-decoration: none;
+    //             }
+    //         }
+    //         &__text {
+    //         }
+    //     }
     
-    }
+    // }
 }
 
 //generic components?

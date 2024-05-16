@@ -1,7 +1,8 @@
 <?php
-$ships = get_field('ships');
 $ships_title_subtext = get_field('ships_title_subtext');
 $ships_title = get_field('ships_title');
+$ships = $args['ships'];
+$region = $args['region'];
 
 ?>
 
@@ -32,7 +33,10 @@ $ships_title = get_field('ships_title');
                 $title = get_the_title($ship);
                 $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
                 $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . 'Luxury';
-                $departures = getDepartureList($ship);
+                $departures = getDepartureList($ship, null, true, $region); // ships must specify region on a landing page
+                if(!$departures){
+                    continue;
+                }
                 $lowestPrice = getLowestDepartureListPrice($departures);
                 $highestPrice = getHighestDepartureListPrice($departures);
                 $bestOverallDiscount = getBestDepartureListDiscount($departures);

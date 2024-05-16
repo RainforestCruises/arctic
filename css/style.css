@@ -3498,24 +3498,17 @@ p {
   gap: 2rem;
   padding-top: 2rem;
   padding-bottom: 1rem; }
-  .itinerary-ships__item {
-    font-size: 1.4rem;
-    display: grid;
-    grid-template-columns: min-content 1fr;
-    gap: 2rem; }
-    .itinerary-ships__item__avatar {
-      display: flex;
-      align-items: center; }
-      .itinerary-ships__item__avatar img {
-        height: 8rem;
-        width: 8rem;
-        border-radius: 8rem; }
-    .itinerary-ships__item__title-group__title {
-      color: #1d2225;
-      font-weight: 700;
-      padding-bottom: 0.5rem; }
-      .itinerary-ships__item__title-group__title:link {
-        text-decoration: none; }
+  .itinerary-ships__notice {
+    font-size: 1.6rem;
+    text-align: center; }
+  .itinerary-ships .avatar {
+    padding: .6rem .3rem;
+    padding-right: .6rem;
+    border-radius: 1rem;
+    transition: all .3s;
+    border: 1px solid transparent; }
+  .itinerary-ships .avatar:hover {
+    background-color: #f8f8f8; }
 
 .icon-circle {
   position: relative;

@@ -12,7 +12,7 @@ $expandItems = count($activities) > $max_items ? true : false;
 
 $expand = strlen($overview_content) > 2000 ? true : false;
 $overview_content_limited = substr($overview_content, 0, 2000);
-if($expand){
+if ($expand) {
     $overview_content_limited .= '...';
 }
 
@@ -89,28 +89,33 @@ if($expand){
                                 $hero_gallery = get_field('hero_gallery', $ship);
                                 $ship_image = $hero_gallery[0];
                                 $url = get_permalink($ship);
-                                if($initialRegion != $primaryRegion){
+                                if ($initialRegion != $primaryRegion) {
                                     $url .= '?region=' . $initialRegion->ID;
                                 }
                             ?>
                                 <!-- Ship -->
-                                <div class="avatar">
+                                <a class="avatar" href="<?php echo $url; ?>">
 
-                                    <a class="avatar__image-area" href="<?php echo $url; ?>">
+                                    <div class="avatar__image-area" >
                                         <img <?php afloat_image_markup($ship_image['id'], 'square-thumb', array('square-thumb')); ?>>
-                                    </a>
+                                    </div>
                                     <div class="avatar__title-group">
                                         <h3 class="avatar__title-group__title">
-                                            <a href="<?php echo $url; ?>"><?php echo get_the_title($ship); ?></a>
+                                            <?php echo get_the_title($ship); ?>
                                         </h3>
                                         <div class="avatar__title-group__sub">
                                             <?php echo get_field('top_snippet', $ship); ?>
                                         </div>
                                     </div>
 
-                                </div>
+                            </a>
                             <?php endforeach; ?>
 
+                            <?php if (!$ships) : ?>
+                                <div class="itinerary-ships__notice">
+                                    No departures available at this time
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

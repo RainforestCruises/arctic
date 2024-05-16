@@ -808,6 +808,33 @@
             "readonly": 1
         },
         {
+            "key": "field_6645115fee6d6",
+            "label": "Automation Message",
+            "name": "automation_message",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66292ca9bde32",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_66292e60bde35",
             "label": "Automation Departure Data",
             "name": "automation_departure_data",
@@ -1393,5 +1420,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1713975115
+    "modified": 1715802493
 }

@@ -79,7 +79,7 @@ $ships = get_posts($queryArgs);
                         }
                         $images =  get_field('hero_gallery', $ship);
                         $image = $images[0];
-                        $itineraries = getShipItineraries($ship);
+                        $itineraries = getShipItineraries($ship); // TODO: check region
                         $title = get_the_title($ship);
                         $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
                         $service_level =  get_field('service_level', $ship);

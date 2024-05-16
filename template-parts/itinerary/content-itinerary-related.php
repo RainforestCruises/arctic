@@ -6,7 +6,6 @@ $queryArgs = array(
     'meta_key' => 'search_rank',
     'orderby' => 'meta_value_num',
     'order' => 'DESC',
-
 );
 
 $queryArgsRoute = array();
@@ -91,7 +90,7 @@ $itineraries = get_posts($queryArgs);
                         $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
                         $embarkation_point = get_field('embarkation_point', $itinerary);
                         $embarkation = get_the_title($embarkation_point);
-                        $shipsDisplay = getItineraryShips($itinerary);
+                        $shipsDisplay = getShipsFromItineraryList($itinerary, true);
                         $destinations = getItineraryDestinations($itinerary, true, 4);
                         $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
                         $guestsDisplay = get_field('vessel_capacity', $itinerary) . ' Guests, ' . 'Luxury';

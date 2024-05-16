@@ -1,53 +1,6 @@
 <?php
 
 // DEPARTURES ----------------------------------------------------------------------------------------------
-
-// create the departure list to conform to WP departure lists
-function departuresFromApi($itinerary_post)
-{
-    $automation_departure_data = get_field('automation_departure_data', $itinerary_post);
-    $departure_list = [];
-
-    foreach ($automation_departure_data as $departure_item) {
-        // build cabin rate list
-        $cabin_price_list = [];
-        foreach ($departure_item['rates'] as $rate) {
-            $cabinPost = get_post($rate['wpRoomId']);
-            $cabin_price = [
-                'cabin' => $cabinPost,
-                'discounted_price' => $rate['discountedAmount'],
-                'price' => $rate['baseAmount'],
-                'sold_out' => $rate['soldOut'],
-            ];
-            $cabin_price_list[] = $cabin_price;
-        };
-
-        // get ship post
-        $shipPost = get_post($departure_item['wpShipId']);
-
-        // add deals
-        $deals_post_list = [];
-        foreach ($departure_item['deals'] as $deal) {
-            $dealPost = get_post($deal['dealWpId']);
-            $deals_post_list[] = $dealPost;
-        };
-
-        // build final departure object
-        $departure = [
-            'cabin_prices' => $cabin_price_list,
-            'date' => $departure_item['departureDate'],
-            'deals' => $deals_post_list,
-            'ship' => $shipPost,
-        ];
-
-        // return list of departures
-        $departure_list[] = $departure;
-    }
-
-    return $departure_list;
-}
-
-
 // get a list of departures
 function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $region = null)
 {
@@ -57,13 +10,11 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
 
 
         foreach ($itineraryPosts as $i) { // each itinerary
-
-
             $itineraryLength = get_field('length_in_nights', $i);
 
-            // IF AUTOMATED
+            // get itinerary departures
             $use_automation = get_field('use_automation', $i);
-            $itineraryDepartures = $use_automation ? departuresFromApi($i) : get_field('departures', $i);
+            $itineraryDepartures = $use_automation ? get_field('automation_departure_data', $i) : get_field('departures', $i);
 
             foreach ($itineraryDepartures as $d) {   // each departure   
                 $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
@@ -115,13 +66,11 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
             }
         }
     } else if (get_post_type($post) == 'rfc_itineraries') {
-
-
-
         $itineraryLength = get_field('length_in_nights', $post);
-        // IF AUTOMATED
+
+        // get itinerary departures
         $use_automation = get_field('use_automation', $post);
-        $itineraryDepartures = $use_automation ? departuresFromApi($post) : get_field('departures', $post);
+        $itineraryDepartures = $use_automation ? get_field('automation_departure_data', $post) : get_field('departures', $post);
 
 
         foreach ($itineraryDepartures as $d) {   // each departure   
@@ -182,6 +131,11 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
 
     return $departures;
 }
+
+
+
+
+
 // LIST
 // get lowest price from a list of departures
 function getLowestDepartureListPrice($departures)
@@ -337,11 +291,11 @@ function getBestDepartureDiscount($departure)
 
 // ITINERARY ----------------------------------------------------------
 // lowest price from list of itineraries
-function getLowestPriceFromListOfItineraries($itineraries)
+function getLowestPriceFromListOfItineraries($itineraries, $region = null)
 {
     $priceList = [];
     foreach ($itineraries as $itinerary) {
-        $departures = getDepartureList($itinerary);
+        $departures = getDepartureList($itinerary, null, true, $region);
         $lowestPrice = getLowestDepartureListPrice($departures);
         if ($lowestPrice) {
             $priceList[] = $lowestPrice;
@@ -353,11 +307,11 @@ function getLowestPriceFromListOfItineraries($itineraries)
 }
 
 // highest price from list of itineraries
-function getHighestPriceFromListOfItineraries($itineraries)
+function getHighestPriceFromListOfItineraries($itineraries, $region = null)
 {
     $priceList = [];
     foreach ($itineraries as $itinerary) {
-        $departures = getDepartureList($itinerary);
+        $departures = getDepartureList($itinerary, null, true, $region);
         $highestPrice = getHighestDepartureListPrice($departures);
         if ($highestPrice) {
             $priceList[] = $highestPrice;
@@ -469,26 +423,77 @@ function getItineraryDestinations($itinerary, $display = false, $limit = 0)
     }
 }
 
-// get display of ships sailing the itinerary
-function getItineraryShips($itinerary)
+// return a list of ships from itinerary or list
+function getShipsFromItineraryList($itineraries, $display = false)
 {
-    $ships = get_field('ships', $itinerary);
-    $display = "";
-    $shipCount = count($ships);
-
-    $x = 1;
-    foreach ($ships as $s) {
-        $name = get_the_title($s);
-
-        if ($x < $shipCount) {
-            $display .= $name . ", ";
-        } else {
-            $display .= $name;
+    $ships = [];
+    foreach ($itineraries as $itinerary) {
+        $itineraryDepartures = getDepartureList($itinerary);
+        foreach ($itineraryDepartures as $d) {
+            $ships[] = $d['Ship'];
         }
-        $x++;
+    }   
+    $tempArray = array(); // array unique for objects
+    foreach ($ships as $value) {
+        $tempArray[serialize($value)] = $value;
     }
-    return $display;
+    $unique_ships = array_values($tempArray);
+    usort($unique_ships, 'sortBySearchRank'); // sort the ships array
+
+    if(!$display){
+        return $unique_ships;
+    } else {
+        $display = ""; // display friendly list in cards
+        $shipCount = count($unique_ships);   
+        if($shipCount == 0){
+            return "N/A";
+        }
+        $x = 1; 
+        foreach ($unique_ships as $s) {
+            $name = get_the_title($s);
+            if ($x < $shipCount) {
+                $display .= $name . ", ";
+            } else {
+                $display .= $name;
+            }
+            $x++;
+        }
+        return $display;
+    }
+
 }
+
+// utility to sort by search rank
+function sortBySearchRank($a, $b) {
+    if (is_object($a) && is_object($b)) {
+        $searchRankA = intval(get_field('search_rank', $a->ID)); 
+        $searchRankB = intval(get_field('search_rank', $b->ID)); 
+        return $searchRankB - $searchRankA ;
+    }
+}
+
+
+
+// // get display of ships sailing the itinerary -- CHECK THIS ISSUE
+// function getItineraryShips($itinerary)
+// {
+//     $ships = get_field('ships', $itinerary);
+//     $display = "";
+//     $shipCount = count($ships);
+
+//     $x = 1; // FIX THIS LATER
+//     foreach ($ships as $s) {
+//         $name = get_the_title($s);
+
+//         if ($x < $shipCount) {
+//             $display .= $name . ", ";
+//         } else {
+//             $display .= $name;
+//         }
+//         $x++;
+//     }
+//     return $display;
+// }
 
 // get list of regions from itinerary post
 function getItineraryRegion($itinerary)
@@ -501,7 +506,7 @@ function getItineraryRegion($itinerary)
 
 
     $uniqueRegionsList = getUniquePostsFromArrayOfPosts($regionsList);
-    return $uniqueRegionsList[0];
+    return $uniqueRegionsList[0]; // there should always only be one
 }
 
 // range (From x Days to x Days)
@@ -538,7 +543,6 @@ function itineraryRange($itineraries, $separator, $onlyMin = false)
 // get list of itineraries from route
 function getItinerariesFromRoute($routes)
 {
-
     $queryArgs = array(
         'post_type' => 'rfc_itineraries',
         'posts_per_page' => -1,
