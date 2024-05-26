@@ -3,7 +3,7 @@ $itineraries_title_subtext = get_field('itineraries_title_subtext');
 $itineraries_title = get_field('itineraries_title');
 $itineraries = $args['itineraries'];
 $region = $args['region'];
-
+$allLink = $args['allLink'];
 ?>
 
 
@@ -42,7 +42,6 @@ $region = $args['region'];
 
         <!-- Slider Area -->
         <div class="slider-block__content__slider">
-
             <!-- Swiper -->
             <div class="swiper" id="itineraries-slider">
                 <div class="swiper-wrapper">
@@ -50,12 +49,12 @@ $region = $args['region'];
                     $count = 0;
                     foreach ($itineraries as $itinerary) :
                         $departures = getDepartureList($itinerary, null, true, $region);
-                        if(!$departures){
+                        if (!$departures) {
                             continue;
                         } else {
                             $count++;
                         }
-                        if($count > 15){
+                        if ($count > 15) {
                             break;
                         }
                         $images =  get_field('hero_gallery', $itinerary);
@@ -68,8 +67,8 @@ $region = $args['region'];
                         $lowestPrice = getLowestDepartureListPrice($departures);
                         $highestPrice = getHighestDepartureListPrice($departures);
                         $bestOverallDiscount = getBestDepartureListDiscount($departures);
-                        
-               
+
+
                     ?>
 
                         <!-- Itinerary Card -->
@@ -138,12 +137,19 @@ $region = $args['region'];
                             </div>
                         </div>
 
-                    <?php 
+                    <?php
                     endforeach; ?>
                 </div>
             </div>
-
-
         </div>
+        <?php if ($allLink != null) : ?>
+            <!-- CTA -->
+            <div class="slider-block__content__cta">
+                <a class="btn-primary btn-primary--inverse-outline" id="all-ships-button" href="<?php echo $allLink ?>">
+                    View All Itineraries
+                </a>
+            </div>
+        <?php endif; ?>
+
     </div>
 </section>

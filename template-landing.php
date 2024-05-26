@@ -13,7 +13,14 @@ $route = get_field('route_filter');
 $style = get_field('style_filter');
 $region = get_field('region_filter');
 
+$top_level_search_page = get_field('top_level_search_page', 'options');
+$allLink = null;
 
+if($route){
+  $allLink = $top_level_search_page . '?routes=' . $route->ID;
+} else if ($style){
+  $allLink = $top_level_search_page . '?styles=' . $style->ID;
+}
 
 // itinerary / ship content page criteria
 $queryArgs = array(
@@ -58,12 +65,6 @@ if ($region) {
   $itineraries = $itineraryPosts;
 }
 
-// filter sold out
-if($itineraries){
-  foreach($itineraries as $itinerary){
-    
-  }
-}
 
 $ships = getShipsFromItineraryList($itineraries);
 
@@ -74,7 +75,8 @@ $args = array(
   'region' => $region,
   'itineraries' => $itineraries,
   'ships' => $ships,
-  'footerCtaDivider' => true
+  'footerCtaDivider' => true,
+  'allLink' => $allLink
 );
 
 

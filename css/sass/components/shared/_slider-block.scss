@@ -102,6 +102,12 @@
             }
         } 
 
+        &__cta {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
         &__filters {
             margin-top: 2rem;
             width: 100%;

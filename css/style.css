@@ -1167,14 +1167,14 @@ p {
     margin-top: 0rem; }
 
 .generic-page {
-  padding-top: 14rem;
+  padding-top: 12rem;
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: center; }
-  @media only screen and (max-width: 37.5em) {
+  @media only screen and (max-width: 62.5em) {
     .generic-page {
-      padding-top: 10rem; } }
+      padding-top: 9rem; } }
   .generic-page__content {
     display: flex;
     flex-direction: column;
@@ -2438,6 +2438,10 @@ p {
         color: #c2c6c9; }
         .slider-block__content__slider__no-results button {
           margin-top: 2rem; }
+    .slider-block__content__cta {
+      display: flex;
+      justify-content: center;
+      margin-top: 3rem; }
     .slider-block__content__filters {
       margin-top: 2rem;
       width: 100%;
@@ -2859,8 +2863,7 @@ p {
   z-index: 1; }
   @media only screen and (max-width: 62.5em) {
     .product-hero {
-      height: auto;
-      margin-top: 7rem; } }
+      height: auto; } }
   .product-hero__bg-image {
     height: 100%;
     width: 100%;
@@ -4077,8 +4080,7 @@ p {
   width: 100%; }
   @media only screen and (max-width: 62.5em) {
     .home-hero {
-      height: auto;
-      margin-top: 7rem; } }
+      height: auto; } }
   .home-hero__bg-image {
     height: 100%;
     width: 100%;
@@ -4118,7 +4120,7 @@ p {
         padding: 0 3rem; } }
     @media only screen and (max-width: 62.5em) {
       .home-hero__content {
-        padding-top: 6rem; } }
+        padding-top: 12rem; } }
     .home-hero__content.site-notice-variant {
       padding-top: 20rem; }
       @media only screen and (max-width: 62.5em) {
@@ -4652,7 +4654,6 @@ p {
   position: relative; }
   @media only screen and (max-width: 62.5em) {
     .landing-hero {
-      margin-top: 7rem;
       height: auto; } }
   .landing-hero__bg-image {
     position: absolute;
@@ -4687,7 +4688,7 @@ p {
         padding: 0 3rem; } }
     @media only screen and (max-width: 62.5em) {
       .landing-hero__content {
-        padding-top: 6rem;
+        padding-top: 12rem;
         padding-bottom: 6rem; } }
     .landing-hero__content__title-group__title {
       font-size: 5rem;
@@ -4743,7 +4744,7 @@ p {
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all .2s; }
+        transition: all 0.2s; }
         .landing-nav__content__links__link:link, .landing-nav__content__links__link:visited {
           color: currentColor;
           font-size: 1.4rem;
@@ -4912,10 +4913,10 @@ p {
   align-items: center;
   position: relative;
   width: 100%;
-  padding-top: 14rem; }
-  @media only screen and (max-width: 37.5em) {
+  padding-top: 12rem; }
+  @media only screen and (max-width: 62.5em) {
     .guide-hero {
-      padding-top: 10rem; } }
+      padding-top: 9rem; } }
   .guide-hero.site-notice-variant {
     padding-top: 18rem; }
     @media only screen and (max-width: 37.5em) {
@@ -5399,10 +5400,10 @@ p {
   align-items: center;
   position: relative;
   width: 100%;
-  padding-top: 14rem; }
-  @media only screen and (max-width: 37.5em) {
+  padding-top: 12rem; }
+  @media only screen and (max-width: 62.5em) {
     .guides-toplevel-hero {
-      padding-top: 10rem; } }
+      padding-top: 9rem; } }
   .guides-toplevel-hero.site-notice-variant {
     padding-top: 18rem; }
     @media only screen and (max-width: 37.5em) {
@@ -5764,7 +5765,6 @@ p {
   position: relative; }
   @media only screen and (max-width: 62.5em) {
     .deals-toplevel-hero {
-      margin-top: 7rem;
       height: auto; } }
   .deals-toplevel-hero__bg-image {
     position: absolute;
@@ -5801,7 +5801,7 @@ p {
         padding: 0 3rem; } }
     @media only screen and (max-width: 62.5em) {
       .deals-toplevel-hero__content {
-        padding-top: 6rem;
+        padding-top: 9rem;
         padding-bottom: 6rem; } }
     .deals-toplevel-hero__content__title-group {
       max-width: 60rem;
@@ -5933,8 +5933,11 @@ p {
   align-items: center;
   position: relative;
   width: 100%;
-  padding-top: 11rem;
+  padding-top: 12rem;
   margin-bottom: 2rem; }
+  @media only screen and (max-width: 62.5em) {
+    .search-intro {
+      padding-top: 9rem; } }
   .search-intro.site-notice-variant {
     padding-top: 15rem; }
     @media only screen and (max-width: 37.5em) {
@@ -7325,9 +7328,7 @@ p {
   width: 100%;
   user-select: none;
   transition: all 0.2s;
-  position: absolute;
-  top: 0;
-  left: 0; }
+  position: absolute; }
   .header.fixed {
     position: fixed; }
   .header.narrow .nav-main__content {
@@ -8439,16 +8440,16 @@ p {
             color: #4d8eff; }
 
 .contact-page {
-  padding-top: 14rem;
+  padding-top: 12rem;
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: center;
   position: relative;
   z-index: 0; }
-  @media only screen and (max-width: 37.5em) {
+  @media only screen and (max-width: 62.5em) {
     .contact-page {
-      padding-top: 10rem; } }
+      padding-top: 9rem; } }
   .contact-page.site-notice-variant {
     padding-top: 18rem; }
     @media only screen and (max-width: 37.5em) {
@@ -8596,11 +8597,10 @@ p {
   align-items: center;
   position: relative;
   width: 100%;
-  padding-top: 14rem;
-  margin-top: 4rem; }
-  @media only screen and (max-width: 37.5em) {
+  padding-top: 12rem; }
+  @media only screen and (max-width: 62.5em) {
     .about-mission {
-      padding-top: 10rem; } }
+      padding-top: 9rem; } }
   .about-mission.site-notice-variant {
     padding-top: 18rem; }
     @media only screen and (max-width: 37.5em) {
@@ -9090,11 +9090,10 @@ p {
   align-items: center;
   position: relative;
   width: 100%;
-  padding-top: 14rem;
-  margin-top: 4rem; }
-  @media only screen and (max-width: 37.5em) {
+  padding-top: 12rem; }
+  @media only screen and (max-width: 62.5em) {
     .agency-hero {
-      padding-top: 10rem; } }
+      padding-top: 9rem; } }
   .agency-hero__content {
     width: 100%;
     max-width: 128rem;

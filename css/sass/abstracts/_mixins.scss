@@ -44,9 +44,9 @@
 }
 
 @mixin pageTopPadding {
-    padding-top: 14rem; //top padding
-    @media only screen and (max-width: $bp-small) {
-        padding-top: 10rem;
+    padding-top: 12rem; //top padding
+    @media only screen and (max-width: $bp-large) {
+        padding-top: 9rem;
     }
 }
 

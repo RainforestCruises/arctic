@@ -4,8 +4,8 @@
     user-select: none;
     transition: all 0.2s;
     position: absolute;
-    top: 0; //admin bar offset in base
-    left: 0;
+    //top: 0; //admin bar offset in base
+    //left: 0;
 
     &.fixed {
         position: fixed;

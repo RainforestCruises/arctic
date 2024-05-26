@@ -1,6 +1,8 @@
 .search-intro {
   @include flexBlock;
-  padding-top: 11rem; //top padding
+  @include pageTopPadding;
+
+  //padding-top: 11rem; //top padding
 
   &.site-notice-variant {
     padding-top: 15rem; //top padding
