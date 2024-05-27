@@ -1,26 +1,3 @@
-.card-tag {
-    width: max-content;
-    padding: 0.5rem 1rem;
-    background-color: $color-white;
-    color: $color-primary;
-    border-radius: 2rem;
-
-    &--dark {
-        background-color: $color-primary;
-        color: $color-white;
-    }
-
-    &--special {
-        background-color: $color-purple;
-        color: $color-white;
-    }
-
-    &--deal {
-        background-color: $color-green;
-        color: $color-white;
-    }
-}
-
 .search-card-itinerary {
     position: relative;
     color: $color-primary;

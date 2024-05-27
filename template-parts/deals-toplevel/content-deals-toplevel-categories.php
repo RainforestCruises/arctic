@@ -64,6 +64,7 @@ foreach ($sections as $section) :
                             $description_limited = substr($description, 0, 320);
                             $has_expiry_date = get_field('has_expiry_date', $deal);
                             $expiry_date =  get_field('expiry_date', $deal);
+                            $is_exclusive =  get_field('is_exclusive', $deal);
 
                             if ($expand) {
                                 $description_limited .= '...';
@@ -74,13 +75,18 @@ foreach ($sections as $section) :
                             <div class="search-card-itinerary swiper-slide toplevel-deal-card <?php echo $is_special_departure ? "special-departure-cta" : "" ?>" dealId="<?php echo $id ?>">
 
                                 <!-- Tag Area -->
-                                <?php if ($is_special_departure) : ?>
-                                    <div class="search-card-itinerary__tag-area">
+                                <div class="search-card-itinerary__tag-area">
+                                    <?php if ($is_special_departure) : ?>
                                         <div class="card-tag card-tag--special">
                                             Special Departure
                                         </div>
-                                    </div>
-                                <?php endif; ?>
+                                    <?php endif; ?>
+                                    <?php if ($is_exclusive) : ?>
+                                        <div class="card-tag card-tag--light">
+                                            Exclusive Deal
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
                                 <!-- Image -->
                                 <div class="search-card-itinerary__image-area">
                                     <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
@@ -187,6 +193,8 @@ endforeach;
                 $expiry_date =  get_field('expiry_date', $deal);
                 $is_special_departure = get_field('is_special_departure', $deal);
                 $itinerariesWithDeal = getItinerariesWithDeal($deal);
+                $is_exclusive =  get_field('is_exclusive', $deal);
+
 
             ?>
 
@@ -196,6 +204,20 @@ endforeach;
                     </div>
                     <div class="product-deals-modal-item__image-area">
                         <img <?php afloat_image_markup($image['id'], 'landscape-small', array('landscape-small', 'portrait-small')); ?>>
+
+                        <!-- Tag Area -->
+                        <div class="product-deals-modal-item__image-area__tag-area">
+                            <?php if ($is_special_departure) : ?>
+                                <div class="card-tag card-tag--special">
+                                    Special Departure
+                                </div>
+                            <?php endif; ?>
+                            <?php if ($is_exclusive) : ?>
+                                <div class="card-tag card-tag--light">
+                                    Exclusive Deal
+                                </div>
+                            <?php endif; ?>
+                        </div>
                     </div>
 
                     <div class="product-deals-modal-item__description">

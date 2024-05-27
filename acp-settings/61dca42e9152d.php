@@ -5,7 +5,7 @@ return array (
   'title' => 'Deals',
   'type' => 'rfc_deals',
   'id' => '61dca42e9152d',
-  'updated' => 1704815808,
+  'updated' => 1716830830,
   'columns' => 
   array (
     'title' => 
@@ -226,6 +226,22 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '61e9e66a6147b0',
+    ),
+    '6654c258f3f7d0' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Is Exclusive',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_61dca09f34c1b',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '6654c258f3f7d0',
     ),
   ),
   'settings' => 

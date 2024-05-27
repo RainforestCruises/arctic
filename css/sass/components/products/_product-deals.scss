@@ -7,6 +7,9 @@
   }
 
   &__image-area {
+    position: relative;
+    margin-bottom: 2rem;
+
     & img {
       border-radius: 1rem;
       height: auto;
@@ -14,7 +17,16 @@
       max-height: 36rem;
       object-fit: cover;
     }
-    margin-bottom: 2rem;
+
+    &__tag-area  {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 10;
+      display: grid;
+      gap: .5rem;
+      justify-items: end;
+    }
   }
 
   &__description {
