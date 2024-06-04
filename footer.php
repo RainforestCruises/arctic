@@ -141,11 +141,6 @@ $footerClasses = renderFooterClasses();
                             <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-twitter-x"></use>
                         </svg>
                     </a>
-                    <a href="<?php echo get_field('pinterest_link', 'options'); ?>" class="footer__content__bottom__access__social__link">
-                        <svg>
-                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-logo-pinterest"></use>
-                        </svg>
-                    </a>
                     <a href="<?php echo get_field('youtube_link', 'options'); ?>" class="footer__content__bottom__access__social__link">
                         <svg>
                             <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-logo-youtube"></use>
