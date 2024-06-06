@@ -37,38 +37,40 @@ jQuery(document).ready(function ($) {
         heroVideoCard.pause();
     })
 
-    var iframe = document.getElementById('modal-video-iframe');
-    const vimeoPlayer = new Vimeo.Player(iframe);
-
 
     // video modal
-    const videoModal = document.querySelector("#videoModal");
-    const videoPlayButton = document.querySelector(".video-play-button");
-
-    if (vimeoPlayer) {
-        // -- open / play
-        videoPlayButton.addEventListener('click', () => {
-            videoModal.style.display = 'flex';
-            body.classList.add('no-scroll');
-
-            vimeoPlayer.play();
-        });
-
-        heroVideoCard.addEventListener('click', () => {
-            videoModal.style.display = 'flex';
-            body.classList.add('no-scroll');
-            vimeoPlayer.play();
-        });
-
-        // -- stop playing 
-        const stopVideoSections = [...document.querySelectorAll('.stop-video')];
-        stopVideoSections.forEach(section => {
-            section.addEventListener('click', () => {
-                vimeoPlayer.pause();
+    var iframe = document.getElementById('modal-video-iframe');
+    if(iframe){
+        const vimeoPlayer = new Vimeo.Player(iframe);  
+        const videoModal = document.querySelector("#videoModal");
+        const videoPlayButton = document.querySelector(".video-play-button");
+    
+        if (vimeoPlayer) {
+            // -- open / play
+            videoPlayButton.addEventListener('click', () => {
+                videoModal.style.display = 'flex';
+                body.classList.add('no-scroll');
+    
+                vimeoPlayer.play();
             });
-        })
+    
+            heroVideoCard.addEventListener('click', () => {
+                videoModal.style.display = 'flex';
+                body.classList.add('no-scroll');
+                vimeoPlayer.play();
+            });
+    
+            // -- stop playing 
+            const stopVideoSections = [...document.querySelectorAll('.stop-video')];
+            stopVideoSections.forEach(section => {
+                section.addEventListener('click', () => {
+                    vimeoPlayer.pause();
+                });
+            })
+        }
+    
     }
-
+    
 
 
     // view all ships
