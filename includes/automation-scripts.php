@@ -16,7 +16,7 @@ function refresh_itinerary_info_all() // loop all itineraries with automation an
         if ($use_automation) {
             $automation_itinerary_id = get_field('automation_itinerary_id', $itineraryPost);
             refresh_itinerary_info($automation_itinerary_id, $itineraryPost->ID); // refresh data
-            usleep(2000000); // 2 second pause
+            usleep(5000000); // 5 second pause
         }
     }
 }
@@ -37,15 +37,15 @@ function acf_automation_on_save($post_id) // get data from API if post type is i
 }
 function refresh_itinerary_info($itineraryId, $post_id)
 {
-    // LOCAL 
-    $url = 'https://localhost:7250/api/wpitineraries/';
-    $url .= $itineraryId;
-    $request = wp_remote_get($url, array('sslverify' => FALSE));
-
-    // // API
-    // $url = 'https://tourengine.azurewebsites.net/api/wpitineraries/';
+    // // LOCAL 
+    // $url = 'https://localhost:7250/api/wpitineraries/';
     // $url .= $itineraryId;
-    // $request = wp_remote_get($url);
+    // $request = wp_remote_get($url, array('sslverify' => FALSE));
+
+    // API
+    $url = 'https://tourtrack.azurewebsites.net/api/wpitineraries/';
+    $url .= $itineraryId;
+    $request = wp_remote_get($url);
 
     if (is_wp_error($request)) {
         $error_message = $request->get_error_message();
@@ -82,8 +82,8 @@ function formatDepartureApiData($automation_departure_data)
         $cabin_price_list = []; 
         foreach ($departure_item['rates'] as $rate) {
             $cabinPost = get_post($rate['wpRoomId']);
-            if(!$cabinPost){ // check if not found
-                $error_messages[] = "missing cabin: " . $rate['wpRoomId'];
+            if(!get_post_status($rate['wpRoomId']) || get_post_type($rate['wpRoomId']) != 'rfc_cabins'){ // check if not found
+                $error_messages[] = "missing cabin";
             }
             $cabin_price = [
                 'cabin' => $cabinPost,
@@ -96,16 +96,16 @@ function formatDepartureApiData($automation_departure_data)
 
         // get ship post
         $shipPost = get_post($departure_item['wpShipId']);
-        if(!$shipPost){ // check if not found
-            $error_messages[] = "missing ship: " . $departure_item['wpShipId'];
+        if(!get_post_status($departure_item['wpShipId']) || get_post_type($departure_item['wpShipId']) != 'rfc_cruises'){ // check if not found
+            $error_messages[] = "missing ship";
         }
 
         // add deals
         $deals_post_list = [];
         foreach ($departure_item['deals'] as $deal) {
-            $dealPost = get_post($deal['dealWpId']);
-            if(!$dealPost){ // check if not found
-                $error_messages[] = "missing deal: " . $deal['dealWpId'];
+            $dealPost = get_post($deal['wpDealId']);
+            if(!get_post_status($deal['wpDealId']) || get_post_type($deal['wpDealId']) != 'rfc_deals'){ // check if not found
+                $error_messages[] = "missing deal";
             }
             $deals_post_list[] = $dealPost;
         };

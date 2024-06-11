@@ -318,7 +318,7 @@ function getHighestPriceFromListOfItineraries($itineraries, $region = null)
         }
     }
 
-    $highestOverallPrice = min($priceList);
+    $highestOverallPrice = max($priceList);
     return ($highestOverallPrice);
 }
 

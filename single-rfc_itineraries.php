@@ -62,6 +62,7 @@ $args['meta_query'][] = $queryArgsShips; // match any category
 $cabins = get_posts($args);
 
 
+
 $args = array(
   'ships' => $ships,
   'cabins' => $cabins,

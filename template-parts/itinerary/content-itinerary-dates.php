@@ -3,6 +3,8 @@ $currentYear = date('Y');
 $yearSelections = $args['yearSelections'];
 $ships = $args['ships'];
 $departures = $args['departures'];
+
+
 ?>
 
 <section class="slider-block narrow" id="dates">
@@ -48,6 +50,8 @@ $departures = $args['departures'];
                 <div class="swiper-wrapper">
 
                     <?php foreach ($departures as $d) :
+                    console_log($d);
+                    console_log('xxx');
                         $departureId = $d['ID'];
                         $ship = $d['Ship'];
                         $shipId = $ship->ID;

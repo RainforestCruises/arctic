@@ -39,6 +39,7 @@ jQuery(document).ready(function ($) {
 
 
     // video modal
+    // TODO: to fix the issue of the first-load iframe, initialize the player every time the videoPlayButton and heroVideoCard are clicked
     var iframe = document.getElementById('modal-video-iframe');
     if(iframe){
         const vimeoPlayer = new Vimeo.Player(iframe);  
