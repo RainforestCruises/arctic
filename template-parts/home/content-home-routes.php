@@ -2,6 +2,7 @@
 $routes = get_field('routes');
 $routes_title = get_field('routes_title');
 $routes_title_subtext = get_field('routes_title_subtext');
+$top_level_search_page = get_field('top_level_search_page', 'options');
 
 ?>
 
@@ -83,15 +84,18 @@ $routes_title_subtext = get_field('routes_title_subtext');
 
 
                             $sample_itinerary = get_field('sample_itinerary', $route);
-                            $length_in_nights = get_field('length_in_nights', $sample_itinerary);
-                            $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
+                            $average_length_in_nights = get_field('average_length_in_nights', $route);
+                            $length = $average_length_in_nights + 1 . ' Day / ' . $average_length_in_nights . ' Night';
 
                             $ports = get_field('ports', $route);
                             $portsDisplay = comma_separate_list($ports);
+
                             $destinations = getItineraryDestinations($sample_itinerary, true, 4); //build list of unique, with embarkations removed
-                            $itinerariesList = getItinerariesFromRoute($route);
-                            $price_low = getLowestPriceFromListOfItineraries($itinerariesList);
-                            $price_high = getHighestPriceFromListOfItineraries($itinerariesList);
+                            $allLink = $top_level_search_page . '?routes=' . $route->ID;
+
+                            // $itinerariesList = getItinerariesFromRoute($route);
+                            // $price_low = getLowestPriceFromListOfItineraries($itinerariesList);
+                            // $price_high = getHighestPriceFromListOfItineraries($itinerariesList);
                         ?>
 
                             <!-- Itinerary Card -->
@@ -196,14 +200,9 @@ $routes_title_subtext = get_field('routes_title_subtext');
 
                                         <!-- Price Group -->
                                         <div class="resource-card__content__bottom">
-                                            <div class="resource-card__content__bottom__price-group">
-                                                <div class="resource-card__content__bottom__price-group__amount">
-                                                    <?php priceFormat($price_low, $price_high); ?> 
-                                                </div>
-                                                <div class="resource-card__content__bottom__price-group__text">
-                                                    <?php echo ($price_low) ? "Per Person" : ""; ?>
-                                                </div>
-                                            </div>
+                                            <a class="btn-primary btn-primary--small btn-primary--inverse" href="<?php echo $allLink; ?>">
+                                                View Itineraries
+                                            </a>
 
                                             <!-- CTA -->
                                             <div class="resource-card__content__bottom__cta">

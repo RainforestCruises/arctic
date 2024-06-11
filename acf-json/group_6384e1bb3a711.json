@@ -178,30 +178,9 @@
             "return_format": "object"
         },
         {
-            "key": "field_63b33ebb5b98c",
-            "label": "Price Low",
-            "name": "price_low",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
-        },
-        {
-            "key": "field_63b33ed05b98d",
-            "label": "Price High",
-            "name": "price_high",
+            "key": "field_6668699349677",
+            "label": "Average Length In Nights",
+            "name": "average_length_in_nights",
             "type": "number",
             "instructions": "",
             "required": 0,
@@ -238,5 +217,5 @@
     "active": true,
     "description": "Routes CPT",
     "show_in_rest": 0,
-    "modified": 1678916979
+    "modified": 1718119133
 }

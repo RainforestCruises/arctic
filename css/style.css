@@ -1880,6 +1880,22 @@ p {
           margin-right: 0.5rem; }
         .resource-card__content__bottom__price-group__text {
           font-size: 1.4rem; }
+      .resource-card__content__bottom__icon-group {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 1rem;
+        align-items: center; }
+        .resource-card__content__bottom__icon-group__icon-area svg {
+          height: 2.4rem;
+          width: 2.4rem; }
+        .resource-card__content__bottom__icon-group__title {
+          font-size: 1.4rem;
+          font-weight: 700;
+          line-height: 1.8rem; }
+          .resource-card__content__bottom__icon-group__title__sub {
+            font-size: 1.2rem;
+            line-height: 1.3rem;
+            font-weight: 400; }
 
 .overlay-card {
   height: 33rem;
