@@ -55,33 +55,22 @@ $sections = get_field('sections');
     <!--mobile menu expand-->
     <nav class="nav-secondary__mobile-menu">
         <ul class="nav-secondary__mobile-menu__list">
-            <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#highlights">Highlights</a>
-            </li>
-            <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#itineraries">Itineraries</a>
-            </li>
-            <?php if ($show_topics) : ?>
+        <?php
+            $categoryCount = 0;
+            foreach ($sections as $section) :
+                $category = $section['category'];
+                $dealsInCategory = getDealsInCategory($category);
+                $titleSlug = slugify(get_the_title($category));
+                if (!$dealsInCategory) continue; // skip if no deals found for category
+            ?>
                 <li class="nav-secondary__mobile-menu__list__item">
-                    <a class="nav-secondary__mobile-menu__list__item__link" href="#about">About</a>
+                    <a href="#<?php echo $titleSlug; ?>" class="nav-secondary__mobile-menu__list__item__link"><?php echo get_the_title($category) ?></a>
                 </li>
-            <?php endif; ?>
-            <?php if ($show_map) : ?>
-                <li class="nav-secondary__mobile-menu__list__item">
-                    <a class="nav-secondary__mobile-menu__list__item__link" href="#map">Map</a>
-                </li>
-            <?php endif; ?>
-            <?php if ($show_faq) : ?>
-                <li class="nav-secondary__mobile-menu__list__item">
-                    <a class="nav-secondary__mobile-menu__list__item__link" href="#faq">FAQ</a>
-                </li>
-            <?php endif; ?>
+            <?php endforeach; ?>
             <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#ships">Ships</a>
+                <a class="nav-secondary__mobile-menu__list__item__link" href="#group">Group</a>
             </li>
-            <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#guide">Guide</a>
-            </li>
+
         </ul>
     </nav>
 </nav>

@@ -139,7 +139,7 @@ function getDealsInCategory($category)
 
 
 // get a list of itineraries that have a particular deal, accepts a single deal or array of deals to match
-function getItinerariesWithDeal($deals)
+function getItinerariesWithDeal($deals, $excludeItinerary = null)
 {
     $queryArgs = array(
         'post_type' => 'rfc_itineraries',
@@ -165,6 +165,9 @@ function getItinerariesWithDeal($deals)
                     $hasDeal = true;
                 }
             }
+        }
+        if($excludeItinerary != null && $excludeItinerary == $itinerary){
+            continue;
         }
         if ($hasDeal) {
             $itinerariesWithDeal[] = $itinerary;

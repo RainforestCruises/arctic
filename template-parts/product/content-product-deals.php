@@ -2,7 +2,7 @@
 $deals = $args['deals'];
 $specialDepartures = $args['specialDepartures'];
 $combinedDeals = array_merge($deals, $specialDepartures);
-
+$isItinerary = get_post_type() == 'rfc_itineraries';
 $sectionTitle = "";
 $subtitleDisplay = "";
 
@@ -200,7 +200,7 @@ if ($deals && $specialDepartures) {
                 $expiry_date =  get_field('expiry_date', $deal);
                 $is_special_departure = get_field('is_special_departure', $deal);
                 $is_exclusive =  get_field('is_exclusive', $deal);
-
+                $itinerariesWithDeal = $isItinerary ? getItinerariesWithDeal($deal, get_post()) : getItinerariesWithDeal($deal);
             ?>
 
                 <div class="product-deals-modal-item" dealId="<?php echo $id; ?>">
@@ -245,6 +245,42 @@ if ($deals && $specialDepartures) {
                             </div>
                         </div>
                     </div>
+
+
+                    <!-- Products -->
+                    <?php if (count($itinerariesWithDeal) > 0) : ?>
+                        <div class="product-deals-modal-item__itineraries">
+                            <h4>Itineraries with <?php echo $is_special_departure ? 'Special Departure' : 'Deal' ?></h4>
+                            <div class="product-deals-modal-item__itineraries__grid">
+                                <?php
+                                foreach ($itinerariesWithDeal as $itinerary) :
+                                    $images =  get_field('hero_gallery', $itinerary);
+                                    $image = $images[0];
+                                    $title = get_field('display_name', $itinerary);
+                                    $length_in_nights = get_field('length_in_nights', $itinerary);
+                                    $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
+                                ?>
+                                    <a class="nav-search-item nav-search-item--border nav-search-item--avatar" href="<?php echo get_permalink($itinerary); ?>">
+                                        <?php if ($image != null) : ?>
+                                            <div class="nav-search-item__image-area">
+                                                <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
+                                            </div>
+                                        <?php endif; ?>
+                                        <div class="nav-search-item__title-group">
+                                            <div class="nav-search-item__title-group__title">
+                                                <?php echo $title ?>
+                                            </div>
+                                            <div class="nav-search-item__title-group__sub">
+                                                <?php echo $length ?>
+                                            </div>
+                                        </div>
+                                    </a>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
+
                     <?php if ($terms_and_conditions) : ?>
                         <h4>Terms & Conditions</h4>
                         <ul class="highlight-list">

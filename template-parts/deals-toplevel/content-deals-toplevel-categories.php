@@ -194,8 +194,6 @@ endforeach;
                 $is_special_departure = get_field('is_special_departure', $deal);
                 $itinerariesWithDeal = getItinerariesWithDeal($deal);
                 $is_exclusive =  get_field('is_exclusive', $deal);
-
-
             ?>
 
                 <div class="product-deals-modal-item" dealId="<?php echo $id; ?>">
