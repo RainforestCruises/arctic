@@ -17,7 +17,7 @@ $agency_email = get_field('agency_email', 'options');
 <section class="contact-page" style="padding-top: 0rem; margin-bottom: 8rem">
     <div class="contact-page__intro">
         <div class="contact-page__intro__subtitle">
-            Call us on the number below to speak to one of our polar specialists xx, or alternatively please fill in the form beneath and we'll get back to you ASAP.
+            To speak to us about becoming travel industry partners give us a call, or alternatively please fill in the form beneath and we'll get back to you ASAP.
         </div>
     </div>
 
@@ -35,12 +35,11 @@ $agency_email = get_field('agency_email', 'options');
                     Give us a Call
                 </h2>
                 <div class="contact-section__wrapper__intro__subtitle">
-                    Speak with our specialists for free on
+                    Our office hours are 6am - 6pm (UTC - 5), Monday - Friday
                 </div>
                 <div class="contact-section__wrapper__intro__phone">
-                    <a href="tel:<?php echo $phone_number_numeric; ?>">
-                        <?php echo $phone_number; ?>
-                    </a>
+                    +1 888-215-3555
+                    <div style="font-size: 1.4rem;">(option 3)</div>
                 </div>
             </div>
 
@@ -58,7 +57,7 @@ $agency_email = get_field('agency_email', 'options');
 
                 <!-- Outro -->
                 <div class="inquire-form__outro">
-                    You can also send us a message directly at <a href="mailto:<?php echo $agency_email; ?>"><?php echo $agency_email; ?></a>
+                    You can also send us a message directly at <a href="mailto:b2b@antarcticacruises.com">b2b@antarcticacruises.com</a>
                 </div>
 
             </div>
