@@ -5,6 +5,7 @@ $guides = get_field('guides', 'options');
 $top_level_guides_page = get_field('top_level_guides_page', 'options');
 $top_level_deals_page = get_field('top_level_deals_page', 'options');
 $top_level_search_page = get_field('top_level_search_page', 'options');
+$top_level_agents_page = get_field('top_level_agents_page', 'options');
 
 $regionsArgs = array(
     'post_type' => 'rfc_regions',
@@ -60,6 +61,9 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                     </li>
                     <li class="nav-main__content__center__nav__list__link" navelement="deals">
                         <a href="<?php echo $top_level_deals_page; ?>">Deals</a>
+                    </li>
+                    <li class="nav-main__content__center__nav__list__link" navelement="agents">
+                        <a href="<?php echo $top_level_agents_page; ?>">Agents</a>
                     </li>
                 </ul>
 

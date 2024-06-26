@@ -38,6 +38,7 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
 $top_level_deals_page = get_field('top_level_deals_page', 'options');
 $top_level_about_page = get_field('top_level_about_page', 'options');
 $top_level_search_page = get_field('top_level_search_page', 'options');
+$top_level_agents_page = get_field('top_level_agents_page', 'options');
 
 ?>
 
@@ -105,6 +106,16 @@ $top_level_search_page = get_field('top_level_search_page', 'options');
                 </div>
                 <div class="nav-button__text">
                     Deals
+                </div>
+            </a>
+            <a class="nav-button mobile-link" href="<?php echo $top_level_agents_page; ?>">
+                <div class="nav-button__svg-icon">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-user"></use>
+                    </svg>
+                </div>
+                <div class="nav-button__text">
+                    Agents
                 </div>
             </a>
             <a class="nav-button mobile-link" href="<?php echo $top_level_about_page; ?>">
