@@ -6,6 +6,7 @@ $phone_number = get_field('phone_number', 'options');
 $phone_number_numeric = get_field('phone_number_numeric', 'options');
 $show_site_notice = get_field('show_site_notice', 'options');
 $email = get_field('email', 'options');
+$top_level_agents_page = get_field('top_level_agents_page', 'options');
 
 $reviews = get_field('reviews');
 $maxlength = 320;
@@ -20,6 +21,9 @@ $maxlength = 320;
         <div class="contact-page__intro__subtitle">
         Call us on the number below to speak to one of our polar specialists, or alternatively please fill in the form beneath and we'll get back to you ASAP.
         </div>
+        <div class="contact-page__intro__subtitle" style="margin-top: 1rem;">
+            If you are a travel agent, please use the form <a href="<?php echo $top_level_agents_page . '#contact-form' ?>">here</a>.
+        </div>F
     </div>
 
     <!-- Contact Form / Wrapper -->
