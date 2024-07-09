@@ -832,7 +832,8 @@
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "maxlength": ""
+            "maxlength": "",
+            "readonly": 1
         },
         {
             "key": "field_66292e60bde35",
@@ -861,6 +862,74 @@
             "append": "",
             "maxlength": "",
             "readonly": 1
+        },
+        {
+            "key": "field_668d52778ce1e",
+            "label": "Automation Extra Deals",
+            "name": "automation_extra_deals",
+            "type": "repeater",
+            "instructions": "Manually add dates here for any special departures",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66292ca9bde32",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_668d52af8ce1f",
+                    "label": "Date",
+                    "name": "date",
+                    "type": "date_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "m\/d\/Y",
+                    "return_format": "Y-m-d",
+                    "first_day": 1
+                },
+                {
+                    "key": "field_668d52f88ce20",
+                    "label": "Deal",
+                    "name": "deal",
+                    "type": "post_object",
+                    "instructions": "Select the special departure",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "rfc_deals"
+                    ],
+                    "taxonomy": "",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "object",
+                    "ui": 1
+                }
+            ]
         },
         {
             "key": "field_63595b2cf857f",
@@ -1420,5 +1489,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1715802493
+    "modified": 1720537939
 }

@@ -50,8 +50,6 @@ $departures = $args['departures'];
                 <div class="swiper-wrapper">
 
                     <?php foreach ($departures as $d) :
-                    console_log($d);
-                    console_log('xxx');
                         $departureId = $d['ID'];
                         $ship = $d['Ship'];
                         $shipId = $ship->ID;

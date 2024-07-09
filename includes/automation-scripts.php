@@ -63,7 +63,7 @@ function refresh_itinerary_info($itineraryId, $post_id)
 
     $timezone  = -5; // (GMT -5:00) EST (U.S. & Canada)
     $currentTime =  gmdate("M d, Y  H:i:s", time() + 3600 * ($timezone + date("I")));
-    $responseObject = formatDepartureApiData($data['data']);
+    $responseObject = formatDepartureApiData($data['data'], $post_id);
     update_field('automation_message', array_unique($responseObject['errors']), $post_id);
     update_field('automation_departure_data', $responseObject['departures'], $post_id);
     update_field('automation_last_updated', $currentTime, $post_id);
@@ -72,10 +72,12 @@ function refresh_itinerary_info($itineraryId, $post_id)
 
 
 // map / format API departure list to conform to WP departure lists ( )
-function formatDepartureApiData($automation_departure_data)
+function formatDepartureApiData($automation_departure_data, $itineraryId)
 {
     $error_messages = [];
     $departure_list = [];
+    $automation_extra_deals = get_field('automation_extra_deals', $itineraryId);
+
     foreach ($automation_departure_data as $departure_item) {     
 
         // build cabin rate list
@@ -108,6 +110,13 @@ function formatDepartureApiData($automation_departure_data)
                 $error_messages[] = "missing deal";
             }
             $deals_post_list[] = $dealPost;
+        };
+
+        // check extra deals (special departures)
+        foreach ($automation_extra_deals as $extra_deal) {
+            if($extra_deal['date'] == $departure_item['departureDate']){
+                $deals_post_list[] = $extra_deal['deal'];
+            }
         };
 
         // build final departure object
