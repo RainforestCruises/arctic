@@ -50,7 +50,7 @@ $sidebarStyles = get_posts($stylesArgs);
 
 
 // Sidebar Embarkation
-$sidebarEmbarkationZones= getEmbarkationList();
+$sidebarEmbarkationZones = getEmbarkationList();
 
 
 
@@ -71,23 +71,23 @@ for ($x = $currentMonth; $x < $currentMonth + $monthLimit; $x++) {
     $object->initiallyShown = true;
 
     $monthRegions = [];
-    foreach($sidebarRegions as $region){
+    foreach ($sidebarRegions as $region) {
         $season_start = get_field('season_start', $region);
         $season_length = get_field('season_length', $region);
         $season_end = $season_start + $season_length;
 
         $monthNumberArray = []; // build array of month numbers applicable to this region
-        for($z = $season_start - 1; $z <= $season_end; $z++){
+        for ($z = $season_start - 1; $z <= $season_end; $z++) {
             $monthNumberArray[] = date('m', mktime(0, 0, 0, $z, 1));
         }
 
-        if(array_search($object->monthNumber, $monthNumberArray)){ // check if the current month number corresponds to the array
+        if (array_search($object->monthNumber, $monthNumberArray)) { // check if the current month number corresponds to the array
             $monthRegions[] = $region->ID;
         }
     }
     $object->monthRegions = $monthRegions;
 
-    if($preselectedRegion != null && array_search($preselectedRegion, $object->monthRegions) === false){  // determine if initially shown based on preselected region
+    if ($preselectedRegion != null && array_search($preselectedRegion, $object->monthRegions) === false) {  // determine if initially shown based on preselected region
         $object->initiallyShown = false;
     }
 
@@ -149,8 +149,8 @@ if (trim($selectedYearsString) != "") {
 $preselectedDepartures = [];
 $preselectedDeparturesString = '';
 $filteredSidebarMonths = [];
-foreach($sidebarMonths as $m){   
-    if($m->initiallyShown == true){
+foreach ($sidebarMonths as $m) {
+    if ($m->initiallyShown == true) {
         $stringMonth = $m->year . "-" . $m->monthNumber;
         $filteredSidebarMonths[] = $stringMonth;
     }
@@ -370,7 +370,8 @@ $args = array(
     'sidebarRegions' => $sidebarRegions,
     'sidebarRoutes' => $sidebarRoutes,
     'sidebarStyles' => $sidebarStyles,
-    'sidebarEmbarkationZones' => $sidebarEmbarkationZones
+    'sidebarEmbarkationZones' => $sidebarEmbarkationZones,
+    'footerCtaDivider' => true
 
 );
 
@@ -405,7 +406,18 @@ $args = array(
         get_template_part('template-parts/search/content', 'search-travel-guides', $args);
     endif; ?>
 
+    <!-- Footer CTA  -->
+    <?php
+    get_template_part('template-parts/shared/content', 'shared-footer-cta', $args);
+    ?>
+
 </main>
+
+<!-- Inquire Modal -->
+<?php
+get_template_part('template-parts/shared/content', 'shared-basic-inquiry-modal', $args);
+?>
+
 
 <!-- Full Search Mobile -->
 <div class="search-filter-mobile-area" id="search-filter-mobile-area">

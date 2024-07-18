@@ -1,9 +1,15 @@
 <?php
 $primary_contact_form_id = get_field('primary_contact_form_id', 'options');
-$productName = get_the_title();
+$title = get_the_title();
 $phone_number = get_field('phone_number', 'options');
 $phone_number_numeric = get_field('phone_number_numeric', 'options');
 $email = get_field('email', 'options');
+
+// exception title for top level search page
+$top_level_search_page = get_field('top_level_search_page', 'options');
+if ($top_level_search_page == get_permalink()) {
+    $title = 'Polar Expeditions';
+};
 
 ?>
 
@@ -30,7 +36,7 @@ $email = get_field('email', 'options');
             <div class="inquire-form">
                 <div class="inquire-form__intro">
                     <div class="inquire-form__intro__title">
-                        Interested in <?php echo $productName; ?>?
+                        Interested in <?php echo $title; ?>?
                     </div>
                     <div class="inquire-form__intro__selection">
 

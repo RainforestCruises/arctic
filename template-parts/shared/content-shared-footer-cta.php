@@ -4,6 +4,12 @@ $footer_cta_subtext = get_field('footer_cta_subtext', 'options');
 $footer_cta_steps = get_field('footer_cta_steps', 'options');
 $footerClasses = renderFooterClasses();
 $footerCtaDivider = $args['footerCtaDivider'];
+$useModalContact = false;
+
+$templateName = get_page_template_slug();
+if ($templateName == 'template-landing.php' || $templateName == 'template-search.php') {
+    $useModalContact = true;
+}
 ?>
 
 <!-- CTA Pre-Footer -->
@@ -47,9 +53,15 @@ $footerCtaDivider = $args['footerCtaDivider'];
 
                 <div class="footer-cta__closing">
                     <div class="footer-cta__closing__buttons">
-                        <a class="btn-primary btn-primary--inverse-outline" href="<?php echo get_home_url(); ?>/contact">
-                            Start Your Adventure Today
-                        </a>
+                        <?php if ($useModalContact) : ?>
+                            <button class="btn-primary btn-primary--inverse-outline generic-inquire-cta">
+                                Start Your Adventure Today
+                            </button>
+                        <?php else : ?>
+                            <a class="btn-primary btn-primary--inverse-outline" href="<?php echo get_home_url(); ?>/contact">
+                                Start Your Adventure Today
+                            </a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

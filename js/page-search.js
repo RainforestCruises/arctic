@@ -5,18 +5,12 @@ jQuery(document).ready(function ($) {
   const searchResultsTop = document.getElementById("search-results-top");
   const searchContent = document.getElementById("search-page-content");
   const searchIntro = document.getElementById("search-page-intro");
-  const searchFilterButton = document.getElementById(
-    "search-filter-bar-button"
-  );
+  const searchFilterButton = document.getElementById("search-filter-bar-button");
   const searchSidebar = document.getElementById("search-sidebar");
-  const searchMobileClose = document.getElementById(
-    "search-sidebar-mobile-close-button"
-  );
+  const searchMobileClose = document.getElementById("search-sidebar-mobile-close-button");
   const searchIntroContent = document.getElementById("search-intro-content");
   const mobileFiltersDiv = document.getElementById("search-filter-mobile-area");
-  const showResultsButton = document.getElementById(
-    "search-filter-mobile-cta-button"
-  );
+  const showResultsButton = document.getElementById("search-filter-mobile-cta-button");
 
   // move sort filter -- initial
   if ($(window).width() < 1000) {
@@ -78,6 +72,16 @@ jQuery(document).ready(function ($) {
     mobileFiltersDiv.appendChild(searchSidebar);
     mobileFiltersDiv.classList.add("active");
   }
+
+  // Inquire modal
+  const inquireModal = document.querySelector("#inquireModal");
+  const genericInquireCtaButtons = [...document.querySelectorAll(".generic-inquire-cta")];
+  genericInquireCtaButtons.forEach((item) => {
+    item.addEventListener("click", () => {
+      inquireModal.style.display = "flex";
+      body.classList.add("no-scroll");
+    });
+  });
 
   // Form ----------------
   const formViewType = document.querySelector("#formViewType");
@@ -164,9 +168,7 @@ jQuery(document).ready(function ($) {
   };
 
   // expand if hidden checkbox is selected upon page load
-  const departureDatesExpandedArray = [
-    ...document.querySelectorAll(".checkbox-expand-group"),
-  ];
+  const departureDatesExpandedArray = [...document.querySelectorAll(".checkbox-expand-group")];
   let hasExpanded = false;
   departureDatesExpandedArray.forEach((item) => {
     if (item.checked == true) {
@@ -366,9 +368,7 @@ jQuery(document).ready(function ($) {
   }
 
   // if region selected, hide and uncheck unrelated routes
-  const routeGroupArray = [
-    ...document.querySelectorAll(".route-checkbox-group"),
-  ]; // li element of checkbox
+  const routeGroupArray = [...document.querySelectorAll(".route-checkbox-group")]; // li element of checkbox
   function hideRoutes(selectedRegion) {
     routeGroupArray.forEach((item) => {
       if (selectedRegion == "") {
@@ -424,9 +424,7 @@ jQuery(document).ready(function ($) {
     formRoutes.value = routesString;
   }
 
-  const departureGroupArray = [
-    ...document.querySelectorAll(".departure-checkbox-group"),
-  ]; // li element of checkbox
+  const departureGroupArray = [...document.querySelectorAll(".departure-checkbox-group")]; // li element of checkbox
   function hideDepartures(selectedRegion) {
     departureGroupArray.forEach((item) => {
       if (selectedRegion == "") {
@@ -454,9 +452,7 @@ jQuery(document).ready(function ($) {
 
   // departure date selection
   let departuresString = formDates.value;
-  const departureDatesArray = [
-    ...document.querySelectorAll(".departure-checkbox"),
-  ];
+  const departureDatesArray = [...document.querySelectorAll(".departure-checkbox")];
   departureDatesArray.forEach((item) => {
     item.addEventListener("click", () => {
       computeDeparturesString();
@@ -480,9 +476,7 @@ jQuery(document).ready(function ($) {
     });
 
     //filter count
-    let departuresFilterCount = document.getElementById(
-      "departuresFilterCount"
-    );
+    let departuresFilterCount = document.getElementById("departuresFilterCount");
     if (count > 0) {
       departuresFilterCount.classList.add("show");
       departuresFilterCount.innerHTML = count;
@@ -599,9 +593,7 @@ jQuery(document).ready(function ($) {
   // clear
   const clearButtons = [...document.querySelectorAll(".clear-filters")];
   const checkBoxes = [...document.querySelectorAll(".checkbox")];
-  const filterCounts = [
-    ...document.querySelectorAll(".filter__heading__text__count"),
-  ];
+  const filterCounts = [...document.querySelectorAll(".filter__heading__text__count")];
 
   clearButtons.forEach((item) => {
     item.addEventListener("click", () => {
@@ -769,7 +761,7 @@ jQuery(document).ready(function ($) {
 
     //ajax call / submit form
     var searchForm = $("#search-form");
-    
+
     jqxhr = $.ajax({
       url: searchForm.attr("action"),
       data: searchForm.serialize(),
@@ -777,9 +769,7 @@ jQuery(document).ready(function ($) {
       beforeSend: function () {
         $("#response").addClass("loading"); //indicate loading
         $(".search-sidebar").addClass("loading"); //indicate loading
-        $("#response").append(
-          '<div class="lds-ring lds-ring--large"><div></div><div></div><div></div><div></div></div>'
-        );
+        $("#response").append('<div class="lds-ring lds-ring--large"><div></div><div></div><div></div><div></div></div>');
         $("#response-count").html("Searching...");
 
         showResultsButton.innerHTML = `<div class="lds-ring"><div></div><div></div><div></div><div></div></div>`;
@@ -805,8 +795,7 @@ jQuery(document).ready(function ($) {
         $("#response").addClass(viewTypeDisplay);
 
         // top area text
-        let pageDisplay =
-          pageNumberDisplay > 1 ? " (Page " + pageNumberDisplay + ")" : ""; //show page number if not on page 1
+        let pageDisplay = pageNumberDisplay > 1 ? " (Page " + pageNumberDisplay + ")" : ""; //show page number if not on page 1
         var resultCountDisplay = "";
         if (resultCount == 1) {
           resultCountDisplay = "Found " + resultCount + " result";
@@ -815,26 +804,19 @@ jQuery(document).ready(function ($) {
           resultCountDisplay = "No results found";
           showResultsButton.textContent = "No results found";
         } else {
-          resultCountDisplay =
-            "Found " + resultCount + " results" + pageDisplay;
+          resultCountDisplay = "Found " + resultCount + " results" + pageDisplay;
           showResultsButton.textContent = "See " + resultCount + " results";
         }
         $("#response-count").html(resultCountDisplay);
 
-        let noResultsClearButton = document.querySelector(
-          "#no-results-clear-button"
-        );
+        let noResultsClearButton = document.querySelector("#no-results-clear-button");
         if (noResultsClearButton != null) {
           noResultsClearButton.addEventListener("click", (e) => {
             clearFilters();
           });
         }
 
-        let pageButtonArray = [
-          ...document.querySelectorAll(
-            ".search-results-area__grid__pagination__pages-group__button"
-          ),
-        ];
+        let pageButtonArray = [...document.querySelectorAll(".search-results-area__grid__pagination__pages-group__button")];
         let showAllButton = document.getElementById("show-all-pages-button");
         if (showAllButton) {
           showAllButton.addEventListener("click", (e) => {
@@ -847,25 +829,14 @@ jQuery(document).ready(function ($) {
         pageButtonArray.forEach((item) => {
           item.addEventListener("click", (e) => {
             var pageNumber = item.value;
-            if (
-              !item.classList.contains("current") &&
-              !item.classList.contains("disabled")
-            ) {
+            if (!item.classList.contains("current") && !item.classList.contains("disabled")) {
               // next button
-              if (
-                item.classList.contains(
-                  "search-results-area__grid__pagination__pages-group__button--next-button"
-                )
-              ) {
+              if (item.classList.contains("search-results-area__grid__pagination__pages-group__button--next-button")) {
                 var pageGoTo = +pageNumberDisplay + 1;
                 $("#formPageNumber").val(pageGoTo);
 
                 // back button
-              } else if (
-                item.classList.contains(
-                  "search-results-area__grid__pagination__pages-group__button--back-button"
-                )
-              ) {
+              } else if (item.classList.contains("search-results-area__grid__pagination__pages-group__button--back-button")) {
                 var pageGoTo = +pageNumberDisplay - 1;
                 $("#formPageNumber").val(pageGoTo);
 
@@ -883,11 +854,7 @@ jQuery(document).ready(function ($) {
   }
 
   //pagination js
-  let pageButtonArray = [
-    ...document.querySelectorAll(
-      ".search-results-area__grid__pagination__pages-group__button"
-    ),
-  ];
+  let pageButtonArray = [...document.querySelectorAll(".search-results-area__grid__pagination__pages-group__button")];
   let showAllButton = document.getElementById("show-all-pages-button");
   if (showAllButton) {
     showAllButton.addEventListener("click", (e) => {
@@ -901,25 +868,14 @@ jQuery(document).ready(function ($) {
       var pageNumberDisplay = formPageNumber.value;
       var pageNumber = item.value;
 
-      if (
-        !item.classList.contains("current") &&
-        !item.classList.contains("disabled")
-      ) {
+      if (!item.classList.contains("current") && !item.classList.contains("disabled")) {
         // next button
-        if (
-          item.classList.contains(
-            "search-results-area__grid__pagination__pages-group__button--next-button"
-          )
-        ) {
+        if (item.classList.contains("search-results-area__grid__pagination__pages-group__button--next-button")) {
           var pageGoTo = +pageNumberDisplay + 1;
           $("#formPageNumber").val(pageGoTo);
 
           // back button
-        } else if (
-          item.classList.contains(
-            "search-results-area__grid__pagination__pages-group__button--back-button"
-          )
-        ) {
+        } else if (item.classList.contains("search-results-area__grid__pagination__pages-group__button--back-button")) {
           var pageGoTo = +pageNumberDisplay - 1;
           $("#formPageNumber").val(pageGoTo);
 
@@ -1029,8 +985,7 @@ jQuery(document).ready(function ($) {
         faqsModal.style.display = "flex";
         body.classList.add("no-scroll");
         const section = item.getAttribute("section");
-        const modalDivSectionOffset =
-          document.getElementById(section).offsetTop;
+        const modalDivSectionOffset = document.getElementById(section).offsetTop;
         faqsModalMainContent.scrollTop = modalDivSectionOffset - 120;
       });
     });
