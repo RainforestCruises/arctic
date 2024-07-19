@@ -33,7 +33,7 @@ $viewType = $args['viewType'];
             </div>
         </div>
 
-        <div class="search-results-area__top-section__controls" id="sort-control" style="visibility: <?php echo $viewType == 'search-departures' ? "hidden" : "visible" ?>">
+        <div class="search-results-area__top-section__controls" id="sort-control" style="display: <?php echo $viewType == 'search-departures' ? "none" : "" ?>">
             <label class="sort-control" for="result-sort">
                 <span class="sort-control__label-text">Sort by</span>
                 <select class="sort-control__select" id="result-sort" name="result-sort">

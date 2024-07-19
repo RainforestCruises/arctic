@@ -5,6 +5,12 @@ $phone_number = get_field('phone_number', 'options');
 $phone_number_numeric = get_field('phone_number_numeric', 'options');
 $email = get_field('email', 'options');
 
+// search title should be the h1
+$templateName = get_page_template_slug();
+if ($templateName == 'template-search.php') {
+    $title = get_field('title_text');
+}
+
 // exception title for top level search page
 $top_level_search_page = get_field('top_level_search_page', 'options');
 if ($top_level_search_page == get_permalink()) {
