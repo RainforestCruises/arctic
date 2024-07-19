@@ -383,9 +383,15 @@ $args = array(
     ?>
 
     <div class="search-filter-bar" id="search-filter-bar">
-        <button class="search-filter-bar__button btn-pill" id="search-filter-bar-button">
-            Filters
-        </button>
+        <div class="search-filter-bar__left">
+            <button class="search-filter-bar__button btn-pill" id="search-filter-bar-button">
+                Filters
+            </button>
+            <button class="search-filter-bar__button btn-pill generic-inquire-cta">
+                Inquire
+            </button>
+        </div>
+
     </div>
 
     <!-- Content -->

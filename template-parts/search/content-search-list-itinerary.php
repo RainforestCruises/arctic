@@ -3,13 +3,18 @@
 
     <!-- Tag Area -->
     <div class="search-card-itinerary__tag-area">
-
         <?php if ($args->Deals) :
-            foreach ($args->Deals as $deal) : ?>
+            if (count($args->Deals) == 1) :
+                foreach ($args->Deals as $deal) : ?>
+                    <div class="card-tag card-tag--deal">
+                        <?php echo get_field('short_title', $deal) ?>
+                    </div>
+                <?php endforeach;
+            else : ?>
                 <div class="card-tag card-tag--deal">
-                    <?php echo get_field('short_title', $deal) ?>
+                    <?php echo count($args->Deals) ?> Deals
                 </div>
-        <?php endforeach;
+        <?php endif;
         endif; ?>
         <?php if ($args->SpecialDepartures) :
             foreach ($args->SpecialDepartures as $special) : ?>

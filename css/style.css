@@ -6569,6 +6569,11 @@ p {
     left: 0;
     z-index: 30;
     border-top: none; }
+  .search-filter-bar__left {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%; }
 
 .search-filter-mobile-area {
   height: 100%;
