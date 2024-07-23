@@ -5,7 +5,7 @@ return array (
   'title' => 'Deals',
   'type' => 'rfc_deals',
   'id' => '61dca42e9152d',
-  'updated' => 1716830830,
+  'updated' => 1721747328,
   'columns' => 
   array (
     'title' => 
@@ -21,14 +21,15 @@ return array (
       'search' => 'on',
       'name' => 'title',
     ),
-    '61dca3f7b374bc' => 
+    '669fc7568dd2f0' => 
     array (
       'type' => 'column-acf_field',
-      'label' => 'Navigation Title',
+      'label' => 'Supplier',
       'width' => '',
       'width_unit' => '%',
-      'field' => 'field_61dc9f9d53590',
-      'character_limit' => '20',
+      'field' => 'field_669fc68fc6bca',
+      'post_property_display' => 'title',
+      'post_link_to' => 'edit_post',
       'export' => 'off',
       'sort' => 'on',
       'edit' => 'on',
@@ -36,26 +37,9 @@ return array (
       'search' => 'on',
       'filter' => 'off',
       'filter_label' => '',
-      'name' => '61dca3f7b374bc',
+      'name' => '669fc7568dd2f0',
     ),
-    '643579a8feb850' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Short Title',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_6435757d240b9',
-      'character_limit' => '20',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '643579a8feb850',
-    ),
-    '6440045f381064' => 
+    '669fc767ab8520' => 
     array (
       'type' => 'column-acf_field',
       'label' => 'Category',
@@ -71,44 +55,7 @@ return array (
       'search' => 'on',
       'filter' => 'off',
       'filter_label' => '',
-      'name' => '6440045f381064',
-    ),
-    '643579931be76c' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Description',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_61dca7348a395',
-      'excerpt_length' => '20',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'editable_type' => 'textarea',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '643579931be76c',
-    ),
-    '61dca405c8f5c4' => 
-    array (
-      'type' => 'column-acf_field',
-      'label' => 'Featured Image',
-      'width' => '',
-      'width_unit' => '%',
-      'field' => 'field_61dc9f9d56faa',
-      'image_size' => 'cpac-custom',
-      'image_size_w' => '60',
-      'image_size_h' => '60',
-      'export' => 'off',
-      'sort' => 'on',
-      'edit' => 'on',
-      'bulk_edit' => 'on',
-      'search' => 'on',
-      'filter' => 'off',
-      'filter_label' => '',
-      'name' => '61dca405c8f5c4',
+      'name' => '669fc767ab8520',
     ),
     '6453e0cfd8d4fc' => 
     array (
