@@ -76,9 +76,11 @@ $itineraries = $args['itineraries'];
                             $hero_gallery = get_field('hero_gallery', $itinerary);
                             $hero_image = $hero_gallery[0];
                             $embarkation_point = get_field('embarkation_point', $itinerary);
-                            $embarkation = get_the_title($embarkation_point) . ", " . get_field('country_name', $embarkation_point);
+                            $embarkation_country = get_field('embarkation_country', $embarkation_point);
+                            $embarkation = get_the_title($embarkation_point) . ", " . get_the_title($embarkation_country);
                             $disembarkation_point = get_field('disembarkation_point', $itinerary);
-                            $disembarkation = get_the_title($disembarkation_point) . ", " . get_field('country_name', $disembarkation_point);
+                            $disembarkation_country = get_field('embarkation_country', $disembarkation_point);
+                            $disembarkation = get_the_title($disembarkation_point) . ", " . get_the_title($disembarkation_country);
                             $hasDifferentPorts = $disembarkation_point != null && ($disembarkation_point != $embarkation_point);
                             $days = get_field('itinerary', $itinerary);
                             $departures = getDepartureList($itinerary, get_post()); // need to restrict to specific ship to obtain correct prices and dates

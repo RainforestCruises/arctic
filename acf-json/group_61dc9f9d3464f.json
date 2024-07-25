@@ -41,44 +41,6 @@
             "ui": 1
         },
         {
-            "key": "field_61e9e5cfbfa3b",
-            "label": "Is Active",
-            "name": "is_active",
-            "type": "true_false",
-            "instructions": "Inactive promos will not be displayed anywhere on the site",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 1,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_64494ebbc5e66",
-            "label": "Is Special Departure",
-            "name": "is_special_departure",
-            "type": "true_false",
-            "instructions": "Check if this is a Special Departure like a Guest Lecture instead of a typical deal",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
             "key": "field_61dc9f9d53590",
             "label": "Navigation Title",
             "name": "navigation_title",
@@ -115,6 +77,44 @@
             "prepend": "",
             "append": "",
             "maxlength": 34
+        },
+        {
+            "key": "field_61e9e5cfbfa3b",
+            "label": "Is Active",
+            "name": "is_active",
+            "type": "true_false",
+            "instructions": "Inactive promos will not be displayed anywhere on the site",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_64494ebbc5e66",
+            "label": "Is Special Departure",
+            "name": "is_special_departure",
+            "type": "true_false",
+            "instructions": "Check if this is a Special Departure like a Guest Lecture instead of a typical deal",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         },
         {
             "key": "field_61dca7348a395",
@@ -408,5 +408,5 @@
     "active": true,
     "description": "Deal - CPT",
     "show_in_rest": 0,
-    "modified": 1721747132
+    "modified": 1721921406
 }
