@@ -83,7 +83,6 @@ $itineraries = get_posts($queryArgs);
                         }
                         $images =  get_field('hero_gallery', $itinerary);
                         $image = $images[0];
-                        $itineraries =  get_field('itineraries', $itinerary);
                         $title = get_field('display_name', $itinerary);
                         $days = get_field('itinerary', $itinerary);
                         $length_in_nights = get_field('length_in_nights', $itinerary);
@@ -92,9 +91,7 @@ $itineraries = get_posts($queryArgs);
                         $embarkation = get_the_title($embarkation_point);
                         $shipsDisplay = getShipsFromItineraryList($itinerary, true);
                         $destinations = getItineraryDestinations($itinerary, true, 4);
-                        $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
-                        $guestsDisplay = get_field('vessel_capacity', $itinerary) . ' Guests, ' . 'Luxury';
-
+                        console_log($shipsDisplay);
                     ?>
 
                         <!-- Itinerary Card -->

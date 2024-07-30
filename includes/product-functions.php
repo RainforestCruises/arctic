@@ -427,12 +427,20 @@ function getItineraryDestinations($itinerary, $display = false, $limit = 0)
 function getShipsFromItineraryList($itineraries, $display = false)
 {
     $ships = [];
-    foreach ($itineraries as $itinerary) {
-        $itineraryDepartures = getDepartureList($itinerary);
+    if(is_array($itineraries)){
+        foreach ($itineraries as $itinerary) { // list of itineraries
+            $itineraryDepartures = getDepartureList($itinerary); 
+            foreach ($itineraryDepartures as $d) {
+                $ships[] = $d['Ship'];
+            }
+        }   
+    } else {
+        $itineraryDepartures = getDepartureList($itineraries); // single itinerary
         foreach ($itineraryDepartures as $d) {
             $ships[] = $d['Ship'];
         }
-    }   
+    }
+
     $tempArray = array(); // array unique for objects
     foreach ($ships as $value) {
         $tempArray[serialize($value)] = $value;
