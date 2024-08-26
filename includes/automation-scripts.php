@@ -50,15 +50,15 @@ function refresh_itinerary_info($itineraryId, $post_id)
     if (is_wp_error($request)) {
         $error_message = $request->get_error_message();
         update_field('automation_departure_data', $error_message, $post_id);
-        return false; 
+        return false;
     }
 
     $body = wp_remote_retrieve_body($request);
     $data = json_decode($body, true);
 
-    if($data['succeeded'] == false){
+    if ($data['succeeded'] == false) {
         update_field('automation_message', 'Request failed', $post_id);
-        return false; 
+        return false;
     }
 
     $timezone  = -5; // (GMT -5:00) EST (U.S. & Canada)
@@ -78,13 +78,13 @@ function formatDepartureApiData($automation_departure_data, $itineraryId)
     $departure_list = [];
     $automation_extra_deals = get_field('automation_extra_deals', $itineraryId);
 
-    foreach ($automation_departure_data as $departure_item) {     
+    foreach ($automation_departure_data as $departure_item) {
 
         // build cabin rate list
-        $cabin_price_list = []; 
+        $cabin_price_list = [];
         foreach ($departure_item['rates'] as $rate) {
             $cabinPost = get_post($rate['wpRoomId']);
-            if(!get_post_status($rate['wpRoomId']) || get_post_type($rate['wpRoomId']) != 'rfc_cabins'){ // check if not found
+            if (!get_post_status($rate['wpRoomId']) || get_post_type($rate['wpRoomId']) != 'rfc_cabins') { // check if not found
                 $error_messages[] = "missing cabin";
             }
             $cabin_price = [
@@ -98,24 +98,36 @@ function formatDepartureApiData($automation_departure_data, $itineraryId)
 
         // get ship post
         $shipPost = get_post($departure_item['wpShipId']);
-        if(!get_post_status($departure_item['wpShipId']) || get_post_type($departure_item['wpShipId']) != 'rfc_cruises'){ // check if not found
+        if (!get_post_status($departure_item['wpShipId']) || get_post_type($departure_item['wpShipId']) != 'rfc_cruises') { // check if not found
             $error_messages[] = "missing ship";
         }
 
         // add deals
         $deals_post_list = [];
+        $default_deal = null;
         foreach ($departure_item['deals'] as $deal) {
             $dealPost = get_post($deal['wpDealId']);
-            if(!get_post_status($deal['wpDealId']) || get_post_type($deal['wpDealId']) != 'rfc_deals'){ // check if not found
+            if (!get_post_status($deal['wpDealId']) || get_post_type($deal['wpDealId']) != 'rfc_deals') { // check if not found
                 $error_messages[] = "missing deal";
             }
             $deals_post_list[] = $dealPost;
+
+            if ($deal['isDefault']) {
+                $default_deal = $dealPost; // if there is a default deal, mark it
+            }
         };
 
         // check extra deals (special departures)
         foreach ($automation_extra_deals as $extra_deal) {
-            if($extra_deal['date'] == $departure_item['departureDate']){
-                $deals_post_list[] = $extra_deal['deal'];
+            if ($extra_deal['date'] == $departure_item['departureDate']) {
+                if ($extra_deal['overwrite_default'] == true) {           
+                    $deals_post_list = array_filter($deals_post_list, function ($deal) use ($default_deal) { // Remove default deal from list
+                        return $deal->ID !== $default_deal->ID;
+                    });
+                    $deals_post_list[] = $extra_deal['deal'];
+                } else {
+                    $deals_post_list[] = $extra_deal['deal'];
+                }
             }
         };
 

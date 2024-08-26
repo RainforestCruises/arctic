@@ -912,7 +912,7 @@
                     "label": "Deal",
                     "name": "deal",
                     "type": "post_object",
-                    "instructions": "Select the special departure",
+                    "instructions": "Select the extra deal \/ special departure",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -928,6 +928,25 @@
                     "multiple": 0,
                     "return_format": "object",
                     "ui": 1
+                },
+                {
+                    "key": "field_66ccfe984388f",
+                    "label": "Overwrite Default",
+                    "name": "overwrite_default",
+                    "type": "true_false",
+                    "instructions": "If checked this will overwrite a default deal found on the date",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
                 }
             ]
         },
@@ -1489,5 +1508,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1720537939
+    "modified": 1724712071
 }
