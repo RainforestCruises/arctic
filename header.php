@@ -82,10 +82,10 @@
                 bottom: 160px !important;
             }
 
-            .gist-messenger-bubble-iframe iframe,
-            .gist-notification-iframe iframe,
-            .gist-post-small-iframe iframe,
-            .gist-prompt-iframe iframe {
+            .gist-messenger-bubble-iframe,
+            .gist-notification-iframe,
+            .gist-post-small-iframe,
+            .gist-prompt-iframe {
                 bottom: 11rem !important;
                 right: 3rem !important;
             }
