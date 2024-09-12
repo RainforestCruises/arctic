@@ -25,7 +25,7 @@ $vessel_capacity_antarctica = get_field('vessel_capacity_antarctica');
 
 $vessel_capacity_display = $vessel_capacity;
 if ($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_capacity) {
-    $vessel_capacity_display = $vessel_capacity . ' (' . $vessel_capacity_antarctica . ' in Antarctica)';
+    $vessel_capacity_display = $vessel_capacity . ' (' . $vessel_capacity_antarctica . ' Fly-Cruise itineraries)';
 }
 
 

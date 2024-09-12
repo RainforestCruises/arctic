@@ -224,7 +224,7 @@
         },
         {
             "key": "field_64469e416c23b",
-            "label": "Vessel Capacity Antarctica",
+            "label": "Vessel Capacity Antarctica (Fly-Cruise)",
             "name": "vessel_capacity_antarctica",
             "type": "number",
             "instructions": "Total capacity when sailing in the Antarctica region (Leave blank if the same)",
@@ -852,5 +852,5 @@
     "active": true,
     "description": "Cruise - CPT",
     "show_in_rest": 0,
-    "modified": 1686774745
+    "modified": 1726159705
 }
