@@ -224,10 +224,31 @@
         },
         {
             "key": "field_64469e416c23b",
-            "label": "Vessel Capacity Antarctica (Fly-Cruise)",
+            "label": "Vessel Capacity (Antarctica)",
             "name": "vessel_capacity_antarctica",
             "type": "number",
             "instructions": "Total capacity when sailing in the Antarctica region (Leave blank if the same)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_66e4c9e69e028",
+            "label": "Vessel Capacity (Fly-Cruise)",
+            "name": "vessel_capacity_fly",
+            "type": "number",
+            "instructions": "Total capacity for express fly-cruise (Leave blank if the same)",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -852,5 +873,5 @@
     "active": true,
     "description": "Cruise - CPT",
     "show_in_rest": 0,
-    "modified": 1726159705
+    "modified": 1726269972
 }

@@ -21,11 +21,16 @@ if($expand){
 
 $vessel_capacity = get_field('vessel_capacity');
 $vessel_capacity_antarctica = get_field('vessel_capacity_antarctica');
+$vessel_capacity_fly = get_field('vessel_capacity_fly');
 
 
 $vessel_capacity_display = $vessel_capacity;
 if ($vessel_capacity_antarctica != "" && $vessel_capacity_antarctica != $vessel_capacity) {
-    $vessel_capacity_display = $vessel_capacity . ' (' . $vessel_capacity_antarctica . ' Fly-Cruise itineraries)';
+    $vessel_capacity_display .= ' (' . $vessel_capacity_antarctica . ' in Antarctica)';
+}
+
+if ($vessel_capacity_fly != "" && $vessel_capacity_fly != $vessel_capacity) {
+    $vessel_capacity_display .= ' (' . $vessel_capacity_fly . ' on Fly Cruises)';
 }
 
 
