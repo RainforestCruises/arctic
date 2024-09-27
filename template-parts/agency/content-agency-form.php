@@ -38,7 +38,9 @@ $agency_email = get_field('agency_email', 'options');
                     Our office hours are 6am - 6pm (UTC - 5), Monday - Friday
                 </div>
                 <div class="contact-section__wrapper__intro__phone">
-                    +1.888.585.4780
+                    <a href="tel:+18885854780">
+                        +1.888.585.4780
+                    </a>
                     <div style="font-size: 1.4rem;">(option 2)</div>
                 </div>
             </div>
