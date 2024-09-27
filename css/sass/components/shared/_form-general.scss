@@ -31,7 +31,7 @@
         font-size: 1.6rem !important;
     }
 
-    & button {
+    & button[type="submit"] {
         color: $color-white !important;
         background-color: $color-primary !important;
         padding: 0 3rem !important;

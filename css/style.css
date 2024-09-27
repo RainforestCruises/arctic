@@ -2518,7 +2518,7 @@ p {
     border-radius: .5rem !important; }
   .form-general .newsletter-form-text {
     font-size: 1.6rem !important; }
-  .form-general button {
+  .form-general button[type="submit"] {
     color: #fff !important;
     background-color: #1d2225 !important;
     padding: 0 3rem !important;
@@ -2534,7 +2534,7 @@ p {
     margin-top: 3rem !important;
     border-radius: 1rem !important;
     transition: all .2s; }
-    .form-general button:hover {
+    .form-general button[type="submit"]:hover {
       color: #fff !important;
       background-color: #347fff !important; }
 
