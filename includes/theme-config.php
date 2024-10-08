@@ -49,13 +49,10 @@ function afloat_images_sizes()
 add_filter('image_size_names_choose', 'afloat_images_sizes_add');
 function afloat_images_sizes_add($sizes)
 {
-
     $addsizes = array(
         "landscape-large" => 'Featured Largest',
     );
-
     $newsizes = array_merge($sizes, $addsizes);
-
     return $newsizes;
 }
 
@@ -91,7 +88,7 @@ add_action('init', 'add_page_categories');
 
 
 
-//REMOVE DEFAULT BLOG TYPE ------------
+// REMOVE DEFAULT BLOG TYPE ------------
 // Remove side menu
 add_action('admin_menu', 'remove_default_post_type');
 
@@ -117,7 +114,7 @@ function remove_draft_widget()
 }
 
 
-//REMOVE COMMENTS ------------------------------
+// REMOVE COMMENTS ------------------------------
 // Removes from admin menu
 add_action('admin_menu', 'my_remove_admin_menus');
 function my_remove_admin_menus()
@@ -141,9 +138,7 @@ function mytheme_admin_bar_render()
 add_action('wp_before_admin_bar_render', 'mytheme_admin_bar_render');
 
 
-
-
-//PASSIVE LISTENER FIX ------------
+// PASSIVE LISTENER FIX ------------
 function wp_dereg_script_comment_reply()
 {
     wp_deregister_script('comment-reply');
@@ -181,3 +176,24 @@ function wp_reload_script_comment_reply()
     </script>
 <?php
 }
+
+
+// Honeypot
+function forms_custom_honeypot( $honeypot, $fields, $entry, $form_data ) {
+    $honeypot_class = 'verification-field';
+    $honey_field = false;
+
+    foreach( $form_data['fields'] as $form_field ) {
+        if( false !== strpos( $form_field['css'], $honeypot_class ) ) {
+            $honey_field = absint( $form_field['id'] );
+        }
+    }
+
+    if( !empty( $entry['fields'][$honey_field] ) ) {
+        $honeypot = 'Custom honeypot';
+    }
+
+    return $honeypot;
+
+}
+add_filter( 'wpforms_process_honeypot', 'forms_custom_honeypot', 10, 4 );

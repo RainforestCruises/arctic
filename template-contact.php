@@ -23,7 +23,7 @@ $maxlength = 320;
         </div>
         <div class="contact-page__intro__subtitle" style="margin-top: 1rem;">
             If you are a travel agent, please use the form <a href="<?php echo $top_level_agents_page . '#contact-form' ?>">here</a>.
-        </div>F
+        </div>
     </div>
 
     <!-- Contact Form / Wrapper -->
