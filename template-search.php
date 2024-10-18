@@ -344,7 +344,7 @@ if (isset($_GET["countries"])) {
 
 
 // first load
-$resultsObject = getSearchPosts($preselectedRegion, $routes, $embarkationCountries, $styles, $lengthMin, $lengthMax, $priceMin, $priceMax, $departures, $searchInput, $sorting, $pageNumber, $viewType, $filterDeals, $filterSpecials);
+$resultsObject = getSearchPosts($preselectedRegion, $routes, $embarkationCountries, $styles, $lengthMin, $lengthMax, $priceMin, $priceMax, $preselectedDepartures, $searchInput, $sorting, $pageNumber, $viewType, $filterDeals, $filterSpecials);
 $resultCount = $resultsObject['resultsCount'];
 
 // page arguments ------------
