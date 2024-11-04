@@ -1,6 +1,6 @@
 <?php
 // list of products for search results
-function getSearchPosts($region, $routes, $countries, $styles, $minLength, $maxLength, $minPrice, $maxPrice, $datesArray, $searchInput, $sorting, $pageNumber, $viewType, $filterDeals, $filterSpecials)
+function getSearchPosts($region, $routes, $countries, $styles, $filterShipSizes, $minLength, $maxLength, $minPrice, $maxPrice, $datesArray, $searchInput, $sorting, $pageNumber, $viewType, $filterDeals, $filterSpecials)
 {
 
     $args = array(
@@ -19,7 +19,7 @@ function getSearchPosts($region, $routes, $countries, $styles, $minLength, $maxL
         );
         $regionalRoutes = wp_list_pluck(get_posts($routeCriteria), 'ID');
 
-        if($routes == null){ // if region is selected, but no routes. Populate all routes
+        if ($routes == null) { // if region is selected, but no routes. Populate all routes
             if ($routes == null) {
                 $routeCriteria = array(
                     'posts_per_page' => -1,
@@ -71,8 +71,9 @@ function getSearchPosts($region, $routes, $countries, $styles, $minLength, $maxL
     }
 
 
+
     $itineraries = get_posts($args); // stage I - itinerary posts w/ initial filters
-    $resultObjects =  filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLength, $minPrice, $maxPrice, $datesArray, $sorting, $searchInput, $viewType, $filterDeals, $filterSpecials); // stage II metadata filtering
+    $resultObjects =  filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLength, $minPrice, $maxPrice, $datesArray, $sorting, $searchInput, $viewType, $filterDeals, $filterSpecials, $filterShipSizes); // stage II metadata filtering
 
 
     $resultsPerPage = 12;
@@ -113,17 +114,16 @@ function getSearchPosts($region, $routes, $countries, $styles, $minLength, $maxL
 
 
 // stage II - metadata
-function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLength, $minPrice, $maxPrice, $datesArray, $sorting, $searchInput, $viewType, $filterDeals, $filterSpecials)
+function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLength, $minPrice, $maxPrice, $datesArray, $sorting, $searchInput, $viewType, $filterDeals, $filterSpecials, $filterShipSizes)
 {
     $results = [];
-    $itineraryObjects = [];
+    $itineraryObjects = []; // prelimenary list for ship search
     foreach ($itineraries as $itinerary) { // loop through itineraries
 
         $lengthInNights = get_field('length_in_nights', $itinerary); // filter min/max length
         if ($lengthInNights < $minLength || $lengthInNights > $maxLength) {
             continue;
         }
-
 
         $embarkation_point = get_field('embarkation_point', $itinerary); // filter embarkation countries
         $disembarkation_point = get_field('disembarkation_point', $itinerary);
@@ -141,7 +141,6 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
         if ($embarkationMatch == false) {
             continue;
         }
-
 
 
         $departuresFullList = getDepartureList($itinerary, null, true); // filter dates (not including sold out)
@@ -206,6 +205,22 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
                 }
             } else if ($filterSpecials) {
                 if (!$specialDepartures) { // specials filter
+                    continue;
+                }
+            }
+
+            if ($filterShipSizes) { // ship size filter
+                $shipMatches = false;
+                $filteredShipList = [];
+                foreach ($ships as $ship) {
+                    if (doesShipMatchSizeFilter($ship, $filterShipSizes)) {
+                        $shipMatches = true;
+                        $filteredShipList[] = $ship;
+                        break;
+                    }
+                }
+                $ships = $filteredShipList;
+                if (!$shipMatches) {
                     continue;
                 }
             }
@@ -277,6 +292,12 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
                     }
                 }
 
+                if ($filterShipSizes) { // ship size filter
+                    if (!doesShipMatchSizeFilter($ship, $filterShipSizes)) {
+                        continue;
+                    }
+                }
+
                 $results[] = (object) array(
                     'Type' => 'departure',
                     'Itinerary' => $itinerary,
@@ -318,6 +339,13 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
             'posts_per_page' => -1,
             'post_type' => 'rfc_cruises',
         );
+        if ($filterShipSizes) {
+            $args = array(
+                'posts_per_page' => -1,
+                'post_type' => 'rfc_cruises',
+                'meta_query' => constructCapacityQuery($filterShipSizes)
+            );
+        }
         $ships = get_posts($args); // full list of ships
 
         foreach ($ships as $ship) {
@@ -509,4 +537,70 @@ function sortDates($a, $b)
     if (is_object($a) && is_object($b)) {
         return strtotime($a->DepartureDate) - strtotime($b->DepartureDate);
     }
+}
+
+function constructCapacityQuery($selectedSizes)
+{
+    $conditions = array('relation' => 'OR');
+    foreach ($selectedSizes as $sizeId) {
+        switch (intval($sizeId)) {
+            case 1: // Small
+                $conditions[] = array(
+                    'key' => 'vessel_capacity',
+                    'value' => array(0, 120),
+                    'type' => 'NUMERIC',
+                    'compare' => 'BETWEEN'
+                );
+                break;
+
+            case 2: // Medium
+                $conditions[] = array(
+                    'key' => 'vessel_capacity',
+                    'value' => array(120, 200),
+                    'type' => 'NUMERIC',
+                    'compare' => 'BETWEEN'
+                );
+                break;
+
+            case 3: // Large
+                $conditions[] = array(
+                    'key' => 'vessel_capacity',
+                    'value' => 200,
+                    'type' => 'NUMERIC',
+                    'compare' => '>'
+                );
+                break;
+        }
+    }
+    return $conditions;
+}
+
+// check ship capacity
+function doesShipMatchSizeFilter($ship, $filterShipSizes)
+{
+    $capacity = intval(get_field('vessel_capacity', $ship->ID));
+
+    foreach ($filterShipSizes as $sizeId) {
+        switch (intval($sizeId)) {
+            case 1: // Small
+                if ($capacity >= 0 && $capacity < 120) {
+                    return true;
+                }
+                break;
+
+            case 2: // Medium
+                if ($capacity >= 120 && $capacity <= 200) {
+                    return true;
+                }
+                break;
+
+            case 3: // Large
+                if ($capacity > 200) {
+                    return true;
+                }
+                break;
+        }
+    }
+
+    return false;
 }

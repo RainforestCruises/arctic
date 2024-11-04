@@ -5,6 +5,7 @@ $sidebarMonths = $args['sidebarMonths'];
 $sidebarRegions = $args['sidebarRegions'];
 $sidebarRoutes = $args['sidebarRoutes'];
 $sidebarStyles = $args['sidebarStyles'];
+$sidebarShipSizes  = $args['sidebarShipSizes'];
 $sidebarEmbarkationZones = $args['sidebarEmbarkationZones'];
 
 // Preselections
@@ -16,6 +17,7 @@ $searchInput = $args['searchInput'];
 $selectedDeals = $args['filterDeals'];
 $selectedSpecials = $args['filterSpecials'];
 $selectedEmbarkationCountries = $args['embarkationCountries'];
+$selectedShipSizes = $args['shipSizes'];
 
 $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
 
@@ -325,17 +327,17 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                     $regionPost = $zone['region'];
                     $countryList = $zone['countries'];
                     $isPrimaryRegion = get_field('primary', $regionPost);
-                    if($hideSecondaryRegions && !$isPrimaryRegion) {
+                    if ($hideSecondaryRegions && !$isPrimaryRegion) {
                         continue;
                     }
                 ?>
-                    <div class="filter__content__subtitle embark-subtitle"  region-value="<?php echo $zone['region']->ID ?>" style="display: <?php echo $matchRegion ?>">
+                    <div class="filter__content__subtitle embark-subtitle" region-value="<?php echo $zone['region']->ID ?>" style="display: <?php echo $matchRegion ?>">
                         <?php echo get_the_title($zonePost); ?>
                     </div>
-                    <?php foreach ($countryList as $country) : 
-                        $countryPost = $country['country']; 
-                        ?>
-                        <li class="filter__content__list__item embark-checkbox-group" region-value="<?php echo $zone['region']->ID ?>"  style="display: <?php echo $matchRegion ?>">
+                    <?php foreach ($countryList as $country) :
+                        $countryPost = $country['country'];
+                    ?>
+                        <li class="filter__content__list__item embark-checkbox-group" region-value="<?php echo $zone['region']->ID ?>" style="display: <?php echo $matchRegion ?>">
                             <div class="form-checkbox">
                                 <input class="checkbox embark-checkbox" type="checkbox" id="embark-checkbox-<?php echo $count; ?>" value="<?php echo $countryPost->ID ?>" <?php echo ($selectedEmbarkationCountries != null ? (in_array($countryPost->ID, $selectedEmbarkationCountries) ? 'checked' : '') : '') ?>>
                                 <label for="embark-checkbox-<?php echo $count; ?>"><?php echo get_the_title($countryPost) ?></label>
@@ -343,6 +345,40 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                         </li>
                 <?php $count++;
                     endforeach;
+                endforeach; ?>
+
+            </ul>
+        </div>
+    </div>
+
+    <!-- Ship Sizes Filter -->
+    <div class="filter">
+        <div class="filter__heading">
+            <h5 class="filter__heading__text">
+                Ship Size
+                <?php $filterCount = count($selectedShipSizes); ?>
+                <div class="filter__heading__text__count <?php echo ($filterCount > 0 ? 'show' : '') ?>" id="sizesFilterCount">
+                    <?php echo $filterCount; ?>
+                </div>
+            </h5>
+            <svg>
+                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-down"></use>
+            </svg>
+        </div>
+        <div class="filter__content">
+            <!-- List -->
+            <ul class="filter__content__list">
+                <?php
+                $count = 1;
+                foreach ($sidebarShipSizes as $shipSize) :
+                ?>
+                    <li class="filter__content__list__item">
+                        <div class="form-checkbox">
+                            <input class="checkbox size-checkbox" type="checkbox" id="size-checkbox-<?php echo $count; ?>" value="<?php echo $shipSize->ID ?>" <?php echo ($selectedShipSizes != null ? (in_array($shipSize->ID, $selectedShipSizes) ? 'checked' : '') : '') ?>>
+                            <label for="size-checkbox-<?php echo $count; ?>" tabindex="1"><?php echo $shipSize->Display ?></label>
+                        </div>
+                    </li>
+                <?php $count++;
                 endforeach; ?>
 
             </ul>

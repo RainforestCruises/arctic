@@ -524,6 +524,43 @@ jQuery(document).ready(function ($) {
     });
   });
 
+
+
+
+  // ship selections
+  let shipSizesString = formShipSizes.value;
+  const shipSizesArray = [...document.querySelectorAll(".size-checkbox")];
+  shipSizesArray.forEach((item) => {
+    item.addEventListener("click", () => {
+      shipSizesString = "";
+      let count = 0;
+      shipSizesArray.forEach((checkbox) => {
+        const itemValue = parseInt(checkbox.value);
+        if (checkbox.checked) {
+          if (count > 0) {
+            shipSizesString += ";";
+          }
+          shipSizesString += itemValue;
+          count++;
+        }
+      });
+
+      // filter count
+      let shipSizesFilterCount = document.getElementById("sizesFilterCount");
+      if (count > 0) {
+        shipSizesFilterCount.classList.add("show");
+        shipSizesFilterCount.innerHTML = count;
+      } else {
+        shipSizesFilterCount.classList.remove("show");
+        shipSizesFilterCount.innerHTML = count;
+      }
+      formShipSizes.value = shipSizesString;
+      reloadResults();
+    });
+  });
+
+
+
   // length slider
   var lengthSliderMin = 1;
   var lengthSliderMax = 28;
@@ -615,6 +652,8 @@ jQuery(document).ready(function ($) {
   function clearFilters() {
     departuresString = "";
     themesString = "";
+    shipSizesString = "";
+
     routesString = "";
     countriesString = "";
     searchInputString = "";
@@ -622,6 +661,7 @@ jQuery(document).ready(function ($) {
     formSearchInput.value = null;
     formDates.value = null;
     formThemes.value = null;
+    formShipSizes.value = null;
     formRoutes.value = null;
     formCountries.value = null;
 
@@ -712,6 +752,11 @@ jQuery(document).ready(function ($) {
     if (themesString != null) {
       params.set("themes", themesString);
     }
+
+    if (shipSizesString != null) {
+      params.set("shipSizes", shipSizesString);
+    }
+
 
     if (formMinLength.value != null) {
       params.set("length_min", formMinLength.value);
@@ -913,6 +958,9 @@ jQuery(document).ready(function ($) {
       filtersApplied = true;
     }
     if (formThemes.value != "") {
+      filtersApplied = true;
+    }
+    if (formShipSizes.value != "") {
       filtersApplied = true;
     }
     if (formRoutes.value != "") {

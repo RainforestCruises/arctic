@@ -56,6 +56,13 @@ function search_filter_primary_search()
         $formThemes = explode(";", $stringValue);
     }
 
+    //--ship sizes
+    $formShipSizes = [];
+    if (isset($_POST['formShipSizes']) && $_POST['formShipSizes']) {
+        $stringValue = $_POST['formShipSizes'];
+        $formShipSizes = explode(";", $stringValue);
+    }
+
     //--dates
     $formDates = [];
     if (isset($_POST['formDates']) && $_POST['formDates']) {
@@ -82,7 +89,7 @@ function search_filter_primary_search()
     }
 
 
-    $resultsObject = getSearchPosts($formRegion, $formRoutes, $formCountries, $formThemes, $formMinLength, $formMaxLength, $formMinPrice, $formMaxPrice, $formDates, $formSearchInput, $sorting, $pageNumber, $viewType, $formFilterDeals, $formFilterSpecials);
+    $resultsObject = getSearchPosts($formRegion, $formRoutes, $formCountries, $formThemes, $formShipSizes, $formMinLength, $formMaxLength, $formMinPrice, $formMaxPrice, $formDates, $formSearchInput, $sorting, $pageNumber, $viewType, $formFilterDeals, $formFilterSpecials);
 
 
     // return result cards -- content-search-listing

@@ -264,6 +264,32 @@
             "return_format": "id"
         },
         {
+            "key": "field_6729426f697da",
+            "label": "Ship Sizes",
+            "name": "shipSizes",
+            "type": "select",
+            "instructions": "Preselected ship sizes.. leave blank if 'Any'",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "1": "Small",
+                "2": "Medium",
+                "3": "Large"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 1,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_64ff8bd8a8ba6",
             "label": "Departure Months",
             "name": "departure_months",
@@ -640,5 +666,5 @@
     "active": true,
     "description": "Search - Page",
     "show_in_rest": 0,
-    "modified": 1700603447
+    "modified": 1730757347
 }

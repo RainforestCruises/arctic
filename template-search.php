@@ -52,7 +52,21 @@ $sidebarStyles = get_posts($stylesArgs);
 // Sidebar Embarkation
 $sidebarEmbarkationZones = getEmbarkationList();
 
-
+// Sidebar Ship Sizes
+$sidebarShipSizes = [
+    (object)[
+        'ID' => 1,
+        'Display' => 'Small (Under 120)'
+    ],
+    (object)[
+        'ID' => 2,
+        'Display' => 'Medium (120 - 200)'
+    ],
+    (object)[
+        'ID' => 3,
+        'Display' => 'Large (Over 200)'
+    ]
+];
 
 
 
@@ -244,6 +258,28 @@ if (isset($_GET["filterSpecials"])) {
     }
 }
 
+// Ship Sizes
+$shipSizes = [];
+$shipSizesString = "";
+$selectedShipSizes = get_field('shipSizes');
+if ($selectedShipSizes != null) {
+    $shipSizes = $selectedShipSizes;
+    $shipSizesString = implode(";", $shipSizes);
+}
+
+// -- URL param
+if (isset($_GET["shipSizes"])) {
+    if (isset($_GET["shipSizes"]) && $_GET["shipSizes"]) {
+        $shipSizesParameters = htmlspecialchars($_GET["shipSizes"]);
+        $shipSizesString = $shipSizesParameters;
+        $shipSizes = explode(";", $shipSizesString);
+    } else {
+        $shipSizes = [];
+        $shipSizesString = "";
+    }
+}
+
+
 
 
 // Length Min
@@ -344,7 +380,7 @@ if (isset($_GET["countries"])) {
 
 
 // first load
-$resultsObject = getSearchPosts($preselectedRegion, $routes, $embarkationCountries, $styles, $lengthMin, $lengthMax, $priceMin, $priceMax, $preselectedDepartures, $searchInput, $sorting, $pageNumber, $viewType, $filterDeals, $filterSpecials);
+$resultsObject = getSearchPosts($preselectedRegion, $routes, $embarkationCountries, $styles, $shipSizes, $lengthMin, $lengthMax, $priceMin, $priceMax, $preselectedDepartures, $searchInput, $sorting, $pageNumber, $viewType, $filterDeals, $filterSpecials);
 $resultCount = $resultsObject['resultsCount'];
 
 // page arguments ------------
@@ -358,6 +394,7 @@ $args = array(
     'priceMin' => $priceMin, //preselection
     'priceMax' => $priceMax, //preselection
     'embarkationCountries' => $embarkationCountries, //preselection
+    'shipSizes' => $shipSizes, //preselection
     'sorting' => $sorting,
     'searchInput' => $searchInput,
     'pageNumber' => $pageNumber,
@@ -370,9 +407,9 @@ $args = array(
     'sidebarRegions' => $sidebarRegions,
     'sidebarRoutes' => $sidebarRoutes,
     'sidebarStyles' => $sidebarStyles,
+    'sidebarShipSizes' => $sidebarShipSizes,
     'sidebarEmbarkationZones' => $sidebarEmbarkationZones,
     'footerCtaDivider' => true
-
 );
 
 ?>
@@ -456,6 +493,7 @@ get_template_part('template-parts/shared/content', 'shared-basic-inquiry-modal',
     <input type="hidden" name="formPageNumber" id="formPageNumber" value="<?php echo $pageNumber ?>">
     <input type="hidden" name="formRegion" id="formRegion" value="<?php echo $preselectedRegion ?>">
     <input type="hidden" name="formThemes" id="formThemes" value="<?php echo $stylesString ?>">
+    <input type="hidden" name="formShipSizes" id="formShipSizes" value="<?php echo $shipSizesString ?>">
     <input type="hidden" name="formRoutes" id="formRoutes" value="<?php echo $routesString ?>">
     <input type="hidden" name="formCountries" id="formCountries" value="<?php echo $embarkationCountriesString ?>">
 
