@@ -5,6 +5,7 @@ require_once(__DIR__ . '/includes/custom-post-types.php');
 require_once(__DIR__ . '/includes/theme-config.php');
 require_once(__DIR__ . '/includes/header-footer-functions.php');
 require_once(__DIR__ . '/includes/utilities.php');
+require_once(__DIR__ . '/includes/custom-shortcodes.php');
 
 
 require_once(__DIR__ . '/includes/product-functions.php');

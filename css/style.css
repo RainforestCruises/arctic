@@ -5138,6 +5138,9 @@ p {
       flex-direction: column;
       align-items: center;
       hyphens: auto; }
+      .guide-main__content__copy .contain-inline-size {
+        width: 100% !important;
+        max-width: 80rem !important; }
       .guide-main__content__copy p:not(.wp-caption-text):first-of-type {
         max-width: 80rem;
         font-size: 2rem;
@@ -5436,6 +5439,69 @@ p {
   margin-bottom: 2rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #e6e6e6; }
+
+.custom-review {
+  padding: 2rem 3rem;
+  padding-right: 4.5rem;
+  border-radius: 1rem;
+  background-color: #1d2225;
+  width: 100%;
+  max-width: 100%;
+  gap: 4rem;
+  margin: 20px auto;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  font-family: "Metropolis", sans-serif;
+  color: #e6e6e6 !important; }
+  @media only screen and (max-width: 37.5em) {
+    .custom-review {
+      flex-direction: column;
+      text-align: center !important;
+      gap: 2rem; } }
+  .custom-review__person {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .custom-review__person__avatar {
+      width: 8rem !important;
+      height: 8rem !important;
+      border-radius: 50% !important;
+      margin: 0 !important; }
+    .custom-review__person__name {
+      font-size: 2rem !important;
+      font-weight: 700 !important;
+      width: max-content !important; }
+    .custom-review__person__title {
+      font-size: 1.4rem !important;
+      width: max-content !important; }
+  .custom-review__quote {
+    font-size: 2rem !important;
+    position: relative;
+    color: #fff !important;
+    font-style: italic; }
+    .custom-review__quote__start-quote {
+      position: absolute;
+      top: -1rem;
+      left: -3rem;
+      z-index: 1; }
+      @media only screen and (max-width: 37.5em) {
+        .custom-review__quote__start-quote {
+          left: -2rem; } }
+      .custom-review__quote__start-quote svg {
+        fill: #c2c6c9;
+        height: 3rem;
+        width: 3rem;
+        transform: rotate(180deg); }
+    .custom-review__quote__end-quote {
+      position: absolute;
+      bottom: -2rem;
+      right: -3.5rem;
+      z-index: 1; }
+      .custom-review__quote__end-quote svg {
+        fill: #c2c6c9;
+        height: 3rem;
+        width: 3rem; }
 
 .guides-toplevel-hero {
   display: flex;

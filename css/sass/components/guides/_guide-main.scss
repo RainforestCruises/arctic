@@ -13,6 +13,12 @@
             flex-direction: column;
             align-items: center;
             hyphens: auto;
+
+            & .contain-inline-size {
+                width: 100% !important;
+                max-width: 80rem !important;
+
+            }
             & p:not(.wp-caption-text):first-of-type {
                 max-width: 80rem;
                 font-size: 2rem;
@@ -404,4 +410,96 @@
     margin-bottom: 2rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid $color-grey-light-1a;
+}
+
+// custom review
+.custom-review {
+    padding: 2rem 3rem;
+    padding-right: 4.5rem;
+    border-radius: 1rem;
+    background-color: $color-primary;
+    width: 100%;
+    max-width: 100%;
+    gap: 4rem;
+    margin: 20px auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    font-family: $font-primary;
+
+    color: $color-grey-light-1a !important;
+
+    @media only screen and (max-width: $bp-small) {
+        flex-direction: column;
+        text-align: center !important;
+        gap: 2rem;
+
+    }
+
+
+    &__person {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+        &__avatar {
+            width: 8rem !important;
+            height: 8rem !important;
+            border-radius: 50% !important;
+            margin: 0 !important;
+        }
+        &__name {
+            font-size: 2rem !important;
+            font-weight: 700 !important;
+            width: max-content !important;
+
+        }
+        &__title {
+            font-size: 1.4rem !important;
+            width: max-content !important;
+        }
+    }
+
+
+    &__quote {
+        font-size: 2rem !important;
+        position: relative;
+        color: $color-white !important;
+        font-style: italic;
+        &__start-quote {
+            position: absolute;
+            top: -1rem;
+            left: -3rem;
+            z-index: 1;
+
+            @media only screen and (max-width: $bp-small) {
+                left: -2rem;
+
+            }
+
+            & svg {
+                fill: $color-grey-light-2;
+                height: 3rem;
+                width: 3rem;
+                transform: rotate(180deg);
+
+            
+            }
+
+
+        }
+        &__end-quote {
+            position: absolute;
+            bottom: -2rem;
+            right: -3.5rem;
+            z-index: 1;
+
+            & svg {
+                fill: $color-grey-light-2;
+
+                height: 3rem;
+                width: 3rem;
+            }
+        }
+    }
 }
