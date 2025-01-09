@@ -13,6 +13,10 @@ jQuery(document).ready(function ($) {
   const navControlDates = document.querySelector("#nav-control-dates");
   const navControlMenuDates = document.querySelector("#nav-control-menu-dates");
 
+  let templateName = header_vars.templateName;
+  let postTypeName = header_vars.postTypeName;
+
+
   // template variables
   let opaqueNavAlways = header_vars.alwaysActiveHeader;
   let fixedHeader = headerDiv.classList.contains("fixed");
@@ -164,19 +168,18 @@ jQuery(document).ready(function ($) {
 
   function filterSlides(regionId) {
     navMegaItems.forEach((item) => {
-      item.style.display = "none"; 
+      item.style.display = "none";
       if (regionId == item.getAttribute("region") || item.getAttribute("region") == "all") {
         item.style.display = "";
       }
     });
 
     navRegionSelects.forEach((item) => {
-      item.classList.remove('active');
+      item.classList.remove("active");
       if (item.getAttribute("region") == regionId) {
-        item.classList.add('active');
+        item.classList.add("active");
       }
     });
-
 
     allNavSliders.forEach((slider, index) => {
       slider.updateSize();
@@ -186,8 +189,6 @@ jQuery(document).ready(function ($) {
       slider.slideTo(0);
       slider.scrollbar.updateSize();
     });
-
-
   }
 
   // remove on scroll
@@ -214,5 +215,27 @@ jQuery(document).ready(function ($) {
       }
     }
     return false; // ID not found in regions
+  }
+
+  checkFormFields();
+  function checkFormFields() {
+    console.log("check form");
+    if(isSpecific){
+      console.log("specific form");
+
+    }
+
+
+    if(postTypeName == "rfc_cruises" || postTypeName == "rfc_itineraries"){
+      const extraFieldStartDate = document.querySelector(".extra-field-start-date");
+      const extraFieldShipSize = document.querySelector(".extra-field-ship-size");
+      const extraFieldBudget = document.querySelector(".extra-field-budget");
+      const extraFieldItinerary = document.querySelector(".extra-field-itinerary");
+
+      extraFieldStartDate?.style.display = "none";
+      extraFieldShipSize?.style.display = "none";
+      extraFieldBudget?.style.display = "none";
+      extraFieldItinerary?.style.display = "none";
+    }
   }
 });

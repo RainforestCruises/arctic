@@ -74,7 +74,7 @@ $sidebarShipSizes = [
 // Sidebar Months
 $sidebarMonths = [];
 $currentMonth = (int)date('m');
-$monthLimit = 18;
+$monthLimit = 36;
 
 for ($x = $currentMonth; $x < $currentMonth + $monthLimit; $x++) {
 
