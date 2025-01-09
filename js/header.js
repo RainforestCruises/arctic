@@ -219,12 +219,6 @@ jQuery(document).ready(function ($) {
 
   checkFormFields();
   function checkFormFields() {
-    console.log("check form");
-    if(isSpecific){
-      console.log("specific form");
-
-    }
-
 
     if(postTypeName == "rfc_cruises" || postTypeName == "rfc_itineraries"){
       const extraFieldStartDate = document.querySelector(".extra-field-start-date");
@@ -232,10 +226,10 @@ jQuery(document).ready(function ($) {
       const extraFieldBudget = document.querySelector(".extra-field-budget");
       const extraFieldItinerary = document.querySelector(".extra-field-itinerary");
 
-      extraFieldStartDate?.style.display = "none";
-      extraFieldShipSize?.style.display = "none";
-      extraFieldBudget?.style.display = "none";
-      extraFieldItinerary?.style.display = "none";
+      if (extraFieldStartDate) extraFieldStartDate.style.display = "none";
+      if (extraFieldShipSize) extraFieldShipSize.style.display = "none";
+      if (extraFieldBudget) extraFieldBudget.style.display = "none";
+      if (extraFieldItinerary) extraFieldItinerary.style.display = "none";
     }
   }
 });
