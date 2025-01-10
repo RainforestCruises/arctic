@@ -16,6 +16,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
             $use_automation = get_field('use_automation', $i);
             $itineraryDepartures = $use_automation ? get_field('automation_departure_data', $i) : get_field('departures', $i);
 
+            
             foreach ($itineraryDepartures as $d) {   // each departure   
                 $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
 
@@ -24,7 +25,6 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                     $returnDate = date('Y-m-d', strtotime($d['date'] . ' + ' . $itineraryLength . ' days'));
                     $cabin_prices = $d['cabin_prices'];
                     $ship = $d['ship'];
-
                     if ($cabin_prices) { // sort cabin price high to low
                         usort($cabin_prices, function ($first, $second) {
                             return strtolower($first['price']) < strtolower($second['price']);
@@ -53,6 +53,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                             'Deals' => $filteredDeals,
                             'SpecialDepartures' => $filteredSpecialDepartures,
                         ];
+                      
 
                         if ($filterSoldOut) {
                             if ($departure['LowestPrice'] > 0) {
@@ -599,10 +600,10 @@ function getShipItineraries($ship, $region = null)
         'order' => 'ASC'
     );
 
+
     $itineraries = get_posts($queryArgs);
     $itineraryList = [];
     foreach ($itineraries as $itinerary) {
-
         if ($region != null) { // filter regions
             $itineraryRegion = getItineraryRegion($itinerary);
             if ($region != $itineraryRegion) {
@@ -610,17 +611,23 @@ function getShipItineraries($ship, $region = null)
             }
         }
 
+        $use_automation = get_field('use_automation', $itinerary);
+        $departures = $use_automation ? get_field('automation_departure_data', $itinerary) : get_field('departures', $itinerary);
 
-        $departures = get_field('departures', $itinerary);
+
         $departureMatch = false;
         foreach ($departures as $departure) {
             $departureShip = $departure['ship'];
+     
+            
             if ($departureShip == $ship) {
+
                 $departureMatch = true;
             }
         }
 
         if ($departureMatch) {
+            
             $itineraryList[] = $itinerary;
         }
     }

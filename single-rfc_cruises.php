@@ -25,8 +25,7 @@ $yearSelections = createYearSelection($curentYear, 3);
 $reviews = get_field('reviews');
 
 
-
-//cabin posts
+// cabin posts
 $args = array(
   'posts_per_page' => -1,
   'post_type' => 'rfc_cabins',
@@ -39,13 +38,10 @@ $cabins = get_posts($args);
 
 usort($cabins, 'custom_sort');
 
-// Define custom sorting function
+// cabins custom sorting function
 function custom_sort($a, $b) {
-  // Get the 'ranking' field value for each post
   $ranking_a = get_field('ranking', $a->ID);
   $ranking_b = get_field('ranking', $b->ID);
-
-  // Handle null values
   if ($ranking_a === null && $ranking_b === null) {
       return 0; // Both values are null, consider them equal
   } elseif ($ranking_a === null) {
@@ -53,8 +49,6 @@ function custom_sort($a, $b) {
   } elseif ($ranking_b === null) {
       return -1; // Non-null value should come before null values
   }
-
-  // Compare numeric values
   return $ranking_a - $ranking_b;
 }
 
@@ -135,6 +129,7 @@ wp_localize_script(
   <?php
   get_template_part('template-parts/cruise/content', 'cruise-dates', $args);
   ?>
+
   <!-- Deals -->
   <?php
   if ($deals || $specialDepartures) :
