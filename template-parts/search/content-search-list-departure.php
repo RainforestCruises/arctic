@@ -52,7 +52,12 @@
             </div>
             <div class="specs-item__text">
                 <div class="specs-item__text__main">
-                    <span style="font-weight: 700;"><?php echo  date("F j", strtotime($args->DepartureDate)); ?></span> - <?php echo  date("M j, Y", strtotime($args->ReturnDate)); ?>
+                    <?php
+                    $departureStartDate = strtotime($args->DepartureDate);
+                    $departureReturnDate = strtotime($args->ReturnDate);
+                    $differentYears = date("Y", $departureStartDate) == date("Y", $departureReturnDate)  ? false : true;
+                    ?>
+                    <span style="font-weight: 700;"><?php echo  date(($differentYears ? "F j, Y" : "F j"), $departureStartDate); ?></span> - <?php echo  date("M j, Y", $departureReturnDate); ?>
                 </div>
             </div>
         </div>
@@ -102,7 +107,7 @@
     <div class="search-card-departure__bottom">
         <?php if ($args->BestDiscount) : ?>
             <div class="search-card-departure__bottom__savings">
-                Up to <span class="green-text"><?php echo $args->BestDiscount;?>%</span> Savings
+                Up to <span class="green-text"><?php echo $args->BestDiscount; ?>%</span> Savings
             </div>
         <?php endif; ?>
         <!-- Price Group -->

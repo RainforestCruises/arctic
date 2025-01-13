@@ -53,7 +53,8 @@ $departures = $args['departures'];
                         $itineraryPost = $d['ItineraryPost'];
                         $itineraryPostId = $d['ItineraryPostId'];
                         $departureStartDate = strtotime($d['DepartureDate']);
-                        $departureReturnDate = strtotime($d['ReturnDate']);
+                        $departureReturnDate = strtotime($d['ReturnDate']);            
+                        $differentYears = date("Y", $departureStartDate) == date("Y", $departureReturnDate)  ? false : true;
                         $title = get_field('display_name', $itineraryPost);
                         $hero_gallery = get_field('hero_gallery', $itineraryPost);
                         $image = $hero_gallery[0];
@@ -102,7 +103,7 @@ $departures = $args['departures'];
                                     </div>
                                     <div class="specs-item__text">
                                         <div class="specs-item__text__main">
-                                            <span style="font-weight: 700;"><?php echo  date("F j", $departureStartDate); ?></span> - <?php echo  date("M j, Y", $departureReturnDate); ?>
+                                            <span style="font-weight: 700;"><?php echo date(($differentYears ? "F j, Y" : "F j"), $departureStartDate); ?></span> - <?php echo  date("M j, Y", $departureReturnDate); ?>
                                         </div>
                                     </div>
                                 </div>
