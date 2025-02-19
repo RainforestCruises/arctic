@@ -197,3 +197,18 @@ function forms_custom_honeypot( $honeypot, $fields, $entry, $form_data ) {
 
 }
 add_filter( 'wpforms_process_honeypot', 'forms_custom_honeypot', 10, 4 );
+
+// Same Name Spam Check
+function custom_name_validation( $errors, $form_data ) {
+    // Check if it's the correct form (ID: 1629)
+    if ( $form_data['id'] == get_field('primary_contact_form_id', 'options') ) {
+        $first_name = isset( $_POST['wpforms']['fields'][1]['first'] ) ? sanitize_text_field( $_POST['wpforms']['fields'][1]['first'] ) : '';
+        $last_name = isset( $_POST['wpforms']['fields'][1]['last'] ) ? sanitize_text_field( $_POST['wpforms']['fields'][1]['last'] ) : '';
+
+        if ( strtolower( $first_name ) === strtolower( $last_name ) ) {
+            $errors[ $form_data['id'] ]['header'] = esc_html__( 'First name and last name cannot be identical.', 'wpforms' );
+        }
+    }
+    return $errors;
+}
+add_filter( 'wpforms_process_initial_errors', 'custom_name_validation', 10, 2 );
