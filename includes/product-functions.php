@@ -617,8 +617,8 @@ function getShipItineraries($ship, $region = null)
         $departureMatch = false;
         foreach ($departures as $departure) {
             $departureShip = $departure['ship'];
-              
-            if ($departureShip == $ship) {
+
+            if ($departureShip->ID == $ship->ID) {
                 $departureMatch = true;
             }
         }
