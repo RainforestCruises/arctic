@@ -83,7 +83,7 @@ function create_post_type_rfc_travel_guides()
             'rewrite' => array('slug' => 'guide'),
             'hierarchical' => true,
             'supports' => array(
-                'title', 'editor'
+                'title', 'editor', 'page-attributes'
             )
 
         )
@@ -148,7 +148,7 @@ function create_post_type_rfc_itineraries()
             'rewrite' => array('slug' => 'itineraries'),
             'hierarchical' => true,
             'supports' => array(
-                'title',
+                'title', 'page-attributes'
             )
         )
     );
@@ -270,7 +270,7 @@ function create_post_type_rfc_regions()
             'rewrite' => array('slug' => 'regions'),
             'hierarchical' => true,
             'supports' => array(
-                'title',
+                'title', 'page-attributes'
             )
         )
     );
@@ -291,7 +291,7 @@ function create_post_type_rfc_destinations()
             'rewrite' => array('slug' => 'destinations'),
             'hierarchical' => true,
             'supports' => array(
-                'title',
+                'title', 'page-attributes'
             )
         )
     );
@@ -313,7 +313,7 @@ function create_post_type_rfc_styles()
             'rewrite' => array('slug' => 'styles'),
             'hierarchical' => true,
             'supports' => array(
-                'title',
+                'title', 'page-attributes'
             )
         )
     );
@@ -334,7 +334,7 @@ function create_post_type_rfc_routes()
             'rewrite' => array('slug' => 'routes'),
             'hierarchical' => true,
             'supports' => array(
-                'title',
+                'title', 'page-attributes'
             )
         )
     );
@@ -376,7 +376,7 @@ function create_post_type_rfc_countries()
             'rewrite' => array('slug' => 'country'),
             'hierarchical' => true,
             'supports' => array(
-                'title',
+                'title', 'page-attributes'
             )
 
         )
