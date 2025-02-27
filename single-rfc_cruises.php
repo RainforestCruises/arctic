@@ -24,6 +24,11 @@ $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
 $reviews = get_field('reviews');
 
+console_log('test');
+console_log($itineraries );
+console_log($departures);
+
+
 
 // cabin posts
 $args = array(
