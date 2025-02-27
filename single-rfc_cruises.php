@@ -24,43 +24,7 @@ $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
 $reviews = get_field('reviews');
 
-// GET SHIP ITINERARYES
-$queryArgs = array(
-  'post_type' => 'rfc_itineraries',
-  'posts_per_page' => -1,
-  'meta_key' => 'length_in_nights',
-  'orderby' => 'meta_value_num',
-  'order' => 'ASC'
-);
-
-$itinerariesTEST = get_posts($queryArgs);
-$itineraryList = [];
-foreach ($itinerariesTEST as $itinerary) {
-  $use_automation = get_field('use_automation', $itinerary);
-  $departures = $use_automation ? get_field('automation_departure_data', $itinerary) : get_field('departures', $itinerary);
-
-  console_log($itinerary);
-  console_log($departures);
-
-  $departureMatch = false;
-  foreach ($departures as $departure) {
-    $departureShip = $departure['ship'];
-    if ($departureShip == $ship) {
-      console_log('MATCH');
-
-      $departureMatch = true;
-    }
-  }
-
-  if ($departureMatch) {
-    $itineraryList[] = $itinerary;
-  }
-}
-
-
-
-console_log($itineraryList);
-
+console_log($ship);
 
 
 // cabin posts

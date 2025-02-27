@@ -22,7 +22,7 @@ $bestOverallDiscount = getBestDepartureListDiscount($departures);
 $deals = getDealsFromDepartureList($departures, false);
 $specialDepartures = getDealsFromDepartureList($departures, true);
 
-
+console_log($ships);
 
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
