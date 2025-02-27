@@ -600,7 +600,6 @@ function getShipItineraries($ship, $region = null)
         'order' => 'ASC'
     );
 
-
     $itineraries = get_posts($queryArgs);
     $itineraryList = [];
     foreach ($itineraries as $itinerary) {
@@ -618,23 +617,16 @@ function getShipItineraries($ship, $region = null)
         $departureMatch = false;
         foreach ($departures as $departure) {
             $departureShip = $departure['ship'];
-     
-            
+              
             if ($departureShip == $ship) {
-
                 $departureMatch = true;
             }
         }
 
-        if ($departureMatch) {
-            
+        if ($departureMatch) {         
             $itineraryList[] = $itinerary;
         }
     }
-
-
-
-
 
     return $itineraryList;
 }

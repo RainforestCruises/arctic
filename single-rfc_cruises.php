@@ -24,15 +24,42 @@ $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
 $reviews = get_field('reviews');
 
+// GET SHIP ITINERARYES
+$queryArgs = array(
+  'post_type' => 'rfc_itineraries',
+  'posts_per_page' => -1,
+  'meta_key' => 'length_in_nights',
+  'orderby' => 'meta_value_num',
+  'order' => 'ASC'
+);
 
-$test2 = getShipItineraries($ship);
+$itinerariesTEST = get_posts($queryArgs);
+$itineraryList = [];
+foreach ($itinerariesTEST as $itinerary) {
+  $use_automation = get_field('use_automation', $itinerary);
+  $departures = $use_automation ? get_field('automation_departure_data', $itinerary) : get_field('departures', $itinerary);
 
-console_log('test2');
-console_log($regions );
-console_log($test2 );
+  console_log($itinerary);
+  console_log($departures);
 
-console_log($itineraries );
-console_log($departures);
+  $departureMatch = false;
+  foreach ($departures as $departure) {
+    $departureShip = $departure['ship'];
+    if ($departureShip == $ship) {
+      console_log('MATCH');
+
+      $departureMatch = true;
+    }
+  }
+
+  if ($departureMatch) {
+    $itineraryList[] = $itinerary;
+  }
+}
+
+
+
+console_log($itineraryList);
 
 
 
@@ -50,15 +77,16 @@ $cabins = get_posts($args);
 usort($cabins, 'custom_sort');
 
 // cabins custom sorting function
-function custom_sort($a, $b) {
+function custom_sort($a, $b)
+{
   $ranking_a = get_field('ranking', $a->ID);
   $ranking_b = get_field('ranking', $b->ID);
   if ($ranking_a === null && $ranking_b === null) {
-      return 0; // Both values are null, consider them equal
+    return 0; // Both values are null, consider them equal
   } elseif ($ranking_a === null) {
-      return 1; // Null values should come after non-null values
+    return 1; // Null values should come after non-null values
   } elseif ($ranking_b === null) {
-      return -1; // Non-null value should come before null values
+    return -1; // Non-null value should come before null values
   }
   return $ranking_a - $ranking_b;
 }
