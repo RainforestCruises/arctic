@@ -55,7 +55,7 @@ foreach ($sections as $section) :
                             $allDeals[] = $deal;
                             $id = $deal->ID;
                             $image =  get_field('featured_image', $deal);
-                            $itineraries = getItinerariesWithDeal($deal);
+                            $itinerariesWithDeal = getItinerariesWithDeal($deal);
                             $ships = getShipsWithDeal($deal);
                             $title = get_field('navigation_title', $deal);
                             $description = get_field('description', $deal);
@@ -65,6 +65,10 @@ foreach ($sections as $section) :
                             $has_expiry_date = get_field('has_expiry_date', $deal);
                             $expiry_date =  get_field('expiry_date', $deal);
                             $is_exclusive =  get_field('is_exclusive', $deal);
+
+                            if (count($itinerariesWithDeal) == 0) {
+                                continue;
+                            }
 
                             if ($expand) {
                                 $description_limited .= '...';
@@ -194,6 +198,10 @@ endforeach;
                 $is_special_departure = get_field('is_special_departure', $deal);
                 $itinerariesWithDeal = getItinerariesWithDeal($deal);
                 $is_exclusive =  get_field('is_exclusive', $deal);
+
+                if (count($itinerariesWithDeal) == 0) {
+                    continue;
+                }
             ?>
 
                 <div class="product-deals-modal-item" dealId="<?php echo $id; ?>">
