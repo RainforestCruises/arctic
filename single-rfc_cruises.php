@@ -24,7 +24,13 @@ $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
 $reviews = get_field('reviews');
 
-console_log('test');
+
+$test2 = getShipItineraries($ship);
+
+console_log('test2');
+console_log($regions );
+console_log($test2 );
+
 console_log($itineraries );
 console_log($departures);
 
