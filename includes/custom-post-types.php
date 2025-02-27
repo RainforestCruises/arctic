@@ -81,6 +81,7 @@ function create_post_type_rfc_travel_guides()
             ),
             'public' => true,
             'rewrite' => array('slug' => 'guide'),
+            'hierarchical' => true,
             'supports' => array(
                 'title', 'editor'
             )
@@ -145,6 +146,7 @@ function create_post_type_rfc_itineraries()
             ),
             'public' => true,
             'rewrite' => array('slug' => 'itineraries'),
+            'hierarchical' => true,
             'supports' => array(
                 'title',
             )
@@ -309,6 +311,7 @@ function create_post_type_rfc_styles()
             ),
             'public' => true,
             'rewrite' => array('slug' => 'styles'),
+            'hierarchical' => true,
             'supports' => array(
                 'title',
             )
