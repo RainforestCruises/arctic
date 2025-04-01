@@ -11,6 +11,7 @@ $headerText = get_field('team_header');
             <?php
             if ($team) :
                 foreach ($team as $member) :
+                    $hasPhone = $member['phone_display'] == "" ? false : true;
             ?>
                     <div class="team-card">
                         <div class="team-card__image-area">
@@ -24,6 +25,11 @@ $headerText = get_field('team_header');
                             <div class="team-card__content__position">
                                 <?php echo $member['position'] ?>
                             </div>
+                            <?php if ($hasPhone) : ?>
+                                <a class="team-card__content__phone" style="font-size: 1.3rem"  href="tel:<?php echo $member['phone_number']; ?>">
+                                    <?php echo $member['phone_display']; ?>
+                                </a>
+                            <?php endif ?>
                         </div>
                     </div>
 

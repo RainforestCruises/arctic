@@ -81,9 +81,8 @@ function create_post_type_rfc_travel_guides()
             ),
             'public' => true,
             'rewrite' => array('slug' => 'guide'),
-            'hierarchical' => true,
             'supports' => array(
-                'title', 'editor', 'page-attributes'
+                'title', 'editor'
             )
 
         )
