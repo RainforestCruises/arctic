@@ -435,6 +435,52 @@
             "step": ""
         },
         {
+            "key": "field_6806624b8a81f",
+            "label": "Show Itinerary Note",
+            "name": "show_itinerary_note",
+            "type": "true_false",
+            "instructions": "Check to enable a display under the map that highlights an important detail about the itinerary like reverse routes or exceptions",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_680662a58a820",
+            "label": "Itinerary Note",
+            "name": "itinerary_note",
+            "type": "wysiwyg",
+            "instructions": "Important detail about the itinerary like reverse routes or exceptions",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6806624b8a81f",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
             "key": "field_631f8bd5db3a2",
             "label": "Embarkation Point",
             "name": "embarkation_point",
@@ -1508,5 +1554,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1724712071
+    "modified": 1745249075
 }

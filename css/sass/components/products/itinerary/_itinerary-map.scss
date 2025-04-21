@@ -27,4 +27,27 @@
     }
 }
 
+.itinerary-note {
+    @include flexBlock;
+
+    &__content {
+        position: relative;
+        @include flexPadding;
+
+        max-width: $page-width;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+
+       
+    }
+}
+
+.special-note {
+    border-radius: 1rem;
+    color: $color-primary;
+    border: 1px solid $color-grey-light-1a;
+    background-color: $color-grey-light-1;
+    padding: 2rem;
+}
+
 

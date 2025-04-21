@@ -1,6 +1,8 @@
 <?php
 
 $destinationCount = $args['destinationCount'];
+$show_itinerary_note = get_field('show_itinerary_note');
+$itinerary_note = get_field('itinerary_note');
 
 ?>
 <section class="itinerary-map" id="map">
@@ -41,7 +43,17 @@ $destinationCount = $args['destinationCount'];
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </section>
+<?php if ($show_itinerary_note) : ?>
+    <div class="itinerary-note">
+        <div class="itinerary-note__content">
+            <div class="special-note">
+                <?php echo $itinerary_note; ?>
+
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

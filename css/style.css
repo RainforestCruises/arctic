@@ -3865,6 +3865,31 @@ p {
         .itinerary-map__content__map-area {
           height: 48rem; } }
 
+.itinerary-note {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%; }
+  .itinerary-note__content {
+    position: relative;
+    width: 100%;
+    padding: 0 6rem;
+    max-width: 128rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem; }
+    @media only screen and (max-width: 50em) {
+      .itinerary-note__content {
+        padding: 0 3rem; } }
+
+.special-note {
+  border-radius: 1rem;
+  color: #1d2225;
+  border: 1px solid #e6e6e6;
+  background-color: #f8f8f8;
+  padding: 2rem; }
+
 .cruise-itineraries {
   display: flex;
   justify-content: center;
