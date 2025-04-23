@@ -50,6 +50,28 @@
             "allow_null": 0,
             "allow_archives": 0,
             "multiple": 0
+        },
+        {
+            "key": "field_68091259a2c7a",
+            "label": "Region Filter",
+            "name": "region_filter",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_regions"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
         }
     ],
     "location": [
@@ -70,5 +92,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678206208
+    "modified": 1745425020
 }

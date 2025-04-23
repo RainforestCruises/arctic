@@ -127,10 +127,10 @@ function priceFormat($price, $priceHigh = null)
             }
         } else {
             if ($priceHigh && $priceHigh != $price) {
-                $display = do_shortcode('[wpcs_price value=' . $price . ']');
-                $display .= " - " . do_shortcode('[wpcs_price value=' . $priceHigh . ']');
+                $display = $price;
+                $display .= " - " . $priceHigh;
             } else {
-                $display = do_shortcode('[wpcs_price value=' . $price . ']');
+                $display = $price;
             }
         }
 

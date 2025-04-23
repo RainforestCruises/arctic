@@ -32,7 +32,7 @@ if (is_plugin_active('translatepress-multilingual/index.php') && $show_translate
 
 
 $footer_links = get_field('footer_links', 'options');
-$logo_main = get_field('logo_main', 'options');
+$logo_minimal = get_field('logo_minimal', 'options');
 $phone_number = get_field('phone_number', 'options');
 $phone_number_numeric = get_field('phone_number_numeric', 'options');
 $email = get_field('email', 'options');
@@ -54,7 +54,7 @@ $footerClasses = renderFooterClasses();
 
             <div class="footer__content__main__newsletter">
                 <a class="footer__content__main__newsletter__brand" href="<?php echo get_home_url(); ?>">
-                    <img src="<?php echo $logo_main['url']; ?>" class="nav-main__content__left__logo-area__logo-main" alt="<?php echo get_bloginfo('name') ?>" />
+                    <img src="<?php echo $logo_minimal['url']; ?>"  alt="<?php echo get_bloginfo('name') ?>" />
                 </a>
                 <div class="footer__content__main__newsletter__subtext">
                     <?php echo $newsletter_text; ?>

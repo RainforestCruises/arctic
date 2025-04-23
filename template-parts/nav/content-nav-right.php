@@ -3,9 +3,13 @@
     $current_url = home_url(add_query_arg(array(), $wp->request));
     $show_translate_nav = get_field('show_translate_nav', 'options');
 
-    global $WPCS;
-    $currencies = $WPCS->get_currencies();
-    $current_currency = $WPCS->current_currency;
+    if (is_plugin_active('currency-switcher/index.php')) {
+        global $WPCS;
+        $currencies = $WPCS->get_currencies();
+        $current_currency = $WPCS->current_currency;
+        console_log($current_currency);
+    }
+
 
 
     if (is_plugin_active('translatepress-multilingual/index.php') && $show_translate_nav == true) {

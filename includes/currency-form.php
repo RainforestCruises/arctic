@@ -20,10 +20,9 @@ function search_filter_nav_currency_cta()
     if (is_plugin_active('currency-switcher/index.php')) {
         global $WPCS;
         $current_currency = $WPCS->current_currency;
-    }
-    
-    if (is_plugin_active('currency-switcher/index.php')) : 
         echo $current_currency;
-    endif; 
+
+    }
+
     die();
 }

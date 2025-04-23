@@ -7647,10 +7647,12 @@ p {
         .footer__content__main__newsletter {
           grid-column: 1 / -1; } }
       .footer__content__main__newsletter__brand {
-        margin-bottom: 1rem; }
+        margin-bottom: 1rem;
+        display: flex; }
+        .footer__content__main__newsletter__brand img {
+          max-width: 30rem; }
         @media only screen and (max-width: 50em) {
           .footer__content__main__newsletter__brand {
-            display: flex;
             justify-content: center; }
             .footer__content__main__newsletter__brand img {
               max-width: 20rem; } }
@@ -7767,7 +7769,7 @@ p {
           .nav-main .nav-main__content__center__search-area .nav-search-cta__button {
             background-color: currentColor; }
           .nav-main .nav-main__content__center__search-area .nav-search-cta:hover {
-            transition: border .2s;
+            transition: border 0.2s;
             border: 1px solid #c2c6c9; }
         .nav-main .nav-main__content__center__nav__list__item {
           color: currentColor;
@@ -7798,7 +7800,7 @@ p {
         .nav-main.active .nav-main__content__center__search-area .nav-search-cta__button {
           background-color: currentColor; }
         .nav-main.active .nav-main__content__center__search-area .nav-search-cta:hover {
-          transition: border .2s;
+          transition: border 0.2s;
           border: 1px solid #c2c6c9; }
       .nav-main.active .nav-main__content__center__nav__list__item {
         color: currentColor;
@@ -7852,8 +7854,14 @@ p {
           filter: brightness(0) invert(1);
           height: 4.5rem;
           width: auto; }
+        @media only screen and (max-width: 37.5em) {
+          .nav-main__content__left__logo-area__logo-main {
+            display: none; } }
         .nav-main__content__left__logo-area__logo-minimal {
           display: none; }
+          @media only screen and (max-width: 37.5em) {
+            .nav-main__content__left__logo-area__logo-minimal {
+              display: block; } }
     .nav-main__content__center {
       width: 100%;
       height: 100%;

@@ -5,7 +5,7 @@ return array (
   'title' => 'Styles',
   'type' => 'rfc_styles',
   'id' => '6384e8191f751',
-  'updated' => 1678121087,
+  'updated' => 1745425071,
   'columns' => 
   array (
     'title' => 
@@ -39,6 +39,24 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '6384e7f932f1a8',
+    ),
+    '6809129c79db24' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Region Filter',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_68091259a2c7a',
+      'post_property_display' => 'title',
+      'post_link_to' => 'edit_post',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '6809129c79db24',
     ),
     '6406186dec8b44' => 
     array (

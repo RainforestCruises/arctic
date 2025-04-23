@@ -99,6 +99,7 @@ jQuery(document).ready(function ($) {
 
   updateCurrency();
   function updateCurrency() {
+    console.log("update currency");
     var currencyForm = $("#currency-form");
     jqxhr = $.ajax({
       url: currencyForm.attr("action"),
