@@ -7622,7 +7622,7 @@ p {
     .footer__content__main {
       width: 100%;
       display: grid;
-      grid-template-columns: 46rem 26rem 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 4rem;
       margin: 4rem 0; }
       @media only screen and (max-width: 50em) {
