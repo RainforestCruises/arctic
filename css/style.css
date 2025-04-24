@@ -7640,7 +7640,8 @@ p {
         margin-bottom: 1rem;
         display: flex; }
         .footer__content__main__newsletter__brand img {
-          max-width: 30rem; }
+          max-width: 30rem;
+          height: 5rem; }
         @media only screen and (max-width: 50em) {
           .footer__content__main__newsletter__brand {
             justify-content: center; }
