@@ -127,10 +127,10 @@ function priceFormat($price, $priceHigh = null)
             }
         } else {
             if ($priceHigh && $priceHigh != $price) {
-                $display = $price;
-                $display .= " - " . $priceHigh;
+                $display = '$' . number_format($price, 0);
+                $display .= " - $" . number_format($priceHigh, 0);
             } else {
-                $display = $price;
+                $display = '$' . number_format($price, 0);
             }
         }
 
