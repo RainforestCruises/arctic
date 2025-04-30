@@ -6,7 +6,7 @@ $hero_subtitle = get_field('hero_subtitle');
 $category_landing_pages = get_field('category_landing_pages', 'options');
 $hero_items = get_field('hero_items');
 $show_site_notice = get_field('show_site_notice', 'options');
-
+$hero_video_card = get_field('hero_video_card');
 ?>
 
 <section class="home-hero" id="top">
@@ -38,20 +38,23 @@ $show_site_notice = get_field('show_site_notice', 'options');
                 <!-- Video CTA -->
                 <div class="home-hero__content__secondary__content__cta">
 
-                    <!-- Play Video Button -->
-                    <button class="video-play-button">
-                        <div class="video-play-button__icon-area">
-                            <div class="video-play-button__icon-area__inner">
-                                <svg>
-                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-button-play"></use>
-                                </svg>
+                    <?php if ($hero_video_card) : ?>
+                        <!-- Play Video Button -->
+                        <button class="video-play-button">
+                            <div class="video-play-button__icon-area">
+                                <div class="video-play-button__icon-area__inner">
+                                    <svg>
+                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-button-play"></use>
+                                    </svg>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="video-play-button__text">
-                            Watch The Video
-                        </div>
-                    </button>
+                            <div class="video-play-button__text">
+                                Watch The Video
+                            </div>
+                        </button>
+                    <?php endif; ?>
+
 
                 </div>
 
@@ -86,11 +89,14 @@ $show_site_notice = get_field('show_site_notice', 'options');
 
             <!-- Video Area -->
             <div class="home-hero__content__secondary__video-area">
-                <div class="video-card">
-                    <video class="video-card__video" muted loop id="hero-video-card">
-                        <source src="<?php echo esc_url(get_field('hero_video_card')); ?>" type="video/mp4">
-                    </video>
-                </div>
+                <?php if ($hero_video_card) : ?>
+                    <div class="video-card">
+                        <video class="video-card__video" muted loop id="hero-video-card">
+                            <source src="<?php echo esc_url($hero_video_card); ?>" type="video/mp4">
+                        </video>
+                    </div>
+                <?php endif; ?>
+
             </div>
 
         </div>
