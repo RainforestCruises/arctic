@@ -7694,6 +7694,13 @@ p {
         display: flex; }
         .footer__content__bottom__legal__item:not(:last-child) {
           margin-right: 2rem; }
+      .footer__content__bottom__slogan img {
+        height: 4rem;
+        width: auto; }
+      @media only screen and (max-width: 50em) {
+        .footer__content__bottom__slogan {
+          margin-top: 3rem;
+          order: 4; } }
       .footer__content__bottom__access {
         display: flex;
         justify-content: flex-end;

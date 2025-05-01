@@ -953,6 +953,30 @@
             "mime_types": ""
         },
         {
+            "key": "field_6813a3feeb139",
+            "label": "Slogan Image",
+            "name": "slogan_image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
             "key": "field_6088365e8473e",
             "label": "General Testimonials",
             "name": "",
@@ -1371,5 +1395,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1719420560
+    "modified": 1746117649
 }

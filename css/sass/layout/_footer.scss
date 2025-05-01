@@ -258,6 +258,17 @@
         }
       }
 
+      &__slogan {
+        & img {
+          height: 4rem;
+          width: auto;
+        }
+        @media only screen and (max-width: $bp-medium) {
+          margin-top: 3rem;
+          order: 4;
+        }
+      }
+
       &__access {
         display: flex;
         justify-content: flex-end;
