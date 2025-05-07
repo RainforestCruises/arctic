@@ -40,22 +40,3 @@ $agent_snippet = get_field('agent_snippet');
     </div>
 </section>
 
-<section class="agency-person">
-
-    <div class="agency-person__content">
-        <div class="agency-person__content__image-area">
-            <img <?php afloat_image_markup($agent_image['id'], 'featured-medium'); ?>>
-
-        </div>
-        <div class="agency-person__content__text">
-            <div class="agency-person__content__text__title">
-                <?php echo $agent_title ?>
-            </div>
-            <div class="agency-person__content__text__snippet">
-                <?php echo $agent_snippet ?>
-            </div>
-        </div>
-
-    </div>
-
-</section>
