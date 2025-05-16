@@ -45,7 +45,7 @@ jQuery(document).ready(function ($) {
     const videoModal = document.querySelector("#videoModal");
     const videoPlayButton = document.querySelector(".video-play-button");
 
-    if (vimeoPlayer) {
+    if (vimeoPlayer && videoPlayButton && videoModal) {
       // -- open / play
       videoPlayButton.addEventListener("click", () => {
         videoModal.style.display = "flex";
