@@ -5,6 +5,7 @@ $queryArgs = array(
 );
 
 $posts = get_posts($queryArgs);
+$region = checkPageRegion();
 ?>
 
 <section class="guides-toplevel-main">
@@ -14,6 +15,20 @@ $posts = get_posts($queryArgs);
             <?php
             if ($posts) :
                 foreach ($posts as $p) :
+
+                    $postRegion = get_field('region', $p);
+                    $showPost = true;
+                    if (!$postRegion){
+                        $showPost = true;
+                    } else {
+                        $showPost = $postRegion->ID == $region->ID;
+                    };
+
+                    if (!$showPost) {
+                        continue;
+                    }
+
+
                     $featured_image = get_field('featured_image', $p);
                     $imageID = '';
                     if ($featured_image) {

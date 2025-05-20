@@ -5,7 +5,7 @@ return array (
   'title' => 'Regions',
   'type' => 'rfc_regions',
   'id' => '5fdbb49d840f9',
-  'updated' => 1710789005,
+  'updated' => 1747761539,
   'columns' => 
   array (
     'title' => 
@@ -20,6 +20,24 @@ return array (
       'bulk_edit' => 'on',
       'search' => 'on',
       'name' => 'title',
+    ),
+    '682cb9729a5e34' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Top Level Guide Page',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_682cb90d6fb92',
+      'post_property_display' => 'title',
+      'post_link_to' => 'edit_post',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '682cb9729a5e34',
     ),
     '6478d5baffbe78' => 
     array (

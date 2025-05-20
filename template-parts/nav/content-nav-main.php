@@ -110,7 +110,7 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                                             $itemRegionObject = get_field('region', $item);
                                             $itemRegionId = $itemRegionObject ? $itemRegionObject->ID : "all";
                                             $showInitial = true;
-                                            if($itemRegionObject){
+                                            if ($itemRegionObject) {
                                                 $showInitial = $initialRegion->ID == $itemRegionId || $itemRegionId == "all";
                                             }                                        ?>
                                             <a class="mega-category-item swiper-slide nav-mega-item" href="<?php echo $url; ?>" region="<?php echo $itemRegionId; ?>" style="display: <?php echo $showInitial ? '' : 'none' ?>">
@@ -181,33 +181,34 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
 
                                             foreach ($shipRegions as $shipRegion) :
                                                 $url = get_permalink($item);
-                                                if($primaryRegion != $shipRegion){
+                                                if ($primaryRegion != $shipRegion) {
                                                     $url .= "?region=" . $shipRegion->ID;
                                                 }
                                                 $itineraries = getShipItineraries($item, $shipRegion);
                                                 $itineraryDisplay = count($itineraries) . ' Itineraries, ' . itineraryRange($itineraries, "-") . " Days";
 
-                                                
+
                                                 $shipRegionId = $shipRegion ? $shipRegion->ID : "all";
                                                 $showInitial = $initialRegion->ID == $shipRegionId || $shipRegionId == "all";
                                         ?>
-                                            <a class="btn-avatar-info swiper-slide nav-mega-item" href="<?php echo $url; ?>" region="<?php echo $shipRegionId; ?>" style="display: <?php echo $showInitial ? '' : 'none' ?>">
-                                                <div class="btn-avatar-info__image-area">
-                                                    <img <?php afloat_image_markup($ship_image['id'], 'square-small'); ?>>
-                                                </div>
-                                                <div class="btn-avatar-info__title-group">
-                                                    <div class="btn-avatar-info__title-group__title">
-                                                        <?php echo $title ?>
+                                                <a class="btn-avatar-info swiper-slide nav-mega-item" href="<?php echo $url; ?>" region="<?php echo $shipRegionId; ?>" style="display: <?php echo $showInitial ? '' : 'none' ?>">
+                                                    <div class="btn-avatar-info__image-area">
+                                                        <img <?php afloat_image_markup($ship_image['id'], 'square-small'); ?>>
                                                     </div>
-                                                    <div class="btn-avatar-info__title-group__sub">
-                                                        <?php echo $itineraryDisplay ?>
+                                                    <div class="btn-avatar-info__title-group">
+                                                        <div class="btn-avatar-info__title-group__title">
+                                                            <?php echo $title ?>
+                                                        </div>
+                                                        <div class="btn-avatar-info__title-group__sub">
+                                                            <?php echo $itineraryDisplay ?>
+                                                        </div>
+                                                        <div class="btn-avatar-info__title-group__sub">
+                                                            <?php echo $guestsDisplay ?>
+                                                        </div>
                                                     </div>
-                                                    <div class="btn-avatar-info__title-group__sub">
-                                                        <?php echo $guestsDisplay ?>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        <?php endforeach; endforeach; ?>
+                                                </a>
+                                        <?php endforeach;
+                                        endforeach; ?>
 
                                     </div>
                                     <div class="swiper-button-prev swiper-button-prev--white-border mega-ships-slider-btn-prev-<?php echo $shipsSliderCount; ?>">
@@ -275,10 +276,10 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                                         $itemRegionObject = get_field('region', $guide_post);
                                         $itemRegionId = $itemRegionObject ? $itemRegionObject->ID : "all";
                                         $showInitial = true;
-                                        if($itemRegionObject){
+                                        if ($itemRegionObject) {
                                             $showInitial = $initialRegion->ID == $itemRegionId || $itemRegionId == "all";
                                         }
-                                        
+
                                     ?>
 
                                         <a class="btn-avatar-info no-border nav-mega-item" href="<?php echo get_permalink($guide_post); ?>" region="<?php echo $itemRegionId; ?>" style="display: <?php echo $showInitial ? '' : 'none' ?>">
@@ -300,12 +301,18 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                     </div>
                     <!-- View All CTA -->
                     <div class="nav-mega__panel__cta">
-                        <a class="btn-pill btn-pill--icon" href="<?php echo $top_level_guides_page; ?>">
-                            View The Guide
-                            <svg>
-                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                            </svg>
-                        </a>
+
+                        <?php foreach ($regions as $region) : ?>   
+                            <a class="btn-pill btn-pill--icon nav-mega-item" href="<?php echo get_field('top_level_guide_page', $region); ?>" region="<?php echo $region->ID; ?>" style="display: <?php echo $region->ID == $initialRegion->ID ? '' : 'none'; ?>">
+                                View The Guide
+                                <svg>
+                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                                </svg>
+                            </a>
+                        <?php endforeach; ?>
+
+
+
                     </div>
                 </div>
 
