@@ -63,7 +63,15 @@ function checkPageRegion()
     $templateName = get_page_template_slug();
     $postTypeName = get_post_type();
 
-    if ($templateName == 'template-landing.php' || $templateName == 'template-home.php' || $templateName == 'template-guides-toplevel.php') {
+
+    if ($templateName == 'template-landing.php') {
+        $selectedPageRegion = get_field('region_filter');
+        if ($selectedPageRegion) {
+            $initialRegion = $selectedPageRegion;
+        }
+    }
+
+    if ($templateName == 'template-home.php' || $templateName == 'template-guides-toplevel.php') {
         $selectedPageRegion = get_field('region');
         if ($selectedPageRegion) {
             $initialRegion = $selectedPageRegion;
