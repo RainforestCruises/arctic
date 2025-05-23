@@ -54,7 +54,7 @@ $top_level_guide_page = get_field('top_level_guide_page', $region);
         </div>
         
         <div class="grid-block__content__cta">
-            <a class="btn-primary btn-primary--inverse-outline" id="all-guides-link" href="<?php echo $top_level_guide_page; ?>">
+            <a class="btn-primary btn-primary--inverse-outline" id="all-guides-link" href="<?php echo get_permalink($top_level_guide_page); ?>">
                 Read All Guides
             </a>
         </div>

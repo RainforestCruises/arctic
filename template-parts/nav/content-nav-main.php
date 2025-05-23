@@ -303,7 +303,7 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                     <div class="nav-mega__panel__cta">
 
                         <?php foreach ($regions as $region) : ?>   
-                            <a class="btn-pill btn-pill--icon nav-mega-item" href="<?php echo get_field('top_level_guide_page', $region); ?>" region="<?php echo $region->ID; ?>" style="display: <?php echo $region->ID == $initialRegion->ID ? '' : 'none'; ?>">
+                            <a class="btn-pill btn-pill--icon nav-mega-item" href="<?php echo get_permalink(get_field('top_level_guide_page', $region)); ?>" region="<?php echo $region->ID; ?>" style="display: <?php echo $region->ID == $initialRegion->ID ? '' : 'none'; ?>">
                                 View The Guide
                                 <svg>
                                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>

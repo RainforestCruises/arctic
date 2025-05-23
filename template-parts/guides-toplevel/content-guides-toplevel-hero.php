@@ -1,6 +1,9 @@
 <?php
 $intro_snippet = get_field('intro_snippet');
 $pageTitle = get_the_title();
+$region = checkPageRegion();
+
+$home_page = get_field('home_page', $region);
 
 $categories = get_posts(array(
     'post_type' => 'rfc_guide_categories',
@@ -17,7 +20,7 @@ $show_site_notice = get_field('show_site_notice', 'options');
         <!-- Breadcrumb -->
         <ol class="guides-toplevel-hero__content__breadcrumb">
             <li>
-                <a href="<?php echo home_url() ?>">&#8592 Return Home</a>
+                <a href="<?php echo get_permalink($home_page) ?>">&#8592 Return Home</a>
             </li>
 
         </ol>
