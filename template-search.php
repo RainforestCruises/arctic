@@ -10,14 +10,18 @@ $show_travel_guides = get_field('show_travel_guides');
 
 // Region Preselection
 $preselectedRegion = get_field('region');
+$primaryRegion = getPrimaryRegion();
 if (isset($_GET["region"])) {
     if (isset($_GET["region"]) && $_GET["region"]) {
         $preselectedRegion = htmlspecialchars($_GET["region"]);
     } else {
-        $preselectedRegion = null;
+        $preselectedRegion = $primaryRegion ? $primaryRegion->ID : null;
+    }
+} else {
+    if (!$preselectedRegion) {
+        $preselectedRegion = $primaryRegion ? $primaryRegion->ID : null;
     }
 }
-
 
 // Sidebar Filter Lists --------------------------------------------------------------------------------------------------------
 // Sidebar Regions
@@ -219,16 +223,16 @@ if (isset($_GET["routes"])) {
 // Styles
 $styles = [];
 $stylesString = "";
-$selectedStyles = get_field('styles');
+$selectedStyles = get_field('themes');
 if ($selectedStyles != null) {
     $styles = $selectedStyles;
     $stylesString = implode(";", $styles);
 }
 
 // -- URL param
-if (isset($_GET["styles"])) {
-    if (isset($_GET["styles"]) && $_GET["styles"]) {
-        $stylesParameters = htmlspecialchars($_GET["styles"]);
+if (isset($_GET["themes"])) {
+    if (isset($_GET["themes"]) && $_GET["themes"]) {
+        $stylesParameters = htmlspecialchars($_GET["themes"]);
         $stylesString = $stylesParameters;
         $styles = explode(";", $stylesString);
     } else {

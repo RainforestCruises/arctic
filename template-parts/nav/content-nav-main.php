@@ -18,7 +18,7 @@ $initialRegion = checkPageRegion(); // set based on the page template
 $primaryRegion = getPrimaryRegion();
 $templateHeaderActive = checkActiveHeader();
 $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
-
+console_log($initialRegion);
 
 ?>
 

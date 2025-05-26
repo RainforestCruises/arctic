@@ -36,7 +36,15 @@ function load_scripts()
     $postTypeName = get_post_type();
 
     $alwaysActiveHeader = checkActiveHeader();
-    $defaultSearchUrl = get_field('top_level_search_page', 'options');
+    $currentRegion = checkPageRegion();
+    
+    $defaultSearchPage = get_field('top_level_search_page', $currentRegion);
+    $defaultSearchUrl = null;
+    if ($defaultSearchPage) {
+        $defaultSearchUrl = get_permalink($defaultSearchPage);
+    }
+
+
     wp_localize_script(
         'header',
         'header_vars',
@@ -47,7 +55,6 @@ function load_scripts()
             'postTypeName' =>  $postTypeName,
         )
     );
-
 }
 
 add_action('wp_enqueue_scripts', 'load_scripts');

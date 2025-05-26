@@ -71,6 +71,13 @@ function checkPageRegion()
         }
     }
 
+    if ($templateName == 'template-search.php') {
+        $selectedPageRegion = get_field('region');
+        if ($selectedPageRegion) {
+            $initialRegion = get_post($selectedPageRegion);
+        }
+    }
+
     if ($templateName == 'template-home.php' || $templateName == 'template-guides-toplevel.php') {
         $selectedPageRegion = get_field('region');
         if ($selectedPageRegion) {

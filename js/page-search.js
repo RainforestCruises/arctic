@@ -293,6 +293,7 @@ jQuery(document).ready(function ($) {
 
       formRegion.value = regionString;
       hideRoutes(regionString);
+      hideThemes(regionString);
       hideDepartures(regionString);
       hideCountries(regionString);
       reloadResults();
@@ -371,6 +372,7 @@ jQuery(document).ready(function ($) {
     formCountries.value = countriesString;
   }
 
+  // Routes
   // if region selected, hide and uncheck unrelated routes
   const routeGroupArray = [...document.querySelectorAll(".route-checkbox-group")]; // li element of checkbox
   function hideRoutes(selectedRegion) {
@@ -428,6 +430,64 @@ jQuery(document).ready(function ($) {
     formRoutes.value = routesString;
   }
 
+  // Themes
+  // if region selected, hide and uncheck unrelated themes
+  const themeGroupArray = [...document.querySelectorAll(".theme-checkbox-group")]; // li element of checkbox
+  function hideThemes(selectedRegion) {
+    themeGroupArray.forEach((item) => {
+      if (selectedRegion == "") {
+        item.style.display = "block";
+      } else {
+        var regionId = item.getAttribute("region-value");
+        if (regionId == selectedRegion) {
+          item.style.display = "block";
+        } else {
+          var targetCheckbox = item.querySelectorAll(".theme-checkbox");
+          $(targetCheckbox).prop("checked", false); // strange but vanilla js will not work
+          item.style.display = "none";
+        }
+      }
+    });
+    computeThemesString();
+  }
+
+  let themesString = formThemes.value;
+  const themesArray = [...document.querySelectorAll(".theme-checkbox")];
+  themesArray.forEach((item) => {
+    item.addEventListener("click", () => {
+      computeThemesString();
+      reloadResults();
+    });
+  });
+
+  // build themes string / filter count based on current state
+  function computeThemesString() {
+    themesString = "";
+    let count = 0;
+    themesArray.forEach((checkbox) => {
+      const itemValue = parseInt(checkbox.value);
+      if (checkbox.checked) {
+        if (count > 0) {
+          themesString += ";";
+        }
+        themesString += itemValue;
+        count++;
+      }
+    });
+
+    // filter count
+    let themesFilterCount = document.getElementById("themesFilterCount");
+    if (count > 0) {
+      themesFilterCount.classList.add("show");
+      themesFilterCount.innerHTML = count;
+    } else {
+      themesFilterCount.classList.remove("show");
+      themesFilterCount.innerHTML = count;
+    }
+    formThemes.value = themesString;
+  }
+
+  // Departures
   const departureGroupArray = [...document.querySelectorAll(".departure-checkbox-group")]; // li element of checkbox
   function hideDepartures(selectedRegion) {
     departureGroupArray.forEach((item) => {
@@ -492,41 +552,6 @@ jQuery(document).ready(function ($) {
     reloadResults();
   }
 
-  // themes selections
-  let themesString = formThemes.value;
-  const themesArray = [...document.querySelectorAll(".theme-checkbox")];
-  themesArray.forEach((item) => {
-    item.addEventListener("click", () => {
-      themesString = "";
-      let count = 0;
-      themesArray.forEach((checkbox) => {
-        const itemValue = parseInt(checkbox.value);
-        if (checkbox.checked) {
-          if (count > 0) {
-            themesString += ";";
-          }
-          themesString += itemValue;
-          count++;
-        }
-      });
-
-      // filter count
-      let themesFilterCount = document.getElementById("themesFilterCount");
-      if (count > 0) {
-        themesFilterCount.classList.add("show");
-        themesFilterCount.innerHTML = count;
-      } else {
-        themesFilterCount.classList.remove("show");
-        themesFilterCount.innerHTML = count;
-      }
-      formThemes.value = themesString;
-      reloadResults();
-    });
-  });
-
-
-
-
   // ship selections
   let shipSizesString = formShipSizes.value;
   const shipSizesArray = [...document.querySelectorAll(".size-checkbox")];
@@ -558,8 +583,6 @@ jQuery(document).ready(function ($) {
       reloadResults();
     });
   });
-
-
 
   // length slider
   var lengthSliderMin = 1;
@@ -756,7 +779,6 @@ jQuery(document).ready(function ($) {
     if (shipSizesString != null) {
       params.set("shipSizes", shipSizesString);
     }
-
 
     if (formMinLength.value != null) {
       params.set("length_min", formMinLength.value);

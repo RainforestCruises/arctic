@@ -196,7 +196,7 @@
             "label": "Region",
             "name": "region",
             "type": "post_object",
-            "instructions": "Preselected region.. leave blank if 'Any'",
+            "instructions": "Preselected region.. blank will default to Antarctica",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -208,7 +208,7 @@
                 "rfc_regions"
             ],
             "taxonomy": "",
-            "allow_null": 1,
+            "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
             "ui": 1
@@ -666,5 +666,5 @@
     "active": true,
     "description": "Search - Page",
     "show_in_rest": 0,
-    "modified": 1730757347
+    "modified": 1748286597
 }
