@@ -44,7 +44,7 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
         </button>
     </div>
 
-    
+
 
     <!-- Departure Date Filter -->
     <div class="filter">
@@ -150,11 +150,13 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                 foreach ($sidebarStyles as $style) :
                     $styleRegion = get_field('region_filter', $style);
                     $matchRegion = ($preselectedRegion != null && $styleRegion->ID != $preselectedRegion) ? "none" : "block";
+                    $title = get_field('display_title', $style) ? get_field('display_title', $style) : get_the_title($style);
+
                 ?>
                     <li class="filter__content__list__item theme-checkbox-group" region-value="<?php echo $styleRegion != null ? $styleRegion->ID : 0 ?>" style="display: <?php echo $matchRegion ?>">
                         <div class="form-checkbox">
                             <input class="checkbox theme-checkbox" type="checkbox" id="theme-checkbox-<?php echo $count; ?>" value="<?php echo $style->ID ?>" <?php echo ($selectedStyles != null ? (in_array($style->ID, $selectedStyles) ? 'checked' : '') : '') ?> region-value="<?php echo $styleRegion != null ? $styleRegion->ID : 0 ?>">
-                            <label for="theme-checkbox-<?php echo $count; ?>" tabindex="1"><?php echo get_the_title($style) ?></label>
+                            <label for="theme-checkbox-<?php echo $count; ?>" tabindex="1"><?php echo $title ?></label>
                         </div>
                     </li>
                 <?php $count++;

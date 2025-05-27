@@ -27,6 +27,25 @@
             "mime_types": ""
         },
         {
+            "key": "field_683625f273d35",
+            "label": "Display Title",
+            "name": "display_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_64061839ad6d3",
             "label": "Landing Page",
             "name": "landing_page",
@@ -92,5 +111,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1745425020
+    "modified": 1748379139
 }

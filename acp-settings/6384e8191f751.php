@@ -5,7 +5,7 @@ return array (
   'title' => 'Styles',
   'type' => 'rfc_styles',
   'id' => '6384e8191f751',
-  'updated' => 1745425071,
+  'updated' => 1748379216,
   'columns' => 
   array (
     'title' => 
@@ -20,6 +20,23 @@ return array (
       'bulk_edit' => 'on',
       'search' => 'on',
       'name' => 'title',
+    ),
+    '6836262f2978d4' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Display Title',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_683625f273d35',
+      'character_limit' => '20',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '6836262f2978d4',
     ),
     '6384e7f932f1a8' => 
     array (

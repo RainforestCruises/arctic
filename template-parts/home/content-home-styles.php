@@ -45,7 +45,7 @@ $styles_title_subtext = get_field('styles_title_subtext');
                     <?php foreach ($styles as $style) :
                         $image =  get_field('image', $style);
                         $landing_page =  get_field('landing_page', $style);
-                        $title = get_the_title($style);
+                        $title = get_field('display_title', $style) ? get_field('display_title', $style) : get_the_title($style);
                     ?>
                         <!-- Overlay Card -->
                         <div class="overlay-card swiper-slide">
