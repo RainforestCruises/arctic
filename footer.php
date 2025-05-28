@@ -87,7 +87,7 @@ $footerClasses = renderFooterClasses();
                     <div>1680 Michigan Avenue, Suite 700</div>
                     <div>Miami Beach, FL 33139</div>
                     <div>Licensed Florida Seller Of Travel #ST38603</div>
-                    <div>IATAN Accredited Agency #1071645</div>
+                    <div>IATAN Accredited Agency #10716451</div>
                 </div>
             </div>
 
