@@ -141,7 +141,8 @@
                     ],
                     "taxonomy": [
                         "category:search",
-                        "category:destinations"
+                        "category:destinations",
+                        "category:top-level"
                     ],
                     "allow_null": 0,
                     "allow_archives": 0,
@@ -666,5 +667,5 @@
     "active": true,
     "description": "Search - Page",
     "show_in_rest": 0,
-    "modified": 1748286597
+    "modified": 1748457811
 }
