@@ -35,10 +35,7 @@ $show_reviews = get_field('show_reviews');
     get_template_part('template-parts/home/content', 'home-hero');
     ?>
 
-    <!-- Cruises  -->
-    <?php
-    get_template_part('template-parts/home/content', 'home-ships');
-    ?>
+
 
     <!-- Routes  -->
     <?php
@@ -63,6 +60,11 @@ $show_reviews = get_field('show_reviews');
     <!-- Experiences  -->
     <?php
     get_template_part('template-parts/home/content', 'home-experiences');
+    ?>
+
+    <!-- Cruises  -->
+    <?php
+    get_template_part('template-parts/home/content', 'home-ships');
     ?>
 
     <!-- Reviews  -->

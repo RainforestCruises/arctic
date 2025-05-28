@@ -2,7 +2,8 @@
 $routes = get_field('routes');
 $routes_title = get_field('routes_title');
 $routes_title_subtext = get_field('routes_title_subtext');
-$top_level_search_page = get_field('top_level_search_page', 'options');
+$region = checkPageRegion();
+$top_level_search_page = get_field('top_level_search_page', $region);
 
 ?>
 
@@ -91,11 +92,7 @@ $top_level_search_page = get_field('top_level_search_page', 'options');
                             $portsDisplay = comma_separate_list($ports);
 
                             $destinations = getItineraryDestinations($sample_itinerary, true, 4); //build list of unique, with embarkations removed
-                            $allLink = $top_level_search_page . '?routes=' . $route->ID;
-
-                            // $itinerariesList = getItinerariesFromRoute($route);
-                            // $price_low = getLowestPriceFromListOfItineraries($itinerariesList);
-                            // $price_high = getHighestPriceFromListOfItineraries($itinerariesList);
+                            $allLink = get_permalink($top_level_search_page) . '?routes=' . $route->ID;
                         ?>
 
                             <!-- Itinerary Card -->
