@@ -104,6 +104,7 @@ $email = get_field('email', 'options');
                     <button class="btn-pill clear-departure-filters" style="display: none;">Clear Filters</button>
                 </div>
                 <div class="departures-modal__content">
+                    <div style="margin-bottom: 1.5rem;">NOTE: Cabin prices and availabilities listed are provided in good faith, but may contain discrepancies and are subject to change without notice. Please inquire with our polar specialists directly for the latest pricing and availability.</div>
                     <?php foreach ($departures as $d) :
                         $departureId = $d['ID'];
                         $itineraryPost = $d['ItineraryPost'];
@@ -247,6 +248,8 @@ $email = get_field('email', 'options');
                     <div id="cabin-departure-subtitle"></div>
                 </div>
                 <div class="cabins-modal__content">
+                    <div style="margin-bottom: 1.5rem;">NOTE: Cabin prices and availabilities listed are provided in good faith, but may contain discrepancies and are subject to change without notice. Please inquire with our polar specialists directly for the latest pricing and availability.</div>
+
                     <?php foreach ($departures  as $d) :
                         $departureId = $d['ID'];
                         $cabins = $d['Cabins'];

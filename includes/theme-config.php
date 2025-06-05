@@ -245,3 +245,23 @@ function custom_name_validation( $errors, $form_data ) {
     return $errors;
 }
 add_filter( 'wpforms_process_initial_errors', 'custom_name_validation', 10, 2 );
+
+
+/**
+ * Modify WPForms Date/Time field date picker to accept a range of dates.
+ *
+ * @link https://wpforms.com/developers/allow-date-range-or-multiple-dates-in-date-picker/
+ */
+ 
+function wpf_dev_date_picker_range() {
+?>
+    <script type="text/javascript">
+ 
+        window.wpforms_datepicker = {
+            mode: "range"
+        }
+ 
+    </script>
+<?php
+}
+add_action( 'wpforms_wp_footer_end', 'wpf_dev_date_picker_range', 10 );
