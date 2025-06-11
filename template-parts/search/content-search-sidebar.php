@@ -328,8 +328,6 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
         </div>
     </div>
 
-
-
     <!-- Clear Filters Button -->
     <div class="filter--clear clear-filters-area" id="clear-filters-area">
         <button class="btn-primary btn-primary--inverse-outline btn-primary--small btn-primary--bold clear-filters">

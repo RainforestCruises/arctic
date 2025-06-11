@@ -128,12 +128,21 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
         $embarkation_point = get_field('embarkation_point', $itinerary); // filter embarkation countries
         $disembarkation_point = get_field('disembarkation_point', $itinerary);
         $embarkation_country = get_field('embarkation_country', $embarkation_point);
+
+
+
         $embarkationMatch = false;
         if ($countries == null) {
             $embarkationMatch = true;
         } else {
+
+            if (!$embarkation_country || !$disembarkation_point || !$embarkation_country) { // if any null value is found, skip this itinerary
+                continue;
+            }
+
+
             foreach ($countries as $country) {
-                if (intval($country) == $embarkation_country->ID) {
+                if ($country == $embarkation_country->ID) {
                     $embarkationMatch = true;
                 }
             }
