@@ -2,11 +2,12 @@
 $reviews = get_field('reviews');
 $reviews_title = get_field('reviews_title');
 $maxlength = 320;
+$top_level_reviews_page = get_field('top_level_reviews_page', 'options');
 ?>
 
 
 <section class="grid-block" id="reviews">
-    <div class="grid-block__content">
+    <div class="grid-block__content  block-top-divider">
         <!-- Top - Title/Nav -->
         <div class="grid-block__content__top">
             <!-- Title -->
@@ -59,7 +60,7 @@ $maxlength = 320;
             <?php endforeach; ?>
         </div>
         <div class="grid-block__content__cta">
-            <a class="btn-primary btn-primary--inverse-outline" id="all-guides-link">
+            <a class="btn-primary btn-primary--inverse-outline" id="all-guides-link" href="<?php echo $top_level_reviews_page; ?>">
                 Read All Reviews
             </a>
         </div>

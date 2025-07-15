@@ -70,38 +70,29 @@ jQuery(document).ready(function ($) {
     }
   }
 
-  // view all ships
-  const allShipsButton = document.querySelector("#all-ships-button");
-  const expandedShips = document.querySelector("#expanded-ships");
-
-  // -- open / play
-  allShipsButton.addEventListener("click", () => {
-    if (expandedShips.classList.contains("expand")) {
-      expandedShips.classList.remove("expand");
-      allShipsButton.innerHTML = "View All Ships";
-    } else {
-      expandedShips.classList.add("expand");
-      allShipsButton.innerHTML = "Show Less";
-    }
-  });
 
   // SLIDERS -------------------------------------------------------
-  // each ship's image area
-  new Swiper(".ship-card-image-area", {
-    slidesPerView: 1,
+
+
+    // ships slider
+  new Swiper("#ships-slider", {
+    spaceBetween: 15,
+    slidesPerView: 1.2,
     watchSlidesProgress: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-      dynamicBullets: true,
-      dynamicMainBullets: 3,
-    },
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-      enabled: true,
+      nextEl: ".ships-slider-btn-next",
+      prevEl: ".ships-slider-btn-prev",
+    },
+    breakpoints: {
+      600: {
+        slidesPerView: 2,
+      },
+      1000: {
+        slidesPerView: 3,
+      },
     },
   });
+
 
   // itineraries slider
   new Swiper("#itineraries-best-slider", {
