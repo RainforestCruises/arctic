@@ -2,6 +2,8 @@
 $newsletter_cta_title = get_field('newsletter_cta_title', 'options');
 $newsletter_cta_subtext = get_field('newsletter_cta_subtext', 'options');
 $newsletter_cta_image = get_field('newsletter_cta_image', 'options');
+$newsletter_button_text = get_field('newsletter_button_text', 'options') != "" ? get_field('newsletter_button_text', 'options') : "Sign Up For Our Newsletter To Get The Latest Antarctica Cruise Deals Straight To Your Inbox!";
+
 $footerClasses = renderFooterClasses();
 
 ?>
@@ -22,8 +24,7 @@ $footerClasses = renderFooterClasses();
             </div>
             <div class="newsletter__content__title-group__cta">
                 <button class="btn-primary newsletter-subscribe-button">
-                    Sign Up For Our Newsletter To Get The Latest Antarctica Cruise Deals Straight To Your Inbox!
-
+                    <?php echo $newsletter_button_text; ?>
                 </button>
             </div>
         </div>

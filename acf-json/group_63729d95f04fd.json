@@ -136,6 +136,25 @@
             "maxlength": ""
         },
         {
+            "key": "field_6877c6a1547c0",
+            "label": "Short Title",
+            "name": "short_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_63c9b63cb0b84",
             "label": "Hero Subtitle",
             "name": "hero_subtitle",
@@ -930,5 +949,5 @@
     "active": true,
     "description": "Landing - Page",
     "show_in_rest": 0,
-    "modified": 1715878256
+    "modified": 1752680123
 }

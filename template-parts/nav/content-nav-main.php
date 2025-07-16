@@ -104,7 +104,7 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                                     <div class="swiper-wrapper">
                                         <?php foreach ($items as $item) :
                                             $url = get_permalink($item);
-                                            $hero_title = get_field('hero_title', $item);
+                                            $hero_title = get_field('short_title', $item) != "" ? get_field('short_title', $item) : get_field('hero_title', $item);
                                             $hero_images =  get_field('hero_images', $item);
                                             $itemRegionObject = get_field('region', $item);
                                             $itemRegionId = $itemRegionObject ? $itemRegionObject->ID : "all";
@@ -231,7 +231,7 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                     <!-- View All CTA -->
                     <div class="nav-mega__panel__cta">
                         <?php foreach ($regions as $region) : ?>
-                            <a class="btn-pill btn-pill--icon nav-mega-item" href="<?php echo get_permalink(get_field('top_level_search_page', $region)); ?>" region="<?php echo $region->ID; ?>" style="display: <?php echo $region->ID == $initialRegion->ID ? '' : 'none'; ?>">
+                            <a class="btn-pill btn-pill--icon nav-mega-item" href="<?php echo get_permalink(get_field('top_level_search_page', $region)); ?>?viewType=search-ships" region="<?php echo $region->ID; ?>" style="display: <?php echo $region->ID == $initialRegion->ID ? '' : 'none'; ?>">
                                 View All Ships
                                 <svg>
                                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>

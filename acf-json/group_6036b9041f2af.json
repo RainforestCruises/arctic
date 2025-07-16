@@ -412,6 +412,25 @@
             "delay": 0
         },
         {
+            "key": "field_6877ca6607d79",
+            "label": "Newsletter Button Text",
+            "name": "newsletter_button_text",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
             "key": "field_64515953342fe",
             "label": "Newsletter CTA Image",
             "name": "newsletter_cta_image",
@@ -1418,5 +1437,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1752591291
+    "modified": 1752681378
 }
