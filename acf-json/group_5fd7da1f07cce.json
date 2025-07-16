@@ -151,6 +151,28 @@
             "ui": 1
         },
         {
+            "key": "field_6877a990a4a21",
+            "label": "Top Level Deals Page",
+            "name": "top_level_deals_page",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
             "key": "field_6830b752a0804",
             "label": "Home Page",
             "name": "home_page",
@@ -191,5 +213,5 @@
     "active": true,
     "description": "Regions - CPT",
     "show_in_rest": 0,
-    "modified": 1748288276
+    "modified": 1752672679
 }

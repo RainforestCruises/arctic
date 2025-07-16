@@ -18,7 +18,6 @@ $initialRegion = checkPageRegion(); // set based on the page template
 $primaryRegion = getPrimaryRegion();
 $templateHeaderActive = checkActiveHeader();
 $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
-console_log($initialRegion);
 
 ?>
 
@@ -231,13 +230,19 @@ console_log($initialRegion);
                     </div>
                     <!-- View All CTA -->
                     <div class="nav-mega__panel__cta">
-                        <a class="btn-pill btn-pill--icon" href="<?php echo $top_level_search_page; ?> . ?viewType=search-ships">
-                            View All Ships
-                            <svg>
-                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                            </svg>
-                        </a>
+                        <?php foreach ($regions as $region) : ?>
+                            <a class="btn-pill btn-pill--icon nav-mega-item" href="<?php echo get_permalink(get_field('top_level_search_page', $region)); ?>" region="<?php echo $region->ID; ?>" style="display: <?php echo $region->ID == $initialRegion->ID ? '' : 'none'; ?>">
+                                View All Ships
+                                <svg>
+                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                                </svg>
+                            </a>
+                        <?php endforeach; ?>
                     </div>
+
+
+
+
                 </div>
 
                 <!-- Guides Panel -->
@@ -302,7 +307,7 @@ console_log($initialRegion);
                     <!-- View All CTA -->
                     <div class="nav-mega__panel__cta">
 
-                        <?php foreach ($regions as $region) : ?>   
+                        <?php foreach ($regions as $region) : ?>
                             <a class="btn-pill btn-pill--icon nav-mega-item" href="<?php echo get_permalink(get_field('top_level_guide_page', $region)); ?>" region="<?php echo $region->ID; ?>" style="display: <?php echo $region->ID == $initialRegion->ID ? '' : 'none'; ?>">
                                 View The Guide
                                 <svg>

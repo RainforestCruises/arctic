@@ -140,20 +140,9 @@ $top_level_search_page = get_field('top_level_search_page', 'options');
             </div>
         </div>
         <div class="slider-block__content__cta">
-            <a class="btn-primary btn-primary--inverse-outline" id="all-ships-button"  href="<?php echo $top_level_search_page; ?>">
+            <a class="btn-primary btn-primary--inverse-outline" id="all-ships-button" href="<?php echo $top_level_search_page; ?>?viewType=search-ships">
                 View All Ships
-                </a>
+            </a>
         </div>
     </div>
 </section>
-
-
-
-
-
-
-
-
-
-
-

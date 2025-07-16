@@ -19,6 +19,28 @@
             "endpoint": 0
         },
         {
+            "key": "field_6877a6caf3ab7",
+            "label": "Region",
+            "name": "region",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_regions"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
             "key": "field_620a9457c8088",
             "label": "Hero Title",
             "name": "hero_title",
@@ -352,5 +374,5 @@
     "active": true,
     "description": "Deals - Page (Top Level)",
     "show_in_rest": 0,
-    "modified": 1683053030
+    "modified": 1752672038
 }

@@ -5,7 +5,7 @@ return array (
   'title' => 'Deals',
   'type' => 'rfc_deals',
   'id' => '61dca42e9152d',
-  'updated' => 1721747328,
+  'updated' => 1752672376,
   'columns' => 
   array (
     'title' => 
@@ -56,6 +56,24 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '669fc767ab8520',
+    ),
+    '6877a85997ced8' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Region',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_6877a80a7887b',
+      'post_property_display' => 'title',
+      'post_link_to' => 'edit_post',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '6877a85997ced8',
     ),
     '6453e0cfd8d4fc' => 
     array (

@@ -2,6 +2,7 @@
 $itineraries = get_field('itineraries');
 $itineraries_title = get_field('itineraries_title');
 $itineraries_title_subtext = get_field('itineraries_title_subtext');
+$top_level_search_page = get_field('top_level_search_page', 'options');
 
 ?>
 
@@ -40,8 +41,6 @@ $itineraries_title_subtext = get_field('itineraries_title_subtext');
 
         <!-- Slider Area -->
         <div class="slider-block__content__slider">
-
-
             <div class="swiper" id="itineraries-best-slider">
                 <div class="swiper-wrapper">
 
@@ -139,5 +138,10 @@ $itineraries_title_subtext = get_field('itineraries_title_subtext');
             </div>
         </div>
 
+        <div class="slider-block__content__cta">
+            <a class="btn-primary btn-primary--inverse-outline" id="all-ships-button" href="<?php echo $top_level_search_page; ?>?viewType=search-itineraries">
+                View All Cruises
+            </a>
+        </div>
     </div>
 </section>
