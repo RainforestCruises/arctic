@@ -1,6 +1,6 @@
 <?php
 $hero_images = get_field('hero_images');
-$title = get_field('title');
+$hero_title = get_field('hero_title');
 $subtitle = get_field('subtitle');
 $show_site_notice = get_field('show_site_notice', 'options');
 $sections = get_field('sections');
@@ -19,7 +19,7 @@ $sections = get_field('sections');
         <div class="deals-toplevel-hero__content__title-group">
 
             <h1 class="deals-toplevel-hero__content__title-group__title">
-                <?php echo $title ?>
+                <?php echo $hero_title ?>
             </h1>
             <div class="deals-toplevel-hero__content__title-group__sub">
                 <?php echo $subtitle ?>

@@ -40,6 +40,18 @@ $top_level_about_page = get_field('top_level_about_page', 'options');
 $top_level_search_page = get_field('top_level_search_page', 'options');
 $top_level_agents_page = get_field('top_level_agents_page', 'options');
 
+
+$regionsArgs = array(
+    'post_type' => 'rfc_regions',
+    'posts_per_page' => -1,
+    'order' => 'ASC',
+    'orderby' => 'title',
+);
+$regions = get_posts($regionsArgs);
+$initialRegion = checkPageRegion(); // set based on the page template
+$primaryRegion = getPrimaryRegion();
+$hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
+
 ?>
 
 <!-- Mobile Menu -->
@@ -162,7 +174,7 @@ $top_level_agents_page = get_field('top_level_agents_page', 'options');
                     <?php endif; ?>
 
                     <?php if (is_plugin_active('currency-switcher/index.php')) : ?>
-                       <span class="currency-name-display"><?php echo $current_currency; ?></span> 
+                        <span class="currency-name-display"><?php echo $current_currency; ?></span>
                     <?php endif; ?>
                 </div>
             </a>
@@ -175,6 +187,13 @@ $top_level_agents_page = get_field('top_level_agents_page', 'options');
         <div class="nav-mobile__content-panel__static">
             <div class="nav-mobile__content-panel__static__heading">
                 Cruises
+                <div class="nav-mobile__content-panel__static__heading__regions" style="display: <?php echo $hideSecondaryRegions ? 'none' : '' ?>">
+                    <?php foreach ($regions as $region) : ?>
+                        <button class="btn-region <?php echo ($region == $initialRegion) ? 'active' : '' ?> nav-region-select" region="<?php echo $region->ID; ?>">
+                            <?php echo get_the_title($region) ?>
+                        </button>
+                    <?php endforeach; ?>
+                </div>
             </div>
             <div class="nav-close-button">
                 <svg>
@@ -194,6 +213,7 @@ $top_level_agents_page = get_field('top_level_agents_page', 'options');
             <?php foreach ($landing_pages as $group) :
                 $group_title = $group['group'];
                 $items = $group['items'];
+
             ?>
                 <div class="nav-mobile__content-panel__main__group-title">
                     <?php echo $group_title; ?>
@@ -202,8 +222,14 @@ $top_level_agents_page = get_field('top_level_agents_page', 'options');
                     $url = get_permalink($item);
                     $hero_title = get_field('hero_title', $item);
                     $hero_images =  get_field('hero_images', $item);
+                    $itemRegionObject = get_field('region', $item);
+                    $itemRegionId = $itemRegionObject ? $itemRegionObject->ID : "all";
+                    $showInitial = true;
+                    if ($itemRegionObject) {
+                        $showInitial = $initialRegion->ID == $itemRegionId || $itemRegionId == "all";
+                    }
                 ?>
-                    <a href="<?php echo $url; ?>" class="nav-button mobile-link">
+                    <a href="<?php echo $url; ?>" class="nav-button mobile-link nav-mega-item" region="<?php echo $itemRegionId; ?>" style="display: <?php echo $showInitial ? '' : 'none' ?>">
                         <div class="nav-button__img-icon">
                             <img <?php afloat_image_markup($hero_images[0]['id'], 'square-small', array('square-small')); ?>>
                         </div>
@@ -222,6 +248,13 @@ $top_level_agents_page = get_field('top_level_agents_page', 'options');
         <div class="nav-mobile__content-panel__static">
             <div class="nav-mobile__content-panel__static__heading">
                 Ships
+                <div class="nav-mobile__content-panel__static__heading__regions" style="display: <?php echo $hideSecondaryRegions ? 'none' : '' ?>">
+                    <?php foreach ($regions as $region) : ?>
+                        <button class="btn-region <?php echo ($region == $initialRegion) ? 'active' : '' ?> nav-region-select" region="<?php echo $region->ID; ?>">
+                            <?php echo get_the_title($region) ?>
+                        </button>
+                    <?php endforeach; ?>
+                </div>
             </div>
             <div class="nav-close-button">
                 <svg>
@@ -250,24 +283,37 @@ $top_level_agents_page = get_field('top_level_agents_page', 'options');
                     $title = get_the_title($item);
                     $hero_gallery = get_field('hero_gallery', $item);
                     $ship_image = $hero_gallery[0];
+                    $shipRegions = getShipRegions($item);
+
+                    foreach ($shipRegions as $shipRegion) :
+                        $url = get_permalink($item);
+                        if ($primaryRegion != $shipRegion) {
+                            $url .= "?region=" . $shipRegion->ID;
+                        }
+                        $shipRegionId = $shipRegion ? $shipRegion->ID : "all";
+                        $showInitial = $initialRegion->ID == $shipRegionId || $shipRegionId == "all";
                 ?>
 
-                    <a href="<?php echo $url; ?>" class="nav-button mobile-link">
-                        <div class="nav-button__img-icon">
-                            <img <?php afloat_image_markup($ship_image['id'], 'square-small', array('square-small')); ?>>
-                        </div>
-                        <div class="nav-button__text">
-                            <?php echo $title; ?>
-                        </div>
-                    </a>
+
+                        <a href="<?php echo $url; ?>" class="nav-button mobile-link nav-mega-item" region="<?php echo $shipRegionId; ?>" style="display: <?php echo $showInitial ? '' : 'none' ?>">
+                            <div class="nav-button__img-icon">
+                                <img <?php afloat_image_markup($ship_image['id'], 'square-small', array('square-small')); ?>>
+                            </div>
+                            <div class="nav-button__text">
+                                <?php echo $title; ?>
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
                 <?php endforeach; ?>
             <?php endforeach; ?>
-            <a class="btn-pill btn-pill--icon mobile-nav-view-all-button" href="<?php echo $top_level_search_page; ?> . ?viewType=search-ships" style="margin: 2rem">
-                View All Ships
-                <svg>
-                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                </svg>
-            </a>
+            <?php foreach ($regions as $region) : ?>
+                <a class="btn-pill btn-pill--icon mobile-nav-view-all-button nav-mega-item" href="<?php echo get_permalink(get_field('top_level_search_page', $region))?>?viewType=search-ships" region="<?php echo $region->ID; ?>" style="display: <?php echo $region->ID == $initialRegion->ID ? '' : 'none'; ?>" style="margin: 2rem">
+                    View All Ships
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                    </svg>
+                </a>
+            <?php endforeach; ?>
 
         </div>
     </div>
@@ -279,6 +325,13 @@ $top_level_agents_page = get_field('top_level_agents_page', 'options');
         <div class="nav-mobile__content-panel__static">
             <div class="nav-mobile__content-panel__static__heading">
                 Guide
+                <div class="nav-mobile__content-panel__static__heading__regions" style="display: <?php echo $hideSecondaryRegions ? 'none' : '' ?>">
+                    <?php foreach ($regions as $region) : ?>
+                        <button class="btn-region <?php echo ($region == $initialRegion) ? 'active' : '' ?> nav-region-select" region="<?php echo $region->ID; ?>">
+                            <?php echo get_the_title($region) ?>
+                        </button>
+                    <?php endforeach; ?>
+                </div>
             </div>
             <div class="nav-close-button">
                 <svg>
@@ -306,9 +359,16 @@ $top_level_agents_page = get_field('top_level_agents_page', 'options');
                     $guide_post = $item['guide_post'];
                     $url = get_permalink($guide_post);
                     $title = $item['title'];
-                    $featured_image = get_field('featured_image', $guide_post)
+                    $featured_image = get_field('featured_image', $guide_post);
+                    $itemRegionObject = get_field('region', $guide_post);
+                    $itemRegionId = $itemRegionObject ? $itemRegionObject->ID : "all";
+                    $showInitial = true;
+                    if ($itemRegionObject) {
+                        $showInitial = $initialRegion->ID == $itemRegionId || $itemRegionId == "all";
+                    }
+
                 ?>
-                    <a href="<?php echo $url; ?>" class="nav-button mobile-link">
+                    <a href="<?php echo $url; ?>" class="nav-button mobile-link nav-mega-item" href="<?php echo get_permalink($guide_post); ?>" region="<?php echo $itemRegionId; ?>" style="display: <?php echo $showInitial ? '' : 'none' ?>">
                         <div class="nav-button__img-icon">
                             <img <?php afloat_image_markup($featured_image['id'], 'square-small', array('square-small')); ?>>
                         </div>
@@ -318,12 +378,14 @@ $top_level_agents_page = get_field('top_level_agents_page', 'options');
                     </a>
                 <?php endforeach; ?>
             <?php endforeach; ?>
-            <a class="btn-pill btn-pill--icon mobile-nav-view-all-button" href="<?php echo $top_level_guides_page; ?>" style="margin: 2rem">
-                View All Gudies
-                <svg>
-                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                </svg>
-            </a>
+            <?php foreach ($regions as $region) : ?>
+                <a class="btn-pill btn-pill--icon mobile-nav-view-all-button nav-mega-item" href="<?php echo get_permalink(get_field('top_level_guide_page', $region)); ?>" region="<?php echo $region->ID; ?>" style="display: <?php echo $region->ID == $initialRegion->ID ? '' : 'none'; ?>" style="margin: 2rem">
+                    View The Guide
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                    </svg>
+                </a>
+            <?php endforeach; ?>
         </div>
     </div>
 
