@@ -106,7 +106,7 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                                             $url = get_permalink($item);
                                             $hero_title = get_field('short_title', $item) != "" ? get_field('short_title', $item) : get_field('hero_title', $item);
                                             $hero_images =  get_field('hero_images', $item);
-                                            $itemRegionObject = get_field('region', $item);
+                                            $itemRegionObject = get_field('region_filter', $item);
                                             $itemRegionId = $itemRegionObject ? $itemRegionObject->ID : "all";
                                             $showInitial = true;
                                             if ($itemRegionObject) {
