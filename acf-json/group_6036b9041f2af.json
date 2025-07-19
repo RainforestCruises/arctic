@@ -293,7 +293,7 @@
             "key": "field_63d92f0a500b7",
             "label": "Footer Links",
             "name": "footer_links",
-            "type": "relationship",
+            "type": "repeater",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -302,18 +302,51 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "page",
-                "rfc_travel_guides"
-            ],
-            "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "object"
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_687ba2e90d997",
+                    "label": "Item",
+                    "name": "item",
+                    "type": "page_link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": "",
+                    "taxonomy": "",
+                    "allow_null": 0,
+                    "allow_archives": 1,
+                    "multiple": 0
+                },
+                {
+                    "key": "field_687ba3190d998",
+                    "label": "Display",
+                    "name": "display",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
         },
         {
             "key": "field_634d8b9b2c0c7",
@@ -1437,5 +1470,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1752681378
+    "modified": 1752933644
 }

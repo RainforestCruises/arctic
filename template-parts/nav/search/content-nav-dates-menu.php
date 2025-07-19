@@ -9,7 +9,7 @@ $regionsArgs = array(
 );
 $regions = get_posts($regionsArgs);
 $primaryRegion = getPrimaryRegion();
-
+$initialRegion = checkPageRegion(); // set based on the page template
 
 // selection regions
 $selectionRegions = [];
@@ -160,15 +160,17 @@ foreach ($regions as $region) {
             </div>
         </div>
         <div class="nav-dates-menu__section nav-dates-menu__section--submit">
-            <button class="btn-pill btn-pill--icon" id="nav-control-date-submit-button">
-                Search Dates
-                <svg>
-                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                </svg>
-            </button>
-            <button class="btn-primary navSearchModalSubmitButton">
-                Search Dates
-            </button>
+            <?php foreach ($regions as $region) :
+                $showInitial = $initialRegion->ID == $region->ID;
+            ?>
+                <button class="btn-pill btn-pill--icon nav-control-date-submit-button" defaultLink="<?php echo get_permalink(get_field('top_level_search_page', $region)); ?>" region="<?php echo $region->ID; ?>" style="display: <?php echo $showInitial ? '' : 'none' ?>">
+                    Search <?php echo get_the_title($region) ?> Dates
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                    </svg>
+                </button>
+            <?php endforeach; ?>
+
         </div>
     </div>
 

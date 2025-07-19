@@ -92,9 +92,9 @@ $footerClasses = renderFooterClasses();
             </div>
 
             <ul class="footer__content__main__links">
-                <?php foreach ($footer_links as $item) : ?>
+                <?php foreach ($footer_links as $footer_link) : ?>
                     <li>
-                        <a href="<?php echo get_permalink($item); ?>"> <?php echo get_the_title($item) ?></a>
+                        <a href="<?php echo $footer_link['item'] ?>"> <?php echo $footer_link['display'] ?></a>
                     </li>
                 <?php endforeach; ?>
             </ul>

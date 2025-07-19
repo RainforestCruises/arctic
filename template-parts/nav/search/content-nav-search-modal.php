@@ -47,11 +47,11 @@ $resultsObject = getNavSearchResults("", true);
                 </button>
             </div>
 
-            <div class="nav-search-modal__main__input-area__cta">
+            <!-- <div class="nav-search-modal__main__input-area__cta">
                 <button class="btn-primary navSearchModalSubmitButton">
                     Search
                 </button>
-            </div>
+            </div> -->
 
         </div>
 

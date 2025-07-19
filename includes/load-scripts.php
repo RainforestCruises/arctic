@@ -30,7 +30,7 @@ function load_scripts()
     wp_enqueue_script('header', get_template_directory_uri() . '/js/header.js', array('jquery'), false, true);
     wp_enqueue_script('header-search', get_template_directory_uri() . '/js/header-search.js', array('jquery'), false, true);
     wp_enqueue_script('header-mobile', get_template_directory_uri() . '/js/header-mobile.js', array('jquery'), false, true);
-    wp_enqueue_script('header-mobile-search', get_template_directory_uri() . '/js/header-mobile-search.js', array('jquery'), false, true);
+    
 
     $templateName = get_page_template_slug();
     $postTypeName = get_post_type();

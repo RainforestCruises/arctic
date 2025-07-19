@@ -3,7 +3,6 @@ $landing_pages = get_field('landing_pages', 'options');
 $ships = get_field('ships', 'options'); // create new array with ships split for each region
 $guides = get_field('guides', 'options');
 $top_level_guides_page = get_field('top_level_guides_page', 'options');
-$top_level_deals_page = get_field('top_level_deals_page', 'options');
 $top_level_search_page = get_field('top_level_search_page', 'options');
 $top_level_agents_page = get_field('top_level_agents_page', 'options');
 
@@ -18,6 +17,7 @@ $initialRegion = checkPageRegion(); // set based on the page template
 $primaryRegion = getPrimaryRegion();
 $templateHeaderActive = checkActiveHeader();
 $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
+$top_level_deals_page = get_field('top_level_deals_page', $initialRegion);
 
 ?>
 
@@ -59,7 +59,7 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                         Guide
                     </li>
                     <li class="nav-main__content__center__nav__list__link" navelement="deals">
-                        <a href="<?php echo $top_level_deals_page; ?>">Deals</a>
+                        <a href="<?php echo get_permalink($top_level_deals_page); ?>">Deals</a>
                     </li>
                     <li class="nav-main__content__center__nav__list__link" navelement="agents">
                         <a href="<?php echo $top_level_agents_page; ?>">Agents</a>

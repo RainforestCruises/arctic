@@ -7301,7 +7301,9 @@ p {
         display: flex; }
         @media only screen and (max-width: 50em) {
           .nav-dates-menu__section--submit .btn-pill {
-            display: none; } }
+            padding: 2rem 3.5rem;
+            font-size: 2rem;
+            margin-top: 2rem; } }
     .nav-dates-menu__section__buttons {
       display: grid;
       grid-template-columns: repeat(3, max-content);
@@ -7333,7 +7335,7 @@ p {
   justify-content: center;
   flex-direction: column;
   cursor: pointer;
-  transition: all .3s; }
+  transition: all 0.3s; }
   .date-card__title {
     font-size: 1.4rem;
     font-weight: 700;
@@ -7343,7 +7345,7 @@ p {
   .date-card svg {
     height: 2rem;
     width: 2rem;
-    margin-bottom: .5rem; }
+    margin-bottom: 0.5rem; }
   .date-card:hover {
     border: 1px solid #1d2225; }
   .date-card.selected {

@@ -1,135 +1,127 @@
-
 .nav-dates-menu {
+  position: absolute;
+  top: calc(100% - 1rem); //100 percent of nav center
+  width: 70rem;
+  background-color: $color-white;
+  color: $color-primary;
+  border-radius: 1rem;
+  box-shadow: $shadow-medium;
+  border: 1px solid $color-grey-light-2;
+  transition: all 0.2s;
+  z-index: 10;
+  display: none;
+  padding: 1rem 2rem;
+  padding-top: 2rem;
+
+  & .nav-dates-menu__loading {
+    height: 100%;
+    width: 100%;
+    background-color: rgba($color-white, 0.3);
+    z-index: 120;
     position: absolute;
-    top: calc(100% - 1rem); //100 percent of nav center
-    width: 70rem;
-    background-color: $color-white;
-    color: $color-primary;
-    border-radius: 1rem;
-    box-shadow: $shadow-medium;
-    border: 1px solid $color-grey-light-2;
-    transition: all 0.2s;
-    z-index: 10;
+    top: 0;
+    left: 0;
     display: none;
-    padding: 1rem 2rem;
-    padding-top: 2rem;
+    justify-content: center;
+    align-items: center;
 
-    & .nav-dates-menu__loading {
-        height: 100%;
-        width: 100%;
-        background-color: rgba($color-white, .3);
-        z-index: 120;
-        position: absolute;
-        top: 0;
-        left: 0;
+    & .lds-ring {
+      transform: scale(2);
+    }
+  }
+
+  &.active {
+    display: block;
+    animation: fadein 0.2s;
+  }
+
+  &__section {
+    margin-bottom: 2rem;
+    &--submit {
+      display: flex;
+      justify-content: center;
+
+      & .btn-primary {
         display: none;
-        justify-content: center;
-        align-items: center;
-
-        & .lds-ring {
-            transform: scale(2);
+        height: 5rem;
+        @media only screen and (max-width: $bp-medium) {
+          display: flex;
         }
+      }
+
+      & .btn-pill {
+        display: flex;
+        @media only screen and (max-width: $bp-medium) {
+          padding: 2rem 3.5rem;
+          font-size: 2rem;
+          margin-top: 2rem;
+        }
+      }
     }
 
-    
+    &__buttons {
+      display: grid;
+      grid-template-columns: repeat(3, max-content);
 
-    &.active { 
-        display: block;
-        animation: fadein 0.2s;
+      @media only screen and (max-width: $bp-small) {
+        grid-template-columns: repeat(2, max-content);
+      }
+      gap: 1rem;
+      justify-content: center;
+    }
+    &__title {
+      text-align: center;
+      font-size: 1.4rem;
+      color: $color-primary;
+      font-weight: 700;
+      margin-bottom: 1rem;
     }
 
-    &__section {
-        margin-bottom: 2rem;
-        &--submit {
-            display: flex;
-            justify-content: center;
+    &__months {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
 
-            & .btn-primary {
-                display: none;
-                height: 5rem;
-                @media only screen and (max-width: $bp-medium) {
-                    display: flex;
-                }
-            }
-
-            & .btn-pill {
-                display: flex;
-                @media only screen and (max-width: $bp-medium) {
-                    display: none;
-                }
-            }
-
-
-            
-        }
-  
-        &__buttons {
-            display: grid;
-            grid-template-columns: repeat(3, max-content);
-            
-            @media only screen and (max-width: $bp-small) {
-                grid-template-columns: repeat(2, max-content);
-            }
-            gap: 1rem;
-            justify-content: center;
-
-        }
-        &__title {
-            text-align: center;
-            font-size: 1.4rem;
-            color: $color-primary;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        &__months {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-
-            @media only screen and (max-width: $bp-small) {
-                grid-template-columns: repeat(3, 1fr);
-
-            }
-
-        }
+      @media only screen and (max-width: $bp-small) {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
+  }
 }
 
-
 .date-card {
-    border: 1px solid $color-grey-light-1a;
-    border-radius: 1rem;
-    padding: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    cursor: pointer;
+  border: 1px solid $color-grey-light-1a;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
 
-    &__title {
-        font-size: 1.4rem;
-        font-weight: 700;
-        line-height: 1.4rem;
-    }
+  &__title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.4rem;
+  }
 
-    &__subtitle {
-        font-size: 1.2rem;
-    }
+  &__subtitle {
+    font-size: 1.2rem;
+  }
 
-    & svg {
-        height: 2rem;
-        width: 2rem;
-        margin-bottom: .5rem;
-    }
+  & svg {
+    height: 2rem;
+    width: 2rem;
+    margin-bottom: 0.5rem;
+  }
 
-    transition: all .3s;
-    &:hover {
-        border: 1px solid $color-primary;
-    }
+  transition: all 0.3s;
+  &:hover {
+    border: 1px solid $color-primary;
+  }
 
-    &.selected {
-        border: 1px solid $color-primary;
-        background-color: $color-grey-light-1a;
-    }
+  &.selected {
+    border: 1px solid $color-primary;
+    background-color: $color-grey-light-1a;
+  }
 }

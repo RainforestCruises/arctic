@@ -3,7 +3,6 @@ jQuery(document).ready(function ($) {
 
   const navMain = document.querySelector(".nav-main");
 
-
   const navCta = document.querySelector("#nav-cta");
   const navControl = document.querySelector("#nav-control");
   const navControlSearch = document.querySelector("#nav-control-search");
@@ -14,23 +13,27 @@ jQuery(document).ready(function ($) {
   const navControlMenuDates = document.querySelector("#nav-control-menu-dates");
   const navControlClearButton = document.querySelector("#nav-control-clear-button");
   const navControlSubmitButton = document.querySelector("#nav-control-submit-button");
-  const navControlDateSubmitButton = document.querySelector("#nav-control-date-submit-button");
+  const navControlDateSubmitButtons = [...document.querySelectorAll(".nav-control-date-submit-button")];
 
   const formSearchInput = document.querySelector("#formSearchInput");
   const formNavRegionInput = document.querySelector("#formNavRegionInput");
+
+  // mobile
+  const navSearchModalInput = document.getElementById("navSearchModalInput");
+  const navSearchModalInputArea = document.getElementById("navSearchModalInputArea");
+  const navSearchModalResults = document.getElementById("navSearchModalResults");
+  const navSearchModalResultsInitial = document.getElementById("navSearchModalResultsInitial");
+  const navSearchModalClearButton = document.getElementById("navSearchModalClearButton");
+  const navSearchModalMainTab = document.getElementById("navSearchModalMainTab");
+  const navSearchModalDatesTab = document.getElementById("navSearchModalDatesTab");
+  const navSearchModalMain = document.getElementById("navSearchModalMain");
+  const navSearchModalDates = document.getElementById("navSearchModalDates");
 
   const navCtaMobile = document.querySelector("#nav-cta-mobile");
   const navSearchModal = document.getElementById("navSearchModal");
   const navSearchModalClose = document.getElementById("navSearchModalClose");
 
   // cta & control interaction -----------------------------------------------------------------------------------------------------
-
-  navCtaMobile.addEventListener("click", (event) => {
-    activeMobileSearch();
-  });
-  navSearchModalClose.addEventListener("click", (event) => {
-    closeMobileSearch();
-  });
 
   navCta.addEventListener("click", (event) => {
     const isDates = document.querySelector(".nav-search-cta__input__dates").contains(event.target);
@@ -49,16 +52,6 @@ jQuery(document).ready(function ($) {
     activeSearch();
   });
 
-  function activeMobileSearch() {
-    navSearchModal.style.display = "flex";
-    body.classList.add("no-scroll");
-  }
-
-  function closeMobileSearch() {
-    navSearchModal.style.display = "none";
-    body.classList.remove("no-scroll");
-  }
-
   function activeSearch(isDates) {
     navMain.classList.add("active");
     navCta.style.display = "none";
@@ -69,6 +62,9 @@ jQuery(document).ready(function ($) {
       navControlSearch.classList.remove("active");
       navControlMenuInitial.classList.remove("active");
       navControlMenuSearch.classList.remove("active");
+
+      // SET REGION
+      initializeDateManu();
     } else {
       navControlSearch.classList.add("active");
       navControlMenuInitial.classList.add("active");
@@ -157,11 +153,15 @@ jQuery(document).ready(function ($) {
       type: navSearchForm.attr("method"),
       beforeSend: function () {
         navControl.classList.add("loading");
+        navSearchModalInputArea.classList.add("loading");
       },
       success: function (data) {
         navControl.classList.remove("loading");
         navControlMenuSearch.innerHTML = data; // return the markup
         navControlMenuSearch.classList.add("active");
+
+        navSearchModalInputArea.classList.remove("loading");
+        navSearchModalResults.innerHTML = data; // return the markup
 
         // add click behavior for results
         const navSearchItems = [...document.querySelectorAll(".nav-search-item")];
@@ -188,17 +188,31 @@ jQuery(document).ready(function ($) {
     performSubmit();
   });
 
-  navControlDateSubmitButton.addEventListener("click", (event) => {
-    performSubmit();
+  navControlDateSubmitButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      searchUrl = button.getAttribute("defaultLink");
+      performSubmit(searchUrl);
+    });
   });
 
   // date components -----------------------------------------------------------------------------------------------------
   let selectedRegion = formNavRegionInput.value;
   let selectedSeasonHex = "";
   let selectedSeasonIndex = 0;
+  const dateRegionButtons = [...document.querySelectorAll(".nav-dates-menu__section__buttons--regions button")];
+
+  function initializeDateManu() {
+    dateRegionButtons.forEach((b) => {
+      b.classList.remove("active");
+      if (b.getAttribute("region") == selectedRegion) {
+        b.classList.add("active");
+      }
+    });
+    filterSeasonButtons(selectedRegion);
+    filterSearchButtons(selectedRegion);
+  }
 
   // region buttons
-  const dateRegionButtons = [...document.querySelectorAll(".nav-dates-menu__section__buttons--regions button")];
 
   // region buttons click event
   dateRegionButtons.forEach((button) => {
@@ -209,6 +223,7 @@ jQuery(document).ready(function ($) {
       button.classList.add("active");
       selectedRegion = button.getAttribute("region");
       filterSeasonButtons(selectedRegion);
+      filterSearchButtons(selectedRegion);
     });
   });
 
@@ -250,8 +265,17 @@ jQuery(document).ready(function ($) {
     });
   }
 
-  const dateCards = [...document.querySelectorAll(".date-card")];
+  function filterSearchButtons() {
+    navControlDateSubmitButtons.forEach((button) => {
+      if (button.getAttribute("region") == selectedRegion) {
+        button.style.display = "flex";
+      } else {
+        button.style.display = "none";
+      }
+    });
+  }
 
+  const dateCards = [...document.querySelectorAll(".date-card")];
   function filterDateCards() {
     dateCards.forEach((item) => {
       if (item.getAttribute("season") == selectedSeasonHex) {
@@ -306,15 +330,15 @@ jQuery(document).ready(function ($) {
     });
   }
 
-  function performSubmit() {
+  function performSubmit(searchUrl) {
     // dates
-    if (navControlDates.classList.contains("active")) {
+    if (navControlDates.classList.contains("active") || navSearchModalDatesTab.classList.contains("active")) {
       document.querySelector(".nav-dates-menu__loading").style.display = "flex";
       if (selectedDates.length > 0) {
         const dateString = selectedDates.join("%3B");
-        window.location.href = defaultSearchUrl + "?region=" + selectedRegion + "&departures=" + dateString;
+        window.location.href = searchUrl + "?region=" + selectedRegion + "&departures=" + dateString;
       } else {
-        window.location.href = defaultSearchUrl + "?region=" + selectedRegion;
+        window.location.href = searchUrl + "?region=" + selectedRegion;
       }
     } else {
       // search
@@ -326,6 +350,84 @@ jQuery(document).ready(function ($) {
           window.location.href = defaultSearchUrl;
         }
       }
+    }
+  }
+
+  // MOBILE SEARCH -----------------------------------------------------------------------------------------------------
+
+  // activate search tab mobile
+  navSearchModalMainTab.addEventListener("click", (event) => {
+    navSearchModalMainTab.classList.add("active");
+    navSearchModalDatesTab.classList.remove("active");
+    navSearchModalMain.style.display = "block";
+    navSearchModalDates.style.display = "none";
+    navSearchModalInput.focus();
+  });
+
+  // activate dates tab mobile
+  navSearchModalDatesTab.addEventListener("click", (event) => {
+    navSearchModalMainTab.classList.remove("active");
+    navSearchModalDatesTab.classList.add("active");
+    navSearchModalMain.style.display = "none";
+    navSearchModalDates.style.display = "block";
+  });
+
+  // open mobile search
+  navCtaMobile.addEventListener("click", (event) => {
+    activeMobileSearch();
+  });
+  function activeMobileSearch() {
+    navSearchModal.style.display = "flex";
+    body.classList.add("no-scroll");
+    navSearchModalDates.appendChild(navControlMenuDates);
+    initializeDateManu();
+  }
+
+  // close mobile search
+  navSearchModalClose.addEventListener("click", (event) => {
+    closeMobileSearch();
+  });
+
+  window.addEventListener(
+    "resize",
+    function (event) {
+      if (window.screen.width > 800) {
+        closeMobileSearch();
+      }
+    },
+    true
+  );
+
+  function closeMobileSearch() {
+    navSearchModal.style.display = "none";
+    body.classList.remove("no-scroll");
+    document.querySelector(".nav-main__content__center__search-area").appendChild(navControlMenuDates);
+  }
+
+  // clear search input mobile
+  navSearchModalClearButton.addEventListener("click", (event) => {
+    navSearchModalInput.value = "";
+    formSearchInput.value = "";
+    navSearchModalResultsInitial.classList.add("active");
+    navSearchModalResults.innerHTML = "";
+    navSearchModalClearButton.classList.remove("active");
+  });
+
+  // search input mobile
+  navSearchModalInput.addEventListener("input", (event) => {
+    formSearchInput.value = navSearchModalInput.value;
+    checkMobileSearchMenu();
+  });
+
+  function checkMobileSearchMenu() {
+    if (navSearchModalInput.value.length < 3) {
+      navSearchModalResultsInitial.classList.add("active");
+      navSearchModalClearButton.classList.remove("active");
+      navSearchModalResults.innerHTML = "";
+    } else {
+      navSearchModalClearButton.classList.add("active");
+      navSearchModalResultsInitial.classList.remove("active");
+      delayedSearch();
     }
   }
 });

@@ -13,7 +13,7 @@ jQuery(document).ready(function ($) {
   const navControlDates = document.querySelector("#nav-control-dates");
   const navControlMenuDates = document.querySelector("#nav-control-menu-dates");
 
-  let templateName = header_vars.templateName;
+  //let templateName = header_vars.templateName;
   let postTypeName = header_vars.postTypeName;
 
 
@@ -165,7 +165,6 @@ jQuery(document).ready(function ($) {
   });
 
   const navMegaItems = [...document.querySelectorAll(".nav-mega-item")];
-
   function filterSlides(regionId) {
     navMegaItems.forEach((item) => {
       item.style.display = "none";
@@ -202,20 +201,20 @@ jQuery(document).ready(function ($) {
     navControlMenuDates.classList.remove("active");
   }
 
-  // check region id
-  function isIdInRegions(existingId, regionsAttribute) {
-    if (!regionsAttribute) {
-      return false;
-    }
-    var regionsIds = regionsAttribute.split(",");
-    for (var i = 0; i < regionsIds.length; i++) {
-      var id = regionsIds[i].trim();
-      if (id === existingId) {
-        return true; // ID found in regions
-      }
-    }
-    return false; // ID not found in regions
-  }
+  // // check region id
+  // function isIdInRegions(existingId, regionsAttribute) {
+  //   if (!regionsAttribute) {
+  //     return false;
+  //   }
+  //   var regionsIds = regionsAttribute.split(",");
+  //   for (var i = 0; i < regionsIds.length; i++) {
+  //     var id = regionsIds[i].trim();
+  //     if (id === existingId) {
+  //       return true; // ID found in regions
+  //     }
+  //   }
+  //   return false; // ID not found in regions
+  // }
 
   checkFormFields();
   function checkFormFields() {

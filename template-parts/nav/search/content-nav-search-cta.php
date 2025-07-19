@@ -1,5 +1,7 @@
 <?php 
 $primaryRegion = getPrimaryRegion();
+$initialRegion = checkPageRegion(); // set based on the page template
+
 ?>
 
 <!-- Nav Search CTA -->
@@ -89,6 +91,6 @@ $primaryRegion = getPrimaryRegion();
     <input type="hidden" name="action" value="navSearch">
     <input type="hidden" name="formSearchInput" id="formSearchInput" value="">
     <input type="hidden" name="formNavDateInput" id="formNavDateInput" value="">
-    <input type="hidden" name="formNavRegionInput" id="formNavRegionInput" value="<?php echo $primaryRegion->ID ?>">
+    <input type="hidden" name="formNavRegionInput" id="formNavRegionInput" value="<?php echo $initialRegion->ID ?>">
 
 </form>
