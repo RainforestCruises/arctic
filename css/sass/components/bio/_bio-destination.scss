@@ -1,0 +1,68 @@
+.bio-destination {
+  @include flexBlock;
+  padding: 6rem 0;
+  background-color: $color-grey-light-1;
+  &__content {
+    width: 100%;
+    max-width: $page-width;
+    @include flexPadding;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+
+    @media only screen and (max-width: $bp-small) {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+}
+
+.bio-destination-item {
+  &__image {
+    & img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 1rem;
+    }
+    margin-bottom: 2rem;
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+    font-weight: 400;
+    color: $color-primary;
+  }
+  &__name {
+    font-size: 4rem;
+    line-height: 4rem;
+    color: $color-primary;
+    margin-bottom: 2rem;
+  }
+
+  &__description {
+    margin-bottom: 1.5rem;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.6rem;
+    color: $color-gold-dark;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    &:hover {
+      color: $color-primary;
+    }
+
+    & svg {
+      height: 2rem;
+      width: 2rem;
+      margin-left: 0.5rem;
+      fill: currentColor;
+    }
+  }
+}

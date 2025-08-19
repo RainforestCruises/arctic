@@ -1,0 +1,63 @@
+.bio-reviews {
+  @include flexBlock;
+  padding: 6rem 0;
+
+  &__content {
+    width: 100%;
+    max-width: $page-width;
+    @include flexPadding;
+
+    & .itineraries-best-slider-btn-next {
+      bottom: 0;
+      right: 0;
+    }
+
+    & .itineraries-best-slider-btn-prev {
+      left: 0;
+      bottom: 0;
+    }
+  }
+}
+
+.bio-review-item {
+  position: relative;
+  overflow: visible;
+  padding: 0 6rem;
+  &__quote {
+    height: 9rem;
+    width: 9rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    fill: $color-grey-light-1;
+  }
+  &__snippet {
+    font-size: 2.2rem;
+    line-height: 2.8rem;
+    color: $color-primary;
+    margin-bottom: 2.5rem;
+  }
+
+  &__person {
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2.5rem;
+  }
+
+  &__stars {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+    & svg {
+      width: 2.5rem;
+      height: 2.5rem;
+      fill: $color-primary;
+    }
+  }
+}

@@ -1,0 +1,97 @@
+.bio-hero {
+  @include flexBlock;
+  @include pageTopPadding;
+
+  margin-bottom: 4rem;
+
+  &__content {
+    width: 100%;
+    max-width: $page-width;
+    @include flexPadding;
+
+    display: grid;
+    grid-template-columns: 1fr 35rem;
+    gap: 6rem;
+
+    @media only screen and (max-width: $bp-small) {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    &__side {
+      display: grid;
+      grid-template-rows: max-content 1fr;
+      align-items: center;
+      &__breadcrumb {
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+      }
+
+      &__main {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        &__avatar {
+          display: grid;
+          grid-template-columns: max-content 1fr;
+          gap: 2rem;
+          align-items: center;
+          margin-bottom: 3rem;
+          &__image {
+            & img {
+              height: 10rem;
+              width: 10rem;
+              object-fit: cover;
+              object-position: center;
+              border-radius: 50%;
+            }
+          }
+
+          &__text {
+            color: $color-primary;
+            &__name {
+              font-size: 4rem;
+              line-height: 4rem;
+              font-weight: 700;
+            }
+
+            &__position {
+              font-size: 1.6rem;
+            }
+          }
+        }
+
+        &__introduction {
+          margin-bottom: 3rem;
+        }
+
+        &__attribute {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          font-size: 1.6rem;
+          font-weight: 600;
+          color: $color-gold-dark;
+          margin-bottom: .5rem;
+          text-decoration: none;
+          svg {
+            width: 2.5rem;
+            height: 2.5rem;
+            fill: $color-gold-dark;
+          }
+        }
+      }
+    }
+
+    &__image {
+      & img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        position: relative;
+        border-radius: 1rem;
+      }
+    }
+  }
+}

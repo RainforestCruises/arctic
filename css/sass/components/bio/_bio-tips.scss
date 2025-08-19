@@ -1,0 +1,20 @@
+.bio-tip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 20rem;
+  gap: 2rem;
+  &__icon {
+    & svg {
+      width: 4.5rem;
+      height: 4.5rem;
+      fill: $color-primary;
+    }
+  }
+
+  &__description {
+    text-align: center;
+    font-size: 1.6rem;
+    padding: 0 1rem;
+  }
+}

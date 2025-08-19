@@ -288,6 +288,9 @@ p {
   color: #1d2225;
   font-size: 2.2rem;
   margin-bottom: 2rem; }
+  .title-single.center {
+    text-align: center;
+    margin-bottom: 4rem; }
 
 .highlight-list {
   list-style: none;
@@ -2300,6 +2303,8 @@ p {
   position: relative; }
   .grid-block.narrow .grid-block__content {
     max-width: 128rem; }
+  .grid-block.section-padding {
+    padding: 6rem 0; }
   .grid-block__content {
     width: 100%;
     padding: 0 6rem;
@@ -2403,6 +2408,8 @@ p {
     background-color: #1d2225; }
     .slider-block.inverse .title-single {
       color: #fff !important; }
+  .slider-block.section-padding {
+    padding: 6rem 0; }
   .slider-block__content {
     width: 100%;
     padding: 0 6rem;
@@ -9349,3 +9356,221 @@ p {
       @media only screen and (max-width: 62.5em) {
         .agency-person__content__image-area img {
           max-height: 48rem; } }
+
+.bio-hero {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  padding-top: 12rem;
+  margin-bottom: 4rem; }
+  @media only screen and (max-width: 62.5em) {
+    .bio-hero {
+      padding-top: 9rem; } }
+  .bio-hero__content {
+    width: 100%;
+    max-width: 128rem;
+    width: 100%;
+    padding: 0 6rem;
+    display: grid;
+    grid-template-columns: 1fr 35rem;
+    gap: 6rem; }
+    @media only screen and (max-width: 50em) {
+      .bio-hero__content {
+        padding: 0 3rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .bio-hero__content {
+        grid-template-columns: 1fr;
+        gap: 3rem; } }
+    .bio-hero__content__side {
+      display: grid;
+      grid-template-rows: max-content 1fr;
+      align-items: center; }
+      .bio-hero__content__side__breadcrumb {
+        font-size: 1.6rem;
+        margin-bottom: 2rem; }
+      .bio-hero__content__side__main {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; }
+        .bio-hero__content__side__main__avatar {
+          display: grid;
+          grid-template-columns: max-content 1fr;
+          gap: 2rem;
+          align-items: center;
+          margin-bottom: 3rem; }
+          .bio-hero__content__side__main__avatar__image img {
+            height: 10rem;
+            width: 10rem;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%; }
+          .bio-hero__content__side__main__avatar__text {
+            color: #1d2225; }
+            .bio-hero__content__side__main__avatar__text__name {
+              font-size: 4rem;
+              line-height: 4rem;
+              font-weight: 700; }
+            .bio-hero__content__side__main__avatar__text__position {
+              font-size: 1.6rem; }
+        .bio-hero__content__side__main__introduction {
+          margin-bottom: 3rem; }
+        .bio-hero__content__side__main__attribute {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          font-size: 1.6rem;
+          font-weight: 600;
+          color: #8e7d2e;
+          margin-bottom: .5rem;
+          text-decoration: none; }
+          .bio-hero__content__side__main__attribute svg {
+            width: 2.5rem;
+            height: 2.5rem;
+            fill: #8e7d2e; }
+    .bio-hero__content__image img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+      position: relative;
+      border-radius: 1rem; }
+
+.bio-destination {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  padding: 6rem 0;
+  background-color: #f8f8f8; }
+  .bio-destination__content {
+    width: 100%;
+    max-width: 128rem;
+    width: 100%;
+    padding: 0 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem; }
+    @media only screen and (max-width: 50em) {
+      .bio-destination__content {
+        padding: 0 3rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .bio-destination__content {
+        grid-template-columns: 1fr;
+        gap: 3rem; } }
+
+.bio-destination-item__image {
+  margin-bottom: 2rem; }
+  .bio-destination-item__image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 1rem; }
+
+.bio-destination-item__title {
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  font-weight: 400;
+  color: #1d2225; }
+
+.bio-destination-item__name {
+  font-size: 4rem;
+  line-height: 4rem;
+  color: #1d2225;
+  margin-bottom: 2rem; }
+
+.bio-destination-item__description {
+  margin-bottom: 1.5rem; }
+
+.bio-destination-item__link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.6rem;
+  color: #8e7d2e;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  text-decoration: none; }
+  .bio-destination-item__link:hover {
+    color: #1d2225; }
+  .bio-destination-item__link svg {
+    height: 2rem;
+    width: 2rem;
+    margin-left: 0.5rem;
+    fill: currentColor; }
+
+.bio-reviews {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  padding: 6rem 0; }
+  .bio-reviews__content {
+    width: 100%;
+    max-width: 128rem;
+    width: 100%;
+    padding: 0 6rem; }
+    @media only screen and (max-width: 50em) {
+      .bio-reviews__content {
+        padding: 0 3rem; } }
+    .bio-reviews__content .itineraries-best-slider-btn-next {
+      bottom: 0;
+      right: 0; }
+    .bio-reviews__content .itineraries-best-slider-btn-prev {
+      left: 0;
+      bottom: 0; }
+
+.bio-review-item {
+  position: relative;
+  overflow: visible;
+  padding: 0 6rem; }
+  .bio-review-item__quote {
+    height: 9rem;
+    width: 9rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    fill: #f8f8f8; }
+  .bio-review-item__snippet {
+    font-size: 2.2rem;
+    line-height: 2.8rem;
+    color: #1d2225;
+    margin-bottom: 2.5rem; }
+  .bio-review-item__person {
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2.5rem; }
+  .bio-review-item__stars {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem; }
+    .bio-review-item__stars svg {
+      width: 2.5rem;
+      height: 2.5rem;
+      fill: #1d2225; }
+
+.bio-tip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 20rem;
+  gap: 2rem; }
+  .bio-tip__icon svg {
+    width: 4.5rem;
+    height: 4.5rem;
+    fill: #1d2225; }
+  .bio-tip__description {
+    text-align: center;
+    font-size: 1.6rem;
+    padding: 0 1rem; }

@@ -1,140 +1,143 @@
 .grid-block {
-    @include flexBlock;
-    position: relative;
+  @include flexBlock;
+  position: relative;
 
-    &.narrow {
-        & .grid-block__content {
-            max-width: $page-width;
-        }
+  &.narrow {
+    & .grid-block__content {
+      max-width: $page-width;
+    }
+  }
+
+  &.section-padding {
+    padding: 6rem 0;
+  }
+
+  &__content {
+    @include flexPadding;
+
+    max-width: $page-width-full;
+    margin-top: 3rem;
+
+    &__top {
     }
 
-    &__content {
-        @include flexPadding;
+    &__grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 100%;
+      gap: 2rem;
 
-        max-width: $page-width-full;
-        margin-top: 3rem;
+      &.expand-content {
+        display: none;
+        &.expand {
+          display: grid;
+          animation: fadein 0.3s;
+        }
+      }
 
-        &__top {
+      &.grid2 {
+        grid-template-columns: repeat(2, calc(50% - 1rem));
+
+        @media only screen and (max-width: $bp-small) {
+          grid-template-columns: 100%;
+          gap: 4rem;
+        }
+      }
+
+      &.grid3 {
+        grid-template-columns: repeat(3, calc(33% - 1rem));
+        @media only screen and (max-width: $bp-medium) {
+          grid-template-columns: repeat(2, calc(50% - 1rem));
+        }
+        @media only screen and (max-width: $bp-small) {
+          grid-template-columns: 100%;
+          gap: 4rem;
+        }
+      }
+
+      &.grid4 {
+        grid-template-columns: repeat(4, calc(25% - 1rem));
+        @media only screen and (max-width: $bp-large) {
+          grid-template-columns: repeat(3, calc(33% - 1rem));
+        }
+        @media only screen and (max-width: $bp-medium) {
+          grid-template-columns: repeat(2, calc(50% - 1rem));
+        }
+        @media only screen and (max-width: $bp-small) {
+          grid-template-columns: 100%;
+          gap: 4rem;
+        }
+      }
+
+      &.grid5 {
+        grid-template-columns: repeat(5, calc(20% - 1rem));
+        @media only screen and (max-width: $bp-large) {
+          grid-template-columns: repeat(3, calc(33% - 1rem));
+        }
+        @media only screen and (max-width: $bp-medium) {
+          grid-template-columns: repeat(2, calc(50% - 1rem));
+        }
+        @media only screen and (max-width: $bp-small) {
+          grid-template-columns: 100%;
+          gap: 4rem;
+        }
+      }
+
+      &.grid-2x3 {
+        grid-template-columns: repeat(12, 1fr);
+
+        & .resource-card:nth-child(-n + 2) {
+          grid-column: span 6;
+          & .resource-card__image-area {
+            @media only screen and (min-width: $bp-large) {
+              height: 44rem;
+            }
+          }
         }
 
-        &__grid {
-            width: 100%;
-            display: grid;
-            grid-template-columns: 100%;
-            gap: 2rem;
-
-            &.expand-content {
-                display: none;
-                &.expand {
-                    display: grid;
-                    animation: fadein 0.3s;
-
-                }
-            }
-
-            &.grid2 {
-                grid-template-columns: repeat(2, calc(50% - 1rem));
-
-                @media only screen and (max-width: $bp-small) {
-                    grid-template-columns: 100%;
-                    gap: 4rem;
-                }
-            }
-
-            &.grid3 {
-                grid-template-columns: repeat(3, calc(33% - 1rem));
-                @media only screen and (max-width: $bp-medium) {
-                    grid-template-columns: repeat(2, calc(50% - 1rem));
-                }
-                @media only screen and (max-width: $bp-small) {
-                    grid-template-columns: 100%;
-                    gap: 4rem;
-                }
-            }
-
-            &.grid4 {
-                grid-template-columns: repeat(4, calc(25% - 1rem));
-                @media only screen and (max-width: $bp-large) {
-                    grid-template-columns: repeat(3, calc(33% - 1rem));
-                }
-                @media only screen and (max-width: $bp-medium) {
-                    grid-template-columns: repeat(2, calc(50% - 1rem));
-                }
-                @media only screen and (max-width: $bp-small) {
-                    grid-template-columns: 100%;
-                    gap: 4rem;
-                }
-            }
-
-            &.grid5 {
-                grid-template-columns: repeat(5, calc(20% - 1rem));
-                @media only screen and (max-width: $bp-large) {
-                    grid-template-columns: repeat(3, calc(33% - 1rem));
-                }
-                @media only screen and (max-width: $bp-medium) {
-                    grid-template-columns: repeat(2, calc(50% - 1rem));
-                }
-                @media only screen and (max-width: $bp-small) {
-                    grid-template-columns: 100%;
-                    gap: 4rem;
-                }
-            }
-
-            &.grid-2x3 {
-                grid-template-columns: repeat(12, 1fr);
-
-                & .resource-card:nth-child(-n + 2) {
-                    grid-column: span 6;
-                    & .resource-card__image-area {
-                        @media only screen and (min-width: $bp-large) {
-                            height: 44rem;
-                        }                 
-                    }
-                }
-
-                & .resource-card:nth-child(n + 3) {
-                    grid-column: span 4;
-                }
-
-                @media only screen and (max-width: $bp-medium) {
-                    & .resource-card {
-                        grid-column: span 12 !important;
-                    }
-                }
-            }
-
-            &.grid-3x4 {
-                grid-template-columns: repeat(12, 1fr);
-
-                & .resource-card:nth-child(-n + 3) {
-                    grid-column: span 4;
-                }
-
-                & .resource-card:nth-child(n + 4) {
-                    grid-column: span 3;
-                }
-
-                @media only screen and (max-width: $bp-large) {
-                    & .resource-card:nth-child(-n + 4) {
-                        grid-column: span 6;
-                    }
-                    & .resource-card:nth-child(n + 5) {
-                        grid-column: span 4;
-                    }
-                }
-
-                @media only screen and (max-width: $bp-small) {
-                    & .resource-card {
-                        grid-column: span 12 !important;
-                    }
-                }
-            }
+        & .resource-card:nth-child(n + 3) {
+          grid-column: span 4;
         }
 
-        &__cta {
-            display: flex;
-            justify-content: center;
-            margin-top: 3rem;
+        @media only screen and (max-width: $bp-medium) {
+          & .resource-card {
+            grid-column: span 12 !important;
+          }
         }
+      }
+
+      &.grid-3x4 {
+        grid-template-columns: repeat(12, 1fr);
+
+        & .resource-card:nth-child(-n + 3) {
+          grid-column: span 4;
+        }
+
+        & .resource-card:nth-child(n + 4) {
+          grid-column: span 3;
+        }
+
+        @media only screen and (max-width: $bp-large) {
+          & .resource-card:nth-child(-n + 4) {
+            grid-column: span 6;
+          }
+          & .resource-card:nth-child(n + 5) {
+            grid-column: span 4;
+          }
+        }
+
+        @media only screen and (max-width: $bp-small) {
+          & .resource-card {
+            grid-column: span 12 !important;
+          }
+        }
+      }
     }
+
+    &__cta {
+      display: flex;
+      justify-content: center;
+      margin-top: 3rem;
+    }
+  }
 }
