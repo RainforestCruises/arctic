@@ -54,11 +54,13 @@ jQuery(document).ready(function ($) {
         vimeoPlayer.play();
       });
 
-      heroVideoCard.addEventListener("click", () => {
-        videoModal.style.display = "flex";
-        body.classList.add("no-scroll");
-        vimeoPlayer.play();
-      });
+      if (heroVideoCard) {
+        heroVideoCard.addEventListener("click", () => {
+          videoModal.style.display = "flex";
+          body.classList.add("no-scroll");
+          vimeoPlayer.play();
+        });
+      }
 
       // -- stop playing
       const stopVideoSections = [...document.querySelectorAll(".stop-video")];
@@ -70,11 +72,26 @@ jQuery(document).ready(function ($) {
     }
   }
 
-
   // SLIDERS -------------------------------------------------------
+  new Swiper("#hero-slider", {
+    spaceBetween: 15,
+    slidesPerView: 2.2,
+    watchSlidesProgress: true,
+    navigation: {
+      nextEl: ".hero-slider-btn-next",
+      prevEl: ".hero-slider-btn-prev",
+    },
+    breakpoints: {
+      600: {
+        slidesPerView: 2.2,
+      },
+      1000: {
+        slidesPerView: 3.2,
+      },
+    },
+  });
 
-
-    // ships slider
+  // ships slider
   new Swiper("#ships-slider", {
     spaceBetween: 15,
     slidesPerView: 1.2,
@@ -92,7 +109,6 @@ jQuery(document).ready(function ($) {
       },
     },
   });
-
 
   // itineraries slider
   new Swiper("#itineraries-best-slider", {

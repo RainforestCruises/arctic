@@ -1390,6 +1390,25 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_68a4b9189b2d4",
+            "label": "Use Development Sections",
+            "name": "use_development_sections",
+            "type": "true_false",
+            "instructions": "Enable sections that are under development",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6491cfeca7a77",
             "label": "Site Notice",
             "name": "",
@@ -1470,5 +1489,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1752933644
+    "modified": 1755625797
 }

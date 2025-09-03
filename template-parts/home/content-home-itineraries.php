@@ -56,7 +56,11 @@ $top_level_search_page = get_field('top_level_search_page', 'options');
                         $embarkation = get_the_title($embarkation_point);
                         $shipsDisplay = getShipsFromItineraryList($itinerary, true);
                         $destinations = getItineraryDestinations($itinerary, true, 4);
-                        $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
+
+                        $itineraryCount = $itineraryCount = is_array($itineraries) ? count($itineraries) : 0;
+
+
+                        $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . $itineraryCount . ' Itineraries';
                         $guestsDisplay = get_field('vessel_capacity', $itinerary) . ' Guests, ' . 'Luxury';
                         $departures = getDepartureList($itinerary);
                         $lowestPrice = getLowestDepartureListPrice($departures);

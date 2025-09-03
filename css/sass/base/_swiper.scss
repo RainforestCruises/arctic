@@ -108,4 +108,32 @@
       background-color: rgba($color-white, 0.4);
     }
   }
+
+  &--dark {
+    transition: all 0.2s;
+    background-color: rgba($color-primary, 0.6);
+
+    & svg {
+      height: 1.5rem;
+      width: 1.5rem;
+      fill: $color-white;
+    }
+
+    &::after {
+      //svg
+      display: none;
+    }
+
+    &::before {
+      display: none;
+    }
+
+    &:hover::before {
+      display: none;
+    }
+
+    &:hover {
+      background-color: rgba($color-primary, 0.9);
+    }
+  }
 }

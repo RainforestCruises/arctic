@@ -87,6 +87,11 @@ function removePtags($text)
 
 function comma_separate_list($arr, $limit = 0)
 {
+        // Check if $arr is actually an array or countable
+    if (!is_array($arr) && !is_countable($arr)) {
+        return ''; // or handle the string case differently
+    }
+    
     $count = 0;
     $display = "";
 

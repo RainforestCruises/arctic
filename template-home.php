@@ -7,6 +7,7 @@ wp_enqueue_script('page-product-cruise-itineraries', get_template_directory_uri(
 get_header();
 
 $routes = get_field('routes');
+$use_development_sections = get_field('use_development_sections', 'options');
 
 $itineraryObjects = [];
 foreach ($routes as $route) {
@@ -32,10 +33,8 @@ $show_reviews = get_field('show_reviews');
 
     <!-- Hero -->
     <?php
-    get_template_part('template-parts/home/content', 'home-hero');
+    $use_development_sections ? get_template_part('template-parts/home/content', 'home-hero-regional') : get_template_part('template-parts/home/content', 'home-hero');
     ?>
-
-
 
     <!-- Routes  -->
     <?php

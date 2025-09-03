@@ -20,7 +20,7 @@ function getItineraryObject($itinerary)
         $destinations = $day['destination']; // multiple destinations
 
         foreach ($destinations as $destination) {
-            if(get_field('exclude_map_pin', $destination)){
+            if (get_field('exclude_map_pin', $destination)) {
                 continue;
             }
             $dayDisplay = dayCountMarkup($day['day_count']);
@@ -75,11 +75,20 @@ function getItineraryObject($itinerary)
         $featureList[] = $feature;
     }
 
+    // Get and validate geojson field
+    $geojsonField = get_field('geojson', $itinerary);
+    $geojsonDecoded = null;
+
+    if (!empty($geojsonField) && is_string($geojsonField)) {
+        $geojsonDecoded = json_decode($geojsonField);
+    }
+
+
     // Itinerary Object
     $itineraryObject = [
         'featureList' => $featureList,
         'hasDifferentPorts' => $hasDifferentPorts,
-        'geojson' => json_decode(get_field('geojson', $itinerary)),
+        'geojson' => $geojsonDecoded,
         'startLatitude' => get_field('latitude_start_point', $itinerary),
         'startLongitude' => get_field('longitude_start_point', $itinerary),
         'startZoom' => get_field('zoom_level_start_point', $itinerary),

@@ -43,6 +43,13 @@ function getDealsFromSingleDeparture($departure, $getSpecials = false)
 {
     $dealsArray = [];
     $deals = $departure['deals'];
+
+    // Check if deals is actually an array before foreach
+    if (!is_array($deals)) {
+        return $dealsArray; // return empty array if deals is not an array
+    }
+
+
     foreach ($deals as $deal) {
         $is_active = get_field('is_active', $deal);
         $has_expiry_date = get_field('has_expiry_date', $deal);
@@ -71,8 +78,9 @@ function getDealsFromSingleDeparture($departure, $getSpecials = false)
         }
         $dealsArray[] = $deal;
     }
-    usort($dealsArray, "sortDealRank"); // sort by search rank score
-
+    if (!empty($dealsArray)) {
+        usort($dealsArray, "sortDealRank"); // sort by search rank score
+    }
     return $dealsArray;
 }
 
@@ -107,6 +115,7 @@ function getDealsInCategory($category)
     );
 
     $deals = get_posts($queryArgs);
+    $dealsArray = [];
     foreach ($deals as $deal) {
         $is_active = get_field('is_active', $deal);
         $has_expiry_date = get_field('has_expiry_date', $deal);
@@ -166,7 +175,7 @@ function getItinerariesWithDeal($deals, $excludeItinerary = null)
                 }
             }
         }
-        if($excludeItinerary != null && $excludeItinerary == $itinerary){
+        if ($excludeItinerary != null && $excludeItinerary == $itinerary) {
             continue;
         }
         if ($hasDeal) {
@@ -249,7 +258,10 @@ function getDaysUntilExpiry($expiry_date)
 function sortDealRank($a, $b)
 {
     if (is_object($a) && is_object($b)) {
-        return $b->search_rank - $a->search_rank;
+        $rankA = get_field('search_rank', $a) ?: 0;
+        $rankB = get_field('search_rank', $b) ?: 0;
+        return $rankB - $rankA;
     }
+    
+    return 0;
 }
-

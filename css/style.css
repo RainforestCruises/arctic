@@ -863,6 +863,27 @@ p {
     .swiper-button-next--inverse:hover,
     .swiper-button-prev--inverse:hover {
       background-color: rgba(255, 255, 255, 0.4); }
+  .swiper-button-next--dark,
+  .swiper-button-prev--dark {
+    transition: all 0.2s;
+    background-color: rgba(29, 34, 37, 0.6); }
+    .swiper-button-next--dark svg,
+    .swiper-button-prev--dark svg {
+      height: 1.5rem;
+      width: 1.5rem;
+      fill: #fff; }
+    .swiper-button-next--dark::after,
+    .swiper-button-prev--dark::after {
+      display: none; }
+    .swiper-button-next--dark::before,
+    .swiper-button-prev--dark::before {
+      display: none; }
+    .swiper-button-next--dark:hover::before,
+    .swiper-button-prev--dark:hover::before {
+      display: none; }
+    .swiper-button-next--dark:hover,
+    .swiper-button-prev--dark:hover {
+      background-color: rgba(29, 34, 37, 0.9); }
 
 .modal {
   position: fixed;
@@ -1901,16 +1922,25 @@ p {
     .overlay-card {
       height: 24rem; } }
   .overlay-card.small {
-    height: 22rem; }
+    height: 25rem; }
     @media only screen and (max-width: 37.5em) {
       .overlay-card.small {
-        height: 16rem; } }
+        height: 18rem; } }
     .overlay-card.small .overlay-card__content {
       padding: 1.5rem 2rem; }
   .overlay-card.large {
     height: 44rem; }
   .overlay-card.shadow {
     box-shadow: 0 0rem 3rem rgba(0, 0, 0, 0.2); }
+  .overlay-card.inverse .overlay-card__content {
+    justify-content: flex-end; }
+    .overlay-card.inverse .overlay-card__content h3 {
+      margin-bottom: 0; }
+  .overlay-card.inverse .overlay-card__image-area::after {
+    top: auto;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(to top, rgba(30, 30, 30, 0.6), rgba(30, 30, 30, 0)); }
   .overlay-card .swiper-button-next,
   .overlay-card .swiper-button-prev {
     opacity: 0; }
@@ -1919,6 +1949,9 @@ p {
     opacity: 1;
     transition: opacity 0.2s;
     display: flex; }
+  .overlay-card:hover h3::after {
+    transition: all 0.2s;
+    opacity: 1; }
   .overlay-card__image-area {
     position: relative;
     top: 0;
@@ -1938,7 +1971,7 @@ p {
       width: 100%;
       z-index: 1;
       border-radius: 0.4rem;
-      background-image: linear-gradient(to bottom, rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0)); }
+      background-image: linear-gradient(to bottom, rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0)); }
   .overlay-card__content {
     position: absolute;
     top: 0;
@@ -1958,7 +1991,19 @@ p {
     .overlay-card__content__title-section__title {
       font-size: 1.8rem;
       font-weight: 700;
-      color: #fff; }
+      color: #fff;
+      position: relative;
+      width: fit-content; }
+      .overlay-card__content__title-section__title::after {
+        content: "";
+        position: absolute;
+        bottom: -0.2rem;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: currentColor;
+        transition: all 0.2s;
+        opacity: 0; }
     .overlay-card__content__cta .btn-primary {
       width: min-content;
       border: none; }
@@ -4166,11 +4211,11 @@ p {
       left: 0;
       height: 100%;
       width: 100%;
-      background-image: linear-gradient(to bottom, rgba(30, 30, 30, 0.3), transparent 20%), linear-gradient(to top, #f8f8f8, transparent 20%), linear-gradient(to left, rgba(248, 248, 248, 0.4), transparent 80%), linear-gradient(to right, rgba(30, 30, 30, 0.3), transparent 35%);
+      background-image: linear-gradient(to bottom, rgba(30, 30, 30, 0.3), transparent 20%), linear-gradient(to top, white, transparent 20%), linear-gradient(to left, rgba(255, 255, 255, 0.4), transparent 80%), linear-gradient(to right, rgba(30, 30, 30, 0.3), transparent 35%);
       z-index: 2; }
       @media only screen and (max-width: 50em) {
         .home-hero__bg-image::after {
-          background-image: linear-gradient(to bottom, rgba(30, 30, 30, 0.5), transparent 100%), linear-gradient(to top, #f8f8f8, transparent 20%); } }
+          background-image: linear-gradient(to bottom, rgba(30, 30, 30, 0.5), transparent 100%), linear-gradient(to top, white, transparent 20%); } }
   .home-hero__content {
     width: 100%;
     padding: 0 6rem;
@@ -4344,6 +4389,12 @@ p {
   background-color: transparent;
   height: 7rem;
   width: max-content; }
+  .video-play-button.dark {
+    background-color: rgba(29, 34, 37, 0.7);
+    padding: 1rem;
+    padding-left: 0;
+    padding-right: 2rem;
+    border-radius: 4rem; }
   .video-play-button:hover .video-play-button__icon-area__inner {
     transition: all 0.2s;
     transform: scale(0.95);
@@ -4707,6 +4758,164 @@ p {
     transform: translateX(0%) !important; }
     .home-full-search-loading .lds-ring div {
       border-color: #4d8eff transparent transparent transparent; }
+
+.home-hero-regional {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%; }
+  .home-hero-regional__content {
+    width: 100%;
+    padding: 0 6rem;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 6rem;
+    height: 100%;
+    max-width: 160rem;
+    min-height: 70rem;
+    padding-top: 16rem;
+    padding-bottom: 3rem; }
+    @media only screen and (max-width: 50em) {
+      .home-hero-regional__content {
+        padding: 0 3rem; } }
+    @media only screen and (max-width: 62.5em) {
+      .home-hero-regional__content {
+        padding-top: 12rem;
+        grid-template-columns: 100%;
+        min-height: auto;
+        overflow-x: hidden; } }
+    .home-hero-regional__content__primary {
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 6rem; }
+      @media only screen and (max-width: 62.5em) {
+        .home-hero-regional__content__primary {
+          gap: 2rem; } }
+      .home-hero-regional__content__primary__title-group__title {
+        font-size: 5rem;
+        line-height: 5rem;
+        font-weight: 700;
+        display: flex;
+        position: relative;
+        align-items: flex-end;
+        margin-bottom: 1rem; }
+        @media only screen and (max-width: 37.5em) {
+          .home-hero-regional__content__primary__title-group__title {
+            font-size: 3.5rem;
+            line-height: 4rem; } }
+      .home-hero-regional__content__primary__title-group__sub {
+        font-size: 2.8rem;
+        line-height: 3.5rem;
+        font-weight: 400; }
+        @media only screen and (max-width: 37.5em) {
+          .home-hero-regional__content__primary__title-group__sub {
+            font-size: 2rem;
+            line-height: 2.5rem; } }
+      .home-hero-regional__content__primary__region-area {
+        display: flex;
+        gap: 2rem; }
+        @media only screen and (max-width: 62.5em) {
+          .home-hero-regional__content__primary__region-area {
+            display: none; } }
+      .home-hero-regional__content__primary__region-slider {
+        display: none;
+        overflow-x: visible; }
+        .home-hero-regional__content__primary__region-slider__nav {
+          margin-top: 2rem;
+          position: relative;
+          height: 4rem; }
+          .home-hero-regional__content__primary__region-slider__nav .hero-slider-btn-prev {
+            left: 0; }
+          .home-hero-regional__content__primary__region-slider__nav .hero-slider-btn-next {
+            left: 4.5rem; }
+        @media only screen and (max-width: 62.5em) {
+          .home-hero-regional__content__primary__region-slider {
+            display: block; }
+            .home-hero-regional__content__primary__region-slider .swiper {
+              overflow: visible !important; } }
+    @media only screen and (max-width: 62.5em) {
+      .home-hero-regional__content__video-area {
+        display: none; } }
+    .home-hero-regional__content__video-area__video {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+      height: 100%;
+      width: 100%;
+      box-shadow: 0 0rem 3rem rgba(0, 0, 0, 0.2);
+      cursor: pointer; }
+      .home-hero-regional__content__video-area__video__source {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        z-index: 5; }
+      .home-hero-regional__content__video-area__video__overlay {
+        color: #fff;
+        position: absolute;
+        z-index: 10;
+        bottom: 0;
+        left: 0;
+        padding: 3rem 2rem; }
+        .home-hero-regional__content__video-area__video__overlay h3 {
+          font-size: 2rem;
+          color: currentColor !important; }
+      .home-hero-regional__content__video-area__video__cta {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        z-index: 6;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: all 0.2s; }
+      .home-hero-regional__content__video-area__video::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 40%;
+        width: 100%;
+        z-index: 6;
+        border-radius: 0.4rem;
+        background-image: linear-gradient(to top, rgba(30, 30, 30, 0.7), rgba(30, 30, 30, 0)); }
+      .home-hero-regional__content__video-area__video:hover .home-hero-regional__content__video-area__video__cta {
+        display: flex;
+        opacity: 1; }
+  .home-hero-regional__bg-image {
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0; }
+    .home-hero-regional__bg-image img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      z-index: 1; }
+    .home-hero-regional__bg-image::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-image: linear-gradient(to bottom, rgba(30, 30, 30, 0.3), transparent 20%), linear-gradient(to top, white, transparent 20%), linear-gradient(to left, rgba(248, 248, 248, 0.4), transparent 80%), linear-gradient(to right, rgba(30, 30, 30, 0.3), transparent 35%);
+      z-index: 2; }
+      @media only screen and (max-width: 50em) {
+        .home-hero-regional__bg-image::after {
+          background-image: linear-gradient(to bottom, rgba(30, 30, 30, 0.5), transparent 100%), linear-gradient(to top, white, transparent 20%); } }
 
 .landing-hero {
   display: flex;

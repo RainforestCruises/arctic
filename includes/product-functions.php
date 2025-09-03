@@ -16,7 +16,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
             $use_automation = get_field('use_automation', $i);
             $itineraryDepartures = $use_automation ? get_field('automation_departure_data', $i) : get_field('departures', $i);
 
-            
+
             foreach ($itineraryDepartures as $d) {   // each departure   
                 $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
 
@@ -53,7 +53,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                             'Deals' => $filteredDeals,
                             'SpecialDepartures' => $filteredSpecialDepartures,
                         ];
-                      
+
 
                         if ($filterSoldOut) {
                             if ($departure['LowestPrice'] > 0) {
@@ -149,7 +149,8 @@ function getLowestDepartureListPrice($departures)
             $priceArray[] = $lowestCabinPrice;
         }
     }
-    $price = min($priceArray); //lowest price, not sold out
+    //$price = min($priceArray); //lowest price, not sold out
+    $price = !empty($priceArray) ? min($priceArray) : 0;
     return $price;
 }
 
@@ -164,7 +165,9 @@ function getHighestDepartureListPrice($departures)
             $priceArray[] = $highestCabinPrice;
         }
     }
-    $price = max($priceArray); //lowest price, not sold out
+    //$price = max($priceArray); //lowest price, not sold out
+    $price = !empty($priceArray) ? max($priceArray) : 0;
+
     return $price;
 }
 // get best discount from a list of departures
@@ -180,7 +183,7 @@ function getBestDepartureListDiscount($departures)
             $bestDiscountArray[] = $bestDiscount;
         }
     }
-    $bestDiscount = max($bestDiscountArray); //lowest price, not sold out
+    $bestDiscount = !empty($bestDiscountArray) ? max($bestDiscountArray) : 0;
     return $bestDiscount;
 }
 
@@ -199,6 +202,11 @@ function getShipsFromDepartureList($departures, $display = false)
 
     if ($display) {
         $display = "";
+
+        if (!is_array($uniqueShipsList) && !is_countable($uniqueShipsList)) {
+            return "N/A";
+        }
+
         $shipCount = count($uniqueShipsList);
         $x = 1;
         foreach ($uniqueShipsList as $s) {
@@ -236,7 +244,7 @@ function getLowestDeparturePrice($departure)
         }
     }
 
-    $price = min($priceArray); //lowest price, not sold out
+    $price = !empty($priceArray) ? min($priceArray) : 0;
     return $price;
 }
 
@@ -258,7 +266,7 @@ function getHighestDeparturePrice($departure)
         }
     }
 
-    $price = max($priceArray); //highest price, not sold out
+    $price = !empty($priceArray) ? max($priceArray) : 0;
     return $price;
 }
 
@@ -283,7 +291,7 @@ function getBestDepartureDiscount($departure)
         }
     }
 
-    $bestDiscount = max($percentageArray); //lowest price, not sold out
+    $bestDiscount = !empty($percentageArray) ? max($percentageArray) : 0;
     return $bestDiscount;
 }
 
@@ -303,7 +311,7 @@ function getLowestPriceFromListOfItineraries($itineraries, $region = null)
         }
     }
 
-    $lowestOverallPrice = min($priceList);
+    $lowestOverallPrice = !empty($priceList) ? min($priceList) : 0;
     return ($lowestOverallPrice);
 }
 
@@ -319,7 +327,7 @@ function getHighestPriceFromListOfItineraries($itineraries, $region = null)
         }
     }
 
-    $highestOverallPrice = max($priceList);
+    $highestOverallPrice = !empty($priceList) ? max($priceList) : 0;
     return ($highestOverallPrice);
 }
 
@@ -366,8 +374,8 @@ function getItineraryShipSize($ships)
         $capacityArray[] = get_field('vessel_capacity', $ship);
     }
 
-    $low = min($capacityArray); //lowest price, not sold out
-    $high = max($capacityArray); //lowest price, not sold out
+    $low = !empty($capacityArray) ? min($capacityArray) : 0;
+    $high = !empty($capacityArray) ? max($capacityArray) : 0;
     $display = $low . "-" . $high;
 
     return $display;
@@ -397,6 +405,11 @@ function getItineraryDestinations($itinerary, $display = false, $limit = 0)
         return $uniqueDestinationList;
     } else {
         $displayString = "";
+
+        if (!is_array($uniqueDestinationList) && !is_countable($uniqueDestinationList)) {
+            return "N/A";
+        }
+
         $destinationCount = count($uniqueDestinationList);
         $count = 1;
         $overCount = 0;
@@ -428,13 +441,13 @@ function getItineraryDestinations($itinerary, $display = false, $limit = 0)
 function getShipsFromItineraryList($itineraries, $display = false)
 {
     $ships = [];
-    if(is_array($itineraries)){
+    if (is_array($itineraries)) {
         foreach ($itineraries as $itinerary) { // list of itineraries
-            $itineraryDepartures = getDepartureList($itinerary); 
+            $itineraryDepartures = getDepartureList($itinerary);
             foreach ($itineraryDepartures as $d) {
                 $ships[] = $d['Ship'];
             }
-        }   
+        }
     } else {
         $itineraryDepartures = getDepartureList($itineraries); // single itinerary
         foreach ($itineraryDepartures as $d) {
@@ -449,15 +462,20 @@ function getShipsFromItineraryList($itineraries, $display = false)
     $unique_ships = array_values($tempArray);
     usort($unique_ships, 'sortBySearchRank'); // sort the ships array
 
-    if(!$display){
+    if (!$display) {
         return $unique_ships;
     } else {
         $display = ""; // display friendly list in cards
-        $shipCount = count($unique_ships);   
-        if($shipCount == 0){
+
+        if (!is_array($unique_ships) && !is_countable($unique_ships)) {
             return "N/A";
         }
-        $x = 1; 
+
+        $shipCount = count($unique_ships);
+        if ($shipCount == 0) {
+            return "N/A";
+        }
+        $x = 1;
         foreach ($unique_ships as $s) {
             $name = get_the_title($s);
             if ($x < $shipCount) {
@@ -469,40 +487,17 @@ function getShipsFromItineraryList($itineraries, $display = false)
         }
         return $display;
     }
-
 }
 
 // utility to sort by search rank
-function sortBySearchRank($a, $b) {
+function sortBySearchRank($a, $b)
+{
     if (is_object($a) && is_object($b)) {
-        $searchRankA = intval(get_field('search_rank', $a->ID)); 
-        $searchRankB = intval(get_field('search_rank', $b->ID)); 
-        return $searchRankB - $searchRankA ;
+        $searchRankA = intval(get_field('search_rank', $a->ID));
+        $searchRankB = intval(get_field('search_rank', $b->ID));
+        return $searchRankB - $searchRankA;
     }
 }
-
-
-
-// // get display of ships sailing the itinerary -- CHECK THIS ISSUE
-// function getItineraryShips($itinerary)
-// {
-//     $ships = get_field('ships', $itinerary);
-//     $display = "";
-//     $shipCount = count($ships);
-
-//     $x = 1; // FIX THIS LATER
-//     foreach ($ships as $s) {
-//         $name = get_the_title($s);
-
-//         if ($x < $shipCount) {
-//             $display .= $name . ", ";
-//         } else {
-//             $display .= $name;
-//         }
-//         $x++;
-//     }
-//     return $display;
-// }
 
 // get list of regions from itinerary post
 function getItineraryRegion($itinerary)
@@ -524,13 +519,19 @@ function itineraryRange($itineraries, $separator, $onlyMin = false)
     $returnString = "";
     $itineraryValues  = [];
 
+    // Check if $itineraries is actually an array or countable
+    if (!is_array($itineraries) && !is_countable($itineraries)) {
+        return "N/A";
+    }
+
     if (count($itineraries) > 0) {
         foreach ($itineraries as $i) {
-            $itineraryValues[] = get_field('length_in_nights', $i) + 1;
+            $lengthInNights = get_field('length_in_nights', $i);  
+            $itineraryValues[] = (int)$lengthInNights + 1; // Convert to integer to prevent string + int error
         }
 
-        $rangeFrom = min($itineraryValues);
-        $rangeTo = max($itineraryValues);
+        $rangeFrom = !empty($itineraryValues) ? min($itineraryValues) : 0;
+        $rangeTo = !empty($itineraryValues) ? max($itineraryValues) : 0;
 
 
         if (!$onlyMin) {
@@ -623,7 +624,7 @@ function getShipItineraries($ship, $region = null)
             }
         }
 
-        if ($departureMatch) {         
+        if ($departureMatch) {
             $itineraryList[] = $itinerary;
         }
     }
@@ -651,6 +652,13 @@ function shipHasMultipleRegions($ship)
 {
 
     $regions = getShipRegions($ship);
+
+    // Check if $itineraries is actually an array or countable
+    if (!is_array($regions) && !is_countable($regions)) {
+        return false;
+    }
+
+
     if (count($regions) > 1) {
         return true;
     } else {
@@ -686,7 +694,10 @@ function getPrimaryRegion()
 function getDateListDisplay($departures, $limit)
 {
 
-    //$filteredDepartures = filterSoldOutDepartures($departures);
+    if (!is_array($departures) || count($departures) == 0) {
+        return '';
+    }
+
     $length = count($departures);
     $displayString = "";
     $count = 1;
