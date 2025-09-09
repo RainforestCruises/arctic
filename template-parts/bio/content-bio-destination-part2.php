@@ -13,22 +13,6 @@ $firstDestinationGroup = array_slice($destinations, 2, 2);
             $image = $destination['image'];
             $description = $destination['description'];
             $link = $destination['link'];
-
-            $title =  "";
-            switch ($category) {
-                case "memorable":
-                    $title = "My Most Memorable Trip";
-                    break;
-                case "favorite":
-                    $title = "My Favorite Trip";
-                    break;
-                case "hotel":
-                    $title = "My Favorite Hotel";
-                    break;
-                case "bucket":
-                    $title = "On My Bucket List";
-                    break;
-            }
         ?>
 
             <!-- Memorable -->
@@ -37,7 +21,7 @@ $firstDestinationGroup = array_slice($destinations, 2, 2);
                     <img <?php afloat_image_markup($image['id'], 'landscape-small'); ?>>
                 </div>
                 <h2 class="bio-destination-item__title">
-                    <?php echo $title; ?>
+                    <?php echo $category; ?>
                 </h2>
                 <div class="bio-destination-item__name">
                     <?php echo $name; ?>

@@ -11,6 +11,9 @@ get_header();
     <!-- Hero -->
     <?php get_template_part('template-parts/bio/content', 'bio-hero'); ?>
 
+    <!-- Introduction -->
+    <?php get_template_part('template-parts/bio/content', 'bio-introduction'); ?>
+
     <!-- Destination -->
     <?php get_template_part('template-parts/bio/content', 'bio-destination'); ?>
 

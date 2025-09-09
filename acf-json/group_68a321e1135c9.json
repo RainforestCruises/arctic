@@ -157,6 +157,60 @@
             "maxlength": ""
         },
         {
+            "key": "field_68c0a0bf56139",
+            "label": "Introduction",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_68c0a0cc5613a",
+            "label": "Introduction Title",
+            "name": "introduction_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_68c0a0f15613b",
+            "label": "Introduction Text",
+            "name": "introduction_text",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
             "key": "field_68a323c4ea664",
             "label": "Destinations",
             "name": "",
@@ -195,7 +249,7 @@
                     "key": "field_68a32416ea666",
                     "label": "Category",
                     "name": "category",
-                    "type": "select",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -204,19 +258,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "choices": {
-                        "memorable": "Memorable",
-                        "bucket": "Bucket List",
-                        "favorite": "Favorite",
-                        "hotel": "Hotel"
-                    },
-                    "default_value": false,
-                    "allow_null": 0,
-                    "multiple": 0,
-                    "ui": 0,
-                    "return_format": "value",
-                    "ajax": 0,
-                    "placeholder": ""
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 },
                 {
                     "key": "field_68a32434ea667",
@@ -532,5 +578,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1755537674
+    "modified": 1757458086
 }

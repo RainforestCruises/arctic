@@ -16,7 +16,7 @@ $tips = get_field('tips');
         </div>
 
         <!-- Grid Area -->
-        <div class="grid-block__content__grid grid4">
+        <div class="grid-block__content__grid grid3">
             <?php if ($tips) :
                 foreach ($tips as $tip) :
                     $description = $tip['description'];

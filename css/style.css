@@ -9584,7 +9584,7 @@ p {
     width: 100%;
     padding: 0 6rem;
     display: grid;
-    grid-template-columns: 1fr 35rem;
+    grid-template-columns: 1fr 38rem;
     gap: 6rem; }
     @media only screen and (max-width: 50em) {
       .bio-hero__content {
