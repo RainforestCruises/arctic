@@ -16,6 +16,6 @@ $introduction_text = get_field('introduction_text');
         <!-- Slider Area -->
         <div class="slider-block__content__text">
             <?php echo $introduction_text; ?>
-        </div>
+        </div> 
     </div>
 </section>
