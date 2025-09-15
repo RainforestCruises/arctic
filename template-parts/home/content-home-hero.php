@@ -19,86 +19,40 @@ $hero_video_card = get_field('hero_video_card');
     <div class="home-hero__content <?php echo ($show_site_notice ? "site-notice-variant" : "") ?>">
 
         <!-- Main Title Group -->
-        <div class="home-hero__content__primary">
-            <h1 class="home-hero__content__primary__title">
+        <div class="home-hero__content__title-area">
+            <h1 class="home-hero__content__title-area__title">
                 <?php echo $hero_title ?>
             </h1>
-            <div class="home-hero__content__primary__snippet">
+            <div class="home-hero__content__title-area__sub">
                 <?php echo $hero_subtitle; ?>
             </div>
         </div>
 
         <!-- Secondary -->
-        <div class="home-hero__content__secondary">
+        <div class="home-hero__content__jumplinks">
+            <?php foreach ($hero_items as $item) :
 
+                $anchor = $item['anchor_link'];
+                $icon = $item['icon'];
+                $image = $item['image'];
+                $title = $item['title'];
+                $subtitle = $item['subtitle'];
 
-            <!-- Content -->
-            <div class="home-hero__content__secondary__content">
+                $percentage_savings = $item['percentage_savings'];
 
-                <!-- Video CTA -->
-                <div class="home-hero__content__secondary__content__cta">
-
-                    <?php if ($hero_video_card) : ?>
-                        <!-- Play Video Button -->
-                        <button class="video-play-button">
-                            <div class="video-play-button__icon-area">
-                                <div class="video-play-button__icon-area__inner">
-                                    <svg>
-                                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-button-play"></use>
-                                    </svg>
-                                </div>
-                            </div>
-
-                            <div class="video-play-button__text">
-                                Watch The Video
-                            </div>
-                        </button>
-                    <?php endif; ?>
-
-
-                </div>
-
-                <!-- Jump Links -->
-                <div class="home-hero__content__secondary__content__items">
-                    <?php foreach ($hero_items as $item) :
-
-                        $anchor = $item['anchor_link'];
-                        $icon = $item['icon'];
-                        $image = $item['image'];
-                        $title = $item['title'];
-                        $subtitle = $item['subtitle'];
-
-                        $percentage_savings = $item['percentage_savings'];
-
-                    ?>
-                        <a class="hero-item" href="<?php echo $anchor; ?>">
-                            <div class="hero-item__icon-area">
-                                <?php echo $icon; ?>
-                            </div>
-                            <div class="hero-item__title-group">
-                                <div class="hero-item__title-group__title">
-                                    <?php echo $title; ?>
-                                </div>
-                            </div>
-                        </a>
-
-                    <?php endforeach; ?>
-                </div>
-
-            </div>
-
-            <!-- Video Area -->
-            <div class="home-hero__content__secondary__video-area">
-                <?php if ($hero_video_card) : ?>
-                    <div class="video-card">
-                        <video class="video-card__video" muted loop id="hero-video-card">
-                            <source src="<?php echo esc_url($hero_video_card); ?>" type="video/mp4">
-                        </video>
+            ?>
+                <a class="hero-item" href="<?php echo $anchor; ?>">
+                    <div class="hero-item__icon-area">
+                        <?php echo $icon; ?>
                     </div>
-                <?php endif; ?>
+                    <div class="hero-item__title-group">
+                        <div class="hero-item__title-group__title">
+                            <?php echo $title; ?>
+                        </div>
+                    </div>
+                </a>
 
-            </div>
-
+            <?php endforeach; ?>
         </div>
 
     </div>

@@ -107,6 +107,25 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_68c1a64254c64",
+            "label": "Exclude From Nav",
+            "name": "exclude_from_nav",
+            "type": "true_false",
+            "instructions": "If checked, will omit this region from nav search and nav menus",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_682cb90d6fb92",
             "label": "Top Level Guide Page",
             "name": "top_level_guide_page",
@@ -213,5 +232,5 @@
     "active": true,
     "description": "Regions - CPT",
     "show_in_rest": 0,
-    "modified": 1752672679
+    "modified": 1757521524
 }

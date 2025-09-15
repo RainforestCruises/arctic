@@ -106,29 +106,28 @@
              
                     &__item {
                         &__button {
+
                             box-shadow: $shadow-short-bottom-light;
                             width: 100%;
-                            //padding: 0.8rem 1.6rem;
-                            height: 3.5rem;
+                            //height: 3.5rem;
                             cursor: pointer;
                             position: relative;
                             background-color: $color-white;
                             font-size: 1.4rem;
-                            border-radius: 4rem;
+                            border-radius: 2rem;
                             transition: all 0.2s;
                             border: 1px solid $color-grey-light-1a;
                             color: $color-primary;
                             font-size: 1.4rem;
                             font-weight: 700;
-
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            & span {
-                                margin-left: 1.5rem;
-                                @media only screen and (max-width: $bp-small) {
-                                    display: none;
-                                }
+                            padding: 1rem;
+
+                            &.vertical {
+                                flex-direction: column;
+                                gap: .5rem;
                             }
                         }
 

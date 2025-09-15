@@ -1,338 +1,287 @@
 .home-hero {
-    @include flexBlock;
+  @include flexBlock;
 
+  @media only screen and (max-width: $bp-large) {
+    height: auto;
+  }
+
+  // desktop hero
+  &__bg-image {
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    & img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-image: linear-gradient(to bottom, rgba($color-black, 0.3), transparent 20%), linear-gradient(to top, rgba($color-white, 1), transparent 20%), linear-gradient(to left, rgba($color-white, 0.4), transparent 80%), linear-gradient(to right, rgba($color-black, 0.3), transparent 35%);
+      z-index: 2;
+
+      @media only screen and (max-width: $bp-medium) {
+        background-image: linear-gradient(to bottom, rgba($color-black, 0.5), transparent 100%), linear-gradient(to top, rgba($color-white, 1), transparent 20%);
+      }
+    }
+  }
+
+  &__content {
+    @include flexPadding;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    max-width: $page-width-full;
+    gap: 4rem;
+    padding-top: 16rem;
     @media only screen and (max-width: $bp-large) {
-        height: auto;
+      padding-top: 12rem;
     }
 
-    // desktop hero
-    &__bg-image {
-        height: 100%;
-        width: 100%;
-        z-index: -1;
-        position: absolute;
-        top: 0;
-        left: 0;
-        & img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-            z-index: 1;
-        }
+    @include siteNoticePadding;
 
-        &::after {
-            position: absolute;
-            content: "";
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background-image: linear-gradient(to bottom, rgba($color-black, 0.3), transparent 20%),
-                linear-gradient(to top, rgba($color-white, 1), transparent 20%),
-                linear-gradient(to left, rgba($color-white, 0.4), transparent 80%),
-                linear-gradient(to right, rgba($color-black, 0.3), transparent 35%);
-            z-index: 2;
+    &__title-area {
+      color: $color-white;
 
-            @media only screen and (max-width: $bp-medium) {
-                background-image: linear-gradient(to bottom, rgba($color-black, 0.5), transparent 100%),
-                    linear-gradient(to top, rgba($color-white, 1), transparent 20%);
-            }
-        }
-    }
-
-    &__content {
-        @include flexPadding;
-        z-index: 5;
+      @media only screen and (max-width: $bp-medium) {
+        text-align: center;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        height: 100%;
-        max-width: $page-width-full;
+        align-items: center;
+      }
+      padding-bottom: 5rem;
+      &__title {
+        font-size: 5rem;
+        font-weight: 700;
+        display: flex;
+        line-height: 5rem;
+        position: relative;
+        align-items: flex-end;
+        margin-bottom: 1rem;
 
-        padding-top: 16rem;
         @media only screen and (max-width: $bp-large) {
-            padding-top: 12rem;
+          font-size: 4rem;
+          line-height: 4.5rem;
+          font-weight: 600;
         }
+      }
 
-        @include siteNoticePadding;
-
-
-        &__primary {
-            color: $color-white;
-
-            @media only screen and (max-width: $bp-medium) {
-                text-align: center;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            &__title {
-                font-size: 5rem;
-                font-weight: 500;
-                display: flex;
-                line-height: 5rem;
-                position: relative;
-                align-items: flex-end;
-                margin-bottom: 1rem;
-
-                @media only screen and (max-width: $bp-large) {
-                    font-size: 4rem;
-                    line-height: 4.5rem;
-                    font-weight: 600;
-                }
-            }
-
-            &__snippet {
-                font-size: 1.8rem;
-                font-weight: 400;
-                display: block;
-
-                @media only screen and (max-width: $bp-large) {
-                    font-weight: 400;
-                    letter-spacing: 0rem;
-                    font-size: 1.6rem;
-                }
-            }
-            &__cta {
-                margin: 4rem 0;
-                position: relative;
-
-                @media only screen and (max-width: $bp-medium) {
-                    margin-top: 2rem;
-                    margin-bottom: 2rem;
-                }
-            }
+      &__sub {
+        font-size: 2.8rem;
+        line-height: 3.5rem;
+        font-weight: 400;
+        @media only screen and (max-width: $bp-small) {
+          font-size: 2rem;
+          line-height: 2.5rem;
         }
-
-        &__secondary {
-            position: relative;
-            width: 100%;
-            padding-bottom: 3rem;
-            padding-top: 4rem;
-            display: grid;
-            gap: 6rem;
-            grid-template-columns: min-content 1fr;
-            grid-template-rows: min-content;
-
-            @media only screen and (max-width: $bp-medium) {
-                grid-template-columns: 1fr;
-            }
-
-            &__content {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                @media only screen and (max-width: $bp-medium) {
-                    align-items: center;
-                }
-
-                &__cta {
-                    @media only screen and (max-width: $bp-medium) {
-                        display: flex;
-                        justify-content: center;
-                        margin-bottom: 2rem;
-                    }
-                }
-
-                &__items {
-                    height: min-content;
-                    width: min-content;
-                    display: grid;
-                    grid-template-columns: repeat(3, 1fr);
-                    gap: 2rem;
-                    margin-top: 4rem;
-
-                    @media only screen and (max-width: $bp-small) {
-                        grid-template-columns: repeat(2, 1fr);
-                        width: 100%;
-                        margin-top: 1rem;
-                    }
-              
-                }
-            }
-            &__video-area {
-                display: flex;
-                justify-content: flex-end;
-                align-items: flex-end;
-                @media only screen and (max-width: $bp-medium) {
-                    display: none;
-                }
-            }
-        }
+      }
     }
+
+    &__jumplinks {
+      //   position: relative;
+      //   width: 100%;
+      //   padding-bottom: 3rem;
+      //   padding-top: 4rem;
+      //   display: grid;
+      //   gap: 6rem;
+      //   grid-template-columns: min-content 1fr;
+      //   grid-template-rows: min-content;
+
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 2rem;
+      min-height: 15rem;
+
+      @media only screen and (max-width: $bp-medium) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @media only screen and (max-width: $bp-small) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
 }
 
 // COMPONENTS
 .hero-item {
-    cursor: pointer;
-    border-radius: 1rem;
-    background-color: rgba($color-white, .8);
-    transition: all .2s;
-    &:hover {
-        background-color: rgba($color-white, 1);
-    }
- 
-    display: grid;
-    padding: 1.5rem 2rem;
+  cursor: pointer;
+  border-radius: 1rem;
+  background-color: rgba($color-white, 0.8);
+  transition: all 0.2s;
+  &:hover {
+    background-color: rgba($color-white, 1);
+  }
+  width: 100%;
 
-    grid-template-columns: max-content max-content;
-    gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 2rem;
 
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  box-shadow: $shadow-medium-around;
+
+  &:link {
+    text-decoration: none;
+    color: $color-primary;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    justify-content: center;
+  }
+
+  &__icon-area {
+    display: flex;
     align-items: center;
-    box-shadow: $shadow-medium-around; 
+    justify-content: center;
 
-    &:link {
-        text-decoration: none;
-        color: $color-primary;
+    & svg {
+      height: 4rem;
+      width: 4rem;
+      color: $color-primary;
+    }
+  }
+
+  &__title-group {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    &__title {
+      font-size: 2rem;
+      color: $color-primary;
+      font-weight: 600;
+      line-height: 2rem;
     }
 
-    @media only screen and (max-width: $bp-small) {
-        justify-content: center;
+    &__sub {
+      font-size: 1.2rem;
+      white-space: nowrap;
     }
-
-    &__icon-area {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-       
-        & svg {
-            height: 3rem;
-            width: 3rem;
-            color: $color-primary;
-        }
-    }
-
-    &__title-group {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        text-align: center;
-        &__title {
-            font-size: 1.4rem;
-            color: $color-primary;
-            font-weight: 600;
-            line-height: 1.4rem;
-        }
-
-        &__sub {
-            font-size: 1.2rem;    
-            white-space: nowrap;
-        }
-    }
+  }
 }
 
 .video-card {
+  height: 100%;
+  width: 100%;
+  max-height: 34rem;
+  max-width: 68rem;
+  cursor: pointer;
+
+  &__video {
+    border-radius: 2rem;
     height: 100%;
     width: 100%;
-    max-height: 34rem;
-    max-width: 68rem;
-    cursor: pointer;
-
-    &__video {
-        border-radius: 2rem;
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        z-index: 1;
-        position: relative;
-        box-shadow: $shadow-medium-around;
-    }
-    &__cta {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateY(-50%) translateX(-50%);
-        z-index: 4;
-    }
-
+    object-fit: cover;
+    z-index: 1;
+    position: relative;
+    box-shadow: $shadow-medium-around;
+  }
+  &__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    z-index: 4;
+  }
 }
 
 .video-play-button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  height: 7rem;
+  width: max-content;
+
+  &.dark {
+    background-color: rgba($color-primary, 0.7);
+    padding: 1rem;
+    padding-left: 0;
+    padding-right: 2rem;
+    border-radius: 4rem;
+  }
+
+  &:hover {
+    & .video-play-button__icon-area__inner {
+      transition: all 0.2s;
+      transform: scale(0.95);
+      background-color: rgba($color-white, 1);
+    }
+  }
+
+  &__icon-area {
+    margin-right: 1rem;
+
+    @media only screen and (max-width: $bp-medium) {
+      margin-right: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    opacity: 0.7;
+    background-color: rgba($color-white, 0.3);
+    border-radius: 50%;
+    height: 7rem;
+    width: 7rem;
     display: flex;
     align-items: center;
-    background-color: transparent;
-    height: 7rem;
-    width: max-content;
+    justify-content: center;
 
-    &.dark {
-        background-color: rgba($color-primary, .7);
-        padding: 1rem;
-        padding-left: 0;
-        padding-right: 2rem;
-        border-radius: 4rem;
-      
+    &__inner {
+      border-radius: 50%;
+      background-color: rgba($color-white, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 5rem;
+      width: 5rem;
+      & svg {
+        height: 1rem;
+        width: 1rem;
+        z-index: 5;
+        color: $color-primary;
+      }
+
+      box-shadow: 0 0 0 0 rgb(255, 255, 255);
+      animation: pulse 8s infinite;
     }
+  }
 
-    &:hover {
-        & .video-play-button__icon-area__inner {
-            transition: all 0.2s;
-            transform: scale(0.95);
-            background-color: rgba($color-white, 1);
+  &__text {
+    color: $color-white;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-weight: 600;
 
-        }
+    @media only screen and (max-width: $bp-medium) {
+      display: none;
     }
-
-    &__icon-area {
-        margin-right: 1rem;
-
-        @media only screen and (max-width: $bp-medium) {
-            margin-right: 0;
-            margin-bottom: 1.5rem;
-        }
-
-        opacity: 0.7;
-        background-color: rgba($color-white, 0.3);
-        border-radius: 50%;
-        height: 7rem;
-        width: 7rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        &__inner {
-            border-radius: 50%;
-            background-color: rgba($color-white, .9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 5rem;
-            width: 5rem;
-            & svg {
-                height: 1rem;
-                width: 1rem;
-                z-index: 5;
-                color: $color-primary;
-            }
-
-            box-shadow: 0 0 0 0 rgb(255, 255, 255);
-            animation: pulse 8s infinite;
-        }
-    }
-
-    &__text {
-        color: $color-white;
-        font-size: 1.2rem;
-        text-transform: uppercase;
-        white-space: nowrap;
-        font-weight: 600;
-
-        @media only screen and (max-width: $bp-medium) {
-            display: none;
-        } 
-    }
+  }
 }
 
 @keyframes pulse {
-    20% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
-    }
+  20% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
 
-    40% {
-        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
-    }
+  40% {
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
 
-    100% {
-        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-    }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
 }

@@ -1,4 +1,6 @@
 jQuery(document).ready(function ($) {
+  const regionCount = page_vars.regionCount;
+
   // On Click - Nav Links, href change position
   $(".hero-item").click(function (event) {
     var id = $(this).attr("href");
@@ -110,27 +112,54 @@ jQuery(document).ready(function ($) {
     },
   });
 
-  // itineraries slider
-  new Swiper("#itineraries-best-slider", {
-    spaceBetween: 15,
-    slidesPerView: 1.2,
-    watchSlidesProgress: true,
-    navigation: {
-      nextEl: ".itineraries-best-slider-btn-next",
-      prevEl: ".itineraries-best-slider-btn-prev",
-    },
-    breakpoints: {
-      600: {
-        slidesPerView: 2,
-      },
-      1000: {
-        slidesPerView: 3,
-      },
-      1300: {
-        slidesPerView: 4,
-      },
-    },
-  });
+  // itinerary sliders
+    const itinerarySliderSections = [...document.querySelectorAll('.itineraries-slider-block')];
+    itinerarySliderSections.forEach((section, index) => {
+              console.log('initializing deal slider ' + index);
+
+        new Swiper('#itineraries-slider-' + index, {
+            spaceBetween: 15,
+            slidesPerView: 1.2,
+            watchSlidesProgress: true,
+            navigation: {
+                nextEl: '.itineraries-slider-btn-next-' + index,
+                prevEl: '.itineraries-slider-btn-prev-' + index,
+            },
+            breakpoints: {
+                600: {
+                    slidesPerView: 2,
+                },
+                1000: {
+                    slidesPerView: 3,
+                },
+                1300: {
+                    slidesPerView: 4,
+                }
+            }
+        });
+    })
+
+  // // itineraries slider
+  // new Swiper("#itineraries-slider", {
+  //   spaceBetween: 15,
+  //   slidesPerView: 1.2,
+  //   watchSlidesProgress: true,
+  //   navigation: {
+  //     nextEl: ".itineraries-best-slider-btn-next",
+  //     prevEl: ".itineraries-best-slider-btn-prev",
+  //   },
+  //   breakpoints: {
+  //     600: {
+  //       slidesPerView: 2,
+  //     },
+  //     1000: {
+  //       slidesPerView: 3,
+  //     },
+  //     1300: {
+  //       slidesPerView: 4,
+  //     },
+  //   },
+  // });
 
   // themes slider
   new Swiper("#styles-slider", {

@@ -1,5 +1,11 @@
 <?php
 
+function getBadgeClass($region)
+{
+    $badgeClass = 'badge--' . strtolower(get_the_title($region));
+    return $badgeClass;
+}
+
 // DEPARTURES ----------------------------------------------------------------------------------------------
 // get a list of departures
 function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $region = null)
@@ -499,6 +505,36 @@ function sortBySearchRank($a, $b)
     }
 }
 
+function getItinerariesFromRegion($region, $limit = -1)
+{
+    $queryArgs = array(
+        'post_type' => 'rfc_itineraries',
+        'posts_per_page' => $limit,
+        'meta_key' => 'search_rank',
+        'orderby' => 'meta_value_num',
+        'order' => 'ASC'
+    );
+    $itineraries = get_posts($queryArgs);
+    $itineraryList = [];
+    foreach ($itineraries as $itinerary) {
+        $routes = get_field('route', $itinerary);
+        $match = false;
+        foreach ($routes as $route) {
+            $itineraryRegion = get_field('region', $route);
+            if ($itineraryRegion == $region) {
+                $match = true;
+            }
+        }
+        if ($match) {
+            $itineraryList[] = $itinerary;
+        }
+    }
+
+    $uniqueItinerariesList = getUniquePostsFromArrayOfPosts($itineraryList);
+
+    return $uniqueItinerariesList;
+}
+
 // get list of regions from itinerary post
 function getItineraryRegion($itinerary)
 {
@@ -526,7 +562,7 @@ function itineraryRange($itineraries, $separator, $onlyMin = false)
 
     if (count($itineraries) > 0) {
         foreach ($itineraries as $i) {
-            $lengthInNights = get_field('length_in_nights', $i);  
+            $lengthInNights = get_field('length_in_nights', $i);
             $itineraryValues[] = (int)$lengthInNights + 1; // Convert to integer to prevent string + int error
         }
 
@@ -796,4 +832,70 @@ function getEmbarkationList()
         $embarkationList[] = $embarkationObject;
     }
     return $embarkationList;
+}
+
+
+function getRoutesFromRegionList($regions)
+{
+    $region_ids = array();
+    foreach ($regions as $region) {
+        $region_ids[] = $region->ID;
+    }
+    $routesArgs = array(
+        'post_type' => 'rfc_routes',
+        'posts_per_page' => -1,
+        'orderby' => 'meta_value_num title',
+        'meta_key' => 'search_rank',
+        'order' => 'DESC',
+        'meta_query' => array(
+            'relation' => 'AND',
+            array(
+                'key' => 'region',
+                'value' => $region_ids,
+                'compare' => 'IN'
+            ),
+            array(
+                'key' => 'search_rank',
+                'value' => '',
+                'compare' => '!='
+            )
+        )
+    );
+
+    // Get routes WITH search_rank values
+    $routes_with_rank = get_posts($routesArgs);
+
+    // Get routes WITHOUT search_rank values (or empty/null)
+    $routesArgsNoRank = array(
+        'post_type' => 'rfc_routes',
+        'posts_per_page' => -1,
+        'orderby' => 'title',
+        'order' => 'ASC',
+        'meta_query' => array(
+            'relation' => 'AND',
+            array(
+                'key' => 'region',
+                'value' => $region_ids,
+                'compare' => 'IN'
+            ),
+            array(
+                'relation' => 'OR',
+                array(
+                    'key' => 'search_rank',
+                    'value' => '',
+                    'compare' => '='
+                ),
+                array(
+                    'key' => 'search_rank',
+                    'compare' => 'NOT EXISTS'
+                )
+            )
+        )
+    );
+
+    $routes_without_rank = get_posts($routesArgsNoRank);
+
+    // Combine the arrays - ranked routes first, then unranked routes
+    $routes = array_merge($routes_with_rank, $routes_without_rank);
+    return $routes;
 }

@@ -11,6 +11,18 @@ $regionsArgs = array(
     'posts_per_page' => -1,
     'order' => 'ASC',
     'orderby' => 'title',
+    'meta_query' => array(
+        'relation' => 'OR',
+        array(
+            'key' => 'exclude_from_nav',
+            'value' => '1',
+            'compare' => '!='
+        ),
+        array(
+            'key' => 'exclude_from_nav',
+            'compare' => 'NOT EXISTS'
+        )
+    )
 );
 $regions = get_posts($regionsArgs);
 $initialRegion = checkPageRegion(); // set based on the page template

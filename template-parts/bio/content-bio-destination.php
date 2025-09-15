@@ -29,14 +29,16 @@ $firstDestinationGroup = array_slice($destinations, 0, 2);
                 <div class="bio-destination-item__description">
                     <?php echo $description; ?>
                 </div>
-                <a class="bio-destination-item__link" href="<?php echo $link; ?>">
-                    <span>
-                        Discover <?php echo $name; ?>
-                    </span>
-                    <svg>
-                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-arrow-right"></use>
-                    </svg>
-                </a>
+                <?php if ($link != null) : ?>
+                    <a class="bio-destination-item__link" href="<?php echo $link; ?>">
+                        <span>
+                            Discover <?php echo $name; ?>
+                        </span>
+                        <svg>
+                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-arrow-right"></use>
+                        </svg>
+                    </a>
+                <?php endif; ?>
             </div>
         <?php endforeach; ?>
 

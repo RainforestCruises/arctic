@@ -6,76 +6,105 @@ wp_enqueue_script('page-product-cruise-itineraries', get_template_directory_uri(
 
 get_header();
 
-$routes = get_field('routes');
 $use_development_sections = get_field('use_development_sections', 'options');
+
+$regionsArgs = array(
+    'post_type' => 'rfc_regions',
+    'posts_per_page' => -1,
+    'order' => 'ASC',
+    'orderby' => 'title',
+);
+$regions = get_posts($regionsArgs);
+$selectedRegion = get_field('region');
+$isMultiRegion = true;
+if ($selectedRegion != null) {
+    $regions = array($selectedRegion);
+    $isMultiRegion = false;
+}
+
+
+// Get routes that match the regions
+$routes = getRoutesFromRegionList($regions);
 
 $itineraryObjects = [];
 foreach ($routes as $route) {
     $sample_itinerary = get_field('sample_itinerary', $route);
     $itineraryObjects[] = getItineraryObject($sample_itinerary);
 }
+
+
 wp_localize_script(
-    'page-home',
+    'page-product-cruise-itineraries',
     'page_vars',
     array(
-        'itineraryObjects' =>  $itineraryObjects,
+        'itineraryObjects' =>  $itineraryObjects
     )
 );
 
 
-$args = array('footerCtaDivider' => true);
+$args = array(
+    'footerCtaDivider' => true,
+    'regions' => $regions,
+    'routes' => $routes,
+    'isMultiRegion' => $isMultiRegion,
+);
 $show_reviews = get_field('show_reviews');
 
 ?>
 
 
 <main class="home-page">
-
+    <!--  -->
     <!-- Hero -->
     <?php
-    $use_development_sections ? get_template_part('template-parts/home/content', 'home-hero-regional') : get_template_part('template-parts/home/content', 'home-hero');
+    $isMultiRegion ? get_template_part('template-parts/home/content', 'home-hero-regional', $args) : get_template_part('template-parts/home/content', 'home-hero', $args);
     ?>
 
     <!-- Routes  -->
     <?php
-    get_template_part('template-parts/home/content', 'home-routes');
+    get_template_part('template-parts/home/content', 'home-routes', $args);
+    ?>
+
+    <!-- Region Sections -->
+    <?php
+    $isMultiRegion ? get_template_part('template-parts/home/content', 'home-regions') : null;
     ?>
 
     <!-- Itineraries  -->
     <?php
-    get_template_part('template-parts/home/content', 'home-itineraries');
+    get_template_part('template-parts/home/content', 'home-itineraries', $args);
     ?>
 
     <!-- Styles  -->
     <?php
-    get_template_part('template-parts/home/content', 'home-styles');
+    $isMultiRegion == false ? get_template_part('template-parts/home/content', 'home-styles', $args) : null;
     ?>
 
     <!-- Quote  -->
     <?php
-    get_template_part('template-parts/home/content', 'home-quote');
+    get_template_part('template-parts/home/content', 'home-quote', $args);
     ?>
 
     <!-- Experiences  -->
     <?php
-    get_template_part('template-parts/home/content', 'home-experiences');
+    get_template_part('template-parts/home/content', 'home-experiences', $args);
     ?>
 
     <!-- Cruises  -->
     <?php
-    get_template_part('template-parts/home/content', 'home-ships');
+    get_template_part('template-parts/home/content', 'home-ships', $args);
     ?>
 
     <!-- Reviews  -->
     <?php
     if ($show_reviews) :
-        get_template_part('template-parts/home/content', 'home-reviews');
+        get_template_part('template-parts/home/content', 'home-reviews', $args);
     endif;
     ?>
 
     <!-- Guides  -->
     <?php
-    get_template_part('template-parts/home/content', 'home-guides');
+    get_template_part('template-parts/home/content', 'home-guides', $args);
     ?>
 
     <!-- Footer CTA  -->

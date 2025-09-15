@@ -36,7 +36,7 @@
         <!-- Title -->
         <h3 class="search-card-itinerary__content__title">
             <?php echo $args->DisplayName; ?>
-            <?php echo $args->FlightOption ? '<span class="badge-fly">' . $args->FlightOption . '</span>' : ''; ?>
+            <?php echo $args->FlightOption ? '<span class="badge">' . $args->FlightOption . '</span>' : ''; ?>
         </h3>
 
         <!-- Specs -->

@@ -1,9 +1,8 @@
 <?php
-$routes = get_field('routes');
+$routes = $args['routes'];
 $routes_title = get_field('routes_title');
 $routes_title_subtext = get_field('routes_title_subtext');
-$region = checkPageRegion();
-$top_level_search_page = get_field('top_level_search_page', $region);
+
 
 ?>
 
@@ -35,12 +34,13 @@ $top_level_search_page = get_field('top_level_search_page', $region);
                         foreach ($routes as $route) :
                             $id = $route->ID;
                             $short_title = get_field('short_title', $route);
-                            $hasFlight = false;
+                            $region = get_field('region', $route);
+                            $badgeClass = getBadgeClass($region);
                         ?>
                             <div class="cruise-itineraries__content__top__nav-area__slider__item swiper-slide" slideIndex="<?php echo $count ?>" postId="<?php echo $id ?>">
-                                <button class="cruise-itineraries__content__top__nav-area__slider__item__button">
+                                <button class="cruise-itineraries__content__top__nav-area__slider__item__button vertical">
                                     <?php echo $short_title; ?>
-                                    <?php echo $hasFlight ? '<span class="badge-fly">Fly</span>' : ''; ?>
+                                    <span class="badge <?php echo $badgeClass ?>"><?php echo get_the_title($region) ?></span>
                                 </button>
                             </div>
 
@@ -72,27 +72,25 @@ $top_level_search_page = get_field('top_level_search_page', $region);
                 <!-- Itineraries Slider -->
                 <div class="cruise-itineraries__content__main__detail-area__slider swiper" id="itineraries-slider">
                     <div class="swiper-wrapper">
-
                         <?php
                         $count = 0;
                         foreach ($routes as $route) :
                             $id = $route->ID;
                             $image = get_field('image', $route);
-
                             $title = get_field('title', $route);
                             $description = get_field('description', $route);
                             $landing_page = get_field('landing_page', $route);
-
-
                             $sample_itinerary = get_field('sample_itinerary', $route);
                             $average_length_in_nights = get_field('average_length_in_nights', $route);
                             $length = $average_length_in_nights + 1 . ' Day / ' . $average_length_in_nights . ' Night';
-
                             $ports = get_field('ports', $route);
                             $portsDisplay = comma_separate_list($ports);
-
                             $destinations = getItineraryDestinations($sample_itinerary, true, 4); //build list of unique, with embarkations removed
+                            $region = get_field('region', $route);
+                            $top_level_search_page = get_field('top_level_search_page', $region);
                             $allLink = get_permalink($top_level_search_page) . '?routes=' . $route->ID;
+                            $badgeClass = getBadgeClass($region);
+
                         ?>
 
                             <!-- Itinerary Card -->
@@ -116,10 +114,7 @@ $top_level_search_page = get_field('top_level_search_page', $region);
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <div class="tiny-card__section">
-
                                         <!-- CTA -->
                                         <a class="btn-primary btn-primary--icon btn-primary--small" href="<?php echo $landing_page; ?>">
                                             Explore
@@ -129,7 +124,6 @@ $top_level_search_page = get_field('top_level_search_page', $region);
                                         </a>
                                     </div>
                                 </div>
-
 
                                 <!-- Desktop -->
                                 <div class="resource-card medium encapsulated">
@@ -145,6 +139,8 @@ $top_level_search_page = get_field('top_level_search_page', $region);
                                         <h3 class="resource-card__content__title">
                                             <a href="<?php echo $landing_page; ?>">
                                                 <?php echo $title; ?>
+                                                <span class="badge <?php echo $badgeClass ?>"><?php echo get_the_title($region) ?></span>
+
                                             </a>
                                         </h3>
 

@@ -197,6 +197,27 @@
             "min": "",
             "max": "",
             "step": ""
+        },
+        {
+            "key": "field_68c3041426ea9",
+            "label": "Search Rank",
+            "name": "search_rank",
+            "type": "number",
+            "instructions": "Weight given to search priority, from 1-1000. A higher number will appear first in search results. A product with a weight of 1 will appear last. Score average products: ~500 range, products to appear first: 700+ range, products to rank last: sub 300 range.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 1,
+            "max": 999,
+            "step": ""
         }
     ],
     "location": [
@@ -217,5 +238,5 @@
     "active": true,
     "description": "Routes CPT",
     "show_in_rest": 0,
-    "modified": 1718119133
+    "modified": 1757611173
 }

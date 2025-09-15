@@ -36,7 +36,7 @@ $itineraries = $args['itineraries'];
                             <div class="cruise-itineraries__content__top__nav-area__slider__item swiper-slide" slideIndex="<?php echo $count ?>" postId="<?php echo $id ?>">
                                 <button class="cruise-itineraries__content__top__nav-area__slider__item__button">
                                     <?php echo $length; ?>
-                                    <?php echo $hasFlight ? '<span class="badge-fly">Fly</span>' : ''; ?>
+                                    <?php echo $hasFlight ? '<span class="badge">Fly</span>' : ''; ?>
                                 </button>
                             </div>
 
@@ -110,7 +110,7 @@ $itineraries = $args['itineraries'];
                                             <div class="avatar__title-group">
                                                 <div class="avatar__title-group__title">
                                                     <?php echo $title; ?>
-                                                    <?php echo $flightOption ? '<span class="badge-fly">' . $flightOption . '</span>' : ''; ?>
+                                                    <?php echo $flightOption ? '<span class="badge">' . $flightOption . '</span>' : ''; ?>
                                                 </div>
 
                                                 <div class="avatar__title-group__sub">
@@ -154,7 +154,7 @@ $itineraries = $args['itineraries'];
                                         <h3 class="resource-card__content__title">
                                             <a href="<?php echo $link; ?>">
                                                 <?php echo $title; ?>
-                                                <?php echo $flightOption ? '<span class="badge-fly">' . $flightOption . '</span>' : ''; ?>
+                                                <?php echo $flightOption ? '<span class="badge">' . $flightOption . '</span>' : ''; ?>
                                             </a>
                                         </h3>
 

@@ -8,6 +8,8 @@ $agent_introduction = get_field('agent_introduction');
 $agent_location = get_field('agent_location');
 $agent_email = get_field('agent_email');
 $top_level_about_page = get_field('top_level_about_page', 'options');
+$agent_phone_number = get_field('agent_phone_number');
+$agent_phone_display = get_field('agent_phone_display');
 
 ?>
 
@@ -60,7 +62,12 @@ $top_level_about_page = get_field('top_level_about_page', 'options');
                     </svg>
                     <?php echo $agent_location; ?>
                 </div>
+                <div class="bio-hero__content__side__main__attribute" style="margin-bottom: 4rem;">
+                    <a href="tel:<?php echo $agent_phone_number; ?>">
+                        <?php echo $agent_phone_display; ?>
+                    </a>
 
+                </div>
             </div>
 
 

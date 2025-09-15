@@ -10,7 +10,7 @@
             <div class="avatar__title-group">
                 <div class="avatar__title-group__title">
                     <?php echo $args->DisplayName ?>
-                    <?php echo $args->FlightOption ? '<span class="badge-fly">' . $args->FlightOption . '</span>' : ''; ?>
+                    <?php echo $args->FlightOption ? '<span class="badge">' . $args->FlightOption . '</span>' : ''; ?>
                 </div>
                 <div class="avatar__title-group__sub">
                     <?php echo $args->LengthDisplay ?>

@@ -5,7 +5,7 @@ return array (
   'title' => 'Routes',
   'type' => 'rfc_routes',
   'id' => '6384ea594a04c',
-  'updated' => 1709060188,
+  'updated' => 1757611276,
   'columns' => 
   array (
     'title' => 
@@ -54,6 +54,23 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '65de28a2774bc8',
+    ),
+    '68c304fb5d70a4' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Search Rank',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_68c3041426ea9',
+      'number_format' => '',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'on',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '68c304fb5d70a4',
     ),
     '6384ea35f0e560' => 
     array (

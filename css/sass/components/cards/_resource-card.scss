@@ -118,6 +118,12 @@
       font-weight: 700;
       margin-bottom: 0.5rem;
 
+      & a {
+        display: flex;
+        gap: 1rem;
+        align-items: start;
+      }
+
       &:link,
       &:visited {
         text-decoration: none;
