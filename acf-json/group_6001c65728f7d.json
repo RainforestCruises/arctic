@@ -129,6 +129,25 @@
                     "delay": 0
                 },
                 {
+                    "key": "field_68c87a6874342",
+                    "label": "Link Text",
+                    "name": "link_text",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
                     "key": "field_68c3555f74600",
                     "label": "Link",
                     "name": "link",
@@ -212,6 +231,44 @@
             "key": "field_63e5495772381",
             "label": "Vimeo Link",
             "name": "vimeo_link",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_68c87a9c74343",
+            "label": "Video Title",
+            "name": "video_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_68c87aac74344",
+            "label": "Video Subtitle",
+            "name": "video_subtitle",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -1121,5 +1178,5 @@
     "active": true,
     "description": "Home Page",
     "show_in_rest": 0,
-    "modified": 1757636232
+    "modified": 1757969093
 }

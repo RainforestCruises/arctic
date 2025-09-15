@@ -3,7 +3,8 @@ $hero_featured_image = get_field('hero_featured_image');
 $hero_title = get_field('hero_title');
 $hero_subtitle = get_field('hero_subtitle');
 $hero_video_card = get_field('hero_video_card');
-
+$video_title = get_field('video_title');
+$video_subtitle = get_field('video_subtitle');
 $regionsArgs = array(
     'post_type' => 'rfc_regions',
     'posts_per_page' => -1,
@@ -101,8 +102,8 @@ $regions = get_posts($regionsArgs);
                     <source src="<?php echo esc_url($hero_video_card); ?>" type="video/mp4">
                 </video>
                 <div class="home-hero-regional__content__video-area__video__overlay">
-                    <h3>Your Polar Experience Awaits</h3>
-                    <p>Discover what a vacation to the last frontiers of earth will bring</p>
+                    <h3><?php echo $video_title ?></h3>
+                    <p><?php echo $video_subtitle ?></p>
                 </div>
                 <div class="home-hero-regional__content__video-area__video__cta">
                     <button class="video-play-button dark">
