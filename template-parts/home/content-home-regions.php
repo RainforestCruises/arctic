@@ -23,7 +23,7 @@ $region_sections = get_field('region_sections');
                         </div>
                         <div class="full-card__content__cta">
                             <a class="btn-primary btn-primary--inverse-outline" href="<?php echo $section['link']; ?>">
-                                View All <?php echo $section['title']; ?>
+                                <?php echo $section['link_text']; ?>
                             </a>
 
                         </div>
