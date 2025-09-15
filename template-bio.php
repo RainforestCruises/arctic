@@ -18,16 +18,14 @@ get_header();
     <?php get_template_part('template-parts/bio/content', 'bio-destination'); ?>
 
     <!-- Reviews -->
-    <?php get_template_part('template-parts/bio/content', 'bio-reviews'); ?>
 
     <!-- Destination -->
     <?php get_template_part('template-parts/bio/content', 'bio-destination-part2'); ?>
 
-    <!-- Tips -->
-    <?php get_template_part('template-parts/bio/content', 'bio-tips'); ?>
+    <?php get_template_part('template-parts/bio/content', 'bio-reviews'); ?>
 
     <!-- Articles -->
-    <?php get_template_part('template-parts/bio/content', 'bio-articles'); ?>
+    <?php get_template_part('template-parts/bio/content', 'bio-schedule'); ?>
 </main>
 
 

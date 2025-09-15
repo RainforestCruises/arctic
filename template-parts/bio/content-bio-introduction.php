@@ -16,6 +16,9 @@ $introduction_text = get_field('introduction_text');
         <!-- Slider Area -->
         <div class="slider-block__content__text">
             <?php echo $introduction_text; ?>
+            <svg class="slider-block__content__text__quote">
+                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-quote"></use>
+            </svg>
         </div>
     </div>
 </section>

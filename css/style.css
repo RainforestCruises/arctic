@@ -2493,7 +2493,7 @@ p {
           left: 50%;
           transform: translateX(-50%);
           background-color: #fff;
-          opacity: .2; }
+          opacity: 0.2; }
       .slider-block__content__top__nav {
         position: relative;
         width: 8.5rem; }
@@ -2532,6 +2532,16 @@ p {
           margin-top: 2rem; }
       .slider-block__content__slider.bottom-margin {
         margin-bottom: 4rem; }
+    .slider-block__content__text {
+      position: relative; }
+      .slider-block__content__text__quote {
+        height: 9rem;
+        width: 9rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: -1;
+        fill: #f8f8f8; }
     .slider-block__content__cta {
       display: flex;
       justify-content: center;
@@ -9767,17 +9777,74 @@ p {
       height: 2.5rem;
       fill: #1d2225; }
 
-.bio-tip {
+.bio-schedule {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 20rem;
-  gap: 2rem; }
-  .bio-tip__icon svg {
-    width: 4.5rem;
-    height: 4.5rem;
-    fill: #1d2225; }
-  .bio-tip__description {
-    text-align: center;
-    font-size: 1.6rem;
-    padding: 0 1rem; }
+  width: 100%;
+  padding: 0 6rem;
+  width: 100%;
+  justify-content: center;
+  padding: 6rem 0;
+  background-color: #f6f4f0; }
+  @media only screen and (max-width: 50em) {
+    .bio-schedule {
+      padding: 0 3rem; } }
+  .bio-schedule__content {
+    display: grid;
+    grid-template-columns: 35rem 1fr;
+    gap: 12rem;
+    padding: 9rem 0;
+    width: min-content !important;
+    max-width: 128rem;
+    width: 100%;
+    padding: 0 6rem; }
+    @media only screen and (max-width: 50em) {
+      .bio-schedule__content {
+        padding: 0 3rem; } }
+    @media only screen and (max-width: 50em) {
+      .bio-schedule__content {
+        grid-template-columns: 1fr;
+        gap: 6rem;
+        padding: 9rem 0; } }
+    .bio-schedule__content__main {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      color: #1d2225; }
+      .bio-schedule__content__main__title {
+        font-size: 3rem;
+        text-align: center;
+        font-weight: 700;
+        line-height: 3.5rem; }
+      .bio-schedule__content__main__button {
+        display: flex;
+        justify-content: center;
+        padding: 2rem 0; }
+      .bio-schedule__content__main__name {
+        font-size: 2rem;
+        line-height: 3.8rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        text-align: center; }
+      .bio-schedule__content__main__position {
+        font-size: 1.6rem;
+        line-height: 2rem;
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+        letter-spacing: 0.2rem;
+        text-align: center; }
+    .bio-schedule__content__avatar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32rem; }
+      @media only screen and (max-width: 50em) {
+        .bio-schedule__content__avatar {
+          width: 100%; } }
+      .bio-schedule__content__avatar img {
+        height: 30rem;
+        width: 30rem;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+        margin-bottom: 2rem; }
