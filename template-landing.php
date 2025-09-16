@@ -52,7 +52,6 @@ if ($style) {
   $queryArgs['meta_query'][] = $styleMetaQuery;
 }
 $itineraryPosts = get_posts($queryArgs);
-console_log($itineraryPosts);
 // filter on region
 if ($region) {
   foreach ($itineraryPosts as $itinerary) {
@@ -65,10 +64,9 @@ if ($region) {
   $itineraries = $itineraryPosts;
 }
 
-console_log($itineraries);
 $ships = getShipsFromItineraryList($itineraries);
 
-
+console_log($ships);
 $args = array(
   'region' => $region,
   'itineraries' => $itineraries,

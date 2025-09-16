@@ -9,7 +9,13 @@ $show_map = get_field('show_map');
 $itineraries = $args['itineraries'];
 $region = $args['region'];
 
-$lowestOverallPrice = 0;
+console_log($itineraries);
+console_log($region);
+
+
+$lowestOverallPrice = getLowestPriceFromListOfItineraries($itineraries, $region);
+console_log($lowestOverallPrice);
+
 ?>
 
 <!-- Hero section -->
