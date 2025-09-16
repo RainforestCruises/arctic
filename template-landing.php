@@ -96,7 +96,7 @@ $args = array(
 
   <!-- Itineraries  -->
   <?php
-  //get_template_part('template-parts/landing/content', 'landing-itineraries', $args);
+  get_template_part('template-parts/landing/content', 'landing-itineraries', $args);
   ?>
 
   <!-- Topics  -->

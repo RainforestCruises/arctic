@@ -109,7 +109,7 @@ $lowestOverallPrice = getLowestPriceFromListOfItineraries($itineraries, $region)
             </div>
         </div>
         <div class="mobile-info__starting-price__amount">
-            <?php priceFormat($lowestOverallPrice); ?>
+            <?php //priceFormat($lowestOverallPrice); ?>
         </div>
 
     </div>
