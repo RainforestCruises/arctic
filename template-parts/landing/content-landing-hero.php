@@ -76,7 +76,7 @@ $lowestOverallPrice = getLowestPriceFromListOfItineraries($itineraries, $region)
 
                 <div class="landing-nav__content__info__starting-price__amount">
                     <div class="landing-nav__content__info__starting-price__amount__text">
-                        <?php priceFormat($lowestOverallPrice); ?>
+                        <?php //priceFormat($lowestOverallPrice); ?>
                     </div>
                 </div>
             </div>
