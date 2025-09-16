@@ -5414,7 +5414,7 @@ p {
         float: left;
         line-height: 1;
         margin-right: 1.5rem;
-        margin-top: .6rem;
+        margin-top: 0.6rem;
         font-weight: 300; }
       .guide-main__content__copy p:not(:first-child) {
         max-width: 80rem;
@@ -5434,7 +5434,11 @@ p {
         border-radius: 1rem; }
       .guide-main__content__copy p {
         width: 100%; }
-      .guide-main__content__copy h1, .guide-main__content__copy h2, .guide-main__content__copy h3, .guide-main__content__copy h4, .guide-main__content__copy h5 {
+      .guide-main__content__copy h1,
+      .guide-main__content__copy h2,
+      .guide-main__content__copy h3,
+      .guide-main__content__copy h4,
+      .guide-main__content__copy h5 {
         display: block;
         width: 100%;
         max-width: 80rem; }
@@ -5480,7 +5484,7 @@ p {
         line-height: 2.2rem;
         padding: 2rem 0;
         padding-top: 0rem;
-        margin-bottom: .5rem; }
+        margin-bottom: 0.5rem; }
         .guide-main__content__copy blockquote p:not(.wp-caption-text):first-of-type::after {
           content: "";
           display: none; }
@@ -5594,6 +5598,56 @@ p {
         width: 3rem;
         fill: currentColor;
         margin: 0rem 0.5rem; }
+    .guide-main__content__author {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 80rem;
+      color: #1d2225;
+      padding-top: 4rem; }
+      .guide-main__content__author__title {
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid #e6e6e6;
+        padding-bottom: 1rem; }
+      .guide-main__content__author__info {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 3rem; }
+        @media only screen and (max-width: 37.5em) {
+          .guide-main__content__author__info {
+            grid-template-columns: 1fr;
+            gap: 1rem; } }
+        .guide-main__content__author__info__image img {
+          width: 12rem;
+          height: 12rem;
+          border-radius: 50%;
+          object-fit: cover; }
+        .guide-main__content__author__info__text {
+          display: flex;
+          flex-direction: column; }
+          .guide-main__content__author__info__text__name {
+            font-size: 2rem;
+            font-weight: 700; }
+          .guide-main__content__author__info__text__description {
+            margin-bottom: 1.5rem; }
+            .guide-main__content__author__info__text__description p {
+              font-size: 1.4rem; }
+          .guide-main__content__author__info__text__social {
+            display: grid;
+            grid-template-columns: max-content max-content;
+            align-items: center;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem; }
+            .guide-main__content__author__info__text__social:link, .guide-main__content__author__info__text__social:visited {
+              color: currentColor;
+              text-decoration: none; }
+            .guide-main__content__author__info__text__social svg {
+              height: 1.4rem;
+              width: 1.4rem;
+              fill: currentColor;
+              margin-right: 1rem; }
 
 .disclaimer-box {
   margin: 3rem;

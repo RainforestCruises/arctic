@@ -57,6 +57,28 @@
             "endpoint": 0
         },
         {
+            "key": "field_68c99f668d6c6",
+            "label": "Author",
+            "name": "author",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_authors"
+            ],
+            "taxonomy": "",
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
             "key": "field_67dc8e418b51e",
             "label": "Parent Page",
             "name": "parent_page",
@@ -419,5 +441,5 @@
     "active": true,
     "description": "Travel Guide - CPT",
     "show_in_rest": 0,
-    "modified": 1742508252
+    "modified": 1758044035
 }
