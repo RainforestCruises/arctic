@@ -27,7 +27,7 @@ $isMultiRegion = $args['isMultiRegion'];
         $regionCount = 0;
         foreach ($regions as $region) :
             $regionName = get_the_title($region);
-            $regionItineraries = getItinerariesFromRegion($region, 12);
+            $regionItineraries = getItinerariesFromRegion($region);
         ?>
             <!-- Title/Nav -->
             <div class="slider-block__content__top <?php echo $regionCount == 0 ? '' : 'slider-top-divider' ?>  itineraries-slider-block">
@@ -69,7 +69,11 @@ $isMultiRegion = $args['isMultiRegion'];
             <div class="slider-block__content__slider">
                 <div class="swiper" id="itineraries-slider-<?php echo $regionCount; ?>">
                     <div class="swiper-wrapper">
-                        <?php foreach ($regionItineraries as $itinerary) :
+                        <?php 
+                        $count = 0;
+                        foreach ($regionItineraries as $itinerary) :
+                            $count++;
+                            if( $count > 24 ) break; // Limit to 12 itineraries per region
                             $images =  get_field('hero_gallery', $itinerary);
                             $image = $images[0];
                             $title = get_field('display_name', $itinerary);
