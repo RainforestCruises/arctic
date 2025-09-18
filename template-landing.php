@@ -13,8 +13,8 @@ $route = get_field('route_filter');
 $style = get_field('style_filter');
 $region = get_field('region_filter');
 
-$top_level_search_page = get_field('top_level_search_page', 'options');
-$allLink = null;
+$top_level_search_page = get_permalink(get_field('top_level_search_page', $region));
+$allLink = $top_level_search_page ;
 
 if($route){
   $allLink = $top_level_search_page . '?routes=' . $route->ID;

@@ -72,7 +72,7 @@ $isMultiRegion = $args['isMultiRegion'];
                         <?php 
                         $count = 0;
                         foreach ($regionItineraries as $itinerary) :
-                            $count++;
+                            
                             if( $count > 24 ) break; // Limit to 12 itineraries per region
                             $images =  get_field('hero_gallery', $itinerary);
                             $image = $images[0];
@@ -86,9 +86,11 @@ $isMultiRegion = $args['isMultiRegion'];
                             $destinations = getItineraryDestinations($itinerary, true, 4);
                             $guestsDisplay = get_field('vessel_capacity', $itinerary) . ' Guests, ' . 'Luxury';
                             $departures = getDepartureList($itinerary);
+                            if( !$departures ) continue; // Skip if sold out
                             $lowestPrice = getLowestDepartureListPrice($departures);
                             $highestPrice = getHighestDepartureListPrice($departures);
                             $bestOverallDiscount = getBestDepartureListDiscount($departures);
+                            $count++;
                         ?>
 
                             <!-- Itinerary Card -->

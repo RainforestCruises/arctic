@@ -55,12 +55,14 @@ $top_level_search_page = get_field('top_level_search_page', 'options');
                             continue;
                         }
                         $departures = getDepartureList($ship);
+                        if( !$departures ) continue; // Skip if sold out
+                        
                         $lowestPrice = getLowestDepartureListPrice($departures);
                         $highestPrice = getHighestDepartureListPrice($departures);
                         $bestOverallDiscount = getBestDepartureListDiscount($departures);
                         $images =  get_field('hero_gallery', $ship);
                         $image = $images[0];
-                        $itineraries = getShipItineraries($ship); // TODO: check region
+                        $itineraries = getShipItineraries($ship);
                         $title = get_the_title($ship);
                         $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
                         $service_level =  get_field('service_level', $ship);
