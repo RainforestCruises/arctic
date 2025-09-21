@@ -2,10 +2,8 @@
 $top_level_guides_page = get_field('top_level_guides_page', 'options');
 $minutes_to_read  = get_field('minutes_to_read');
 $updated = get_the_modified_date('F jS, Y');
-
 $image  = get_field('featured_image');
 $intro_snippet  = get_field('intro_snippet');
-
 $categories  = get_field('categories');
 $displayCategory = "";
 

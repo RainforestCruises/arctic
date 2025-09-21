@@ -22,10 +22,10 @@
             "delay": 0
         },
         {
-            "key": "field_682caf63887b9",
-            "label": "Region",
-            "name": "region",
-            "type": "post_object",
+            "key": "field_68cdce25fc799",
+            "label": "Page Type",
+            "name": "page_type",
+            "type": "select",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -34,8 +34,71 @@
                 "class": "",
                 "id": ""
             },
+            "choices": {
+                "regional": "Regional",
+                "author": "Author"
+            },
+            "default_value": "regional",
+            "allow_null": 1,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_682caf63887b9",
+            "label": "Region",
+            "name": "region",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_68cdce25fc799",
+                        "operator": "==",
+                        "value": "regional"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "post_type": [
                 "rfc_regions"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_68cdce5ffc79a",
+            "label": "Author",
+            "name": "author",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_68cdce25fc799",
+                        "operator": "==",
+                        "value": "author"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_authors"
             ],
             "taxonomy": "",
             "allow_null": 0,
@@ -62,5 +125,5 @@
     "active": true,
     "description": "Travel Guide Top Level - Page",
     "show_in_rest": 0,
-    "modified": 1747758979
+    "modified": 1758318284
 }

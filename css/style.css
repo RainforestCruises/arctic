@@ -5870,6 +5870,38 @@ p {
       font-weight: 500;
       line-height: 6rem;
       text-align: center; }
+    .guides-toplevel-hero__content__author {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 1rem; }
+      .guides-toplevel-hero__content__author__avatar {
+        display: flex;
+        justify-content: center; }
+        .guides-toplevel-hero__content__author__avatar img {
+          width: 12rem;
+          height: 12rem;
+          border-radius: 50%;
+          object-fit: cover; }
+      .guides-toplevel-hero__content__author__links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        color: #1d2225; }
+        .guides-toplevel-hero__content__author__links__social {
+          display: grid;
+          grid-template-columns: max-content max-content;
+          align-items: center;
+          font-size: 1.3rem;
+          margin-bottom: 0.5rem; }
+          .guides-toplevel-hero__content__author__links__social:link, .guides-toplevel-hero__content__author__links__social:visited {
+            color: currentColor;
+            text-decoration: none; }
+          .guides-toplevel-hero__content__author__links__social svg {
+            height: 1.4rem;
+            width: 1.4rem;
+            fill: currentColor;
+            margin-right: 1rem; }
     .guides-toplevel-hero__content__search-area {
       width: 100%;
       padding: 2rem 0;
