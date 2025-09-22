@@ -9358,6 +9358,10 @@ p {
     color: #1d2225;
     font-size: 1.8rem;
     font-weight: 700; }
+    .team-card__content__name a:link,
+    .team-card__content__name a:visited {
+      color: #1d2225;
+      text-decoration: none; }
   .team-card__content__position {
     font-size: 1.5rem;
     font-weight: 400; }

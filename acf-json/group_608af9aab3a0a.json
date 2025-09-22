@@ -432,6 +432,27 @@
                     "prepend": "",
                     "append": "",
                     "maxlength": ""
+                },
+                {
+                    "key": "field_68d18101c1cc1",
+                    "label": "Bio Page Link",
+                    "name": "bio_page_link",
+                    "type": "page_link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "page"
+                    ],
+                    "taxonomy": "",
+                    "allow_null": 0,
+                    "allow_archives": 0,
+                    "multiple": 0
                 }
             ]
         },
@@ -728,5 +749,5 @@
     "active": true,
     "description": "About Page",
     "show_in_rest": 0,
-    "modified": 1743525471
+    "modified": 1758560564
 }

@@ -139,8 +139,6 @@ $routes_title_subtext = get_field('routes_title_subtext');
                                         <h3 class="resource-card__content__title">
                                             <a href="<?php echo $landing_page; ?>">
                                                 <?php echo $title; ?>
-                                                <span class="badge <?php echo $badgeClass ?>"><?php echo get_the_title($region) ?></span>
-
                                             </a>
                                         </h3>
 
