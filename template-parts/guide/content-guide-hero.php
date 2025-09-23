@@ -52,8 +52,54 @@ $show_site_notice = get_field('show_site_notice', 'options');
                     <?php echo $minutes_to_read; ?> min read
                 </div>
             </div>
-
         </div>
+
+
+        <?php
+        $author = get_field('author');
+        if ($author  != null) :
+            $image = get_field('image', $author);
+            $description = get_field('description', $author);
+
+            $name = get_the_title($author);
+            $website = get_field('website', $author);
+            $twitter = get_field('twitter', $author);
+
+        ?>
+            <div class="guide-hero__content__author">
+
+                <div class="guide-hero__content__author__image">
+                    <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
+                </div>
+                <div class="guide-hero__content__author__text">
+                    <div class="guide-hero__content__author__text__name">
+                        By <?php echo $name; ?>
+                    </div>
+                    <div class="guide-hero__content__author__text__social">
+                        <?php if ($website) : ?>
+                            <a class="guide-hero__content__author__text__social__item" href="<?php echo $website; ?>" target="_blank" rel="noopener">
+                                <svg>
+                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-globe"></use>
+                                </svg>
+                                <?php echo $website; ?>
+                            </a>
+                        <?php endif; ?>
+                        <?php if ($twitter) : ?>
+                            <a class="guide-hero__content__author__text__social__item" href="<?php echo 'https://x.com/' . $twitter; ?>" target="_blank" rel="noopener">
+                                <svg>
+                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-twitter-x"></use>
+                                </svg>
+                                @<?php echo $twitter; ?>
+                            </a>
+                        <?php endif; ?>
+
+                    </div>
+
+                </div>
+
+            </div>
+        <?php endif; ?>
+
 
         <div class="guide-hero__content__image-area">
             <img <?php afloat_image_markup($image['ID'], 'landscape-large', array('landscape-large', 'landscape-medium', 'landscape-small')); ?>>

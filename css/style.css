@@ -5250,6 +5250,53 @@ p {
         grid-template-columns: max-content max-content max-content;
         gap: 1rem;
         font-size: 1.3rem; }
+    .guide-hero__content__author {
+      display: flex;
+      flex-direction: column;
+      max-width: 80rem;
+      color: #1d2225;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      display: grid;
+      border-top: 1px solid #e6e6e6;
+      grid-template-columns: max-content max-content;
+      gap: 3rem; }
+      .guide-hero__content__author__image img {
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        object-fit: cover; }
+      .guide-hero__content__author__text {
+        display: flex;
+        flex-direction: column; }
+        .guide-hero__content__author__text__name {
+          font-size: 2rem;
+          font-weight: 700; }
+        .guide-hero__content__author__text__description {
+          margin-bottom: 1.5rem; }
+          .guide-hero__content__author__text__description p {
+            font-size: 1.4rem; }
+        .guide-hero__content__author__text__social {
+          display: flex;
+          gap: 2rem; }
+          @media only screen and (max-width: 37.5em) {
+            .guide-hero__content__author__text__social {
+              flex-direction: column;
+              gap: .5rem; } }
+          .guide-hero__content__author__text__social__item {
+            display: grid;
+            grid-template-columns: max-content max-content;
+            align-items: center;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem; }
+            .guide-hero__content__author__text__social__item:link, .guide-hero__content__author__text__social__item:visited {
+              color: currentColor;
+              text-decoration: none; }
+            .guide-hero__content__author__text__social__item svg {
+              height: 1.4rem;
+              width: 1.4rem;
+              fill: currentColor;
+              margin-right: 1rem; }
     .guide-hero__content__image-area {
       margin-top: 3rem;
       margin-bottom: 2rem;
@@ -5331,7 +5378,7 @@ p {
       width: 2rem;
       margin-right: 1.5rem; }
     .guide-menu__button:hover {
-      transition: all .2s;
+      transition: all 0.2s;
       background-color: #e6e6e6; }
   .guide-menu__menu {
     display: none;
@@ -5598,56 +5645,6 @@ p {
         width: 3rem;
         fill: currentColor;
         margin: 0rem 0.5rem; }
-    .guide-main__content__author {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      max-width: 80rem;
-      color: #1d2225;
-      padding-top: 4rem; }
-      .guide-main__content__author__title {
-        font-size: 1.1rem;
-        text-transform: uppercase;
-        margin-bottom: 2rem;
-        border-bottom: 1px solid #e6e6e6;
-        padding-bottom: 1rem; }
-      .guide-main__content__author__info {
-        display: grid;
-        grid-template-columns: max-content 1fr;
-        gap: 3rem; }
-        @media only screen and (max-width: 37.5em) {
-          .guide-main__content__author__info {
-            grid-template-columns: 1fr;
-            gap: 1rem; } }
-        .guide-main__content__author__info__image img {
-          width: 12rem;
-          height: 12rem;
-          border-radius: 50%;
-          object-fit: cover; }
-        .guide-main__content__author__info__text {
-          display: flex;
-          flex-direction: column; }
-          .guide-main__content__author__info__text__name {
-            font-size: 2rem;
-            font-weight: 700; }
-          .guide-main__content__author__info__text__description {
-            margin-bottom: 1.5rem; }
-            .guide-main__content__author__info__text__description p {
-              font-size: 1.4rem; }
-          .guide-main__content__author__info__text__social {
-            display: grid;
-            grid-template-columns: max-content max-content;
-            align-items: center;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem; }
-            .guide-main__content__author__info__text__social:link, .guide-main__content__author__info__text__social:visited {
-              color: currentColor;
-              text-decoration: none; }
-            .guide-main__content__author__info__text__social svg {
-              height: 1.4rem;
-              width: 1.4rem;
-              fill: currentColor;
-              margin-right: 1rem; }
 
 .disclaimer-box {
   margin: 3rem;
@@ -9865,7 +9862,8 @@ p {
     .bio-review-item__stars svg {
       width: 2.5rem;
       height: 2.5rem;
-      fill: #1d2225; }
+      fill: #d9a402;
+      color: #d9a402; }
 
 .bio-schedule {
   display: flex;
