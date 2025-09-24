@@ -2541,7 +2541,7 @@ p {
         top: 0;
         right: 0;
         z-index: -1;
-        fill: #f8f8f8; }
+        fill: #e6e6e6; }
     .slider-block__content__cta {
       display: flex;
       justify-content: center;
@@ -5251,52 +5251,64 @@ p {
         gap: 1rem;
         font-size: 1.3rem; }
     .guide-hero__content__author {
-      display: flex;
-      flex-direction: column;
-      max-width: 80rem;
-      color: #1d2225;
-      padding-top: 2rem;
-      margin-top: 2rem;
-      display: grid;
-      border-top: 1px solid #e6e6e6;
-      grid-template-columns: max-content max-content;
-      gap: 3rem; }
-      .guide-hero__content__author__image img {
-        width: 6rem;
-        height: 6rem;
-        border-radius: 50%;
-        object-fit: cover; }
-      .guide-hero__content__author__text {
+      margin-top: 2rem; }
+      .guide-hero__content__author__by {
+        font-size: 1.5rem;
+        font-weight: 700;
         display: flex;
-        flex-direction: column; }
-        .guide-hero__content__author__text__name {
-          font-size: 2rem;
-          font-weight: 700; }
-        .guide-hero__content__author__text__description {
-          margin-bottom: 1.5rem; }
-          .guide-hero__content__author__text__description p {
-            font-size: 1.4rem; }
-        .guide-hero__content__author__text__social {
+        justify-content: center;
+        color: #1d2225; }
+      .guide-hero__content__author__main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 80rem;
+        color: #1d2225;
+        display: grid;
+        grid-template-columns: max-content max-content;
+        gap: 2rem; }
+        .guide-hero__content__author__main:link, .guide-hero__content__author__main:visited {
+          text-decoration: none !important;
+          color: #1d2225 !important; }
+        .guide-hero__content__author__main__image img {
+          width: 6rem;
+          height: 6rem;
+          border-radius: 50%;
+          object-fit: cover; }
+        .guide-hero__content__author__main__text {
           display: flex;
-          gap: 2rem; }
-          @media only screen and (max-width: 37.5em) {
-            .guide-hero__content__author__text__social {
-              flex-direction: column;
-              gap: .5rem; } }
-          .guide-hero__content__author__text__social__item {
-            display: grid;
-            grid-template-columns: max-content max-content;
-            align-items: center;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem; }
-            .guide-hero__content__author__text__social__item:link, .guide-hero__content__author__text__social__item:visited {
-              color: currentColor;
-              text-decoration: none; }
-            .guide-hero__content__author__text__social__item svg {
-              height: 1.4rem;
-              width: 1.4rem;
-              fill: currentColor;
-              margin-right: 1rem; }
+          flex-direction: column;
+          justify-content: center; }
+          .guide-hero__content__author__main__text__name {
+            font-size: 2.4rem;
+            line-height: 2.8rem;
+            font-weight: 700; }
+          .guide-hero__content__author__main__text__description {
+            margin-bottom: 1.5rem; }
+            .guide-hero__content__author__main__text__description p {
+              font-size: 1.4rem; }
+          .guide-hero__content__author__main__text__social {
+            display: flex;
+            gap: 2rem;
+            font-size: 1.5rem; }
+            @media only screen and (max-width: 37.5em) {
+              .guide-hero__content__author__main__text__social {
+                flex-direction: column;
+                gap: 0.5rem; } }
+            .guide-hero__content__author__main__text__social__item {
+              display: grid;
+              grid-template-columns: max-content max-content;
+              align-items: center;
+              font-size: 1.3rem;
+              margin-bottom: 0.5rem; }
+              .guide-hero__content__author__main__text__social__item:link, .guide-hero__content__author__main__text__social__item:visited {
+                color: currentColor;
+                text-decoration: none; }
+              .guide-hero__content__author__main__text__social__item svg {
+                height: 1.4rem;
+                width: 1.4rem;
+                fill: currentColor;
+                margin-right: 1rem; }
     .guide-hero__content__image-area {
       margin-top: 3rem;
       margin-bottom: 2rem;

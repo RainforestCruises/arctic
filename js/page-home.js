@@ -113,31 +113,31 @@ jQuery(document).ready(function ($) {
   });
 
   // itinerary sliders
-    const itinerarySliderSections = [...document.querySelectorAll('.itineraries-slider-block')];
-    itinerarySliderSections.forEach((section, index) => {
-              console.log('initializing deal slider ' + index);
+  const itinerarySliderSections = [...document.querySelectorAll(".itineraries-slider-block")];
+  itinerarySliderSections.forEach((section, index) => {
+    console.log("initializing deal slider " + index);
 
-        new Swiper('#itineraries-slider-' + index, {
-            spaceBetween: 15,
-            slidesPerView: 1.2,
-            watchSlidesProgress: true,
-            navigation: {
-                nextEl: '.itineraries-slider-btn-next-' + index,
-                prevEl: '.itineraries-slider-btn-prev-' + index,
-            },
-            breakpoints: {
-                600: {
-                    slidesPerView: 2,
-                },
-                1000: {
-                    slidesPerView: 3,
-                },
-                1300: {
-                    slidesPerView: 4,
-                }
-            }
-        });
-    })
+    new Swiper("#itineraries-slider-" + index, {
+      spaceBetween: 15,
+      slidesPerView: 1.2,
+      watchSlidesProgress: true,
+      navigation: {
+        nextEl: ".itineraries-slider-btn-next-" + index,
+        prevEl: ".itineraries-slider-btn-prev-" + index,
+      },
+      breakpoints: {
+        600: {
+          slidesPerView: 2,
+        },
+        1000: {
+          slidesPerView: 3,
+        },
+        1300: {
+          slidesPerView: 4,
+        },
+      },
+    });
+  });
 
   // // itineraries slider
   // new Swiper("#itineraries-slider", {

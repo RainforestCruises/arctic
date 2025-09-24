@@ -12,7 +12,7 @@ $firstDestinationGroup = array_slice($destinations, 0, 2);
             $name = $destination['name'];
             $image = $destination['image'];
             $description = $destination['description'];
-            $link = $destination['link'];
+            $link = $destination['link'] . $destination['anchor'];
         ?>
 
             <!-- Memorable -->

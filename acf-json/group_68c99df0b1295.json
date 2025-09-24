@@ -82,6 +82,27 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_68d421e6b6333",
+            "label": "Author Page",
+            "name": "author_page",
+            "type": "page_link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "allow_archives": 0,
+            "multiple": 0
         }
     ],
     "location": [
@@ -102,5 +123,5 @@
     "active": true,
     "description": "Author - CPT",
     "show_in_rest": 0,
-    "modified": 1758044911
+    "modified": 1758732818
 }

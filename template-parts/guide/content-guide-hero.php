@@ -64,38 +64,27 @@ $show_site_notice = get_field('show_site_notice', 'options');
             $name = get_the_title($author);
             $website = get_field('website', $author);
             $twitter = get_field('twitter', $author);
+            $author_page = get_field('author_page', $author);
 
         ?>
             <div class="guide-hero__content__author">
-
-                <div class="guide-hero__content__author__image">
-                    <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
+                <div class="guide-hero__content__author__by">
+                    By
                 </div>
-                <div class="guide-hero__content__author__text">
-                    <div class="guide-hero__content__author__text__name">
-                        By <?php echo $name; ?>
+                <a class="guide-hero__content__author__main" href="<?php echo $author_page; ?>">
+                    <div class="guide-hero__content__author__main__image">
+                        <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
                     </div>
-                    <div class="guide-hero__content__author__text__social">
-                        <?php if ($website) : ?>
-                            <a class="guide-hero__content__author__text__social__item" href="<?php echo $website; ?>" target="_blank" rel="noopener">
-                                <svg>
-                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-globe"></use>
-                                </svg>
-                                <?php echo $website; ?>
-                            </a>
-                        <?php endif; ?>
-                        <?php if ($twitter) : ?>
-                            <a class="guide-hero__content__author__text__social__item" href="<?php echo 'https://x.com/' . $twitter; ?>" target="_blank" rel="noopener">
-                                <svg>
-                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-twitter-x"></use>
-                                </svg>
-                                @<?php echo $twitter; ?>
-                            </a>
-                        <?php endif; ?>
-
+                    <div class="guide-hero__content__author__main__text">
+                        <div class="guide-hero__content__author__main__text__name">
+                            <?php echo $name; ?>
+                        </div>
+                        <div class="guide-hero__content__author__main__text__social">
+                            Guest Writer
+                        </div>
                     </div>
 
-                </div>
+                </a>
 
             </div>
         <?php endif; ?>

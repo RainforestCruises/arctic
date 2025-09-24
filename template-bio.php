@@ -17,7 +17,9 @@ get_header();
     <!-- Destination -->
     <?php get_template_part('template-parts/bio/content', 'bio-destination'); ?>
 
-    <!-- Reviews -->
+    <!-- Tips -->
+    <?php get_template_part('template-parts/bio/content', 'bio-cruise-picks'); ?>
+
 
     <!-- Destination -->
     <?php get_template_part('template-parts/bio/content', 'bio-destination-part2'); ?>
