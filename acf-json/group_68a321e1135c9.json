@@ -214,6 +214,33 @@
             "maxlength": ""
         },
         {
+            "key": "field_68e3fe1d75fe4",
+            "label": "Agent Gallery",
+            "name": "agent_gallery",
+            "type": "gallery",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "insert": "append",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
             "key": "field_68c0a0bf56139",
             "label": "Introduction",
             "name": "",
@@ -597,6 +624,25 @@
                     "maxlength": ""
                 }
             ]
+        },
+        {
+            "key": "field_68e3fe4075fe5",
+            "label": "Reviews Embed",
+            "name": "reviews_embed",
+            "type": "text",
+            "instructions": "The token from reviewsonmywebsite.. ie: C36cId7o4UBXPzdamVKiYgmcrnqSVadO3utOXxmKIhF9tTOpkS",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -617,5 +663,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758737753
+    "modified": 1759772250
 }

@@ -24,7 +24,7 @@ get_header();
     <!-- Destination -->
     <?php get_template_part('template-parts/bio/content', 'bio-destination-part2'); ?>
 
-    <?php get_template_part('template-parts/bio/content', 'bio-reviews'); ?>
+    <?php get_template_part('template-parts/bio/content', 'bio-reviews-embed'); ?>
 
     <!-- Articles -->
     <?php get_template_part('template-parts/bio/content', 'bio-schedule'); ?>

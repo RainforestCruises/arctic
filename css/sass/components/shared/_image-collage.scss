@@ -1,0 +1,44 @@
+.image-collage {
+
+  @media only screen and (max-width: $bp-medium) {
+    display: none;
+  }
+
+  position: relative; 
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); 
+  grid-template-rows: repeat(12, 1fr);
+  margin: 3rem 0;
+  max-height: 70rem;
+  &__primary {
+    grid-row: 1 / span 11;
+    grid-column: 1 / span 10;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 1rem;
+    box-shadow: $shadow-medium;
+
+    @media only screen and (max-width: $bp-large) {
+      grid-row: 1 / span 12;
+      grid-column: 1 / span 12;
+    }
+  }
+
+  &__secondary {
+    grid-row: 6 / span 7;
+    grid-column: 8 / span 4;
+    object-fit: cover;
+    height: 100%;
+    width: 100%; 
+    border-radius: 1rem;
+    z-index: 20;
+    box-shadow: $shadow-medium;
+    @media only screen and (max-width: $bp-largest) {
+      grid-column: 6 / span 6;
+    }
+    @media only screen and (max-width: $bp-large) {
+      display: none;
+    }
+  }
+}

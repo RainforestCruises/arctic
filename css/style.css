@@ -2975,6 +2975,44 @@ p {
       color: #fff !important;
       background-image: none !important; }
 
+.image-collage {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  margin: 3rem 0;
+  max-height: 70rem; }
+  @media only screen and (max-width: 50em) {
+    .image-collage {
+      display: none; } }
+  .image-collage__primary {
+    grid-row: 1 / span 11;
+    grid-column: 1 / span 10;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 1rem;
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2); }
+    @media only screen and (max-width: 62.5em) {
+      .image-collage__primary {
+        grid-row: 1 / span 12;
+        grid-column: 1 / span 12; } }
+  .image-collage__secondary {
+    grid-row: 6 / span 7;
+    grid-column: 8 / span 4;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 1rem;
+    z-index: 20;
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2); }
+    @media only screen and (max-width: 75em) {
+      .image-collage__secondary {
+        grid-column: 6 / span 6; } }
+    @media only screen and (max-width: 62.5em) {
+      .image-collage__secondary {
+        display: none; } }
+
 .product-hero {
   position: relative;
   display: flex;
@@ -9740,7 +9778,7 @@ p {
           font-size: 1.6rem;
           font-weight: 600;
           color: #8e7d2e;
-          margin-bottom: .5rem;
+          margin-bottom: 0.5rem;
           text-decoration: none; }
           .bio-hero__content__side__main__attribute svg {
             width: 2.5rem;
@@ -9753,6 +9791,39 @@ p {
       object-position: center;
       position: relative;
       border-radius: 1rem; }
+
+.bio-introduction {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%; }
+  .bio-introduction__content {
+    width: 100%;
+    max-width: 128rem;
+    width: 100%;
+    padding: 0 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem; }
+    @media only screen and (max-width: 50em) {
+      .bio-introduction__content {
+        padding: 0 3rem; } }
+    @media only screen and (max-width: 50em) {
+      .bio-introduction__content {
+        grid-template-columns: 1fr;
+        gap: 3rem; } }
+    .bio-introduction__content__quote-area {
+      position: relative; }
+      .bio-introduction__content__quote-area__quote {
+        height: 9rem;
+        width: 9rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: -1;
+        fill: #e6e6e6; }
 
 .bio-destination {
   display: flex;
