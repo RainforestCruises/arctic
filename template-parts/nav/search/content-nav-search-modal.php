@@ -95,9 +95,3 @@ $resultsObject = getNavSearchResults("", true);
 
     </div>
 </div>
-<!-- 
-<div class="nav-search-modal-cta" id="navSearchModalBottomCta">
-    <button id="navSearchModalSubmitButton">
-        Search
-    </button>
-</div> -->

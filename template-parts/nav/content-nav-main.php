@@ -152,6 +152,18 @@ $top_level_deals_page = get_field('top_level_deals_page', $initialRegion);
                         <?php $categorySliderCount++;
                         endforeach; ?>
                     </div>
+
+                    <!-- View All CTA -->
+                    <div class="nav-mega__panel__cta">
+                        <?php foreach ($regions as $region) : ?>
+                            <a class="btn-pill btn-pill--icon nav-mega-item" href="<?php echo get_permalink(get_field('top_level_search_page', $region)); ?>?viewType=search-itineraries" region="<?php echo $region->ID; ?>" style="display: <?php echo $region->ID == $initialRegion->ID ? '' : 'none'; ?>">
+                                View All Cruises
+                                <svg>
+                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                                </svg>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
 
                 <!-- Ships Panel -->

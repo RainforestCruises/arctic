@@ -7407,7 +7407,7 @@ p {
 .nav-search-control {
   display: none;
   grid-template-columns: min-content min-content min-content;
-  gap: .5rem;
+  gap: 0.5rem;
   border-radius: 4rem;
   border: 1px solid #c2c6c9;
   align-items: center;
@@ -7442,7 +7442,7 @@ p {
       font-family: "Metropolis", sans-serif;
       width: 100%;
       font-size: 1.4rem;
-      margin-left: .5rem; }
+      margin-left: 0.5rem; }
     .nav-search-control__input-area--search textarea:focus,
     .nav-search-control__input-area--search input:focus {
       outline: none; }
@@ -7461,7 +7461,7 @@ p {
       transition: all 0.3s; }
     .nav-search-control__input-area:not(.active) {
       width: 8rem;
-      transition: all .3s; }
+      transition: all 0.3s; }
       .nav-search-control__input-area:not(.active):hover {
         background-color: #c2c6c9; }
       .nav-search-control__input-area:not(.active) .nav-control-clear-button {

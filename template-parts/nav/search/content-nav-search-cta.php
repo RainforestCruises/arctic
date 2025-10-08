@@ -45,7 +45,7 @@ $initialRegion = checkPageRegion(); // set based on the page template
         <span class="label-span">
             Explore
         </span>
-        <input type="text" id="nav-control-search-input">
+        <input type="text" id="nav-control-search-input" placeholder="Search itineraries, cruises..." autocomplete="off">
         <div class="lds-ring">
             <div></div>
             <div></div>
