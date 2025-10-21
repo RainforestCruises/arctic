@@ -12,7 +12,10 @@ $firstDestinationGroup = array_slice($destinations, 0, 2);
             $name = $destination['name'];
             $image = $destination['image'];
             $description = $destination['description'];
+            $link_text = $destination['link_text'] == "" ? 'Discover ' . $name : $destination['link_text'];
+
             $link = $destination['link'] . $destination['anchor'];
+
         ?>
 
             <!-- Memorable -->
@@ -32,7 +35,7 @@ $firstDestinationGroup = array_slice($destinations, 0, 2);
                 <?php if ($link != null) : ?>
                     <a class="bio-destination-item__link" href="<?php echo $link; ?>">
                         <span>
-                            Discover <?php echo $name; ?>
+                            <?php echo $link_text; ?>
                         </span>
                         <svg>
                             <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-arrow-right"></use>

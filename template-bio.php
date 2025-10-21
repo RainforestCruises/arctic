@@ -4,6 +4,7 @@ wp_enqueue_script('page-bio', get_template_directory_uri() . '/js/page-bio.js', 
 
 get_header();
 
+$hide_reviews = get_field('hide_reviews')
 ?>
 
 <main class="main-content">
@@ -24,7 +25,8 @@ get_header();
     <!-- Destination -->
     <?php get_template_part('template-parts/bio/content', 'bio-destination-part2'); ?>
 
-    <?php get_template_part('template-parts/bio/content', 'bio-reviews-embed'); ?>
+
+    <?php if(!$hide_reviews) : get_template_part('template-parts/bio/content', 'bio-reviews-embed'); endif?>
 
     <!-- Articles -->
     <?php get_template_part('template-parts/bio/content', 'bio-schedule'); ?>

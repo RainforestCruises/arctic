@@ -432,6 +432,25 @@
                     "multiple": 0
                 },
                 {
+                    "key": "field_68f7ab99d14b6",
+                    "label": "Link Text",
+                    "name": "link_text",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
                     "key": "field_68d42289e57f8",
                     "label": "Anchor",
                     "name": "anchor",
@@ -548,13 +567,40 @@
             "endpoint": 0
         },
         {
+            "key": "field_68f7a7dcd9d4a",
+            "label": "Hide Reviews",
+            "name": "hide_reviews",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_68a324ffea66b",
             "label": "Reviews",
             "name": "reviews",
             "type": "repeater",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_68f7a7dcd9d4a",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -632,7 +678,15 @@
             "type": "text",
             "instructions": "The token from reviewsonmywebsite.. ie: C36cId7o4UBXPzdamVKiYgmcrnqSVadO3utOXxmKIhF9tTOpkS",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_68f7a7dcd9d4a",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -663,5 +717,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1759772250
+    "modified": 1761061807
 }
