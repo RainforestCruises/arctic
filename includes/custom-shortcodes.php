@@ -9,6 +9,7 @@ function specialist_review_shortcode($atts) {
             'title' => 'Polar Specialist',
             'avatar' => '', // URL to avatar image
             'quote' => 'This is a review quote.',
+            'pagelink' => '',
         ),
         $atts,
         'specialist_quote'
@@ -18,11 +19,11 @@ function specialist_review_shortcode($atts) {
     // HTML output for the review section
     $output = 
     '<div class="custom-review">
-        <div class="custom-review__person">
+        <a class="custom-review__person" href="' .  esc_attr($atts['pagelink']) .' ">
             <img src="' . esc_url($atts['avatar']) . '" alt="' . esc_attr($atts['name']) . '" class="custom-review__person__avatar">
             <div class="custom-review__person__name">' . esc_html($atts['name']) . '</div>
             <div class="custom-review__person__title">' . esc_html($atts['title']) . '</div>
-        </div>
+        </a>
         <div class="custom-review__quote">
             <div class="custom-review__quote__start-quote">
                 <svg>

@@ -73,5 +73,16 @@
       font-size: 1.5rem;
       font-weight: 400;
     }
+
+    &__meet {
+      display: flex;
+      justify-content: center;
+      padding-top: 1rem;
+      & a:link,
+      & a:visited {
+        color: $color-white;
+        text-decoration: none;
+      }
+    }
   }
 }
