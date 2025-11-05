@@ -48,9 +48,7 @@ $headerText = get_field('team_header');
                                     <a class="btn-pill btn-pill--inverse" href="<?php echo $member['bio_page_link']; ?>">
                                         Meet Me
                                     </a>
-
                                 </div>
-
                             <?php endif ?>
                         </div>
                     </div>

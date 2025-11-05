@@ -563,6 +563,88 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_638e68537a5cb",
+            "label": "Map Latitude (S) Start Point",
+            "name": "latitude_start_point",
+            "type": "number",
+            "instructions": "Range from northward to southward",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": -62,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_638e687f7a5cc",
+            "label": "Map Longitude (W) Start Point",
+            "name": "longitude_start_point",
+            "type": "number",
+            "instructions": "Range from westward to eastward",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": -65,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_638e68c17a5cd",
+            "label": "Map  Zoom Level Start Point",
+            "name": "zoom_level_start_point",
+            "type": "number",
+            "instructions": "Range from 4 (close) to 2 (far)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 3,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_638f7f95d702c",
+            "label": "Map GeoJSON",
+            "name": "geojson",
+            "type": "text",
+            "instructions": "Generate geoJSON at https:\/\/geojson.io\/ use 'royalblue' for flight lines, and 'darkcyan' for cruise lines",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_62b9d1d2164f5",
             "label": "Itinerary",
             "name": "itinerary",
@@ -666,8 +748,8 @@
             ]
         },
         {
-            "key": "field_640a0d28d9012",
-            "label": "Geographical Data",
+            "key": "field_690a224c2c9a7",
+            "label": "Itinerary Variants",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -682,11 +764,11 @@
             "endpoint": 0
         },
         {
-            "key": "field_638e68537a5cb",
-            "label": "Latitude (S) Start Point",
-            "name": "latitude_start_point",
-            "type": "number",
-            "instructions": "Range from -55 (northward) to -68 (southward)",
+            "key": "field_690a23012c9a9",
+            "label": "Has Variants",
+            "name": "has_variants",
+            "type": "true_false",
+            "instructions": "Enable itinerary variants - in TourTrack the first 'season' will match with the first variant, the second season will match with the second variant and so on. The default itinerary will match with anything else",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -694,74 +776,292 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": -62,
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         },
         {
-            "key": "field_638e687f7a5cc",
-            "label": "Longitude (W) Start Point",
-            "name": "longitude_start_point",
-            "type": "number",
-            "instructions": "Range from -70 (westward) to -60 (eastward)",
+            "key": "field_690a23382c9aa",
+            "label": "Variants",
+            "name": "variants",
+            "type": "repeater",
+            "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_690a23012c9a9",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "default_value": -65,
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
-        },
-        {
-            "key": "field_638e68c17a5cd",
-            "label": "Zoom Level Start Point",
-            "name": "zoom_level_start_point",
-            "type": "number",
-            "instructions": "Range from 4 (close) to 2 (far)",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": 3,
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
-        },
-        {
-            "key": "field_638f7f95d702c",
-            "label": "GeoJSON",
-            "name": "geojson",
-            "type": "text",
-            "instructions": "Generate geoJSON at https:\/\/geojson.io\/ use 'royalblue' for flight lines, and 'darkcyan' for cruise lines",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "row",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_690a236a2c9ac",
+                    "label": "Fly Category",
+                    "name": "fly_category",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "sail-sail": "Sail \/ Sail",
+                        "fly-sail": "Fly \/ Sail",
+                        "sail-fly": "Sail \/ Fly",
+                        "fly-fly": "Fly \/ Fly"
+                    },
+                    "default_value": "sail-sail",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_690a23972c9ad",
+                    "label": "Length In Nights",
+                    "name": "length_in_nights",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": "",
+                    "max": "",
+                    "step": ""
+                },
+                {
+                    "key": "field_690a23df2c9ae",
+                    "label": "Embarkation Point",
+                    "name": "embarkation_point",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "rfc_destinations"
+                    ],
+                    "taxonomy": "",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "object",
+                    "ui": 1
+                },
+                {
+                    "key": "field_690a23f32c9af",
+                    "label": "Embarkation Is Flight",
+                    "name": "embarkation_is_flight",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                },
+                {
+                    "key": "field_690a24302c9b0",
+                    "label": "Disembarkation Point",
+                    "name": "disembarkation_point",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "rfc_destinations"
+                    ],
+                    "taxonomy": "",
+                    "allow_null": 1,
+                    "multiple": 0,
+                    "return_format": "object",
+                    "ui": 1
+                },
+                {
+                    "key": "field_690a243c2c9b1",
+                    "label": "Disembarkation Is Flight",
+                    "name": "disembarkation_is_flight",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                },
+                {
+                    "key": "field_690a24812c9b7",
+                    "label": "GeoJSON",
+                    "name": "geojson",
+                    "type": "text",
+                    "instructions": "Generate geoJSON at https:\/\/geojson.io\/ use 'royalblue' for flight lines, and 'darkcyan' for cruise lines",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_690a24592c9b2",
+                    "label": "Itinerary",
+                    "name": "itinerary",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 0,
+                    "max": 0,
+                    "layout": "block",
+                    "button_label": "",
+                    "sub_fields": [
+                        {
+                            "key": "field_690a24592c9b3",
+                            "label": "Title",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_690a24592c9b4",
+                            "label": "Day Count",
+                            "name": "day_count",
+                            "type": "text",
+                            "instructions": "For example: 1, 2, 3 - 8",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_690a24592c9b5",
+                            "label": "Destinations",
+                            "name": "destination",
+                            "type": "relationship",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "rfc_destinations"
+                            ],
+                            "taxonomy": "",
+                            "filters": [
+                                "search"
+                            ],
+                            "elements": "",
+                            "min": "",
+                            "max": "",
+                            "return_format": "object"
+                        },
+                        {
+                            "key": "field_690a24592c9b6",
+                            "label": "Text",
+                            "name": "text",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0
+                        }
+                    ]
+                }
+            ]
         },
         {
             "key": "field_63595b20f857e",
@@ -1190,6 +1490,35 @@
                             "ui_off_text": ""
                         }
                     ]
+                },
+                {
+                    "key": "field_690a24be2c9b8",
+                    "label": "Variant",
+                    "name": "variant",
+                    "type": "number",
+                    "instructions": "Leave blank if departure is the default itinerary configuration. Otherwise use the number of the itinerary variant starting from 1",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_690a23012c9a9",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": "",
+                    "max": "",
+                    "step": ""
                 }
             ]
         },
@@ -1554,5 +1883,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1745249075
+    "modified": 1762359187
 }

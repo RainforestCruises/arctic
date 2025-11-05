@@ -5,32 +5,30 @@
     @include flexPadding;
     z-index: 5;
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: calc(60% - 3rem) calc(40% - 3rem);
     gap: 6rem;
     height: 100%;
     max-width: $page-width-full;
-    min-height: 70rem;
-
     padding-top: 16rem;
     padding-bottom: 3rem;
 
     @media only screen and (max-width: $bp-large) {
       padding-top: 12rem;
-      grid-template-columns: 100%;
-      min-height: auto;
+      // grid-template-columns: 100%;
       overflow-x: hidden;
+      display: block;
     }
 
     &__primary {
       color: $color-white;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 6rem;
+      // display: flex;
+      // flex-direction: column;
+      // justify-content: space-between;
+      // gap: 6rem;
 
-      @media only screen and (max-width: $bp-large) {
-        gap: 2rem;
-      }
+      // @media only screen and (max-width: $bp-large) {
+      //   gap: 2rem;
+      // }
 
       &__title-group {
         &__title {
@@ -62,6 +60,7 @@
       &__region-area {
         display: flex;
         gap: 2rem;
+        margin-top: 4rem;
 
         @media only screen and (max-width: $bp-large) {
           display: none;
@@ -71,6 +70,7 @@
       &__region-slider {
         display: none;
         overflow-x: visible;
+        margin-top: 4rem;
 
         &__nav {
           margin-top: 2rem;

@@ -16,7 +16,10 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
 
 
         foreach ($itineraryPosts as $i) { // each itinerary
-            $itineraryLength = get_field('length_in_nights', $i);
+            $itineraryDefaultLength = get_field('length_in_nights', $i);
+            $itineraryHasVariants = get_field('has_variants', $i);
+            $itineraryVariants = get_field('variants', $i);
+
 
             // get itinerary departures
             $use_automation = get_field('use_automation', $i);
@@ -27,8 +30,27 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                 $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
 
                 if ($isCurrent) {
+
+                    // variant overrides
+                    $departureItineraryLength = $itineraryDefaultLength;
+                    if ($itineraryHasVariants) {
+                        $departureVariantNumber = $d['variant'] ?? 0;
+                        if ($departureVariantNumber != 0) {
+                            $matchedVariant = $itineraryVariants[$departureVariantNumber - 1];
+
+                            $matchedVariantItineraryLength = $matchedVariant['length_in_nights'] ?? $itineraryDefaultLength;
+                            // TODO - PORT / FLIGHT OPTIONS
+
+                            $departureItineraryLength = $matchedVariantItineraryLength;
+                        };
+                    };
+
+
+
+
+
                     $id = $i->ID . "-" . getRandomHex();
-                    $returnDate = date('Y-m-d', strtotime($d['date'] . ' + ' . $itineraryLength . ' days'));
+                    $returnDate = date('Y-m-d', strtotime($d['date'] . ' + ' . $departureItineraryLength . ' days'));
                     $cabin_prices = $d['cabin_prices'];
                     $ship = $d['ship'];
                     if ($cabin_prices) { // sort cabin price high to low
@@ -55,7 +77,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                             'LowestPrice' => getLowestDeparturePrice($d),
                             'HighestPrice' => getHighestDeparturePrice($d),
                             'BestDiscount' => $filteredDeals != null ? getBestDepartureDiscount($d) : 0,
-                            'LengthInNights' => $itineraryLength,
+                            'LengthInNights' => $departureItineraryLength,
                             'Deals' => $filteredDeals,
                             'SpecialDepartures' => $filteredSpecialDepartures,
                         ];
@@ -73,7 +95,9 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
             }
         }
     } else if (get_post_type($post) == 'rfc_itineraries') {
-        $itineraryLength = get_field('length_in_nights', $post);
+        $itineraryDefaultLength = get_field('length_in_nights', $post);
+        $itineraryHasVariants = get_field('has_variants', $post);
+        $itineraryVariants = get_field('variants', $post);
 
         // get itinerary departures
         $use_automation = get_field('use_automation', $post);
@@ -83,8 +107,27 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
         foreach ($itineraryDepartures as $d) {   // each departure   
             $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
             if ($isCurrent) {
+
+                // variant overrides
+                $departureItineraryLength = $itineraryDefaultLength;
+                if ($itineraryHasVariants) {
+                    $departureVariantNumber = $d['variant'] ?? 0;
+                    if ($departureVariantNumber != 0) {
+                        $matchedVariant = $itineraryVariants[$departureVariantNumber - 1];
+
+                        $matchedVariantItineraryLength = $matchedVariant['length_in_nights'] ?? $itineraryDefaultLength;
+                        // TODO - PORT / FLIGHT OPTIONS
+
+                        $departureItineraryLength = $matchedVariantItineraryLength;
+                    };
+                };
+
+
+
+
+
                 $id = $post->ID . "-" . getRandomHex();
-                $returnDate = date('Y-m-d', strtotime($d['date'] . ' + ' . $itineraryLength . ' days'));
+                $returnDate = date('Y-m-d', strtotime($d['date'] . ' + ' . $departureItineraryLength . ' days'));
                 $cabin_prices = $d['cabin_prices'];
                 $ship = $d['ship'];
 
@@ -115,7 +158,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                         'LowestPrice' => getLowestDeparturePrice($d),
                         'HighestPrice' => getHighestDeparturePrice($d),
                         'BestDiscount' => $filteredDeals != null ? getBestDepartureDiscount($d) : 0,
-                        'LengthInNights' => $itineraryLength,
+                        'LengthInNights' => $departureItineraryLength,
                         'Deals' => $filteredDeals,
                         'SpecialDepartures' => $filteredSpecialDepartures,
 

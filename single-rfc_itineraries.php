@@ -13,8 +13,9 @@ $initialRegion = checkPageRegion();
 $primaryRegion = getPrimaryRegion();
 $productName = get_field('display_name');
 $extraActivities = get_field('extra_activities');
-$days = get_field('itinerary');
+//$days = get_field('itinerary');
 $departures = getDepartureList($itinerary);
+console_log($departures);
 $ships = getShipsFromDepartureList($departures);
 $lowestOverallPrice = getLowestDepartureListPrice($departures);
 $bestOverallDiscount = getBestDepartureListDiscount($departures);
@@ -66,7 +67,7 @@ $args = array(
   'productName' => $productName,
   'lowestOverallPrice' => $lowestOverallPrice,
   'bestOverallDiscount' => $bestOverallDiscount,
-  'days' => $days,
+  //'days' => $days,
   'departures' => $departures,
   'deals' => $deals,
   'specialDepartures' => $specialDepartures,
@@ -101,8 +102,11 @@ $args = array(
 
   <!-- Day to Day -->
   <?php
-  get_template_part('template-parts/itinerary/content', 'itinerary-days', $args);
-  ?>
+  // get_template_part('template-parts/itinerary/content', 'itinerary-days', $args);
+  get_template_part('template-parts/itinerary/content', 'itinerary-variants', $args);
+
+
+?>
 
   <!-- Itinerary Map -->
   <?php
