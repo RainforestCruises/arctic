@@ -10,6 +10,8 @@ require_once(__DIR__ . '/includes/custom-shortcodes.php');
 
 
 require_once(__DIR__ . '/includes/product-functions.php');
+require_once(__DIR__ . '/includes/itinerary-functions.php');
+
 require_once(__DIR__ . '/includes/deal-functions.php');
 require_once(__DIR__ . '/includes/map-functions.php');
 require_once(__DIR__ . '/includes/automation-scripts.php');

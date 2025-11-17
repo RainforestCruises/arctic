@@ -61,8 +61,8 @@ $allLink = $args['allLink'];
                         $image =  $images[0];
                         $title = get_field('display_name', $itinerary);
                         $shipsDisplay = getShipsFromItineraryList($itinerary, true);
-                        $length_in_nights = get_field('length_in_nights', $itinerary);
-                        $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
+                        $itineraryInfoObject = createItineraryInfoObject($itinerary);
+                        $lengthDisplay = $itineraryInfoObject->lengthDisplay;
 
                         $lowestPrice = getLowestDepartureListPrice($departures);
                         $highestPrice = getHighestDepartureListPrice($departures);
@@ -107,7 +107,7 @@ $allLink = $args['allLink'];
                                             </svg>
                                         </div>
                                         <div class="specs-item__text">
-                                            Length: <?php echo $length; ?>
+                                            Length: <?php echo $lengthDisplay; ?>
                                         </div>
                                     </div>
                                     <!-- Ships -->

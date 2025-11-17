@@ -25,9 +25,6 @@ $extraActivities = get_field('extra_activities');
             <a href="#itinerary" class="nav-secondary__content__links__link">
                 Itinerary
             </a>
-            <a href="#map" class="nav-secondary__content__links__link">
-                Map
-            </a>
             <a href="#dates" class="nav-secondary__content__links__link">
                 Dates
             </a>
@@ -65,9 +62,6 @@ $extraActivities = get_field('extra_activities');
             </li>
             <li class="nav-secondary__mobile-menu__list__item">
                 <a class="nav-secondary__mobile-menu__list__item__link" href="#itinerary">Itinerary</a>
-            </li>
-            <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#map">Map</a>
             </li>
             <li class="nav-secondary__mobile-menu__list__item">
                 <a class="nav-secondary__mobile-menu__list__item__link" href="#dates">Dates

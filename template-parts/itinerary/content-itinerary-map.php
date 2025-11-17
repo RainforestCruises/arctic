@@ -6,8 +6,8 @@ $itinerary_note = get_field('itinerary_note');
 
 ?>
 <section class="itinerary-map" id="map">
+    
     <div class="itinerary-map__content">
-
         <div class="title-group">
             <h2 class="title-group__title">
                 Route Map

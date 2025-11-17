@@ -75,16 +75,19 @@ $args = array(
 );
 
 //Itinerary JS Array
-$itineraryObjects = [];
+$itineraryMapObjects = [];
 foreach ($itineraries as $itinerary) {
-  $itineraryObjects[] = getItineraryObject($itinerary);
+  $itineraryInfoObject = createItineraryInfoObject($itinerary);
+  foreach ($itineraryInfoObject->itineraryObjects as $itinerary) {
+    $itineraryMapObjects[] = getItineraryMapObject($itinerary);
+  }
 }
 
 wp_localize_script(
   'page-product-cruise-itineraries',
   'page_vars',
   array(
-    'itineraryObjects' =>  $itineraryObjects,
+    'itineraryMapObjects' =>  $itineraryMapObjects,
   )
 );
 

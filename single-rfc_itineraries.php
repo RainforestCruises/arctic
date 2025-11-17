@@ -3,8 +3,9 @@ wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', 
 wp_enqueue_script('page-product', get_template_directory_uri() . '/js/page-product.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-modal-gallery', get_template_directory_uri() . '/js/page-product-modal-gallery.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-dates', get_template_directory_uri() . '/js/page-product-dates.js', array('jquery'), false, true);
-wp_enqueue_script('page-product-itinerary-map', get_template_directory_uri() . '/js/page-product-itinerary-map.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-cabins', get_template_directory_uri() . '/js/page-product-cabins.js', array('jquery'), false, true);
+wp_enqueue_script('page-itinerary', get_template_directory_uri() . '/js/page-itinerary.js', array('jquery'), false, true);
+
 
 get_header();
 
@@ -13,26 +14,37 @@ $initialRegion = checkPageRegion();
 $primaryRegion = getPrimaryRegion();
 $productName = get_field('display_name');
 $extraActivities = get_field('extra_activities');
+
+
+
 //$days = get_field('itinerary');
-$departures = getDepartureList($itinerary);
-console_log($departures);
+$departures = getDepartureList($itinerary, null,false,null,true);
 $ships = getShipsFromDepartureList($departures);
 $lowestOverallPrice = getLowestDepartureListPrice($departures);
 $bestOverallDiscount = getBestDepartureListDiscount($departures);
 $deals = getDealsFromDepartureList($departures, false);
 $specialDepartures = getDealsFromDepartureList($departures, true);
+
+
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
 $shipSizeRange = getItineraryShipSize($ships);
 $embarkation_point = get_field('embarkation_point');
 $disembarkation_point = get_field('disembarkation_point');
-$itineraryObjects[] = getItineraryObject($itinerary);
+
+$itineraryInfoObject = createItineraryInfoObject($itinerary);
+console_log($itineraryInfoObject);
+$itineraryMapObjects = [];
+foreach ($itineraryInfoObject->itineraryObjects as $itinerary) {
+  $itineraryMapObjects[] = getItineraryMapObject($itinerary);
+}
+
 
 wp_localize_script(
-  'page-product-itinerary-map',
-  'page_vars_product_itinerary_map',
+  'page-itinerary',
+  'page_vars',
   array(
-    'itineraryObjects' =>  $itineraryObjects,
+    'itineraryMapObjects' =>  $itineraryMapObjects,
   )
 );
 
@@ -67,14 +79,13 @@ $args = array(
   'productName' => $productName,
   'lowestOverallPrice' => $lowestOverallPrice,
   'bestOverallDiscount' => $bestOverallDiscount,
-  //'days' => $days,
   'departures' => $departures,
   'deals' => $deals,
   'specialDepartures' => $specialDepartures,
   'curentYear' => $curentYear,
   'yearSelections' => $yearSelections,
   'shipSizeRange' => $shipSizeRange,
-  'destinationCount' => count($itineraryObjects[0]['featureList']),
+  'itineraryInfoObject' => $itineraryInfoObject,
   'footerCtaDivider' => true,
   'initialRegion' => $initialRegion,
   'primaryRegion' => $primaryRegion,
@@ -106,16 +117,16 @@ $args = array(
   get_template_part('template-parts/itinerary/content', 'itinerary-variants', $args);
 
 
-?>
+  ?>
 
   <!-- Itinerary Map -->
   <?php
-  get_template_part('template-parts/itinerary/content', 'itinerary-map', $args);
+  // get_template_part('template-parts/itinerary/content', 'itinerary-map', $args);
   ?>
 
   <!-- Dates -->
   <?php
-  get_template_part('template-parts/itinerary/content', 'itinerary-dates', $args);
+    get_template_part('template-parts/itinerary/content', 'itinerary-dates', $args);
   ?>
 
   <!-- Deals -->

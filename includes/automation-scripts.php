@@ -37,15 +37,15 @@ function acf_automation_on_save($post_id) // get data from API if post type is i
 }
 function refresh_itinerary_info($itineraryId, $post_id)
 {
-    // // LOCAL 
-    // $url = 'https://localhost:7250/api/wpitineraries/';
-    // $url .= $itineraryId;
-    // $request = wp_remote_get($url, array('sslverify' => FALSE));
-
-    // API
-    $url = 'https://tourtrack.azurewebsites.net/api/wpitineraries/';
+    // LOCAL 
+    $url = 'https://localhost:7250/api/wpitineraries/';
     $url .= $itineraryId;
-    $request = wp_remote_get($url);
+    $request = wp_remote_get($url, array('sslverify' => FALSE));
+
+    // // API
+    // $url = 'https://tourtrack.azurewebsites.net/api/wpitineraries/';
+    // $url .= $itineraryId;
+    // $request = wp_remote_get($url);
 
     if (is_wp_error($request)) {
         $error_message = $request->get_error_message();
@@ -137,6 +137,7 @@ function formatDepartureApiData($automation_departure_data, $itineraryId)
             'date' => $departure_item['departureDate'],
             'deals' => $deals_post_list,
             'ship' => $shipPost,
+            'variant' => $departure_item['variant']
         ];
 
         // add to departure list

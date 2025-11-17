@@ -172,6 +172,17 @@
                     stroke="none"></path>
             </g>
         </symbol>
+        <symbol id="icon-time-clock" viewBox="0 0 16 16">
+            <title>time clock</title>
+            <g class="nc-icon-wrapper">
+                <path
+                    d="M8,0a8,8,0,1,0,8,8A8.024,8.024,0,0,0,8,0ZM8,14a6,6,0,1,1,6-6A6.018,6.018,0,0,1,8,14Z"
+                    fill="currentColor" stroke="none"></path>
+                <path d="M11.5,7H9V4.5a1,1,0,0,0-2,0V8A1,1,0,0,0,8,9h3.5a1,1,0,0,0,0-2Z"
+                    fill="currentColor"
+                    stroke="none"></path>
+            </g>
+        </symbol>
         <symbol id="icon-shopping-tag" viewBox="0 0 16 16">
             <title>shopping tag</title>
             <g class="nc-icon-wrapper">
@@ -926,7 +937,56 @@
                     fill="none" stroke="currentColor" stroke-miterlimit="10" />
             </g>
         </symbol>
-
+        <symbol id="icon-check-out32" viewBox="0 0 32 32">
+            <title>check out</title>
+            <g class="nc-icon-wrapper">
+                <polyline points="7 28 2 23 7 18" fill="none" stroke="currentColor" stroke-width="2"></polyline>
+                <line x1="30" y1="11" x2="2" y2="11" fill="none" stroke="currentColor"
+                    stroke-width="2"></line>
+                <path d="M2,17V8A3,3,0,0,1,5,5H27a3,3,0,0,1,3,3V27a3,3,0,0,1-3,3H13" fill="none"
+                    stroke="currentColor" stroke-width="2"></path>
+                <line x1="9" y1="1" x2="9" y2="5" fill="none" stroke="currentColor" stroke-width="2"></line>
+                <line x1="23" y1="1" x2="23" y2="5" fill="none" stroke="currentColor"
+                    stroke-width="2"></line>
+                <polyline points="3 23 2 23 14 23" fill="none" stroke="currentColor"
+                    stroke-width="2"></polyline>
+            </g>
+        </symbol>
+        <symbol id="icon-check-in32" viewBox="0 0 32 32">
+            <title>check in</title>
+            <g class="nc-icon-wrapper">
+                <polyline points="25 28 30 23 25 18" fill="none" stroke="currentColor"
+                    stroke-width="2"></polyline>
+                <line x1="2" y1="11" x2="30" y2="11" fill="none" stroke="currentColor"
+                    stroke-width="2"></line>
+                <path d="M30,17V8a3,3,0,0,0-3-3H5A3,3,0,0,0,2,8V27a3,3,0,0,0,3,3H19" fill="none"
+                    stroke="currentColor" stroke-width="2"></path>
+                <line x1="23" y1="1" x2="23" y2="5" fill="none" stroke="currentColor"
+                    stroke-width="2"></line>
+                <line x1="9" y1="1" x2="9" y2="5" fill="none" stroke="currentColor" stroke-width="2"></line>
+                <polyline points="29 23 30 23 18 23" fill="none" stroke="currentColor"
+                    stroke-width="2"></polyline>
+            </g>
+        </symbol>
+        <svg xmlns="http://www.w3.org/2000/svg" style="height: 0; width: 0; position: absolute;">
+            <symbol id="icon-event-confirm32" viewBox="0 0 32 32">
+                <title>event confirm</title>
+                <g class="nc-icon-wrapper">
+                    <polyline points="19 27 22 30 29 23" fill="none" stroke="currentColor"
+                        stroke-width="2"></polyline>
+                    <line x1="9" y1="1" x2="9" y2="5" fill="none" stroke="currentColor"
+                        stroke-width="2"></line>
+                    <line x1="23" y1="1" x2="23" y2="5" fill="none" stroke="currentColor"
+                        stroke-width="2"></line>
+                    <line x1="31" y1="11" x2="1" y2="11" fill="none" stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="var(--icon-stroke-linecap-butt)"></line>
+                    <path
+                        d="M13,29H4c-1.657,0-3-1.343-3-3V8c0-1.657,1.343-3,3-3H28c1.657,0,3,1.343,3,3v9"
+                        fill="none" stroke="currentColor" stroke-width="2"></path>
+                </g>
+            </symbol>
+        </svg>
         <symbol id="icon-headset" viewBox="0 0 32 32">
             <title>headset</title>
             <g class="nc-icon-wrapper">

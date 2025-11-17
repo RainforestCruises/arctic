@@ -29,7 +29,8 @@ $routes = getRoutesFromRegionList($regions);
 $itineraryObjects = [];
 foreach ($routes as $route) {
     $sample_itinerary = get_field('sample_itinerary', $route);
-    $itineraryObjects[] = getItineraryObject($sample_itinerary);
+    $itineraryInfoObject = createItineraryInfoObject($sample_itinerary);
+    $itineraryMapObjects[] = getItineraryMapObject($itineraryInfoObject->itineraryObjects[0]);
 }
 
 
@@ -37,7 +38,7 @@ wp_localize_script(
     'page-product-cruise-itineraries',
     'page_vars',
     array(
-        'itineraryObjects' =>  $itineraryObjects
+        'itineraryMapObjects' =>  $itineraryMapObjects
     )
 );
 

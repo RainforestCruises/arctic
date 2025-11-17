@@ -1,50 +1,179 @@
 .day-list {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+  & .accordion-panel:last-child {
+    & .accordion-panel__heading {
+      border-bottom: none;
+    }
+  }
+
+  &__title {
+    &__pre {
+      color: $color-grey-1;
+      font-size: 1.3rem;
+    }
+
+    &__text {
+      margin-bottom: 0rem;
+    }
+  }
+
+  &__content {
+    //display: grid;
+    margin-bottom: 1rem;
+
+    &__text {
+    }
+
+    &__destinations {
+      margin-top: 2rem;
+
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+
+      @media only screen and (max-width: $bp-small) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      & .avatar {
+        border: 1px solid $color-grey-light-1a;
+        border-radius: 1rem;
+        padding: 1rem;
+        padding-right: 2rem;
+        margin: 1rem 0;
+        margin-right: 2rem;
+
+        @media only screen and (max-width: $bp-small) {
+          margin-right: 0;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.itinerary-variants {
+  @include flexBlock;
+  overflow: hidden;
+
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    @include flexPadding;
+    @include topDivider;
+    margin-top: 3rem;
+    max-width: $page-width;
+
     &__title {
-        &__pre {
-            color: $color-grey-1;
-            font-size: 1.3rem;
-        }
-
-        &__text {
-            margin-bottom: 0rem;
-        }
+      margin-bottom: 2rem;
     }
 
-    &__content {
-        //display: grid;
-        margin-bottom: 3rem;
+    &__itinerary {
+      display: grid;
+      grid-template-columns: 19rem 1fr;
+      gap: 4rem;
 
-        &__text {
+      &.single-variant {
+        grid-template-columns: 100%;
+
+        & .itinerary-variants__content__itinerary__nav {
+          display: none;
         }
+      }
 
-        &__destinations {
-            margin-top: 2rem;
+      @media only screen and (max-width: $bp-medium) {
+        grid-template-columns: 100%;
+      }
 
-            display: flex;
-            flex-wrap: wrap;
-            position: relative;
-
-            @media only screen and (max-width: $bp-small) {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 2rem;
-            }
-
-            & .avatar {
-                border: 1px solid $color-grey-light-1a;
-                border-radius: 1rem;
-                padding: 1rem;
-                padding-right: 2rem;
-                margin: 1rem 0;
-                margin-right: 2rem;
-
-                @media only screen and (max-width: $bp-small) {
-                    margin-right: 0;
-                    margin: 0;
-                }
-            }
-
-            
+      &__nav {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        @media only screen and (max-width: $bp-medium) {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
         }
+        @media only screen and (max-width: $bp-small) {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      &__main {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        &__map-area {
+          width: 100%;
+          height: 50rem;
+
+          @media only screen and (max-width: $bp-small) {
+            height: 42rem;
+          }
+
+          position: relative;
+        }
+      }
     }
+  }
+}
+
+.variant-button {
+  box-shadow: $shadow-short-bottom-light;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  background-color: $color-white;
+  font-size: 1.4rem;
+  border-radius: 2rem;
+  transition: all 0.2s;
+  border: 1px solid $color-grey-light-1a;
+  color: $color-primary;
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  padding: 1.5rem 2.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  &__sub {
+    font-weight: 400;
+    font-size: 1.2rem;
+    text-align: start;
+  }
+
+  &.active {
+    background-color: $color-grey-light-1a;
+    border-color: $color-primary;
+  }
+}
+
+.special-note {
+  border-radius: 1rem;
+  color: $color-primary;
+  border: 1px solid $color-grey-light-1a;
+  background-color: $color-grey-light-1;
+  padding: 2rem;
 }

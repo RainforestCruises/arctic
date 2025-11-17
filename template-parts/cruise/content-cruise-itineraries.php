@@ -27,16 +27,20 @@ $itineraries = $args['itineraries'];
                     <div class="swiper-wrapper">
                         <?php $count = 0;
                         foreach ($itineraries as $itinerary) :
+                            $itineraryInfoObject = createItineraryInfoObject($itinerary);
                             $id = $itinerary->ID;
-                            $title = get_field('display_name', $itinerary);
                             $length = get_field('length_in_nights', $itinerary) + 1 . ' Days';
-                            $hasFlight = getFlightOption($itinerary);
+                            if($itineraryInfoObject->hasDifferentLengths){
+                                $length .= " +";
+                            }
+
+                            $flightOption = getFlightOption(get_field('fly_category', $itinerary));
 
                         ?>
                             <div class="cruise-itineraries__content__top__nav-area__slider__item swiper-slide" slideIndex="<?php echo $count ?>" postId="<?php echo $id ?>">
                                 <button class="cruise-itineraries__content__top__nav-area__slider__item__button">
                                     <?php echo $length; ?>
-                                    <?php echo $hasFlight ? '<span class="badge">Fly</span>' : ''; ?>
+                                    <?php echo $flightOption ? '<span class="badge">' . $flightOption . '</span>' : ''; ?>
                                 </button>
                             </div>
 
@@ -72,17 +76,11 @@ $itineraries = $args['itineraries'];
                         <?php
                         $count = 0;
                         foreach ($itineraries as $itinerary) :
+                            $itineraryInfoObject = createItineraryInfoObject($itinerary);
+
                             $id = $itinerary->ID;
                             $hero_gallery = get_field('hero_gallery', $itinerary);
                             $hero_image = $hero_gallery[0];
-                            $embarkation_point = get_field('embarkation_point', $itinerary);
-                            $embarkation_country = get_field('embarkation_country', $embarkation_point);
-                            $embarkation = get_the_title($embarkation_point) . ", " . get_the_title($embarkation_country);
-                            $disembarkation_point = get_field('disembarkation_point', $itinerary);
-                            $disembarkation_country = get_field('embarkation_country', $disembarkation_point);
-                            $disembarkation = get_the_title($disembarkation_point) . ", " . get_the_title($disembarkation_country);
-                            $hasDifferentPorts = $disembarkation_point != null && ($disembarkation_point != $embarkation_point);
-                            $days = get_field('itinerary', $itinerary);
                             $departures = getDepartureList($itinerary, get_post()); // need to restrict to specific ship to obtain correct prices and dates
                             $lowestPrice = getLowestDepartureListPrice($departures);
                             $highestPrice = getHighestDepartureListPrice($departures);
@@ -92,8 +90,11 @@ $itineraries = $args['itineraries'];
                             $length_in_nights = get_field('length_in_nights', $itinerary);
                             $top_snippet = get_field('top_snippet', $itinerary);
                             $link = get_the_permalink($itinerary);
-                            $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
-                            $flightOption = getFlightOption($itinerary);
+                            $length = $itineraryInfoObject->lengthDisplay;
+                            $hasDifferentPorts = $itineraryInfoObject->hasDifferentPorts;
+                            $embarkation = $itineraryInfoObject->embarkationDisplay;
+                            $disembarkation = $itineraryInfoObject->disembarkationDisplay;
+                            $flightOption = getFlightOption(get_field('fly_category', $itinerary));
                         ?>
 
                             <!-- Itinerary Card -->
@@ -194,6 +195,7 @@ $itineraries = $args['itineraries'];
                                                     </div>
                                                 </div>
                                             </div>
+
 
                                             <!-- Disembark -->
                                             <?php if ($hasDifferentPorts) : ?>

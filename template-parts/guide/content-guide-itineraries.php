@@ -43,15 +43,14 @@ $itineraries_title = get_field('itineraries_title');
 
 
                     <?php foreach ($itineraries as $itinerary) :
+                        $itineraryInfoObject = createItineraryInfoObject($itinerary);
+                        $lengthDisplay = $itineraryInfoObject->lengthDisplay;
+
                         $images =  get_field('hero_gallery', $itinerary);
                         $image = $images[0];
                         $itineraries =  get_field('itineraries', $itinerary);
                         $title = get_field('display_name', $itinerary);
-                        $days = get_field('itinerary', $itinerary);
-                        $length_in_nights = get_field('length_in_nights', $itinerary);
-                        $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
-                        $embarkation_point = get_field('embarkation_point', $itinerary);
-                        $embarkation = get_the_title($embarkation_point);
+
                         $shipsDisplay = getShipsFromItineraryList($itinerary, true);
                         $destinations = getItineraryDestinations($itinerary, true, 4);
                         $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
@@ -97,7 +96,7 @@ $itineraries_title = get_field('itineraries_title');
                                             </svg>
                                         </div>
                                         <div class="specs-item__text">
-                                            Length: <?php echo $length; ?>
+                                            Length: <?php echo $lengthDisplay; ?>
                                         </div>
                                     </div>
                                     <!-- Ships -->

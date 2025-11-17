@@ -1,11 +1,11 @@
 jQuery(document).ready(function ($) {
 
-    const itineraryObjects = page_vars.itineraryObjects;
+  const itineraryMapObjects = page_vars.itineraryMapObjects;
     let markersReference = [];
     let sourcesReference = [];
 
     // Map 
-    const initialObject = itineraryObjects[0]; // initial object
+    const initialObject = itineraryMapObjects[0]; // initial object
 
     mapboxgl.accessToken = 'pk.eyJ1IjoicmFpbmZvcmVzdGNydWlzZXNybHMiLCJhIjoiY2xiNWh2aXo5MDNiZzN2dW5hNjFpaXM3dCJ9.05yNz0iG1JXFq62DYF7SFA';
     var map = new mapboxgl.Map({
@@ -165,9 +165,9 @@ jQuery(document).ready(function ($) {
         },
     });
     itinerariesSlider.on('slideChange', function (swiper) {
-        createMarkers(itineraryObjects[swiper.realIndex]);
-        createLineFeatures(itineraryObjects[swiper.realIndex]);
-        flyToCenter(itineraryObjects[swiper.realIndex]);
+        createMarkers(itineraryMapObjects[swiper.realIndex]);
+        createLineFeatures(itineraryMapObjects[swiper.realIndex]);
+        flyToCenter(itineraryMapObjects[swiper.realIndex]);
     });
 
 });

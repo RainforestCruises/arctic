@@ -3,6 +3,7 @@ $currentYear = date('Y');
 $yearSelections = $args['yearSelections'];
 $ships = $args['ships'];
 $departures = $args['departures'];
+$itineraryInfoObject = $args['itineraryInfoObject'];
 
 
 ?>
@@ -64,13 +65,11 @@ $departures = $args['departures'];
                         $vessel_capacity = get_field('vessel_capacity', $ship);
                         $service_level = get_field('service_level', $ship);
                         $image = $hero_gallery[0];
-                        $embarkationPost = get_field('embarkation_point', $itineraryPost);
-                        $embarkationCountryPost = get_field('embarkation_country', $embarkationPost);
-                        $embarkationName = get_the_title($embarkationPost) . ', ' . get_the_title($embarkationCountryPost);
+                        $embarkationDisplay = $d['EmbarkationDisplay'];
                         $bestDiscount = $d['BestDiscount'];
                         $highestPrice = $d['HighestPrice'];
                         $lowestPrice = $d['LowestPrice'];
-
+                        $lengthDisplay = $d['LengthInDays'] . ' Days';
                         $deals = $d['Deals'];
                         $specialDepartures = $d['SpecialDepartures'];
                         $combinedDeals = array_merge($deals, $specialDepartures);
@@ -107,7 +106,21 @@ $departures = $args['departures'];
                                     </div>
                                     <div class="specs-item__text">
                                         <div class="specs-item__text__main">
-                                        <span style="font-weight: 700;"><?php echo date(($differentYears ? "F j, Y" : "F j"), $departureStartDate); ?></span> - <?php echo  date("M j, Y", $departureReturnDate); ?>
+                                            <span style="font-weight: 700;"><?php echo date(($differentYears ? "F j, Y" : "F j"), $departureStartDate); ?></span> - <?php echo  date("M j, Y", $departureReturnDate); ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Time -->
+                                <div class="specs-item">
+                                    <div class="specs-item__icon">
+                                        <svg>
+                                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-time-clock"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="specs-item__text">
+                                        <div class="specs-item__text__main">
+                                            <?php echo $lengthDisplay ?>
                                         </div>
                                     </div>
                                 </div>
@@ -121,7 +134,7 @@ $departures = $args['departures'];
                                     </div>
                                     <div class="specs-item__text">
                                         <div class="specs-item__text__main">
-                                            <?php echo $embarkationName ?>
+                                            <?php echo $embarkationDisplay ?>
                                         </div>
                                     </div>
                                 </div>

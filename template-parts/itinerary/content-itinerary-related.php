@@ -84,14 +84,9 @@ $itineraries = get_posts($queryArgs);
                         $images =  get_field('hero_gallery', $itinerary);
                         $image = $images[0];
                         $title = get_field('display_name', $itinerary);
-                        $days = get_field('itinerary', $itinerary);
-                        $length_in_nights = get_field('length_in_nights', $itinerary);
-                        $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
-                        $embarkation_point = get_field('embarkation_point', $itinerary);
-                        $embarkation = get_the_title($embarkation_point);
                         $shipsDisplay = getShipsFromItineraryList($itinerary, true);
-                        $destinations = getItineraryDestinations($itinerary, true, 4);
-                        console_log($shipsDisplay);
+                        $itineraryInfoObject = createItineraryInfoObject($itinerary);
+                        $lengthDisplay = $itineraryInfoObject->lengthDisplay;
                     ?>
 
                         <!-- Itinerary Card -->
@@ -128,7 +123,7 @@ $itineraries = get_posts($queryArgs);
                                             </svg>
                                         </div>
                                         <div class="specs-item__text">
-                                            Length: <?php echo $length; ?>
+                                            Length: <?php echo $lengthDisplay; ?>
                                         </div>
                                     </div>
                                     <!-- Ships -->

@@ -120,10 +120,27 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
     $itineraryObjects = []; // prelimenary list for ship search
     foreach ($itineraries as $itinerary) { // loop through itineraries
 
-        $lengthInNights = get_field('length_in_nights', $itinerary); // filter min/max length
-        if ($lengthInNights < $minLength || $lengthInNights > $maxLength) {
-            continue;
+        $itineraryInfoObject = createItineraryInfoObject($itinerary);
+        
+        // Check if any length in the array is within the filter range
+        $uniqueLengths = $itineraryInfoObject->uniqueLengthsArray;
+        $hasValidLength = false;
+
+        foreach ($uniqueLengths as $length) {
+            if ($length >= $minLength && $length <= $maxLength) {
+                $hasValidLength = true;
+                break; // Found a valid length, no need to check more
+            }
         }
+
+        if (!$hasValidLength) {
+            continue; // Skip this itinerary if no valid lengths found
+        }
+
+        // $lengthInNights = get_field('length_in_nights', $itinerary); // filter min/max length
+        // if ($lengthInNights < $minLength || $lengthInNights > $maxLength) {
+        //     continue;
+        // }
 
         $embarkation_point = get_field('embarkation_point', $itinerary); // filter embarkation countries
         $disembarkation_point = get_field('disembarkation_point', $itinerary);
@@ -187,7 +204,7 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
         $displayName = get_field('display_name', $itinerary);
         $flightOption = getFlightOption($itinerary);
         $topSnippet = get_field('top_snippet', $itinerary);
-        $lengthDisplay = $lengthInNights + 1 . ' Day / ' . $lengthInNights . ' Night';
+        $lengthDisplay = $itineraryInfoObject->lengthDisplay;
 
         // itinerary specific fields
         if ($viewType == 'search-itineraries') {
@@ -242,7 +259,7 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
                 'ResourceLink' => get_permalink($itinerary),
                 'DisplayName' => $displayName,
                 'FlightOption' => $flightOption,
-                'LengthInNights' => $lengthInNights,
+                //'LengthInNights' => $lengthInNights,
                 'LengthDisplay' => $lengthDisplay,
                 'TopSnippet' => $topSnippet,
                 'LowestPrice' => $lowestPrice,
@@ -313,7 +330,7 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
                     'ResourceLink' => get_permalink($itinerary),
                     'DisplayName' => $displayName,
                     'FlightOption' => $flightOption,
-                    'LengthInNights' => $lengthInNights,
+                    //'LengthInNights' => $lengthInNights,
                     'LengthDisplay' => $lengthDisplay,
                     'LowestPrice' => $lowestPrice,
                     'HighestPrice' => $highestPrice,

@@ -8,7 +8,7 @@ function getBadgeClass($region)
 
 // DEPARTURES ----------------------------------------------------------------------------------------------
 // get a list of departures
-function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $region = null)
+function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $region = null, $test = false)
 {
     $departures = [];
     if (get_post_type($post) == 'rfc_cruises') {
@@ -17,6 +17,9 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
 
         foreach ($itineraryPosts as $i) { // each itinerary
             $itineraryDefaultLength = get_field('length_in_nights', $i);
+            $itineraryDefaultEmbarkatoin = get_field('embarkation_point', $i);
+            $itineraryDefaultDisembarkation = get_field('disembarkation_point', $i);
+
             $itineraryHasVariants = get_field('has_variants', $i);
             $itineraryVariants = get_field('variants', $i);
 
@@ -26,6 +29,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
             $itineraryDepartures = $use_automation ? get_field('automation_departure_data', $i) : get_field('departures', $i);
 
 
+
             foreach ($itineraryDepartures as $d) {   // each departure   
                 $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
 
@@ -33,19 +37,25 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
 
                     // variant overrides
                     $departureItineraryLength = $itineraryDefaultLength;
+                    $departureEmbarkation = $itineraryDefaultEmbarkatoin;
+                    $departureDisembarkation = $itineraryDefaultDisembarkation;
+
                     if ($itineraryHasVariants) {
                         $departureVariantNumber = $d['variant'] ?? 0;
                         if ($departureVariantNumber != 0) {
                             $matchedVariant = $itineraryVariants[$departureVariantNumber - 1];
 
-                            $matchedVariantItineraryLength = $matchedVariant['length_in_nights'] ?? $itineraryDefaultLength;
-                            // TODO - PORT / FLIGHT OPTIONS
-
-                            $departureItineraryLength = $matchedVariantItineraryLength;
+                            $departureItineraryLength = $matchedVariant['length_in_nights'] ?? $itineraryDefaultLength;
+                            $departureEmbarkation = $matchedVariant['embarkation_point'] ?? $itineraryDefaultEmbarkatoin;
+                            $departureDisembarkation = $matchedVariant['disembarkation_point'] ?? $itineraryDefaultDisembarkation;
                         };
                     };
 
-
+                    // embarkation display
+                    $embarkationDisplay = get_the_title($departureEmbarkation) . ", " . get_the_title(get_field('embarkation_country', $departureEmbarkation));
+                    if ($departureEmbarkation->ID != $departureDisembarkation->ID) {
+                        $embarkationDisplay = $embarkationDisplay . " (Disembarking: " . get_the_title($departureDisembarkation) . ", " . get_the_title(get_field('embarkation_country', $departureDisembarkation)) . ")";
+                    }
 
 
 
@@ -69,6 +79,9 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                             'DepartureDate' => $d['date'],
                             'DepartureDateSimple' => date('Y-m', strtotime($d['date'])),
                             'ReturnDate' => $returnDate,
+                            'Embarkation' => $departureEmbarkation,
+                            'Disembarkation' => $departureDisembarkation,
+                            'EmbarkationDisplay' => $embarkationDisplay,
                             'Cabins' => $cabin_prices,
                             'ShipId' => $ship->ID,
                             'Ship' => $ship,
@@ -96,6 +109,9 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
         }
     } else if (get_post_type($post) == 'rfc_itineraries') {
         $itineraryDefaultLength = get_field('length_in_nights', $post);
+        $itineraryDefaultEmbarkatoin = get_field('embarkation_point', $post);
+        $itineraryDefaultDisembarkation = get_field('disembarkation_point', $post);
+
         $itineraryHasVariants = get_field('has_variants', $post);
         $itineraryVariants = get_field('variants', $post);
 
@@ -103,26 +119,34 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
         $use_automation = get_field('use_automation', $post);
         $itineraryDepartures = $use_automation ? get_field('automation_departure_data', $post) : get_field('departures', $post);
 
-
+        if ($test) {
+            console_log($itineraryDepartures);
+        }
         foreach ($itineraryDepartures as $d) {   // each departure   
             $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
             if ($isCurrent) {
 
                 // variant overrides
                 $departureItineraryLength = $itineraryDefaultLength;
+                $departureEmbarkation = $itineraryDefaultEmbarkatoin;
+                $departureDisembarkation = $itineraryDefaultDisembarkation;
+
                 if ($itineraryHasVariants) {
                     $departureVariantNumber = $d['variant'] ?? 0;
                     if ($departureVariantNumber != 0) {
                         $matchedVariant = $itineraryVariants[$departureVariantNumber - 1];
 
-                        $matchedVariantItineraryLength = $matchedVariant['length_in_nights'] ?? $itineraryDefaultLength;
-                        // TODO - PORT / FLIGHT OPTIONS
-
-                        $departureItineraryLength = $matchedVariantItineraryLength;
+                        $departureItineraryLength = $matchedVariant['length_in_nights'] ?? $itineraryDefaultLength;
+                        $departureEmbarkation = $matchedVariant['embarkation_point'] ?? $itineraryDefaultEmbarkatoin;
+                        $departureDisembarkation = $matchedVariant['disembarkation_point'] ?? $itineraryDefaultDisembarkation;
                     };
                 };
 
-
+                // embarkation display
+                $embarkationDisplay = get_the_title($departureEmbarkation) . ", " . get_the_title(get_field('embarkation_country', $departureEmbarkation));
+                if ($departureEmbarkation->ID != $departureDisembarkation->ID) {
+                    $embarkationDisplay = $embarkationDisplay . " (Disembarking: " . get_the_title($departureDisembarkation) . ", " . get_the_title(get_field('embarkation_country', $departureDisembarkation)) . ")";
+                }
 
 
 
@@ -152,6 +176,9 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                         'DepartureDate' => $d['date'],
                         'DepartureDateSimple' => date('Y-m', strtotime($d['date'])),
                         'ReturnDate' => $returnDate,
+                        'Embarkation' => $departureEmbarkation,
+                        'Disembarkation' => $departureDisembarkation,
+                        'EmbarkationDisplay' => $embarkationDisplay,
                         'Cabins' => $cabin_prices,
                         'ItineraryPostId' => $post->ID,
                         'ItineraryPost' => $post,
@@ -159,6 +186,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                         'HighestPrice' => getHighestDeparturePrice($d),
                         'BestDiscount' => $filteredDeals != null ? getBestDepartureDiscount($d) : 0,
                         'LengthInNights' => $departureItineraryLength,
+                        'LengthInDays' => $departureItineraryLength + 1,
                         'Deals' => $filteredDeals,
                         'SpecialDepartures' => $filteredSpecialDepartures,
 
@@ -381,10 +409,10 @@ function getHighestPriceFromListOfItineraries($itineraries, $region = null)
 }
 
 // fly / sail display
-function getFlightOption($itinerary)
+function getFlightOption($fly_category)
 {
 
-    $fly_category = get_field('fly_category', $itinerary);
+    // $fly_category = get_field('fly_category', $itinerary);
 
     if ($fly_category == 'fly-fly') {
         return 'Fly / Fly';
@@ -555,7 +583,7 @@ function getItinerariesFromRegion($region, $limit = -1)
         'posts_per_page' => $limit,
         'meta_key' => 'search_rank',
         'orderby' => 'meta_value_num',
-        'order' => 'ASC'
+        'order' => 'DESC'
     );
     $itineraries = get_posts($queryArgs);
     $itineraryList = [];

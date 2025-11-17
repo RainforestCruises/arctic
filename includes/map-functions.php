@@ -1,13 +1,13 @@
 <?php
 // MAPS ----------------------------------------------------------------------------------------------\
 //create itinerary object from single itinerary
-function getItineraryObject($itinerary)
+function getItineraryMapObject($itineraryObject)
 {
-    $embarkation_point = get_field('embarkation_point', $itinerary);
-    $disembarkation_point = get_field('disembarkation_point', $itinerary);
+    $embarkation_point = $itineraryObject->embarkation_point;
+    $disembarkation_point = $itineraryObject->disembarkation_point;
     $hasDifferentPorts = $disembarkation_point != null && ($disembarkation_point != $embarkation_point);
 
-    $days = get_field('itinerary', $itinerary);
+    $days = $itineraryObject->days;
 
     // Destination Point Series
     $destinationPoints = [];
@@ -76,7 +76,7 @@ function getItineraryObject($itinerary)
     }
 
     // Get and validate geojson field
-    $geojsonField = get_field('geojson', $itinerary);
+    $geojsonField = $itineraryObject->geojson;
     $geojsonDecoded = null;
 
     if (!empty($geojsonField) && is_string($geojsonField)) {
@@ -89,10 +89,10 @@ function getItineraryObject($itinerary)
         'featureList' => $featureList,
         'hasDifferentPorts' => $hasDifferentPorts,
         'geojson' => $geojsonDecoded,
-        'startLatitude' => get_field('latitude_start_point', $itinerary),
-        'startLongitude' => get_field('longitude_start_point', $itinerary),
-        'startZoom' => get_field('zoom_level_start_point', $itinerary),
-        'postId' => get_the_ID($itinerary),
+        'startLatitude' => $itineraryObject->startLatitude,
+        'startLongitude' => $itineraryObject->startLongitude,
+        'startZoom' => $itineraryObject->startZoom,
+        'postId' => $itineraryObject->postId,
         'excludeDayMarkup' => false
     ];
 

@@ -1,5 +1,4 @@
 <?php
-$itineraries = get_field('itineraries');
 $itineraries_title = get_field('itineraries_title');
 $itineraries_title_subtext = get_field('itineraries_title_subtext');
 $regions = $args['regions'];
@@ -77,14 +76,9 @@ $isMultiRegion = $args['isMultiRegion'];
                             $images =  get_field('hero_gallery', $itinerary);
                             $image = $images[0];
                             $title = get_field('display_name', $itinerary);
-                            $days = get_field('itinerary', $itinerary);
-                            $length_in_nights = get_field('length_in_nights', $itinerary);
-                            $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
-                            $embarkation_point = get_field('embarkation_point', $itinerary);
-                            $embarkation = get_the_title($embarkation_point);
+                            $itineraryInfoObject = createItineraryInfoObject($itinerary);
+                            $lengthDisplay = $itineraryInfoObject->lengthDisplay;
                             $shipsDisplay = getShipsFromItineraryList($itinerary, true);
-                            $destinations = getItineraryDestinations($itinerary, true, 4);
-                            $guestsDisplay = get_field('vessel_capacity', $itinerary) . ' Guests, ' . 'Luxury';
                             $departures = getDepartureList($itinerary);
                             if( !$departures ) continue; // Skip if sold out
                             $lowestPrice = getLowestDepartureListPrice($departures);
@@ -130,7 +124,7 @@ $isMultiRegion = $args['isMultiRegion'];
                                                 </svg>
                                             </div>
                                             <div class="specs-item__text">
-                                                Length: <?php echo $length; ?>
+                                                Length: <?php echo $lengthDisplay; ?>
                                             </div>
                                         </div>
                                         <!-- Ships -->

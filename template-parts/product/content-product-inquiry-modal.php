@@ -113,9 +113,9 @@ $email = get_field('email', 'options');
                         $departureReturnDate = strtotime($d['ReturnDate']);
                         $title = get_field('display_name', $itineraryPost);
                         $hero_gallery = get_field('hero_gallery', $itineraryPost);
-                        $embarkationPost = get_field('embarkation_point', $itineraryPost);
-                        $embarkationCountryPost = get_field('embarkation_country', $embarkationPost);
-                        $embarkationName = get_the_title($embarkationPost) . ', ' . get_the_title($embarkationCountryPost);
+
+                        $lengthDisplay = $d['LengthInDays'] . ' Days';
+                        $embarkationDisplay = $d['EmbarkationDisplay'];
                         $secondaryFilterId = $itineraryPostId;
                         $subtitleDisplay = $d['LengthInNights'] + 1 . ' Days / ' . $d['LengthInNights'] . ' Nights';
                         $bestDiscount = $d['BestDiscount'];
@@ -170,6 +170,21 @@ $email = get_field('email', 'options');
                                             </div>
                                         </div>
                                     </div>
+                                    <?php if (get_post_type() == 'rfc_itineraries') : ?>
+                                        <!-- Time -->
+                                        <div class="specs-item">
+                                            <div class="specs-item__icon">
+                                                <svg>
+                                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-time-clock"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="specs-item__text">
+                                                <div class="specs-item__text__main">
+                                                    <?php echo $lengthDisplay ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
                                     <!-- Ports -->
                                     <div class="specs-item">
                                         <div class="specs-item__icon">
@@ -179,7 +194,7 @@ $email = get_field('email', 'options');
                                         </div>
                                         <div class="specs-item__text">
                                             <div class="specs-item__text__main">
-                                                <?php echo $embarkationName ?>
+                                                <?php echo $embarkationDisplay ?>
                                             </div>
                                         </div>
                                     </div>

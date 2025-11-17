@@ -11,7 +11,9 @@ $deals = $args['deals'];
 $specialDepartures = $args['specialDepartures'];
 $images = get_field('hero_gallery');
 $desktopImages = array_slice($images, 1); //for gallery desktop slider
-$fly_category = getFlightOption(get_post());
+$fly_category = getFlightOption(get_field('fly_category'));
+
+$itineraryInfoObject = $args['itineraryInfoObject'];
 
 ?>
 
@@ -84,11 +86,15 @@ $fly_category = getFlightOption(get_post());
 
 
                 <div class="product-hero__content__main__primary__badge-area">
-                    <?php if ($fly_category) : ?>
-                        <span class="product-hero-badge product-hero-badge--fly">
-                            <?php echo $fly_category; ?>
-                        </span>
-                    <?php endif; ?>
+                    <?php foreach ($itineraryInfoObject->uniqueFlyCategoriesArray as $uniqueFlyCategory) :
+                        $fly_category = getFlightOption($uniqueFlyCategory);
+                        if ($fly_category) :
+                    ?>
+                            <span class="product-hero-badge product-hero-badge--fly">
+                                <?php echo $fly_category; ?>
+                            </span>
+                    <?php endif;
+                    endforeach; ?>
                     <?php if ($deals) : ?>
                         <a class="product-hero-badge product-hero-badge--deal" href="#deals">
                             <?php echo getDealsDisplay($deals); ?> Available
@@ -111,7 +117,6 @@ $fly_category = getFlightOption(get_post());
                 <div class="product-hero__content__main__primary__nav">
                     <a href="#highlights" class="product-hero__content__main__primary__nav__link">Highlights</a>
                     <a href="#itinerary" class="product-hero__content__main__primary__nav__link">Itinerary</a>
-                    <a href="#map" class="product-hero__content__main__primary__nav__link">Map</a>
                     <a href="#dates" class="product-hero__content__main__primary__nav__link">Dates</a>
                     <?php if ($extraActivities) : ?>
                         <a href="#extras" class="product-hero__content__main__primary__nav__link">Extras</a>
@@ -173,37 +178,32 @@ $fly_category = getFlightOption(get_post());
                             <div class="sub-attribute">
                                 Length
                             </div>
-                            <?php echo $length . " Days"; ?>
+                            <?php echo $itineraryInfoObject->lengthDisplay; ?>
 
                         </div>
                     </div>
 
 
                     <!-- Embarkation -->
-                    <?php $embarkation_is_flight = get_field('embarkation_is_flight', $itinerary); ?>
                     <div class="product-hero__content__main__secondary__attributes__item">
                         <div class="product-hero__content__main__secondary__attributes__item__icon">
                             <svg>
-                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-<?php echo  $embarkation_is_flight ? 'plane' : 'boat'; ?>"></use>
+                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-check-in32"></use>
                             </svg>
                         </div>
                         <div class="product-hero__content__main__secondary__attributes__item__text">
                             <div class="sub-attribute">
                                 Embark
                             </div>
-                            <?php
-                            $embarkation_point = get_field('embarkation_point', $itinerary);
-                            echo get_the_title($embarkation_point);
-                            ?>
+                            <?php echo $itineraryInfoObject->embarkationDisplay; ?>
                         </div>
                     </div>
 
                     <!-- DisEmbarkation -->
-                    <?php $disembarkation_is_flight = get_field('disembarkation_is_flight', $itinerary); ?>
                     <div class="product-hero__content__main__secondary__attributes__item">
                         <div class="product-hero__content__main__secondary__attributes__item__icon">
                             <svg>
-                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-<?php echo  $disembarkation_is_flight ? 'plane' : 'boat'; ?>"></use>
+                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-event-confirm32"></use>
                             </svg>
                         </div>
                         <div class="product-hero__content__main__secondary__attributes__item__text">
@@ -211,10 +211,7 @@ $fly_category = getFlightOption(get_post());
                                 Disembark
                             </div>
 
-                            <?php
-                            $disembarkation_point = get_field('disembarkation_point', $itinerary) ?: $embarkation_point;
-                            echo get_the_title($disembarkation_point);
-                            ?>
+                            <?php echo $itineraryInfoObject->disembarkationDisplay; ?>
 
                         </div>
                     </div>

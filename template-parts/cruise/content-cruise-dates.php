@@ -58,9 +58,8 @@ $departures = $args['departures'];
                         $title = get_field('display_name', $itineraryPost);
                         $hero_gallery = get_field('hero_gallery', $itineraryPost);
                         $image = $hero_gallery[0];
-                        $embarkationPost = get_field('embarkation_point', $itineraryPost);
-                        $embarkationCountryPost = get_field('embarkation_country', $embarkationPost);
-                        $embarkationName = get_the_title($embarkationPost) . ', ' . get_the_title($embarkationCountryPost);
+                        $embarkationDisplay = $d['EmbarkationDisplay'];
+
                         $bestDiscount = $d['BestDiscount'];
                         $highestPrice = $d['HighestPrice'];
                         $lowestPrice = $d['LowestPrice'];
@@ -117,7 +116,7 @@ $departures = $args['departures'];
                                     </div>
                                     <div class="specs-item__text">
                                         <div class="specs-item__text__main">
-                                            <?php echo $embarkationName ?>
+                                            <?php echo $embarkationDisplay ?>
                                         </div>
                                     </div>
                                 </div>
