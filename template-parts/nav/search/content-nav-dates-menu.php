@@ -49,9 +49,19 @@ foreach ($regions as $region) {
     $currentYear = date("Y");
     $seasonArray = [];
 
+    $shouldStartEarly = false;
+
+    if ($regionObject['isMultiYear'] && ($season_end - 12) >= (int)date('m')) {
+        $shouldStartEarly = true;
+    } elseif (!$regionObject['isMultiYear'] && (int)date('m') > $season_end) {
+        $shouldStartEarly = true;
+    }
+
+    // Adjust the starting index based on whether we should start early
+    $startIndex = $shouldStartEarly ? 1 : 0;
 
     // if multiyear and now is before ending month, start the count one earlier
-    for ($x = ($regionObject['isMultiYear'] && ($season_end - 12) >= (int)date('m')) ? -1 : 0; $x < 2; $x++) :
+    for ($x = $shouldStartEarly ? -1 : 0; $x < 2; $x++) :
         $hexId = getRandomHex();
         $initiallyShown = $regionObject['isPrimary'] && $x == 0 ? true : false;
 
@@ -63,7 +73,7 @@ foreach ($regions as $region) {
                 'initiallyShown' => $initiallyShown,
                 'monthNumber' => date('m', mktime(0, 0, 0, $z, 1)),
                 'monthName' => date('F', mktime(0, 0, 0, $z, 1)),
-                'monthYear' => date('Y', mktime(0, 0, 0, $z, 1)) + $x
+                'monthYear' => date('Y', mktime(0, 0, 0, $z, 1)) + $x + $startIndex  // Add startIndex here
             ];
 
             // if not current year and past month, and not last year
@@ -72,18 +82,21 @@ foreach ($regions as $region) {
             };
         }
 
-        $displayYear = $currentYear + $x;
+        $displayYear = $currentYear + $x + $startIndex;  // Add startIndex here too
         $seasonName = $regionObject['isMultiYear']  ? $displayYear . "-" .  ($displayYear + 1) . " Season" : $displayYear . " Season";
-        $season = [
-            'index' => $x,
-            'hex' => $hexId,
-            'name' => $seasonName,
-            'regionId' => $object->ID,
-            'months' => $monthArray,
-            'initiallyShown' => $initiallyShown,
-        ];
+        // Only add the season if it has months
+        if (!empty($monthArray)) {
+            $season = [
+                'index' => $x,
+                'hex' => $hexId,
+                'name' => $seasonName,
+                'regionId' => $object->ID,
+                'months' => $monthArray,
+                'initiallyShown' => $initiallyShown,
+            ];
 
-        $seasonArray[] = $season;
+            $seasonArray[] = $season;
+        }
 
     endfor;
 

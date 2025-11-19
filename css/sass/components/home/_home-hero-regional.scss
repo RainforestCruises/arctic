@@ -94,6 +94,8 @@
     }
 
     &__video-area {
+      align-self: stretch; // Add this
+
       @media only screen and (max-width: $bp-large) {
         display: none;
       }
@@ -106,7 +108,7 @@
         width: 100%;
         box-shadow: $shadow-medium-around;
         cursor: pointer;
-
+        max-height: 100%; // Add this
         &__source {
           position: absolute;
           height: 100%;
