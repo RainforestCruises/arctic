@@ -19,7 +19,7 @@ $allLink = $top_level_search_page ;
 if($route){
   $allLink = $top_level_search_page . '?routes=' . $route->ID;
 } else if ($style){
-  $allLink = $top_level_search_page . '?styles=' . $style->ID;
+  $allLink = $top_level_search_page . '?themes=' . $style->ID;
 }
 
 // itinerary / ship content page criteria
