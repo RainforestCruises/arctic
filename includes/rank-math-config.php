@@ -3,15 +3,15 @@
 //Rank Math -----------
 //Variable Additions
 
-//Add this-- 2022/23
+//Add this-- 2025/26/27
 add_action('rank_math/vars/register_extra_replacements', function () {
     rank_math_register_var_replacement(
         'seo_years',
         [
             'name'        => esc_html__('SEO Years', 'rank-math'),
-            'description' => esc_html__('This year / next year', 'rank-math'),
+            'description' => esc_html__('This year / next two years', 'rank-math'),
             'variable'    => 'seo_years',
-            'example'     => date("Y") . "-" . date('y', strtotime('+2 year')),
+            'example'     => date("Y") . "/" . date('y', strtotime('+1 year')) . "/" . date('y', strtotime('+2 year')),
         ],
         'shortcode_rankmath_years'
     );
@@ -19,7 +19,7 @@ add_action('rank_math/vars/register_extra_replacements', function () {
 
 function shortcode_rankmath_years()
 {
-    return date("Y") . "-" . date('y', strtotime('+2 year')); /* FIELD FROM OPTIONS PAGE */
+    return date("Y") . "/" . date('y', strtotime('+1 year')) . "/" . date('y', strtotime('+2 year'));
 }
 
 

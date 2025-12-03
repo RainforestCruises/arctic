@@ -140,7 +140,7 @@ if (trim($selectedMonthsString) != "") {
     $selectedMonths = explode(",", $selectedMonthsString);
     $currentYear = (int)date('Y');
     $selectedDepartures = [];
-    for ($x = $currentYear; $x < $currentYear + 3; $x++) {
+    for ($x = $currentYear; $x < $currentYear + 4; $x++) {
         foreach ($selectedMonths as $selectedMonth) {
             $selectedDepartures[] = $x . '-' . trim($selectedMonth);
         }
