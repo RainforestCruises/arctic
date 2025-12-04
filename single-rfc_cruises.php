@@ -43,8 +43,8 @@ usort($cabins, 'custom_sort');
 // cabins custom sorting function
 function custom_sort($a, $b)
 {
-  $ranking_a = get_field('ranking', $a->ID);
-  $ranking_b = get_field('ranking', $b->ID);
+  $ranking_a = get_field('order', $a->ID);
+  $ranking_b = get_field('order', $b->ID);
   if ($ranking_a === null && $ranking_b === null) {
     return 0; // Both values are null, consider them equal
   } elseif ($ranking_a === null) {
