@@ -19,7 +19,7 @@ add_action('rank_math/vars/register_extra_replacements', function () {
 
 function shortcode_rankmath_years()
 {
-    return date("Y") . "/" . date('y', strtotime('+1 year')) . "/" . date('y', strtotime('+2 year'));
+    return date("Y") . ", " . date('Y', strtotime('+1 year')) . " & " . date('Y', strtotime('+2 year'));
 }
 
 
