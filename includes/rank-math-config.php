@@ -11,7 +11,7 @@ add_action('rank_math/vars/register_extra_replacements', function () {
             'name'        => esc_html__('SEO Years', 'rank-math'),
             'description' => esc_html__('This year / next two years', 'rank-math'),
             'variable'    => 'seo_years',
-            'example'     => date("Y") . "/" . date('y', strtotime('+1 year')) . "/" . date('y', strtotime('+2 year')),
+            'example' => date("Y") . ", " . date('Y', strtotime('+1 year')) . " & " . date('Y', strtotime('+2 year')),
         ],
         'shortcode_rankmath_years'
     );
@@ -36,4 +36,4 @@ add_filter('rank_math/sitemap/enable_caching', '__return_false');
  *
  * @param int $number
  */
-add_filter( 'rank_math/redirection/add_query_string', '__return_false' );
+add_filter('rank_math/redirection/add_query_string', '__return_false');
