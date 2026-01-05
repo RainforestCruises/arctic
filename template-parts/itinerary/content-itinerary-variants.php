@@ -28,7 +28,6 @@ $itinerary_note = get_field('itinerary_note');
             <div class="itinerary-variants__content__itinerary__nav">
                 <?php foreach ($itineraryInfoObject->itineraryObjects as $itineraryObject) :
                     $flightOption = getFlightOption($itineraryObject->fly_category);
-                    console_log($flightOption);
                 ?>
                     <button class="variant-button <?php echo $itineraryObject->index == 0 ? "active" : ""; ?>" data-variant-index="<?php echo $itineraryObject->index; ?>">
 

@@ -13,7 +13,7 @@ console_log($cruises);
         <div class="slider-block__content__top">
 
             <!-- Title -->
-            <div class="title-single">
+            <div class="title-group">
                 <h2 class="title-group__title">
                     <?php echo $cruises_title; ?>
                 </h2>

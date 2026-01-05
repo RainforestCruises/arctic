@@ -21,6 +21,7 @@ function createItineraryInfoObject($itinerary)
         ? "From {$embarkation_point->post_title}"
         : "From {$embarkation_point->post_title} to {$disembarkation_point->post_title}";
 
+    $departure_display = get_field('variant_title', $itinerary) ?: $departure_display;
 
     $defaultItineraryObject = (object) [
         'days' => $days,
@@ -71,6 +72,8 @@ function createItineraryInfoObject($itinerary)
             $variant_departure_display = ($variant_embarkation_point->ID == $variant_disembarkation_point->ID)
                 ? "From {$variant_embarkation_point->post_title}"
                 : "From {$variant_embarkation_point->post_title} to {$variant_disembarkation_point->post_title}";
+
+            $variant_departure_display = $variant['variant_title'] ?: $variant_departure_display;
 
             // Track unique values
             if (!in_array($variant_length_in_days, $uniqueLengths)) {

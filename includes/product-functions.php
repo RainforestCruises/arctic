@@ -611,6 +611,11 @@ function getItineraryRegion($itinerary)
 {
     $routes = get_field('route', $itinerary);
     $regionsList = [];
+
+    if (empty($routes)) {
+        return [];
+    }
+
     foreach ($routes as $route) {
         $regionsList[] = get_field('region', $route);
     }
@@ -721,6 +726,9 @@ function getShipItineraries($ship, $region = null)
         $use_automation = get_field('use_automation', $itinerary);
         $departures = $use_automation ? get_field('automation_departure_data', $itinerary) : get_field('departures', $itinerary);
 
+        if (empty($departures)) {
+            continue;
+        }
 
         $departureMatch = false;
         foreach ($departures as $departure) {

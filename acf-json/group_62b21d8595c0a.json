@@ -387,6 +387,25 @@
             "endpoint": 0
         },
         {
+            "key": "field_695beee093dd8",
+            "label": "Variant Title",
+            "name": "variant_title",
+            "type": "text",
+            "instructions": "To override the automatically generated variant name, use this field.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_648a47a4d8e81",
             "label": "Fly Category",
             "name": "fly_category",
@@ -809,6 +828,25 @@
             "layout": "row",
             "button_label": "",
             "sub_fields": [
+                {
+                    "key": "field_695bef3893dd9",
+                    "label": "Variant Title",
+                    "name": "variant_title",
+                    "type": "text",
+                    "instructions": "To override the automatically generated variant name, use this field.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
                 {
                     "key": "field_690a236a2c9ac",
                     "label": "Fly Category",
@@ -1883,5 +1921,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1762359187
+    "modified": 1767632764
 }

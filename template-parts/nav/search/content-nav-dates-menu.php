@@ -50,15 +50,19 @@ foreach ($regions as $region) {
     $seasonArray = [];
 
     $shouldStartEarly = false;
+    $currentMonth = (int)date('m');
 
-    if ($regionObject['isMultiYear'] && ($season_end - 12) >= (int)date('m')) {
-        $shouldStartEarly = true;
-    } elseif (!$regionObject['isMultiYear'] && (int)date('m') > $season_end) {
+    if ($regionObject['isMultiYear']) {
+        // For multi-year seasons, check if we're currently within an active season
+        // If current month is before the season end (accounting for year overlap)
+        // OR if current month is after the season start
+        if ($currentMonth <= ($season_end - 12) || $currentMonth >= $season_start) {
+            $shouldStartEarly = true;
+        }
+    } elseif (!$regionObject['isMultiYear'] && $currentMonth > $season_end) {
         $shouldStartEarly = true;
     }
 
-    // Adjust the starting index based on whether we should start early
-    $startIndex = $shouldStartEarly ? 1 : 0;
 
     // if multiyear and now is before ending month, start the count one earlier
     for ($x = $shouldStartEarly ? -1 : 0; $x < 2; $x++) :
@@ -73,16 +77,28 @@ foreach ($regions as $region) {
                 'initiallyShown' => $initiallyShown,
                 'monthNumber' => date('m', mktime(0, 0, 0, $z, 1)),
                 'monthName' => date('F', mktime(0, 0, 0, $z, 1)),
-                'monthYear' => date('Y', mktime(0, 0, 0, $z, 1)) + $x + $startIndex  // Add startIndex here
+                'monthYear' => date('Y', mktime(0, 0, 0, $z, 1)) + $x
             ];
 
-            // if not current year and past month, and not last year
-            if (!($monthObject['monthYear'] == $currentYear && $monthObject['monthNumber'] < (int)date('m')) && !($monthObject['monthYear'] == $currentYear - 1)) {
+            // Check if month is in the past
+            $isPastMonth = false;
+
+            if ($regionObject['isMultiYear']) {
+                // For multi-year seasons, only exclude if the month/year combo has fully passed
+                $monthTimestamp = mktime(0, 0, 0, $monthObject['monthNumber'], 1, $monthObject['monthYear']);
+                $currentTimestamp = mktime(0, 0, 0, date('m'), 1, date('Y'));
+                $isPastMonth = $monthTimestamp < $currentTimestamp;
+            } else {
+                // For single-year seasons, use the original logic
+                $isPastMonth = ($monthObject['monthYear'] == $currentYear && $monthObject['monthNumber'] < (int)date('m')) || ($monthObject['monthYear'] == $currentYear - 1);
+            }
+
+            if (!$isPastMonth) {
                 $monthArray[] = $monthObject;
-            };
+            }
         }
 
-        $displayYear = $currentYear + $x + $startIndex;  // Add startIndex here too
+        $displayYear = $currentYear + $x;
         $seasonName = $regionObject['isMultiYear']  ? $displayYear . "-" .  ($displayYear + 1) . " Season" : $displayYear . " Season";
         // Only add the season if it has months
         if (!empty($monthArray)) {

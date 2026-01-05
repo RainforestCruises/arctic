@@ -1,55 +1,57 @@
 // COLOR VARIABLES
 
-//$color-primary: #142838;
-//$color-primary: #222222;
-$color-primary: #1d2225;
+// $color-primary: #1d2225;
+// $color-primary-dark: #1d2225;
+// $color-footer: #1d2225;
+// $color-primary-light: #1f3f5a;
+// $color-tertiary: #108054;
+// $color-supporting: #347fff;
+// $color-supporting-light: #4d8eff;
+// $color-supporting-selection: #eff6ff;
+// $color-supporting-light-2: #4381b3;
+// $color-supporting-light-3: #6da9db;
 
-$color-primary-dark: #1d2225;
+$color-primary: #003548;
+$color-primary-dark: #003548;
+$color-footer: #003548;
 
-$color-footer: #1d2225;
-
-$color-primary-light: #1f3f5a;
+$color-primary-light: #003548;
 $color-tertiary: #108054;
-
-$color-supporting: #347fff;
-
-//#347fff
-
-
-$color-supporting-light: #4d8eff;
-
-$color-supporting-selection: #eff6ff;
-
-$color-supporting-light-2: #4381b3;
-$color-supporting-light-3: #6da9db;
+$color-supporting: #005085;
+$color-supporting-light: #005085;
+$color-supporting-selection: #a7dcf8;
+$color-supporting-light-2: #005085;
+$color-supporting-light-3: #005085;
 
 
 $color-green: #00ac78;
 $color-red: #de5c52;
 $color-orange: #ffa600; 
 $color-purple: #7862d8;
-
 $color-gold: #d9a402;
 
-$color-gold-dark-1: #bb8e06;
-$color-gold-dark: #8e7d2e;
-$color-gold-light: #fbcf00;
-//ca8e4e
-$color-khaki: #a06f3c;
+
+// $color-gold-dark-1: #bb8e06;
+// $color-gold-dark: #8e7d2e;
+// $color-gold-light: #fbcf00;
+// $color-khaki: #a06f3c;
+$color-gold-dark-1: #b58a72;
+$color-gold-dark: #b58a72;
+$color-gold-light: #b58a72;
+$color-khaki: #b58a72;
 
 
 $color-white: #fff; 
-$color-black: #1e1e1e;
-$color-black-highlight: #353535;
-
-$color-charcoal: #1d2225;
+$color-black: #12100b;
+$color-black-highlight: #12100b;
+$color-charcoal: #12100b;
 
 $color-grey-light-1: #f8f8f8;
 $color-grey-light-1a: #e6e6e6;
 $color-grey-light-2: #c2c6c9;
 
-$color-beige-1: #f8f7f5;
-$color-beige-2: #f6f4f0; 
+$color-beige-1: #f4efec;
+$color-beige-2: #f4efec; 
 
 $color-grey-1: #9ea0a4;
 $color-grey-2: #919598;
@@ -86,11 +88,29 @@ $inner-border-light: inset 0px 0px 0px 1px $color-grey-light-1a;
 @include font("Playfair Display", "../fonts/PlayfairDisplay/static/PlayfairDisplay-SemiBold", 600);
 @include font("Playfair Display", "../fonts/PlayfairDisplay/static/PlayfairDisplay-Bold", 700);
 @include font("Playfair Display", "../fonts/PlayfairDisplay/static/PlayfairDisplay-ExtraBold", 800);
+
+ 
+@include font("Sorts Mill Goudy", "../fonts/SortsMillGoudy/SortsMillGoudy-Regular", 400);
+@include font("Sorts Mill Goudy", "../fonts/SortsMillGoudy/SortsMillGoudy-Regular", 500);
+@include font("Sorts Mill Goudy", "../fonts/SortsMillGoudy/SortsMillGoudy-Regular", 600);
+@include font("Sorts Mill Goudy", "../fonts/SortsMillGoudy/SortsMillGoudy-Regular", 700);
+@include font("Sorts Mill Goudy", "../fonts/SortsMillGoudy/SortsMillGoudy-Regular", 800);
+
+
+@include font("Almarai", "../fonts/Almarai/almarai-latin-300-normal", 300);
+@include font("Almarai", "../fonts/Almarai/almarai-latin-400-normal", 400);
+@include font("Almarai", "../fonts/Almarai/almarai-latin-400-normal", 500);
+@include font("Almarai", "../fonts/Almarai/almarai-latin-700-normal", 600); 
+@include font("Almarai", "../fonts/Almarai/almarai-latin-700-normal", 700);
+@include font("Almarai", "../fonts/Almarai/almarai-latin-800-normal", 800);
  
 
 // FONT VARIABLES
-$font-primary: "Metropolis", sans-serif;
-$font-secondary: "Playfair Display", serif;
+// $font-primary: "Metropolis", sans-serif;
+// $font-secondary: "Playfair Display", serif;
+
+$font-primary: "Almarai", sans-serif;
+$font-secondary: "Sorts Mill Goudy", serif;
 
 
 
