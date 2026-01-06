@@ -117,10 +117,14 @@ $email = get_field('email', 'options');
                         $lengthDisplay = $d['LengthInDays'] . ' Days';
                         $embarkationDisplay = $d['EmbarkationDisplay'];
                         $secondaryFilterId = $itineraryPostId;
-                        $subtitleDisplay = $d['LengthInNights'] + 1 . ' Days / ' . $d['LengthInNights'] . ' Nights';
                         $bestDiscount = $d['BestDiscount'];
                         $lowestPrice = $d['LowestPrice'];
                         $highestPrice = $d['HighestPrice'];
+                        $variantTitle = $d['VariantTitle'];
+                        $subtitleDisplay = $d['LengthInNights'] + 1 . ' Days';
+                        if($variantTitle != null){
+                            $subtitleDisplay .= " (" . $variantTitle . ")";
+                        }
 
                         $deals = $d['Deals'];
 
@@ -181,6 +185,7 @@ $email = get_field('email', 'options');
                                             <div class="specs-item__text">
                                                 <div class="specs-item__text__main">
                                                     <?php echo $lengthDisplay ?>
+                                                    <?php echo $variantTitle != null ?  " (" . $variantTitle . ")" : "" ?>
                                                 </div>
                                             </div>
                                         </div>

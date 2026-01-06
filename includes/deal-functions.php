@@ -159,9 +159,23 @@ function getItinerariesWithDeal($deals, $excludeItinerary = null)
     $itinerariesWithDeal = [];
     foreach ($itineraries as $itinerary) {
         $departures = getDepartureList($itinerary);
+
+        // Guard against null or empty departures
+        if (empty($departures) || !is_array($departures)) {
+            continue; // Skip this itinerary if no valid departures
+        }
+
         $hasDeal = false;
         foreach ($departures as $departure) {
-            $combinedDepartureDeals = array_merge($departure['Deals'], $departure['SpecialDepartures']);
+            // Guard against missing array keys
+            $departureDeals = isset($departure['Deals']) && is_array($departure['Deals'])
+                ? $departure['Deals']
+                : [];
+            $specialDepartures = isset($departure['SpecialDepartures']) && is_array($departure['SpecialDepartures'])
+                ? $departure['SpecialDepartures']
+                : [];
+
+            $combinedDepartureDeals = array_merge($departureDeals, $specialDepartures);
 
             if (is_array($deals)) { // if matching an array of deals
                 foreach ($deals as $deal) {
@@ -262,6 +276,6 @@ function sortDealRank($a, $b)
         $rankB = get_field('search_rank', $b) ?: 0;
         return $rankB - $rankA;
     }
-    
+
     return 0;
 }

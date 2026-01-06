@@ -387,6 +387,8 @@ if (isset($_GET["countries"])) {
 $resultsObject = getSearchPosts($preselectedRegion, $routes, $embarkationCountries, $styles, $shipSizes, $lengthMin, $lengthMax, $priceMin, $priceMax, $preselectedDepartures, $searchInput, $sorting, $pageNumber, $viewType, $filterDeals, $filterSpecials);
 $resultCount = $resultsObject['resultsCount'];
 
+console_log($resultsObject);
+
 // page arguments ------------
 $args = array(
     'preselectedRegion' => $preselectedRegion, //preselection

@@ -70,6 +70,7 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
                         $highestPrice = $d['HighestPrice'];
                         $lowestPrice = $d['LowestPrice'];
                         $lengthDisplay = $d['LengthInDays'] . ' Days';
+                        $variantTitle = $d['VariantTitle'];
                         $deals = $d['Deals'];
                         $specialDepartures = $d['SpecialDepartures'];
                         $combinedDeals = array_merge($deals, $specialDepartures);
@@ -121,6 +122,7 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
                                     <div class="specs-item__text">
                                         <div class="specs-item__text__main">
                                             <?php echo $lengthDisplay ?>
+                                            <?php echo $variantTitle != null ?  " (" . $variantTitle . ")" : "" ?>
                                         </div>
                                     </div>
                                 </div>

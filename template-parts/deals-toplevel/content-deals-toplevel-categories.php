@@ -9,7 +9,7 @@ foreach ($sections as $section) :
     $snippet = $section['snippet'];
     $dealsInCategory = getDealsInCategory($category);
     $titleSlug = slugify(get_the_title($category));
-
+    console_log($dealsInCategory);
     if (!$dealsInCategory) continue; // skip if no deals found for category
 ?>
 
@@ -56,7 +56,6 @@ foreach ($sections as $section) :
                             $id = $deal->ID;
                             $image =  get_field('featured_image', $deal);
                             $itinerariesWithDeal = getItinerariesWithDeal($deal);
-                            $ships = getShipsWithDeal($deal);
                             $title = get_field('navigation_title', $deal);
                             $description = get_field('description', $deal);
                             $is_special_departure = get_field('is_special_departure', $deal);

@@ -33,7 +33,6 @@ $embarkation_point = get_field('embarkation_point');
 $disembarkation_point = get_field('disembarkation_point');
 
 $itineraryInfoObject = createItineraryInfoObject($itinerary);
-console_log($itineraryInfoObject);
 $itineraryMapObjects = [];
 foreach ($itineraryInfoObject->itineraryObjects as $itinerary) {
   $itineraryMapObjects[] = getItineraryMapObject($itinerary);

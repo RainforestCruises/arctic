@@ -59,7 +59,7 @@ $departures = $args['departures'];
                         $hero_gallery = get_field('hero_gallery', $itineraryPost);
                         $image = $hero_gallery[0];
                         $embarkationDisplay = $d['EmbarkationDisplay'];
-
+                        $variantTitle = $d['VariantTitle'];
                         $bestDiscount = $d['BestDiscount'];
                         $highestPrice = $d['HighestPrice'];
                         $lowestPrice = $d['LowestPrice'];
@@ -82,7 +82,8 @@ $departures = $args['departures'];
                                             <?php echo  $title; ?>
                                         </div>
                                         <div class="avatar__title-group__sub">
-                                            <?php echo $d['LengthInNights'] + 1 . ' Days / ' . $d['LengthInNights'] . ' Nights'; ?>
+                                            <?php echo $d['LengthInNights'] + 1 . ' Days' ; ?>
+                                            <?php echo $variantTitle != null ?  " (" . $variantTitle . ")" : "" ?>
                                         </div>
                                     </div>
                                 </a>

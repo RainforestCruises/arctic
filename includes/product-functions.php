@@ -19,6 +19,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
             $itineraryDefaultLength = get_field('length_in_nights', $i);
             $itineraryDefaultEmbarkatoin = get_field('embarkation_point', $i);
             $itineraryDefaultDisembarkation = get_field('disembarkation_point', $i);
+            $itineraryDefaultVariantTitle = get_field('variant_title', $i);
 
             $itineraryHasVariants = get_field('has_variants', $i);
             $itineraryVariants = get_field('variants', $i);
@@ -39,6 +40,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                     $departureItineraryLength = $itineraryDefaultLength;
                     $departureEmbarkation = $itineraryDefaultEmbarkatoin;
                     $departureDisembarkation = $itineraryDefaultDisembarkation;
+                    $departureVariantTitle = $itineraryDefaultVariantTitle;
 
                     if ($itineraryHasVariants) {
                         $departureVariantNumber = $d['variant'] ?? 0;
@@ -48,6 +50,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                             $departureItineraryLength = $matchedVariant['length_in_nights'] ?? $itineraryDefaultLength;
                             $departureEmbarkation = $matchedVariant['embarkation_point'] ?? $itineraryDefaultEmbarkatoin;
                             $departureDisembarkation = $matchedVariant['disembarkation_point'] ?? $itineraryDefaultDisembarkation;
+                            $departureVariantTitle = $matchedVariant['variant_title'] ?? "";
                         };
                     };
 
@@ -93,6 +96,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                             'LengthInNights' => $departureItineraryLength,
                             'Deals' => $filteredDeals,
                             'SpecialDepartures' => $filteredSpecialDepartures,
+                            'VariantTitle' => $departureVariantTitle,
                         ];
 
 
@@ -111,6 +115,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
         $itineraryDefaultLength = get_field('length_in_nights', $post);
         $itineraryDefaultEmbarkatoin = get_field('embarkation_point', $post);
         $itineraryDefaultDisembarkation = get_field('disembarkation_point', $post);
+        $itineraryDefaultVariantTitle = get_field('variant_title', $post);
 
         $itineraryHasVariants = get_field('has_variants', $post);
         $itineraryVariants = get_field('variants', $post);
@@ -130,6 +135,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                 $departureItineraryLength = $itineraryDefaultLength;
                 $departureEmbarkation = $itineraryDefaultEmbarkatoin;
                 $departureDisembarkation = $itineraryDefaultDisembarkation;
+                $departureVariantTitle = $itineraryDefaultVariantTitle;
 
                 if ($itineraryHasVariants) {
                     $departureVariantNumber = $d['variant'] ?? 0;
@@ -139,6 +145,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                         $departureItineraryLength = $matchedVariant['length_in_nights'] ?? $itineraryDefaultLength;
                         $departureEmbarkation = $matchedVariant['embarkation_point'] ?? $itineraryDefaultEmbarkatoin;
                         $departureDisembarkation = $matchedVariant['disembarkation_point'] ?? $itineraryDefaultDisembarkation;
+                        $departureVariantTitle = $matchedVariant['variant_title'] ?? "";
                     };
                 };
 
@@ -189,6 +196,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                         'LengthInDays' => $departureItineraryLength + 1,
                         'Deals' => $filteredDeals,
                         'SpecialDepartures' => $filteredSpecialDepartures,
+                        'VariantTitle' => $departureVariantTitle,
 
                     ];
                     if ($filterSoldOut) {

@@ -299,6 +299,10 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
                 $specialDepartures = $departure['SpecialDepartures'];
                 $departureDate = $departure['DepartureDate'];
                 $returnDate = $departure['ReturnDate'];
+                $lengthDisplay = $departure['LengthInDays'] . ' Days';
+                if($departure['VariantTitle'] != null) {
+                    $lengthDisplay .= " (" . $departure['VariantTitle'] . ")";
+                }
 
                 if ($highestPrice < $minPrice || $lowestPrice > $maxPrice) { // price filter
                     continue;
