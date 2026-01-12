@@ -33,13 +33,9 @@ if (is_plugin_active('translatepress-multilingual/index.php') && $show_translate
 
 $footer_links = get_field('footer_links', 'options');
 $logo_minimal = get_field('logo_minimal', 'options');
-$slogan_image = get_field('slogan_image', 'options');
+$footer_image = get_field('footer_image', 'options');
 
 
-console_log($logo_minimal);
-console_log('slogan');
-
-console_log($slogan_image);
 
 $phone_number = get_field('phone_number', 'options');
 $phone_number_numeric = get_field('phone_number_numeric', 'options');
@@ -120,7 +116,7 @@ $footerClasses = renderFooterClasses();
                 </div>
             </div>
             <div class="footer__content__bottom__slogan">
-            <img src="<?php echo $slogan_image['url']; ?>" alt="<?php echo get_bloginfo('name') ?>" />
+            <img src="<?php echo $footer_image['url']; ?>" alt="<?php echo get_bloginfo('name') ?>" />
         </div>
             <div class="footer__content__bottom__access">
                 <div class="footer__content__bottom__access__localization">
