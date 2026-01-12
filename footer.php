@@ -34,7 +34,7 @@ if (is_plugin_active('translatepress-multilingual/index.php') && $show_translate
 $footer_links = get_field('footer_links', 'options');
 $logo_minimal = get_field('logo_minimal', 'options');
 $company_slogan_image = get_field('company_slogan_image', 'options');
-
+console_log($company_slogan_image);
 
 
 $phone_number = get_field('phone_number', 'options');
