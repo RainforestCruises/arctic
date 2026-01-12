@@ -3,7 +3,10 @@ $ships_title_subtext = get_field('ships_title_subtext');
 $ships_title = get_field('ships_title');
 $ships = $args['ships'];
 $region = $args['region'];
+$primaryRegion = getPrimaryRegion();
 
+console_log($region->ID);
+console_log($primaryRegion->ID);
 ?>
 
 
@@ -36,12 +39,19 @@ $region = $args['region'];
                 $serviceLevelDisplay = get_field('service_level', $ship) ? get_the_title($serviceLevel) : '';
                 $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . $serviceLevelDisplay;
                 $departures = getDepartureList($ship, null, true, $region); // ships must specify region on a landing page
-                if(!$departures){
+                if (!$departures) {
                     continue;
                 }
                 $lowestPrice = getLowestDepartureListPrice($departures);
                 $highestPrice = getHighestDepartureListPrice($departures);
                 $bestOverallDiscount = getBestDepartureListDiscount($departures);
+                $permalink = get_permalink($ship);
+
+                if ($primaryRegion->ID != $region->ID) {
+                    $permalink .= "?region=" . $region->ID;
+                    console_log("Adding region to ship link: " . $permalink);
+                }
+
             ?>
 
                 <!-- Cabin Card -->
@@ -58,7 +68,7 @@ $region = $args['region'];
                     <div class="resource-card__image-area swiper ship-card-image-area">
                         <div class="swiper-wrapper">
                             <?php foreach ($images as $image) : ?>
-                                <a class="resource-card__image-area__item swiper-slide" href="<?php echo get_permalink($ship) ?>">
+                                <a class="resource-card__image-area__item swiper-slide" href="<?php echo $permalink ?>">
                                     <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
                                 </a>
                             <?php endforeach; ?>
@@ -74,7 +84,7 @@ $region = $args['region'];
 
                         <!-- Title -->
                         <h3 class="resource-card__content__title">
-                            <a href="<?php echo get_permalink($ship) ?>"><?php echo $title; ?></a>
+                            <a href="<?php echo $permalink ?>"><?php echo $title; ?></a>
                         </h3>
 
                         <!-- Specs -->
