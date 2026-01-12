@@ -23,6 +23,7 @@ $specialDepartures = getDealsFromDepartureList($departures, true);
 $curentYear = date("Y");
 $yearSelections = createYearSelection($curentYear, 3);
 $reviews = get_field('reviews');
+$show_notification = get_field('show_notification');
 
 console_log($ship);
 
@@ -162,15 +163,12 @@ wp_localize_script(
 </main>
 
 <!-- Inquire Modal -->
-<?php
-get_template_part('template-parts/product/content', 'product-inquiry-modal', $args);
-?>
+<?php get_template_part('template-parts/product/content', 'product-inquiry-modal', $args); ?>
 
 <!-- Regions -->
-<?php
-if (count($regions) > 1) :
-  get_template_part('template-parts/cruise/content', 'cruise-region-modal', $args);
-endif
-?>
+<?php count($regions) > 1 ? get_template_part('template-parts/cruise/content', 'cruise-region-modal', $args) : null; ?>
+
+<!-- Notification -->
+<?php $show_notification == true ? get_template_part('template-parts/product/content', 'product-notification-modal', $args) : null; ?>
 
 <?php get_footer() ?>

@@ -14,6 +14,7 @@ $initialRegion = checkPageRegion();
 $primaryRegion = getPrimaryRegion();
 $productName = get_field('display_name');
 $extraActivities = get_field('extra_activities');
+$show_notification = get_field('show_notification');
 
 
 
@@ -168,5 +169,8 @@ $args = array(
 <?php
 get_template_part('template-parts/product/content', 'product-inquiry-modal', $args);
 ?>
+
+<?php $show_notification == true ? get_template_part('template-parts/product/content', 'product-notification-modal', $args) : null; ?>
+
 
 <?php get_footer() ?>

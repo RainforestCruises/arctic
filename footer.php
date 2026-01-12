@@ -35,6 +35,8 @@ $footer_links = get_field('footer_links', 'options');
 $logo_minimal = get_field('logo_minimal', 'options');
 $slogan_image = get_field('slogan_image', 'options');
 
+console_log($slogan_image);
+
 $phone_number = get_field('phone_number', 'options');
 $phone_number_numeric = get_field('phone_number_numeric', 'options');
 $email = get_field('email', 'options');
