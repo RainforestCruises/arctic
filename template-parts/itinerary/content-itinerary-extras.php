@@ -14,7 +14,7 @@ $extra_activities = get_field('extra_activities');
                     Extra Activities
                 </h2>
                 <div class="title-group__sub">
-                    Explore these <?php echo count($extra_activities) ?> add on activities
+                    Explore these <?php echo count($extra_activities) ?> add on activities. Please note activities may not be offered on all departures and are subject to availability, weather, and operational conditions. Our Polar Specialists will be happy to confirm which activities are possible on your selected sailing.
                 </div>
             </div>
 
