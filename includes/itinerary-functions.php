@@ -14,6 +14,9 @@ function createItineraryInfoObject($itinerary)
     $latitude_start_point = get_field('latitude_start_point', $itinerary);
     $longitude_start_point =  get_field('longitude_start_point', $itinerary);
     $zoom_level_start_point = get_field('zoom_level_start_point', $itinerary);
+    $show_itinerary_note = get_field('show_itinerary_note', $itinerary);
+    $itinerary_note = get_field('itinerary_note', $itinerary);
+
     $post_id = get_the_ID($itinerary);
 
     // Create departure display for default
@@ -21,7 +24,7 @@ function createItineraryInfoObject($itinerary)
         ? "From {$embarkation_point->post_title}"
         : "From {$embarkation_point->post_title} to {$disembarkation_point->post_title}";
 
-    $departure_display = get_field('variant_title', $itinerary) ?: $departure_display;
+    $departure_display = get_field('variant_title', $itinerary) ?: null;
 
     $defaultItineraryObject = (object) [
         'days' => $days,
@@ -37,6 +40,8 @@ function createItineraryInfoObject($itinerary)
         'postId' => $post_id,
         'index' => 0,
         'departureDisplay' => $departure_display,
+        'show_itinerary_note' => $show_itinerary_note,
+        'itinerary_note' => $itinerary_note,
     ];
     $defaultItineraryObject->mapObject = getItineraryMapObject($defaultItineraryObject);
     $itineraryObjects[] = $defaultItineraryObject;
@@ -67,13 +72,15 @@ function createItineraryInfoObject($itinerary)
             $variant_disembarkation_point = $variant['disembarkation_point'] ?? $disembarkation_point;
             $variant_fly_category = $variant['fly_category'] ?? $fly_category;
             $variant_geojson = $variant['geojson'] ?? $geojson;
+            $variant_show_itinerary_note = $variant['show_itinerary_note'] ?? false;
+            $variant_itinerary_note = $variant['itinerary_note'] ?? null;
 
             // Create departure display for variant
             $variant_departure_display = ($variant_embarkation_point->ID == $variant_disembarkation_point->ID)
                 ? "From {$variant_embarkation_point->post_title}"
                 : "From {$variant_embarkation_point->post_title} to {$variant_disembarkation_point->post_title}";
 
-            $variant_departure_display = $variant['variant_title'] ?: $variant_departure_display;
+            $variant_departure_display = $variant['variant_title'] ?: null;
 
             // Track unique values
             if (!in_array($variant_length_in_days, $uniqueLengths)) {
@@ -117,6 +124,8 @@ function createItineraryInfoObject($itinerary)
                 'postId' => $post_id, // same as default
                 'index' => $index,
                 'departureDisplay' => $variant_departure_display,
+                'show_itinerary_note' => $variant_show_itinerary_note,
+                'itinerary_note' => $variant_itinerary_note,
             ];
             $variantItineraryObject->mapObject = getItineraryMapObject($variantItineraryObject);
 

@@ -1,7 +1,6 @@
 <?php
 $itineraryInfoObject = $args['itineraryInfoObject'];
-$show_itinerary_note = get_field('show_itinerary_note');
-$itinerary_note = get_field('itinerary_note');
+
 
 ?>
 
@@ -28,6 +27,7 @@ $itinerary_note = get_field('itinerary_note');
             <div class="itinerary-variants__content__itinerary__nav">
                 <?php foreach ($itineraryInfoObject->itineraryObjects as $itineraryObject) :
                     $flightOption = getFlightOption($itineraryObject->fly_category);
+
                 ?>
                     <button class="variant-button <?php echo $itineraryObject->index == 0 ? "active" : ""; ?>" data-variant-index="<?php echo $itineraryObject->index; ?>">
 
@@ -71,19 +71,28 @@ $itinerary_note = get_field('itinerary_note');
                     </div>
                 </div>
 
-                <?php if ($show_itinerary_note) : ?>
-                    <div class="special-note">
-                        <?php echo $itinerary_note; ?>
 
-                    </div>
-                <?php endif; ?>
 
                 <!-- Days section -->
                 <div class="itinerary-variants__content__itinerary__main__days-area">
-                    <?php foreach ($itineraryInfoObject->itineraryObjects as $itineraryObject) : ?>
+                    <?php foreach ($itineraryInfoObject->itineraryObjects as $itineraryObject) :
+                        console_log($itineraryObject);
+                        $show_itinerary_note = $itineraryObject->show_itinerary_note;
+                        $itinerary_note = $itineraryObject->itinerary_note;
+                    ?>
+
+
 
                         <!-- Day List -->
                         <div class="day-list <?php echo $itineraryObject->index == 0 ? "active" : ""; ?>" data-variant-index="<?php echo $itineraryObject->index; ?>">
+
+                            <?php if ($show_itinerary_note) : ?>
+                                <div class="special-note">
+                                    <?php echo $itinerary_note; ?>
+                                </div>
+                            <?php endif; ?>
+
+
                             <?php
                             $count = 0;
                             $days = $itineraryObject->days;

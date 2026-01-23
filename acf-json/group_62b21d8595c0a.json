@@ -997,6 +997,52 @@
                     "maxlength": ""
                 },
                 {
+                    "key": "field_6973b46014672",
+                    "label": "Show Itinerary Note",
+                    "name": "show_itinerary_note",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                },
+                {
+                    "key": "field_6973b44314671",
+                    "label": "Itinerary Note",
+                    "name": "itinerary_note",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6973b46014672",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 0,
+                    "delay": 0
+                },
+                {
                     "key": "field_690a24592c9b2",
                     "label": "Itinerary",
                     "name": "itinerary",
@@ -1921,5 +1967,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1767632764
+    "modified": 1769190739
 }

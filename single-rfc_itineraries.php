@@ -113,15 +113,7 @@ $args = array(
 
   <!-- Day to Day -->
   <?php
-  // get_template_part('template-parts/itinerary/content', 'itinerary-days', $args);
   get_template_part('template-parts/itinerary/content', 'itinerary-variants', $args);
-
-
-  ?>
-
-  <!-- Itinerary Map -->
-  <?php
-  // get_template_part('template-parts/itinerary/content', 'itinerary-map', $args);
   ?>
 
   <!-- Dates -->
