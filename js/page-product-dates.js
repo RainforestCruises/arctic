@@ -106,87 +106,89 @@ jQuery(document).ready(function ($) {
   const variantFilterSearchButton = document.querySelector("#variant-filter-search-button");
   const variantFilterClearButton = document.querySelector("#variant-filter-clear-button");
 
-  const variantPopper = Popper.createPopper(variantFilterButton, variantFilterTooltip, {
-    placement: "top-start",
-    modifiers: [
-      {
-        name: "offset",
-        options: {
-          offset: [-8, 10],
+  if (variantFilterButton) {
+    const variantPopper = Popper.createPopper(variantFilterButton, variantFilterTooltip, {
+      placement: "top-start",
+      modifiers: [
+        {
+          name: "offset",
+          options: {
+            offset: [-8, 10],
+          },
         },
-      },
-    ],
-  });
+      ],
+    });
 
-  //show
-  variantFilterButton.addEventListener("click", showVariantsPopper);
-  function showVariantsPopper() {
-    variantFilterTooltip.setAttribute("data-show", "");
-    variantFilterButton.classList.add("active");
-    variantPopper.update();
+    //show
+    variantFilterButton.addEventListener("click", showVariantsPopper);
+    function showVariantsPopper() {
+      variantFilterTooltip.setAttribute("data-show", "");
+      variantFilterButton.classList.add("active");
+      variantPopper.update();
 
-    // tick boxes with initial state values
-    variantCheckboxes.forEach((item) => {
-      variantValuesInitialState.forEach((value) => {
-        if (item.value == value) {
-          item.checked = true;
-        }
+      // tick boxes with initial state values
+      variantCheckboxes.forEach((item) => {
+        variantValuesInitialState.forEach((value) => {
+          if (item.value == value) {
+            item.checked = true;
+          }
+        });
       });
-    });
-    updateVariantValues();
-  }
-
-  // hide
-  document.addEventListener("click", (evt) => {
-    const isVariantFilterButton = variantFilterButton.contains(evt.target);
-    const isVariantFilterTooltip = variantFilterTooltip.contains(evt.target);
-    const variantsListIsOpen = variantFilterTooltip.hasAttribute("data-show");
-
-    if (variantsListIsOpen && !isVariantFilterButton && !isVariantFilterTooltip) {
-      //needs both because not all area is clickable space
-      hideVariantsPopper();
-    }
-  });
-  function hideVariantsPopper() {
-    variantFilterTooltip.removeAttribute("data-show");
-    if (variantValuesInitialState.length == 0) {
-      variantFilterButton.classList.remove("active");
-    }
-  }
-
-  // checkboxes
-  const variantCheckboxes = [...document.querySelectorAll(".variant-checkbox")];
-  variantCheckboxes.forEach((item) => {
-    item.addEventListener("click", () => {
       updateVariantValues();
-    });
-  });
+    }
 
-  // checkboxes update values array
-  function updateVariantValues() {
-    variantValues = [];
-    variantCheckboxes.forEach((item) => {
-      if (item.checked) {
-        variantValues.push(item.value);
+    // hide
+    document.addEventListener("click", (evt) => {
+      const isVariantFilterButton = variantFilterButton.contains(evt.target);
+      const isVariantFilterTooltip = variantFilterTooltip.contains(evt.target);
+      const variantsListIsOpen = variantFilterTooltip.hasAttribute("data-show");
+
+      if (variantsListIsOpen && !isVariantFilterButton && !isVariantFilterTooltip) {
+        //needs both because not all area is clickable space
+        hideVariantsPopper();
       }
     });
-  }
+    function hideVariantsPopper() {
+      variantFilterTooltip.removeAttribute("data-show");
+      if (variantValuesInitialState.length == 0) {
+        variantFilterButton.classList.remove("active");
+      }
+    }
 
-  // clear
-  variantFilterClearButton.addEventListener("click", () => {
-    variantValues = [];
+    // checkboxes
+    const variantCheckboxes = [...document.querySelectorAll(".variant-checkbox")];
     variantCheckboxes.forEach((item) => {
-      item.checked = false;
+      item.addEventListener("click", () => {
+        updateVariantValues();
+      });
     });
-  });
 
-  // search
-  variantFilterSearchButton.addEventListener("click", () => {
-    variantValuesInitialState = variantValues; //set initial values
-    console.log(variantValuesInitialState);
-    hideVariantsPopper();
-    filterSlides();
-  });
+    // checkboxes update values array
+    function updateVariantValues() {
+      variantValues = [];
+      variantCheckboxes.forEach((item) => {
+        if (item.checked) {
+          variantValues.push(item.value);
+        }
+      });
+    }
+
+    // clear
+    variantFilterClearButton.addEventListener("click", () => {
+      variantValues = [];
+      variantCheckboxes.forEach((item) => {
+        item.checked = false;
+      });
+    });
+
+    // search
+    variantFilterSearchButton.addEventListener("click", () => {
+      variantValuesInitialState = variantValues; //set initial values
+      console.log(variantValuesInitialState);
+      hideVariantsPopper();
+      filterSlides();
+    });
+  }
 
   //Popper (Dates) ---------------
   const dateFilterButton = document.querySelector("#date-filter-button");
