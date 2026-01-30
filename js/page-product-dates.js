@@ -106,6 +106,24 @@ jQuery(document).ready(function ($) {
   const variantFilterSearchButton = document.querySelector("#variant-filter-search-button");
   const variantFilterClearButton = document.querySelector("#variant-filter-clear-button");
 
+  // checkboxes
+  const variantCheckboxes = [...document.querySelectorAll(".variant-checkbox")];
+  variantCheckboxes.forEach((item) => {
+    item.addEventListener("click", () => {
+      updateVariantValues();
+    });
+  });
+
+  // checkboxes update values array
+  function updateVariantValues() {
+    variantValues = [];
+    variantCheckboxes.forEach((item) => {
+      if (item.checked) {
+        variantValues.push(item.value);
+      }
+    });
+  }
+
   if (variantFilterButton) {
     const variantPopper = Popper.createPopper(variantFilterButton, variantFilterTooltip, {
       placement: "top-start",
@@ -153,24 +171,6 @@ jQuery(document).ready(function ($) {
       if (variantValuesInitialState.length == 0) {
         variantFilterButton.classList.remove("active");
       }
-    }
-
-    // checkboxes
-    const variantCheckboxes = [...document.querySelectorAll(".variant-checkbox")];
-    variantCheckboxes.forEach((item) => {
-      item.addEventListener("click", () => {
-        updateVariantValues();
-      });
-    });
-
-    // checkboxes update values array
-    function updateVariantValues() {
-      variantValues = [];
-      variantCheckboxes.forEach((item) => {
-        if (item.checked) {
-          variantValues.push(item.value);
-        }
-      });
     }
 
     // clear
