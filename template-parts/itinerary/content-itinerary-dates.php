@@ -53,6 +53,7 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
                     <?php foreach ($departures as $d) :
                         $departureId = $d['ID'];
                         $ship = $d['Ship'];
+                        $variantIndex = $d['VariantIndex'];
                         $shipId = $ship->ID;
                         $itineraryPost = $d['ItineraryPost'];
                         $itineraryPostId = $d['ItineraryPostId'];
@@ -77,7 +78,7 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
 
                     ?>
 
-                        <div class="information-card info-departure-card swiper-slide" data-filter-date="<?php echo date("Y", $departureStartDate); ?>" data-filter-secondary="<?php echo $shipId; ?>" data-filter-discount=<?php echo ($bestDiscount) ? true : false ?>>
+                        <div class="information-card info-departure-card swiper-slide" data-filter-date="<?php echo date("Y", $departureStartDate); ?>" data-filter-secondary="<?php echo $shipId; ?>" data-filter-variant="<?php echo $variantIndex; ?>" data-filter-discount=<?php echo ($bestDiscount) ? true : false ?>>
                             <!-- Title Group -->
                             <div class="information-card__section">
                                 <a class="avatar avatar--small" href="<?php echo get_permalink($ship); ?>" target="_blank">
@@ -269,6 +270,38 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
                     </div>
                     <div id="arrow" data-popper-arrow></div>
                 </div>
+
+
+                <!-- Variants Filter -->
+                <button class="btn-pill" data-filter="all" id="variant-filter-button" style="display: <?php echo $itineraryInfoObject->hasVariants ? '' : 'none' ?>">
+                    Variants
+                </button>
+                <div class="popper-tooltip" id="variant-filter-tooltip" role="tooltip">
+                    <div class="popper-tooltip__selection" id="variant-filter-selection">
+                        <ul class="popper-tooltip__selection__list">
+                            <?php
+                            $count = 1;
+                            foreach ($itineraryInfoObject->itineraryObjects as $itineraryObject) : ?>
+                                <li class="popper-tooltip__selection__list__item">
+                                    <input class="checkbox variant-checkbox" id="variant-check-<?php echo $count; ?>" type="checkbox" value="<?php echo $itineraryObject->index ?>">
+                                    <label for="variant-check-<?php echo $count; ?>"><?php echo $itineraryObject->length_in_days; ?> Day <?php echo $itineraryObject->departureDisplay; ?></label>
+                                </li>
+                            <?php $count++;
+                            endforeach; ?>
+                        </ul>
+                    </div>
+                    <div class="popper-tooltip__controls">
+                        <button class="btn-pill" id="variant-filter-clear-button">
+                            Clear
+                        </button>
+                        <button class="btn-pill btn-pill--inverse" id="variant-filter-search-button">
+                            Search
+                        </button>
+                    </div>
+                    <div id="arrow" data-popper-arrow></div>
+                </div>
+
+
                 <button class="btn-pill cruise-dates-departure-filter" id="view-discounted-button">
                     Discounted
                 </button>

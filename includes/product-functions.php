@@ -97,6 +97,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                             'Deals' => $filteredDeals,
                             'SpecialDepartures' => $filteredSpecialDepartures,
                             'VariantTitle' => $departureVariantTitle,
+                            'VariantIndex' => $d['variant'],
                         ];
 
 
@@ -124,9 +125,6 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
         $use_automation = get_field('use_automation', $post);
         $itineraryDepartures = $use_automation ? get_field('automation_departure_data', $post) : get_field('departures', $post);
 
-        if ($test) {
-            console_log($itineraryDepartures);
-        }
         foreach ($itineraryDepartures as $d) {   // each departure   
             $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
             if ($isCurrent) {
@@ -197,6 +195,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                         'Deals' => $filteredDeals,
                         'SpecialDepartures' => $filteredSpecialDepartures,
                         'VariantTitle' => $departureVariantTitle,
+                        'VariantIndex' => $d['variant']
 
                     ];
                     if ($filterSoldOut) {
