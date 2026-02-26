@@ -10,7 +10,7 @@ foreach ($sections as $section) :
     $dealsInCategory = getDealsInCategory($category);
     $itinerariesWithDealsInCategory = getItinerariesWithDeal($dealsInCategory);
     $titleSlug = slugify(get_the_title($category));
-    if (!$dealsInCategory) continue; // skip if no deals found for category
+    if (!$itinerariesWithDealsInCategory) continue; // skip if no deals found for category
 ?>
 
     <section class="slider-block deal-slider-block" id="<?php echo $titleSlug; ?>">
