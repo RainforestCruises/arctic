@@ -58,7 +58,7 @@ $show_reviews = get_field('show_reviews');
     <!--  -->
     <!-- Hero -->
     <?php
-    $isMultiRegion ? get_template_part('template-parts/home/content', 'home-hero-regional', $args) : get_template_part('template-parts/home/content', 'home-hero', $args);
+    $isMultiRegion ? get_template_part('template-parts/home/content', 'home-hero-regional', $args) : get_template_part('template-parts/home/content', 'home-hero-specific', $args);
     ?>
 
     <!-- Routes  -->

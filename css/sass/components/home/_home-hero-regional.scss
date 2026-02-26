@@ -5,7 +5,7 @@
     @include flexPadding;
     z-index: 5;
     display: grid;
-    grid-template-columns: calc(60% - 3rem) calc(40% - 3rem);
+    grid-template-columns: calc(100% - 41rem) 38rem;
     gap: 6rem;
     height: 100%;
     max-width: $page-width-full;
@@ -21,14 +21,6 @@
 
     &__primary {
       color: $color-white;
-      // display: flex;
-      // flex-direction: column;
-      // justify-content: space-between;
-      // gap: 6rem;
-
-      // @media only screen and (max-width: $bp-large) {
-      //   gap: 2rem;
-      // }
 
       &__title-group {
         &__title {
@@ -89,6 +81,24 @@
           & .swiper {
             overflow: visible !important;
           }
+        }
+      }
+
+      &__jumplinks {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 2rem;
+        min-height: 15rem;
+        margin-top: 4rem;
+        
+
+        @media only screen and (max-width: $bp-large) {
+          grid-template-columns: repeat(3, 1fr);
+          padding-bottom: 3rem;
+        }
+        @media only screen and (max-width: $bp-small) {
+          grid-template-columns: repeat(2, 1fr);
+          
         }
       }
     }
@@ -196,6 +206,177 @@
       @media only screen and (max-width: $bp-medium) {
         background-image: linear-gradient(to bottom, rgba($color-black, 0.5), transparent 100%), linear-gradient(to top, rgba($color-white, 1), transparent 20%);
       }
+    }
+  }
+}
+
+.video-card {
+  height: 100%;
+  width: 100%;
+  max-height: 34rem;
+  max-width: 68rem;
+  cursor: pointer;
+
+  &__video {
+    border-radius: 2rem;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: 1;
+    position: relative;
+    box-shadow: $shadow-medium-around;
+  }
+  &__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    z-index: 4;
+  }
+}
+
+.video-play-button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  height: 7rem;
+  width: max-content;
+
+  &.dark {
+    background-color: rgba($color-primary, 0.7);
+    padding: 1rem;
+    padding-left: 0;
+    padding-right: 2rem;
+    border-radius: 4rem;
+  }
+
+  &:hover {
+    & .video-play-button__icon-area__inner {
+      transition: all 0.2s;
+      transform: scale(0.95);
+      background-color: rgba($color-white, 1);
+    }
+  }
+
+  &__icon-area {
+    margin-right: 1rem;
+
+    @media only screen and (max-width: $bp-medium) {
+      margin-right: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    opacity: 0.7;
+    background-color: rgba($color-white, 0.3);
+    border-radius: 50%;
+    height: 7rem;
+    width: 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__inner {
+      border-radius: 50%;
+      background-color: rgba($color-white, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 5rem;
+      width: 5rem;
+      & svg {
+        height: 1rem;
+        width: 1rem;
+        z-index: 5;
+        color: $color-primary;
+      }
+
+      box-shadow: 0 0 0 0 rgb(255, 255, 255);
+      animation: pulse 8s infinite;
+    }
+  }
+
+  &__text {
+    color: $color-white;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-weight: 600;
+
+    @media only screen and (max-width: $bp-medium) {
+      display: none;
+    }
+  }
+}
+
+@keyframes pulse {
+  20% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+
+  40% {
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+.hero-item {
+  cursor: pointer;
+  border-radius: 1rem;
+  background-color: rgba($color-white, 0.8);
+  transition: all 0.2s;
+  &:hover {
+    background-color: rgba($color-white, 1);
+  }
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 2rem;
+
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  box-shadow: $shadow-medium-around;
+
+  &:link {
+    text-decoration: none;
+    color: $color-primary;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    justify-content: center;
+  }
+
+  &__icon-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & svg {
+      height: 3.2rem;
+      width: 3.2rem;
+      color: $color-primary;
+    }
+  }
+
+  &__title-group {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    &__title {
+      font-size: 1.6rem;
+      color: $color-primary;
+      font-weight: 600;
+      line-height: 2rem;
+    }
+
+    &__sub {
+      font-size: 1.2rem;
+      white-space: nowrap;
     }
   }
 }

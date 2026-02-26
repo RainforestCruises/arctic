@@ -1,7 +1,6 @@
 <?php 
 
 
-
 // Custom Post Type - Suppliers
 function create_post_type_rfc_suppliers()
 {
@@ -273,6 +272,27 @@ function create_post_type_rfc_activities()
     );
 }
 add_action('init', 'create_post_type_rfc_activities');
+
+// Custom Post Type - Optional Activities
+function create_post_type_rfc_opt_activities()
+{
+    register_post_type(
+        'rfc_opt_activities',
+        array(
+            'labels' => array(
+                'name' => __('Optional Activities'),
+                'singular_name' => __('Optional Activity'),
+            ),
+            'public' => true,
+            'rewrite' => array('slug' => 'opt-activities'),
+            'supports' => array(
+                'title'
+            )
+        )
+    );
+}
+add_action('init', 'create_post_type_rfc_opt_activities');
+
 
 // Custom Post Type - Regions
 function create_post_type_rfc_regions()

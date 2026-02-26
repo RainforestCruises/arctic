@@ -1,5 +1,18 @@
 <?php
-$extra_activities = get_field('extra_activities');
+$extra_activities = get_field('extra_activities') ?: [];
+
+$optional_activities = array_map(function ($post) {
+    return array(
+        'image'       => get_field('image', $post->ID),
+        'title'       => get_the_title($post->ID),
+        'description' => get_field('description', $post->ID),
+        'price'       => get_field('price', $post->ID),
+        'price_range_to'  => get_field('price_range_to', $post->ID),
+
+    );
+}, get_field('optional_activities') ?: []);
+
+$extra_activities = array_merge($extra_activities, $optional_activities);
 ?>
 
 <section class="slider-block narrow" id="extras">
@@ -45,6 +58,7 @@ $extra_activities = get_field('extra_activities');
                         $title = $activity['title'];
                         $description = $activity['description'];
                         $price = $activity['price'];
+                        $price_range_to = $activity['price_range_to'];
                     ?>
                         <div class="overlay-card swiper-slide extras-view-details" section="extras-section-<?php echo $count; ?>">
                             <div class="overlay-card__image-area">
@@ -54,7 +68,11 @@ $extra_activities = get_field('extra_activities');
                                 <div class="overlay-card__content__title-section">
                                     <div class="overlay-card__content__title-section__sub">
                                         <?php if ($price) : ?>
-                                            From <?php priceFormat($price); ?> Per Person
+                                            From <?php priceFormat($price); ?>
+                                            <?php if ($price_range_to) : ?>
+                                                - <?php priceFormat($price_range_to); ?>
+                                            <?php endif; ?>
+                                            Per Person
                                         <?php endif; ?>
                                     </div>
                                     <h3 class="overlay-card__content__title-section__title">
@@ -105,6 +123,8 @@ $extra_activities = get_field('extra_activities');
                 $title = $activity['title'];
                 $description = $activity['description'];
                 $price = $activity['price'];
+                $price_range_to = $activity['price_range_to'];
+
             ?>
 
                 <div class="product-extras-modal-item" id="<?php echo 'extras-section-' . $count; ?>">
@@ -114,7 +134,11 @@ $extra_activities = get_field('extra_activities');
                         </div>
                         <div class="product-extras-modal-item__title-group__sub">
                             <?php if ($price) : ?>
-                                From <?php priceFormat($price); ?> Per Person
+                                From <?php priceFormat($price); ?>
+                                <?php if ($price_range_to) : ?>
+                                    - <?php priceFormat($price_range_to); ?>
+                                <?php endif; ?>
+                                Per Person
                             <?php endif; ?>
                         </div>
                     </div>

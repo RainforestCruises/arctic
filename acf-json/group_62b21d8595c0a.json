@@ -1623,6 +1623,31 @@
             "endpoint": 0
         },
         {
+            "key": "field_69a0a13077fdd",
+            "label": "Optional Activities",
+            "name": "optional_activities",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rfc_opt_activities"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
+        },
+        {
             "key": "field_62b21d85d7c4e",
             "label": "Extra Activities",
             "name": "extra_activities",
@@ -1967,5 +1992,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1769190739
+    "modified": 1772136138
 }

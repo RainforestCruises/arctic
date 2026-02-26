@@ -1,12 +1,9 @@
 <?php
 $hero_featured_image = get_field('hero_featured_image');
-$hero_points = get_field('hero_points');
 $hero_title = get_field('hero_title');
 $hero_subtitle = get_field('hero_subtitle');
-$category_landing_pages = get_field('category_landing_pages', 'options');
 $hero_items = get_field('hero_items');
 $show_site_notice = get_field('show_site_notice', 'options');
-$hero_video_card = get_field('hero_video_card');
 
 
 ?>
