@@ -41,9 +41,11 @@ if ($top_level_search_page == get_permalink()) {
             <!-- Inquire Form -->
             <div class="inquire-form">
                 <div class="inquire-form__intro">
-                    <div class="inquire-form__intro__title">
-                        Interested in <?php echo $title; ?>?
-                    </div>
+                    <?php if (!is_page_template('template-home.php')) : ?>
+                        <div class="inquire-form__intro__title">
+                            Interested in <?php echo $title; ?>?
+                        </div>
+                    <?php endif; ?>
                     <div class="inquire-form__intro__selection">
 
                     </div>

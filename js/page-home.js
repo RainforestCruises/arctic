@@ -72,6 +72,16 @@ jQuery(document).ready(function ($) {
     }
   }
 
+  // Inquire modal
+  const inquireModal = document.querySelector("#inquireModal");
+  const genericInquireCtaButtons = [...document.querySelectorAll(".generic-inquire-cta")];
+  genericInquireCtaButtons.forEach((item) => {
+    item.addEventListener("click", () => {
+      inquireModal.style.display = "flex";
+      body.classList.add("no-scroll");
+    });
+  });
+
   // SLIDERS -------------------------------------------------------
   new Swiper("#hero-slider", {
     spaceBetween: 15,
