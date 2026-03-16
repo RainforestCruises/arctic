@@ -23,7 +23,7 @@ function renderHeaderClasses()
     $postTypeName = get_post_type();
 
     //fixed to view always
-    if ($templateName == 'template-home.php' || $postTypeName == 'rfc_travel_guides') {
+    if ($postTypeName == 'rfc_travel_guides') {
         $classes .= ' fixed ';
     }
 

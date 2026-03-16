@@ -2,7 +2,7 @@
 /*Template Name: Home*/
 
 wp_enqueue_script('page-home', get_template_directory_uri() . '/js/page-home.js', array('jquery'), false, true);
-wp_enqueue_script('page-product-cruise-itineraries', get_template_directory_uri() . '/js/page-product-cruise-itineraries.js', array('jquery'), false, true);
+wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', array('jquery'), false, true);
 
 get_header();
 
@@ -24,23 +24,29 @@ if ($selectedRegion != null) {
 
 
 // Get routes that match the regions
-$routes = getRoutesFromRegionList($regions);
+$show_routes = get_field('show_routes');
+$routes;
 
-$itineraryObjects = [];
-foreach ($routes as $route) {
-    $sample_itinerary = get_field('sample_itinerary', $route);
-    $itineraryInfoObject = createItineraryInfoObject($sample_itinerary);
-    $itineraryMapObjects[] = getItineraryMapObject($itineraryInfoObject->itineraryObjects[0]);
+if ($show_routes) {
+    $routes = getRoutesFromRegionList($regions);
+
+    $itineraryObjects = [];
+    foreach ($routes as $route) {
+        $sample_itinerary = get_field('sample_itinerary', $route);
+        $itineraryInfoObject = createItineraryInfoObject($sample_itinerary);
+        $itineraryMapObjects[] = getItineraryMapObject($itineraryInfoObject->itineraryObjects[0]);
+    }
+    wp_enqueue_script('page-product-cruise-itineraries', get_template_directory_uri() . '/js/page-product-cruise-itineraries.js', array('jquery'), false, true);
+
+    wp_localize_script(
+        'page-product-cruise-itineraries',
+        'page_vars',
+        array(
+            'itineraryMapObjects' =>  $itineraryMapObjects
+        )
+    );
 }
 
-
-wp_localize_script(
-    'page-product-cruise-itineraries',
-    'page_vars',
-    array(
-        'itineraryMapObjects' =>  $itineraryMapObjects
-    )
-);
 
 
 $args = array(
@@ -63,7 +69,7 @@ $show_reviews = get_field('show_reviews');
 
     <!-- Routes  -->
     <?php
-    get_template_part('template-parts/home/content', 'home-routes', $args);
+    $show_routes ? get_template_part('template-parts/home/content', 'home-routes', $args) : null;
     ?>
 
     <!-- Region Sections -->
@@ -99,7 +105,7 @@ $show_reviews = get_field('show_reviews');
     <!-- Reviews  -->
     <?php
     if ($show_reviews) :
-        get_template_part('template-parts/home/content', 'home-reviews', $args);
+        get_template_part('template-parts/home/content', 'home-reviews-embed', $args);
     endif;
     ?>
 

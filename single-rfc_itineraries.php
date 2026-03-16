@@ -13,8 +13,21 @@ $itinerary = get_post();
 $initialRegion = checkPageRegion();
 $primaryRegion = getPrimaryRegion();
 $productName = get_field('display_name');
-$extraActivities = get_field('extra_activities');
 $show_notification = get_field('show_notification');
+
+$extra_activities = get_field('extra_activities') ?: [];
+$optional_activities = array_map(function ($post) {
+    return array(
+        'image'       => get_field('image', $post->ID),
+        'title'       => get_field('title', $post->ID),
+        'description' => get_field('description', $post->ID),
+        'price'       => get_field('price', $post->ID),
+        'price_range_to'  => get_field('price_range_to', $post->ID),
+
+    );
+}, get_field('optional_activities') ?: []);
+
+$extra_activities = array_merge($extra_activities, $optional_activities);
 
 
 
@@ -79,7 +92,7 @@ $cabins = get_posts($args);
 $args = array(
   'ships' => $ships,
   'cabins' => $cabins,
-  'extraActivities' => $extraActivities,
+  'extra_activities' => $extra_activities,
   'productName' => $productName,
   'lowestOverallPrice' => $lowestOverallPrice,
   'bestOverallDiscount' => $bestOverallDiscount,
@@ -140,7 +153,7 @@ $args = array(
 
   <!-- Extras -->
   <?php
-  if ($extraActivities) :
+  if ($extra_activities) :
     get_template_part('template-parts/itinerary/content', 'itinerary-extras', $args);
   endif; ?>
 

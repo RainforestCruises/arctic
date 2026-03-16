@@ -3,8 +3,19 @@ $title = get_field('display_name');
 $itinerary = get_post();
 $departures = getDepartureList($itinerary);
 $deals = getDealsFromDepartureList($departures);
-$extraActivities = get_field('extra_activities');
+$extra_activities = get_field('extra_activities') ?: [];
+$optional_activities = array_map(function ($post) {
+    return array(
+        'image'       => get_field('image', $post->ID),
+        'title'       => get_field('title', $post->ID),
+        'description' => get_field('description', $post->ID),
+        'price'       => get_field('price', $post->ID),
+        'price_range_to'  => get_field('price_range_to', $post->ID),
 
+    );
+}, get_field('optional_activities') ?: []);
+
+$extra_activities = array_merge($extra_activities, $optional_activities);
 
 ?>
 
@@ -28,7 +39,7 @@ $extraActivities = get_field('extra_activities');
             <a href="#dates" class="nav-secondary__content__links__link">
                 Dates
             </a>
-            <?php if ($extraActivities) : ?>
+            <?php if ($extra_activities) : ?>
                 <a href="#extras" class="nav-secondary__content__links__link">
                     Extras
                 </a>
@@ -70,7 +81,7 @@ $extraActivities = get_field('extra_activities');
                     <?php endif; ?>
                 </a>
             </li>
-            <?php if ($extraActivities) : ?>
+            <?php if ($extra_activities) : ?>
                 <li class="nav-secondary__mobile-menu__list__item">
                     <a class="nav-secondary__mobile-menu__list__item__link" href="#extras">Extras</a>
                 </li>

@@ -1,18 +1,6 @@
 <?php
-$extra_activities = get_field('extra_activities') ?: [];
+$extra_activities = $args['extra_activities'];
 
-$optional_activities = array_map(function ($post) {
-    return array(
-        'image'       => get_field('image', $post->ID),
-        'title'       => get_field('title', $post->ID),
-        'description' => get_field('description', $post->ID),
-        'price'       => get_field('price', $post->ID),
-        'price_range_to'  => get_field('price_range_to', $post->ID),
-
-    );
-}, get_field('optional_activities') ?: []);
-
-$extra_activities = array_merge($extra_activities, $optional_activities);
 ?>
 
 <section class="slider-block narrow" id="extras">

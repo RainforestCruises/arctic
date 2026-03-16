@@ -3,178 +3,162 @@ $itineraries_title = get_field('itineraries_title');
 $itineraries_title_subtext = get_field('itineraries_title_subtext');
 $regions = $args['regions'];
 $isMultiRegion = $args['isMultiRegion'];
+
+$searchPage = $isMultiRegion ? get_field('top_level_search_page', 'options') : get_permalink(get_field('top_level_search_page', $regions[0]));
+$regionName = $isMultiRegion ? "" : get_the_title($region[0]);
+$ctaDisplay = $isMultiRegion ? "Find Your Expedition" : "Expore " . get_the_title($region[0]) . " Cruises";
+
+$itineraries;
+if ($isMultiRegion) {
+    $queryArgs = array(
+        'post_type' => 'rfc_itineraries',
+        'posts_per_page' => 50,
+        'meta_key' => 'search_rank',
+        'orderby' => 'meta_value_num',
+        'order' => 'DESC'
+    );
+    $itineraries = get_posts($queryArgs);
+} else {
+    $itineraries = getItinerariesFromRegion($regions[0]);
+}
+
 ?>
 
-<section class="slider-block" id="itineraries">
+<section class="slider-block" id="cruises">
     <div class="slider-block__content block-top-divider">
-        <?php if ($isMultiRegion) : ?>
-            <!-- General Top -->
-            <div class="slider-block__content__top">
-                <!-- Title -->
-                <div class="title-group">
-                    <h2 class="title-group__title">
-                        <?php echo $itineraries_title; ?>
-                    </h2>
-                    <div class="title-group__sub">
-                        <?php echo $itineraries_title_subtext; ?>
-                    </div>
+        <!-- Top - Title/Nav -->
+        <div class="slider-block__content__top">
+
+            <!-- Title -->
+            <div class="title-single">
+                <h2 class="title-group__title">
+                    <?php echo $itineraries_title; ?>
+                </h2>
+                <div class="title-group__sub">
+                    <?php echo $itineraries_title_subtext; ?>
                 </div>
             </div>
-        <?php
-        endif;
 
-        $regionCount = 0;
-        foreach ($regions as $region) :
-            $regionName = get_the_title($region);
-            $regionItineraries = getItinerariesFromRegion($region);
-        ?>
-            <!-- Title/Nav -->
-            <div class="slider-block__content__top <?php echo $regionCount == 0 ? '' : 'slider-top-divider' ?>  itineraries-slider-block">
+            <!-- Nav Buttons -->
+            <div class="slider-block__content__top__nav">
 
-                <?php if ($isMultiRegion) : ?>
-                    <h3 class="title-single">
-                        <?php echo $regionName; ?> Cruises
-                    </h3>
-                <?php else : ?>
-                    <div class="slider-block__content__top">
-                        <!-- Title -->
-                        <div class="title-group">
-                            <h2 class="title-group__title">
-                                <?php echo $itineraries_title; ?>
-                            </h2>
-                            <div class="title-group__sub">
-                                <?php echo $itineraries_title_subtext; ?>
+                <div class="swiper-button-prev swiper-button-prev--white-border itineraries-home-slider-btn-prev">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-left"></use>
+                    </svg>
+                </div>
+                <div class="swiper-button-next swiper-button-next--white-border itineraries-home-slider-btn-next">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                    </svg>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Slider Area -->
+        <div class="slider-block__content__slider">
+            <div class="swiper" id="itineraries-home-slider">
+                <div class="swiper-wrapper">
+                    <?php
+                    $count = 0;
+                    foreach ($itineraries as $itinerary) :
+
+                        if ($count > 24) break; // Limit to 12 itineraries per region
+                        $images =  get_field('hero_gallery', $itinerary);
+                        $image = $images[0];
+                        $title = get_field('display_name', $itinerary);
+                        $itineraryInfoObject = createItineraryInfoObject($itinerary);
+                        $lengthDisplay = $itineraryInfoObject->lengthDisplay;
+                        $shipsDisplay = getShipsFromItineraryList($itinerary, true);
+                        $departures = getDepartureList($itinerary);
+                        if (!$departures) continue; // Skip if sold out
+                        $lowestPrice = getLowestDepartureListPrice($departures);
+                        $highestPrice = getHighestDepartureListPrice($departures);
+                        $bestOverallDiscount = getBestDepartureListDiscount($departures);
+                        $count++;
+                    ?>
+
+                        <!-- Itinerary Card -->
+                        <div class="resource-card swiper-slide">
+
+                            <!-- Tag -->
+                            <?php if ($bestOverallDiscount) : ?>
+                                <div class="resource-card__tag">
+                                    Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
+                                </div>
+                            <?php endif; ?>
+
+
+                            <!-- Images Slider -->
+                            <div class="resource-card__image-area">
+                                <a class="resource-card__image-area__item" href="<?php echo get_permalink($itinerary) ?>">
+                                    <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
+                                </a>
+                            </div>
+
+                            <!-- Content -->
+                            <div class="resource-card__content">
+
+                                <!-- Title -->
+                                <h3 class="resource-card__content__title">
+                                    <a href="<?php echo get_permalink($itinerary) ?>"><?php echo $title; ?></a>
+                                </h3>
+
+                                <!-- Specs -->
+                                <div class="resource-card__content__specs">
+
+                                    <!-- Itinerary -->
+                                    <div class="specs-item">
+                                        <div class="specs-item__icon">
+                                            <svg>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-time-clock"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="specs-item__text">
+                                            Length: <?php echo $lengthDisplay; ?>
+                                        </div>
+                                    </div>
+                                    <!-- Ships -->
+                                    <div class="specs-item">
+                                        <div class="specs-item__icon">
+                                            <svg>
+                                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat-16"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="specs-item__text">
+                                            Ships: <?php echo $shipsDisplay; ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="resource-card__content__bottom">
+                                    <!-- Price Group -->
+                                    <div class="resource-card__content__bottom__price-group">
+                                        <div class="resource-card__content__bottom__price-group__amount">
+                                            <?php priceFormat($lowestPrice, $highestPrice); ?>
+                                        </div>
+                                        <div class="resource-card__content__bottom__price-group__text">
+                                            <?php echo ($lowestPrice) ? "Per Person" : ""; ?>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                    </div>
-                <?php endif; ?>
-                <!-- Nav Buttons -->
-                <div class="slider-block__content__top__nav">
-                    <div class="swiper-button-prev swiper-button-prev--white-border itineraries-slider-btn-prev-<?php echo $regionCount; ?>">
-                        <svg>
-                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-left"></use>
-                        </svg>
-                    </div>
-                    <div class="swiper-button-next swiper-button-next--white-border itineraries-slider-btn-next-<?php echo $regionCount; ?>">
-                        <svg>
-                            <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
-                        </svg>
-                    </div>
-                </div>
 
-            </div>
+                    <?php endforeach; ?>
 
-            <!-- Slider Area -->
-            <div class="slider-block__content__slider">
-                <div class="swiper" id="itineraries-slider-<?php echo $regionCount; ?>">
-                    <div class="swiper-wrapper">
-                        <?php 
-                        $count = 0;
-                        foreach ($regionItineraries as $itinerary) :
-                            
-                            if( $count > 24 ) break; // Limit to 12 itineraries per region
-                            $images =  get_field('hero_gallery', $itinerary);
-                            $image = $images[0];
-                            $title = get_field('display_name', $itinerary);
-                            $itineraryInfoObject = createItineraryInfoObject($itinerary);
-                            $lengthDisplay = $itineraryInfoObject->lengthDisplay;
-                            $shipsDisplay = getShipsFromItineraryList($itinerary, true);
-                            $departures = getDepartureList($itinerary);
-                            if( !$departures ) continue; // Skip if sold out
-                            $lowestPrice = getLowestDepartureListPrice($departures);
-                            $highestPrice = getHighestDepartureListPrice($departures);
-                            $bestOverallDiscount = getBestDepartureListDiscount($departures);
-                            $count++;
-                        ?>
-
-                            <!-- Itinerary Card -->
-                            <div class="resource-card swiper-slide">
-
-                                <!-- Tag -->
-                                <?php if ($bestOverallDiscount) : ?>
-                                    <div class="resource-card__tag">
-                                        Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
-                                    </div>
-                                <?php endif; ?>
-
-
-                                <!-- Images Slider -->
-                                <div class="resource-card__image-area">
-                                    <a class="resource-card__image-area__item" href="<?php echo get_permalink($itinerary) ?>">
-                                        <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
-                                    </a>
-                                </div>
-
-                                <!-- Content -->
-                                <div class="resource-card__content">
-
-                                    <!-- Title -->
-                                    <h3 class="resource-card__content__title">
-                                        <a href="<?php echo get_permalink($itinerary) ?>"><?php echo $title; ?></a>
-                                    </h3>
-
-                                    <!-- Specs -->
-                                    <div class="resource-card__content__specs">
-
-                                        <!-- Itinerary -->
-                                        <div class="specs-item">
-                                            <div class="specs-item__icon">
-                                                <svg>
-                                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-time-clock"></use>
-                                                </svg>
-                                            </div>
-                                            <div class="specs-item__text">
-                                                Length: <?php echo $lengthDisplay; ?>
-                                            </div>
-                                        </div>
-                                        <!-- Ships -->
-                                        <div class="specs-item">
-                                            <div class="specs-item__icon">
-                                                <svg>
-                                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-boat-16"></use>
-                                                </svg>
-                                            </div>
-                                            <div class="specs-item__text">
-                                                Ships: <?php echo $shipsDisplay; ?>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="resource-card__content__bottom">
-                                        <!-- Price Group -->
-                                        <div class="resource-card__content__bottom__price-group">
-                                            <div class="resource-card__content__bottom__price-group__amount">
-                                                <?php priceFormat($lowestPrice, $highestPrice); ?>
-                                            </div>
-                                            <div class="resource-card__content__bottom__price-group__text">
-                                                <?php echo ($lowestPrice) ? "Per Person" : ""; ?>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        <?php endforeach; ?>
-
-                    </div>
                 </div>
             </div>
-        <?php $regionCount++;
-        endforeach; ?>
+        </div>
 
 
         <div class="slider-block__content__cta">
 
-            <?php foreach ($regions as $region) :
-                $regionName = get_the_title($region);
-                $top_level_search_page = get_permalink(get_field('top_level_search_page', $region));
-            ?>
-                <a class="btn-primary btn-primary--inverse-outline" href="<?php echo $top_level_search_page; ?>?viewType=search-itineraries">
-                    Explore <?php echo $regionName; ?>
-                </a>
-            <?php
-            endforeach; ?>
+            <a class="btn-primary btn-primary--inverse-outline" href="<?php echo $searchPage ?>">
+                <?php echo $ctaDisplay; ?>
+            </a>
         </div>
     </div>
 </section>

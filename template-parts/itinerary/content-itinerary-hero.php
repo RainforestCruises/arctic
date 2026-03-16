@@ -5,7 +5,7 @@ $snippet = get_field('top_snippet');
 $length = get_field('length_in_nights') + 1;
 $lowestOverallPrice = $args['lowestOverallPrice'];
 $bestOverallDiscount = $args['bestOverallDiscount'];
-$extraActivities = $args['extraActivities'];
+$extra_activities = $args['extra_activities'];
 $shipSizeRange = $args['shipSizeRange'];
 $deals = $args['deals'];
 $specialDepartures = $args['specialDepartures'];
@@ -118,7 +118,7 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
                     <a href="#highlights" class="product-hero__content__main__primary__nav__link">Highlights</a>
                     <a href="#itinerary" class="product-hero__content__main__primary__nav__link">Itinerary</a>
                     <a href="#dates" class="product-hero__content__main__primary__nav__link">Dates</a>
-                    <?php if ($extraActivities) : ?>
+                    <?php if ($extra_activities) : ?>
                         <a href="#extras" class="product-hero__content__main__primary__nav__link">Extras</a>
                     <?php endif; ?>
                 </div>

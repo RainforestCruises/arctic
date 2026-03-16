@@ -1314,6 +1314,25 @@
             "endpoint": 0
         },
         {
+            "key": "field_69b3273549725",
+            "label": "Global Reviews Embed",
+            "name": "global_reviews_embed",
+            "type": "text",
+            "instructions": "embed code",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_6273f955d9849",
             "label": "Show Translate Nav",
             "name": "show_translate_nav",
@@ -1489,5 +1508,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1768251568
+    "modified": 1773348712
 }

@@ -37,6 +37,6 @@ get_header();
 
 
 </main>
-<script src=" https://reviewsonmywebsite.com/js/v2/embed.js?id=8ed8fd45a2fd062872f56952886c1ec5 " type="text/javascript"></script>
+<!-- <script src=" https://reviewsonmywebsite.com/js/v2/embed.js?id=8ed8fd45a2fd062872f56952886c1ec5 " type="text/javascript"></script> -->
 
 <?php get_footer(); ?>
