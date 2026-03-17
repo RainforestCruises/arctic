@@ -24,7 +24,7 @@ if ($isMultiRegion) {
 
 ?>
 
-<section class="slider-block" id="cruises">
+<section class="slider-block" id="expeditions">
     <div class="slider-block__content block-top-divider">
         <!-- Top - Title/Nav -->
         <div class="slider-block__content__top">

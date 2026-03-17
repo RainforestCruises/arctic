@@ -1,12 +1,9 @@
 <?php
 $region = get_field('region');
-$title = $region ? get_field('navigation_title', $region) : "Antarctica Cruises";
-$show_route = get_field('show_route');
-
+$title = $region ? get_field('navigation_title', $region) . " Cruises" : "Polar Cruises";
+$show_routes = get_field('show_routes');
+$show_reviews = get_field('show_reviews');
 ?>
-
-
-
 
 <!-- Cruise Nav -->
 <nav class="nav-secondary">
@@ -20,14 +17,14 @@ $show_route = get_field('show_route');
         </div>
         <div class="nav-secondary__content__links">
 
-            <?php if ($show_route) : ?>
+            <?php if ($show_routes) : ?>
                 <a href="#routes" class="nav-secondary__content__links__link">
                     Routes
                 </a>
             <?php endif; ?>
 
-            <a href="#cruises" class="nav-secondary__content__links__link">
-                Cruises
+            <a href="#expeditions" class="nav-secondary__content__links__link">
+                Expeditions
             </a>
             <?php if ($region) : ?>
                 <a href="#styles" class="nav-secondary__content__links__link">
@@ -40,7 +37,11 @@ $show_route = get_field('show_route');
             <a href="#ships" class="nav-secondary__content__links__link">
                 Ships
             </a>
-
+            <?php if ($show_reviews) : ?>
+                <a href="#reviews" class="nav-secondary__content__links__link">
+                    Reviews
+                </a>
+            <?php endif; ?>
             <a href="#guide" class="nav-secondary__content__links__link">
                 Guide
             </a>
@@ -70,13 +71,13 @@ $show_route = get_field('show_route');
         <ul class="nav-secondary__mobile-menu__list">
 
 
-            <?php if ($show_route) : ?>
+            <?php if ($show_routes) : ?>
                 <li class="nav-secondary__mobile-menu__list__item">
                     <a class="nav-secondary__mobile-menu__list__item__link" href="#routes">Routes</a>
                 </li>
             <?php endif; ?>
             <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#cruises">Cruises</a>
+                <a class="nav-secondary__mobile-menu__list__item__link" href="#expeditions">Expeditions</a>
             </li>
             <?php if ($region) : ?>
                 <li class="nav-secondary__mobile-menu__list__item">
@@ -89,6 +90,11 @@ $show_route = get_field('show_route');
             <li class="nav-secondary__mobile-menu__list__item">
                 <a class="nav-secondary__mobile-menu__list__item__link" href="#ships">Ships</a>
             </li>
+            <?php if ($show_reviews) : ?>
+                <li class="nav-secondary__mobile-menu__list__item">
+                    <a class="nav-secondary__mobile-menu__list__item__link" href="#reviews">Reviews</a>
+                </li>
+            <?php endif; ?>
             <li class="nav-secondary__mobile-menu__list__item">
                 <a class="nav-secondary__mobile-menu__list__item__link" href="#guide">Guide</a>
             </li>

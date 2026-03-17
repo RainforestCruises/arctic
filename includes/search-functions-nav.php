@@ -3,29 +3,45 @@
 function getNavSearchResults($formSearchInput, $initial = false)
 {
     $resultCategories = [];
+    $isArcticSearch = (stripos($formSearchInput, 'arctic') !== false && stripos($formSearchInput, 'antarctica') === false);
+    $antarcticTerms = ['antarctica', 'antarctic'];
 
 
     // serp pages ---------------------------------------------------------
     $resultCount = $initial ? 4 : 3;
     $categoryName = $initial ? 'Trending Searches' : 'Search Results';
+
+    $metaQuery = array(
+        'relation' => 'AND',
+        array(
+            'key' => '_wp_page_template',
+            'value' => 'template-search.php',
+        ),
+        array(
+            'key' => 'title_text',
+            'value' => $formSearchInput,
+            'compare' => 'LIKE',
+        ),
+    );
+
+    // Exclude Antarctica results when searching for Arctic
+    if ($isArcticSearch) {
+        foreach ($antarcticTerms as $term) {
+            $metaQuery[] = array(
+                'key' => 'title_text',
+                'value' => $term,
+                'compare' => 'NOT LIKE',
+            );
+        }
+    }
+
     $queryArgs = array(
         'post_type' => 'page',
         'posts_per_page' => $resultCount,
         'meta_key' => 'search_rank',
         'orderby' => 'meta_value_num',
         'order' => 'DESC',
-        'meta_query' => array(
-            'relation' => 'AND',
-            array(
-                'key' => '_wp_page_template',
-                'value' => 'template-search.php',
-            ),
-            array(
-                'key' => 'title_text',
-                'value' => $formSearchInput,
-                'compare' => 'LIKE',
-            ),
-        ),
+        'meta_query' => $metaQuery,
     );
 
     $pages = get_posts($queryArgs);
@@ -91,21 +107,35 @@ function getNavSearchResults($formSearchInput, $initial = false)
     // itineraries ---------------------------------------------------------
     $resultCount = 3;
     $categoryName = $initial ? 'Trending Itineraries' : 'Cruise Itineraries';
+
+    $itineraryMetaQuery = array(
+        array(
+            'key' => 'display_name',
+            'value' => $formSearchInput,
+            'compare' => 'LIKE',
+        ),
+    );
+
+    // Exclude Antarctica results when searching for Arctic
+    if ($isArcticSearch) {
+        $itineraryMetaQuery['relation'] = 'AND';
+        foreach ($antarcticTerms as $term) {
+            $itineraryMetaQuery[] = array(
+                'key' => 'display_name',
+                'value' => $term,
+                'compare' => 'NOT LIKE',
+            );
+        }
+    }
     $queryArgs = array(
         'post_type' => 'rfc_itineraries',
         'posts_per_page' => $resultCount,
         'meta_key' => 'search_rank',
         'orderby' => 'meta_value_num',
         'order' => 'DESC',
-        'meta_query' => array(
-            array(
-                'key' => 'display_name', // Name of the text field
-                'value' => $formSearchInput, // Search input
-                'compare' => 'LIKE',
-            ),
-        ),
-
+        'meta_query' => $itineraryMetaQuery,
     );
+
     $itineraries = get_posts($queryArgs);
     $itineraryResults = [];
     foreach ($itineraries as $itinerary) {
