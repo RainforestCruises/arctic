@@ -58,7 +58,7 @@ $show_site_notice = get_field('show_site_notice', 'options');
         <?php
         $author = get_field('author');
         if ($author  != null) :
-            $image = get_field('image', $author);
+            $author_image = get_field('image', $author);
             $description = get_field('description', $author);
 
             $name = get_the_title($author);
@@ -73,7 +73,7 @@ $show_site_notice = get_field('show_site_notice', 'options');
                 </div>
                 <a class="guide-hero__content__author__main" href="<?php echo $author_page; ?>">
                     <div class="guide-hero__content__author__main__image">
-                        <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
+                        <img src="<?php echo $author_image['url']; ?>" alt="<?php echo $author_image['alt']; ?>">
                     </div>
                     <div class="guide-hero__content__author__main__text">
                         <div class="guide-hero__content__author__main__text__name">
