@@ -25,8 +25,6 @@ $yearSelections = createYearSelection($curentYear, 3);
 $reviews = get_field('reviews');
 $show_notification = get_field('show_notification');
 
-console_log($ship);
-
 
 // cabin posts
 $args = array(

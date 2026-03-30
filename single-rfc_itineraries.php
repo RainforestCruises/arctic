@@ -17,14 +17,14 @@ $show_notification = get_field('show_notification');
 
 $extra_activities = get_field('extra_activities') ?: [];
 $optional_activities = array_map(function ($post) {
-    return array(
-        'image'       => get_field('image', $post->ID),
-        'title'       => get_field('title', $post->ID),
-        'description' => get_field('description', $post->ID),
-        'price'       => get_field('price', $post->ID),
-        'price_range_to'  => get_field('price_range_to', $post->ID),
+  return array(
+    'image'       => get_field('image', $post->ID),
+    'title'       => get_field('title', $post->ID),
+    'description' => get_field('description', $post->ID),
+    'price'       => get_field('price', $post->ID),
+    'price_range_to'  => get_field('price_range_to', $post->ID),
 
-    );
+  );
 }, get_field('optional_activities') ?: []);
 
 $extra_activities = array_merge($extra_activities, $optional_activities);
@@ -32,7 +32,7 @@ $extra_activities = array_merge($extra_activities, $optional_activities);
 
 
 //$days = get_field('itinerary');
-$departures = getDepartureList($itinerary, null,false,null,true);
+$departures = getDepartureList($itinerary, null, false, null, true);
 $ships = getShipsFromDepartureList($departures);
 $lowestOverallPrice = getLowestDepartureListPrice($departures);
 $bestOverallDiscount = getBestDepartureListDiscount($departures);
@@ -66,15 +66,18 @@ wp_localize_script(
 );
 
 
-// cabin posts (for all ships)
-$args = array(
-  'posts_per_page' => -1,
-  'post_type' => 'rfc_cabins',
-);
-
-$queryArgsShips = array();
-$queryArgsShips['relation'] = 'OR';
+$cabins = [];
 if ($ships) {
+
+  // cabin posts (for all ships)
+  $args = array(
+    'posts_per_page' => -1,
+    'post_type' => 'rfc_cabins',
+  );
+  $queryArgsShips = array();
+  $queryArgsShips['relation'] = 'OR';
+
+
   foreach ($ships as $s) {
     $queryArgsShips[] = array(
       'key'     => 'ship',
@@ -82,10 +85,12 @@ if ($ships) {
       'compare' => 'EQUALS'
     );
   }
+
+  $args['meta_query'][] = $queryArgsShips; // match any category
+  $cabins = get_posts($args);
 };
 
-$args['meta_query'][] = $queryArgsShips; // match any category
-$cabins = get_posts($args);
+
 
 
 
@@ -135,7 +140,7 @@ $args = array(
 
   <!-- Dates -->
   <?php
-    get_template_part('template-parts/itinerary/content', 'itinerary-dates', $args);
+  get_template_part('template-parts/itinerary/content', 'itinerary-dates', $args);
   ?>
 
   <!-- Deals -->

@@ -5,6 +5,7 @@ $guides_title = get_field('guides_title');
 $guides_title_subtext = get_field('guides_title_subtext');
 $show_reviews = get_field('show_reviews');
 
+$regions = $args['regions'];
 $isMultiRegion = $args['isMultiRegion'];
 $top_level_guides_page = $isMultiRegion ? get_field('top_level_guides_page', 'options') : get_permalink(get_field('top_level_guide_page', $regions[0]));
 

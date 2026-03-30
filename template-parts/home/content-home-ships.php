@@ -2,6 +2,8 @@
 $ships = get_field('ships');
 $ships_title = get_field('ships_title');
 $ships_title_subtext = get_field('ships_title_subtext');
+
+$regions = $args['regions'];
 $isMultiRegion = $args['isMultiRegion'];
 $top_level_search_page = $isMultiRegion ? get_field('top_level_search_page', 'options') : get_permalink(get_field('top_level_search_page', $regions[0]));
 ?>
