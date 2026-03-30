@@ -5,8 +5,7 @@ $regions = $args['regions'];
 $isMultiRegion = $args['isMultiRegion'];
 
 $searchPage = $isMultiRegion ? get_field('top_level_search_page', 'options') : get_permalink(get_field('top_level_search_page', $regions[0]));
-$regionName = $isMultiRegion ? "" : get_the_title($region[0]);
-$ctaDisplay = $isMultiRegion ? "Find Your Expedition" : "Expore " . get_the_title($region[0]) . " Cruises";
+$ctaDisplay = $isMultiRegion ? "Find Your Expedition" : "Expore " . get_the_title($region[0]);
 
 $itineraries;
 if ($isMultiRegion) {

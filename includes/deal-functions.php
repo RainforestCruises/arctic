@@ -148,14 +148,20 @@ function getDealsInCategory($category)
 
 
 // get a list of itineraries that have a particular deal, accepts a single deal or array of deals to match
-function getItinerariesWithDeal($deals, $excludeItinerary = null)
+function getItinerariesWithDeal($deals, $excludeItinerary = null, $region = null, $limit = 12)
 {
-    $queryArgs = array(
-        'post_type' => 'rfc_itineraries',
-        'posts_per_page' => -1,
-    );
-    $itineraries = get_posts($queryArgs);
+    $itineraries = [];
+    if ($region) {
+        $itineraries = getItinerariesFromRegion($region);
+    } else {
+        $queryArgs = array(
+            'post_type' => 'rfc_itineraries',
+            'posts_per_page' => -1,
+        );
+        $itineraries = get_posts($queryArgs);
+    }
 
+    $count = 0;
     $itinerariesWithDeal = [];
     foreach ($itineraries as $itinerary) {
         $departures = getDepartureList($itinerary);
@@ -194,6 +200,11 @@ function getItinerariesWithDeal($deals, $excludeItinerary = null)
         }
         if ($hasDeal) {
             $itinerariesWithDeal[] = $itinerary;
+            $count++;
+        }
+
+        if ($count >= $limit) {
+            break; // stop loop if limit reached
         }
     }
     return $itinerariesWithDeal;

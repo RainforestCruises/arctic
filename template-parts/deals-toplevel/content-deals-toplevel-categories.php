@@ -1,5 +1,7 @@
 <?php
 $sections = get_field('sections');
+$region = get_field('region');
+
 $categoryCount = 0;
 $allDeals = [];
 
@@ -8,7 +10,7 @@ foreach ($sections as $section) :
     $title = $section['title'];
     $snippet = $section['snippet'];
     $dealsInCategory = getDealsInCategory($category);
-    $itinerariesWithDealsInCategory = getItinerariesWithDeal($dealsInCategory);
+    $itinerariesWithDealsInCategory = getItinerariesWithDeal($dealsInCategory, null, $region);
     $titleSlug = slugify(get_the_title($category));
     if (!$itinerariesWithDealsInCategory) continue; // skip if no deals found for category
 ?>
