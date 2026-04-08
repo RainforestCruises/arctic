@@ -45,6 +45,13 @@ $email = get_field('email', 'options');
 
 $privacy_link = get_field('privacy_link', 'options');
 $terms_link = get_field('terms_link', 'options');
+
+if (is_numeric($terms_link)) {
+    $terms_link = get_permalink($terms_link);
+} elseif (is_array($terms_link)) {
+    $terms_link = $terms_link['url']; // if Post Object return type
+}
+
 $newsletter_text = get_field('newsletter_text', 'options');
 
 $newsletter_form_id = get_field('newsletter_form_id', 'options');
