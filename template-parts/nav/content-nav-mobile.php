@@ -39,6 +39,7 @@ $top_level_deals_page = get_field('top_level_deals_page', 'options');
 $top_level_about_page = get_field('top_level_about_page', 'options');
 $top_level_search_page = get_field('top_level_search_page', 'options');
 $top_level_agents_page = get_field('top_level_agents_page', 'options');
+$top_level_reviews_page = get_field('top_level_reviews_page', 'options');
 
 
 $regionsArgs = array(
@@ -97,6 +98,19 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-ic_chevron_right_36px"></use>
                 </svg>
             </a>
+            <a class="nav-button nav-forward" menuLinkTo="menu-regions">
+                <div class="nav-button__svg-icon">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-pin-3-outline"></use>
+                    </svg>
+                </div>
+                <div class="nav-button__text">
+                    Regions
+                </div>
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-ic_chevron_right_36px"></use>
+                </svg>
+            </a>
             <a class="nav-button nav-forward" menuLinkTo="menu-guides">
                 <div class="nav-button__svg-icon">
                     <svg>
@@ -118,6 +132,16 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                 </div>
                 <div class="nav-button__text">
                     Deals
+                </div>
+            </a>
+            <a class="nav-button mobile-link" href="<?php echo $top_level_reviews_page; ?>">
+                <div class="nav-button__svg-icon">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-feedback"></use>
+                    </svg>
+                </div>
+                <div class="nav-button__text">
+                    Reviews
                 </div>
             </a>
             <a class="nav-button mobile-link" href="<?php echo $top_level_agents_page; ?>">
@@ -307,7 +331,7 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                 <?php endforeach; ?>
             <?php endforeach; ?>
             <?php foreach ($regions as $region) : ?>
-                <a class="btn-pill btn-pill--icon mobile-nav-view-all-button nav-mega-item" href="<?php echo get_permalink(get_field('top_level_search_page', $region))?>?viewType=search-ships" region="<?php echo $region->ID; ?>" style="display: <?php echo $region->ID == $initialRegion->ID ? '' : 'none'; ?>" style="margin: 2rem">
+                <a class="btn-pill btn-pill--icon mobile-nav-view-all-button nav-mega-item" href="<?php echo get_permalink(get_field('top_level_search_page', $region)) ?>?viewType=search-ships" region="<?php echo $region->ID; ?>" style="display: <?php echo $region->ID == $initialRegion->ID ? '' : 'none'; ?>" style="margin: 2rem">
                     View All Ships
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
@@ -390,7 +414,44 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
     </div>
 
 
+    <!-- Menu Regions -->
+    <div class="nav-mobile__content-panel nav-mobile__content-panel--sub" menuid="menu-regions">
+        <div class="nav-mobile__content-panel__static">
+            <div class="nav-mobile__content-panel__static__heading">
+                Regions
+            </div>
+            <div class="nav-close-button">
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
+                </svg>
+            </div>
+            <a class="nav-button nav-back" menuLinkTo="top">
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-ic_chevron_left_36px"></use>
+                </svg>
+                <div class="nav-button__text">
+                    Back
+                </div>
+            </a>
+        </div>
+        <div class="nav-mobile__content-panel__main">
+            <?php foreach ($regions as $region) :
+                $url = get_permalink(get_field('home_page', $region));
+                $title = get_the_title($region);
+                $featured_image = get_field('image', $region);
 
+            ?>
+                <a href="<?php echo $url; ?>" class="nav-button mobile-link nav-mega-item" href="<?php echo $url; ?>">
+                    <div class="nav-button__img-icon">
+                        <img <?php afloat_image_markup($featured_image['id'], 'square-small', array('square-small')); ?>>
+                    </div>
+                    <div class="nav-button__text">
+                        <?php echo $title; ?>
+                    </div>
+                </a>
+            <?php endforeach; ?>
+        </div>
+    </div>
 
 
 </nav>
