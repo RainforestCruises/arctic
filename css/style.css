@@ -8701,6 +8701,18 @@ p {
       .nav-mega__panel__cta .btn-pill {
         font-size: 1.2rem !important; }
 
+.mega-panel-regions {
+  display: grid;
+  grid-template-columns: 100%;
+  gap: 1.5rem; }
+  .mega-panel-regions .mega-slider__slider {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    padding: 0rem; }
+  .mega-panel-regions .mega-category-item__image-area {
+    height: 20rem; }
+
 .mega-panel-category {
   display: grid;
   grid-template-columns: 100%;
@@ -8895,6 +8907,8 @@ p {
         font-weight: 700;
         border-top: 1px solid #e6e6e6;
         background-color: #f8f8f8; }
+      .nav-mobile__content-panel__main .mobile-nav-view-all-button {
+        margin: 1rem; }
 
 .nav-button {
   display: grid;

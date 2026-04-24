@@ -60,6 +60,25 @@
 }
 
 // panels ----------------------------------------------------------------------------
+
+.mega-panel-regions {
+  display: grid;
+  grid-template-columns: 100%;
+  gap: 1.5rem;
+
+  & .mega-slider__slider {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    padding: 0rem;
+  }
+
+  & .mega-category-item__image-area {
+    height: 20rem;
+  }
+}
+
+
 .mega-panel-category {
   display: grid;
   grid-template-columns: 100%;

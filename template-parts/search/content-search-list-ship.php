@@ -1,4 +1,3 @@
-<!-- Itinerary Result -->
 <a class="search-card-itinerary" href="<?php echo $args->ResourceLink; ?>">
     <!-- Tag Area -->
     <div class="search-card-itinerary__tag-area">

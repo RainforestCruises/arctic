@@ -50,7 +50,7 @@ $fly_category = getFlightOption(get_post());
                 <?php
                 foreach ($desktopImages as $image) : ?>
                     <div class="product-hero__gallery__slider__item swiper-slide" imageId="<?php echo $image['id']; ?>">
-                        <img <?php afloat_image_markup($image['id'], 'square-small'); ?>>
+                        <img <?php afloat_image_markup($image['id'], 'square-small', array('square-small')); ?>>
                     </div>
                 <?php endforeach; ?>
             </div>

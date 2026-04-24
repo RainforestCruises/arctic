@@ -92,6 +92,10 @@
                 border-top: 1px solid $color-grey-light-1a;
                 background-color: $color-grey-light-1;
             }
+
+            & .mobile-nav-view-all-button {
+                margin: 1rem;
+            }
         }
     }
 }

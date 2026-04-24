@@ -5,6 +5,7 @@ $guides = get_field('guides', 'options');
 $top_level_guides_page = get_field('top_level_guides_page', 'options');
 $top_level_search_page = get_field('top_level_search_page', 'options');
 $top_level_agents_page = get_field('top_level_agents_page', 'options');
+$top_level_regions_page = get_field('top_level_regions_page', 'options');
 
 $regionsArgs = array(
     'post_type' => 'rfc_regions',
@@ -61,6 +62,9 @@ $top_level_deals_page = get_field('top_level_deals_page', $initialRegion);
             <nav class="nav-main__content__center__nav">
 
                 <ul class="nav-main__content__center__nav__list">
+                    <li class="nav-main__content__center__nav__list__item" navelement="regions">
+                        Regions
+                    </li>
                     <li class="nav-main__content__center__nav__list__item" navelement="category">
                         Cruises
                     </li>
@@ -82,6 +86,51 @@ $top_level_deals_page = get_field('top_level_deals_page', $initialRegion);
 
             <!-- Nav Mega (abs position)-->
             <div class="nav-mega">
+
+                <!--Regions Panel -->
+                <div class="nav-mega__panel" panel="regions">
+                    <div class="mega-panel-regions">
+
+                        <!-- Group -->
+                        <div class="mega-slider mega-slider--regions">
+                            <div class="mega-slider__top title-divider">
+                                <!-- Title -->
+                                <div class="mega-slider__top__title">
+                                    Regions
+                                </div>
+                            </div>
+                            <div class="mega-slider__slider">
+                                <?php foreach ($regions as $region) :
+                                    $url = get_permalink(get_field('home_page', $region));
+                                    $title = get_the_title($region);
+                                    $featured_image = get_field('image', $region);
+
+                                ?>
+
+                                    <a class="mega-category-item swiper-slide nav-mega-item" href="<?php echo $url; ?>" region="all">
+                                        <div class="mega-category-item__image-area">
+                                            <img <?php afloat_image_markup($featured_image['id'], 'square-medium', array('square-medium')); ?>>
+                                        </div>
+                                        <div class="mega-category-item__title">
+                                            <?php echo $title ?>
+                                        </div>
+                                    </a>
+
+                                <?php endforeach; ?>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- View All CTA -->
+                    <div class="nav-mega__panel__cta" style="margin-top: 0;">
+                        <a class="btn-pill btn-pill--icon nav-mega-item" href="<?php echo get_permalink($top_level_regions_page); ?>" >
+                            View All Regions
+                            <svg>
+                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
 
                 <!-- Cruises Panel (category) -->
                 <div class="nav-mega__panel" panel="category">

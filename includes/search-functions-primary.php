@@ -73,7 +73,7 @@ function getSearchPosts($region, $routes, $countries, $styles, $filterShipSizes,
 
 
     $itineraries = get_posts($args); // stage I - itinerary posts w/ initial filters
-    $resultObjects =  filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLength, $minPrice, $maxPrice, $datesArray, $sorting, $searchInput, $viewType, $filterDeals, $filterSpecials, $filterShipSizes); // stage II metadata filtering
+    $resultObjects =  filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLength, $minPrice, $maxPrice, $datesArray, $sorting, $searchInput, $viewType, $filterDeals, $filterSpecials, $filterShipSizes, $region); // stage II metadata filtering
 
 
     $resultsPerPage = 12;
@@ -107,6 +107,7 @@ function getSearchPosts($region, $routes, $countries, $styles, $filterShipSizes,
         'pageCount' => $pageCount,
         'pageNumber' => $pageNumber,
         'viewType' => $viewType,
+        'preselectedRegion' => $region
     ];
 
     return $searchResults;
@@ -114,10 +115,18 @@ function getSearchPosts($region, $routes, $countries, $styles, $filterShipSizes,
 
 
 // stage II - metadata
-function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLength, $minPrice, $maxPrice, $datesArray, $sorting, $searchInput, $viewType, $filterDeals, $filterSpecials, $filterShipSizes)
+function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLength, $minPrice, $maxPrice, $datesArray, $sorting, $searchInput, $viewType, $filterDeals, $filterSpecials, $filterShipSizes, $region)
 {
     $results = [];
     $itineraryObjects = []; // prelimenary list for ship search
+    $primaryRegion = getPrimaryRegion();
+    $primaryRegionId = $primaryRegion ? $primaryRegion->ID : null;
+    $regionAppendix = "";
+    if(!$region == null && $region != $primaryRegionId){
+        $regionAppendix = "?region=" . $region;
+    }
+
+
     foreach ($itineraries as $itinerary) { // loop through itineraries
 
         $itineraryInfoObject = createItineraryInfoObject($itinerary);
@@ -474,7 +483,7 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
                     'Type' => 'ship',
                     'Itineraries' => $itineraryResults,
                     'Ship' => $ship,
-                    'ResourceLink' => get_permalink($ship),
+                    'ResourceLink' => get_permalink($ship) . $regionAppendix,
                     'DisplayName' => get_the_title($ship),
                     'ShipHeroImage' => $shipHeroImage,
                     'LowestPrice' => $lowestPrice,
