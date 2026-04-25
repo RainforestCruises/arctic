@@ -738,13 +738,21 @@ function getShipItineraries($ship, $region = null)
         }
 
         $departureMatch = false;
-        foreach ($departures as $departure) {
-            $departureShip = $departure['ship'];
 
-            if ($departureShip->ID == $ship->ID) {
-                $departureMatch = true;
+
+        if (is_array($departures) || is_object($departures)) { // PHP8 FIX
+
+            foreach ($departures as $departure) {
+                $departureShip = $departure['ship'];
+
+                if ($departureShip->ID == $ship->ID) {
+                    $departureMatch = true;
+                }
             }
         }
+
+
+
 
         if ($departureMatch) {
             $itineraryList[] = $itinerary;
