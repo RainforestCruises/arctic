@@ -62,15 +62,14 @@ $top_level_deals_page = get_field('top_level_deals_page', $initialRegion);
             <nav class="nav-main__content__center__nav">
 
                 <ul class="nav-main__content__center__nav__list">
-
+                    <li class="nav-main__content__center__nav__list__item" navelement="regions">
+                        Regions
+                    </li>
                     <li class="nav-main__content__center__nav__list__item" navelement="category">
                         Cruises
                     </li>
                     <li class="nav-main__content__center__nav__list__item" navelement="ships">
                         Ships
-                    </li>
-                    <li class="nav-main__content__center__nav__list__item" navelement="regions">
-                        Regions
                     </li>
                     <li class="nav-main__content__center__nav__list__item" navelement="guides">
                         Guide
