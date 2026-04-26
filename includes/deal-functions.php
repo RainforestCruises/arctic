@@ -7,7 +7,7 @@ function getDealsFromDepartureList($departures, $getSpecials = false)
 
     foreach ($departures as $d) {
         $deals = ($getSpecials) ? $d['SpecialDepartures'] : $d['Deals'];
-        foreach ($deals as $deal) {
+        foreach ($deals ?: [] as $deal) {
             $is_active = get_field('is_active', $deal);
             $has_expiry_date = get_field('has_expiry_date', $deal);
             $has_activation_date = get_field('has_activation_date', $deal);
@@ -224,7 +224,12 @@ function getShipsWithDeal($deals)
         $departures = getDepartureList($ship);
         $hasDeal = false;
         foreach ($departures as $departure) {
-            $combinedDepartureDeals = array_merge($departure['Deals'], $departure['SpecialDepartures']);
+            
+            $combinedDepartureDeals = array_merge(
+                $departure['Deals'] ?: [],
+                $departure['SpecialDepartures'] ?: []
+            );
+
             if (is_array($deals)) { // if matching an array of deals
                 foreach ($deals as $deal) {
                     if ($combinedDepartureDeals && in_array($deal, $combinedDepartureDeals)) {

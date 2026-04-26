@@ -28,6 +28,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
             // get itinerary departures
             $use_automation = get_field('use_automation', $i);
             $itineraryDepartures = $use_automation ? get_field('automation_departure_data', $i) : get_field('departures', $i);
+            if (!is_array($itineraryDepartures) || empty($itineraryDepartures)) continue; // PHP 8 CHECK
 
 
 
@@ -56,7 +57,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
 
                     // embarkation display
                     $embarkationDisplay = get_the_title($departureEmbarkation) . ", " . get_the_title(get_field('embarkation_country', $departureEmbarkation));
-                    if ($departureEmbarkation->ID != $departureDisembarkation->ID) {
+                    if ($departureEmbarkation && $departureDisembarkation && $departureEmbarkation->ID != $departureDisembarkation->ID) {
                         $embarkationDisplay = $embarkationDisplay . " (Disembarking: " . get_the_title($departureDisembarkation) . ", " . get_the_title(get_field('embarkation_country', $departureDisembarkation)) . ")";
                     }
 
@@ -124,6 +125,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
         // get itinerary departures
         $use_automation = get_field('use_automation', $post);
         $itineraryDepartures = $use_automation ? get_field('automation_departure_data', $post) : get_field('departures', $post);
+        if (!is_array($itineraryDepartures) || empty($itineraryDepartures)) return $departures; // PHP 8 CHECK
 
         foreach ($itineraryDepartures as $d) {   // each departure   
             $isCurrent = strtotime($d['date']) >= strtotime(date('Y-m-d'));
@@ -149,7 +151,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
 
                 // embarkation display
                 $embarkationDisplay = get_the_title($departureEmbarkation) . ", " . get_the_title(get_field('embarkation_country', $departureEmbarkation));
-                if ($departureEmbarkation->ID != $departureDisembarkation->ID) {
+                if ($departureEmbarkation && $departureDisembarkation && $departureEmbarkation->ID != $departureDisembarkation->ID) {
                     $embarkationDisplay = $embarkationDisplay . " (Disembarking: " . get_the_title($departureDisembarkation) . ", " . get_the_title(get_field('embarkation_country', $departureDisembarkation)) . ")";
                 }
 
@@ -468,7 +470,8 @@ function getItineraryShipSize($ships)
 // build list of unique destinations within an itinerary, with embarkations removed
 function getItineraryDestinations($itinerary, $display = false, $limit = 0)
 {
-    $days = get_field('itinerary', $itinerary);
+    $days = get_field('itinerary', $itinerary) ?: []; // PHP 8 FIX
+
 
     $embarkation_point = get_field('embarkation_point', $itinerary);
     $disembarkation_point = get_field('disembarkation_point', $itinerary);
@@ -595,7 +598,7 @@ function getItinerariesFromRegion($region, $limit = -1)
     $itineraries = get_posts($queryArgs);
     $itineraryList = [];
     foreach ($itineraries as $itinerary) {
-        $routes = get_field('route', $itinerary);
+        $routes = get_field('route', $itinerary) ?: [];
         $match = false;
         foreach ($routes as $route) {
             $itineraryRegion = get_field('region', $route);
@@ -616,7 +619,7 @@ function getItinerariesFromRegion($region, $limit = -1)
 // get list of regions from itinerary post
 function getItineraryRegion($itinerary)
 {
-    $routes = get_field('route', $itinerary);
+    $routes = get_field('route', $itinerary) ?: []; // PHP 8 FIX
     $regionsList = [];
 
     if (empty($routes)) {
@@ -680,7 +683,7 @@ function getItinerariesFromRoute($routes)
 
     $itineraryList = [];
     foreach ($itineraries as $itinerary) {
-        $itineraryRoutes = get_field('route', $itinerary);
+        $itineraryRoutes = get_field('route', $itinerary) ?: [];
         $match = false;
         foreach ($itineraryRoutes as $itineraryRoute) {
             $match = is_array($routes) ? in_array($itineraryRoute, $routes) : $itineraryRoute == $routes;
@@ -740,14 +743,10 @@ function getShipItineraries($ship, $region = null)
         $departureMatch = false;
 
 
-        if (is_array($departures) || is_object($departures)) { // PHP8 FIX
-
-            foreach ($departures as $departure) {
-                $departureShip = $departure['ship'];
-
-                if ($departureShip->ID == $ship->ID) {
-                    $departureMatch = true;
-                }
+        foreach ($departures ?: [] as $departure) { // PHP 8 FIX
+            $departureShip = $departure['ship'];
+            if ($departureShip && $departureShip->ID == $ship->ID) {
+                $departureMatch = true;
             }
         }
 
@@ -768,7 +767,7 @@ function getShipRegions($ship)
     $itineraries = getShipItineraries($ship);
     $regionsList = [];
     foreach ($itineraries as $itinerary) {
-        $routes = get_field('route', $itinerary);
+        $routes = get_field('route', $itinerary) ?: []; // PHP 8 FIX
         foreach ($routes as $route) {
             $regionsList[] = get_field('region', $route);
         }
@@ -908,7 +907,7 @@ function getEmbarkationList()
         $countryList = [];
         foreach ($countryPosts as $countryPost) {
             $countryZone = get_field('embarkation_zone', $countryPost);
-            if ($countryZone->ID == $zone->ID) {
+            if ($countryZone && $countryZone->ID == $zone->ID) {
                 $countryObject = [
                     'country' => $countryPost,
                     'destinations' => []
