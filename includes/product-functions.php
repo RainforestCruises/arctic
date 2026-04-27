@@ -45,7 +45,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
 
                     if ($itineraryHasVariants) {
                         $departureVariantNumber = $d['variant'] ?? 0;
-                        if ($departureVariantNumber != 0) {
+                        if ($departureVariantNumber != 0 && is_array($itineraryVariants) && isset($itineraryVariants[$departureVariantNumber - 1])) {
                             $matchedVariant = $itineraryVariants[$departureVariantNumber - 1];
 
                             $departureItineraryLength = $matchedVariant['length_in_nights'] ?? $itineraryDefaultLength;
@@ -87,9 +87,9 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                             'Disembarkation' => $departureDisembarkation,
                             'EmbarkationDisplay' => $embarkationDisplay,
                             'Cabins' => $cabin_prices,
-                            'ShipId' => $ship->ID,
+                            'ShipId' => $ship->ID  ?? null,
                             'Ship' => $ship,
-                            'ItineraryPostId' => $i->ID,
+                            'ItineraryPostId' => $i->ID  ?? null,
                             'ItineraryPost' => $i,
                             'LowestPrice' => getLowestDeparturePrice($d),
                             'HighestPrice' => getHighestDeparturePrice($d),
@@ -98,7 +98,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                             'Deals' => $filteredDeals,
                             'SpecialDepartures' => $filteredSpecialDepartures,
                             'VariantTitle' => $departureVariantTitle,
-                            'VariantIndex' => $d['variant'],
+                            'VariantIndex' => $d['variant']  ?? 0,
                         ];
 
 
@@ -139,7 +139,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
 
                 if ($itineraryHasVariants) {
                     $departureVariantNumber = $d['variant'] ?? 0;
-                    if ($departureVariantNumber != 0) {
+                    if ($departureVariantNumber != 0 && is_array($itineraryVariants) && isset($itineraryVariants[$departureVariantNumber - 1])) {
                         $matchedVariant = $itineraryVariants[$departureVariantNumber - 1];
 
                         $departureItineraryLength = $matchedVariant['length_in_nights'] ?? $itineraryDefaultLength;
@@ -179,7 +179,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                     $departure = [
                         'ID' => $id,
                         'Ship' => $d['ship'],
-                        'ShipId' => $ship->ID,
+                        'ShipId' => $ship->ID  ?? null,
                         'DepartureDate' => $d['date'],
                         'DepartureDateSimple' => date('Y-m', strtotime($d['date'])),
                         'ReturnDate' => $returnDate,
@@ -187,7 +187,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                         'Disembarkation' => $departureDisembarkation,
                         'EmbarkationDisplay' => $embarkationDisplay,
                         'Cabins' => $cabin_prices,
-                        'ItineraryPostId' => $post->ID,
+                        'ItineraryPostId' => $post->ID  ?? null,
                         'ItineraryPost' => $post,
                         'LowestPrice' => getLowestDeparturePrice($d),
                         'HighestPrice' => getHighestDeparturePrice($d),
@@ -197,7 +197,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                         'Deals' => $filteredDeals,
                         'SpecialDepartures' => $filteredSpecialDepartures,
                         'VariantTitle' => $departureVariantTitle,
-                        'VariantIndex' => $d['variant']
+                        'VariantIndex' => $d['variant']  ?? 0
 
                     ];
                     if ($filterSoldOut) {
