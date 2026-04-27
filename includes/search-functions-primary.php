@@ -6,6 +6,7 @@ function getSearchPosts($region, $routes, $countries, $styles, $filterShipSizes,
     $args = array(
         'posts_per_page' => -1,
         'post_type' => 'rfc_itineraries',
+        'meta_query' => []
     );
 
     // regional selection - generate list of possible routes (IDs)
@@ -20,13 +21,11 @@ function getSearchPosts($region, $routes, $countries, $styles, $filterShipSizes,
         $regionalRoutes = wp_list_pluck(get_posts($routeCriteria), 'ID');
 
         if ($routes == null) { // if region is selected, but no routes. Populate all routes
-            if ($routes == null) {
-                $routeCriteria = array(
-                    'posts_per_page' => -1,
-                    'post_type' => 'rfc_routes',
-                );
-                $routes = wp_list_pluck(get_posts($routeCriteria), 'ID');
-            }
+            $routeCriteria = array(
+                'posts_per_page' => -1,
+                'post_type' => 'rfc_routes',
+            );
+            $routes = wp_list_pluck(get_posts($routeCriteria), 'ID');
         }
     } else {
         $routeCriteria = array(
@@ -190,7 +189,7 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
         } else {
             $departures = $departuresFullList; // use full list
         }
-        if (count($departures) == 0) {
+        if (empty($departures)) {
             continue;
         }
 
@@ -617,8 +616,7 @@ function constructCapacityQuery($selectedSizes)
 // check ship capacity
 function doesShipMatchSizeFilter($ship, $filterShipSizes)
 {
-    $capacity = intval(get_field('vessel_capacity', $ship->ID));
-
+    $capacity = $ship ? intval(get_field('vessel_capacity', $ship->ID)) : 0;
     foreach ($filterShipSizes as $sizeId) {
         switch (intval($sizeId)) {
             case 1: // Small
