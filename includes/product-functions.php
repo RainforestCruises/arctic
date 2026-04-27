@@ -69,7 +69,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                     $ship = $d['ship'];
                     if ($cabin_prices) { // sort cabin price high to low
                         usort($cabin_prices, function ($first, $second) {
-                            return strtolower($first['price']) < strtolower($second['price']);
+                            return strtolower($second['price']) <=> strtolower($first['price']);
                         });
                     }
 
@@ -164,7 +164,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
 
                 if ($cabin_prices) { // sort cabin price high to low
                     usort($cabin_prices, function ($first, $second) {
-                        return strtolower($first['price']) < strtolower($second['price']);
+                        return strtolower($second['price']) <=>  strtolower($first['price']);
                     });
                 }
 
@@ -213,7 +213,7 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
     }
 
     usort($departures, function ($a, $b) {
-        return strtotime($a['DepartureDate']) - strtotime($b['DepartureDate']);
+        return strtotime($a['DepartureDate']) <=>  strtotime($b['DepartureDate']);
     });
 
     return $departures;
@@ -420,9 +420,6 @@ function getHighestPriceFromListOfItineraries($itineraries, $region = null)
 // fly / sail display
 function getFlightOption($fly_category)
 {
-
-    // $fly_category = get_field('fly_category', $itinerary);
-
     if ($fly_category == 'fly-fly') {
         return 'Fly / Fly';
     }
@@ -582,8 +579,9 @@ function sortBySearchRank($a, $b)
     if (is_object($a) && is_object($b)) {
         $searchRankA = intval(get_field('search_rank', $a->ID));
         $searchRankB = intval(get_field('search_rank', $b->ID));
-        return $searchRankB - $searchRankA;
+        return $searchRankB <=> $searchRankA;
     }
+    return 0;
 }
 
 function getItinerariesFromRegion($region, $limit = -1)

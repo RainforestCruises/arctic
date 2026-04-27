@@ -122,7 +122,7 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
     $primaryRegion = getPrimaryRegion();
     $primaryRegionId = $primaryRegion ? $primaryRegion->ID : null;
     $regionAppendix = "";
-    if(!$region == null && $region != $primaryRegionId){
+    if (!$region == null && $region != $primaryRegionId) {
         $regionAppendix = "?region=" . $region;
     }
 
@@ -130,7 +130,7 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
     foreach ($itineraries as $itinerary) { // loop through itineraries
 
         $itineraryInfoObject = createItineraryInfoObject($itinerary);
-        
+
         // Check if any length in the array is within the filter range
         $uniqueLengths = $itineraryInfoObject->uniqueLengthsArray;
         $hasValidLength = false;
@@ -211,7 +211,7 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
         $destinationDisplay = getItineraryDestinations($itinerary, true, 4); // build list of unique destinations within an itinerary, with embarkations removed
         $searchRank = get_field('search_rank', $itinerary);
         $displayName = get_field('display_name', $itinerary);
-        $flightOption = getFlightOption($itinerary);
+        $flightOption = getFlightOption(get_field('fly_category', $itinerary));
         $topSnippet = get_field('top_snippet', $itinerary);
         $lengthDisplay = $itineraryInfoObject->lengthDisplay;
 
@@ -309,7 +309,7 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
                 $departureDate = $departure['DepartureDate'];
                 $returnDate = $departure['ReturnDate'];
                 $lengthDisplay = $departure['LengthInDays'] . ' Days';
-                if($departure['VariantTitle'] != null) {
+                if ($departure['VariantTitle'] != null) {
                     $lengthDisplay .= " (" . $departure['VariantTitle'] . ")";
                 }
 
@@ -457,9 +457,9 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
                 $itineraryDisplay = itineraryRange($itinerariesList, "-") . " Days, " . count($itinerariesList);
                 $itineraryDisplay .= count($itinerariesList) == 1 ? ' Itinerary' : ' Itineraries';
                 $datesDisplay = getDateListDisplay($departuresList, 3);
-                $lowestPrice = min($lowPriceList);
-                $highestPrice = max($highPriceList);
-                $bestDiscount = max($bestDiscountList);
+                $lowestPrice = !empty($lowPriceList) ? min($lowPriceList) : 0;
+                $highestPrice = !empty($highPriceList) ? max($highPriceList) : 0;
+                $bestDiscount = !empty($bestDiscountList) ? max($bestDiscountList) : 0;
 
                 if ($highestPrice < $minPrice || $lowestPrice > $maxPrice) { // price filter
                     continue;
@@ -546,36 +546,36 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
 
 
 // SORTING -----------------------
-// ranking
 function sortRank($a, $b)
 {
     if (is_object($a) && is_object($b)) {
-        return $b->SearchRank - $a->SearchRank;
+        return $b->SearchRank <=> $a->SearchRank;
     }
+    return 0;
 }
 
-// price high
 function sortPriceHigh($a, $b)
 {
     if (is_object($a) && is_object($b)) {
-        return $b->LowestPrice - $a->LowestPrice;
+        return $b->LowestPrice <=> $a->LowestPrice;
     }
+    return 0;
 }
 
-// price low
 function sortPriceLow($a, $b)
 {
     if (is_object($a) && is_object($b)) {
-        return $a->LowestPrice - $b->LowestPrice;
+        return $a->LowestPrice <=> $b->LowestPrice;
     }
+    return 0;
 }
 
-// dates
 function sortDates($a, $b)
 {
     if (is_object($a) && is_object($b)) {
-        return strtotime($a->DepartureDate) - strtotime($b->DepartureDate);
+        return strtotime($a->DepartureDate) <=> strtotime($b->DepartureDate);
     }
+    return 0;
 }
 
 function constructCapacityQuery($selectedSizes)

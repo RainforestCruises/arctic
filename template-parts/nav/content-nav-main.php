@@ -7,6 +7,7 @@ $top_level_search_page = get_field('top_level_search_page', 'options');
 $top_level_agents_page = get_field('top_level_agents_page', 'options');
 $top_level_regions_page = get_field('top_level_regions_page', 'options');
 
+
 $regionsArgs = array(
     'post_type' => 'rfc_regions',
     'posts_per_page' => -1,
@@ -123,7 +124,7 @@ $top_level_deals_page = get_field('top_level_deals_page', $initialRegion);
                     </div>
                     <!-- View All CTA -->
                     <div class="nav-mega__panel__cta" style="margin-top: 0;">
-                        <a class="btn-pill btn-pill--icon nav-mega-item" href="<?php echo get_permalink($top_level_regions_page); ?>">
+                        <a class="btn-pill btn-pill--icon nav-mega-item" href="<?php echo $top_level_regions_page; ?>">
                             View All Regions
                             <svg>
                                 <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
