@@ -44,8 +44,8 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                     $departureVariantTitle = $itineraryDefaultVariantTitle;
 
                     if ($itineraryHasVariants) {
-                        $departureVariantNumber = $d['variant'] ?? 0;
-                        if ($departureVariantNumber != 0 && is_array($itineraryVariants) && isset($itineraryVariants[$departureVariantNumber - 1])) {
+                        $departureVariantNumber = isset($d['variant']) ? (int)$d['variant'] : 0;
+                        if ($departureVariantNumber > 0 && is_array($itineraryVariants) && isset($itineraryVariants[$departureVariantNumber - 1])) {
                             $matchedVariant = $itineraryVariants[$departureVariantNumber - 1];
 
                             $departureItineraryLength = $matchedVariant['length_in_nights'] ?? $itineraryDefaultLength;
@@ -138,8 +138,8 @@ function getDepartureList($post, $specificShip = null, $filterSoldOut = false, $
                 $departureVariantTitle = $itineraryDefaultVariantTitle;
 
                 if ($itineraryHasVariants) {
-                    $departureVariantNumber = $d['variant'] ?? 0;
-                    if ($departureVariantNumber != 0 && is_array($itineraryVariants) && isset($itineraryVariants[$departureVariantNumber - 1])) {
+                    $departureVariantNumber = isset($d['variant']) ? (int)$d['variant'] : 0;
+                    if ($departureVariantNumber > 0 && is_array($itineraryVariants) && isset($itineraryVariants[$departureVariantNumber - 1])) {
                         $matchedVariant = $itineraryVariants[$departureVariantNumber - 1];
 
                         $departureItineraryLength = $matchedVariant['length_in_nights'] ?? $itineraryDefaultLength;
