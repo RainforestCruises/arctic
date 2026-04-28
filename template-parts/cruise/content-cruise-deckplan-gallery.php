@@ -1,6 +1,5 @@
 <?php
-$deckPlans = get_field('deck_plans');
-
+$deckPlans = get_field('deck_plans') ?: [];
 ?>
 
 <!-- Product Gallery Modal -->
