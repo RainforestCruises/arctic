@@ -69,7 +69,8 @@ function findObjectById($id, $array, $key = 'Id')
     return false;
 }
 
-function getArrayOfPostIds($posts){
+function getArrayOfPostIds($posts)
+{
     $ids = array();
     foreach ($posts as $post) {
         $ids[] = $post->ID;
@@ -87,11 +88,11 @@ function removePtags($text)
 
 function comma_separate_list($arr, $limit = 0)
 {
-        // Check if $arr is actually an array or countable
+    // Check if $arr is actually an array or countable
     if (!is_array($arr) && !is_countable($arr)) {
         return ''; // or handle the string case differently
     }
-    
+
     $count = 0;
     $display = "";
 
@@ -119,7 +120,7 @@ function comma_separate_list($arr, $limit = 0)
 function priceFormat($price, $priceHigh = null)
 {
     $display = "";
-    if($price == false){
+    if (!$price || (float)$price <= 0) {
         $display = "<span class='red-text'>Sold Out</span>";
     } else {
 
@@ -138,7 +139,6 @@ function priceFormat($price, $priceHigh = null)
                 $display = '$' . number_format($price, 0);
             }
         }
-
     }
 
     echo $display;
@@ -461,32 +461,33 @@ function generateBgColor()
 // slugify text
 function slugify($text, string $divider = '-')
 {
-  // replace non letter or digits by divider
-  $text = preg_replace('~[^\pL\d]+~u', $divider, $text);
+    // replace non letter or digits by divider
+    $text = preg_replace('~[^\pL\d]+~u', $divider, $text);
 
-  // transliterate
-  $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+    // transliterate
+    $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
 
-  // remove unwanted characters
-  $text = preg_replace('~[^-\w]+~', '', $text);
+    // remove unwanted characters
+    $text = preg_replace('~[^-\w]+~', '', $text);
 
-  // trim
-  $text = trim($text, $divider);
+    // trim
+    $text = trim($text, $divider);
 
-  // remove duplicate divider
-  $text = preg_replace('~-+~', $divider, $text);
+    // remove duplicate divider
+    $text = preg_replace('~-+~', $divider, $text);
 
-  // lowercase
-  $text = strtolower($text);
+    // lowercase
+    $text = strtolower($text);
 
-  if (empty($text)) {
-    return 'n-a';
-  }
+    if (empty($text)) {
+        return 'n-a';
+    }
 
-  return $text;
+    return $text;
 }
 
-function getMonthName($monthNum){
+function getMonthName($monthNum)
+{
     $dateObj   = DateTime::createFromFormat('!m', $monthNum);
     $monthName = $dateObj->format('F');
     return $monthName;

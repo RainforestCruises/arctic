@@ -76,7 +76,6 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
                 <!-- Days section -->
                 <div class="itinerary-variants__content__itinerary__main__days-area">
                     <?php foreach ($itineraryInfoObject->itineraryObjects as $itineraryObject) :
-                        console_log($itineraryObject);
                         $show_itinerary_note = $itineraryObject->show_itinerary_note;
                         $itinerary_note = $itineraryObject->itinerary_note;
                     ?>

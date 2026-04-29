@@ -48,8 +48,6 @@ $disembarkation_point = get_field('disembarkation_point');
 
 $itineraryInfoObject = createItineraryInfoObject($itinerary);
 
-console_log($itineraryInfoObject);
-
 
 $itineraryMapObjects = [];
 foreach ($itineraryInfoObject->itineraryObjects as $itinerary) {
@@ -113,6 +111,7 @@ $args = array(
   'primaryRegion' => $primaryRegion,
 );
 
+console_log($args);
 ?>
 
 <!-- Product Page Container -->

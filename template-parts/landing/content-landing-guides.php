@@ -6,11 +6,6 @@ $travel_guide_title_subtext = get_field('travel_guide_title_subtext');
 $region = checkPageRegion();
 $top_level_guide_page = get_field('top_level_guide_page', $region);
 
-console_log('region');
-console_log($region);
-
-console_log('top_level_guide_page');
-console_log($top_level_guide_page);
 ?>
 
 <!-- Travel Guides -->

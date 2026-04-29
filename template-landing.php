@@ -66,7 +66,6 @@ if ($region) {
 
 $ships = getShipsFromItineraryList($itineraries);
 
-console_log($ships);
 $args = array(
   'region' => $region,
   'itineraries' => $itineraries,

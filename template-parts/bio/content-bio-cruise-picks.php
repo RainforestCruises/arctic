@@ -2,7 +2,6 @@
 $cruises_title = get_field('cruises_title');
 $cruises_text = get_field('cruises_text');
 $cruises = get_field('cruises');
-console_log($cruises);
 ?>
 
 
@@ -48,7 +47,6 @@ console_log($cruises);
                     <?php
                     $count = 0;
                     foreach ($cruises as $ship) :
-                        console_log($ship);
                         if ($count > 11) {
                             continue;
                         }

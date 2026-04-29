@@ -5,8 +5,6 @@ $ships = $args['ships'];
 $region = $args['region'];
 $primaryRegion = getPrimaryRegion();
 
-console_log($region->ID);
-console_log($primaryRegion->ID);
 ?>
 
 
@@ -49,7 +47,6 @@ console_log($primaryRegion->ID);
 
                 if ($primaryRegion->ID != $region->ID) {
                     $permalink .= "?region=" . $region->ID;
-                    console_log("Adding region to ship link: " . $permalink);
                 }
 
             ?>

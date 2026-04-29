@@ -5,16 +5,9 @@ $hero_subtitle = get_field('hero_subtitle');
 $show_faq = get_field('show_faq');
 $show_topics = get_field('show_topics');
 $show_map = get_field('show_map');
-
 $itineraries = $args['itineraries'];
 $region = $args['region'];
-
-console_log($itineraries);
-console_log($region);
-
-
 $lowestOverallPrice = getLowestPriceFromListOfItineraries($itineraries, $region);
-console_log($lowestOverallPrice);
 
 ?>
 

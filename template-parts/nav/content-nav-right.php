@@ -7,7 +7,6 @@
         global $WPCS;
         $currencies = $WPCS->get_currencies();
         $current_currency = $WPCS->current_currency;
-        console_log($current_currency);
     }
 
 
