@@ -317,43 +317,40 @@ function getLowestDeparturePrice($departure)
 {
     $price = 0;
     $cabin_prices = $departure['cabin_prices'];
-    if (!$cabin_prices) {
-        return $price;
-    }
+    if (!$cabin_prices) return $price;
 
     $priceArray = [];
     foreach ($cabin_prices as $c) {
         if ($c['sold_out'] != true) {
-            if (!($c['discounted_price'] == "" && $c['price'] == "")) {
-                $priceArray[] = $c['discounted_price'] == "" ? $c['price'] : $c['discounted_price'];
+            $hasDiscount = $c['discounted_price'] !== "" && $c['discounted_price'] !== 0 && $c['discounted_price'] !== null;
+            $effectivePrice = $hasDiscount ? $c['discounted_price'] : $c['price'];
+            if ($effectivePrice !== "" && $effectivePrice !== null) {
+                $priceArray[] = $effectivePrice;
             }
         }
     }
 
-    $price = !empty($priceArray) ? min($priceArray) : 0;
-    return $price;
+    return !empty($priceArray) ? min($priceArray) : 0;
 }
 
-// get highest cabin price (not sold out) from a single departure
 function getHighestDeparturePrice($departure)
 {
     $price = 0;
     $cabin_prices = $departure['cabin_prices'];
-    if (!$cabin_prices) {
-        return $price;
-    }
+    if (!$cabin_prices) return $price;
 
     $priceArray = [];
     foreach ($cabin_prices as $c) {
         if ($c['sold_out'] != true) {
-            if (!($c['discounted_price'] == "" && $c['price'] == "")) {
-                $priceArray[] = $c['discounted_price'] == "" ? $c['price'] : $c['discounted_price'];
+            $hasDiscount = $c['discounted_price'] !== "" && $c['discounted_price'] !== 0 && $c['discounted_price'] !== null;
+            $effectivePrice = $hasDiscount ? $c['discounted_price'] : $c['price'];
+            if ($effectivePrice !== "" && $effectivePrice !== null) {
+                $priceArray[] = $effectivePrice;
             }
         }
     }
 
-    $price = !empty($priceArray) ? max($priceArray) : 0;
-    return $price;
+    return !empty($priceArray) ? max($priceArray) : 0;
 }
 
 // get highest discount percentage form a single departures
