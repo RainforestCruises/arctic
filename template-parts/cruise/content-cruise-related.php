@@ -64,24 +64,27 @@ $ships = get_posts($queryArgs);
             <!-- Swiper -->
             <div class="swiper" id="related-slider">
                 <div class="swiper-wrapper">
-                    <?php 
+                    <?php
                     $count = 0;
                     foreach ($ships as $ship) :
-                        if($count > 11){
+                        if ($count > 11) {
                             continue;
                         }
-                        $departures = getDepartureList($ship);
+                        $departures = getDepartureListShip($ship);
                         $lowestPrice = getLowestDepartureListPrice($departures);
                         $highestPrice = getHighestDepartureListPrice($departures);
                         $bestOverallDiscount = getBestDepartureListDiscount($departures);
-                        if(!$lowestPrice){
+                        if (!$lowestPrice) {
                             continue;
                         }
                         $images =  get_field('hero_gallery', $ship);
                         $image = $images[0];
                         $itineraries = getShipItineraries($ship); // TODO: check region
+                        $itineraryLengths = getItineraryLengths($itineraries);
+                        $itineraryLengthDisplay = formatLengthDisplay($itineraryLengths, true);
+                        $itineraryDisplay = $itineraryLengthDisplay . " , " . count($itineraries) . ' Itineraries';
+                        
                         $title = get_the_title($ship);
-                        $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
                         $service_level =  get_field('service_level', $ship);
                         $serviceLevelDisplay = ($service_level) ? get_the_title($service_level) : "N/A";
                         $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . $serviceLevelDisplay;
@@ -152,7 +155,8 @@ $ships = get_posts($queryArgs);
                             </div>
                         </div>
 
-                    <?php $count++; endforeach; ?>
+                    <?php $count++;
+                    endforeach; ?>
 
                 </div>
             </div>

@@ -1,5 +1,7 @@
 <?php
 $itineraries = $args['itineraries'];
+$itineraryInfoObjects = $args['itineraryInfoObjects'];
+
 ?>
 
 <!-- Itineraries -->
@@ -27,10 +29,12 @@ $itineraries = $args['itineraries'];
                     <div class="swiper-wrapper">
                         <?php $count = 0;
                         foreach ($itineraries as $itinerary) :
-                            $itineraryInfoObject = createItineraryInfoObject($itinerary);
-                            $id = $itinerary->ID;
+                            $matched = array_filter($itineraryInfoObjects, fn($o) => $o->postId === $itinerary->ID);
+                            console_log($itinerary->ID);
+                            $matchedItineraryInfoObject = !empty($matched) ? array_values($matched)[0] : null;
+
                             $length = get_field('length_in_nights', $itinerary) + 1 . ' Days';
-                            if($itineraryInfoObject->hasDifferentLengths){
+                            if($matchedItineraryInfoObject->hasDifferentLengths){
                                 $length .= " +";
                             }
 
@@ -76,12 +80,13 @@ $itineraries = $args['itineraries'];
                         <?php
                         $count = 0;
                         foreach ($itineraries as $itinerary) :
-                            $itineraryInfoObject = createItineraryInfoObject($itinerary);
+                            $matched = array_filter($itineraryInfoObjects, fn($o) => $o->postId === $itinerary->ID);
+                            $matchedItineraryInfoObject = !empty($matched) ? array_values($matched)[0] : null;
 
-                            $id = $itinerary->ID;
+                            $shipPost = get_post();
                             $hero_gallery = get_field('hero_gallery', $itinerary);
                             $hero_image = $hero_gallery[0];
-                            $departures = getDepartureList($itinerary, get_post()); // need to restrict to specific ship to obtain correct prices and dates
+                            $departures = getDepartureListItinerary($itinerary, $shipPost); // need to restrict to specific ship to obtain correct prices and dates
                             $lowestPrice = getLowestDepartureListPrice($departures);
                             $highestPrice = getHighestDepartureListPrice($departures);
                             $bestOverallDiscount = getBestDepartureListDiscount($departures);
@@ -90,10 +95,10 @@ $itineraries = $args['itineraries'];
                             $length_in_nights = get_field('length_in_nights', $itinerary);
                             $top_snippet = get_field('top_snippet', $itinerary);
                             $link = get_the_permalink($itinerary);
-                            $length = $itineraryInfoObject->lengthDisplay;
-                            $hasDifferentPorts = $itineraryInfoObject->hasDifferentPorts;
-                            $embarkation = $itineraryInfoObject->embarkationDisplay;
-                            $disembarkation = $itineraryInfoObject->disembarkationDisplay;
+                            $length = $matchedItineraryInfoObject->lengthDisplay;
+                            $hasDifferentPorts = $matchedItineraryInfoObject->hasDifferentPorts;
+                            $embarkation = $matchedItineraryInfoObject->embarkationDisplay;
+                            $disembarkation = $matchedItineraryInfoObject->disembarkationDisplay;
                             $flightOption = getFlightOption(get_field('fly_category', $itinerary));
                         ?>
 
@@ -195,8 +200,6 @@ $itineraries = $args['itineraries'];
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                             <!-- Disembark -->
                                             <?php if ($hasDifferentPorts) : ?>
                                                 <div class="specs-item">

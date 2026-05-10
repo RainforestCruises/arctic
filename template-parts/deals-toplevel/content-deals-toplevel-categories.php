@@ -62,10 +62,11 @@ foreach ($sections as $section) :
                             $images =  get_field('hero_gallery', $itinerary);
                             $image = $images[0];
                             $title = get_field('display_name', $itinerary);
-                            $itineraryInfoObject = createItineraryInfoObject($itinerary);
-                            $lengthDisplay = $itineraryInfoObject->lengthDisplay;
-                            $shipsDisplay = getShipsFromItineraryList($itinerary, true);
-                            $departures = getDepartureList($itinerary);
+                             $itineraryLengths = getItineraryLengths($itinerary);
+                            $lengthDisplay = formatLengthDisplay($itineraryLengths);
+                            $ships = getShipsFromItineraries($itinerary);
+                            $shipsDisplay = getShipsDisplay($ships);
+                            $departures = getDepartureListItinerary($itinerary);
                             if (!$departures) continue; // Skip if sold out
                             $lowestPrice = getLowestDepartureListPrice($departures);
                             $highestPrice = getHighestDepartureListPrice($departures);
@@ -154,4 +155,3 @@ foreach ($sections as $section) :
 <?php $categoryCount++;
 endforeach;
 ?>
-

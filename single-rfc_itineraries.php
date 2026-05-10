@@ -32,7 +32,7 @@ $extra_activities = array_merge($extra_activities, $optional_activities);
 
 
 //$days = get_field('itinerary');
-$departures = getDepartureList($itinerary, null, false, null, true);
+$departures = getDepartureListItinerary($itinerary, null, false);
 $ships = getShipsFromDepartureList($departures);
 $lowestOverallPrice = getLowestDepartureListPrice($departures);
 $bestOverallDiscount = getBestDepartureListDiscount($departures);
@@ -45,13 +45,12 @@ $yearSelections = createYearSelection($curentYear, 3);
 $shipSizeRange = getItineraryShipSize($ships);
 $embarkation_point = get_field('embarkation_point');
 $disembarkation_point = get_field('disembarkation_point');
-
 $itineraryInfoObject = createItineraryInfoObject($itinerary);
 
 
 $itineraryMapObjects = [];
-foreach ($itineraryInfoObject->itineraryObjects as $itinerary) {
-  $itineraryMapObjects[] = getItineraryMapObject($itinerary);
+foreach ($itineraryInfoObject->itineraryObjects as $itineraryObject) {
+  $itineraryMapObjects[] = $itineraryObject->mapObject;
 }
 
 

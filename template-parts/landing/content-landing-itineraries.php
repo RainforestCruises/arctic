@@ -48,7 +48,7 @@ $allLink = $args['allLink'];
                     <?php
                     $count = 0;
                     foreach ($itineraries as $itinerary) :
-                        $departures = getDepartureList($itinerary, null, true, $region);
+                        $departures = getDepartureListItinerary($itinerary, true);
                         if (!$departures) {
                             continue;
                         } else {
@@ -60,9 +60,10 @@ $allLink = $args['allLink'];
                         $images =  get_field('hero_gallery', $itinerary);
                         $image =  $images[0];
                         $title = get_field('display_name', $itinerary);
-                        $shipsDisplay = getShipsFromItineraryList($itinerary, true);
-                        $itineraryInfoObject = createItineraryInfoObject($itinerary);
-                        $lengthDisplay = $itineraryInfoObject->lengthDisplay;
+                        $ships = getShipsFromItineraries($itinerary);
+                        $shipsDisplay = getShipsDisplay($ships);
+                         $itineraryLengths = getItineraryLengths($itinerary);
+                        $lengthDisplay = formatLengthDisplay($itineraryLengths);
 
                         $lowestPrice = getLowestDepartureListPrice($departures);
                         $highestPrice = getHighestDepartureListPrice($departures);

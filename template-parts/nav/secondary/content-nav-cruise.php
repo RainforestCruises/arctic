@@ -1,7 +1,7 @@
 <?php
 $title = get_the_title();
 $ship = get_post();
-$departures = getDepartureList($ship);
+$departures = getDepartureListShip($ship);
 $deals = getDealsFromDepartureList($departures);
 $reviews = get_field('reviews');
 $regions = getShipRegions($ship);

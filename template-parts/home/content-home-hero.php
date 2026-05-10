@@ -11,7 +11,7 @@ $show_site_notice = get_field('show_site_notice', 'options');
 <section class="home-hero" id="top">
 
     <div class="home-hero__bg-image">
-        <img <?php afloat_image_markup($hero_featured_image['id'], 'landscape-full', array('landscape-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small'), false); ?> class="optimole-initial">
+        <img <?php afloat_image_markup($hero_featured_image['id'], 'landscape-full', array('landscape-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small')); ?> class="optimole-initial">
     </div>
 
     <!-- Hero Content -->
@@ -30,15 +30,12 @@ $show_site_notice = get_field('show_site_notice', 'options');
         <!-- Secondary -->
         <div class="home-hero__content__jumplinks">
             <?php foreach ($hero_items as $item) :
-
                 $anchor = $item['anchor_link'];
                 $icon = $item['icon'];
                 $image = $item['image'];
                 $title = $item['title'];
                 $subtitle = $item['subtitle'];
-
                 $percentage_savings = $item['percentage_savings'];
-
             ?>
                 <a class="hero-item" href="<?php echo $anchor; ?>">
                     <div class="hero-item__icon-area">

@@ -1,7 +1,7 @@
 <?php
 $title = get_field('display_name');
 $itinerary = get_post();
-$departures = getDepartureList($itinerary);
+$departures = getDepartureListItinerary($itinerary);
 $deals = getDealsFromDepartureList($departures);
 $extra_activities = get_field('extra_activities') ?: [];
 $optional_activities = array_map(function ($post) {

@@ -258,7 +258,9 @@ $top_level_deals_page = get_field('top_level_deals_page', $initialRegion);
                                                     $url .= "?region=" . $shipRegion->ID;
                                                 }
                                                 $itineraries = getShipItineraries($item, $shipRegion);
-                                                $itineraryDisplay = count($itineraries) . ' Itineraries, ' . itineraryRange($itineraries, "-") . " Days";
+                                                $itineraryLengths = getItineraryLengths($itineraries);
+                                                $itineraryLengthDisplay = formatLengthDisplay($itineraryLengths, true);
+                                                $itineraryDisplay = count($itineraries) . ' Itineraries, ' . $itineraryLengthDisplay;
 
 
                                                 $shipRegionId = $shipRegion ? $shipRegion->ID : "all";

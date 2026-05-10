@@ -43,19 +43,23 @@ $itineraries_title = get_field('itineraries_title');
 
 
                     <?php foreach ($itineraries as $itinerary) :
-                        $itineraryInfoObject = createItineraryInfoObject($itinerary);
-                        $lengthDisplay = $itineraryInfoObject->lengthDisplay;
+                        $itineraryLengths = getItineraryLengths($itinerary);
+                        $lengthDisplay = formatLengthDisplay($itineraryLengths);
 
                         $images =  get_field('hero_gallery', $itinerary);
                         $image = $images[0];
                         $itineraries =  get_field('itineraries', $itinerary);
+                        $itineraryLengths = getItineraryLengths($itineraries);
+                        $itineraryLengthDisplay = formatLengthDisplay($itineraryLengths, true);
+
                         $title = get_field('display_name', $itinerary);
 
-                        $shipsDisplay = getShipsFromItineraryList($itinerary, true);
+                        $ships = getShipsFromItineraries($itinerary);
+                        $shipsDisplay = getShipsDisplay($ships);
                         $destinations = getItineraryDestinations($itinerary, true, 4);
-                        $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
+                        $itineraryDisplay = $itineraryLengthDisplay . " , " . count($itineraries) . ' Itineraries';
                         $guestsDisplay = get_field('vessel_capacity', $itinerary) . ' Guests, ' . 'Luxury';
-                        $departures = getDepartureList($itinerary);
+                        $departures = getDepartureListItinerary($itinerary);
                         $lowestPrice = getLowestDepartureListPrice($departures);
                         $highestPrice = getHighestDepartureListPrice($departures);
                         $bestOverallDiscount = getBestDepartureListDiscount($departures);

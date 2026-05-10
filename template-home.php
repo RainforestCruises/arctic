@@ -1,12 +1,8 @@
 <?php
 /*Template Name: Home*/
-
 wp_enqueue_script('page-home', get_template_directory_uri() . '/js/page-home.js', array('jquery'), false, true);
 wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', array('jquery'), false, true);
-
 get_header();
-
-$use_development_sections = get_field('use_development_sections', 'options');
 
 $regionsArgs = array(
     'post_type' => 'rfc_regions',
@@ -25,16 +21,14 @@ if ($selectedRegion != null) {
 
 // Get routes that match the regions
 $show_routes = get_field('show_routes');
-$routes;
-
+$routes = null;
+$itineraryMapObjects = [];
 if ($show_routes) {
     $routes = getRoutesFromRegionList($regions);
-
-    $itineraryObjects = [];
     foreach ($routes as $route) {
         $sample_itinerary = get_field('sample_itinerary', $route);
         $itineraryInfoObject = createItineraryInfoObject($sample_itinerary);
-        $itineraryMapObjects[] = getItineraryMapObject($itineraryInfoObject->itineraryObjects[0]);
+        $itineraryMapObjects[] = $itineraryInfoObject->itineraryObjects[0]->mapObject;
     }
     wp_enqueue_script('page-product-cruise-itineraries', get_template_directory_uri() . '/js/page-product-cruise-itineraries.js', array('jquery'), false, true);
 

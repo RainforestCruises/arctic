@@ -164,7 +164,7 @@ function getItinerariesWithDeal($deals, $excludeItinerary = null, $region = null
     $count = 0;
     $itinerariesWithDeal = [];
     foreach ($itineraries as $itinerary) {
-        $departures = getDepartureList($itinerary);
+        $departures = getDepartureListItinerary($itinerary);
 
         // Guard against null or empty departures
         if (empty($departures) || !is_array($departures)) {
@@ -221,7 +221,7 @@ function getShipsWithDeal($deals)
 
     $shipsWithDeal = [];
     foreach ($ships as $ship) {
-        $departures = getDepartureList($ship);
+        $departures = getDepartureListShip($ship);
         $hasDeal = false;
         foreach ($departures as $departure) {
             

@@ -128,12 +128,10 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
 
     foreach ($itineraries as $itinerary) { // loop through itineraries
 
-        $itineraryInfoObject = createItineraryInfoObject($itinerary);
 
         // Check if any length in the array is within the filter range
-        $uniqueLengths = $itineraryInfoObject->uniqueLengthsArray;
+        $uniqueLengths = getItineraryLengths($itinerary);
         $hasValidLength = false;
-
         foreach ($uniqueLengths as $length) {
             if ($length >= $minLength && $length <= $maxLength) {
                 $hasValidLength = true;
@@ -145,16 +143,9 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
             continue; // Skip this itinerary if no valid lengths found
         }
 
-        // $lengthInNights = get_field('length_in_nights', $itinerary); // filter min/max length
-        // if ($lengthInNights < $minLength || $lengthInNights > $maxLength) {
-        //     continue;
-        // }
-
         $embarkation_point = get_field('embarkation_point', $itinerary); // filter embarkation countries
         $disembarkation_point = get_field('disembarkation_point', $itinerary);
         $embarkation_country = get_field('embarkation_country', $embarkation_point);
-
-
 
         $embarkationMatch = false;
         if ($countries == null) {
@@ -164,7 +155,6 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
             if (!$embarkation_country || !$disembarkation_point || !$embarkation_country) { // if any null value is found, skip this itinerary
                 continue;
             }
-
 
             foreach ($countries as $country) {
                 if ($country == $embarkation_country->ID) {
@@ -177,7 +167,7 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
         }
 
 
-        $departuresFullList = getDepartureList($itinerary, null, true); // filter dates (not including sold out)
+        $departuresFullList = getDepartureListItinerary($itinerary, null, true); // filter dates (not including sold out)
         $departures = [];
         if ($datesArray) {
             foreach ($departuresFullList as $departure) {
@@ -212,7 +202,7 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
         $displayName = get_field('display_name', $itinerary);
         $flightOption = getFlightOption(get_field('fly_category', $itinerary));
         $topSnippet = get_field('top_snippet', $itinerary);
-        $lengthDisplay = $itineraryInfoObject->lengthDisplay;
+        $lengthDisplay = formatLengthDisplay($uniqueLengths);
 
         // itinerary specific fields
         if ($viewType == 'search-itineraries') {
@@ -453,7 +443,10 @@ function filterAndBuildMetaObject($itineraries, $countries, $minLength, $maxLeng
                 }
                 usort($departuresList, "sortDates"); //sort by search rank score
 
-                $itineraryDisplay = itineraryRange($itinerariesList, "-") . " Days, " . count($itinerariesList);
+                $itineraryLengths = getItineraryLengths($itinerariesList);
+                $itineraryLengthDisplay = formatLengthDisplay($itineraryLengths, true);
+
+                $itineraryDisplay = $itineraryLengthDisplay . " , " . count($itinerariesList);
                 $itineraryDisplay .= count($itinerariesList) == 1 ? ' Itinerary' : ' Itineraries';
                 $datesDisplay = getDateListDisplay($departuresList, 3);
                 $lowestPrice = !empty($lowPriceList) ? min($lowPriceList) : 0;

@@ -9,9 +9,7 @@ $routes_title_subtext = get_field('routes_title_subtext');
 <!-- Routes (home variant) -->
 <section class="cruise-itineraries home-variant" id="routes">
 
-
     <div class="cruise-itineraries__content">
-
         <div class="cruise-itineraries__content__top">
 
             <!-- Title -->
@@ -79,21 +77,20 @@ $routes_title_subtext = get_field('routes_title_subtext');
                             $image = get_field('image', $route);
                             $title = get_field('title', $route);
                             $description = get_field('description', $route);
-                            $landing_page = get_field('landing_page', $route);
                             $sample_itinerary = get_field('sample_itinerary', $route);
                             $average_length_in_nights = get_field('average_length_in_nights', $route);
                             $length = $average_length_in_nights + 1 . ' Day / ' . $average_length_in_nights . ' Night';
                             $ports = get_field('ports', $route);
                             $portsDisplay = comma_separate_list($ports);
-                            $destinations = getItineraryDestinations($sample_itinerary, true, 4); //build list of unique, with embarkations removed
+                            $destinations = getItineraryDestinations($sample_itinerary, true, 4); // build list of unique, with embarkations removed
                             $region = get_field('region', $route);
                             $top_level_search_page = get_field('top_level_search_page', $region);
-                            $allLink = get_permalink($top_level_search_page) . '?routes=' . $route->ID;
+                            $allLink = get_permalink($top_level_search_page) . '?routes=' . $route->ID; // search page with route filter applied
+                            $landing_page = get_field('landing_page', $route); // landing page of the route
                             $badgeClass = getBadgeClass($region);
-
                         ?>
 
-                            <!-- Itinerary Card -->
+                            <!-- Itinerary Card (Sample)-->
                             <div class="cruise-itineraries__content__main__detail-area__slider__slide swiper-slide" slideIndex="<?php echo $count ?>" postId="<?php echo $id ?>">
 
                                 <!-- Mobile -->

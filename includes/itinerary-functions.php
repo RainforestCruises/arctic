@@ -4,6 +4,7 @@ function createItineraryInfoObject($itinerary)
 {
 
     // default itinerary (first object)
+    $post_id = $itinerary->ID;
     $days = get_field('itinerary', $itinerary) ?: [];
     $length_in_nights = get_field('length_in_nights', $itinerary);
     $length_in_days = $length_in_nights + 1;
@@ -16,15 +17,15 @@ function createItineraryInfoObject($itinerary)
     $zoom_level_start_point = get_field('zoom_level_start_point', $itinerary);
     $show_itinerary_note = get_field('show_itinerary_note', $itinerary);
     $itinerary_note = get_field('itinerary_note', $itinerary);
-
-    $post_id = get_the_ID($itinerary);
-
-    // Create departure display for default
-    $departure_display = ($embarkation_point && $disembarkation_point && $embarkation_point->ID == $disembarkation_point->ID)
-        ? "From {$embarkation_point->post_title}"
-        : "From {$embarkation_point->post_title} to {$disembarkation_point->post_title}";
-
     $departure_display = get_field('variant_title', $itinerary) ?: null;
+
+    $hasDifferentPorts = false;
+    $hasDifferentLengths = false;
+    $hasDifferentTransport = false;
+    $uniqueLengths = [$length_in_days];
+    $uniqueEmbarkations = [$embarkation_point->post_title];
+    $uniqueDisembarkations = [$disembarkation_point->post_title];
+    $uniqueFlyCategories = [$fly_category];
 
     $defaultItineraryObject = (object) [
         'days' => $days,
@@ -44,18 +45,7 @@ function createItineraryInfoObject($itinerary)
         'itinerary_note' => $itinerary_note,
     ];
     $defaultItineraryObject->mapObject = getItineraryMapObject($defaultItineraryObject);
-    $itineraryObjects[] = $defaultItineraryObject;
-
-    // Initialize flags
-    $hasDifferentPorts = false;
-    $hasDifferentLengths = false;
-    $hasDifferentTransport = false;
-
-    $uniqueLengths = [$length_in_days];
-    $uniqueEmbarkations = [$embarkation_point->post_title];
-    $uniqueDisembarkations = [$disembarkation_point->post_title];
-    $uniqueFlyCategories = [$fly_category];
-
+    $itineraryObjects[] = $defaultItineraryObject; // info object can have multiple 'itinerary objects'
 
     $hasVariants = get_field('has_variants', $itinerary);
     $variants = get_field('variants', $itinerary);
@@ -74,12 +64,6 @@ function createItineraryInfoObject($itinerary)
             $variant_geojson = $variant['geojson'] ?? $geojson;
             $variant_show_itinerary_note = $variant['show_itinerary_note'] ?? false;
             $variant_itinerary_note = $variant['itinerary_note'] ?? null;
-
-            // Create departure display for variant
-            $variant_departure_display = ($variant_embarkation_point && $variant_disembarkation_point && $variant_embarkation_point->ID == $variant_disembarkation_point->ID)
-                ? "From {$variant_embarkation_point->post_title}"
-                : "From {$variant_embarkation_point->post_title} to {$variant_disembarkation_point->post_title}";
-
             $variant_departure_display = $variant['variant_title'] ?: null;
 
             // Track unique values
@@ -128,7 +112,6 @@ function createItineraryInfoObject($itinerary)
                 'itinerary_note' => $variant_itinerary_note,
             ];
             $variantItineraryObject->mapObject = getItineraryMapObject($variantItineraryObject);
-
             $itineraryObjects[] = $variantItineraryObject;
             $index++;
         }
@@ -152,19 +135,83 @@ function createItineraryInfoObject($itinerary)
     $uniqueFlyCategoriesArray = $uniqueFlyCategories;
 
     $itineraryInfoObject = (object) [
-        'itineraryObjects' => $itineraryObjects,
+        'itineraryObjects' => $itineraryObjects, // can be multiple itinerary objects if there are variants
         'hasVariants' => $hasVariants,
-        'hasDifferentPorts' => $hasDifferentPorts,
-        'hasDifferentLengths' => $hasDifferentLengths,
-        'hasDifferentTransport' => $hasDifferentTransport,
+        'hasDifferentPorts' => $hasDifferentPorts, // for showing another row in the itinerary card for disembarkation
+        'hasDifferentLengths' => $hasDifferentLengths, // for a Days + in the nav
+        'hasDifferentTransport' => $hasDifferentTransport, // for showing flight icons in the nav and map
         'lengthDisplay' => $lengthDisplay,
         'embarkationDisplay' => $embarkationDisplay,
         'disembarkationDisplay' => $disembarkationDisplay,
         'uniqueFlyCategoriesArray' => $uniqueFlyCategoriesArray,
         'uniqueLengthsArray' => $uniqueLengths,
-
+        'postId' => $post_id,
 
     ];
 
     return $itineraryInfoObject;
+}
+
+
+// Itinerary lengths
+// takes an itinerary and returns an array of unique lengths 
+function getItineraryLengths($itineraries)
+{
+    $uniqueLengths = [];
+
+    $itineraryList = is_array($itineraries) ? $itineraries : [$itineraries];
+
+    foreach ($itineraryList as $itinerary) {
+        $length_in_nights = get_field('length_in_nights', $itinerary);
+        $length_in_days = $length_in_nights + 1;
+
+        if (!in_array($length_in_days, $uniqueLengths)) {
+            $uniqueLengths[] = $length_in_days;
+        }
+
+        $hasVariants = get_field('has_variants', $itinerary);
+        $variants = get_field('variants', $itinerary);
+        if ($hasVariants && $variants) {
+            foreach ($variants as $variant) {
+                $variant_length_in_nights = $variant['length_in_nights'] ?? $length_in_nights;
+                $variant_length_in_days = $variant_length_in_nights + 1;
+
+                if (!in_array($variant_length_in_days, $uniqueLengths)) {
+                    $uniqueLengths[] = $variant_length_in_days;
+                }
+            }
+        }
+    }
+
+    sort($uniqueLengths);
+    return $uniqueLengths;
+}
+
+
+
+// generic format lengths
+// takes an array of lengths and formats it for display, with options for range or only min
+function formatLengthDisplay($lengths, $range = false, $onlyMin = false)
+{
+    if (empty($lengths)) return "N/A";
+
+    $lengths = is_array($lengths) ? $lengths : [$lengths];
+    $lengths = array_filter($lengths, fn($l) => !is_null($l));
+
+    if (empty($lengths)) return "N/A";
+
+    sort($lengths);
+
+    $min = min($lengths);
+    $max = max($lengths);
+
+    if ($onlyMin) {
+        return $min . ' Days';
+    }
+
+    if ($range) {
+        return $min === $max ? $min . ' Days' : $min . '-' . $max . ' Days';
+    }
+
+    return implode(', ', array_map(fn($days) => $days . ' Days', $lengths));
 }

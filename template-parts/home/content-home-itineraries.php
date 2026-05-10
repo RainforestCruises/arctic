@@ -5,9 +5,9 @@ $regions = $args['regions'];
 $isMultiRegion = $args['isMultiRegion'];
 
 $searchPage = $isMultiRegion ? get_field('top_level_search_page', 'options') : get_permalink(get_field('top_level_search_page', $regions[0]));
-$ctaDisplay = $isMultiRegion ? "Find Your Expedition" : "Expore " . get_the_title($region[0]);
+$ctaDisplay = $isMultiRegion ? "Find Your Expedition" : "Explore " . get_the_title($regions[0]) . " Expeditions";
 
-$itineraries;
+$itineraries = null;
 if ($isMultiRegion) {
     $queryArgs = array(
         'post_type' => 'rfc_itineraries',
@@ -63,18 +63,33 @@ if ($isMultiRegion) {
                     $count = 0;
                     foreach ($itineraries as $itinerary) :
 
-                        if ($count > 24) break; // Limit to 12 itineraries per region
+                        $precalculated_departures = get_field('precalculated_departures', $itinerary);
+                        $departures = $precalculated_departures ? $precalculated_departures : getDepartureListItinerary($itinerary);
+
+                        if (!$departures) continue; // Skip if sold out
+                        if ($count > 12) break; // Limit to 12 itineraries per region
+
+                        $precalculated_lengths = get_field('precalculated_lengths', $itinerary);
+                        $itineraryLengths = $precalculated_lengths ? $precalculated_lengths : getItineraryLengths($itinerary);
+                        $lengthDisplay = formatLengthDisplay($itineraryLengths);
+
+                        $precalculated_ships = get_field('precalculated_ships', $itinerary);
+                        $ships = $precalculated_ships ? $precalculated_ships : getShipsFromItineraries($itinerary);
+                        $shipsDisplay = getItineraryShipDisplay($ships);
+
+                        $precalculated_price_low = get_field('precalculated_price_low', $itinerary);
+                        $lowestPrice = $precalculated_price_low ? $precalculated_price_low : getLowestDepartureListPrice($departures);
+
+                        $precalculated_price_high = get_field('precalculated_price_high', $itinerary);
+                        $highestPrice = $precalculated_price_high ? $precalculated_price_high : getHighestDepartureListPrice($departures);
+
+                        $precalculated_best_discount = get_field('precalculated_best_discount', $itinerary);
+                        $bestOverallDiscount = $precalculated_best_discount ? $precalculated_best_discount : getBestDepartureListDiscount($departures);
+
                         $images =  get_field('hero_gallery', $itinerary);
                         $image = $images[0];
                         $title = get_field('display_name', $itinerary);
-                        $itineraryInfoObject = createItineraryInfoObject($itinerary);
-                        $lengthDisplay = $itineraryInfoObject->lengthDisplay;
-                        $shipsDisplay = getShipsFromItineraryList($itinerary, true);
-                        $departures = getDepartureList($itinerary);
-                        if (!$departures) continue; // Skip if sold out
-                        $lowestPrice = getLowestDepartureListPrice($departures);
-                        $highestPrice = getHighestDepartureListPrice($departures);
-                        $bestOverallDiscount = getBestDepartureListDiscount($departures);
+
                         $count++;
                     ?>
 
@@ -87,7 +102,6 @@ if ($isMultiRegion) {
                                     Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
                                 </div>
                             <?php endif; ?>
-
 
                             <!-- Images Slider -->
                             <div class="resource-card__image-area">

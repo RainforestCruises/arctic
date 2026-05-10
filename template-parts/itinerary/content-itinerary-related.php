@@ -74,7 +74,7 @@ $itineraries = get_posts($queryArgs);
                         if ($count > 11) {
                             continue;
                         }
-                        $departures = getDepartureList($itinerary);
+                        $departures = getDepartureListItinerary($itinerary);
                         $lowestPrice = getLowestDepartureListPrice($departures);
                         $highestPrice = getHighestDepartureListPrice($departures);
                         $bestOverallDiscount = getBestDepartureListDiscount($departures);
@@ -84,9 +84,10 @@ $itineraries = get_posts($queryArgs);
                         $images =  get_field('hero_gallery', $itinerary);
                         $image = $images[0];
                         $title = get_field('display_name', $itinerary);
-                        $shipsDisplay = getShipsFromItineraryList($itinerary, true);
-                        $itineraryInfoObject = createItineraryInfoObject($itinerary);
-                        $lengthDisplay = $itineraryInfoObject->lengthDisplay;
+                        $ships = getShipsFromItineraries($itinerary);
+                        $shipsDisplay = getShipsDisplay($ships);
+                         $itineraryLengths = getItineraryLengths($itinerary);
+                        $lengthDisplay = formatLengthDisplay($itineraryLengths);
                     ?>
 
                         <!-- Itinerary Card -->

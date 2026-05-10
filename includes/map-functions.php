@@ -1,12 +1,11 @@
 <?php
 // MAPS ----------------------------------------------------------------------------------------------\
-//create itinerary object from single itinerary
+//create map object from an 'itinerary object'
 function getItineraryMapObject($itineraryObject)
 {
     $embarkation_point = $itineraryObject->embarkation_point;
     $disembarkation_point = $itineraryObject->disembarkation_point;
     $hasDifferentPorts = $disembarkation_point != null && ($disembarkation_point != $embarkation_point);
-
     $days = $itineraryObject->days;
 
     // Destination Point Series
@@ -85,7 +84,7 @@ function getItineraryMapObject($itineraryObject)
 
 
     // Itinerary Object
-    $itineraryObject = [
+    $mapObject = [
         'featureList' => $featureList,
         'hasDifferentPorts' => $hasDifferentPorts,
         'geojson' => $geojsonDecoded,
@@ -96,7 +95,7 @@ function getItineraryMapObject($itineraryObject)
         'excludeDayMarkup' => false
     ];
 
-    return $itineraryObject;
+    return $mapObject;
 }
 
 // create itinerary object from list of destinations, and starting points
@@ -146,7 +145,7 @@ function getItineraryObjectFromDestinations($destinations, $startLatitude, $star
     }
 
     // Itinerary Object
-    $itineraryObject = [
+    $mapObject = [
         'featureList' => $featureList,
         'hasDifferentPorts' => false,
         'geojson' => null,
@@ -157,7 +156,7 @@ function getItineraryObjectFromDestinations($destinations, $startLatitude, $star
         'excludeDayMarkup' => true
     ];
 
-    return $itineraryObject;
+    return $mapObject;
 }
 
 // generate day markup for map object

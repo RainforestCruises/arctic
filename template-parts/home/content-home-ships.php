@@ -55,17 +55,19 @@ $top_level_search_page = $isMultiRegion ? get_field('top_level_search_page', 'op
                         if ($count > 11) {
                             continue;
                         }
-                        $departures = getDepartureList($ship);
-                        if( !$departures ) continue; // Skip if sold out
-                        
+                        $departures = getDepartureListShip($ship); // TODO region
+                        if (!$departures) continue; // Skip if sold out
+
                         $lowestPrice = getLowestDepartureListPrice($departures);
                         $highestPrice = getHighestDepartureListPrice($departures);
                         $bestOverallDiscount = getBestDepartureListDiscount($departures);
                         $images =  get_field('hero_gallery', $ship);
                         $image = $images[0];
                         $itineraries = getShipItineraries($ship);
+                        $itineraryLengths = getItineraryLengths($itineraries);
+                        $itineraryLengthDisplay = formatLengthDisplay($itineraryLengths, true);
                         $title = get_the_title($ship);
-                        $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
+                        $itineraryDisplay = $itineraryLengthDisplay . " , " . count($itineraries) . ' Itineraries';
                         $service_level =  get_field('service_level', $ship);
                         $serviceLevelDisplay = ($service_level) ? get_the_title($service_level) : "N/A";
                         $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . $serviceLevelDisplay;

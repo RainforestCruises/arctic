@@ -1,10 +1,10 @@
 jQuery(document).ready(function ($) {
-    const itineraryObjects = page_vars_product_itinerary_map.itineraryObjects;
+    const itineraryMapObjects = page_vars_product_itinerary_map.itineraryMapObjects;
     let markersReference = [];
     let sourcesReference = [];
 
     // Map 
-    const initialObject = itineraryObjects[0]; // initial object
+    const initialObject = itineraryMapObjects[0]; // initial object
 
     mapboxgl.accessToken = 'pk.eyJ1IjoicmFpbmZvcmVzdGNydWlzZXNybHMiLCJhIjoiY2xiNWh2aXo5MDNiZzN2dW5hNjFpaXM3dCJ9.05yNz0iG1JXFq62DYF7SFA';
     var map = new mapboxgl.Map({

@@ -55,8 +55,8 @@ $itineraryPosts = get_posts($queryArgs);
 // filter on region
 if ($region) {
   foreach ($itineraryPosts as $itinerary) {
-    $itinerary_region = getItineraryRegion($itinerary);
-    if ($itinerary_region == $region) {
+    $itinerary_region_id = getItineraryRegion($itinerary);
+    if ($itinerary_region_id == $region->ID) {
       $itineraries[] = $itinerary;
     }
   }
@@ -64,7 +64,7 @@ if ($region) {
   $itineraries = $itineraryPosts;
 }
 
-$ships = getShipsFromItineraryList($itineraries);
+$ships = getShipsFromItineraries($itineraries);
 
 $args = array(
   'region' => $region,

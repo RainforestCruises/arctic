@@ -31,7 +31,9 @@ $initialRegion = $args['initialRegion'];
                     <?php foreach ($regions as $region) :
                         $image = get_field('image', $region);
                         $itineraries = getShipItineraries(get_post(), $region);
-                        $itineraryDisplay = count($itineraries) . ' Itineraries, ' . itineraryRange($itineraries, "-") . " Days";
+                        $itineraryLengths = getItineraryLengths($itineraries);
+                        $itineraryLengthDisplay = formatLengthDisplay($itineraryLengths, true);
+                        $itineraryDisplay = count($itineraries) . ' Itineraries, ' . $itineraryLengthDisplay;
                     ?>
 
                         <?php if ($region == $initialRegion) : ?>

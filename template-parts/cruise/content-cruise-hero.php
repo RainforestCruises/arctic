@@ -10,11 +10,14 @@ $specialDepartures = $args['specialDepartures'];
 $title = get_the_title();
 $snippet = get_field('top_snippet');
 $service_level = get_field('service_level');
-$itineraryCount = count($itineraries);
 $images = get_field('hero_gallery');
 $desktopImages = array_slice($images, 1); //for gallery desktop slider
 $reviews = get_field('reviews');
 $fly_category = getFlightOption(get_post());
+
+$itineraryCount = count($itineraries);
+$itineraryLengths = getItineraryLengths($itineraries);
+$itineraryLengthDisplay = formatLengthDisplay($itineraryLengths, true);
 
 ?>
 
@@ -176,7 +179,7 @@ $fly_category = getFlightOption(get_post());
                             <div class="sub-attribute">
                                 <?php echo $itineraryCount ?> Itineraries
                             </div>
-                            <?php echo itineraryRange($itineraries, " - ") . " Days"; ?>
+                            <?php echo $itineraryLengthDisplay; ?>
                         </div>
                     </div>
 

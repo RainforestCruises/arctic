@@ -40,10 +40,11 @@ if (count($itinerariesWithDeal) > 1) {
                 $length = $length_in_nights + 1 . ' Day / ' . $length_in_nights . ' Night';
                 $embarkation_point = get_field('embarkation_point', $itinerary);
                 $embarkation = get_the_title($embarkation_point);
-                $shipsDisplay = getShipsFromItineraryList($itinerary, true);
+                $ships = getShipsFromItineraries($itinerary);
+                $shipsDisplay = getShipsDisplay($ships);
                 $destinations = getItineraryDestinations($itinerary, true, 4);
                 $guestsDisplay = get_field('vessel_capacity', $itinerary) . ' Guests, ' . 'Luxury';
-                $departures = getDepartureList($itinerary);
+                $departures = getDepartureListItinerary($itinerary);
                 $lowestPrice = getLowestDepartureListPrice($departures);
                 $highestPrice = getHighestDepartureListPrice($departures);
                 $bestOverallDiscount = getBestDepartureListDiscount($departures);

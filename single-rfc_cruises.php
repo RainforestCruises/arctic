@@ -15,7 +15,7 @@ $initialRegion = checkPageRegion();
 $primaryRegion = getPrimaryRegion();
 $productName = get_the_title();
 $itineraries = getShipItineraries($ship, $initialRegion);
-$departures = getDepartureList($ship, null, false, $initialRegion);
+$departures = getDepartureListShip($ship, false, $initialRegion);
 $lowestOverallPrice = getLowestDepartureListPrice($departures);
 $bestOverallDiscount = getBestDepartureListDiscount($departures);
 $deals = getDealsFromDepartureList($departures, false);
@@ -54,6 +54,18 @@ function custom_sort($a, $b)
   return $ranking_a - $ranking_b;
 }
 
+//Itinerary JS Array
+$itineraryMapObjects = [];
+$itineraryInfoObjects = [];
+foreach ($itineraries as $itinerary) {
+  $itineraryInfoObject = createItineraryInfoObject($itinerary);
+  $itineraryInfoObjects[] = $itineraryInfoObject;
+  foreach ($itineraryInfoObject->itineraryObjects as $itineraryObject) {
+    $itineraryMapObjects[] = $itineraryObject->mapObject;
+  }
+}
+
+console_log($itineraryInfoObjects);
 
 $args = array(
   'productName' => $productName,
@@ -70,17 +82,10 @@ $args = array(
   'initialRegion' => $initialRegion,
   'regions' => $regions,
   'primaryRegion' => $primaryRegion,
-
+  'itineraryInfoObjects' => $itineraryInfoObjects,
 );
 
-//Itinerary JS Array
-$itineraryMapObjects = [];
-foreach ($itineraries as $itinerary) {
-  $itineraryInfoObject = createItineraryInfoObject($itinerary);
-  foreach ($itineraryInfoObject->itineraryObjects as $itinerary) {
-    $itineraryMapObjects[] = getItineraryMapObject($itinerary);
-  }
-}
+
 
 wp_localize_script(
   'page-product-cruise-itineraries',

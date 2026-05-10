@@ -8,13 +8,13 @@ $zoom_level_start_point = get_field('zoom_level_start_point');
 $map_title_subtext = get_field('map_title_subtext');
 $map_title = get_field('map_title');
 
-$itineraryObjects[] = getItineraryObjectFromDestinations($destinations, $latitude_start_point, $longitude_start_point, $zoom_level_start_point);
+$itineraryMapObjects[] = getItineraryObjectFromDestinations($destinations, $latitude_start_point, $longitude_start_point, $zoom_level_start_point);
 
 wp_localize_script(
     'page-product-itinerary-map',
     'page_vars_product_itinerary_map',
     array(
-        'itineraryObjects' =>  $itineraryObjects,
+        'itineraryMapObjects' =>  $itineraryMapObjects,
     )
 );
 ?>

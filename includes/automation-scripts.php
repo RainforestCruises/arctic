@@ -16,8 +16,9 @@ function refresh_itinerary_info_all() // loop all itineraries with automation an
         if ($use_automation) {
             $automation_itinerary_id = get_field('automation_itinerary_id', $itineraryPost);
             refresh_itinerary_info($automation_itinerary_id, $itineraryPost->ID); // refresh data
-            usleep(5000000); // 5 second pause
+            usleep(2000000); // 5 second pause
         }
+        precalculate_itinerary_data($itineraryPost);
     }
 }
 
@@ -27,14 +28,46 @@ function refresh_itinerary_info_all() // loop all itineraries with automation an
 add_action('acf/save_post', 'acf_automation_on_save');
 function acf_automation_on_save($post_id) // get data from API if post type is itinerary and automation is enabled
 {
-    if ('rfc_itineraries' == get_post_type()) {
+    if ('rfc_itineraries' == get_post_type() && 'publish' === get_post_status($post_id)) {
         $use_automation = get_field('use_automation', $post_id);
         if ($use_automation) {
             $automation_itinerary_id = get_field('automation_itinerary_id', $post_id);
             refresh_itinerary_info($automation_itinerary_id, $post_id);
         }
+        $itinerary = get_post($post_id);
+        precalculate_itinerary_data($itinerary);
     }
 }
+
+function precalculate_itinerary_data($itinerary)
+{
+    $departures = getDepartureListItinerary($itinerary);
+    $hasAvailability = $departures && count($departures) > 0;
+    $departureCount = count($departures);
+
+    $lowestPrice = getLowestDepartureListPrice($departures);
+    $highestPrice = getHighestDepartureListPrice($departures);
+    $bestOverallDiscount = getBestDepartureListDiscount($departures);
+    $ships = getShipsFromItineraries($itinerary);
+    $lengths = getItineraryLengths($itinerary);
+    $regionId = getItineraryRegion($itinerary);
+
+    update_field('precalculated_price_high', $highestPrice, $itinerary->ID);
+    update_field('precalculated_price_low', $lowestPrice, $itinerary->ID);
+    update_field('precalculated_best_discount', $bestOverallDiscount, $itinerary->ID);
+    update_field('precalculated_ships', $ships, $itinerary->ID);
+    update_field('precalculated_available', $hasAvailability, $itinerary->ID);
+    update_field('precalculated_lengths', $lengths, $itinerary->ID);
+    update_field('precalculated_departures', $departures, $itinerary->ID); // max input vars 1000 is too low
+    update_field('precalculated_region', $regionId, $itinerary->ID); 
+    update_field('precalculated_departure_count', $departureCount, $itinerary->ID);
+
+    $timezone  = -5; // (GMT -5:00) EST (U.S. & Canada)
+    $currentTime =  gmdate("M d, Y  H:i:s", time() + 3600 * ($timezone + date("I")));
+    update_field('precalculated_last_update', $currentTime, $itinerary->ID);
+}
+
+
 function refresh_itinerary_info($itineraryId, $post_id)
 {
     // // LOCAL 
@@ -45,7 +78,7 @@ function refresh_itinerary_info($itineraryId, $post_id)
     // API
     $url = 'https://tourtrack.azurewebsites.net/api/wpitineraries/';
     $url .= $itineraryId;
-    $request = wp_remote_get($url);
+    $request = wp_remote_get($url, array('timeout' => 10));
 
     if (is_wp_error($request)) {
         $error_message = $request->get_error_message();
@@ -67,6 +100,8 @@ function refresh_itinerary_info($itineraryId, $post_id)
     update_field('automation_message', array_unique($responseObject['errors']), $post_id);
     update_field('automation_departure_data', $responseObject['departures'], $post_id);
     update_field('automation_last_updated', $currentTime, $post_id);
+
+    return true;
 }
 
 
@@ -120,7 +155,7 @@ function formatDepartureApiData($automation_departure_data, $itineraryId)
         // check extra deals (special departures)
         foreach ($automation_extra_deals as $extra_deal) {
             if ($extra_deal['date'] == $departure_item['departureDate']) {
-                if ($extra_deal['overwrite_default'] == true) {           
+                if ($extra_deal['overwrite_default'] == true) {
                     $deals_post_list = array_filter($deals_post_list, function ($deal) use ($default_deal) { // Remove default deal from list
                         return $deal->ID !== $default_deal->ID;
                     });
@@ -177,6 +212,67 @@ function acf_read_only_automation_message($field)
 }
 add_filter('acf/load_field/name=automation_departure_data', 'acf_read_only_automation_departure_data');
 function acf_read_only_automation_departure_data($field)
+{
+    $field['readonly'] = 1;
+    return $field;
+}
+
+add_filter('acf/load_field/name=precalculated_price_high', 'acf_read_only_precalculated_price_high');
+function acf_read_only_precalculated_price_high($field)
+{
+    $field['readonly'] = 1;
+    return $field;
+}
+add_filter('acf/load_field/name=precalculated_price_low', 'acf_read_only_precalculated_price_low');
+function acf_read_only_precalculated_price_low($field)
+{
+    $field['readonly'] = 1;
+    return $field;
+}
+add_filter('acf/load_field/name=precalculated_best_discount', 'acf_read_only_precalculated_best_discount');
+function acf_read_only_precalculated_best_discount($field)
+{
+    $field['readonly'] = 1;
+    return $field;
+}
+add_filter('acf/load_field/name=precalculated_ships', 'acf_read_only_precalculated_ships');
+function acf_read_only_precalculated_ships($field)
+{
+    $field['readonly'] = 1;
+    return $field;
+}
+add_filter('acf/load_field/name=precalculated_available', 'acf_read_only_precalculated_available');
+function acf_read_only_precalculated_available($field)
+{
+    $field['wrapper']['style'] = 'pointer-events: none; opacity: 0.6;';
+    return $field;
+}
+add_filter('acf/load_field/name=precalculated_lengths', 'acf_read_only_precalculated_lengths');
+function acf_read_only_precalculated_lengths($field)
+{
+    $field['readonly'] = 1;
+    return $field;
+}
+add_filter('acf/load_field/name=precalculated_region', 'acf_read_only_precalculated_region');
+function acf_read_only_precalculated_region($field)
+{
+    $field['readonly'] = 1;
+    return $field;
+}
+add_filter('acf/load_field/name=precalculated_last_update', 'acf_read_only_precalculated_last_update');
+function acf_read_only_precalculated_last_update($field)
+{
+    $field['readonly'] = 1;
+    return $field;
+}
+add_filter('acf/load_field/name=precalculated_departures', 'acf_read_only_precalculated_departures');
+function acf_read_only_precalculated_departures($field)
+{
+    $field['readonly'] = 1;
+    return $field;
+}
+add_filter('acf/load_field/name=precalculated_departure_count', 'acf_read_only_precalculated_departure_count');
+function acf_read_only_precalculated_departure_count($field)
 {
     $field['readonly'] = 1;
     return $field;

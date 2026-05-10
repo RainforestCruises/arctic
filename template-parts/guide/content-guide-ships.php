@@ -41,16 +41,20 @@ $ships_title = get_field('ships_title');
                 <div class="swiper-wrapper">
 
                     <?php foreach ($ships as $ship) :
-                        $images =  get_field('hero_gallery', $ship);
-                        $image = $images[0];
+
                         $itineraries = getShipItineraries($ship, checkPageRegion());
-                        if(count($itineraries) == 0){
+                        if (count($itineraries) == 0) {
                             continue;
                         }
+                        $images =  get_field('hero_gallery', $ship);
+                        $image = $images[0];
+                        $itineraryLengths = getItineraryLengths($itineraries);
+                        $itineraryLengthDisplay = formatLengthDisplay($itineraryLengths, true);
+
                         $title = get_the_title($ship);
-                        $itineraryDisplay = itineraryRange($itineraries, "-") . " Days, " . count($itineraries) . ' Itineraries';
+                        $itineraryDisplay = $itineraryLengthDisplay . " , " . count($itineraries) . ' Itineraries';
                         $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . 'Luxury';
-                        $departures = getDepartureList($ship, null, false, checkPageRegion()); // restrict list to specific region to get correct prices / dates
+                        $departures = getDepartureListShip($ship, false, checkPageRegion()); // restrict list to specific region to get correct prices / dates
                         $lowestPrice = getLowestDepartureListPrice($departures);
                         $highestPrice = getHighestDepartureListPrice($departures);
                         $bestOverallDiscount = getBestDepartureListDiscount($departures);
