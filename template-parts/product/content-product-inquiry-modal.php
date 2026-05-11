@@ -106,31 +106,31 @@ $email = get_field('email', 'options');
                 <div class="departures-modal__content">
                     <div style="margin-bottom: 1.5rem;">NOTE: Cabin prices and availabilities listed are provided in good faith, but may contain discrepancies and are subject to change without notice. Please inquire with our polar specialists directly for the latest pricing and availability.</div>
                     <?php foreach ($departures as $d) :
-                        $departureId = $d['ID'];
-                        $itineraryPost = $d['ItineraryPost'];
-                        $itineraryPostId = $d['ItineraryPostId'];
-                        $departureStartDate = strtotime($d['DepartureDate']);
-                        $departureReturnDate = strtotime($d['ReturnDate']);
+                        $departureId = $d['id'];
+                        $itineraryPost = $d['itineraryPost'];
+                        $itineraryPostId = $d['itineraryPostId'];
+                        $departureStartDate = strtotime($d['departureDate']);
+                        $departureReturnDate = strtotime($d['returnDate']);
                         $title = get_field('display_name', $itineraryPost);
                         $hero_gallery = get_field('hero_gallery', $itineraryPost);
 
-                        $lengthDisplay = $d['LengthInDays'] . ' Days';
-                        $embarkationDisplay = $d['EmbarkationDisplay'];
+                        $lengthDisplay = $d['lengthInDays'] . ' Days';
+                        $embarkationDisplay = $d['embarkationDisplay'];
                         $secondaryFilterId = $itineraryPostId;
-                        $bestDiscount = $d['BestDiscount'];
-                        $lowestPrice = $d['LowestPrice'];
-                        $highestPrice = $d['HighestPrice'];
-                        $variantTitle = $d['VariantTitle'];
-                        $subtitleDisplay = $d['LengthInNights'] + 1 . ' Days';
+                        $bestDiscount = $d['bestDiscount'];
+                        $lowestPrice = $d['lowestPrice'];
+                        $highestPrice = $d['highestPrice'];
+                        $variantTitle = $d['variantTitle'];
+                        $subtitleDisplay = $d['lengthInNights'] + 1 . ' Days';
                         if($variantTitle != null){
                             $subtitleDisplay .= " (" . $variantTitle . ")";
                         }
 
-                        $deals = $d['Deals'];
+                        $deals = $d['deals'];
 
                         if (get_post_type() == 'rfc_itineraries') {
-                            $ship = $d['Ship'];
-                            $shipId = $d['ShipId'];
+                            $ship = $d['ship'];
+                            $shipId = $d['shipId'];
                             $secondaryFilterId = $shipId;
                             $title = get_the_title($ship);
                             $hero_gallery = get_field('hero_gallery', $ship);
@@ -271,9 +271,9 @@ $email = get_field('email', 'options');
                     <div style="margin-bottom: 1.5rem;">NOTE: Cabin prices and availabilities listed are provided in good faith, but may contain discrepancies and are subject to change without notice. Please inquire with our polar specialists directly for the latest pricing and availability.</div>
 
                     <?php foreach ($departures  as $d) :
-                        $departureId = $d['ID'];
-                        $cabins = $d['Cabins'];
-                        $deals = $d['Deals']; ?>
+                        $departureId = $d['id'];
+                        $cabins = $d['cabins'];
+                        $deals = $d['deals']; ?>
 
                         <!-- Deals -->
                         <?php if ($deals) :

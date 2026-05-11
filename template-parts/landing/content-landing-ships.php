@@ -38,7 +38,7 @@ $primaryRegion = getPrimaryRegion();
                 $serviceLevel = get_field('service_level', $ship);
                 $serviceLevelDisplay = get_field('service_level', $ship) ? get_the_title($serviceLevel) : '';
                 $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . $serviceLevelDisplay;
-                $departures = getDepartureListShip($ship, true, $region); // ships must specify region on a landing page
+                $departures = getDepartureListShip($ship, $region); // ships must specify region on a landing page
                 if (!$departures) {
                     continue;
                 }

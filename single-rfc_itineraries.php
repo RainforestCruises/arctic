@@ -32,7 +32,7 @@ $extra_activities = array_merge($extra_activities, $optional_activities);
 
 
 //$days = get_field('itinerary');
-$departures = getDepartureListItinerary($itinerary, null, false);
+$departures = getDepartureListItinerary($itinerary);
 $ships = getShipsFromDepartureList($departures);
 $lowestOverallPrice = getLowestDepartureListPrice($departures);
 $bestOverallDiscount = getBestDepartureListDiscount($departures);

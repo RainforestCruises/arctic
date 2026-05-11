@@ -41,8 +41,8 @@ $ships_title = get_field('ships_title');
                 <div class="swiper-wrapper">
 
                     <?php foreach ($ships as $ship) :
-
-                        $itineraries = getShipItineraries($ship, checkPageRegion());
+                        $region = checkPageRegion();
+                        $itineraries = getShipItineraries($ship, $region);
                         if (count($itineraries) == 0) {
                             continue;
                         }
@@ -54,7 +54,7 @@ $ships_title = get_field('ships_title');
                         $title = get_the_title($ship);
                         $itineraryDisplay = $itineraryLengthDisplay . " , " . count($itineraries) . ' Itineraries';
                         $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . 'Luxury';
-                        $departures = getDepartureListShip($ship, false, checkPageRegion()); // restrict list to specific region to get correct prices / dates
+                        $departures = getDepartureListShip($ship, $region); // restrict list to specific region to get correct prices / dates
                         $lowestPrice = getLowestDepartureListPrice($departures);
                         $highestPrice = getHighestDepartureListPrice($departures);
                         $bestOverallDiscount = getBestDepartureListDiscount($departures);

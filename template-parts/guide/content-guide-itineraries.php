@@ -56,7 +56,6 @@ $itineraries_title = get_field('itineraries_title');
 
                         $ships = getShipsFromItineraries($itinerary);
                         $shipsDisplay = getShipsDisplay($ships);
-                        $destinations = getItineraryDestinations($itinerary, true, 4);
                         $itineraryDisplay = $itineraryLengthDisplay . " , " . count($itineraries) . ' Itineraries';
                         $guestsDisplay = get_field('vessel_capacity', $itinerary) . ' Guests, ' . 'Luxury';
                         $departures = getDepartureListItinerary($itinerary);

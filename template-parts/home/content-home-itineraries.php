@@ -1,11 +1,11 @@
 <?php
 $itineraries_title = get_field('itineraries_title');
 $itineraries_title_subtext = get_field('itineraries_title_subtext');
-$regions = $args['regions'];
+$region = $args['region'];
 $isMultiRegion = $args['isMultiRegion'];
 
-$searchPage = $isMultiRegion ? get_field('top_level_search_page', 'options') : get_permalink(get_field('top_level_search_page', $regions[0]));
-$ctaDisplay = $isMultiRegion ? "Find Your Expedition" : "Explore " . get_the_title($regions[0]) . " Expeditions";
+$searchPage = $isMultiRegion ? get_field('top_level_search_page', 'options') : get_permalink(get_field('top_level_search_page', $region));
+$ctaDisplay = $isMultiRegion ? "Find Your Expedition" : "Explore " . get_the_title($region) . " Expeditions";
 
 $itineraries = null;
 if ($isMultiRegion) {
@@ -18,7 +18,7 @@ if ($isMultiRegion) {
     );
     $itineraries = get_posts($queryArgs);
 } else {
-    $itineraries = getItinerariesFromRegion($regions[0]);
+    $itineraries = getItinerariesFromRegion($region, 50);
 }
 
 ?>
@@ -75,7 +75,7 @@ if ($isMultiRegion) {
 
                         $precalculated_ships = get_field('precalculated_ships', $itinerary);
                         $ships = $precalculated_ships ? $precalculated_ships : getShipsFromItineraries($itinerary);
-                        $shipsDisplay = getItineraryShipDisplay($ships);
+                        $shipsDisplay = getShipsDisplay($ships);
 
                         $precalculated_price_low = get_field('precalculated_price_low', $itinerary);
                         $lowestPrice = $precalculated_price_low ? $precalculated_price_low : getLowestDepartureListPrice($departures);

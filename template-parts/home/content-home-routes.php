@@ -82,7 +82,8 @@ $routes_title_subtext = get_field('routes_title_subtext');
                             $length = $average_length_in_nights + 1 . ' Day / ' . $average_length_in_nights . ' Night';
                             $ports = get_field('ports', $route);
                             $portsDisplay = comma_separate_list($ports);
-                            $destinations = getItineraryDestinations($sample_itinerary, true, 4); // build list of unique, with embarkations removed
+                            $destinations = getItineraryDestinations($sample_itinerary); 
+                            $destinationDisplay = getDestinationsDisplay($destinations);              
                             $region = get_field('region', $route);
                             $top_level_search_page = get_field('top_level_search_page', $region);
                             $allLink = get_permalink($top_level_search_page) . '?routes=' . $route->ID; // search page with route filter applied
@@ -181,7 +182,7 @@ $routes_title_subtext = get_field('routes_title_subtext');
                                                     </svg>
                                                 </div>
                                                 <div class="specs-item__text">
-                                                    Sites: <?php echo $destinations; ?>
+                                                    Sites: <?php echo $destinationDisplay; ?>
                                                 </div>
                                             </div>
                                         </div>

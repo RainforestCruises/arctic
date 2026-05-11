@@ -28,7 +28,7 @@ function refresh_itinerary_info_all() // loop all itineraries with automation an
 add_action('acf/save_post', 'acf_automation_on_save');
 function acf_automation_on_save($post_id) // get data from API if post type is itinerary and automation is enabled
 {
-    if ('rfc_itineraries' == get_post_type() && 'publish' === get_post_status($post_id)) {
+    if ('rfc_itineraries' == get_post_type()) {
         $use_automation = get_field('use_automation', $post_id);
         if ($use_automation) {
             $automation_itinerary_id = get_field('automation_itinerary_id', $post_id);
@@ -50,7 +50,7 @@ function precalculate_itinerary_data($itinerary)
     $bestOverallDiscount = getBestDepartureListDiscount($departures);
     $ships = getShipsFromItineraries($itinerary);
     $lengths = getItineraryLengths($itinerary);
-    $regionId = getItineraryRegion($itinerary);
+    $regionId = getItineraryRegionId($itinerary);
 
     update_field('precalculated_price_high', $highestPrice, $itinerary->ID);
     update_field('precalculated_price_low', $lowestPrice, $itinerary->ID);

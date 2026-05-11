@@ -51,14 +51,14 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
                 <div class="swiper-wrapper">
 
                     <?php foreach ($departures as $d) :
-                        $departureId = $d['ID'];
-                        $ship = $d['Ship'];
-                        $variantIndex = $d['VariantIndex'];
+                        $departureId = $d['id'];
+                        $ship = $d['ship'];
+                        $variantIndex = $d['variantIndex'];
                         $shipId = $ship->ID;
-                        $itineraryPost = $d['ItineraryPost'];
-                        $itineraryPostId = $d['ItineraryPostId'];
-                        $departureStartDate = strtotime($d['DepartureDate']);
-                        $departureReturnDate = strtotime($d['ReturnDate']);
+                        $itineraryPost = $d['itineraryPost'];
+                        $itineraryPostId = $d['itineraryPostId'];
+                        $departureStartDate = strtotime($d['departureDate']);
+                        $departureReturnDate = strtotime($d['returnDate']);
                         $differentYears = date("Y", $departureStartDate) == date("Y", $departureReturnDate)  ? false : true;
 
                         $title = get_the_title($ship);
@@ -66,14 +66,14 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
                         $vessel_capacity = get_field('vessel_capacity', $ship);
                         $service_level = get_field('service_level', $ship);
                         $image = $hero_gallery[0];
-                        $embarkationDisplay = $d['EmbarkationDisplay'];
-                        $bestDiscount = $d['BestDiscount'];
-                        $highestPrice = $d['HighestPrice'];
-                        $lowestPrice = $d['LowestPrice'];
-                        $lengthDisplay = $d['LengthInDays'] . ' Days';
-                        $variantTitle = $d['VariantTitle'];
-                        $deals = $d['Deals'];
-                        $specialDepartures = $d['SpecialDepartures'];
+                        $embarkationDisplay = $d['embarkationDisplay'];
+                        $bestDiscount = $d['bestDiscount'];
+                        $highestPrice = $d['highestPrice'];
+                        $lowestPrice = $d['lowestPrice'];
+                        $lengthDisplay = $d['lengthInDays'] . ' Days';
+                        $variantTitle = $d['variantTitle'];
+                        $deals = $d['deals'];
+                        $specialDepartures = $d['specialDepartures'];
                         $combinedDeals = array_merge($deals, $specialDepartures);
 
                     ?>

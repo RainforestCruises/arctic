@@ -49,22 +49,22 @@ $departures = $args['departures'];
                 <div class="swiper-wrapper">
 
                     <?php foreach ($departures as $d) :
-                        $departureId = $d['ID'];
-                        $itineraryPost = $d['ItineraryPost'];
-                        $itineraryPostId = $d['ItineraryPostId'];
-                        $departureStartDate = strtotime($d['DepartureDate']);
-                        $departureReturnDate = strtotime($d['ReturnDate']);            
+                        $departureId = $d['id'];
+                        $itineraryPost = $d['itineraryPost'];
+                        $itineraryPostId = $d['itineraryPostId'];
+                        $departureStartDate = strtotime($d['departureDate']);
+                        $departureReturnDate = strtotime($d['returnDate']);            
                         $differentYears = date("Y", $departureStartDate) == date("Y", $departureReturnDate)  ? false : true;
                         $title = get_field('display_name', $itineraryPost);
                         $hero_gallery = get_field('hero_gallery', $itineraryPost);
                         $image = $hero_gallery[0];
-                        $embarkationDisplay = $d['EmbarkationDisplay'];
-                        $variantTitle = $d['VariantTitle'];
-                        $bestDiscount = $d['BestDiscount'];
-                        $highestPrice = $d['HighestPrice'];
-                        $lowestPrice = $d['LowestPrice'];
-                        $deals = $d['Deals'];
-                        $specialDepartures = $d['SpecialDepartures'];
+                        $embarkationDisplay = $d['embarkationDisplay'];
+                        $variantTitle = $d['variantTitle'];
+                        $bestDiscount = $d['bestDiscount'];
+                        $highestPrice = $d['highestPrice'];
+                        $lowestPrice = $d['lowestPrice'];
+                        $deals = $d['deals'];
+                        $specialDepartures = $d['specialDepartures'];
                         $combinedDeals = array_merge($deals, $specialDepartures);
                     ?>
 
@@ -82,7 +82,7 @@ $departures = $args['departures'];
                                             <?php echo  $title; ?>
                                         </div>
                                         <div class="avatar__title-group__sub">
-                                            <?php echo $d['LengthInNights'] + 1 . ' Days' ; ?>
+                                            <?php echo $d['lengthInNights'] + 1 . ' Days' ; ?>
                                             <?php echo $variantTitle != null ?  " (" . $variantTitle . ")" : "" ?>
                                         </div>
                                     </div>

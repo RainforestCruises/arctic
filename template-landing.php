@@ -55,7 +55,7 @@ $itineraryPosts = get_posts($queryArgs);
 // filter on region
 if ($region) {
   foreach ($itineraryPosts as $itinerary) {
-    $itinerary_region_id = getItineraryRegion($itinerary);
+    $itinerary_region_id = getItineraryRegionId($itinerary);
     if ($itinerary_region_id == $region->ID) {
       $itineraries[] = $itinerary;
     }

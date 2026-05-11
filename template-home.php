@@ -4,19 +4,9 @@ wp_enqueue_script('page-home', get_template_directory_uri() . '/js/page-home.js'
 wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', array('jquery'), false, true);
 get_header();
 
-$regionsArgs = array(
-    'post_type' => 'rfc_regions',
-    'posts_per_page' => -1,
-    'order' => 'ASC',
-    'orderby' => 'title',
-);
-$regions = get_posts($regionsArgs);
+
 $selectedRegion = get_field('region');
-$isMultiRegion = true;
-if ($selectedRegion != null) {
-    $regions = array($selectedRegion);
-    $isMultiRegion = false;
-}
+$isMultiRegion = $selectedRegion == null;
 
 
 // Get routes that match the regions
@@ -24,7 +14,7 @@ $show_routes = get_field('show_routes');
 $routes = null;
 $itineraryMapObjects = [];
 if ($show_routes) {
-    $routes = getRoutesFromRegionList($regions);
+    $routes = getRoutesFromRegion($selectedRegion);
     foreach ($routes as $route) {
         $sample_itinerary = get_field('sample_itinerary', $route);
         $itineraryInfoObject = createItineraryInfoObject($sample_itinerary);
@@ -45,7 +35,7 @@ if ($show_routes) {
 
 $args = array(
     'footerCtaDivider' => true,
-    'regions' => $regions,
+    'region' => $selectedRegion,
     'routes' => $routes,
     'isMultiRegion' => $isMultiRegion,
 );

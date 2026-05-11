@@ -34,7 +34,7 @@ $itineraryInfoObjects = $args['itineraryInfoObjects'];
                             $matchedItineraryInfoObject = !empty($matched) ? array_values($matched)[0] : null;
 
                             $length = get_field('length_in_nights', $itinerary) + 1 . ' Days';
-                            if($matchedItineraryInfoObject->hasDifferentLengths){
+                            if ($matchedItineraryInfoObject->hasDifferentLengths) {
                                 $length .= " +";
                             }
 
@@ -90,7 +90,8 @@ $itineraryInfoObjects = $args['itineraryInfoObjects'];
                             $lowestPrice = getLowestDepartureListPrice($departures);
                             $highestPrice = getHighestDepartureListPrice($departures);
                             $bestOverallDiscount = getBestDepartureListDiscount($departures);
-                            $destinations = getItineraryDestinations($itinerary, true, 4); //build list of unique destinations within an itinerary, with embarkations removed
+                            $destinations = getItineraryDestinations($itinerary);
+                            $destinationDisplay = getDestinationsDisplay($destinations);
                             $title = get_field('display_name', $itinerary);
                             $length_in_nights = get_field('length_in_nights', $itinerary);
                             $top_snippet = get_field('top_snippet', $itinerary);
@@ -225,7 +226,7 @@ $itineraryInfoObjects = $args['itineraryInfoObjects'];
                                                 </div>
                                                 <div class="specs-item__text">
                                                     <div class="specs-item__text__main">
-                                                        Sites: <?php echo $destinations; ?>
+                                                        Sites: <?php echo $destinationDisplay; ?>
                                                     </div>
                                                 </div>
                                             </div>

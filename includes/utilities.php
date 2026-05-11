@@ -88,31 +88,14 @@ function removePtags($text)
 
 function comma_separate_list($arr, $limit = 0)
 {
-    // Check if $arr is actually an array or countable
-    if (!is_array($arr) && !is_countable($arr)) {
-        return ''; // or handle the string case differently
-    }
+    if (empty($arr) || !is_countable($arr)) return '';
 
-    $count = 0;
-    $display = "";
+    $visible = $limit > 0 ? array_slice($arr, 0, $limit) : $arr;
+    $overflow = count($arr) - count($visible);
 
-    $listCount = count($arr);
-    foreach ($arr as $a) :
+    $display = implode(', ', array_map('get_the_title', $visible));
 
-        if ($limit != 0 && $count >= $limit) {
-            $display .= ' +' . ($listCount - $limit) . ' more';
-            break;
-        }
-
-        $fieldText = get_the_title($a);
-        if ($count != 0) {
-            $display .= ", " . $fieldText;
-        } else {
-            $display .= $fieldText;
-        }
-        $count++;
-    endforeach;
-
+    if ($overflow > 0) $display .= ' +' . $overflow . ' more';
 
     return $display;
 }

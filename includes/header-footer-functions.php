@@ -93,7 +93,7 @@ function checkPageRegion()
     }
 
     if ($postTypeName == 'rfc_itineraries') {
-        $selectedPageRegionID = getItineraryRegion(get_post());
+        $selectedPageRegionID = getItineraryRegionId(get_post());
         if ($selectedPageRegionID) {
             $initialRegion = get_post($selectedPageRegionID) ;
         }

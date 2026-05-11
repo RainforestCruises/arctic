@@ -3,9 +3,9 @@ $ships = get_field('ships');
 $ships_title = get_field('ships_title');
 $ships_title_subtext = get_field('ships_title_subtext');
 
-$regions = $args['regions'];
+$region = $args['region'];
 $isMultiRegion = $args['isMultiRegion'];
-$top_level_search_page = $isMultiRegion ? get_field('top_level_search_page', 'options') : get_permalink(get_field('top_level_search_page', $regions[0]));
+$top_level_search_page = $isMultiRegion ? get_field('top_level_search_page', 'options') : get_permalink(get_field('top_level_search_page', $region));
 ?>
 
 
@@ -55,7 +55,7 @@ $top_level_search_page = $isMultiRegion ? get_field('top_level_search_page', 'op
                         if ($count > 11) {
                             continue;
                         }
-                        $departures = getDepartureListShip($ship); // TODO region
+                        $departures = getDepartureListShip($ship, $region);
                         if (!$departures) continue; // Skip if sold out
 
                         $lowestPrice = getLowestDepartureListPrice($departures);
@@ -63,7 +63,7 @@ $top_level_search_page = $isMultiRegion ? get_field('top_level_search_page', 'op
                         $bestOverallDiscount = getBestDepartureListDiscount($departures);
                         $images =  get_field('hero_gallery', $ship);
                         $image = $images[0];
-                        $itineraries = getShipItineraries($ship);
+                        $itineraries = getShipItineraries($ship, $region);
                         $itineraryLengths = getItineraryLengths($itineraries);
                         $itineraryLengthDisplay = formatLengthDisplay($itineraryLengths, true);
                         $title = get_the_title($ship);

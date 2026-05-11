@@ -48,7 +48,7 @@ $allLink = $args['allLink'];
                     <?php
                     $count = 0;
                     foreach ($itineraries as $itinerary) :
-                        $departures = getDepartureListItinerary($itinerary, true);
+                        $departures = getDepartureListItinerary($itinerary);
                         if (!$departures) {
                             continue;
                         } else {

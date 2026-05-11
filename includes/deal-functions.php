@@ -6,7 +6,7 @@ function getDealsFromDepartureList($departures, $getSpecials = false)
     $uniqueDealsArray = [];
 
     foreach ($departures as $d) {
-        $deals = ($getSpecials) ? $d['SpecialDepartures'] : $d['Deals'];
+        $deals = ($getSpecials) ? $d['specialDepartures'] : $d['deals'];
         foreach ($deals ?: [] as $deal) {
             $is_active = get_field('is_active', $deal);
             $has_expiry_date = get_field('has_expiry_date', $deal);
@@ -174,11 +174,11 @@ function getItinerariesWithDeal($deals, $excludeItinerary = null, $region = null
         $hasDeal = false;
         foreach ($departures as $departure) {
             // Guard against missing array keys
-            $departureDeals = isset($departure['Deals']) && is_array($departure['Deals'])
-                ? $departure['Deals']
+            $departureDeals = isset($departure['deals']) && is_array($departure['deals'])
+                ? $departure['deals']
                 : [];
-            $specialDepartures = isset($departure['SpecialDepartures']) && is_array($departure['SpecialDepartures'])
-                ? $departure['SpecialDepartures']
+            $specialDepartures = isset($departure['specialDepartures']) && is_array($departure['specialDepartures'])
+                ? $departure['specialDepartures']
                 : [];
 
             $combinedDepartureDeals = array_merge($departureDeals, $specialDepartures);
@@ -226,8 +226,8 @@ function getShipsWithDeal($deals)
         foreach ($departures as $departure) {
             
             $combinedDepartureDeals = array_merge(
-                $departure['Deals'] ?: [],
-                $departure['SpecialDepartures'] ?: []
+                $departure['deals'] ?: [],
+                $departure['specialDepartures'] ?: []
             );
 
             if (is_array($deals)) { // if matching an array of deals
