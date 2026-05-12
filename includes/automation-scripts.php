@@ -310,3 +310,11 @@ function acf_read_only_precalculated_destinations($field)
     $field['readonly'] = 1;
     return $field;
 }
+
+add_filter('acf/load_field/name=precalculated_regions', 'acf_read_only_precalculated_regions');
+function acf_read_only_precalculated_regions($field)
+{
+    $field['readonly'] = 1;
+    return $field;
+}
+

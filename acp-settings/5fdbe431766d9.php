@@ -5,7 +5,7 @@ return array (
   'title' => 'Cruises',
   'type' => 'rfc_cruises',
   'id' => '5fdbe431766d9',
-  'updated' => 1686774780,
+  'updated' => 1778629280,
   'columns' => 
   array (
     'title' => 
@@ -124,6 +124,23 @@ return array (
       'filter' => 'off',
       'filter_label' => '',
       'name' => '6478c434b1a9fc',
+    ),
+    '6a03ba8b10a3d8' => 
+    array (
+      'type' => 'column-acf_field',
+      'label' => 'Precalculated Last Update',
+      'width' => '',
+      'width_unit' => '%',
+      'field' => 'field_6a035ada754a2',
+      'character_limit' => '20',
+      'export' => 'off',
+      'sort' => 'on',
+      'edit' => 'off',
+      'bulk_edit' => 'on',
+      'search' => 'on',
+      'filter' => 'off',
+      'filter_label' => '',
+      'name' => '6a03ba8b10a3d8',
     ),
   ),
   'settings' => 
