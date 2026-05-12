@@ -3,15 +3,23 @@
 
 // DEPARTURES ----------------------------------------------------------------------------------------------
 // get a list of departures for a ship
-function getDepartureListShip($shipPost, $specificRegion = null, $filterSoldOut = true)
+// uses precalculated ship itineraries
+// uses precalculated departures if they exist for the itinerary, otherwise calculates on the fly (slower)
+function getDepartureListShip($shipPost, $specificRegion = null, $specificItineraryList = null)
 {
+
+    // TODO specific itinerary list doesnt work !!!!!!!
     $departures = [];
-    $itineraryPosts = getShipItineraries($shipPost, $specificRegion);
+    $itineraryPosts = $specificItineraryList ? $specificItineraryList : getShipItineraries($shipPost, $specificRegion); // ship itineraries filtered for region (includes sold out)
+    foreach ($itineraryPosts as $itineraryPost) { // so here ideally get the precalculated departures per each itinerary, and then just filter those for the ship
+        //console_log($itineraryPost);
 
-    foreach ($itineraryPosts as $itineraryPost) {
+        $itineraryDepartures = get_field('precalculated_departures', $itineraryPost)
+            ? getPrecalculatedDeparturesByShip($itineraryPost, $shipPost)
+            : getDepartureListItinerary($itineraryPost, $shipPost); // perform the calculation if its not there
+        $departures = array_merge($departures, $itineraryDepartures); // only available
 
-        $itineraryDepartures = getDepartureListItinerary($itineraryPost, $shipPost, $filterSoldOut);
-        $departures = array_merge($departures, $itineraryDepartures);
+        //console_log($itineraryDepartures);
     }
 
     usort($departures, function ($a, $b) {
@@ -43,7 +51,7 @@ function getDepartureListItinerary($itineraryPost, $specificShip = null, $filter
         if (!$isCurrent) continue;
 
         $ship = $d['ship']; // skip if looking for specific ship and this departure doesn't have it
-        if ($specificShip && $specificShip != $ship) continue;
+        if ($specificShip && $ship && $specificShip->ID != $ship->ID) continue;
 
         $cabin_prices = $d['cabin_prices'];
         $hasAvailability = false;
@@ -100,7 +108,7 @@ function getDepartureListItinerary($itineraryPost, $specificShip = null, $filter
             'shipId'              => $ship->ID ?? null,
             'departureDate'       => $d['date'],
             'departureDateSimple' => date('Y-m', strtotime($d['date'])),
-            'hasAvailability'     => $hasAvailability,
+            'hasAvailability'     => $hasAvailability, // always true unless explicitly returned otherwise
             'returnDate'          => $returnDate,
             'embarkation'         => $departureEmbarkation,
             'disembarkation'      => $departureDisembarkation,
@@ -129,7 +137,12 @@ function getDepartureListItinerary($itineraryPost, $specificShip = null, $filter
     return $departures;
 }
 
-
+function getPrecalculatedDeparturesByShip($itinerary, $ship)
+{
+    $precalculated_departures = get_field('precalculated_departures', $itinerary);
+    if (empty($precalculated_departures)) return [];
+    return array_filter($precalculated_departures, fn($departure) => $departure['shipId'] == $ship->ID);
+}
 
 
 
@@ -145,7 +158,6 @@ function getLowestDepartureListPrice($departures)
             $priceArray[] = $lowestCabinPrice;
         }
     }
-    //$price = min($priceArray); //lowest price, not sold out
     $price = !empty($priceArray) ? min($priceArray) : 0;
     return $price;
 }
@@ -161,9 +173,7 @@ function getHighestDepartureListPrice($departures)
             $priceArray[] = $highestCabinPrice;
         }
     }
-    //$price = max($priceArray); //lowest price, not sold out
     $price = !empty($priceArray) ? max($priceArray) : 0;
-
     return $price;
 }
 // get best discount from a list of departures
@@ -171,9 +181,7 @@ function getBestDepartureListDiscount($departures)
 {
     $bestDiscount = 0;
     $bestDiscountArray = [];
-    $filteredDepartures = filterSoldOutDepartures($departures);
-
-    foreach ($filteredDepartures as $d) {
+    foreach ($departures as $d) {
         $bestDiscount = $d['bestDiscount'];
         if ($bestDiscount > 0) {
             $bestDiscountArray[] = $bestDiscount;
@@ -269,32 +277,17 @@ function getBestDepartureDiscount($departure)
 
 
 // ITINERARY ----------------------------------------------------------
-function getLowestPriceFromListOfItineraries($itineraries, $region = null)
+// get lowest price from a list of itineraries, landing pages
+function getLowestItineraryListPrice($itineraries)
 {
     $priceList = [];
     foreach ($itineraries as $itinerary) {
-        $departures = getDepartureListItinerary($itinerary);
-        $lowestPrice = getLowestDepartureListPrice($departures);
+        $lowestPrice = get_field('precalculated_price_low', $itinerary);
         if ($lowestPrice) {
             $priceList[] = (float) $lowestPrice;
         }
     }
-
     return !empty($priceList) ? min($priceList) : 0;
-}
-
-function getHighestPriceFromListOfItineraries($itineraries, $region = null)
-{
-    $priceList = [];
-    foreach ($itineraries as $itinerary) {
-        $departures = getDepartureListItinerary($itinerary);
-        $highestPrice = getHighestDepartureListPrice($departures);
-        if ($highestPrice) {
-            $priceList[] = (float) $highestPrice;
-        }
-    }
-
-    return !empty($priceList) ? max($priceList) : 0;
 }
 
 // fly / sail display
@@ -379,6 +372,7 @@ function getDestinationsDisplay($destinations, $limit = 4)
 }
 
 // return a list of ships from itinerary or list
+// evaluates the raw departure info, so this will include any current departure even if sold out
 function getShipsFromItineraries($itineraries)
 {
     $ships = [];
@@ -434,61 +428,62 @@ function sortBySearchRank($a, $b)
 
 function getItinerariesFromRegion($region, $limit = -1)
 {
-    // check sold out
-    $queryArgs = array(
-        'post_type' => 'rfc_itineraries',
-        'posts_per_page' => $limit,
-        'meta_key' => 'search_rank',
-        'orderby' => 'meta_value_num',
-        'order' => 'DESC'
-    );
-    $itineraries = get_posts($queryArgs);
-    $itineraryList = [];
-    foreach ($itineraries as $itinerary) {
-        $routes = get_field('route', $itinerary) ?: [];
-        $match = false;
-        foreach ($routes as $route) {
-            $itineraryRegion = get_field('region', $route);
-            if ($itineraryRegion == $region) {
-                $match = true;
+    $bypass_precalculated_queries = get_field('bypass_precalculated_queries', 'options');
+    if (!$bypass_precalculated_queries) {
+        $metaQuery = array(
+            array(
+                'key'     => 'precalculated_available',
+                'value'   => '1',
+                'compare' => '='
+            )
+        );
+
+        if ($region != null) {
+            $metaQuery[] = array(
+                'key'     => 'precalculated_region',
+                'value'   => $region->ID,
+                'compare' => '=',
+                'type'    => 'NUMERIC'
+            );
+        }
+
+        $queryArgs = array(
+            'post_type'      => 'rfc_itineraries',
+            'posts_per_page' => $limit,
+            'meta_key'       => 'search_rank',
+            'orderby'        => 'meta_value_num',
+            'order'          => 'DESC',
+            'meta_query'     => $metaQuery
+        );
+
+        return get_posts($queryArgs);
+    } else {
+        // NON-PRECALCULATED VERSION (SLOW)
+        $queryArgs = array(
+            'post_type' => 'rfc_itineraries',
+            'posts_per_page' => -1,
+            'meta_key' => 'search_rank',
+            'orderby' => 'meta_value_num',
+            'order' => 'DESC'
+        );
+        $itineraries = get_posts($queryArgs);
+        $itineraryList = [];
+        if ($region == null) {
+            $itineraryList = $itineraries;
+        } else {
+            foreach ($itineraries as $itinerary) {
+                $routes = get_field('route', $itinerary) ?: [];
+                foreach ($routes as $route) {
+                    if (get_field('region', $route) == $region) {
+                        $itineraryList[] = $itinerary;
+                        break;
+                    }
+                }
             }
         }
-        if ($match) {
-            $itineraryList[] = $itinerary;
-        }
+        $uniqueItinerariesList = getUniquePostsFromArrayOfPosts($itineraryList);
+        return $limit === -1 ? $uniqueItinerariesList : array_slice($uniqueItinerariesList, 0, $limit);
     }
-
-    $uniqueItinerariesList = getUniquePostsFromArrayOfPosts($itineraryList);
-
-    return $uniqueItinerariesList;
-}
-
-
-
-// get list of itineraries from route
-function getItinerariesFromRoute($routes)
-{
-    $queryArgs = array(
-        'post_type' => 'rfc_itineraries',
-        'posts_per_page' => -1,
-    );
-    $itineraries = get_posts($queryArgs);
-
-    $itineraryList = [];
-    foreach ($itineraries as $itinerary) {
-        $itineraryRoutes = get_field('route', $itinerary) ?: [];
-        $match = false;
-        foreach ($itineraryRoutes as $itineraryRoute) {
-            $match = is_array($routes) ? in_array($itineraryRoute, $routes) : $itineraryRoute == $routes;
-            if ($match) {
-                $itineraryList[] = $itinerary;
-            }
-        }
-    }
-
-    $uniqueItinerariesList = getUniquePostsFromArrayOfPosts($itineraryList);
-
-    return $uniqueItinerariesList;
 }
 
 
@@ -506,38 +501,66 @@ function shipSizeDisplay($pax)
 }
 
 // gets a list of itinerary posts that have this ship within a departure
+// this will include sold out since it doesnt consider the departures
 function getShipItineraries($ship, $region = null)
 {
-    $queryArgs = array(
-        'post_type' => 'rfc_itineraries',
-        'posts_per_page' => -1,
-        'meta_key' => 'length_in_nights',
-        'orderby' => 'meta_value_num',
-        'order' => 'ASC'
-    );
-
-    $itineraries = get_posts($queryArgs);
-    $itineraryList = [];
-    foreach ($itineraries as $itinerary) {
-        // TODO: region check on precalculated_region
-        // TODO: precalculatd_available
-        // TODO: precalculated_ships (change to ID)
-
-        if ($region != null) { // filter regions
-            $itineraryRegionID = getItineraryRegionId($itinerary);
-            if ($region->ID != $itineraryRegionID) {
-                continue;
-            }
+    $bypass_precalculated_queries = get_field('bypass_precalculated_queries', 'options');
+    if (!$bypass_precalculated_queries) {
+        $metaQuery = array(
+            array(
+                'key'     => 'precalculated_ships',
+                'value'   => '"ID";i:' . $ship->ID . ';',
+                'compare' => 'LIKE'
+            )
+        );
+        if ($region != null) {
+            $metaQuery[] = array(
+                'key'     => 'precalculated_region',
+                'value'   => $region->ID,
+                'compare' => '=',
+                'type'    => 'NUMERIC'
+            );
         }
 
-        $precalculated_ships = get_field('precalculated_ships', $itinerary);
-        $ships = $precalculated_ships ? $precalculated_ships :  getShipsFromItineraries($itinerary);
-        $match = in_array($ship->ID, array_map(fn($s) => $s->ID, $ships));
-        if (!$match) continue;
-        $itineraryList[] = $itinerary;
-    }
+        $queryArgs = array(
+            'post_type'      => 'rfc_itineraries',
+            'posts_per_page' => -1,
+            'meta_key'       => 'length_in_nights',
+            'orderby'        => 'meta_value_num',
+            'order'          => 'ASC',
+            'meta_query'     => $metaQuery
+        );
+        return get_posts($queryArgs);
+    } else {
+        // NON-PRECALCULATED VERSION (SLOW)
+        $queryArgs = array(
+            'post_type' => 'rfc_itineraries',
+            'posts_per_page' => -1,
+            'meta_key' => 'length_in_nights',
+            'orderby' => 'meta_value_num',
+            'order' => 'ASC'
+        );
 
-    return $itineraryList;
+        $itineraries = get_posts($queryArgs);
+        $itineraryList = [];
+        foreach ($itineraries as $itinerary) {
+            if ($region != null) { // filter regions
+                $precalculated_region = get_field('precalculated_region', $itinerary);
+                $itineraryRegionID = $precalculated_region ? $precalculated_region : getItineraryRegionId($itinerary);
+                if ($region->ID != $itineraryRegionID) {
+                    continue;
+                }
+            }
+
+            $precalculated_ships = get_field('precalculated_ships', $itinerary);
+            $ships = $precalculated_ships ? $precalculated_ships :  getShipsFromItineraries($itinerary);
+            $match = in_array($ship->ID, array_map(fn($s) => $s->ID, $ships));
+            if (!$match) continue;
+            $itineraryList[] = $itinerary;
+        }
+
+        return $itineraryList;
+    }
 }
 
 
@@ -668,11 +691,4 @@ function getEmbarkationList()
         $embarkationList[] = $embarkationObject;
     }
     return $embarkationList;
-}
-
-
-function getBadgeClass($region)
-{
-    $badgeClass = 'badge--' . strtolower(get_the_title($region));
-    return $badgeClass;
 }

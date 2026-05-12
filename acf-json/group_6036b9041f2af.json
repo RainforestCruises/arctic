@@ -1451,6 +1451,25 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_6a023f61669bd",
+            "label": "Bypass Precalculated Queries",
+            "name": "bypass_precalculated_queries",
+            "type": "true_false",
+            "instructions": "revert to non-precalculated queries (slower)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6491cfeca7a77",
             "label": "Site Notice",
             "name": "",
@@ -1531,5 +1550,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1777057232
+    "modified": 1778532261
 }

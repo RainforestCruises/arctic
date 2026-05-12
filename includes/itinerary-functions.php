@@ -6,7 +6,7 @@ function createItineraryInfoObject($itinerary)
     // default itinerary (first object)
     $post_id = $itinerary->ID;
     $days = get_field('itinerary', $itinerary) ?: [];
-    $length_in_nights = get_field('length_in_nights', $itinerary);
+    $length_in_nights =  (int) get_field('length_in_nights', $itinerary);
     $length_in_days = $length_in_nights + 1;
     $embarkation_point = get_field('embarkation_point', $itinerary);
     $disembarkation_point = get_field('disembarkation_point', $itinerary);
@@ -23,8 +23,8 @@ function createItineraryInfoObject($itinerary)
     $hasDifferentLengths = false;
     $hasDifferentTransport = false;
     $uniqueLengths = [$length_in_days];
-    $uniqueEmbarkations = [$embarkation_point->post_title];
-    $uniqueDisembarkations = [$disembarkation_point->post_title];
+    $uniqueEmbarkations = [get_the_title($embarkation_point)];
+    $uniqueDisembarkations = [get_the_title($disembarkation_point)];
     $uniqueFlyCategories = [$fly_category];
 
     $defaultItineraryObject = (object) [
@@ -55,8 +55,11 @@ function createItineraryInfoObject($itinerary)
         foreach ($variants as $variant) {
 
             // default itinerary (first object)
-            $days = $variant['itinerary'];
+            $days = $variant['itinerary'] ?? [];
             $variant_length_in_nights = $variant['length_in_nights'] ?? $length_in_nights;
+            $variant_length_in_nights = (int) (
+                $variant['length_in_nights'] ?? $length_in_nights
+            );
             $variant_length_in_days = $variant_length_in_nights + 1;
             $variant_embarkation_point = $variant['embarkation_point'] ?? $embarkation_point;
             $variant_disembarkation_point = $variant['disembarkation_point'] ?? $disembarkation_point;
@@ -70,11 +73,12 @@ function createItineraryInfoObject($itinerary)
             if (!in_array($variant_length_in_days, $uniqueLengths)) {
                 $uniqueLengths[] = $variant_length_in_days;
             }
-            if (!in_array($variant_embarkation_point->post_title, $uniqueEmbarkations)) {
-                $uniqueEmbarkations[] = $variant_embarkation_point->post_title;
+            if (!in_array(get_the_title($variant_embarkation_point), $uniqueEmbarkations)) {
+                $uniqueEmbarkations[] = get_the_title($variant_embarkation_point);
             }
-            if (!in_array($variant_disembarkation_point->post_title, $uniqueDisembarkations)) {
-                $uniqueDisembarkations[] = $variant_disembarkation_point->post_title;
+
+            if (!in_array(get_the_title($variant_disembarkation_point), $uniqueDisembarkations)) {
+                $uniqueDisembarkations[] = get_the_title($variant_disembarkation_point);
             }
             if (!in_array($variant_fly_category, $uniqueFlyCategories)) {
                 $uniqueFlyCategories[] = $variant_fly_category;
@@ -162,7 +166,7 @@ function getItineraryLengths($itineraries)
     $itineraryList = is_array($itineraries) ? $itineraries : [$itineraries];
 
     foreach ($itineraryList as $itinerary) {
-        $length_in_nights = get_field('length_in_nights', $itinerary);
+        $length_in_nights = (int) get_field('length_in_nights', $itinerary);
         $length_in_days = $length_in_nights + 1;
 
         if (!in_array($length_in_days, $uniqueLengths)) {
@@ -173,7 +177,9 @@ function getItineraryLengths($itineraries)
         $variants = get_field('variants', $itinerary);
         if ($hasVariants && $variants) {
             foreach ($variants as $variant) {
-                $variant_length_in_nights = $variant['length_in_nights'] ?? $length_in_nights;
+                $variant_length_in_nights = (int) (
+                    $variant['length_in_nights'] ?? $length_in_nights
+                );
                 $variant_length_in_days = $variant_length_in_nights + 1;
 
                 if (!in_array($variant_length_in_days, $uniqueLengths)) {

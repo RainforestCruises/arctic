@@ -1,27 +1,27 @@
 <?php
+$serviceLevel = get_field('service_level');
+$ship = get_post();
 $queryArgs = array(
-    'post_type' => 'rfc_cruises',
-    'posts_per_page' => -1,
-    'post__not_in' => array($post->ID),
-    'meta_key' => 'search_rank',
-    'orderby' => 'meta_value_num',
-    'order' => 'DESC',
+    'post_type'      => 'rfc_cruises',
+    'posts_per_page' => 12,
+    'post__not_in'   => array($ship->ID),
+    'meta_key'       => 'search_rank',
+    'orderby'        => 'meta_value_num',
+    'order'          => 'DESC',
 );
 
-$queryArgsService = array();
-$queryArgsService['relation'] = 'OR';
-$serviceLevel = get_field('service_level');
 if ($serviceLevel) {
-    $queryArgsService[] = array(
-        'key'     => 'service_level',
-        'value'   => strval($serviceLevel->ID),
-        'compare' => 'LIKE'
+    $queryArgs['meta_query'] = array(
+        array(
+            'key'     => 'service_level',
+            'value'   => strval($serviceLevel->ID),
+            'compare' => 'LIKE',
+        )
     );
-    $queryArgs['meta_query'][] = $queryArgsService;
 }
 
 $ships = get_posts($queryArgs);
-
+$count = 0;
 ?>
 
 
@@ -37,7 +37,7 @@ $ships = get_posts($queryArgs);
                     Related Cruises
                 </h2>
                 <div class="title-group__sub">
-                    Explore from these similar ships sailing the Antarctic
+                    Explore expeditions from these similar ships
                 </div>
             </div>
 
@@ -65,26 +65,26 @@ $ships = get_posts($queryArgs);
             <div class="swiper" id="related-slider">
                 <div class="swiper-wrapper">
                     <?php
-                    $count = 0;
+
+                    $region = $args['initialRegion'];
                     foreach ($ships as $ship) :
-                        if ($count > 11) {
-                            continue;
-                        }
-                        $departures = getDepartureListShip($ship);
+                        if ($count > 11) continue; // max 12 ships shown here, even if more are selected in the field
+                        $departures = getDepartureListShip($ship, $region);
+                        if (!$departures) continue; // skip if no available departures for this ship in this region
+
+
                         $lowestPrice = getLowestDepartureListPrice($departures);
                         $highestPrice = getHighestDepartureListPrice($departures);
                         $bestOverallDiscount = getBestDepartureListDiscount($departures);
-                        if (!$lowestPrice) {
-                            continue;
-                        }
+
+                        // itineraries based on dynamic evaluation of departures
+                        $itineraries = getShipItineraries($ship, $region);
+                        $itineraryLengths = getItineraryLengths($itineraries);
+                        $itineraryDisplay = formatLengthDisplay($itineraryLengths, true) . " , " . count($itineraries) . ' Itineraries';
+
+                        $title = get_the_title($ship);
                         $images =  get_field('hero_gallery', $ship);
                         $image = $images[0];
-                        $itineraries = getShipItineraries($ship); // TODO: check region
-                        $itineraryLengths = getItineraryLengths($itineraries);
-                        $itineraryLengthDisplay = formatLengthDisplay($itineraryLengths, true);
-                        $itineraryDisplay = $itineraryLengthDisplay . " , " . count($itineraries) . ' Itineraries';
-                        
-                        $title = get_the_title($ship);
                         $service_level =  get_field('service_level', $ship);
                         $serviceLevelDisplay = ($service_level) ? get_the_title($service_level) : "N/A";
                         $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . $serviceLevelDisplay;
@@ -160,6 +160,9 @@ $ships = get_posts($queryArgs);
 
                 </div>
             </div>
+            <?php if ($count == 0) : ?>
+                <div class="not-found-text">There are no available departures on related cruises</div>
+            <?php endif; ?>
         </div>
     </div>
 </section>

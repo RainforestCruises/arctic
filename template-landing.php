@@ -14,11 +14,11 @@ $style = get_field('style_filter');
 $region = get_field('region_filter');
 
 $top_level_search_page = get_permalink(get_field('top_level_search_page', $region));
-$allLink = $top_level_search_page ;
+$allLink = $top_level_search_page;
 
-if($route){
+if ($route) {
   $allLink = $top_level_search_page . '?routes=' . $route->ID;
-} else if ($style){
+} else if ($style) {
   $allLink = $top_level_search_page . '?themes=' . $style->ID;
 }
 
@@ -31,6 +31,11 @@ $queryArgs = array(
   'order'          => 'DESC',
   'meta_query'     => array(
     'relation' => 'AND', // Relation between different sets of routes and styles -- note: using OR adds a huge delay
+    array(
+      'key'     => 'precalculated_available',
+      'value'   => '1',
+      'compare' => '='
+    ),
   ),
 );
 // meta query for routes
@@ -51,24 +56,23 @@ if ($style) {
   );
   $queryArgs['meta_query'][] = $styleMetaQuery;
 }
-$itineraryPosts = get_posts($queryArgs);
-// filter on region
-if ($region) {
-  foreach ($itineraryPosts as $itinerary) {
-    $itinerary_region_id = getItineraryRegionId($itinerary);
-    if ($itinerary_region_id == $region->ID) {
-      $itineraries[] = $itinerary;
-    }
-  }
-} else {
-  $itineraries = $itineraryPosts;
+
+if ($region != null) {
+  $regionMetaQuery[] = array(
+    'key'     => 'precalculated_region',
+    'value'   => $region->ID,
+    'compare' => '=',
+    'type'    => 'NUMERIC'
+  );
+  $queryArgs['meta_query'][] = $regionMetaQuery;
 }
 
-$ships = getShipsFromItineraries($itineraries);
+$itineraries = get_posts($queryArgs);
+$ships = getShipsFromItineraries($itineraries); // do not limit itineraries so that this can work properly
 
 $args = array(
   'region' => $region,
-  'itineraries' => $itineraries,
+  'itineraries' => $itineraries, // filtered for region, route, and style
   'ships' => $ships,
   'footerCtaDivider' => true,
   'allLink' => $allLink

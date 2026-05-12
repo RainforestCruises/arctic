@@ -479,6 +479,15 @@ p {
     align-self: center;
     justify-self: end; }
 
+.not-found-text {
+  width: 100%;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  font-weight: 700;
+  color: #003548;
+  padding: 3rem 0;
+  text-align: center; }
+
 .lock-scroll {
   overflow: hidden;
   height: 100%; }

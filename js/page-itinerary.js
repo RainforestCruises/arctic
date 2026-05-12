@@ -5,7 +5,6 @@ jQuery(document).ready(function ($) {
 
   // Map
   const initialObject = itineraryMapObjects[0]; // initial object
-  console.log(initialObject);
 
   mapboxgl.accessToken = "pk.eyJ1IjoicmFpbmZvcmVzdGNydWlzZXNybHMiLCJhIjoiY2xiNWh2aXo5MDNiZzN2dW5hNjFpaXM3dCJ9.05yNz0iG1JXFq62DYF7SFA";
   var map = new mapboxgl.Map({

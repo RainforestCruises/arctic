@@ -1,6 +1,8 @@
 <?php
 $regions = $args['regions'];
+$itineraries = $args['itineraries'];
 $initialRegion = $args['initialRegion'];
+$ship = get_post();
 
 ?>
 
@@ -30,12 +32,11 @@ $initialRegion = $args['initialRegion'];
                 <div class="modal-region-content__buttons">
                     <?php foreach ($regions as $region) :
                         $image = get_field('image', $region);
-                        $itineraries = getShipItineraries(get_post(), $region);
-                        $itineraryLengths = getItineraryLengths($itineraries);
-                        $itineraryLengthDisplay = formatLengthDisplay($itineraryLengths, true);
-                        $itineraryDisplay = count($itineraries) . ' Itineraries, ' . $itineraryLengthDisplay;
+                        $regionalItineraries = getShipItineraries($ship, $region);
+                        $itineraryLengths = getItineraryLengths($regionalItineraries);
+                        $itineraryDisplay = count($regionalItineraries) . ' Itineraries, ' . formatLengthDisplay($itineraryLengths, true);
+                        $title = get_the_title($region);
                     ?>
-
                         <?php if ($region == $initialRegion) : ?>
                             <div class="btn-avatar-info btn-avatar-info--large active">
                                 <div class="btn-avatar-info__image-area">
@@ -43,7 +44,7 @@ $initialRegion = $args['initialRegion'];
                                 </div>
                                 <div class="btn-avatar-info__title-group">
                                     <div class="btn-avatar-info__title-group__title">
-                                        <?php echo get_the_title($region); ?>
+                                        <?php echo $title; ?>
                                     </div>
                                     <div class="btn-avatar-info__title-group__sub">
                                         <?php echo $itineraryDisplay; ?>
@@ -57,7 +58,7 @@ $initialRegion = $args['initialRegion'];
                                 </div>
                                 <div class="btn-avatar-info__title-group">
                                     <div class="btn-avatar-info__title-group__title">
-                                        <?php echo get_the_title($region); ?>
+                                        <?php echo $title; ?>
                                     </div>
                                     <div class="btn-avatar-info__title-group__sub">
                                         <?php echo $itineraryDisplay; ?>
@@ -65,12 +66,6 @@ $initialRegion = $args['initialRegion'];
                                 </div>
                             </a>
                         <?php endif; ?>
-
-
-
-
-
-
                     <?php endforeach; ?>
                 </div>
 

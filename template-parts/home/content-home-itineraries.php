@@ -7,19 +7,7 @@ $isMultiRegion = $args['isMultiRegion'];
 $searchPage = $isMultiRegion ? get_field('top_level_search_page', 'options') : get_permalink(get_field('top_level_search_page', $region));
 $ctaDisplay = $isMultiRegion ? "Find Your Expedition" : "Explore " . get_the_title($region) . " Expeditions";
 
-$itineraries = null;
-if ($isMultiRegion) {
-    $queryArgs = array(
-        'post_type' => 'rfc_itineraries',
-        'posts_per_page' => 50,
-        'meta_key' => 'search_rank',
-        'orderby' => 'meta_value_num',
-        'order' => 'DESC'
-    );
-    $itineraries = get_posts($queryArgs);
-} else {
-    $itineraries = getItinerariesFromRegion($region, 50);
-}
+$itineraries = getItinerariesFromRegion($region, 12); // prefiltered available and region
 
 ?>
 
@@ -59,16 +47,12 @@ if ($isMultiRegion) {
         <div class="slider-block__content__slider">
             <div class="swiper" id="itineraries-home-slider">
                 <div class="swiper-wrapper">
-                    <?php
-                    $count = 0;
+                    <?php $count = 0;
                     foreach ($itineraries as $itinerary) :
 
                         $precalculated_departures = get_field('precalculated_departures', $itinerary);
-                        $departures = $precalculated_departures ? $precalculated_departures : getDepartureListItinerary($itinerary);
-
-                        if (!$departures) continue; // Skip if sold out
-                        if ($count > 12) break; // Limit to 12 itineraries per region
-
+                        $departures = $precalculated_departures ? $precalculated_departures : getDepartureListItinerary($itinerary); // itineraries already filtered for region
+                        if ($count > 12) break;
                         $precalculated_lengths = get_field('precalculated_lengths', $itinerary);
                         $itineraryLengths = $precalculated_lengths ? $precalculated_lengths : getItineraryLengths($itinerary);
                         $lengthDisplay = formatLengthDisplay($itineraryLengths);
@@ -89,7 +73,6 @@ if ($isMultiRegion) {
                         $images =  get_field('hero_gallery', $itinerary);
                         $image = $images[0];
                         $title = get_field('display_name', $itinerary);
-
                         $count++;
                     ?>
 

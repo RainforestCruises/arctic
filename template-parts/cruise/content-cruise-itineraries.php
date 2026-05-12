@@ -30,16 +30,12 @@ $itineraryInfoObjects = $args['itineraryInfoObjects'];
                         <?php $count = 0;
                         foreach ($itineraries as $itinerary) :
                             $matched = array_filter($itineraryInfoObjects, fn($o) => $o->postId === $itinerary->ID);
-                            console_log($itinerary->ID);
                             $matchedItineraryInfoObject = !empty($matched) ? array_values($matched)[0] : null;
-
-                            $length = get_field('length_in_nights', $itinerary) + 1 . ' Days';
+                            $length = ((int) get_field('length_in_nights', $itinerary) + 1) . ' Days';
                             if ($matchedItineraryInfoObject->hasDifferentLengths) {
                                 $length .= " +";
                             }
-
                             $flightOption = getFlightOption(get_field('fly_category', $itinerary));
-
                         ?>
                             <div class="cruise-itineraries__content__top__nav-area__slider__item swiper-slide" slideIndex="<?php echo $count ?>" postId="<?php echo $id ?>">
                                 <button class="cruise-itineraries__content__top__nav-area__slider__item__button">
@@ -82,7 +78,6 @@ $itineraryInfoObjects = $args['itineraryInfoObjects'];
                         foreach ($itineraries as $itinerary) :
                             $matched = array_filter($itineraryInfoObjects, fn($o) => $o->postId === $itinerary->ID);
                             $matchedItineraryInfoObject = !empty($matched) ? array_values($matched)[0] : null;
-
                             $shipPost = get_post();
                             $hero_gallery = get_field('hero_gallery', $itinerary);
                             $hero_image = $hero_gallery[0];
@@ -93,7 +88,6 @@ $itineraryInfoObjects = $args['itineraryInfoObjects'];
                             $destinations = getItineraryDestinations($itinerary);
                             $destinationDisplay = getDestinationsDisplay($destinations);
                             $title = get_field('display_name', $itinerary);
-                            $length_in_nights = get_field('length_in_nights', $itinerary);
                             $top_snippet = get_field('top_snippet', $itinerary);
                             $link = get_the_permalink($itinerary);
                             $length = $matchedItineraryInfoObject->lengthDisplay;

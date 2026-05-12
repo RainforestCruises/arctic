@@ -82,13 +82,17 @@ $routes_title_subtext = get_field('routes_title_subtext');
                             $length = $average_length_in_nights + 1 . ' Day / ' . $average_length_in_nights . ' Night';
                             $ports = get_field('ports', $route);
                             $portsDisplay = comma_separate_list($ports);
-                            $destinations = getItineraryDestinations($sample_itinerary); 
-                            $destinationDisplay = getDestinationsDisplay($destinations);              
+
+
                             $region = get_field('region', $route);
                             $top_level_search_page = get_field('top_level_search_page', $region);
                             $allLink = get_permalink($top_level_search_page) . '?routes=' . $route->ID; // search page with route filter applied
                             $landing_page = get_field('landing_page', $route); // landing page of the route
                             $badgeClass = getBadgeClass($region);
+
+                            $precalculated_destinations = get_field('precalculated_destinations', $sample_itinerary);
+                            $destinations = $precalculated_destinations ? $precalculated_destinations : getItinerarydestinations($sample_itinerary);
+                            $destinationDisplay = getDestinationsDisplay($destinations);
                         ?>
 
                             <!-- Itinerary Card (Sample)-->

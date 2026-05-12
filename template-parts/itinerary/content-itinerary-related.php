@@ -1,29 +1,30 @@
 <?php
+$itinerary = get_post();
+$routes = get_field('route');
+
 $queryArgs = array(
-    'post_type' => get_post_type(),
+    'post_type'      => get_post_type(),
     'posts_per_page' => -1,
-    'post__not_in' => array($post->ID),
-    'meta_key' => 'search_rank',
-    'orderby' => 'meta_value_num',
-    'order' => 'DESC',
+    'post__not_in'   => array($itinerary->ID),
+    'meta_key'       => 'search_rank',
+    'orderby'        => 'meta_value_num',
+    'order'          => 'DESC',
 );
 
-$queryArgsRoute = array();
-$queryArgsRoute['relation'] = 'OR';
-
-$routes = get_field('route');
 if ($routes) {
+    $metaQuery = array('relation' => 'OR');
     foreach ($routes as $route) {
-        $queryArgsRoute[] = array(
+        $metaQuery[] = array(
             'key'     => 'route',
             'value'   => serialize(strval($route->ID)),
-            'compare' => 'LIKE'
+            'compare' => 'LIKE',
         );
     }
-    $queryArgs['meta_query'][] = $queryArgsRoute;
+    $queryArgs['meta_query'] = array($metaQuery);
 }
 
 $itineraries = get_posts($queryArgs);
+$count = 0;
 ?>
 
 
@@ -39,7 +40,7 @@ $itineraries = get_posts($queryArgs);
                     Related Itineraries
                 </h2>
                 <div class="title-group__sub">
-                    Explore these similar Antarctica itineraries
+                    Explore these similar polar expeditions
                 </div>
             </div>
 
@@ -69,25 +70,34 @@ $itineraries = get_posts($queryArgs);
 
 
                     <?php
-                    $count = 0;
+
                     foreach ($itineraries as $itinerary) :
-                        if ($count > 11) {
-                            continue;
-                        }
-                        $departures = getDepartureListItinerary($itinerary);
-                        $lowestPrice = getLowestDepartureListPrice($departures);
-                        $highestPrice = getHighestDepartureListPrice($departures);
-                        $bestOverallDiscount = getBestDepartureListDiscount($departures);
-                        if (!$lowestPrice) {
-                            continue;
-                        }
+                        if ($count > 11) continue; // hard limit of 12 related itineraries for performance and design reasons, TODO: implement true pagination for related itineraries if needed
+
+                        $precalculated_departures = get_field('precalculated_departures', $itinerary);
+                        $departures = $precalculated_departures ? $precalculated_departures : getDepartureListItinerary($itinerary);
+                        if (!$departures) continue; // skip itineraries with no departures
+
+                        $precalculated_price_low = get_field('precalculated_price_low', $itinerary);
+                        $lowestPrice = $precalculated_price_low ? $precalculated_price_low : getLowestDepartureListPrice($departures);
+
+                        $precalculated_price_high = get_field('precalculated_price_high', $itinerary);
+                        $highestPrice = $precalculated_price_high ? $precalculated_price_high : getHighestDepartureListPrice($departures);
+
+                        $precalculated_best_discount = get_field('precalculated_best_discount', $itinerary);
+                        $bestOverallDiscount = $precalculated_best_discount ? $precalculated_best_discount : getBestDepartureListDiscount($departures);
+
+                        $precalculated_ships = get_field('precalculated_ships', $itinerary);
+                        $ships = $precalculated_ships ? $precalculated_ships : getShipsFromItineraries($itinerary);
+                        $shipsDisplay = getShipsDisplay($ships);
+
+                        $precalculated_lengths = get_field('precalculated_lengths', $itinerary);
+                        $itineraryLengths = $precalculated_lengths ? $precalculated_lengths : getItineraryLengths($itinerary);
+                        $lengthDisplay = formatLengthDisplay($itineraryLengths);
+
                         $images =  get_field('hero_gallery', $itinerary);
                         $image = $images[0];
                         $title = get_field('display_name', $itinerary);
-                        $ships = getShipsFromItineraries($itinerary);
-                        $shipsDisplay = getShipsDisplay($ships);
-                         $itineraryLengths = getItineraryLengths($itinerary);
-                        $lengthDisplay = formatLengthDisplay($itineraryLengths);
                     ?>
 
                         <!-- Itinerary Card -->
@@ -159,6 +169,9 @@ $itineraries = get_posts($queryArgs);
                     endforeach; ?>
                 </div>
             </div>
+            <?php if ($count == 0) : ?>
+                <div class="not-found-text">There are no available departures on related cruises</div>
+            <?php endif; ?>
         </div>
     </div>
 </section>

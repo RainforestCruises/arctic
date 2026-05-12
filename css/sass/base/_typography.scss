@@ -237,3 +237,13 @@ p {
     justify-self: end;
   }
 }
+
+.not-found-text {
+  width: 100%;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  font-weight: 700;
+  color: $color-primary;
+  padding: 3rem 0;
+  text-align: center;
+}

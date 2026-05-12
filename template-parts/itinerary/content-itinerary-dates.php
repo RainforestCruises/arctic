@@ -5,7 +5,6 @@ $ships = $args['ships'];
 $departures = $args['departures'];
 $itineraryInfoObject = $args['itineraryInfoObject'];
 
-
 ?>
 
 <section class="slider-block narrow" id="dates">
@@ -60,7 +59,6 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
                         $departureStartDate = strtotime($d['departureDate']);
                         $departureReturnDate = strtotime($d['returnDate']);
                         $differentYears = date("Y", $departureStartDate) == date("Y", $departureReturnDate)  ? false : true;
-
                         $title = get_the_title($ship);
                         $hero_gallery = get_field('hero_gallery', $ship);
                         $vessel_capacity = get_field('vessel_capacity', $ship);
@@ -300,13 +298,10 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
                     </div>
                     <div id="arrow" data-popper-arrow></div>
                 </div>
-
-
                 <button class="btn-pill cruise-dates-departure-filter" id="view-discounted-button">
                     Discounted
                 </button>
                 <button class="btn-pill clear-departure-filters" style="display: none;">Clear Filters</button>
-
             </div>
 
             <!-- View All -->
@@ -315,7 +310,6 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
                     View All
                 </button>
             </div>
-
         </div>
     </div>
 </section>

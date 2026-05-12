@@ -95,12 +95,14 @@ function checkPageRegion()
     if ($postTypeName == 'rfc_itineraries') {
         $selectedPageRegionID = getItineraryRegionId(get_post());
         if ($selectedPageRegionID) {
-            $initialRegion = get_post($selectedPageRegionID) ;
+            $initialRegion = get_post($selectedPageRegionID);
         }
     }
 
     if ($postTypeName == 'rfc_cruises') {
-        $shipRegions = getShipRegions(get_post());
+        $precalculated_regions = get_field('precalculated_regions', get_post());
+        $shipRegions = $precalculated_regions ? $precalculated_regions : getShipRegions(get_post());
+
         if (count($shipRegions) == 1) {
             $initialRegion = $shipRegions[0];
         }

@@ -10,7 +10,8 @@ wp_enqueue_script('page-product-cabins', get_template_directory_uri() . '/js/pag
 get_header();
 
 $ship = get_post();
-$regions = getShipRegions($ship);
+$precalculated_regions = get_field('precalculated_regions', $ship);
+$regions = $precalculated_regions ? $precalculated_regions : getShipRegions($ship);
 $initialRegion = checkPageRegion();
 $primaryRegion = getPrimaryRegion();
 $productName = get_the_title();

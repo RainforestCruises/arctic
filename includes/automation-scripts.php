@@ -3,12 +3,11 @@
 add_action('rfc_cron_refresh_api', 'refresh_itinerary_info_all'); // chron job hook
 function refresh_itinerary_info_all() // loop all itineraries with automation and refresh
 {
+    // loop all itineraries
     $args = array(
         'posts_per_page' => -1,
         'post_type' => array('rfc_itineraries'),
     );
-
-    // loop all itineraries
     $itineraryPosts = get_posts($args);
     foreach ($itineraryPosts as $itineraryPost) {
 
@@ -19,6 +18,16 @@ function refresh_itinerary_info_all() // loop all itineraries with automation an
             usleep(2000000); // 5 second pause
         }
         precalculate_itinerary_data($itineraryPost);
+    }
+
+    // loop all ships
+    $args = array(
+        'posts_per_page' => -1,
+        'post_type' => array('rfc_cruises'),
+    );   
+    $shipPosts = get_posts($args);
+    foreach ($shipPosts as $shipPost) {
+        precalculate_ship_data($shipPost);
     }
 }
 
@@ -37,6 +46,10 @@ function acf_automation_on_save($post_id) // get data from API if post type is i
         $itinerary = get_post($post_id);
         precalculate_itinerary_data($itinerary);
     }
+    if ('rfc_cruises' == get_post_type()) {
+        $ship = get_post($post_id);
+        precalculate_ship_data($ship);
+    }
 }
 
 function precalculate_itinerary_data($itinerary)
@@ -51,6 +64,7 @@ function precalculate_itinerary_data($itinerary)
     $ships = getShipsFromItineraries($itinerary);
     $lengths = getItineraryLengths($itinerary);
     $regionId = getItineraryRegionId($itinerary);
+    $destinations = getItineraryDestinations($itinerary);
 
     update_field('precalculated_price_high', $highestPrice, $itinerary->ID);
     update_field('precalculated_price_low', $lowestPrice, $itinerary->ID);
@@ -59,13 +73,26 @@ function precalculate_itinerary_data($itinerary)
     update_field('precalculated_available', $hasAvailability, $itinerary->ID);
     update_field('precalculated_lengths', $lengths, $itinerary->ID);
     update_field('precalculated_departures', $departures, $itinerary->ID); // max input vars 1000 is too low
-    update_field('precalculated_region', $regionId, $itinerary->ID); 
+    update_field('precalculated_region', $regionId, $itinerary->ID);
     update_field('precalculated_departure_count', $departureCount, $itinerary->ID);
+    update_field('precalculated_destinations', $destinations, $itinerary->ID);
 
     $timezone  = -5; // (GMT -5:00) EST (U.S. & Canada)
     $currentTime =  gmdate("M d, Y  H:i:s", time() + 3600 * ($timezone + date("I")));
     update_field('precalculated_last_update', $currentTime, $itinerary->ID);
 }
+
+function precalculate_ship_data($ship)
+{
+    $regions = getShipRegions($ship);
+
+    update_field('precalculated_regions', $regions, $ship->ID);
+
+    $timezone  = -5; // (GMT -5:00) EST (U.S. & Canada)
+    $currentTime =  gmdate("M d, Y  H:i:s", time() + 3600 * ($timezone + date("I")));
+    update_field('precalculated_last_update', $currentTime, $ship->ID);
+}
+
 
 
 function refresh_itinerary_info($itineraryId, $post_id)
@@ -273,6 +300,12 @@ function acf_read_only_precalculated_departures($field)
 }
 add_filter('acf/load_field/name=precalculated_departure_count', 'acf_read_only_precalculated_departure_count');
 function acf_read_only_precalculated_departure_count($field)
+{
+    $field['readonly'] = 1;
+    return $field;
+}
+add_filter('acf/load_field/name=precalculated_destinations', 'acf_read_only_precalculated_destinations');
+function acf_read_only_precalculated_destinations($field)
 {
     $field['readonly'] = 1;
     return $field;

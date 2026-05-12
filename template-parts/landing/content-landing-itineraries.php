@@ -2,7 +2,6 @@
 $itineraries_title_subtext = get_field('itineraries_title_subtext');
 $itineraries_title = get_field('itineraries_title');
 $itineraries = $args['itineraries'];
-$region = $args['region'];
 $allLink = $args['allLink'];
 ?>
 
@@ -45,31 +44,32 @@ $allLink = $args['allLink'];
             <!-- Swiper -->
             <div class="swiper" id="itineraries-slider">
                 <div class="swiper-wrapper">
-                    <?php
-                    $count = 0;
+                    <?php $count = 0;
                     foreach ($itineraries as $itinerary) :
-                        $departures = getDepartureListItinerary($itinerary);
-                        if (!$departures) {
-                            continue;
-                        } else {
-                            $count++;
-                        }
-                        if ($count > 15) {
-                            break;
-                        }
-                        $images =  get_field('hero_gallery', $itinerary);
-                        $image =  $images[0];
-                        $title = get_field('display_name', $itinerary);
-                        $ships = getShipsFromItineraries($itinerary);
-                        $shipsDisplay = getShipsDisplay($ships);
-                         $itineraryLengths = getItineraryLengths($itinerary);
+                        if ($count > 11) continue; // max 12 itineraries
+                        $precalculated_departures = get_field('precalculated_departures', $itinerary);
+                        $departures = $precalculated_departures ? $precalculated_departures : getDepartureListItinerary($itinerary); // itineraries already filtered for region
+
+                        $precalculated_lengths = get_field('precalculated_lengths', $itinerary);
+                        $itineraryLengths = $precalculated_lengths ? $precalculated_lengths : getItineraryLengths($itinerary);
                         $lengthDisplay = formatLengthDisplay($itineraryLengths);
 
-                        $lowestPrice = getLowestDepartureListPrice($departures);
-                        $highestPrice = getHighestDepartureListPrice($departures);
-                        $bestOverallDiscount = getBestDepartureListDiscount($departures);
+                        $precalculated_ships = get_field('precalculated_ships', $itinerary);
+                        $ships = $precalculated_ships ? $precalculated_ships : getShipsFromItineraries($itinerary);
+                        $shipsDisplay = getShipsDisplay($ships);
 
+                        $precalculated_price_low = get_field('precalculated_price_low', $itinerary);
+                        $lowestPrice = $precalculated_price_low ? $precalculated_price_low : getLowestDepartureListPrice($departures);
 
+                        $precalculated_price_high = get_field('precalculated_price_high', $itinerary);
+                        $highestPrice = $precalculated_price_high ? $precalculated_price_high : getHighestDepartureListPrice($departures);
+
+                        $precalculated_best_discount = get_field('precalculated_best_discount', $itinerary);
+                        $bestOverallDiscount = $precalculated_best_discount ? $precalculated_best_discount : getBestDepartureListDiscount($departures);
+
+                        $images =  get_field('hero_gallery', $itinerary);
+                        $image = $images[0];
+                        $title = get_field('display_name', $itinerary);
                     ?>
 
                         <!-- Itinerary Card -->
@@ -138,7 +138,7 @@ $allLink = $args['allLink'];
                             </div>
                         </div>
 
-                    <?php
+                    <?php $count++;
                     endforeach; ?>
                 </div>
             </div>
@@ -151,6 +151,5 @@ $allLink = $args['allLink'];
                 </a>
             </div>
         <?php endif; ?>
-
     </div>
 </section>

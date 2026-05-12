@@ -246,10 +246,12 @@ $top_level_deals_page = get_field('top_level_deals_page', $initialRegion);
                                 <div class="mega-slider__slider" id="mega-ships-slider-<?php echo $shipsSliderCount; ?>">
                                     <div class="swiper-wrapper">
                                         <?php foreach ($items as $item) : // ships
+                                            $precalculated_regions = get_field('precalculated_regions', $item);
+                                            $shipRegions = $precalculated_regions ? $precalculated_regions : getShipRegions($item);
+                                            if (!$shipRegions) continue; // skip if no regions
                                             $title = get_the_title($item);
                                             $hero_gallery = get_field('hero_gallery', $item);
                                             $ship_image = $hero_gallery[0];
-                                            $shipRegions = getShipRegions($item);
                                             $guestsDisplay = get_field('vessel_capacity', $item) . ' Guests';
 
                                             foreach ($shipRegions as $shipRegion) :
@@ -259,11 +261,8 @@ $top_level_deals_page = get_field('top_level_deals_page', $initialRegion);
                                                 }
                                                 $itineraries = getShipItineraries($item, $shipRegion);
                                                 $itineraryLengths = getItineraryLengths($itineraries);
-                                                $itineraryLengthDisplay = formatLengthDisplay($itineraryLengths, true);
-                                                $itineraryDisplay = count($itineraries) . ' Itineraries, ' . $itineraryLengthDisplay;
-
-
-                                                $shipRegionId = $shipRegion ? $shipRegion->ID : "all";
+                                                $itineraryDisplay = formatLengthDisplay($itineraryLengths, true) . " , " . count($itineraries) . ' Itineraries';
+                                                $shipRegionId = $shipRegion->ID;
                                                 $showInitial = $initialRegion->ID == $shipRegionId || $shipRegionId == "all";
                                         ?>
                                                 <a class="btn-avatar-info swiper-slide nav-mega-item" href="<?php echo $url; ?>" region="<?php echo $shipRegionId; ?>" style="display: <?php echo $showInitial ? '' : 'none' ?>">

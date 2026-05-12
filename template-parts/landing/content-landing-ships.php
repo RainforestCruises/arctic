@@ -3,6 +3,8 @@ $ships_title_subtext = get_field('ships_title_subtext');
 $ships_title = get_field('ships_title');
 $ships = $args['ships'];
 $region = $args['region'];
+$itineraries = $args['itineraries'];
+
 $primaryRegion = getPrimaryRegion();
 
 ?>
@@ -28,26 +30,34 @@ $primaryRegion = getPrimaryRegion();
 
         <!-- Grid Area -->
         <div class="grid-block__content__grid grid3">
-            <?php foreach ($ships as $ship) :
-                $images =  get_field('hero_gallery', $ship);
-                $itineraries = getShipItineraries($ship);
-                $itineraryLengths = getItineraryLengths($itineraries);
-                $itineraryLengthDisplay = formatLengthDisplay($itineraryLengths, true);
-                $title = get_the_title($ship);
-                $itineraryDisplay = $itineraryLengthDisplay . " , " . count($itineraries) . ' Itineraries';
-                $serviceLevel = get_field('service_level', $ship);
-                $serviceLevelDisplay = get_field('service_level', $ship) ? get_the_title($serviceLevel) : '';
-                $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . $serviceLevelDisplay;
-                $departures = getDepartureListShip($ship, $region); // ships must specify region on a landing page
-                if (!$departures) {
-                    continue;
-                }
+            <?php
+            $count = 0;
+            foreach ($ships as $ship) :
+                if ($count > 11) continue; // max 12 ships shown     
+
+                // TODO: ships are correct but not their sub info, need to filter departure list using itineraries that were filtered for region, style, and route
+                $departures = getDepartureListShip($ship, $region);
+                if (!$departures) continue; // skip if no available departures for this ship in this region
+
+                // pricing based on dynamic evaluation of departures
                 $lowestPrice = getLowestDepartureListPrice($departures);
                 $highestPrice = getHighestDepartureListPrice($departures);
                 $bestOverallDiscount = getBestDepartureListDiscount($departures);
+
+                // itineraries based on dynamic evaluation of departures
+                $itineraries = getShipItineraries($ship, $region);
+                $itineraryLengths = getItineraryLengths($itineraries);
+                $itineraryDisplay = formatLengthDisplay($itineraryLengths, true) . " , " . count($itineraries) . ' Itineraries';
+
+                $title = get_the_title($ship);
+                $images =  get_field('hero_gallery', $ship);
+                $image = $images[0];
+                $service_level =  get_field('service_level', $ship);
+                $serviceLevelDisplay = ($service_level) ? get_the_title($service_level) : "N/A";
+                $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . $serviceLevelDisplay;
                 $permalink = get_permalink($ship);
 
-                if ($primaryRegion->ID != $region->ID) {
+                if ($region && $primaryRegion->ID != $region->ID) {
                     $permalink .= "?region=" . $region->ID;
                 }
 
@@ -72,7 +82,6 @@ $primaryRegion = getPrimaryRegion();
                                 </a>
                             <?php endforeach; ?>
                         </div>
-
                         <div class="swiper-pagination"></div>
                         <div class="swiper-button-prev swiper-button-prev--overlay"></div>
                         <div class="swiper-button-next swiper-button-prev--overlay"></div>
@@ -88,7 +97,6 @@ $primaryRegion = getPrimaryRegion();
 
                         <!-- Specs -->
                         <div class="resource-card__content__specs">
-
                             <!-- Itinerary -->
                             <div class="specs-item">
                                 <div class="specs-item__icon">
@@ -112,7 +120,6 @@ $primaryRegion = getPrimaryRegion();
                                     <?php echo $guestsDisplay; ?>
                                 </div>
                             </div>
-
                         </div>
                         <div class="resource-card__content__bottom">
                             <!-- Price Group -->
@@ -128,15 +135,8 @@ $primaryRegion = getPrimaryRegion();
 
                     </div>
                 </div>
-
-
-            <?php endforeach; ?>
-
-
-
-
+            <?php $count++;
+            endforeach; ?>
         </div>
-
-
     </div>
 </section>

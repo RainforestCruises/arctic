@@ -4,7 +4,8 @@ $ship = get_post();
 $departures = getDepartureListShip($ship);
 $deals = getDealsFromDepartureList($departures);
 $reviews = get_field('reviews');
-$regions = getShipRegions($ship);
+$precalculated_regions = get_field('precalculated_regions', $ship);
+$shipRegions = $precalculated_regions ? $precalculated_regions : getShipRegions($ship);
 $initialRegion = checkPageRegion();
 
 ?>
@@ -12,7 +13,7 @@ $initialRegion = checkPageRegion();
 <nav class="nav-secondary small-width">
 
     <!-- desktop content -->
-    <div class="nav-secondary__content <?php echo count($regions) > 1 ? 'nav-secondary__content--regional' : '' ?>">
+    <div class="nav-secondary__content <?php echo count($shipRegions) > 1 ? 'nav-secondary__content--regional' : '' ?>">
         <div class="nav-secondary__content__title-area">
             <a href="#top" class="nav-secondary__content__title-area__link">
                 <?php echo $title; ?>

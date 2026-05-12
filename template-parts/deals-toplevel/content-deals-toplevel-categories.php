@@ -1,10 +1,7 @@
 <?php
 $sections = get_field('sections');
 $region = get_field('region');
-
 $categoryCount = 0;
-$allDeals = [];
-
 foreach ($sections as $section) :
     $category = $section['category'];
     $title = $section['title'];
@@ -57,53 +54,55 @@ foreach ($sections as $section) :
                         <?php
                         $count = 0;
                         foreach ($itinerariesWithDealsInCategory as $itinerary) :
-                            $departures = getDepartureListItinerary($itinerary);
+                            $precalculatedDepartures = get_field('precalculated_departures', $itinerary);
+                            $departures = $precalculatedDepartures ? $precalculatedDepartures : getDepartureListItinerary($itinerary);
                             if (!$departures) continue; // Skip if sold out
 
-                            if ($count > 24) break; // Limit to 12 itineraries per region
+                            if ($count > 12) break; // Limit to 12 itineraries per region
+                            $precalculated_lengths = get_field('precalculated_lengths', $itinerary);
+                            $itineraryLengths = $precalculated_lengths ? $precalculated_lengths : getItineraryLengths($itinerary);
+                            $lengthDisplay = formatLengthDisplay($itineraryLengths);
+
+                            $precalculated_ships = get_field('precalculated_ships', $itinerary);
+                            $ships = $precalculated_ships ? $precalculated_ships : getShipsFromItineraries($itinerary);
+                            $shipsDisplay = getShipsDisplay($ships);
+
+                            $precalculated_price_low = get_field('precalculated_price_low', $itinerary);
+                            $lowestPrice = $precalculated_price_low ? $precalculated_price_low : getLowestDepartureListPrice($departures);
+
+                            $precalculated_price_high = get_field('precalculated_price_high', $itinerary);
+                            $highestPrice = $precalculated_price_high ? $precalculated_price_high : getHighestDepartureListPrice($departures);
+
+                            $precalculated_best_discount = get_field('precalculated_best_discount', $itinerary);
+                            $bestOverallDiscount = $precalculated_best_discount ? $precalculated_best_discount : getBestDepartureListDiscount($departures);
+
                             $images =  get_field('hero_gallery', $itinerary);
                             $image = $images[0];
                             $title = get_field('display_name', $itinerary);
-                            $itineraryLengths = getItineraryLengths($itinerary);
-                            $lengthDisplay = formatLengthDisplay($itineraryLengths);
-                            $ships = getShipsFromItineraries($itinerary);
-                            $shipsDisplay = getShipsDisplay($ships);
-
-                            $lowestPrice = getLowestDepartureListPrice($departures);
-                            $highestPrice = getHighestDepartureListPrice($departures);
-                            $bestOverallDiscount = getBestDepartureListDiscount($departures);
                             $count++;
                         ?>
-
                             <!-- Itinerary Card -->
                             <div class="resource-card swiper-slide">
-
                                 <!-- Tag -->
                                 <?php if ($bestOverallDiscount) : ?>
                                     <div class="resource-card__tag">
                                         Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
                                     </div>
                                 <?php endif; ?>
-
-
                                 <!-- Images Slider -->
                                 <div class="resource-card__image-area">
                                     <a class="resource-card__image-area__item" href="<?php echo get_permalink($itinerary) ?>">
                                         <img <?php afloat_image_markup($image['id'], 'portrait-small'); ?>>
                                     </a>
                                 </div>
-
                                 <!-- Content -->
                                 <div class="resource-card__content">
-
                                     <!-- Title -->
                                     <h3 class="resource-card__content__title">
                                         <a href="<?php echo get_permalink($itinerary) ?>"><?php echo $title; ?></a>
                                     </h3>
-
                                     <!-- Specs -->
                                     <div class="resource-card__content__specs">
-
                                         <!-- Itinerary -->
                                         <div class="specs-item">
                                             <div class="specs-item__icon">
@@ -127,7 +126,6 @@ foreach ($sections as $section) :
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="resource-card__content__bottom">
                                         <!-- Price Group -->
                                         <div class="resource-card__content__bottom__price-group">
@@ -139,20 +137,14 @@ foreach ($sections as $section) :
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-
                         <?php endforeach; ?>
-
                     </div>
-
                 </div>
             </div>
-
         </div>
     </section>
-
 <?php $categoryCount++;
 endforeach;
 ?>

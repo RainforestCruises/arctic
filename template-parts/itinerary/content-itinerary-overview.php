@@ -3,13 +3,13 @@
 $ships = $args['ships'];
 $initialRegion = $args['initialRegion'];
 $primaryRegion = $args['primaryRegion'];
+$productName = $args['productName'];
 
 $overview_content = get_field('overview_content');
 $activities = get_field('activities');
 $max_items = 6;
 $firstActivities = array_slice($activities, 0, $max_items);
 $expandItems = count($activities) > $max_items ? true : false;
-
 $expand = strlen($overview_content) > 2000 ? true : false;
 $overview_content_limited = substr($overview_content, 0, 2000);
 if ($expand) {
@@ -95,7 +95,6 @@ if ($expand) {
                             ?>
                                 <!-- Ship -->
                                 <a class="avatar" href="<?php echo $url; ?>">
-
                                     <div class="avatar__image-area" >
                                         <img <?php afloat_image_markup($ship_image['id'], 'square-thumb', array('square-thumb')); ?>>
                                     </div>
@@ -107,7 +106,6 @@ if ($expand) {
                                             <?php echo get_field('top_snippet', $ship); ?>
                                         </div>
                                     </div>
-
                             </a>
                             <?php endforeach; ?>
 
@@ -195,7 +193,6 @@ if ($expand) {
                 </svg>
             </button>
         </div>
-
         <!-- Main Modal Content -->
         <div class="modal__content__main">
             <?php echo $overview_content; ?>
@@ -231,10 +228,8 @@ if ($expand) {
                 $title = $a['title_override'] == "" ? get_the_title($activity_post) : $a['title_override'];
                 $subtitle = $a['subtitle'];
             ?>
-
                 <div class="icon-item icon-item--full">
                     <?php echo $icon ?>
-
                     <div class="icon-item__title-group">
                         <div class="icon-item__title-group__title">
                             <?php echo $title ?>

@@ -1,21 +1,19 @@
 <?php
-$ships = get_field('ships');
 $ships_title = get_field('ships_title');
 $ships_title_subtext = get_field('ships_title_subtext');
-
+$ships = get_field('ships'); // curated list of ships from field on page
 $region = $args['region'];
 $isMultiRegion = $args['isMultiRegion'];
 $top_level_search_page = $isMultiRegion ? get_field('top_level_search_page', 'options') : get_permalink(get_field('top_level_search_page', $region));
+$primaryRegion = getPrimaryRegion();
+
 ?>
-
-
 
 <section class="slider-block" id="ships">
     <div class="slider-block__content">
 
         <!-- Top - Title/Nav -->
         <div class="slider-block__content__top">
-
             <!-- Title -->
             <div class="title-single">
                 <h2 class="title-group__title">
@@ -25,10 +23,8 @@ $top_level_search_page = $isMultiRegion ? get_field('top_level_search_page', 'op
                     <?php echo $ships_title_subtext; ?>
                 </div>
             </div>
-
             <!-- Nav Buttons -->
             <div class="slider-block__content__top__nav">
-
                 <div class="swiper-button-prev swiper-button-prev--white-border ships-slider-btn-prev">
                     <svg>
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-left"></use>
@@ -39,39 +35,41 @@ $top_level_search_page = $isMultiRegion ? get_field('top_level_search_page', 'op
                         <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
                     </svg>
                 </div>
-
             </div>
         </div>
 
         <!-- Slider Area -->
         <div class="slider-block__content__slider">
-
-            <!-- Swiper -->
             <div class="swiper" id="ships-slider">
                 <div class="swiper-wrapper">
                     <?php
                     $count = 0;
                     foreach ($ships as $ship) :
-                        if ($count > 11) {
-                            continue;
-                        }
+                        if ($count > 11) continue; // max 12 ships shown here, even if more are selected in the field
                         $departures = getDepartureListShip($ship, $region);
-                        if (!$departures) continue; // Skip if sold out
+                        if (!$departures) continue; // skip if no available departures for this ship in this region
 
+                        // pricing based on dynamic evaluation of departures
                         $lowestPrice = getLowestDepartureListPrice($departures);
                         $highestPrice = getHighestDepartureListPrice($departures);
                         $bestOverallDiscount = getBestDepartureListDiscount($departures);
-                        $images =  get_field('hero_gallery', $ship);
-                        $image = $images[0];
+
+                        // itineraries based on dynamic evaluation of departures
                         $itineraries = getShipItineraries($ship, $region);
                         $itineraryLengths = getItineraryLengths($itineraries);
-                        $itineraryLengthDisplay = formatLengthDisplay($itineraryLengths, true);
+                        $itineraryDisplay = formatLengthDisplay($itineraryLengths, true) . " , " . count($itineraries) . ' Itineraries';
+
                         $title = get_the_title($ship);
-                        $itineraryDisplay = $itineraryLengthDisplay . " , " . count($itineraries) . ' Itineraries';
+                        $images =  get_field('hero_gallery', $ship);
+                        $image = $images[0];
                         $service_level =  get_field('service_level', $ship);
                         $serviceLevelDisplay = ($service_level) ? get_the_title($service_level) : "N/A";
                         $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . $serviceLevelDisplay;
+                        $permalink = get_permalink($ship);
 
+                        if ($region && $primaryRegion->ID != $region->ID) {
+                            $permalink .= "?region=" . $region->ID;
+                        }
                     ?>
                         <!-- Cabin Card -->
                         <div class="resource-card swiper-slide">
@@ -84,7 +82,7 @@ $top_level_search_page = $isMultiRegion ? get_field('top_level_search_page', 'op
                             <?php endif; ?>
 
                             <!-- Images Slider -->
-                            <a class="resource-card__image-area swiper ship-card-image-area" href="<?php echo get_permalink($ship) ?>">
+                            <a class="resource-card__image-area swiper ship-card-image-area" href="<?php echo $permalink ?>">
                                 <img <?php afloat_image_markup($image['id'], 'portrait-medium'); ?>>
                             </a>
 
@@ -93,7 +91,7 @@ $top_level_search_page = $isMultiRegion ? get_field('top_level_search_page', 'op
 
                                 <!-- Title -->
                                 <h3 class="resource-card__content__title">
-                                    <a href="<?php echo get_permalink($ship) ?>"><?php echo $title; ?></a>
+                                    <a href="<?php echo $permalink ?>"><?php echo $title; ?></a>
                                 </h3>
 
                                 <!-- Specs -->
@@ -137,10 +135,8 @@ $top_level_search_page = $isMultiRegion ? get_field('top_level_search_page', 'op
                                 </div>
                             </div>
                         </div>
-
                     <?php $count++;
                     endforeach; ?>
-
                 </div>
             </div>
         </div>

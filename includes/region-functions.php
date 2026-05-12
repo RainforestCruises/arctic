@@ -39,7 +39,8 @@ function getItineraryRegionId($itinerary)
 
 
 
-// Get routes for a specific region, or all routes if no region specified. Ranked routes will be returned first.
+// Get routes for a specific region, or all routes if no region specified. 
+// Sorted with ranked routes returned first.
 function getRoutesFromRegion($region = null)
 {
     $regionFilter = [];
@@ -66,7 +67,8 @@ function getRoutesFromRegion($region = null)
     $unrankedRoutes = get_posts(array_merge($baseArgs, [
         'orderby'    => 'title',
         'order'      => 'ASC',
-        'meta_query' => ['relation' => 'AND', ...$regionFilter, ['relation' => 'OR',
+        'meta_query' => ['relation' => 'AND', ...$regionFilter, [
+            'relation' => 'OR',
             ['key' => 'search_rank', 'value' => '', 'compare' => '='],
             ['key' => 'search_rank', 'compare' => 'NOT EXISTS'],
         ]],
@@ -77,18 +79,27 @@ function getRoutesFromRegion($region = null)
 
 
 
-// gets a list of unique regions per ship
+// gets a list of every unique region a ship sails
 function getShipRegions($ship)
 {
-    $itineraries = getShipItineraries($ship);
+    $itineraries = getShipItineraries($ship); // this is expensive
     $regionsList = [];
     foreach ($itineraries as $itinerary) {
-        $routes = get_field('route', $itinerary) ?: []; // PHP 8 FIX
-        foreach ($routes as $route) {
-            $regionsList[] = get_field('region', $route);
+        $precalculated_region_itinerary = get_field('precalculated_region', $itinerary);
+        if ($precalculated_region_itinerary) {
+            $regionsList[] = get_post($precalculated_region_itinerary); // get region objext
+        } else {
+            $regionId = getItineraryRegionId($itinerary);
+            $regionsList[] = get_post($regionId);  // get region objext
         }
     }
 
     $uniqueShipRegionsList = getUniquePostsFromArrayOfPosts($regionsList);
     return ($uniqueShipRegionsList);
+}
+
+function getBadgeClass($region)
+{
+    $badgeClass = 'badge--' . strtolower(get_the_title($region));
+    return $badgeClass;
 }

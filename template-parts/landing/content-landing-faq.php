@@ -13,7 +13,6 @@ $displayLimit = 320;
                 <?php echo $faq_title; ?>
             </h2>
         </div>
-
         <!-- Grid Area -->
         <div class="grid-block__content__grid grid3">
             <?php
@@ -21,20 +20,16 @@ $displayLimit = 320;
             foreach ($firstFaqs as $faq) :
                 $question = $faq['question'];
                 $answer = $faq['answer'];
-
                 $expand = strlen($answer) > $displayLimit ? true : false;
                 $answer_limited = substr($answer, 0, $displayLimit) . ($expand ? '...' : '');
             ?>
-
                 <div class="text-card encapsulated">
-
                     <h3 class="text-card__title-single">
                         <?php echo $question; ?>
                     </h3>
                     <div class="text-card__text">
                         <?php echo $answer_limited; ?>
                     </div>
-
                     <?php if ($expand) : ?>
                         <div class="text-card__expand">
                             <button class="btn-text read-all-faqs" section="faq-section-<?php echo $count; ?>">
@@ -48,20 +43,17 @@ $displayLimit = 320;
                 </div>
             <?php $count++;
             endforeach; ?>
-
         </div>
-
         <!-- CTA -->
         <div class="grid-block__content__cta">
             <button class="btn-primary btn-primary--inverse-outline read-all-faqs" section="faq-section-0">
                 Read All FAQs
             </button>
         </div>
-
     </div>
 </section>
 
-
+<!-- Modal -->
 <div class="modal" id="faqsModal">
     <div class="modal__content">
         <div class=" modal__content__top">
@@ -78,30 +70,24 @@ $displayLimit = 320;
                 </svg>
             </button>
         </div>
-
         <!-- Main Modal Content -->
         <div class="modal__content__main" id="faqsModalMainContent">
-
             <?php
             $count = 0;
             foreach ($faqs as $faq) :
                 $question = $faq['question'];
                 $answer = $faq['answer'];
             ?>
-
                 <div class="text-card modal-section" id="<?php echo 'faq-section-' . $count; ?>">
-
                     <div class="text-card__title-single">
                         <?php echo $question; ?>
                     </div>
                     <div class="text-card__text">
                         <?php echo $answer; ?>
                     </div>
-
                 </div>
             <?php $count++;
             endforeach; ?>
-
         </div>
     </div>
 </div>

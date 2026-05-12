@@ -6,8 +6,7 @@ $show_faq = get_field('show_faq');
 $show_topics = get_field('show_topics');
 $show_map = get_field('show_map');
 $itineraries = $args['itineraries'];
-$region = $args['region'];
-$lowestOverallPrice = getLowestPriceFromListOfItineraries($itineraries, $region);
+$lowestOverallPrice = getLowestItineraryListPrice($itineraries);
 
 ?>
 

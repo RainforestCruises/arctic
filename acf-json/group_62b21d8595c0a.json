@@ -387,6 +387,27 @@
             "endpoint": 0
         },
         {
+            "key": "field_63655a3f4eafa",
+            "label": "Length In Nights",
+            "name": "length_in_nights",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
             "key": "field_695beee093dd8",
             "label": "Variant Title",
             "name": "variant_title",
@@ -431,27 +452,6 @@
             "return_format": "value",
             "ajax": 0,
             "placeholder": ""
-        },
-        {
-            "key": "field_63655a3f4eafa",
-            "label": "Length In Nights",
-            "name": "length_in_nights",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
         },
         {
             "key": "field_6806624b8a81f",
@@ -2161,6 +2161,28 @@
             "key": "field_69fd8b844a00d",
             "label": "Precalculated Region",
             "name": "precalculated_region",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "readonly": 1
+        },
+        {
+            "key": "field_6a0230bd005a0",
+            "label": "Precalculated Destinations",
+            "name": "precalculated_destinations",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -2216,5 +2238,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1778436734
+    "modified": 1778621018
 }

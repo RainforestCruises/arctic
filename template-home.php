@@ -7,21 +7,17 @@ get_header();
 
 $selectedRegion = get_field('region');
 $isMultiRegion = $selectedRegion == null;
-
-
-// Get routes that match the regions
 $show_routes = get_field('show_routes');
 $routes = null;
 $itineraryMapObjects = [];
 if ($show_routes) {
-    $routes = getRoutesFromRegion($selectedRegion);
+    $routes = getRoutesFromRegion($selectedRegion); // Get routes that match the region, or get all if none provided
     foreach ($routes as $route) {
         $sample_itinerary = get_field('sample_itinerary', $route);
         $itineraryInfoObject = createItineraryInfoObject($sample_itinerary);
-        $itineraryMapObjects[] = $itineraryInfoObject->itineraryObjects[0]->mapObject;
+        $itineraryMapObjects[] = $itineraryInfoObject->itineraryObjects[0]->mapObject; // generate map objects for 
     }
     wp_enqueue_script('page-product-cruise-itineraries', get_template_directory_uri() . '/js/page-product-cruise-itineraries.js', array('jquery'), false, true);
-
     wp_localize_script(
         'page-product-cruise-itineraries',
         'page_vars',
@@ -30,8 +26,6 @@ if ($show_routes) {
         )
     );
 }
-
-
 
 $args = array(
     'footerCtaDivider' => true,

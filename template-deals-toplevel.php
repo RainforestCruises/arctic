@@ -2,12 +2,9 @@
 /*Template Name: Deals - Top Level*/
 wp_enqueue_script('page-deals-toplevel', get_template_directory_uri() . '/js/page-deals-toplevel.js', array('jquery'), false, true);
 wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', array('jquery'), false, true);
-
 get_header();
 
 $args = array('footerCtaDivider' => false);
-
-
 ?>
 
 

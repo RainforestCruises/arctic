@@ -1,20 +1,15 @@
 <?php
 wp_enqueue_script('page-deal-single', get_template_directory_uri() . '/js/page-deal-single.js', array('jquery'), false, true);
 wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', array('jquery'), false, true);
-
-
 get_header();
 
 $deal = get_post();
 $dealName = get_field('navigation_title');
 
-
 $args = array(
     'dealName' => $dealName,
     'footerCtaDivider' => true
 );
-
-
 
 ?>
 

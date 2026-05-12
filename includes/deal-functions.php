@@ -148,7 +148,7 @@ function getDealsInCategory($category)
 
 
 // get a list of itineraries that have a particular deal, accepts a single deal or array of deals to match
-function getItinerariesWithDeal($deals, $excludeItinerary = null, $region = null, $limit = 12)
+function getItinerariesWithDeal($deals, $excludeItinerary = null, $region = null, $limit = 24)
 {
     $itineraries = [];
     if ($region) {
@@ -164,12 +164,10 @@ function getItinerariesWithDeal($deals, $excludeItinerary = null, $region = null
     $count = 0;
     $itinerariesWithDeal = [];
     foreach ($itineraries as $itinerary) {
-        $departures = getDepartureListItinerary($itinerary);
+        $precalculatedDepartures = get_field('precalculated_departures', $itinerary);
+        $departures = $precalculatedDepartures ? $precalculatedDepartures : getDepartureListItinerary($itinerary);
+        if (empty($departures) || !is_array($departures)) continue; // Skip this itinerary if no valid departures
 
-        // Guard against null or empty departures
-        if (empty($departures) || !is_array($departures)) {
-            continue; // Skip this itinerary if no valid departures
-        }
 
         $hasDeal = false;
         foreach ($departures as $departure) {

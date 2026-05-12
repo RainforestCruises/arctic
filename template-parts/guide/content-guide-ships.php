@@ -1,6 +1,7 @@
 <?php
 $ships = get_field('ships');
 $ships_title = get_field('ships_title');
+$region = checkPageRegion(); // NOTE: will return primary region is none is set
 ?>
 
 <section class="slider-block narrow">
@@ -40,24 +41,29 @@ $ships_title = get_field('ships_title');
             <div class="swiper" id="ships-slider">
                 <div class="swiper-wrapper">
 
-                    <?php foreach ($ships as $ship) :
-                        $region = checkPageRegion();
-                        $itineraries = getShipItineraries($ship, $region);
-                        if (count($itineraries) == 0) {
-                            continue;
-                        }
-                        $images =  get_field('hero_gallery', $ship);
-                        $image = $images[0];
-                        $itineraryLengths = getItineraryLengths($itineraries);
-                        $itineraryLengthDisplay = formatLengthDisplay($itineraryLengths, true);
+                    <?php $count = 0;
+                    foreach ($ships as $ship) :
+                        if ($count > 11) continue; // max 12 ships shown here, even if more are selected in the field
+                        $departures = getDepartureListShip($ship, $region);
+                        if (!$departures) continue; // skip if no available departures for this ship in this region
 
-                        $title = get_the_title($ship);
-                        $itineraryDisplay = $itineraryLengthDisplay . " , " . count($itineraries) . ' Itineraries';
-                        $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . 'Luxury';
-                        $departures = getDepartureListShip($ship, $region); // restrict list to specific region to get correct prices / dates
+                        // TODO we could check region             
                         $lowestPrice = getLowestDepartureListPrice($departures);
                         $highestPrice = getHighestDepartureListPrice($departures);
                         $bestOverallDiscount = getBestDepartureListDiscount($departures);
+
+                        // itineraries based on dynamic evaluation of departures
+                        $itineraries = getShipItineraries($ship, $region);
+                        $itineraryLengths = getItineraryLengths($itineraries);
+                        $itineraryDisplay = formatLengthDisplay($itineraryLengths, true) . " , " . count($itineraries) . ' Itineraries';
+
+                        $title = get_the_title($ship);
+                        $images =  get_field('hero_gallery', $ship);
+                        $image = $images[0];
+                        $service_level =  get_field('service_level', $ship);
+                        $serviceLevelDisplay = ($service_level) ? get_the_title($service_level) : "N/A";
+                        $guestsDisplay = get_field('vessel_capacity', $ship) . ' Guests, ' . $serviceLevelDisplay;
+
                     ?>
 
                         <!-- Card -->

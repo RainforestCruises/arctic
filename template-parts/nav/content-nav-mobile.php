@@ -305,18 +305,18 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                     <?php echo $group_title; ?>
                 </div>
                 <?php foreach ($items as $item) :
-                    $url = get_permalink($item);
+                    $precalculated_regions = get_field('precalculated_regions', $item);
+                    $shipRegions = $precalculated_regions ? $precalculated_regions : getShipRegions($item);
+                    if (!$shipRegions) continue; // skip if no regions
                     $title = get_the_title($item);
                     $hero_gallery = get_field('hero_gallery', $item);
                     $ship_image = $hero_gallery[0];
-                    $shipRegions = getShipRegions($item);
-
                     foreach ($shipRegions as $shipRegion) :
                         $url = get_permalink($item);
                         if ($primaryRegion != $shipRegion) {
                             $url .= "?region=" . $shipRegion->ID;
                         }
-                        $shipRegionId = $shipRegion ? $shipRegion->ID : "all";
+                        $shipRegionId = $shipRegion->ID;
                         $showInitial = $initialRegion->ID == $shipRegionId || $shipRegionId == "all";
                 ?>
 
@@ -453,7 +453,7 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                 </a>
             <?php endforeach; ?>
 
-            <a class="btn-pill btn-pill--icon mobile-nav-view-all-button nav-mega-item" href="<?php echo $top_level_regions_page; ?>" >
+            <a class="btn-pill btn-pill--icon mobile-nav-view-all-button nav-mega-item" href="<?php echo $top_level_regions_page; ?>">
                 View All Regions
                 <svg>
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
