@@ -304,7 +304,10 @@ jQuery(document).ready(function ($) {
       variantCheckboxes.forEach((item) => {
         item.checked = false;
       });
-      hideVariantsPopper();
+
+      if (variantFilterButton) {
+        hideVariantsPopper(); // not present for ships
+      }
 
       filterSlides();
     });
