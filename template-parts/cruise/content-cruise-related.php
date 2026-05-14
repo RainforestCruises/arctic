@@ -72,7 +72,7 @@ $count = 0;
                         $departures = getDepartureListShip($ship, $region);
                         if (!$departures) continue; // skip if no available departures for this ship in this region
 
-
+                        // TODO: PERMALINK REGIONAL 
                         $lowestPrice = getLowestDepartureListPrice($departures);
                         $highestPrice = getHighestDepartureListPrice($departures);
                         $bestOverallDiscount = getBestDepartureListDiscount($departures);

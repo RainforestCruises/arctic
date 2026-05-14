@@ -19,31 +19,6 @@
             "endpoint": 0
         },
         {
-            "key": "field_6365598f64356",
-            "label": "Ships",
-            "name": "ships",
-            "type": "relationship",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "rfc_cruises"
-            ],
-            "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "object"
-        },
-        {
             "key": "field_6384e5c17c120",
             "label": "Route",
             "name": "route",
@@ -2238,5 +2213,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1778621018
+    "modified": 1778798714
 }

@@ -14,7 +14,7 @@ function load_scripts()
 
     //JS -------------- scripts
     wp_enqueue_script('jquery', get_template_directory_uri() . '/vendor/jquery/jquery-3.6.0.min.js', array(), '3.6.0', true);
-    wp_enqueue_script('mapbox-gl', get_template_directory_uri() . '/vendor/mapbox/mapbox-gl.js', array(), false, true);
+    //wp_enqueue_script('mapbox-gl', get_template_directory_uri() . '/vendor/mapbox/mapbox-gl.js', array(), false, true);
     wp_enqueue_script('select2',  get_template_directory_uri() .  '/vendor/select2/select2.min.js', array('jquery'), false, true);
     wp_enqueue_script('ion-js', get_template_directory_uri() . '/vendor/ion-range-slider/js/ion.rangeSlider.min.js', array('jquery'), false, true);
     wp_enqueue_script('isotope', get_template_directory_uri() . '/vendor/isotope/isotope.pkgd.min.js', array('jquery'), false, true);

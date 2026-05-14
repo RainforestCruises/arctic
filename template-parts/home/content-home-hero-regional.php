@@ -18,7 +18,7 @@ $regions = get_posts($regionsArgs);
 
     <!-- Background -->
     <div class="home-hero-regional__bg-image">
-        <img <?php afloat_image_markup($hero_featured_image['id'], 'landscape-full', array('landscape-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small'), false); ?> class="optimole-initial">
+        <img <?php afloat_image_markup($hero_featured_image['id'], 'landscape-full', array('landscape-full', 'landscape-large', 'landscape-medium', 'landscape-small', 'portrait-small')); ?> >
     </div>
 
     <!-- Hero Content -->
@@ -98,8 +98,8 @@ $regions = get_posts($regionsArgs);
         <!-- Video Area -->
         <div class="home-hero-regional__content__video-area">
             <div class="home-hero-regional__content__video-area__video">
-                <video class="home-hero-regional__content__video-area__video__source" muted autoplay loop id="hero-video-card">
-                    <source src="<?php echo esc_url($hero_video_card); ?>" type="video/mp4">
+                <video class="home-hero-regional__content__video-area__video__source" muted playsinline  loop id="hero-video-card" preload="none">
+                    <source data-src="<?php echo esc_url($hero_video_card); ?>" type="video/mp4">
                 </video>
                 <div class="home-hero-regional__content__video-area__video__overlay">
                     <h3><?php echo $video_title ?></h3>

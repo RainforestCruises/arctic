@@ -3404,7 +3404,7 @@ p {
             @media only screen and (max-width: 62.5em) {
               .product-hero__content__main__secondary__attributes__item {
                 width: 100%;
-                grid-template-columns: min-content;
+                grid-template-columns: 1fr;
                 justify-items: center;
                 justify-content: center;
                 border: 1px solid #e6e6e6;
@@ -3424,18 +3424,13 @@ p {
               font-size: 1.5rem;
               line-height: 2rem;
               font-weight: 700;
-              white-space: wrap; }
+              width: 100%;
+              display: flex;
+              flex-direction: column; }
               .product-hero__content__main__secondary__attributes__item__text .sub-attribute {
                 font-size: 1.1rem;
                 line-height: 1.6rem;
                 font-weight: 500; }
-                .product-hero__content__main__secondary__attributes__item__text .sub-attribute span {
-                  border-radius: 1rem;
-                  letter-spacing: 0.1rem;
-                  padding: 0.2rem 0.8rem;
-                  background-color: #005085;
-                  color: #fff;
-                  font-weight: 700; }
 
 .mobile-info {
   display: none;
@@ -4096,6 +4091,10 @@ p {
         .itinerary-variants__content__itinerary__main__map-area {
           width: 100%;
           height: 50rem;
+          border-radius: 1rem;
+          background-color: rgba(0, 53, 72, 0.5);
+          -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
           position: relative; }
           @media only screen and (max-width: 37.5em) {
             .itinerary-variants__content__itinerary__main__map-area {
@@ -4189,6 +4188,10 @@ p {
     .itinerary-map__content__map-area {
       width: 100%;
       height: 60rem;
+      border-radius: 1rem;
+      background-color: rgba(0, 53, 72, 0.5);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
       position: relative; }
       @media only screen and (max-width: 37.5em) {
         .itinerary-map__content__map-area {
@@ -4333,9 +4336,13 @@ p {
             justify-content: center;
             padding: 1rem;
             gap: 1rem; }
+            @media only screen and (max-width: 50em) {
+              .cruise-itineraries__content__top__nav-area__slider__item__button {
+                flex-direction: column;
+                gap: 0.5rem; } }
             .cruise-itineraries__content__top__nav-area__slider__item__button.vertical {
               flex-direction: column;
-              gap: .5rem; }
+              gap: 0.5rem; }
           .cruise-itineraries__content__top__nav-area__slider__item.swiper-slide-thumb-active button {
             border: 1px solid #003548; }
       .cruise-itineraries__content__top__nav {
@@ -4404,7 +4411,9 @@ p {
         right: 0;
         border-radius: 1rem;
         border: 1px solid #e6e6e6;
-        background-color: #f8f8f8;
+        background-color: rgba(0, 53, 72, 0.5);
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
         width: 80%;
         height: 100%; }
         @media only screen and (max-width: 50em) {
@@ -4979,6 +4988,9 @@ p {
         height: 100%;
         width: 100%;
         box-shadow: 0 0rem 3rem rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 53, 72, 0.5);
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
         cursor: pointer;
         max-height: 100%; }
         .home-hero-regional__content__video-area__video__source {

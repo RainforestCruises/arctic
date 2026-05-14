@@ -4,7 +4,7 @@ wp_enqueue_script('page-product', get_template_directory_uri() . '/js/page-produ
 wp_enqueue_script('page-product-modal-gallery', get_template_directory_uri() . '/js/page-product-modal-gallery.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-dates', get_template_directory_uri() . '/js/page-product-dates.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-cabins', get_template_directory_uri() . '/js/page-product-cabins.js', array('jquery'), false, true);
-wp_enqueue_script('page-itinerary', get_template_directory_uri() . '/js/page-itinerary.js', array('jquery'), false, true);
+wp_enqueue_script('page-interactive-map', get_template_directory_uri() . '/js/page-interactive-map.js', array('jquery'), false, true);
 get_header();
 
 $itinerary = get_post();
@@ -62,30 +62,31 @@ foreach ($itineraryInfoObject->itineraryObjects as $itineraryObject) {
 
 
 wp_localize_script(
-  'page-itinerary',
+  'page-interactive-map',
   'page_vars',
   array(
     'itineraryMapObjects' =>  $itineraryMapObjects,
+    'themeUrl' =>  get_template_directory_uri(),
   )
 );
 
 
 $cabins = []; // all possible cabins across all ships for the itinerary, used for filtering and display in the cabins modal
 if ($ships) {
-    $shipIds = array_map(fn($s) => $s->ID, $ships);
-    $metaQuery = array('relation' => 'OR');
-    foreach ($shipIds as $shipId) {
-        $metaQuery[] = array(
-            'key'     => 'ship',
-            'value'   => $shipId,
-            'compare' => '='
-        );
-    }
-    $cabins = get_posts(array(
-        'post_type'      => 'rfc_cabins',
-        'posts_per_page' => -1,
-        'meta_query'     => array($metaQuery),
-    ));
+  $shipIds = array_map(fn($s) => $s->ID, $ships);
+  $metaQuery = array('relation' => 'OR');
+  foreach ($shipIds as $shipId) {
+    $metaQuery[] = array(
+      'key'     => 'ship',
+      'value'   => $shipId,
+      'compare' => '='
+    );
+  }
+  $cabins = get_posts(array(
+    'post_type'      => 'rfc_cabins',
+    'posts_per_page' => -1,
+    'meta_query'     => array($metaQuery),
+  ));
 }
 
 

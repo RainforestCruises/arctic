@@ -175,11 +175,10 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
                             </svg>
                         </div>
                         <div class="product-hero__content__main__secondary__attributes__item__text">
-                            <div class="sub-attribute">
+                            <span class="sub-attribute">
                                 Length
-                            </div>
-                            <?php echo $itineraryInfoObject->lengthDisplay; ?>
-
+                            </span>
+                            <span><?php echo $itineraryInfoObject->lengthDisplay; ?></span>
                         </div>
                     </div>
 
@@ -192,10 +191,11 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
                             </svg>
                         </div>
                         <div class="product-hero__content__main__secondary__attributes__item__text">
-                            <div class="sub-attribute">
+                            <span class="sub-attribute">
                                 Embark
-                            </div>
-                            <?php echo $itineraryInfoObject->embarkationDisplay; ?>
+                            </span>
+                            <span><?php echo $itineraryInfoObject->embarkationDisplay; ?></span>
+
                         </div>
                     </div>
 
@@ -207,12 +207,12 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
                             </svg>
                         </div>
                         <div class="product-hero__content__main__secondary__attributes__item__text">
-                            <div class="sub-attribute">
+                            <span class="sub-attribute">
                                 Disembark
-                            </div>
-
-                            <?php echo $itineraryInfoObject->disembarkationDisplay; ?>
-
+                            </span>
+                            <span>
+                                <?php echo $itineraryInfoObject->disembarkationDisplay; ?>
+                            </span>
                         </div>
                     </div>
                 </div>

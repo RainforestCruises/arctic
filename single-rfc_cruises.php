@@ -4,7 +4,7 @@ wp_enqueue_script('page-product', get_template_directory_uri() . '/js/page-produ
 wp_enqueue_script('page-product-modal-gallery', get_template_directory_uri() . '/js/page-product-modal-gallery.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-modal-deckplans', get_template_directory_uri() . '/js/page-product-modal-deckplans.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-dates', get_template_directory_uri() . '/js/page-product-dates.js', array('jquery'), false, true);
-wp_enqueue_script('page-product-cruise-itineraries', get_template_directory_uri() . '/js/page-product-cruise-itineraries.js', array('jquery'), false, true);
+wp_enqueue_script('page-interactive-map', get_template_directory_uri() . '/js/page-interactive-map.js', array('jquery'), false, true);
 wp_enqueue_script('page-product-cabins', get_template_directory_uri() . '/js/page-product-cabins.js', array('jquery'), false, true);
 
 get_header();
@@ -86,13 +86,12 @@ $args = array(
   'itineraryInfoObjects' => $itineraryInfoObjects,
 );
 
-
-
 wp_localize_script(
-  'page-product-cruise-itineraries',
+  'page-interactive-map',
   'page_vars',
   array(
     'itineraryMapObjects' =>  $itineraryMapObjects,
+    'themeUrl' =>  get_template_directory_uri(),
   )
 );
 

@@ -26,14 +26,24 @@ jQuery(document).ready(function ($) {
     window.location.hash = id;
   }
 
-  // hero video card
-  let heroVideoCard = document.querySelector(".video-card__video");
-  if (heroVideoCard) {
-    heroVideoCard.addEventListener("mouseover", function (e) {
-      heroVideoCard.play();
-    });
-    heroVideoCard.addEventListener("mouseout", function (e) {
-      heroVideoCard.pause();
+
+    // -------------------------------------------------------
+  // FIX #2: Hero video — defer load until after page renders
+  // In your PHP, use data-src instead of src on the <source> tag
+  // -------------------------------------------------------
+  const heroVideoMain = document.getElementById("hero-video-card");
+  if (heroVideoMain) {
+    // Wait until page has painted, then load + play the video
+    requestAnimationFrame(function () {
+      setTimeout(function () {
+        const source = heroVideoMain.querySelector("source[data-src]");
+        if (source) {
+          source.src = source.getAttribute("data-src");
+          source.removeAttribute("data-src");
+          heroVideoMain.load();
+          heroVideoMain.play();
+        }
+      }, 500); // 500ms after first paint — page feels instant, video loads shortly after
     });
   }
 
@@ -50,17 +60,9 @@ jQuery(document).ready(function ($) {
       videoPlayButton.addEventListener("click", () => {
         videoModal.style.display = "flex";
         body.classList.add("no-scroll");
-
         vimeoPlayer.play();
       });
 
-      if (heroVideoCard) {
-        heroVideoCard.addEventListener("click", () => {
-          videoModal.style.display = "flex";
-          body.classList.add("no-scroll");
-          vimeoPlayer.play();
-        });
-      }
 
       // -- stop playing
       const stopVideoSections = [...document.querySelectorAll(".stop-video")];

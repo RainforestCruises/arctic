@@ -1,21 +1,65 @@
 jQuery(document).ready(function ($) {
-  // Delay Mapbox load by 500ms after page ready, then init everything
+  // -------------------------------------------------------
+  // SLIDERS — init immediately, no Mapbox needed
+  // Only run if the elements exist (handles both page types)
+  // -------------------------------------------------------
+  if (document.getElementById("itineraries-slider-nav")) {
+    const itinerariesSliderNav = new Swiper("#itineraries-slider-nav", {
+      slidesPerView: 3,
+      spaceBetween: 10,
+      watchSlidesProgress: true,
+      slideToClickedSlide: true,
+      breakpoints: {
+        1000: { slidesPerView: 4 },
+      },
+    });
+
+    const itinerariesSlider = new Swiper("#itineraries-slider", {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      navigation: {
+        nextEl: ".itineraries-slider-btn-next",
+        prevEl: ".itineraries-slider-btn-prev",
+      },
+      thumbs: {
+        swiper: itinerariesSliderNav,
+      },
+    });
+
+    itinerariesSlider.on("slideChange", function (swiper) {
+      // map functions called here — safe because by the time
+      // a user slides, 500ms has long passed and map is ready
+      if (typeof createMarkers === "function") {
+        createMarkers(page_vars.itineraryMapObjects[swiper.realIndex]);
+        createLineFeatures(page_vars.itineraryMapObjects[swiper.realIndex]);
+        flyToCenter(page_vars.itineraryMapObjects[swiper.realIndex]);
+      }
+    });
+  }
+
+  // -------------------------------------------------------
+  // MAPBOX — load after 500ms, only if map container exists
+  // -------------------------------------------------------
+  if (!document.getElementById("itinerary-map")) return;
+
   setTimeout(function () {
     const mapboxScript = document.createElement("script");
     mapboxScript.src = page_vars.themeUrl + "/vendor/mapbox/mapbox-gl.js";
     mapboxScript.onload = function () {
-      initMap(); // run map code only after mapbox is loaded
+      initMap();
     };
     document.head.appendChild(mapboxScript);
   }, 500);
+
+  // Declare these outside initMap so slideChange can reach them
+  var createMarkers, createLineFeatures, flyToCenter;
 
   function initMap() {
     const itineraryMapObjects = page_vars.itineraryMapObjects;
     let markersReference = [];
     let sourcesReference = [];
 
-    // Map
-    const initialObject = itineraryMapObjects[0]; // initial object
+    const initialObject = itineraryMapObjects[0];
 
     mapboxgl.accessToken = "pk.eyJ1IjoicmFpbmZvcmVzdGNydWlzZXNybHMiLCJhIjoiY2xiNWh2aXo5MDNiZzN2dW5hNjFpaXM3dCJ9.05yNz0iG1JXFq62DYF7SFA";
     var map = new mapboxgl.Map({
@@ -29,39 +73,22 @@ jQuery(document).ready(function ($) {
     map.addControl(new mapboxgl.NavigationControl());
     map.scrollZoom.disable();
 
-    //Markers
-    createMarkers(initialObject);
-
-    //Lines
-    map.on("load", () => {
-      createLineFeatures(initialObject);
-      flyToCenter(initialObject);
-    });
-
-    //Map Functions
-    function createMarkers(itineraryObject) {
-      markersReference.forEach((item) => {
-        //remove the old ones
-        item.remove();
-      });
-
-      // -- add markers to map
+    // ✅ Define all three functions FIRST
+    createMarkers = function (itineraryObject) {
+      markersReference.forEach((item) => item.remove());
       for (const feature of itineraryObject.featureList) {
         const el = document.createElement("div");
         el.className = "destination-marker";
-
         let description = "";
 
         if (!itineraryObject.hasDifferentPorts && feature.properties.isEmbarkation) {
           description = "Embarkation & Disembarkation";
           el.className = "embarkation-marker";
         }
-
         if (itineraryObject.hasDifferentPorts && feature.properties.isEmbarkation) {
           description = "Embarkation";
           el.className = "embarkation-marker";
         }
-
         if (itineraryObject.hasDifferentPorts && feature.properties.isDisembarkation) {
           description = "Disembarkation";
         }
@@ -69,50 +96,39 @@ jQuery(document).ready(function ($) {
         const marker = new mapboxgl.Marker(el)
           .setLngLat(feature.geometry.coordinates)
           .setPopup(
-            new mapboxgl.Popup({ offset: 25 }) // add popups
-              .setHTML(
-                `<div class="mapboxgl-popup-content__title-area">
-                            <div class="mapboxgl-popup-content__title-area__day-count">${feature.properties.day}</div>
-                            <div class="mapboxgl-popup-content__title-area__title">${feature.properties.title}</div>
-                            <div class="mapboxgl-popup-content__title-area__description">${description}</div>
-                            </div>
-                            <div class="mapboxgl-popup-content__image-area"><img src="${feature.properties.image}"></div>`,
-              ),
+            new mapboxgl.Popup({ offset: 25 }).setHTML(
+              `<div class="mapboxgl-popup-content__title-area">
+                <div class="mapboxgl-popup-content__title-area__day-count">${feature.properties.day}</div>
+                <div class="mapboxgl-popup-content__title-area__title">${feature.properties.title}</div>
+                <div class="mapboxgl-popup-content__title-area__description">${description}</div>
+              </div>
+              <div class="mapboxgl-popup-content__image-area"><img src="${feature.properties.image}"></div>`,
+            ),
           )
           .addTo(map);
 
         markersReference.push(marker);
       }
-    }
+    };
 
-    function createLineFeatures(itineraryObject) {
+    createLineFeatures = function (itineraryObject) {
       sourcesReference.forEach((item) => {
-        //remove the old ones
         map.removeLayer(item);
         map.removeSource(item);
       });
       sourcesReference = [];
 
       if (itineraryObject.geojson == null) return false;
-      const lineFeatures = itineraryObject.geojson.features;
 
-      lineFeatures.forEach((featureItem, index) => {
+      itineraryObject.geojson.features.forEach((featureItem, index) => {
         let resourceId = "route" + index;
         sourcesReference.push(resourceId);
-
-        map.addSource(resourceId, {
-          type: "geojson",
-          data: featureItem,
-        });
-
+        map.addSource(resourceId, { type: "geojson", data: featureItem });
         map.addLayer({
           id: resourceId,
           type: "line",
           source: resourceId,
-          layout: {
-            "line-join": "round",
-            "line-cap": "round",
-          },
+          layout: { "line-join": "round", "line-cap": "round" },
           paint: {
             "line-color": featureItem.properties.stroke,
             "line-width": 4,
@@ -120,37 +136,35 @@ jQuery(document).ready(function ($) {
           },
         });
       });
-    }
+    };
 
-    //Map Functions
-    function flyToCenter(itineraryObject) {
+    flyToCenter = function (itineraryObject) {
       let coordinates = [itineraryObject.startLongitude, itineraryObject.startLatitude];
       let zoom = itineraryObject.startZoom;
 
       if (window.innerWidth < 600) {
-        zoom = zoom - 0.75; // adjust for mobile
+        zoom = zoom - 0.75;
         coordinates = [itineraryObject.startLongitude, +itineraryObject.startLatitude - 1];
       }
 
-      map.flyTo({
-        center: coordinates,
-        zoom: zoom,
-        duration: 1500,
-        essential: true,
-      });
-    }
+      map.flyTo({ center: coordinates, zoom: zoom, duration: 1500, essential: true });
+    };
 
-    // NAVIGATION
+    // ✅ Now safe to call them
+    createMarkers(initialObject);
+
+    map.on("load", () => {
+      createLineFeatures(initialObject);
+      flyToCenter(initialObject);
+    });
+
+    // Variant buttons
     const variantButtons = [...document.querySelectorAll(".itinerary-variants__content__itinerary__nav .variant-button")];
     variantButtons.forEach((button) => {
       button.addEventListener("click", () => {
         const activeIndex = button.getAttribute("data-variant-index");
-        variantButtons.forEach((b) => {
-          b.classList.remove("active");
-        });
-
+        variantButtons.forEach((b) => b.classList.remove("active"));
         button.classList.add("active");
-
         createMarkers(itineraryMapObjects[activeIndex]);
         createLineFeatures(itineraryMapObjects[activeIndex]);
         flyToCenter(itineraryMapObjects[activeIndex]);
@@ -159,15 +173,13 @@ jQuery(document).ready(function ($) {
     });
 
     const dayListItems = [...document.querySelectorAll(".itinerary-variants__content__itinerary__main__days-area .day-list")];
-
     function setActiveDays(activeIndex) {
       dayListItems.forEach((item) => {
         item.classList.remove("active");
-        const dayIndex = item.getAttribute("data-variant-index");
-        if (dayIndex == activeIndex) {
+        if (item.getAttribute("data-variant-index") == activeIndex) {
           item.classList.add("active");
         }
       });
     }
-  }
-});
+  } // end initMap()
+}); // end document.ready

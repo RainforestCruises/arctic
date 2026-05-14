@@ -54,6 +54,7 @@
 
     &__title-area {
       color: $color-white;
+      padding-bottom: 5rem;
 
       @media only screen and (max-width: $bp-medium) {
         text-align: center;
@@ -61,7 +62,6 @@
         flex-direction: column;
         align-items: center;
       }
-      padding-bottom: 5rem;
       &__title {
         font-size: 5rem;
         font-weight: 700;
@@ -90,20 +90,10 @@
     }
 
     &__jumplinks {
-      //   position: relative;
-      //   width: 100%;
-      //   padding-bottom: 3rem;
-      //   padding-top: 4rem;
-      //   display: grid;
-      //   gap: 6rem;
-      //   grid-template-columns: min-content 1fr;
-      //   grid-template-rows: min-content;
-
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       gap: 2rem;
       min-height: 15rem;
-
       @media only screen and (max-width: $bp-medium) {
         grid-template-columns: repeat(3, 1fr);
       }
@@ -114,4 +104,3 @@
   }
 }
 
-// COMPONENTS

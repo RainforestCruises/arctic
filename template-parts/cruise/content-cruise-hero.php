@@ -176,10 +176,11 @@ $itineraryLengthDisplay = formatLengthDisplay($itineraryLengths, true);
                             </svg>
                         </div>
                         <div class="product-hero__content__main__secondary__attributes__item__text">
-                            <div class="sub-attribute">
+                            <span class="sub-attribute">
                                 <?php echo $itineraryCount ?> Itineraries
-                            </div>
-                            <?php echo $itineraryLengthDisplay; ?>
+                            </span>
+                            <span><?php echo $itineraryLengthDisplay; ?></span>
+                            
                         </div>
                     </div>
 
@@ -191,10 +192,11 @@ $itineraryLengthDisplay = formatLengthDisplay($itineraryLengths, true);
                             </svg>
                         </div>
                         <div class="product-hero__content__main__secondary__attributes__item__text">
-                            <div class="sub-attribute">
+                            <span class="sub-attribute">
                                 <?php echo shipSizeDisplay(get_field('vessel_capacity')); ?>
-                            </div>
-                            <?php echo get_field('vessel_capacity') . ' Guests'; ?>
+                            </span>
+                            <span><?php echo get_field('vessel_capacity') . ' Guests'; ?></span>
+                            
                         </div>
                     </div>
 
@@ -206,10 +208,11 @@ $itineraryLengthDisplay = formatLengthDisplay($itineraryLengths, true);
                             </svg>
                         </div>
                         <div class="product-hero__content__main__secondary__attributes__item__text">
-                            <div class="sub-attribute">
+                            <span class="sub-attribute">
                                 Service Level
-                            </div>
-                            <?php echo ($service_level) ? get_the_title($service_level) : "N/A"; ?>
+                            </span>
+                            <span><?php echo ($service_level) ? get_the_title($service_level) : "N/A"; ?></span>
+                            
                         </div>
                     </div>
                 </div>

@@ -22,7 +22,8 @@ if ($show_routes) {
         'page-product-cruise-itineraries',
         'page_vars',
         array(
-            'itineraryMapObjects' =>  $itineraryMapObjects
+            'itineraryMapObjects' =>  $itineraryMapObjects,
+            'themeUrl' =>  get_template_directory_uri(), // ADD THIS
         )
     );
 }
