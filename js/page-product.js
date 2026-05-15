@@ -18,7 +18,6 @@ jQuery(document).ready(function ($) {
 
   const formDepartureDate = document.querySelector(".form-departure-date input:first-child");
 
-
   //hide outline panels on load (mobile) -- on resize fix
 
   if (window.innerWidth < 800) {
@@ -36,7 +35,7 @@ jQuery(document).ready(function ($) {
     item.addEventListener("click", () => {
       inquireModal.style.display = "flex";
       body.classList.add("no-scroll");
-      
+
       activeTabPanel("inquire");
 
       departureSelectionDisplay.style.display = "";
@@ -59,7 +58,7 @@ jQuery(document).ready(function ($) {
       inquireModal.style.display = "flex";
       body.classList.add("no-scroll");
       activeTabPanel("inquire");
-      
+
       var selection = item.getAttribute("itineraryTitle") + " - Departing " + item.getAttribute("departureDate");
 
       departureSelectionDisplay.style.display = "block";
@@ -80,7 +79,7 @@ jQuery(document).ready(function ($) {
       body.classList.add("no-scroll");
       activeTabPanel("inquire");
       hideModalTabButtons("cabins");
-      
+
       var selection = item.getAttribute("cabinTitle");
 
       cabinSelectionDisplay.style.display = "block";
@@ -146,12 +145,14 @@ jQuery(document).ready(function ($) {
   // -- show departures
   // -- hide all modal tab buttons
   const viewAllDates = document.querySelector("#view-all-dates-button");
-  viewAllDates.addEventListener("click", () => {
-    inquireModal.style.display = "flex";
-    body.classList.add("no-scroll");
-    activeTabPanel("dates");
-    hideModalTabButtons();
-  });
+  if (viewAllDates) {
+    viewAllDates.addEventListener("click", () => {
+      inquireModal.style.display = "flex";
+      body.classList.add("no-scroll");
+      activeTabPanel("dates");
+      hideModalTabButtons();
+    });
+  }
 
   // Modal Tabs
   const modalTabButtons = [...document.querySelectorAll(".modal-tab-link")];

@@ -12,6 +12,7 @@ $specialDepartures = $args['specialDepartures'];
 $images = get_field('hero_gallery');
 $desktopImages = array_slice($images, 1); //for gallery desktop slider
 $fly_category = getFlightOption(get_field('fly_category'));
+$isExtension = $args['isExtension'];
 
 $itineraryInfoObject = $args['itineraryInfoObject'];
 
@@ -86,6 +87,12 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
 
 
                 <div class="product-hero__content__main__primary__badge-area">
+
+                    <?php if ($isExtension) : ?>
+                        <span class="product-hero-badge product-hero-badge--fly">
+                            Extension
+                        </span>
+                    <?php endif; ?>
                     <?php foreach ($itineraryInfoObject->uniqueFlyCategoriesArray as $uniqueFlyCategory) :
                         $fly_category = getFlightOption($uniqueFlyCategory);
                         if ($fly_category) :
@@ -117,7 +124,9 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
                 <div class="product-hero__content__main__primary__nav">
                     <a href="#highlights" class="product-hero__content__main__primary__nav__link">Highlights</a>
                     <a href="#itinerary" class="product-hero__content__main__primary__nav__link">Itinerary</a>
-                    <a href="#dates" class="product-hero__content__main__primary__nav__link">Dates</a>
+                    <?php if (!$isExtension) : ?>
+                        <a href="#dates" class="product-hero__content__main__primary__nav__link">Dates</a>
+                    <?php endif; ?>
                     <?php if ($extra_activities) : ?>
                         <a href="#extras" class="product-hero__content__main__primary__nav__link">Extras</a>
                     <?php endif; ?>
@@ -153,14 +162,16 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
                     </div>
 
                     <!-- Inquire CTA Button -->
-                    <div class="product-hero__content__main__secondary__info__cta">
-                        <button class="btn-primary btn-primary--icon generic-inquire-cta">
-                            Inquire
-                            <svg>
-                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>
-                            </svg>
-                        </button>
-                    </div>
+                    <?php if (!$isExtension) : ?>
+                        <div class="product-hero__content__main__secondary__info__cta">
+                            <button class="btn-primary btn-primary--icon generic-inquire-cta">
+                                Inquire
+                                <svg>
+                                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    <?php endif; ?>
 
                 </div>
 
@@ -251,12 +262,14 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
     </div>
 
     <!-- Inquire CTA Button -->
-    <div class="mobile-info__cta">
-        <button class="btn-primary btn-primary--icon generic-inquire-cta">
-            Inquire
-            <svg>
-                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>
-            </svg>
-        </button>
-    </div>
+    <?php if (!$isExtension) : ?>
+        <div class="mobile-info__cta">
+            <button class="btn-primary btn-primary--icon generic-inquire-cta">
+                Inquire
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-send"></use>
+                </svg>
+            </button>
+        </div>
+    <?php endif; ?>
 </div>

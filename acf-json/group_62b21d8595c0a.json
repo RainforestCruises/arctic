@@ -497,25 +497,6 @@
             "ui": 1
         },
         {
-            "key": "field_63990d83f7023",
-            "label": "Embarkation Is Flight",
-            "name": "embarkation_is_flight",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
             "key": "field_631f8c08db3a3",
             "label": "Disembarkation Point",
             "name": "disembarkation_point",
@@ -536,25 +517,6 @@
             "multiple": 0,
             "return_format": "object",
             "ui": 1
-        },
-        {
-            "key": "field_63990dc7f7024",
-            "label": "Disembarkation Is Flight",
-            "name": "disembarkation_is_flight",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
         },
         {
             "key": "field_638e68537a5cb",
@@ -893,25 +855,6 @@
                     "ui": 1
                 },
                 {
-                    "key": "field_690a23f32c9af",
-                    "label": "Embarkation Is Flight",
-                    "name": "embarkation_is_flight",
-                    "type": "true_false",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "",
-                    "default_value": 0,
-                    "ui": 0,
-                    "ui_on_text": "",
-                    "ui_off_text": ""
-                },
-                {
                     "key": "field_690a24302c9b0",
                     "label": "Disembarkation Point",
                     "name": "disembarkation_point",
@@ -932,25 +875,6 @@
                     "multiple": 0,
                     "return_format": "object",
                     "ui": 1
-                },
-                {
-                    "key": "field_690a243c2c9b1",
-                    "label": "Disembarkation Is Flight",
-                    "name": "disembarkation_is_flight",
-                    "type": "true_false",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "",
-                    "default_value": 0,
-                    "ui": 0,
-                    "ui_on_text": "",
-                    "ui_off_text": ""
                 },
                 {
                     "key": "field_690a24812c9b7",
@@ -2213,5 +2137,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1778798714
+    "modified": 1778879425
 }

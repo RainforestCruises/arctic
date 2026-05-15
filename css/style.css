@@ -3643,6 +3643,10 @@ p {
       @media only screen and (max-width: 50em) {
         .product-overview__content__grid {
           grid-template-columns: 100%; } }
+      .product-overview__content__grid.content-extension {
+        grid-template-columns: 100%; }
+        .product-overview__content__grid.content-extension .product-overview__content__grid__secondary {
+          display: none; }
       .product-overview__content__grid__overview {
         padding-top: 3rem;
         padding-right: 4rem;

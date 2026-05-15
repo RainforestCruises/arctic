@@ -1,6 +1,26 @@
 <?php 
 
 
+// Custom Post Type - Extensions
+function create_post_type_rfc_extensions()
+{
+    register_post_type(
+        'rfc_extensions',
+        array(
+            'labels' => array(
+                'name' => __('Extensions'),
+                'singular_name' => __('Extension'),
+            ),
+            'public' => true,
+            'rewrite' => array('slug' => 'extensions'),
+            'supports' => array(
+                'title'
+            )
+        )
+    );
+}
+add_action('init', 'create_post_type_rfc_extensions');
+
 // Custom Post Type - Suppliers
 function create_post_type_rfc_suppliers()
 {

@@ -14,8 +14,8 @@ $optional_activities = array_map(function ($post) {
 
     );
 }, get_field('optional_activities') ?: []);
-
 $extra_activities = array_merge($extra_activities, $optional_activities);
+$isExtension = get_post_type() == 'rfc_extensions';
 
 ?>
 
@@ -36,9 +36,11 @@ $extra_activities = array_merge($extra_activities, $optional_activities);
             <a href="#itinerary" class="nav-secondary__content__links__link">
                 Itinerary
             </a>
-            <a href="#dates" class="nav-secondary__content__links__link">
-                Dates
-            </a>
+            <?php if (!$isExtension) : ?>
+                <a href="#dates" class="nav-secondary__content__links__link">
+                    Dates
+                </a>
+            <?php endif; ?>
             <?php if ($extra_activities) : ?>
                 <a href="#extras" class="nav-secondary__content__links__link">
                     Extras
@@ -46,11 +48,13 @@ $extra_activities = array_merge($extra_activities, $optional_activities);
             <?php endif; ?>
 
         </div>
-        <div class="nav-secondary__content__cta product-template">
-            <button class="nav-secondary__content__cta__button btn-pill btn-pill--inverse generic-inquire-cta">
-                Inquire
-            </button>
-        </div>
+        <?php if (!$isExtension) : ?>
+            <div class="nav-secondary__content__cta product-template">
+                <button class="nav-secondary__content__cta__button btn-pill btn-pill--inverse generic-inquire-cta">
+                    Inquire
+                </button>
+            </div>
+        <?php endif; ?>
     </div>
 
     <!-- mobile content (button) -->
@@ -74,13 +78,15 @@ $extra_activities = array_merge($extra_activities, $optional_activities);
             <li class="nav-secondary__mobile-menu__list__item">
                 <a class="nav-secondary__mobile-menu__list__item__link" href="#itinerary">Itinerary</a>
             </li>
-            <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#dates">Dates
-                    <?php if ($deals) : ?>
-                        <span class="specs-deal" style="margin-left: 2rem;"><?php echo getDealsDisplay($deals); ?></span>
-                    <?php endif; ?>
-                </a>
-            </li>
+            <?php if (!$isExtension) : ?>
+                <li class="nav-secondary__mobile-menu__list__item">
+                    <a class="nav-secondary__mobile-menu__list__item__link" href="#dates">Dates
+                        <?php if ($deals) : ?>
+                            <span class="specs-deal" style="margin-left: 2rem;"><?php echo getDealsDisplay($deals); ?></span>
+                        <?php endif; ?>
+                    </a>
+                </li>
+            <?php endif; ?>
             <?php if ($extra_activities) : ?>
                 <li class="nav-secondary__mobile-menu__list__item">
                     <a class="nav-secondary__mobile-menu__list__item__link" href="#extras">Extras</a>

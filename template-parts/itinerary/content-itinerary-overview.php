@@ -4,6 +4,7 @@ $ships = $args['ships'];
 $initialRegion = $args['initialRegion'];
 $primaryRegion = $args['primaryRegion'];
 $productName = $args['productName'];
+$isExtension = $args['isExtension'];
 
 $overview_content = get_field('overview_content');
 $activities = get_field('activities');
@@ -24,7 +25,7 @@ if ($expand) {
     <div class="product-overview__content">
 
         <!-- Grid  -->
-        <div class="product-overview__content__grid">
+        <div class="product-overview__content__grid <?php echo $isExtension ? 'content-extension' : '' ?>">
 
             <!-- Main Overview (Highlights, Transport, Text) -->
             <div class="product-overview__content__grid__overview">

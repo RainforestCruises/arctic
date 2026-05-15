@@ -157,7 +157,7 @@
         get_template_part('template-parts/nav/secondary/content', 'nav-cruise');
     endif; ?>
 
-    <?php if (get_post_type() == 'rfc_itineraries') :
+    <?php if (get_post_type() == 'rfc_itineraries' || get_post_type() == 'rfc_extensions') :
         get_template_part('template-parts/nav/secondary/content', 'nav-itinerary');
     endif; ?>
 
