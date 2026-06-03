@@ -122,7 +122,7 @@ $email = get_field('email', 'options');
                         $highestPrice = $d['highestPrice'];
                         $variantTitle = $d['variantTitle'];
                         $subtitleDisplay = $d['lengthInNights'] + 1 . ' Days';
-                        if($variantTitle != null){
+                        if ($variantTitle != null) {
                             $subtitleDisplay .= " (" . $variantTitle . ")";
                         }
 
@@ -315,8 +315,9 @@ $email = get_field('email', 'options');
                             $hero_gallery = get_field('images', $cabinId);
                             $image = $hero_gallery[0];
                             $price = $cabin['price'];
-                            $hasDiscount = $cabin['discounted_price'] ? true : false;
                             $discounted_price = $cabin['discounted_price'];
+                            $hasDiscount = $discounted_price > 0 && $discounted_price != $price ? true : false;
+
                             $sold_out = $cabin['sold_out'];
                         ?>
 

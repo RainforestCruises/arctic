@@ -4,7 +4,7 @@ $yearSelections = $args['yearSelections'];
 $ships = $args['ships'];
 $departures = $args['departures'];
 $itineraryInfoObject = $args['itineraryInfoObject'];
-
+console_log($departures);
 ?>
 
 <section class="slider-block narrow" id="dates">

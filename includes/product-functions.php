@@ -12,14 +12,10 @@ function getDepartureListShip($shipPost, $specificRegion = null, $specificItiner
     $departures = [];
     $itineraryPosts = $specificItineraryList ? $specificItineraryList : getShipItineraries($shipPost, $specificRegion); // ship itineraries filtered for region (includes sold out)
     foreach ($itineraryPosts as $itineraryPost) { // so here ideally get the precalculated departures per each itinerary, and then just filter those for the ship
-        //console_log($itineraryPost);
-
         $itineraryDepartures = get_field('precalculated_departures', $itineraryPost)
             ? getPrecalculatedDeparturesByShip($itineraryPost, $shipPost)
             : getDepartureListItinerary($itineraryPost, $shipPost); // perform the calculation if its not there
         $departures = array_merge($departures, $itineraryDepartures); // only available
-
-        //console_log($itineraryDepartures);
     }
 
     usort($departures, function ($a, $b) {
@@ -215,14 +211,15 @@ function getLowestDeparturePrice($departure)
 
     $priceArray = [];
     foreach ($cabin_prices as $c) {
-        if ($c['sold_out'] != true  && $c['price'] != 0) {
-            $hasDiscount = $c['discounted_price'] !== "" && $c['discounted_price'] !== 0 && $c['discounted_price'] !== null;
-            $effectivePrice = $hasDiscount ? $c['discounted_price'] : $c['price'];
-            if ($effectivePrice !== "" && $effectivePrice !== null) {
-                $priceArray[] = (float) $effectivePrice;
-            }
+        if ($c['sold_out'] != true && (float)$c['price'] > 0) {
+            $discounted = (float)$c['discounted_price'];
+            $regular    = (float)$c['price'];
+            $effectivePrice = ($discounted > 0) ? $discounted : $regular;
+            $priceArray[] = $effectivePrice;
         }
     }
+
+
 
     return !empty($priceArray) ? min($priceArray) : 0;
 }
@@ -235,12 +232,11 @@ function getHighestDeparturePrice($departure)
 
     $priceArray = [];
     foreach ($cabin_prices as $c) {
-        if ($c['sold_out'] != true  && $c['price'] != 0) {
-            $hasDiscount = $c['discounted_price'] !== "" && $c['discounted_price'] !== 0 && $c['discounted_price'] !== null;
-            $effectivePrice = $hasDiscount ? $c['discounted_price'] : $c['price'];
-            if ($effectivePrice !== "" && $effectivePrice !== null) {
-                $priceArray[] = (float) $effectivePrice;
-            }
+        if ($c['sold_out'] != true && (float)$c['price'] > 0) {
+            $discounted = (float)$c['discounted_price'];
+            $regular    = (float)$c['price'];
+            $effectivePrice = ($discounted > 0) ? $discounted : $regular;
+            $priceArray[] = $effectivePrice;
         }
     }
 
@@ -261,13 +257,19 @@ function getBestDepartureDiscount($departure)
         $price = (float) $c['price'];
         $discountedPrice = $c['discounted_price'];
 
-        $hasDiscount = $discountedPrice !== "" && $discountedPrice !== null && $discountedPrice !== 0;
-
+        $hasDiscount = (float)$discountedPrice > 0;
         if ($c['sold_out'] != true && $hasDiscount && $price > 0) {
             $difference = $price - (float) $discountedPrice;
             $percentage = ceil(($difference / $price) * 100);
             $percentageArray[] = $percentage;
         }
+    }
+
+    if ($departure['date'] == "2028-01-31") {
+        console_log("test");
+        console_log($percentageArray);
+        $test = !empty($percentageArray) ? max($percentageArray) : 0;
+        console_log($test);
     }
 
     return !empty($percentageArray) ? max($percentageArray) : 0;
