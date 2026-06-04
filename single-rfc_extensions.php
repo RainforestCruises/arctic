@@ -12,16 +12,7 @@ $initialRegion = checkPageRegion();
 $primaryRegion = getPrimaryRegion();
 $productName = get_field('display_name');
 $show_notification = get_field('show_notification');
-$extra_activities = array_map(function ($post) {
-  return array(
-    'image'       => get_field('image', $post->ID),
-    'title'       => get_field('title', $post->ID),
-    'description' => get_field('description', $post->ID),
-    'price'       => get_field('price', $post->ID),
-    'price_range_to'  => get_field('price_range_to', $post->ID),
-
-  );
-}, get_field('optional_activities') ?: []);
+$accommodation = get_field('accommodation')  ?: [];
 
 
 
@@ -47,7 +38,7 @@ wp_localize_script(
 
 
 $args = array(
-  'extra_activities' => $extra_activities,
+  'extra_activities' => $accommodation,
   'productName' => $productName,
   'itineraryInfoObject' => $itineraryInfoObject,
   'footerCtaDivider' => true,
@@ -87,7 +78,7 @@ $args = array(
 
   <!-- Extras -->
   <?php
-  if ($extra_activities) :
+  if ($accommodation) :
     get_template_part('template-parts/itinerary/content', 'itinerary-extras', $args);
   endif; ?>
 

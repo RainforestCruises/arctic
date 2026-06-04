@@ -1,5 +1,6 @@
 <?php
 $extra_activities = $args['extra_activities'];
+$isExtension = $args['isExtension'];
 
 ?>
 
@@ -11,12 +12,18 @@ $extra_activities = $args['extra_activities'];
 
             <!-- Title -->
             <div class="slider-block__content__top__title">
-                <h2 class="title-group__title">
-                    Extra Activities
-                </h2>
-                <div class="title-group__sub">
-                    Explore these <?php echo count($extra_activities) ?> add on activities. Please note activities may not be offered on all departures and are subject to availability, weather, and operational conditions. Our Polar Specialists will be happy to confirm which activities are possible on your selected sailing.
-                </div>
+                <?php if (!$isExtension) : ?>
+                    <h2 class="title-group__title">
+                        Extra Activities
+                    </h2>
+                    <div class="title-group__sub">
+                        Explore these <?php echo count($extra_activities) ?> add on activities. Please note activities may not be offered on all departures and are subject to availability, weather, and operational conditions. Our Polar Specialists will be happy to confirm which activities are possible on your selected sailing.
+                    </div>
+                <?php else : ?>
+                    <h2 class="title-single">
+                        Accommodation
+                    </h2>
+                <?php endif; ?>
             </div>
 
             <!-- Nav Buttons -->
@@ -90,7 +97,8 @@ $extra_activities = $args['extra_activities'];
         <div class="modal__content__top">
             <div class="modal__content__top__nav">
                 <div class="modal__content__top__nav__title">
-                    Extra Activities
+                    
+                    <?php echo $isExtension ? "Accommodations" : "Extra Activities" ?>
                 </div>
             </div>
             <button class="btn-text btn-text--bg close-modal-button ">

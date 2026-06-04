@@ -128,7 +128,7 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
                         <a href="#dates" class="product-hero__content__main__primary__nav__link">Dates</a>
                     <?php endif; ?>
                     <?php if ($extra_activities) : ?>
-                        <a href="#extras" class="product-hero__content__main__primary__nav__link">Extras</a>
+                        <a href="#extras" class="product-hero__content__main__primary__nav__link"><?php echo $isExtension ? "Accommodations" : "Extras" ?></a>
                     <?php endif; ?>
                 </div>
             </div>

@@ -3,6 +3,7 @@ $title = get_field('display_name');
 $itinerary = get_post();
 $departures = getDepartureListItinerary($itinerary);
 $deals = getDealsFromDepartureList($departures);
+$accommodation = get_field('accommodation')  ?: [];
 $extra_activities = get_field('extra_activities') ?: [];
 $optional_activities = array_map(function ($post) {
     return array(
@@ -16,7 +17,9 @@ $optional_activities = array_map(function ($post) {
 }, get_field('optional_activities') ?: []);
 $extra_activities = array_merge($extra_activities, $optional_activities);
 $isExtension = get_post_type() == 'rfc_extensions';
-
+if($isExtension){
+    $extra_activities = $accommodation;
+}
 ?>
 
 <!-- Itinerary Nav -->
@@ -43,7 +46,7 @@ $isExtension = get_post_type() == 'rfc_extensions';
             <?php endif; ?>
             <?php if ($extra_activities) : ?>
                 <a href="#extras" class="nav-secondary__content__links__link">
-                    Extras
+                    <?php echo $isExtension ? "Accommodations" : "Extras" ?>
                 </a>
             <?php endif; ?>
 
@@ -89,7 +92,7 @@ $isExtension = get_post_type() == 'rfc_extensions';
             <?php endif; ?>
             <?php if ($extra_activities) : ?>
                 <li class="nav-secondary__mobile-menu__list__item">
-                    <a class="nav-secondary__mobile-menu__list__item__link" href="#extras">Extras</a>
+                    <a class="nav-secondary__mobile-menu__list__item__link" href="#extras"><?php echo $isExtension ? "Accommodations" : "Extras" ?></a>
                 </li>
             <?php endif; ?>
 
