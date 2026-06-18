@@ -6,7 +6,8 @@ $top_level_guides_page = get_field('top_level_guides_page', 'options');
 $top_level_search_page = get_field('top_level_search_page', 'options');
 $top_level_agents_page = get_field('top_level_agents_page', 'options');
 $top_level_regions_page = get_field('top_level_regions_page', 'options');
-
+$company_slogan_image = get_field('company_slogan_image', 'options');
+$footer_image_url = is_array($company_slogan_image) ? $company_slogan_image['url'] : wp_get_attachment_url($company_slogan_image);
 
 $regionsArgs = array(
     'post_type' => 'rfc_regions',
@@ -49,6 +50,9 @@ $top_level_deals_page = get_field('top_level_deals_page', $initialRegion);
                 <img src="<?php echo $logo['url']; ?>" class="nav-main__content__left__logo-area__logo-main" alt="<?php echo get_bloginfo('name') ?>" />
                 <img src="<?php echo $logoMinimal['url']; ?>" class="nav-main__content__left__logo-area__logo-minimal" alt="<?php echo get_bloginfo('name') ?>" />
             </a>
+            <span class="nav-main__content__left__slogan-area">
+                <img src="<?php echo $footer_image_url; ?>" />
+            </span>
         </div>
 
         <!-- Center -->

@@ -34,7 +34,6 @@ if (is_plugin_active('translatepress-multilingual/index.php') && $show_translate
 $footer_links = get_field('footer_links', 'options');
 $logo_minimal = get_field('logo_minimal', 'options');
 $company_slogan_image = get_field('company_slogan_image', 'options');
-
 $footer_image_url = is_array($company_slogan_image) ? $company_slogan_image['url'] : wp_get_attachment_url($company_slogan_image);
 
 
@@ -125,8 +124,8 @@ $footerClasses = renderFooterClasses();
                 </div>
             </div>
             <div class="footer__content__bottom__slogan">
-            <img src="<?php echo $footer_image_url; ?>"  />
-        </div>
+                <img src="<?php echo $footer_image_url; ?>" />
+            </div>
             <div class="footer__content__bottom__access">
                 <div class="footer__content__bottom__access__localization">
 
