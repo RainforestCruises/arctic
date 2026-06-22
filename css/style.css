@@ -8429,7 +8429,7 @@ p {
     display: grid;
     grid-template-columns: max-content 1fr min-content;
     align-items: center;
-    column-gap: 3rem; }
+    column-gap: 1.5rem; }
     @media only screen and (max-width: 50em) {
       .nav-main__content {
         padding: 0 3rem; } }
@@ -8505,7 +8505,7 @@ p {
             height: 100%;
             align-items: center;
             width: calc(max-content + 1rem);
-            padding: 0 1.5rem;
+            padding: 0 1rem;
             transition: all 0.2s; }
             .nav-main__content__center__nav__list__link a:link, .nav-main__content__center__nav__list__link a:visited {
               color: currentColor;
@@ -8522,7 +8522,7 @@ p {
             width: calc(max-content + 1rem);
             font-size: 1.3rem;
             text-decoration: none;
-            padding: 0 1.5rem;
+            padding: 0 1rem;
             position: relative;
             margin-bottom: 0; }
             .nav-main__content__center__nav__list__item:link, .nav-main__content__center__nav__list__item:visited {
