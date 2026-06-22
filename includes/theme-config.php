@@ -30,8 +30,8 @@ function afloat_images_sizes()
     add_image_size('wide-full', 1920, 720, true);
 
     // 16:9 aspect
-    add_image_size('landscape-full', 1920, 1080, true); 
-    add_image_size('landscape-large', 1280, 720, true); 
+    add_image_size('landscape-full', 1920, 1080, true);
+    add_image_size('landscape-large', 1280, 720, true);
     add_image_size('landscape-medium', 960, 540, true);
     add_image_size('landscape-small', 640, 360, true);
 
@@ -41,9 +41,12 @@ function afloat_images_sizes()
     add_image_size('portrait-small', 440, 330, true);
 
     // 1:1 aspect
-    add_image_size('square-small', 325, 325, true); 
-    add_image_size('square-thumb', 100, 100, true); 
+    add_image_size('square-small', 325, 325, true);
+    add_image_size('square-thumb', 100, 100, true);
 
+    // special
+    add_image_size('special-logo', 175, 45, true);
+    add_image_size('special-slogan', 120, 40, true);
 }
 
 add_filter('image_size_names_choose', 'afloat_images_sizes_add');
@@ -148,28 +151,29 @@ add_action('init', 'wp_dereg_script_comment_reply');
 
 
 // Honeypot
-function forms_custom_honeypot( $honeypot, $fields, $entry, $form_data ) {
+function forms_custom_honeypot($honeypot, $fields, $entry, $form_data)
+{
     $honeypot_class = 'verification-field';
     $honey_field = false;
 
-    foreach( $form_data['fields'] as $form_field ) {
-        if( false !== strpos( $form_field['css'], $honeypot_class ) ) {
-            $honey_field = absint( $form_field['id'] );
+    foreach ($form_data['fields'] as $form_field) {
+        if (false !== strpos($form_field['css'], $honeypot_class)) {
+            $honey_field = absint($form_field['id']);
         }
     }
 
-    if( !empty( $entry['fields'][$honey_field] ) ) {
+    if (!empty($entry['fields'][$honey_field])) {
         $honeypot = 'Custom honeypot';
     }
 
     return $honeypot;
-
 }
-add_filter( 'wpforms_process_honeypot', 'forms_custom_honeypot', 10, 4 );
+add_filter('wpforms_process_honeypot', 'forms_custom_honeypot', 10, 4);
 
 
 // Same Name Spam Check
-function custom_name_validation( $errors, $form_data ) {
+function custom_name_validation($errors, $form_data)
+{
     $fields = $form_data['fields'];
     $is_multipage = false;
 
@@ -237,23 +241,22 @@ function custom_name_validation( $errors, $form_data ) {
 
     return $errors;
 }
-add_filter( 'wpforms_process_initial_errors', 'custom_name_validation', 10, 2 );
+add_filter('wpforms_process_initial_errors', 'custom_name_validation', 10, 2);
 
 /**
  * Modify WPForms Date/Time field date picker to accept a range of dates.
  *
  * @link https://wpforms.com/developers/allow-date-range-or-multiple-dates-in-date-picker/
  */
- 
-function wpf_dev_date_picker_range() {
+
+function wpf_dev_date_picker_range()
+{
 ?>
     <script type="text/javascript">
- 
         window.wpforms_datepicker = {
             mode: "range"
         }
- 
     </script>
 <?php
 }
-add_action( 'wpforms_wp_footer_end', 'wpf_dev_date_picker_range', 10 );
+add_action('wpforms_wp_footer_end', 'wpf_dev_date_picker_range', 10);

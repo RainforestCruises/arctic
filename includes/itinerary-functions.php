@@ -64,7 +64,7 @@ function createItineraryInfoObject($itinerary)
             $variant_embarkation_point = $variant['embarkation_point'] ?? $embarkation_point;
             $variant_disembarkation_point = $variant['disembarkation_point'] ?? $disembarkation_point;
             $variant_fly_category = $variant['fly_category'] ?? $fly_category;
-            $variant_geojson = $variant['geojson'] ?? $geojson;
+            $variant_geojson = !empty($variant['geojson']) ? $variant['geojson'] : $geojson;
             $variant_show_itinerary_note = $variant['show_itinerary_note'] ?? false;
             $variant_itinerary_note = $variant['itinerary_note'] ?? null;
             $variant_departure_display = $variant['variant_title'] ?: null;

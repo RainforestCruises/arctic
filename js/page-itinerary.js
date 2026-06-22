@@ -8,14 +8,20 @@ jQuery(document).ready(function ($) {
     };
     document.head.appendChild(mapboxScript);
   }, 500);
+  console.log(window.location.search);
 
   function initMap() {
     const itineraryMapObjects = page_vars.itineraryMapObjects;
     let markersReference = [];
     let sourcesReference = [];
 
+    // Determine starting variant from URL (?variant=2), defaulting to 0
+    const urlParams = new URLSearchParams(window.location.search);
+    const variantParam = urlParams.get("variant");
+    const startIndex = variantParam !== null && itineraryMapObjects[variantParam] !== undefined ? variantParam : 0;
+
     // Map
-    const initialObject = itineraryMapObjects[0]; // initial object
+    const initialObject = itineraryMapObjects[startIndex]; // initial object
 
     mapboxgl.accessToken = "pk.eyJ1IjoicmFpbmZvcmVzdGNydWlzZXNybHMiLCJhIjoiY2xiNWh2aXo5MDNiZzN2dW5hNjFpaXM3dCJ9.05yNz0iG1JXFq62DYF7SFA";
     var map = new mapboxgl.Map({
@@ -142,19 +148,31 @@ jQuery(document).ready(function ($) {
 
     // NAVIGATION
     const variantButtons = [...document.querySelectorAll(".itinerary-variants__content__itinerary__nav .variant-button")];
+    function selectVariant(activeIndex) {
+      variantButtons.forEach((b) => {
+        b.classList.remove("active");
+      });
+
+      const targetButton = variantButtons.find((b) => b.getAttribute("data-variant-index") === String(activeIndex));
+      if (targetButton) {
+        targetButton.classList.add("active");
+      }
+
+      createMarkers(itineraryMapObjects[activeIndex]);
+      createLineFeatures(itineraryMapObjects[activeIndex]);
+      flyToCenter(itineraryMapObjects[activeIndex]);
+      setActiveDays(activeIndex);
+    }
+
     variantButtons.forEach((button) => {
       button.addEventListener("click", () => {
         const activeIndex = button.getAttribute("data-variant-index");
-        variantButtons.forEach((b) => {
-          b.classList.remove("active");
-        });
+        selectVariant(activeIndex);
 
-        button.classList.add("active");
-
-        createMarkers(itineraryMapObjects[activeIndex]);
-        createLineFeatures(itineraryMapObjects[activeIndex]);
-        flyToCenter(itineraryMapObjects[activeIndex]);
-        setActiveDays(activeIndex);
+        // keep the URL in sync so the link stays shareable
+        const url = new URL(window.location.href);
+        url.searchParams.set("variant", activeIndex);
+        window.history.replaceState({}, "", url);
       });
     });
 
@@ -169,5 +187,14 @@ jQuery(document).ready(function ($) {
         }
       });
     }
+
+    // Reflect the starting variant in the UI (buttons + day list), no map re-render needed —
+    // createMarkers/createLineFeatures/flyToCenter already ran above using initialObject.
+    const startButton = variantButtons.find((b) => b.getAttribute("data-variant-index") === String(startIndex));
+    if (startButton) {
+      variantButtons.forEach((b) => b.classList.remove("active"));
+      startButton.classList.add("active");
+    }
+    setActiveDays(startIndex);
   }
 });

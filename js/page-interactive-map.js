@@ -1,4 +1,8 @@
 jQuery(document).ready(function ($) {
+  // Capture this immediately, before any delay or redirect-cleanup script can touch the URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const variantParamFromUrl = urlParams.get("variant");
+
   // -------------------------------------------------------
   // SLIDERS — init immediately, no Mapbox needed
   // Only run if the elements exist (handles both page types)
@@ -24,6 +28,8 @@ jQuery(document).ready(function ($) {
       thumbs: {
         swiper: itinerariesSliderNav,
       },
+      // jump straight to the variant slide on load, if one was requested
+      initialSlide: variantParamFromUrl !== null && page_vars.itineraryMapObjects[variantParamFromUrl] !== undefined ? Number(variantParamFromUrl) : 0,
     });
 
     itinerariesSlider.on("slideChange", function (swiper) {
@@ -34,6 +40,11 @@ jQuery(document).ready(function ($) {
         createLineFeatures(page_vars.itineraryMapObjects[swiper.realIndex]);
         flyToCenter(page_vars.itineraryMapObjects[swiper.realIndex]);
       }
+
+      // keep URL in sync when sliding too
+      const url = new URL(window.location.href);
+      url.searchParams.set("variant", swiper.realIndex);
+      window.history.replaceState({}, "", url);
     });
   }
 
@@ -59,7 +70,10 @@ jQuery(document).ready(function ($) {
     let markersReference = [];
     let sourcesReference = [];
 
-    const initialObject = itineraryMapObjects[0];
+    // Determine starting variant from URL (?variant=2), defaulting to 0
+    const startIndex = variantParamFromUrl !== null && itineraryMapObjects[variantParamFromUrl] !== undefined ? variantParamFromUrl : 0;
+
+    const initialObject = itineraryMapObjects[startIndex];
 
     mapboxgl.accessToken = "pk.eyJ1IjoicmFpbmZvcmVzdGNydWlzZXNybHMiLCJhIjoiY2xiNWh2aXo5MDNiZzN2dW5hNjFpaXM3dCJ9.05yNz0iG1JXFq62DYF7SFA";
     var map = new mapboxgl.Map({
@@ -169,6 +183,11 @@ jQuery(document).ready(function ($) {
         createLineFeatures(itineraryMapObjects[activeIndex]);
         flyToCenter(itineraryMapObjects[activeIndex]);
         setActiveDays(activeIndex);
+
+        // keep the URL in sync so the link stays shareable
+        const url = new URL(window.location.href);
+        url.searchParams.set("variant", activeIndex);
+        window.history.replaceState({}, "", url);
       });
     });
 
@@ -181,5 +200,13 @@ jQuery(document).ready(function ($) {
         }
       });
     }
+
+    // Reflect the starting variant in the button/day-list UI
+    const startButton = variantButtons.find((b) => b.getAttribute("data-variant-index") === String(startIndex));
+    if (startButton) {
+      variantButtons.forEach((b) => b.classList.remove("active"));
+      startButton.classList.add("active");
+    }
+    setActiveDays(startIndex);
   } // end initMap()
 }); // end document.ready
