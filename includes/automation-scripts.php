@@ -103,7 +103,7 @@ function refresh_itinerary_info($itineraryId, $post_id)
     // $request = wp_remote_get($url, array('sslverify' => FALSE));
 
     // API
-    $url = 'https://tourtrack.azurewebsites.net/api/wpitineraries/';
+    $url = 'https://antcrawler.azurewebsites.net/api/wpitineraries/';
     $url .= $itineraryId;
     $request = wp_remote_get($url, array('timeout' => 10));
 
