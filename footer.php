@@ -76,6 +76,7 @@ $footerClasses = renderFooterClasses();
                 <div class="footer__content__main__newsletter__cta">
                     <button class="btn-primary newsletter-subscribe-button">Join Our Newsletter</button>
                 </div>
+
             </div>
 
             <div class="footer__content__main__contact">
@@ -108,6 +109,9 @@ $footerClasses = renderFooterClasses();
                         <a href="<?php echo $footer_link['item'] ?>"> <?php echo $footer_link['display'] ?></a>
                     </li>
                 <?php endforeach; ?>
+                <li>
+                    <a href="https://www.rainforestcruises.com/" target="_blank">Rainforest Cruises</a>
+                </li>
             </ul>
 
         </div>
