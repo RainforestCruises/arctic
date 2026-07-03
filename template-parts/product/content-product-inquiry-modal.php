@@ -11,6 +11,10 @@ $phone_number = get_field('phone_number', 'options');
 $phone_number_numeric = get_field('phone_number_numeric', 'options');
 $email = get_field('email', 'options');
 
+$supplier = get_field('supplier');
+$isFromPrice = get_field('is_from_price', $supplier);
+
+
 ?>
 
 <div class="modal" id="inquireModal">
@@ -355,6 +359,7 @@ $email = get_field('email', 'options');
                                     <div class="price-display-group">
                                         <div class="price-display-group__text">
                                             <?php echo !$is_single ? 'Full Occupancy Price' : 'Single Price'; ?>
+                                            <?php echo $isFromPrice ? ' From' : ''; ?>
                                         </div>
                                         <div class="price-display-group__amount">
                                             <div class="price-display-group__amount__main <?php echo (($hasDiscount || $sold_out) ? 'discounted' : '') ?>">
