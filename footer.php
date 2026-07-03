@@ -110,7 +110,8 @@ $footerClasses = renderFooterClasses();
                     </li>
                 <?php endforeach; ?>
                 <li>
-                    <a href="https://www.rainforestcruises.com/" target="_blank">Rainforest Cruises</a>
+                    <a href="https://www.rainforestcruises.com/?utm_source=antarctica&utm_medium=footer&utm_campaign=cross_brand_launch" target="_blank">Rainforest Cruises</a>
+                    
                 </li>
             </ul>
 
