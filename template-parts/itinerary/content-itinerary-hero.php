@@ -16,6 +16,10 @@ $isExtension = $args['isExtension'];
 
 $itineraryInfoObject = $args['itineraryInfoObject'];
 
+$precalculated_lengths = get_field('precalculated_lengths');
+$itineraryLengths = $precalculated_lengths ? $precalculated_lengths : getItineraryLengths(get_post());
+$lengthDisplay = formatLengthDisplay($itineraryLengths, true);
+
 ?>
 
 <!-- Itinerary Hero -->
@@ -189,7 +193,7 @@ $itineraryInfoObject = $args['itineraryInfoObject'];
                             <span class="sub-attribute">
                                 Length
                             </span>
-                            <span><?php echo $itineraryInfoObject->lengthDisplay; ?></span>
+                            <span><?php echo $lengthDisplay; ?></span>
                         </div>
                     </div>
 
