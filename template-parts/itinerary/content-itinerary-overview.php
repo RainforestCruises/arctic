@@ -6,8 +6,8 @@ $primaryRegion = $args['primaryRegion'];
 $productName = $args['productName'];
 $isExtension = $args['isExtension'];
 
-$overview_content = get_field('overview_content');
-$activities = get_field('activities');
+$overview_content = get_field('overview_content') ?: '';
+$activities = get_field('activities') ?: [];
 $max_items = 6;
 $firstActivities = array_slice($activities, 0, $max_items);
 $expandItems = count($activities) > $max_items ? true : false;
