@@ -1,10 +1,9 @@
 <?php
 $currentYear = date('Y');
 $yearSelections = $args['yearSelections'];
-$ships = $args['ships'];
-$departures = $args['departures'];
+$ships = $args['ships'] ?? [];
+$departures = $args['departures'] ?? [];
 $itineraryInfoObject = $args['itineraryInfoObject'];
-console_log($departures);
 ?>
 
 <section class="slider-block narrow" id="dates">

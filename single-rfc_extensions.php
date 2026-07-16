@@ -38,6 +38,14 @@ wp_localize_script(
 
 
 $args = array(
+  'ships' => [],
+  'cabins' => [],
+  'departures' => [],
+  'deals' => [],
+  'specialDepartures' => [],
+  'curentYear' => date('Y'),
+  'yearSelections' => [],
+  'shipSizeRange' => null,
   'extra_activities' => $accommodation,
   'productName' => $productName,
   'itineraryInfoObject' => $itineraryInfoObject,
@@ -46,7 +54,6 @@ $args = array(
   'primaryRegion' => $primaryRegion,
   'isExtension' => $isExtension,
   'lowestOverallPrice' => get_field('price'),
-
 );
 
 ?>

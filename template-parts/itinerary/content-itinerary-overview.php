@@ -1,6 +1,6 @@
 <?php
 
-$ships = $args['ships'];
+$ships = $args['ships'] ?? [];
 $initialRegion = $args['initialRegion'];
 $primaryRegion = $args['primaryRegion'];
 $productName = $args['productName'];

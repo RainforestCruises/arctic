@@ -259,26 +259,25 @@ function structuredData($templateType)
 
         $breadcrumbDestinationPage  = get_field('breadcrumb_destination_page');
 
-        $itemTitle = '';
-        $itemLink = '';
+        $itemTitle2 = '';
+        $itemLink2 = '';
         if ($breadcrumbDestinationPage) {
-            $itemLink = get_permalink($breadcrumbDestinationPage);
+            $itemLink2 = get_permalink($breadcrumbDestinationPage);
             $templateType = get_page_template_slug($breadcrumbDestinationPage->ID);
 
             //get the name (itemTitle) based on page template selection
             if ($templateType == 'template-destinations-destination.php' || $templateType == 'template-destinations-cruise.php') {
                 $destinationPost = get_field('destination_post', $breadcrumbDestinationPage);
-                $itemTitle  = get_field('navigation_title', $destinationPost);
+                $itemTitle2  = get_field('navigation_title', $destinationPost);
             }
             if ($templateType == 'template-destinations-region.php') {
                 $regionPost = get_field('region_post', $breadcrumbDestinationPage);
-                $itemTitle  = get_field('navigation_title', $regionPost);
+                $itemTitle2  = get_field('navigation_title', $regionPost);
             }
 
 
             //destination/region
-            $itemString = '{"@type": "ListItem", "position": 2, "name": "' . $itemTitle . '", "item": "' . $itemLink . '" },'; //parent breadcrumb
-            $returnString .= $itemString;
+            $returnString .= '{"@type": "ListItem", "position": 2, "name": "' . $itemTitle2 . '", "item": "' . $itemLink2 . '" },'; //parent breadcrumb
 
 
 
@@ -286,38 +285,36 @@ function structuredData($templateType)
 
             //landing page
             $breadcrumbTravelGuidePage  = get_field('breadcrumb_travel_guide_page');
-            $itemTitle2  = "";
-            $itemLink2  = "";
+            $itemTitle3  = "";
+            $itemLink3  = "";
             if ($breadcrumbTravelGuidePage) {
-                $itemLink2 = get_permalink($breadcrumbTravelGuidePage);
+                $itemLink3 = get_permalink($breadcrumbTravelGuidePage);
 
                 $guideType = get_field('destination_type', $breadcrumbTravelGuidePage);
 
-                $itemTitle2  = "";
+                $itemTitle3  = "";
 
                 if ($guideType == 'rfc_destinations') {
                     $destinationPost = get_field('destination', $breadcrumbTravelGuidePage);
-                    $itemTitle2  = get_field('navigation_title', $destinationPost);
+                    $itemTitle3  = get_field('navigation_title', $destinationPost);
                 }
                 if ($guideType == 'rfc_regions') {
                     $regionPost = get_field('region', $breadcrumbTravelGuidePage);
-                    $itemTitle2  = get_field('navigation_title', $regionPost);
+                    $itemTitle3  = get_field('navigation_title', $regionPost);
                 }
                 if ($guideType == 'rfc_locations') {
                     $locationPost = get_field('location', $breadcrumbTravelGuidePage);
-                    $itemTitle2  = get_field('navigation_title', $locationPost);
+                    $itemTitle3  = get_field('navigation_title', $locationPost);
                 }
-                $itemTitle2 .= ' Travel Guide';
+                $itemTitle3 .= ' Travel Guide';
             }
 
 
             //landing page
-            $itemString2 = '{"@type": "ListItem", "position": 2, "name": "' . $itemTitle2 . '", "item": "' . $itemLink2 . '" },'; //parent breadcrumb
-            $returnString .= $itemString2;
+            $returnString .= '{"@type": "ListItem", "position": 3, "name": "' . $itemTitle3 . '", "item": "' . $itemLink3 . '" },'; //parent breadcrumb
 
 
-            $itemString3 = '{"@type": "ListItem", "position": 4, "name": "' . get_the_title() . '" }'; //the current page
-            $returnString .= $itemString3;
+            $returnString .= '{"@type": "ListItem", "position": 4, "name": "' . get_the_title() . '" }'; //the current page
         }
 
         return $returnString .= $breadcrumbEnd;

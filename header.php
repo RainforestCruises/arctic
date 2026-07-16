@@ -44,7 +44,13 @@
         <meta name="twitter:image" content="<?php echo $og_featured_image['url']; ?>" />
     <?php endif; ?>
 
-    <!-- Structured Data / Rich Snippets -->
+    <!-- CUSTOM Structured Data / Rich Snippets -->
+     <?php 
+     //echo structuredData(get_page_template_slug()); 
+     //echo "weee";
+     ?>
+    
+
     <!-- Load Head / Style Sheets -->
 
     <!-- Mapbox elements -->
