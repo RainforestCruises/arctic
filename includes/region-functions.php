@@ -103,3 +103,26 @@ function getBadgeClass($region)
     $badgeClass = 'badge--' . strtolower(get_the_title($region));
     return $badgeClass;
 }
+
+
+// get a list of extensions  per  region
+function getExtensionsInRegion($region)
+{
+    $queryArgs = array(
+        'post_type'      => 'rfc_extensions',
+        'posts_per_page' => -1,
+        'meta_query'     => array(
+            array(
+                'key'     => 'region',
+                'value'   => '"' . $region->ID . '"',
+                'compare' => 'LIKE',
+            ),
+        ),
+    );
+
+    $extensions = get_posts($queryArgs);
+
+    //usort($extensions, "sortDealRank"); // sort by search rank score
+
+    return $extensions;
+}

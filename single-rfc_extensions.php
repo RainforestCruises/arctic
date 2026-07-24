@@ -1,6 +1,8 @@
 <?php
 wp_enqueue_script('page-nav', get_template_directory_uri() . '/js/page-nav.js', array('jquery'), false, true);
 wp_enqueue_script('page-product', get_template_directory_uri() . '/js/page-product.js', array('jquery'), false, true);
+wp_enqueue_script('page-product-cabins', get_template_directory_uri() . '/js/page-product-cabins.js', array('jquery'), false, true);
+
 wp_enqueue_script('page-product-modal-gallery', get_template_directory_uri() . '/js/page-product-modal-gallery.js', array('jquery'), false, true);
 wp_enqueue_script('page-interactive-map', get_template_directory_uri() . '/js/page-interactive-map.js', array('jquery'), false, true);
 get_header();
@@ -86,7 +88,7 @@ $args = array(
   <!-- Extras -->
   <?php
   if ($accommodation) :
-    get_template_part('template-parts/itinerary/content', 'itinerary-extras', $args);
+    get_template_part('template-parts/itinerary/content', 'extension-accommodation', $args);
   endif; ?>
 
   <!-- Inclusions / Exclusions -->

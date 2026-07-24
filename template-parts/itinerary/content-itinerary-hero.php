@@ -88,10 +88,8 @@ $lengthDisplay = formatLengthDisplay($itineraryLengths, true);
             <!-- Primary (Title + Description) -->
             <div class="product-hero__content__main__primary">
 
-
-
+                <!-- Badges -->
                 <div class="product-hero__content__main__primary__badge-area">
-
                     <?php if ($isExtension) : ?>
                         <span class="product-hero-badge product-hero-badge--fly">
                             Extension
@@ -130,9 +128,11 @@ $lengthDisplay = formatLengthDisplay($itineraryLengths, true);
                     <a href="#itinerary" class="product-hero__content__main__primary__nav__link">Itinerary</a>
                     <?php if (!$isExtension) : ?>
                         <a href="#dates" class="product-hero__content__main__primary__nav__link">Dates</a>
-                    <?php endif; ?>
-                    <?php if ($extra_activities) : ?>
-                        <a href="#extras" class="product-hero__content__main__primary__nav__link"><?php echo $isExtension ? "Accommodations" : "Extras" ?></a>
+                        <?php if ($extra_activities) : ?>
+                            <a href="#extras" class="product-hero__content__main__primary__nav__link">Extras</a>
+                        <?php endif; ?>
+                    <?php else : ?>
+                        <a href="#accommodations" class="product-hero__content__main__primary__nav__link">Accommodations</a>
                     <?php endif; ?>
                 </div>
             </div>
@@ -153,16 +153,38 @@ $lengthDisplay = formatLengthDisplay($itineraryLengths, true);
                                 Per Person
                             </div>
                         </div>
-                        <div class="product-hero__content__main__secondary__info__starting-price__amount">
-                            <div class="product-hero__content__main__secondary__info__starting-price__amount__text">
-                                <?php priceFormat($lowestOverallPrice); ?>
-                            </div>
-                            <?php if ($bestOverallDiscount) : ?>
-                                <div class="product-hero__content__main__secondary__info__starting-price__amount__discount">
-                                    Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
+                        <?php if (!$isExtension) : ?>
+                            <div class="product-hero__content__main__secondary__info__starting-price__amount">
+                                <div class="product-hero__content__main__secondary__info__starting-price__amount__text">
+                                    <?php priceFormat($lowestOverallPrice); ?>
                                 </div>
-                            <?php endif; ?>
-                        </div>
+                                <?php if ($bestOverallDiscount) : ?>
+                                    <div class="product-hero__content__main__secondary__info__starting-price__amount__discount">
+                                        Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        <?php else :
+                            $standardPrice = get_field('price');
+                            $superiorPrice = get_field('price_superior');
+                        ?>
+                            <div class="product-hero__content__main__secondary__info__starting-price__amount">
+                                <div class="product-hero__content__main__secondary__info__starting-price__amount__text">
+                                    <?php priceFormat($standardPrice); ?>
+                                </div>
+                                <div class="product-hero__content__main__secondary__info__starting-price__amount__discount">
+                                    Standard
+                                </div>
+                            </div>
+                            <div class="product-hero__content__main__secondary__info__starting-price__amount superior-price">
+                                <div class="product-hero__content__main__secondary__info__starting-price__amount__text">
+                                    <?php priceFormat($superiorPrice); ?>
+                                </div>
+                                <div class="product-hero__content__main__secondary__info__starting-price__amount__discount">
+                                    Superior
+                                </div>
+                            </div>
+                        <?php endif; ?>
                     </div>
 
                     <!-- Inquire CTA Button -->
@@ -251,17 +273,46 @@ $lengthDisplay = formatLengthDisplay($itineraryLengths, true);
                 Per Person
             </div>
         </div>
-        <div class="mobile-info__starting-price__amount">
-            <div class="mobile-info__starting-price__amount__text">
-                <?php priceFormat($lowestOverallPrice); ?>
+
+
+
+
+        <?php if (!$isExtension) : ?>
+            <div class="mobile-info__starting-price__amount">
+                <div class="mobile-info__starting-price__amount__text">
+                    <?php priceFormat($lowestOverallPrice); ?>
+                </div>
+                <?php if ($bestOverallDiscount) : ?>
+                    <div class="mobile-info__starting-price__amount__discount">
+                        Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
+                    </div>
+                <?php endif; ?>
             </div>
 
-            <?php if ($bestOverallDiscount) : ?>
-                <div class="mobile-info__starting-price__amount__discount">
-                    Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
+        <?php else :
+            $standardPrice = get_field('price');
+            $superiorPrice = get_field('price_superior');
+        ?>
+            <div class="mobile-info__starting-price__amount">
+                <div class="mobile-info__starting-price__amount__text">
+                    <?php priceFormat($standardPrice); ?>
                 </div>
-            <?php endif; ?>
-        </div>
+                <div class="mobile-info__starting-price__amount__discount">
+                    Standard
+                </div>
+            </div>
+            <div class="mobile-info__starting-price__amount superior-price">
+                <div class="mobile-info__starting-price__amount__text">
+                    <?php priceFormat($superiorPrice); ?>
+                </div>
+                <div class="mobile-info__starting-price__amount__discount">
+                    Superior
+                </div>
+            </div>
+        <?php endif; ?>
+
+
+
 
     </div>
 

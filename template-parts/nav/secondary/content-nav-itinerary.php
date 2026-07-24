@@ -17,7 +17,7 @@ $optional_activities = array_map(function ($post) {
 }, get_field('optional_activities') ?: []);
 $extra_activities = array_merge($extra_activities, $optional_activities);
 $isExtension = get_post_type() == 'rfc_extensions';
-if($isExtension){
+if ($isExtension) {
     $extra_activities = $accommodation;
 }
 ?>
@@ -43,10 +43,14 @@ if($isExtension){
                 <a href="#dates" class="nav-secondary__content__links__link">
                     Dates
                 </a>
-            <?php endif; ?>
-            <?php if ($extra_activities) : ?>
-                <a href="#extras" class="nav-secondary__content__links__link">
-                    <?php echo $isExtension ? "Accommodations" : "Extras" ?>
+                <?php if ($extra_activities) : ?>
+                    <a href="#extras" class="nav-secondary__content__links__link">
+                        Extras
+                    </a>
+                <?php endif; ?>
+            <?php else : ?>
+                <a href="#accommodations" class="nav-secondary__content__links__link">
+                    Accommodations
                 </a>
             <?php endif; ?>
 
@@ -89,10 +93,14 @@ if($isExtension){
                         <?php endif; ?>
                     </a>
                 </li>
-            <?php endif; ?>
-            <?php if ($extra_activities) : ?>
+                <?php if ($extra_activities) : ?>
+                    <li class="nav-secondary__mobile-menu__list__item">
+                        <a class="nav-secondary__mobile-menu__list__item__link" href="#extras">Extras</a>
+                    </li>
+                <?php endif; ?>
+            <?php else : ?>
                 <li class="nav-secondary__mobile-menu__list__item">
-                    <a class="nav-secondary__mobile-menu__list__item__link" href="#extras"><?php echo $isExtension ? "Accommodations" : "Extras" ?></a>
+                    <a class="nav-secondary__mobile-menu__list__item__link" href="#accommodations">Accommodations</a>
                 </li>
             <?php endif; ?>
 

@@ -159,7 +159,7 @@ p {
   color: $color-supporting;
   font-weight: 700;
   border: 1px solid currentColor;
-
+  text-transform: capitalize;
 
   &--antarctica {
     color: $color-supporting-light-3;

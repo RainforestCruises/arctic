@@ -2,9 +2,11 @@
 $landing_pages = get_field('landing_pages', 'options');
 $ships = get_field('ships', 'options'); // create new array with ships split for each region
 $guides = get_field('guides', 'options');
+$extensions = get_field('extensions', 'options');
+
 $top_level_guides_page = get_field('top_level_guides_page', 'options');
 $top_level_search_page = get_field('top_level_search_page', 'options');
-$top_level_agents_page = get_field('top_level_agents_page', 'options');
+$top_level_extensions_page = get_field('top_level_extensions_page', 'options');
 $top_level_regions_page = get_field('top_level_regions_page', 'options');
 $company_slogan_image = get_field('company_slogan_image', 'options');
 //$footer_image_url = is_array($company_slogan_image) ? $company_slogan_image['url'] : wp_get_attachment_url($company_slogan_image);
@@ -82,12 +84,13 @@ $top_level_deals_page = get_field('top_level_deals_page', $initialRegion);
                     <li class="nav-main__content__center__nav__list__item" navelement="guides">
                         Guide
                     </li>
+                    <li class="nav-main__content__center__nav__list__item" navelement="extensions">
+                        Extensions
+                    </li>
                     <li class="nav-main__content__center__nav__list__link" navelement="deals">
                         <a href="<?php echo get_permalink($top_level_deals_page); ?>">Deals</a>
                     </li>
-                    <li class="nav-main__content__center__nav__list__link" navelement="agents">
-                        <a href="<?php echo $top_level_agents_page; ?>">Agents</a>
-                    </li>
+
                 </ul>
 
             </nav>
@@ -400,6 +403,79 @@ $top_level_deals_page = get_field('top_level_deals_page', $initialRegion);
 
 
 
+                    </div>
+                </div>
+
+
+                <!-- Extensions Panel -->
+                <div class="nav-mega__panel" panel="extensions">
+                    <div class="nav-mega__panel__regions" style="display: <?php echo $hideSecondaryRegions ? 'none' : '' ?>">
+                        <?php foreach ($regions as $region) : ?>
+                            <button class="btn-region <?php echo ($region == $initialRegion) ? 'active' : '' ?> nav-region-select" region="<?php echo $region->ID; ?>">
+                                <?php echo get_the_title($region) ?>
+                            </button>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="mega-panel-guides">
+
+                        <!-- Group -->
+                        <div class="mega-slider mega-slider--guides">
+                            <div class="mega-slider__top title-divider">
+                                <!-- Title -->
+                                <div class="mega-slider__top__title">
+                                    Extensions
+                                </div>
+                                <!-- Nav Buttons -->
+                                <div class="mega-slider__top__nav">
+
+                                </div>
+                            </div>
+                            <div class="mega-slider__slider">
+                                <?php foreach ($extensions as $extension) :
+                   
+
+
+                                    $extensionRegions = get_field('region', $extension);
+                                    if (!$extensionRegions) continue; // skip if no regions
+                                    $title = get_the_title($extension);
+                                    $hero_gallery = get_field('hero_gallery', $extension);
+
+                                    foreach ($extensionRegions as $extensionRegion) :
+                                        $url = get_permalink($extension);
+                                        if ($primaryRegion != $extensionRegion) {
+                                            $url .= "?region=" . $extensionRegion->ID;
+                                        }
+                                        $extensionRegionId = $extensionRegion->ID;
+                                        $showInitial = $initialRegion->ID == $extensionRegionId || $extensionRegionId == "all";
+                                ?>
+
+
+
+                                        <a class="btn-avatar-info no-border nav-mega-item" href="<?php echo get_permalink($extension); ?>" region="<?php echo $extensionRegionId; ?>" style="display: <?php echo $showInitial ? '' : 'none' ?>">
+                                            <div class="btn-avatar-info__image-area">
+                                                <img <?php afloat_image_markup($hero_gallery[0]['id'], 'square-small'); ?>>
+                                            </div>
+                                            <div class="btn-avatar-info__title-group">
+                                                <div class="btn-avatar-info__title-group__title">
+                                                    <?php echo $title ?>
+                                                </div>
+
+                                            </div>
+                                        </a>
+                                <?php endforeach;
+                                endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- View All CTA -->
+                    <div class="nav-mega__panel__cta">
+
+                        <a class="btn-pill btn-pill--icon" href="<?php echo $top_level_extensions_page; ?>">
+                            View All Extensions
+                            <svg>
+                                <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                            </svg>
+                        </a>
                     </div>
                 </div>
 

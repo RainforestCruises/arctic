@@ -40,15 +40,18 @@ $sections = get_field('sections');
             <?php
             $categoryCount = 0;
             foreach ($sections as $section) :
-                $category = $section['category'];
-                $dealsInCategory = getDealsInCategory($category);
+                $category = get_page_template_slug() == "template-deals-toplevel.php" ? $section['category'] : $section['region'];
+                $items = get_page_template_slug() == "template-deals-toplevel.php" ? getDealsInCategory($category) : getExtensionsInRegion($category);
                 $titleSlug = slugify(get_the_title($category));
-                if (!$dealsInCategory) continue; // skip if no deals found for category
+                if (!$items) continue; // skip if no deals found for category
             ?>
                 <a href="#<?php echo $titleSlug; ?>" class="landing-nav__content__links__link"><?php echo get_the_title($category) ?></a>
 
             <?php endforeach; ?>
-            <a href="#group" class="landing-nav__content__links__link">Group</a>
+
+            <?php if (get_page_template_slug() == "template-deals-toplevel.php") : ?>
+                <a href="#group" class="landing-nav__content__links__link">Group</a>
+            <?php endif; ?>
 
         </div>
 

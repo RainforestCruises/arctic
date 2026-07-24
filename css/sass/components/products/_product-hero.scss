@@ -318,11 +318,24 @@
               padding-left: 1.3rem;
               font-size: 3.6rem;
               font-weight: 500;
-              //letter-spacing: 0.1rem;
+              position: relative;
 
               & span {
                 transform: translateX(-1rem);
                 color: $color-primary;
+              }
+
+              &.superior-price {
+                margin-left: 1.5rem;
+                &::after {
+                  content: "";
+                  position: absolute;
+                  top: 1.8rem;
+                  left: 0;
+                  width: 1px;
+                  height: 3.5rem;
+                  background-color: $color-grey-light-2;
+                }
               }
 
               &__discount {
@@ -432,7 +445,6 @@
                 font-size: 1.1rem;
                 line-height: 1.6rem;
                 font-weight: 500;
-
               }
             }
           }
@@ -514,6 +526,7 @@
       font-size: 2.6rem;
       font-weight: 600;
       white-space: nowrap;
+      position: relative;
       & span {
         transform: translateX(-1rem);
         color: $color-primary;
@@ -523,6 +536,19 @@
         font-size: 1.2rem;
         font-weight: 400;
         transform: translateY(-1rem);
+      }
+
+      &.superior-price {
+        margin-left: 1.5rem;
+        &::after {
+          content: "";
+          position: absolute;
+          top: 1.1rem;
+          left: 0;
+          width: 1px;
+          height: 3.5rem;
+          background-color: $color-grey-light-2;
+        }
       }
     }
 

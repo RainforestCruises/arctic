@@ -571,14 +571,14 @@
             "collapsed": "",
             "min": 0,
             "max": 0,
-            "layout": "table",
+            "layout": "row",
             "button_label": "",
             "sub_fields": [
                 {
                     "key": "field_6a20d6a83f705",
                     "label": "Image",
                     "name": "image",
-                    "type": "image",
+                    "type": "gallery",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -589,7 +589,10 @@
                     },
                     "return_format": "array",
                     "preview_size": "medium",
+                    "insert": "append",
                     "library": "all",
+                    "min": "",
+                    "max": "",
                     "min_width": "",
                     "min_height": "",
                     "min_size": "",
@@ -638,9 +641,9 @@
                 },
                 {
                     "key": "field_6a20d6da3f708",
-                    "label": "Price",
-                    "name": "price",
-                    "type": "number",
+                    "label": "Service Level",
+                    "name": "service_level",
+                    "type": "select",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -649,13 +652,42 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
+                    "choices": {
+                        "standard": "Standard",
+                        "superior": "Superior"
+                    },
+                    "default_value": "standard",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_6a600469ea052",
+                    "label": "Cabin Amenity",
+                    "name": "cabin_amenity",
+                    "type": "relationship",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "rfc_cabin_amenities"
+                    ],
+                    "taxonomy": "",
+                    "filters": [
+                        "search"
+                    ],
+                    "elements": "",
                     "min": "",
                     "max": "",
-                    "step": ""
+                    "return_format": "object"
                 }
             ]
         },
@@ -857,5 +889,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1780537134
+    "modified": 1784677568
 }

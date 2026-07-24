@@ -1,6 +1,7 @@
 <?php
 $itinerary = get_post();
 $routes = get_field('route');
+$isExtension = $args['isExtension'];
 
 $queryArgs = array(
     'post_type'      => get_post_type(),
@@ -37,10 +38,10 @@ $count = 0;
             <!-- Title -->
             <div class="slider-block__content__top__title">
                 <h2 class="title-group__title">
-                    Related Itineraries
+                    <?php echo $isExtension ? "Alternate Extensions" : "Related Cruises" ?>
                 </h2>
                 <div class="title-group__sub">
-                    Explore these similar polar expeditions
+                    <?php echo $isExtension ? "Explore some other example extensions available in the region" : "Explore these similar polar expeditions" ?>               
                 </div>
             </div>
 
@@ -170,7 +171,9 @@ $count = 0;
                 </div>
             </div>
             <?php if ($count == 0) : ?>
-                <div class="not-found-text">There are no available departures on related cruises</div>
+                <div class="not-found-text">
+                    <?php echo $isExtension ? "There are no other example extensions available currently. Please contact our polar specialists for alternatives." : "There are no available departures on related cruises" ?>
+                </div>
             <?php endif; ?>
         </div>
     </div>

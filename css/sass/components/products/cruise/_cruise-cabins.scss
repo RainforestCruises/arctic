@@ -41,6 +41,10 @@
         font-weight: 700;
         color: $color-primary;
         margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+  
     }
 
     &__subtitle {

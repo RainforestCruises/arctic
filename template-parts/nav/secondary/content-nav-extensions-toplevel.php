@@ -22,15 +22,18 @@ $sections = get_field('sections');
             <?php
             $categoryCount = 0;
             foreach ($sections as $section) :
-                $category = $section['category'];
-                $dealsInCategory = getDealsInCategory($category);
+                $category = get_page_template_slug() == "template-deals-toplevel.php" ? $section['category'] : $section['region'];
+                $items = get_page_template_slug() == "template-deals-toplevel.php" ? getDealsInCategory($category) : getExtensionsInRegion($category);
                 $titleSlug = slugify(get_the_title($category));
-                if (!$dealsInCategory) continue; // skip if no deals found for category
+                if (!$items) continue; // skip if no deals found for category
             ?>
                 <a href="#<?php echo $titleSlug; ?>" class="nav-secondary__content__links__link"><?php echo get_the_title($category) ?></a>
 
             <?php endforeach; ?>
-            <a href="#group" class="nav-secondary__content__links__link">Group</a>
+
+            <?php if (get_page_template_slug() == "template-deals-toplevel.php") : ?>
+                <a href="#group" class="nav-secondary__content__links__link">Group</a>
+            <?php endif; ?>
 
         </div>
         <div class="nav-secondary__content__cta product-template">
@@ -55,21 +58,24 @@ $sections = get_field('sections');
     <!--mobile menu expand-->
     <nav class="nav-secondary__mobile-menu">
         <ul class="nav-secondary__mobile-menu__list">
-        <?php
+            <?php
             $categoryCount = 0;
             foreach ($sections as $section) :
-                $category = $section['category'];
-                $dealsInCategory = getDealsInCategory($category);
+                $category = get_page_template_slug() == "template-deals-toplevel.php" ? $section['category'] : $section['region'];
+                $items = get_page_template_slug() == "template-deals-toplevel.php" ? getDealsInCategory($category) : getExtensionsInRegion($category);
                 $titleSlug = slugify(get_the_title($category));
-                if (!$dealsInCategory) continue; // skip if no deals found for category
+                if (!$items) continue; // skip if no deals found for category
             ?>
                 <li class="nav-secondary__mobile-menu__list__item">
                     <a href="#<?php echo $titleSlug; ?>" class="nav-secondary__mobile-menu__list__item__link"><?php echo get_the_title($category) ?></a>
                 </li>
             <?php endforeach; ?>
-            <li class="nav-secondary__mobile-menu__list__item">
-                <a class="nav-secondary__mobile-menu__list__item__link" href="#group">Group</a>
-            </li>
+            <?php if (get_page_template_slug() == "template-deals-toplevel.php") : ?>
+                <li class="nav-secondary__mobile-menu__list__item">
+                    <a class="nav-secondary__mobile-menu__list__item__link" href="#group">Group</a>
+                </li>
+            <?php endif; ?>
+
 
         </ul>
     </nav>
