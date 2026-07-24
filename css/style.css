@@ -4464,7 +4464,8 @@ p {
           object-fit: cover; }
 
 .cruise-cabins-modal-item {
-  padding-bottom: 4rem; }
+  margin-bottom: 6rem;
+  border-bottom: 1px solid #e6e6e6; }
   .cruise-cabins-modal-item__image-area {
     overflow: hidden;
     width: 100%;
@@ -4486,7 +4487,8 @@ p {
     gap: 1.5rem 3rem;
     margin-bottom: 1.5rem; }
   .cruise-cabins-modal-item__description {
-    font-size: 1.6rem; }
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem; }
   .cruise-cabins-modal-item__title {
     font-size: 2.2rem;
     line-height: 2.6rem;
@@ -4494,8 +4496,11 @@ p {
     color: #003548;
     margin-bottom: 1.5rem;
     display: flex;
-    align-items: center;
-    gap: 1rem; }
+    flex-direction: column; }
+    .cruise-cabins-modal-item__title__service-level {
+      font-size: 1.6rem;
+      text-transform: capitalize;
+      color: #b58a72; }
   .cruise-cabins-modal-item__subtitle {
     font-size: 1.8rem;
     line-height: 2.2rem;

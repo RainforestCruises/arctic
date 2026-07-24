@@ -33,6 +33,8 @@ if (is_plugin_active('translatepress-multilingual/index.php') && $show_translate
 $landing_pages = get_field('landing_pages', 'options');
 $ships = get_field('ships', 'options');
 $guides = get_field('guides', 'options');
+$extensions = get_field('extensions', 'options');
+
 $logo = get_field('logo_main', 'options');
 $top_level_guides_page = get_field('top_level_guides_page', 'options');
 $top_level_deals_page = get_field('top_level_deals_page', 'options');
@@ -41,6 +43,7 @@ $top_level_search_page = get_field('top_level_search_page', 'options');
 $top_level_agents_page = get_field('top_level_agents_page', 'options');
 $top_level_reviews_page = get_field('top_level_reviews_page', 'options');
 $top_level_regions_page = get_field('top_level_regions_page', 'options');
+$top_level_extensions_page = get_field('top_level_extensions_page', 'options');
 
 
 $regionsArgs = array(
@@ -121,6 +124,19 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                 </div>
                 <div class="nav-button__text">
                     Guide
+                </div>
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-ic_chevron_right_36px"></use>
+                </svg>
+            </a>
+            <a class="nav-button nav-forward" menuLinkTo="menu-extensions">
+                <div class="nav-button__svg-icon">
+                    <svg>
+                        <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-pin-3-outline"></use>
+                    </svg>
+                </div>
+                <div class="nav-button__text">
+                    Extensions
                 </div>
                 <svg>
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-ic_chevron_right_36px"></use>
@@ -340,10 +356,8 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
                     </svg>
                 </a>
             <?php endforeach; ?>
-
         </div>
     </div>
-
 
 
     <!-- Menu Guides -->
@@ -455,6 +469,68 @@ $hideSecondaryRegions = get_field('hide_secondary_regions', 'options');
 
             <a class="btn-pill btn-pill--icon mobile-nav-view-all-button nav-mega-item" href="<?php echo $top_level_regions_page; ?>">
                 View All Regions
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Menu Extensions -->
+    <div class="nav-mobile__content-panel nav-mobile__content-panel--sub" menuid="menu-extensions">
+        <div class="nav-mobile__content-panel__static">
+            <div class="nav-mobile__content-panel__static__heading">
+                Extensions
+                <div class="nav-mobile__content-panel__static__heading__regions" style="display: <?php echo $hideSecondaryRegions ? 'none' : '' ?>">
+                    <?php foreach ($regions as $region) : ?>
+                        <button class="btn-region <?php echo ($region == $initialRegion) ? 'active' : '' ?> nav-region-select" region="<?php echo $region->ID; ?>">
+                            <?php echo get_the_title($region) ?>
+                        </button>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <div class="nav-close-button">
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-x"></use>
+                </svg>
+            </div>
+            <a class="nav-button nav-back" menuLinkTo="top">
+                <svg>
+                    <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-ic_chevron_left_36px"></use>
+                </svg>
+                <div class="nav-button__text">
+                    Back
+                </div>
+            </a>
+        </div>
+        <div class="nav-mobile__content-panel__main">
+            <?php foreach ($extensions as $extension) :
+                $extensionRegions = get_field('region', $extension);
+                if (!$extensionRegions) continue; // skip if no regions
+                $title = get_the_title($extension);
+                $hero_gallery = get_field('hero_gallery', $extension);
+
+                foreach ($extensionRegions as $extensionRegion) :
+                    $url = get_permalink($extension);
+                    if ($primaryRegion != $extensionRegion) {
+                        $url .= "?region=" . $extensionRegion->ID;
+                    }
+                    $extensionRegionId = $extensionRegion->ID;
+                    $showInitial = $initialRegion->ID == $extensionRegionId || $extensionRegionId == "all";
+            ?>
+                    <a class="nav-button mobile-link nav-mega-item" href="<?php echo get_permalink($extension); ?>" region="<?php echo $extensionRegionId; ?>" style="display: <?php echo $showInitial ? '' : 'none' ?>">
+                        <div class="nav-button__img-icon">
+                            <img <?php afloat_image_markup($hero_gallery[0]['id'], 'square-small', array('square-small')); ?>>
+                        </div>
+                        <div class="nav-button__text">
+                            <?php echo $title; ?>
+                        </div>
+                    </a>
+            <?php endforeach;
+            endforeach; ?>
+
+            <a class="btn-pill btn-pill--icon mobile-nav-view-all-button" href="<?php echo $top_level_extensions_page; ?>">
+                View All Extensions
                 <svg>
                     <use xlink:href="<?php echo bloginfo('template_url') ?>/css/img/sprite.svg#icon-chevron-right"></use>
                 </svg>

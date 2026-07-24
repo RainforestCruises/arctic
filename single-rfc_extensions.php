@@ -98,7 +98,7 @@ $args = array(
 
   <!-- Related -->
   <?php
-  get_template_part('template-parts/itinerary/content', 'itinerary-related', $args);
+  get_template_part('template-parts/itinerary/content', 'extension-related', $args);
   ?>
 
   <!-- Footer CTA  -->

@@ -654,7 +654,8 @@
                     },
                     "choices": {
                         "standard": "Standard",
-                        "superior": "Superior"
+                        "superior": "Superior",
+                        "luxury": "Luxury"
                     },
                     "default_value": "standard",
                     "allow_null": 0,
@@ -666,8 +667,8 @@
                 },
                 {
                     "key": "field_6a600469ea052",
-                    "label": "Cabin Amenity",
-                    "name": "cabin_amenity",
+                    "label": "Amenities",
+                    "name": "amenities",
                     "type": "relationship",
                     "instructions": "",
                     "required": 0,
@@ -678,7 +679,7 @@
                         "id": ""
                     },
                     "post_type": [
-                        "rfc_cabin_amenities"
+                        "rfc_amenities"
                     ],
                     "taxonomy": "",
                     "filters": [
@@ -688,6 +689,25 @@
                     "min": "",
                     "max": "",
                     "return_format": "object"
+                },
+                {
+                    "key": "field_6a639f4d9b1a5",
+                    "label": "Room Category",
+                    "name": "room_category",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         },
@@ -889,5 +909,5 @@
     "active": true,
     "description": "Itinerary - CPT",
     "show_in_rest": 0,
-    "modified": 1784677568
+    "modified": 1784914136
 }

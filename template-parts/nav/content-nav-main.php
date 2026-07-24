@@ -432,9 +432,6 @@ $top_level_deals_page = get_field('top_level_deals_page', $initialRegion);
                             </div>
                             <div class="mega-slider__slider">
                                 <?php foreach ($extensions as $extension) :
-                   
-
-
                                     $extensionRegions = get_field('region', $extension);
                                     if (!$extensionRegions) continue; // skip if no regions
                                     $title = get_the_title($extension);

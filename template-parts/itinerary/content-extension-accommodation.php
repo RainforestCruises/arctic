@@ -100,7 +100,8 @@ $accommodation = $args['extra_activities'];
                 $title = $item['title'];
                 $description = $item['description'];
                 $service_level = $item['service_level'];
-                $amenities = $item['cabin_amenity'];
+                $amenities = $item['amenities'];
+                $room_category = $item['room_category'];
 
             ?>
                 <div class="cruise-cabins-modal-item" id="<?php echo 'extras-section-' . $count; ?>">
@@ -120,18 +121,17 @@ $accommodation = $args['extra_activities'];
 
                     <!-- Title -->
                     <h2 class="cruise-cabins-modal-item__title">
-                        <?php echo $title; ?>
-                        <span class="badge">
+                        <span class="cruise-cabins-modal-item__title__service-level">
                             <?php echo $service_level; ?>
                         </span>
+                        <?php echo $title; ?>
                     </h2>
 
 
-                    <!-- Subtitle -->
+                    <!-- Amenities -->
                     <h3 class="cruise-cabins-modal-item__subtitle">
-                        Features
+                        Amenities
                     </h3>
-
 
                     <div class="cruise-cabins-modal-item__features">
                         <?php
@@ -152,17 +152,25 @@ $accommodation = $args['extra_activities'];
                         endif; ?>
                     </div>
 
-
-                    <!-- Subtitle -->
+                    <!-- Description -->
                     <h3 class="cruise-cabins-modal-item__subtitle">
                         Description
                     </h3>
-
                     <div class="cruise-cabins-modal-item__description">
                         <?php echo $description; ?>
                     </div>
+
+                    <!-- Room Category -->
+                    <h3 class="cruise-cabins-modal-item__subtitle">
+                        Room Category Included in the Quote
+                    </h3>
+                    <div class="cruise-cabins-modal-item__description">
+                        <?php echo $room_category; ?>
+                    </div>
                 </div>
-            <?php $count++; endforeach; ?>
+
+            <?php $count++;
+            endforeach; ?>
         </div>
     </div>
 </div>
