@@ -131,6 +131,7 @@ $lengthDisplay = formatLengthDisplay($itineraryLengths, true);
                         <?php if ($extra_activities) : ?>
                             <a href="#extras" class="product-hero__content__main__primary__nav__link">Extras</a>
                         <?php endif; ?>
+                        <a href="#extensions" class="product-hero__content__main__primary__nav__link">Extensions</a>
                     <?php else : ?>
                         <a href="#accommodations" class="product-hero__content__main__primary__nav__link">Accommodations</a>
                     <?php endif; ?>

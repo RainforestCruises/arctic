@@ -29,10 +29,6 @@ $extra_activities = array_merge($extra_activities, $optional_activities);
 $precalculated_departures = get_field('precalculated_departures');
 $departures = $precalculated_departures ? $precalculated_departures : getDepartureListItinerary($itinerary);
 
-// $ships = getShipsFromDepartureList($departures);
-// $lowestOverallPrice = getLowestDepartureListPrice($departures);
-// $bestOverallDiscount = getBestDepartureListDiscount($departures);
-
 $precalculated_ships = get_field('precalculated_ships', $itinerary);
 $ships = $precalculated_ships ? $precalculated_ships : getShipsFromItineraries($itinerary);
 
@@ -162,6 +158,11 @@ $args = array(
   <!-- Inclusions / Exclusions -->
   <?php
   get_template_part('template-parts/itinerary/content', 'itinerary-inclusions', $args);
+  ?>
+
+  <!-- Extensions -->
+  <?php
+  get_template_part('template-parts/itinerary/content', 'itinerary-extensions', $args);
   ?>
 
   <!-- Related -->

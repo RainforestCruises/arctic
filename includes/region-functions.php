@@ -23,7 +23,7 @@ function getPrimaryRegion()
 
 // get list of regions from itinerary post (should only be one, but in case of multiple routes with different regions, will return the first region)
 // returns the ID of the region
-function getItineraryRegionId($itinerary)
+function getItineraryRegionId($itinerary, $returnObject = false)
 {
     $routes = get_field('route', $itinerary) ?: []; // PHP 8 FIX
     $regionsList = [];
@@ -34,6 +34,9 @@ function getItineraryRegionId($itinerary)
         $regionsList[] = get_field('region', $route);
     }
     $uniqueRegionsList = getUniquePostsFromArrayOfPosts($regionsList);
+    if($returnObject) {
+        return $uniqueRegionsList[0] ?? null;
+    }
     return $uniqueRegionsList[0]->ID ?? null; // there should always only be one
 }
 

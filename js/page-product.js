@@ -309,6 +309,25 @@ jQuery(document).ready(function ($) {
     },
   });
 
+   // Related Swiper
+  new Swiper("#extensions-slider", {
+    spaceBetween: 15,
+    slidesPerView: 1.2,
+    watchSlidesProgress: true,
+    navigation: {
+      nextEl: ".extensions-slider-btn-next",
+      prevEl: ".extensions-slider-btn-prev",
+    },
+    breakpoints: {
+      600: {
+        slidesPerView: 2,
+      },
+      800: {
+        slidesPerView: 3,
+      },
+    },
+  });
+
   const reviewsModal = document.querySelector("#reviewsModal");
   const reviewsModalMainContent = document.querySelector("#reviewsModalMainContent");
 

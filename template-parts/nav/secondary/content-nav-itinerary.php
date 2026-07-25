@@ -48,6 +48,9 @@ if ($isExtension) {
                         Extras
                     </a>
                 <?php endif; ?>
+                <a href="#extensions" class="nav-secondary__content__links__link">
+                    Extensions
+                </a>
             <?php else : ?>
                 <a href="#accommodations" class="nav-secondary__content__links__link">
                     Accommodations
@@ -98,6 +101,9 @@ if ($isExtension) {
                         <a class="nav-secondary__mobile-menu__list__item__link" href="#extras">Extras</a>
                     </li>
                 <?php endif; ?>
+                <li class="nav-secondary__mobile-menu__list__item">
+                    <a class="nav-secondary__mobile-menu__list__item__link" href="#extensions">Extensions</a>
+                </li>
             <?php else : ?>
                 <li class="nav-secondary__mobile-menu__list__item">
                     <a class="nav-secondary__mobile-menu__list__item__link" href="#accommodations">Accommodations</a>
