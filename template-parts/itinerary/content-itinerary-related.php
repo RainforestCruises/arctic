@@ -40,7 +40,7 @@ $count = 0;
                     Related Cruises
                 </h2>
                 <div class="title-group__sub">
-                    Explore these similar polar expeditions
+                    Explore these similar polar expeditions.
                 </div>
             </div>
 
@@ -171,7 +171,7 @@ $count = 0;
             </div>
             <?php if ($count == 0) : ?>
                 <div class="not-found-text">
-                    There are no available departures on related cruises
+                    There are no available departures on related cruises.
                 </div>
             <?php endif; ?>
         </div>

@@ -15,7 +15,7 @@ $extensions = getExtensionsInRegion($region);
                     Extensions
                 </h2>
                 <div class="title-group__sub">
-                    Compliment your itinerary with one of our extensions.
+                    Complement your itinerary with one of our extensions.
                 </div>
             </div>
 

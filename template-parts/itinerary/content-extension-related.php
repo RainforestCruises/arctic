@@ -27,7 +27,7 @@ $count = 0;
                     Alternate Extensions
                 </h2>
                 <div class="title-group__sub">
-                    Explore some other example extensions available in the region
+                    Explore some other example extensions available in the region.
                 </div>
             </div>
 
