@@ -246,33 +246,37 @@ function getHighestDeparturePrice($departure)
 // get highest discount percentage form a single departures
 function getBestDepartureDiscount($departure)
 {
-    $bestDiscount = 0;
     $cabin_prices = $departure['cabin_prices'];
     if (!$cabin_prices) {
-        return $bestDiscount;
+        return '0%';
     }
 
-    $percentageArray = [];
+    $rawPercentages = [];
     foreach ($cabin_prices as $c) {
         $price = (float) $c['price'];
         $discountedPrice = $c['discounted_price'];
 
-        $hasDiscount = (float)$discountedPrice > 0;
+        $hasDiscount = (float) $discountedPrice > 0;
         if ($c['sold_out'] != true && $hasDiscount && $price > 0) {
             $difference = $price - (float) $discountedPrice;
-            $percentage = ceil(($difference / $price) * 100);
-            $percentageArray[] = $percentage;
+            $rawPercentage = ($difference / $price) * 100;
+            $rawPercentages[] = $rawPercentage;
         }
     }
 
-    if ($departure['date'] == "2028-01-31") {
-        console_log("test");
-        console_log($percentageArray);
-        $test = !empty($percentageArray) ? max($percentageArray) : 0;
-        console_log($test);
+    if (empty($rawPercentages)) {
+        return '0%';
     }
 
-    return !empty($percentageArray) ? max($percentageArray) : 0;
+    $maxRaw = max($rawPercentages);
+    $rounded = (int) ceil($maxRaw);
+
+    // Use a small epsilon to avoid float precision issues (e.g. 19.999999999)
+    $isWholeNumber = abs($maxRaw - round($maxRaw)) < 0.0001;
+
+    $prefix = $isWholeNumber ? '' : '~';
+
+    return $prefix . $rounded;
 }
 
 
