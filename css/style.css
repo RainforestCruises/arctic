@@ -1872,6 +1872,9 @@ p {
     color: #003548;
     border-radius: 2rem;
     z-index: 10; }
+    .resource-card__tag--green {
+      background-color: #00ac78;
+      color: #fff; }
   .resource-card.small .resource-card__image-area {
     height: 22rem !important; }
   .resource-card.medium .resource-card__image-area {

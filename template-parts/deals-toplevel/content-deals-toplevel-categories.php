@@ -76,6 +76,8 @@ foreach ($sections as $section) :
                             $precalculated_best_discount = get_field('precalculated_best_discount', $itinerary);
                             $bestOverallDiscount = $precalculated_best_discount ? $precalculated_best_discount : getBestDepartureListDiscount($departures);
 
+                            $itineraryDeals = getDealsFromDepartureList($departures);
+
                             $images =  get_field('hero_gallery', $itinerary);
                             $image = $images[0];
                             $title = get_field('display_name', $itinerary);
@@ -84,11 +86,21 @@ foreach ($sections as $section) :
                             <!-- Itinerary Card -->
                             <div class="resource-card swiper-slide">
                                 <!-- Tag -->
-                                <?php if ($bestOverallDiscount) : ?>
-                                    <div class="resource-card__tag">
-                                        Up to <span class="green-text"><?php echo $bestOverallDiscount; ?>%</span> savings
-                                    </div>
-                                <?php endif; ?>
+                 
+
+
+                                    <?php if($itineraryDeals) : if (count($itineraryDeals) == 1) :
+                                        foreach ($itineraryDeals as $deal) : ?>
+                                            <div class="resource-card__tag resource-card__tag--green">
+                                                <?php echo get_field('short_title', $deal) ?>
+                                            </div>
+                                        <?php endforeach;
+                                    else : ?>
+                                        <div class="resource-card__tag resource-card__tag--green">
+                                            <?php echo count($itineraryDeals) ?> Deals
+                                        </div>
+                                    <?php endif; endif; ?>
+                      
                                 <!-- Images Slider -->
                                 <div class="resource-card__image-area">
                                     <a class="resource-card__image-area__item" href="<?php echo get_permalink($itinerary) ?>">

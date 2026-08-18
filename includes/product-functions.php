@@ -273,6 +273,7 @@ function getBestDepartureDiscount($departure)
 
     // Use a small epsilon to avoid float precision issues (e.g. 19.999999999)
     $isWholeNumber = abs($maxRaw - round($maxRaw)) < 0.0001;
+    //console_log($isWholeNumber);
 
     $prefix = $isWholeNumber ? '' : '~';
 

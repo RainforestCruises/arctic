@@ -16,6 +16,11 @@
     color: $color-primary;
     border-radius: 2rem;
     z-index: 10;
+
+    &--green {
+      background-color: $color-green;
+      color: $color-white;
+    }
   }
 
   // Variants
